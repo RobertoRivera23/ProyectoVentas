@@ -3,12 +3,7 @@ package AccesoDatos;
 import Entidades.Cliente;
 import Entidades.Producto;
 import Entidades.Venta;
-import java.sql.Connection;
-import java.sql.Date;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
-import java.sql.SQLException;
-import java.sql.Statement;
+import java.sql.*;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
@@ -142,7 +137,7 @@ public class VentasData {
                     cliente.setNombre(rs.getString("nombre"));
                     cliente.setDomicilio(rs.getString("domicilio"));
                     cliente.setTelefono(rs.getString("telefono"));
-                    clientes.setEstado(rs.getBoolean("estado"));
+                    cliente.setEstado(rs.getBoolean("estado"));
                     clientes.add(cliente);
                 }
             }
