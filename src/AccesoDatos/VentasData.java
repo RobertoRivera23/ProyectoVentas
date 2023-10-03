@@ -84,7 +84,7 @@ public class VentasData {
                 venta = new Venta();
                 venta.setIdVenta(rs.getInt("idVenta"));
                 venta.setCliente(clienteData.buscarCliente(rs.getInt("idCliente")));
-                venta.setFechaVenta((rs.getDate("fechaVenta")));
+                venta.setFechaVenta((rs.getDate("fechaVenta").toLocalDate()));
                 ventas.add(venta);
             } else {
                 JOptionPane.showMessageDialog(null, "No hay ventas para esa fecha ");
@@ -111,7 +111,7 @@ public class VentasData {
                 venta = new Venta();
                 venta.setIdVenta(rs.getInt("idVenta"));
                 venta.setCliente(clienteD.buscarCliente(rs.getInt("cliente")));
-                venta.setFechaVenta((rs.getDate("fechaVenta")));
+                venta.setFechaVenta((rs.getDate("fechaVenta").toLocalDate()));
 
                 ventas.add(venta);
             } else {
