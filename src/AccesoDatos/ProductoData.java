@@ -31,6 +31,7 @@ public class ProductoData {
             ps.setDouble(3, producto.getPrecioActual());
             ps.setInt(4, producto.getStock());
             ps.setBoolean(5, producto.isEstado());
+            ps.executeUpdate();
             ResultSet rs = ps.getGeneratedKeys();
             if (rs.next()) {
                 producto.setIdProducto(rs.getInt(1));
@@ -41,8 +42,8 @@ public class ProductoData {
             JOptionPane.showMessageDialog(null, "Error al acceder a la tabla Producto" + ex.getMessage());
         }
     }
- 
-    public Producto buscarProducto(int id){
+
+    public Producto buscarProducto(int id) {
         String sql = "SELECT nombreProducto, descripcion, precioActual, stock, estado FROM producto WHERE idProducto = ? AND estado = 1";
         PreparedStatement ps;
         try {
@@ -66,29 +67,30 @@ public class ProductoData {
         }
         return producto;
     }
-    
-    public void modificarProducto(Producto producto){
+
+    public void modificarProducto(Producto producto) {
         String sql = "UPDATE producto SET nombreProducto = ? , descripcion = ? , precioActual = ? , stock = ?  WHERE idProducto = ?";
         PreparedStatement ps;
-        try{
+        try {
             ps = con.prepareStatement(sql);
             ps.setString(1, producto.getNombreProducto());
             ps.setString(2, producto.getDescripcion());
             ps.setDouble(3, producto.getPrecioActual());
             ps.setInt(4, producto.getStock());
+            ps.setInt(5, producto.getIdProducto());
             int exito = ps.executeUpdate();
             if (exito == 1) {
                 JOptionPane.showMessageDialog(null, "Modificado Exitosamente.");
             } else {
                 JOptionPane.showMessageDialog(null, "El producto no existe");
             }
-        }catch(SQLException ex){
+        } catch (SQLException ex) {
             JOptionPane.showMessageDialog(null, "Error al acceder a la tabla Producto" + ex.getMessage());
         }
     }
-    
-    public void eliminarProducto(int id){
-        try{
+
+    public void eliminarProducto(int id) {
+        try {
             String sql = "UPDATE producto SET estado = 0 WHERE idProducto = ?";
             PreparedStatement ps = con.prepareStatement(sql);
             ps.setInt(1, id);
@@ -97,7 +99,7 @@ public class ProductoData {
                 JOptionPane.showMessageDialog(null, " Se eliminó el producto");
             }
             ps.close();
-        }catch(SQLException ex){
+        } catch (SQLException ex) {
             JOptionPane.showMessageDialog(null, "Error al acceder a la tabla Producto" + ex.getMessage());
         }
     }
