@@ -54,4 +54,8 @@ public class Venta {
     public void setFechaVenta(LocalDate fechaVenta) {
         this.fechaVenta = fechaVenta;
     }
+    
+    public Integer getIdCliente(){
+        return cliente.getIdCliente();
+    }
 }

@@ -86,8 +86,8 @@ public class ClienteData {
             JOptionPane.showMessageDialog(null, "Error al acceder a la tabla Cliente. " + ex.getMessage());
         }
     }
-    
-    public void eliminarCliente(int id){
+
+    public void eliminarCliente(int id) {
         String sql = "DELETE FROM cliente WHERE idCliente = ?";
         try {
             PreparedStatement ps = con.prepareStatement(sql);
