@@ -142,7 +142,7 @@ public class VentasData {
                     cliente.setNombre(rs.getString("nombre"));
                     cliente.setDomicilio(rs.getString("domicilio"));
                     cliente.setTelefono(rs.getString("telefono"));
-                    clientes.setEstado(rs.getBoolean("estado"));
+                    cliente.setEstado(rs.getBoolean("estado"));
                     clientes.add(cliente);
                 }
             }
