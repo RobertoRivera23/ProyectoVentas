@@ -108,7 +108,7 @@ public class VentasData {
                 while (rs.next()) {
                     venta = new Venta();
                     venta.setIdVenta(rs.getInt("idVenta"));
-                    venta.setCliente(clienteD.buscarCliente(rs.getInt("cliente")));
+                    venta.setCliente(clienteD.buscarCliente(rs.getInt("idCliente")));
                     venta.setFechaVenta((rs.getDate("fechaVenta").toLocalDate()));
                     ventas.add(venta);
                 }
