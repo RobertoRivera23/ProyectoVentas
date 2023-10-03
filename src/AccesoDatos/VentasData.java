@@ -51,7 +51,7 @@ public class VentasData {
             PreparedStatement ps = con.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
             ps.setInt(1, venta.getIdVenta());
             ps.setDate(2, Date.valueOf(venta.getFechaVenta()));
-            ps.setBoolean(3, venta.isEstado());
+            ps.setBoolean(3, true);
             ResultSet rs = ps.getGeneratedKeys();
             if (rs.next()) {
                 venta.setIdVenta(rs.getInt(1));
