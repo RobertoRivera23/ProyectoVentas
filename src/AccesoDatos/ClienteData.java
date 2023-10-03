@@ -44,6 +44,7 @@ public class ClienteData {
 
     public Cliente buscarCliente(int idCliente) {
 
+
         Cliente cliente = null;
         String sql = "SELECT apellido, nombre, domicilio, telefon FROM cliente WHERE idCliente = ?";
         PreparedStatement ps;
@@ -59,7 +60,7 @@ public class ClienteData {
                 cliente.setNombre(rs.getString("nombre"));
                 cliente.setDomicilio(rs.getString("domicilio"));
                 cliente.setTelefono(rs.getString("telefono"));
-                cliente.setEstado(true);
+                cliente.setEstado(true); //  no deberiamos setear el estado al crearlo? aca estamos buscando uno que ya esta
             } else {
                 JOptionPane.showMessageDialog(null, "No existe el Cliente.");
             }
