@@ -51,11 +51,12 @@ public class VentasData {
 
 // Guardar ventas
     public void guardarVenta(Venta venta) {
-        String sql = "INSERT INTO (idCliente, fechaVenta ) VALUES (? , ?) ";
+        String sql = "INSERT INTO (idCliente, fechaVenta, estado ) VALUES (? , ?, ?) ";
         try {
             PreparedStatement ps = con.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
             ps.setInt(1, venta.getIdVenta());
             ps.setDate(2, Date.valueOf(venta.getFechaVenta()));
+            ps.setBoolean(3, venta.isEstado());
             ResultSet rs = ps.getGeneratedKeys();
             if (rs.next()) {
                 venta.setIdVenta(rs.getInt(1));
@@ -83,6 +84,7 @@ public class VentasData {
                     venta.setIdVenta(rs.getInt("idVenta"));
                     venta.setCliente(clienteData.buscarCliente(rs.getInt("idCliente")));
                     venta.setFechaVenta((rs.getDate("fechaVenta").toLocalDate()));
+                    venta.setEstado(rs.getBoolean("estado"));
                     ventas.add(venta);
                 }
             }
@@ -110,6 +112,7 @@ public class VentasData {
                     venta.setIdVenta(rs.getInt("idVenta"));
                     venta.setCliente(clienteD.buscarCliente(rs.getInt("idCliente")));
                     venta.setFechaVenta((rs.getDate("fechaVenta").toLocalDate()));
+                    venta.setEstado(rs.getBoolean("estado"));
                     ventas.add(venta);
                 }
             }
@@ -139,6 +142,7 @@ public class VentasData {
                     cliente.setNombre(rs.getString("nombre"));
                     cliente.setDomicilio(rs.getString("domicilio"));
                     cliente.setTelefono(rs.getString("telefono"));
+                    clientes.setEstado(rs.getBoolean("estado"));
                     clientes.add(cliente);
                 }
             }
