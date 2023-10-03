@@ -65,8 +65,8 @@ public class VentasData {
             JOptionPane.showMessageDialog(null, "Error al acceder a la tabla Ventas " + ex);
         }
     }
-    //Listar todas las ventas en una fecha.
 
+    //Listar todas las ventas en una fecha.
     public List<Venta> listarVentasPorFecha(Venta venta) {
         List<Venta> ventas = new ArrayList<>();
         ClienteData clienteData = new ClienteData();
@@ -119,8 +119,8 @@ public class VentasData {
         }
         return ventas;
     }
-//Mostrar que clientes compraron el  producto X.
 
+//Mostrar que clientes compraron el  producto X.
     public List<Cliente> obtenerClientesPorProducto(Producto producto) {
         List<Cliente> clientes = new ArrayList<>();
         String sql = "SELECT cliente.apellido, cliente.nombre, cliente.domicilio, cliente.telefono "

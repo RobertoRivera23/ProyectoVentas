@@ -39,4 +39,29 @@ public class ProductoData {
             JOptionPane.showMessageDialog(null, "Error al acceder a la tabla Producto" + ex.getMessage());
         }
     }
+    
+    public void buscarProducto(int id){
+        Producto producto = null;
+        String sql = "SELECT nombreProducto, descripcion, precioActual, stock, estado FROM producto WHERE idProducto = ? AND estado = 1";
+        PreparedStatement ps;
+        try{
+            ps = con.prepareStatement(sql);
+            ps.setInt(1, id);
+            ResultSet rs = ps.executeQuery();
+            if(rs.next()){
+                producto = new Producto();
+                producto.setIdProducto(id);
+                producto.setNombreProducto(rs.getString("nombreProducto"));
+                producto.setDescripcion(rs.getString("descripcion"));
+                producto.setPrecioActual(rs.getDouble("precioActual"));
+                producto.setStock(rs.getInt("stock"));
+                producto.setEstado(true);
+            }else{
+                JOptionPane.showMessageDialog(null, "No existe el producto");
+                ps.close();
+            }
+        }catch(SQLException ex){
+            JOptionPane.showMessageDialog(null, "Error al acceder a la tabla Producto" + ex.getMessage());
+        }
+    }
 }
