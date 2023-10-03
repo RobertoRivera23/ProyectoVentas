@@ -14,6 +14,7 @@ public class DetalleVenta {
     private Venta venta;
     private double precioVenta;
     private Producto producto;
+    private boolean estado;
 
     public DetalleVenta(int cantidad, Venta venta, double precioVenta, Producto producto) {
         this.cantidad = cantidad;
@@ -79,5 +80,13 @@ public class DetalleVenta {
 
     public Integer getIdVenta() {
         return venta.getIdVenta();
+    }
+
+    public boolean isEstado() {
+        return estado;
+    }
+
+    public void setEstado(boolean estado) {
+        this.estado = estado;
     }
 }
