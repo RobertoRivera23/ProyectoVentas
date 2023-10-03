@@ -16,6 +16,7 @@ public class Venta {
     private int idVenta;
     private Cliente cliente;
     private LocalDate fechaVenta;
+    private boolean estado;
 
     public Venta(Cliente cliente, LocalDate fechaVenta) {
         this.cliente = cliente;
@@ -57,5 +58,13 @@ public class Venta {
     
     public Integer getIdCliente(){
         return cliente.getIdCliente();
+    }
+
+    public boolean isEstado() {
+        return estado;
+    }
+
+    public void setEstado(boolean estado) {
+        this.estado = estado;
     }
 }

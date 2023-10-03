@@ -15,19 +15,21 @@ import javax.swing.JOptionPane;
 public class ClienteData {
 
     private Connection con = null;
+    private Cliente cliente;
 
     public ClienteData() {
         con = Conexion.getConexion();
     }
 
     public void guardarCliente(Cliente cliente) {
-        String sql = "INSERT INTO cliente (apellido, nombre, domicilio, telefono) VALUES (?, ?, ?, ?)";
+        String sql = "INSERT INTO cliente (apellido, nombre, domicilio, telefono, estado) VALUES (?, ?, ?, ?, ?)";
         try {
             PreparedStatement ps = con.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
             ps.setString(1, cliente.getApellido());
             ps.setString(2, cliente.getNombre());
             ps.setString(3, cliente.getDomicilio());
             ps.setString(4, cliente.getTelefono());
+            ps.setBoolean(5, true);
             ps.executeUpdate();
             ResultSet rs = ps.getGeneratedKeys();
             if (rs.next()) {
@@ -41,11 +43,9 @@ public class ClienteData {
     }
 
     public Cliente buscarCliente(int idCliente) {
-        Cliente cliente = null;
-        String sql = "SELECT (apellido, nombre, domicilio, telefono) FROM cliente WHERE idCliente = ?";
-        PreparedStatement ps;
+        String sql = "SELECT apellido, nombre, domicilio, telefono FROM cliente WHERE idCliente = ?";
         try {
-            ps = con.prepareStatement(sql);
+            PreparedStatement ps = con.prepareStatement(sql);
             ps.setInt(1, idCliente);
             ResultSet rs = ps.executeQuery();
             if (rs.next()) {
@@ -55,6 +55,7 @@ public class ClienteData {
                 cliente.setNombre(rs.getString("nombre"));
                 cliente.setDomicilio(rs.getString("domicilio"));
                 cliente.setTelefono(rs.getString("telefono"));
+                cliente.setEstado(true);
             } else {
                 JOptionPane.showMessageDialog(null, "No existe el Cliente.");
             }
@@ -88,7 +89,7 @@ public class ClienteData {
     }
 
     public void eliminarCliente(int id) {
-        String sql = "DELETE FROM cliente WHERE idCliente = ?";
+        String sql = "UPDATE cliente SET estado = 0 WHERE idCliente = ?";
         try {
             PreparedStatement ps = con.prepareStatement(sql);
             ps.setInt(1, id);

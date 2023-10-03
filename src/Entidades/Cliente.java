@@ -12,6 +12,7 @@ package Entidades;
 public class Cliente {
     private int idCliente;
     private String apellido, nombre, domicilio, telefono;
+    private boolean estado;
 
     public Cliente(String apellido, String nombre, String domicilio, String telefono) {
         this.apellido = apellido;
@@ -69,6 +70,14 @@ public class Cliente {
 
     public void setTelefono(String telefono) {
         this.telefono = telefono;
+    }
+
+    public boolean isEstado() {
+        return estado;
+    }
+
+    public void setEstado(boolean estado) {
+        this.estado = estado;
     }
     
 }

@@ -14,13 +14,15 @@ import javax.swing.JOptionPane;
  * @author Mariano
  */
 public class ProductoData {
+
     private Connection con = null;
+    private Producto producto;
 
     public ProductoData() {
         con = Conexion.getConexion();
     }
-    
-    public void guardarProducto(Producto producto){
+
+    public void guardarProducto(Producto producto) {
         String sql = "INSERT INTO producto (nombreProducto, descripcion, precioActual, stock, estado) VALUES (?, ?, ?, ?, ?)";
         try {
             PreparedStatement ps = con.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
@@ -35,20 +37,19 @@ public class ProductoData {
                 JOptionPane.showMessageDialog(null, "Producto añadido con exito.");
             }
             ps.close();
-        }catch(SQLException ex){
+        } catch (SQLException ex) {
             JOptionPane.showMessageDialog(null, "Error al acceder a la tabla Producto" + ex.getMessage());
         }
     }
-    
-    public void buscarProducto(int id){
-        Producto producto = null;
+
+    public void buscarProducto(int id) {
         String sql = "SELECT nombreProducto, descripcion, precioActual, stock, estado FROM producto WHERE idProducto = ? AND estado = 1";
         PreparedStatement ps;
-        try{
+        try {
             ps = con.prepareStatement(sql);
             ps.setInt(1, id);
             ResultSet rs = ps.executeQuery();
-            if(rs.next()){
+            if (rs.next()) {
                 producto = new Producto();
                 producto.setIdProducto(id);
                 producto.setNombreProducto(rs.getString("nombreProducto"));
@@ -56,11 +57,11 @@ public class ProductoData {
                 producto.setPrecioActual(rs.getDouble("precioActual"));
                 producto.setStock(rs.getInt("stock"));
                 producto.setEstado(true);
-            }else{
+            } else {
                 JOptionPane.showMessageDialog(null, "No existe el producto");
                 ps.close();
             }
-        }catch(SQLException ex){
+        } catch (SQLException ex) {
             JOptionPane.showMessageDialog(null, "Error al acceder a la tabla Producto" + ex.getMessage());
         }
     }
