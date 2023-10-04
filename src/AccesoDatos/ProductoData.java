@@ -109,18 +109,18 @@ public class ProductoData {
     public List<Producto> listarProducto(){
         List<Producto> productos = new ArrayList<>();
         try{
-            String sql = "SELECT * FROM producto WHERE estado = 1";
+            String sql = "SELECT * FROM producto WHERE estado = 1 ORDER BY idProducto ASC";
             PreparedStatement ps = con.prepareStatement(sql);
             ResultSet rs = ps.executeQuery();
             while(rs.next()){
-                Producto product = new Producto();
-                product.setIdProducto(rs.getInt("idProducto"));
-                product.setNombreProducto(rs.getString("nombreProducto"));
-                product.setDescripcion(rs.getString("descripcion"));
-                product.setPrecioActual(rs.getDouble("precioActual"));
-                product.setStock(rs.getInt("stock"));
-                product.setEstado(rs.getBoolean("estado"));
-                productos.add(product);
+                producto = new Producto();
+                producto.setIdProducto(rs.getInt("idProducto"));
+                producto.setNombreProducto(rs.getString("nombreProducto"));
+                producto.setDescripcion(rs.getString("descripcion"));
+                producto.setPrecioActual(rs.getDouble("precioActual"));
+                producto.setStock(rs.getInt("stock"));
+                producto.setEstado(rs.getBoolean("estado"));
+                productos.add(producto);
             }
             ps.close();
         } catch (SQLException ex) {

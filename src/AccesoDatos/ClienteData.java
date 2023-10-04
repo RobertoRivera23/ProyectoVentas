@@ -31,7 +31,7 @@ public class ClienteData {
             ps.setString(2, cliente.getNombre());
             ps.setString(3, cliente.getDomicilio());
             ps.setString(4, cliente.getTelefono());
-            ps.setBoolean(5, true);
+            ps.setBoolean(5, cliente.isEstado());
             ps.executeUpdate();
             ResultSet rs = ps.getGeneratedKeys();
             if (rs.next()) {
@@ -45,7 +45,7 @@ public class ClienteData {
     }
 
     public Cliente buscarCliente(int idCliente) {
-        String sql = "SELECT apellido, nombre, domicilio, telefon FROM cliente WHERE idCliente = ?";
+        String sql = "SELECT apellido, nombre, domicilio, telefon FROM cliente WHERE idCliente = ? AND estado = 1";
         PreparedStatement ps;
         try {
             ps = con.prepareStatement(sql);
@@ -58,7 +58,7 @@ public class ClienteData {
                 cliente.setNombre(rs.getString("nombre"));
                 cliente.setDomicilio(rs.getString("domicilio"));
                 cliente.setTelefono(rs.getString("telefono"));
-                cliente.setEstado(true); //  no deberiamos setear el estado al crearlo? aca estamos buscando uno que ya esta
+                cliente.setEstado(rs.getBoolean("estado")); //  no deberiamos setear el estado al crearlo? aca estamos buscando uno que ya esta
             } else {
                 JOptionPane.showMessageDialog(null, "No existe el Cliente.");
             }
@@ -108,7 +108,7 @@ public class ClienteData {
     
     public List<Cliente> listarClientes(){
         List<Cliente> listaC = new ArrayList<>();
-        String sql = "SELECT * FROM cliente ORDER BY idCliente ASC";
+        String sql = "SELECT * FROM cliente WHERE estado = 1 ORDER BY idCliente ASC";
         try {
             PreparedStatement ps = con.prepareStatement(sql);
             ResultSet rs = ps.executeQuery();
