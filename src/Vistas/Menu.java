@@ -5,6 +5,8 @@
  */
 package Vistas;
 
+import java.awt.Color;
+
 /**
  *
  * @author ROMI
@@ -104,6 +106,14 @@ public class Menu extends javax.swing.JFrame {
         jlProductos.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jlProductos.setText("Productos");
         jlProductos.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jlProductos.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                jlProductosMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                jlProductosMouseExited(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanelProductosLayout = new javax.swing.GroupLayout(jPanelProductos);
         jPanelProductos.setLayout(jPanelProductosLayout);
@@ -123,6 +133,14 @@ public class Menu extends javax.swing.JFrame {
         jlClientes.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jlClientes.setText("Clientes");
         jlClientes.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jlClientes.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                jlClientesMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                jlClientesMouseExited(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanelClientesLayout = new javax.swing.GroupLayout(jPanelClientes);
         jPanelClientes.setLayout(jPanelClientesLayout);
@@ -146,6 +164,14 @@ public class Menu extends javax.swing.JFrame {
         jlVentas.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jlVentas.setText("Ventas");
         jlVentas.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jlVentas.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                jlVentasMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                jlVentasMouseExited(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanelVentasLayout = new javax.swing.GroupLayout(jPanelVentas);
         jPanelVentas.setLayout(jPanelVentasLayout);
@@ -167,6 +193,14 @@ public class Menu extends javax.swing.JFrame {
         jlCerrarSesion.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jlCerrarSesion.setText("Cerrar Sesion");
         jlCerrarSesion.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jlCerrarSesion.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                jlCerrarSesionMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                jlCerrarSesionMouseExited(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanelCerraSesionLayout = new javax.swing.GroupLayout(jPanelCerraSesion);
         jPanelCerraSesion.setLayout(jPanelCerraSesionLayout);
@@ -232,6 +266,38 @@ public class Menu extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void jlProductosMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jlProductosMouseEntered
+        jPanelProductos.setBackground(new Color(66,66,76));
+    }//GEN-LAST:event_jlProductosMouseEntered
+
+    private void jlProductosMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jlProductosMouseExited
+        jPanelProductos.setBackground(new Color(51,51,76));
+    }//GEN-LAST:event_jlProductosMouseExited
+
+    private void jlVentasMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jlVentasMouseEntered
+        jPanelVentas.setBackground(new Color(66,66,76));
+    }//GEN-LAST:event_jlVentasMouseEntered
+
+    private void jlVentasMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jlVentasMouseExited
+        jPanelVentas.setBackground(new Color(51,51,76));
+    }//GEN-LAST:event_jlVentasMouseExited
+
+    private void jlClientesMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jlClientesMouseEntered
+        jPanelClientes.setBackground(new Color(66,66,76));
+    }//GEN-LAST:event_jlClientesMouseEntered
+
+    private void jlClientesMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jlClientesMouseExited
+        jPanelClientes.setBackground(new Color(51,51,76));
+    }//GEN-LAST:event_jlClientesMouseExited
+
+    private void jlCerrarSesionMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jlCerrarSesionMouseEntered
+        jPanelCerraSesion.setBackground(new Color(66,66,76));
+    }//GEN-LAST:event_jlCerrarSesionMouseEntered
+
+    private void jlCerrarSesionMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jlCerrarSesionMouseExited
+        jPanelCerraSesion.setBackground(new Color(51,51,76));
+    }//GEN-LAST:event_jlCerrarSesionMouseExited
 
     /**
      * @param args the command line arguments
