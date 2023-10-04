@@ -43,12 +43,8 @@ public class ClienteData {
     }
 
     public Cliente buscarCliente(int idCliente) {
-
-
-        Cliente cliente = null;
         String sql = "SELECT apellido, nombre, domicilio, telefon FROM cliente WHERE idCliente = ?";
         PreparedStatement ps;
-
         try {
             ps = con.prepareStatement(sql);
             ps.setInt(1, idCliente);

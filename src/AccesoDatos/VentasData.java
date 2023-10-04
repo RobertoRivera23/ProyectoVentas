@@ -66,7 +66,7 @@ public class VentasData {
     public List<Venta> listarVentasPorFecha(Venta venta) {
         List<Venta> ventas = new ArrayList<>();
         ClienteData clienteData = new ClienteData();
-        String sql = "SELECT * FROM venta WHERE fechaVenta = ? ";
+        String sql = "SELECT * FROM venta WHERE fechaVenta = ? ORDER BY idVenta ASC";
         try {
             PreparedStatement ps = con.prepareStatement(sql);
             ps.setDate(1, Date.valueOf("fechaVenta"));
@@ -94,7 +94,7 @@ public class VentasData {
     public List<Venta> listarVentasDeCliente(Cliente cliente) {
         List<Venta> ventas = new ArrayList<>();
         ClienteData clienteD = new ClienteData();
-        String sql = "SELECT * FROM venta WHERE idcliente = ? ";
+        String sql = "SELECT * FROM venta WHERE idcliente = ? ORDER BY idVenta ASC";
         try {
             PreparedStatement ps = con.prepareStatement(sql);
             ps.setInt(1, cliente.getIdCliente());
@@ -122,7 +122,7 @@ public class VentasData {
     public List<Cliente> obtenerClientesPorProducto(Producto producto) {
         List<Cliente> clientes = new ArrayList<>();
         String sql = "SELECT cliente.apellido, cliente.nombre, cliente.domicilio, cliente.telefono "
-                + "FROM cliente, producto WHERE idProducto = ? ";
+                + "FROM cliente, producto WHERE idProducto = ? ORDER BY cliente.idCliente ASC";
         try {
             PreparedStatement ps = con.prepareStatement(sql);
             ps.setInt(1, producto.getIdProducto());
@@ -153,7 +153,7 @@ public class VentasData {
         List<Producto> prodPorFecha = new ArrayList<>();
         String sql = "SELECT producto.nombreProducto, detalleventa.cantidad FROM producto, detalledeventa "
                 + "JOIN venta ON (venta.idVenta = detalledeventa.idVenta) "
-                + "WHERE venta.fechaVenta= ?";
+                + "WHERE venta.fechaVenta= ? ORDER BY producto.idProducto ASC";
         try {
             PreparedStatement ps = con.prepareStatement(sql);
             ps.setDate(1, Date.valueOf(fechaVenta));
