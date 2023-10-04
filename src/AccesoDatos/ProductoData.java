@@ -8,6 +8,8 @@ package AccesoDatos;
 import java.sql.*;
 import Entidades.Producto;
 import javax.swing.JOptionPane;
+import java.util.List;
+import java.util.ArrayList;
 
 /**
  *
@@ -102,5 +104,28 @@ public class ProductoData {
         } catch (SQLException ex) {
             JOptionPane.showMessageDialog(null, "Error al acceder a la tabla Producto" + ex.getMessage());
         }
+    }
+    
+    public List<Producto> listarProducto(){
+        List<Producto> productos = new ArrayList<>();
+        try{
+            String sql = "SELECT * FROM producto WHERE estado = 1";
+            PreparedStatement ps = con.prepareStatement(sql);
+            ResultSet rs = ps.executeQuery();
+            while(rs.next()){
+                Producto product = new Producto();
+                product.setIdProducto(rs.getInt("idProducto"));
+                product.setNombreProducto(rs.getString("nombreProducto"));
+                product.setDescripcion(rs.getString("descripcion"));
+                product.setPrecioActual(rs.getDouble("precioActual"));
+                product.setStock(rs.getInt("stock"));
+                product.setEstado(rs.getBoolean("estado"));
+                productos.add(product);
+            }
+            ps.close();
+        } catch (SQLException ex) {
+            JOptionPane.showMessageDialog(null, "Error al acceder a la tabla Producto" + ex.getMessage());
+        }
+        return productos;
     }
 }
