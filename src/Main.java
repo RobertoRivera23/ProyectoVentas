@@ -26,9 +26,9 @@ public class Main {
 //        p.setNombreProducto("Heladera");
 //        p.setPrecioActual(600000);
 //        p1.modificarProducto(p);
-//        Producto p2 = new Producto(50, "Horno Electrico", "Electrico", 200000, true);
-//        p1.guardarProducto(p2);
-//        p1.eliminarProducto(1);
+        Producto p2 = new Producto(50, "Horno Electrico", "Electrico", 200000, true);
+       // p1.guardarProducto(p2);
+       // p1.eliminarProducto(1);
     }
     
 }
