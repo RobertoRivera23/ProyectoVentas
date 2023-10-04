@@ -12,6 +12,9 @@ import Entidades.Producto;
  *
  * @author rober
  */
+
+// Rojo 120 Verde 186 Azul 123 (120, 186, 123)
+
 public class Main {
 
     /**
