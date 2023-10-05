@@ -45,8 +45,8 @@ public class Registro extends javax.swing.JFrame {
         jLCargo = new javax.swing.JLabel();
         jLUsuario = new javax.swing.JLabel();
         jLContraseña = new javax.swing.JLabel();
-        jTFNombre = new javax.swing.JTextField();
         jTFApellido = new javax.swing.JTextField();
+        jTFNombre = new javax.swing.JTextField();
         jTFUsuario = new javax.swing.JTextField();
         jTContraseña = new javax.swing.JTextField();
         jCBCargo = new javax.swing.JComboBox<>();
@@ -151,14 +151,19 @@ public class Registro extends javax.swing.JFrame {
         jLContraseña.setForeground(new java.awt.Color(255, 255, 255));
         jLContraseña.setText("Contraseña:");
 
+        jTFApellido.setForeground(new java.awt.Color(51, 51, 76));
+        jTFApellido.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jTFApellidoActionPerformed(evt);
+            }
+        });
+
         jTFNombre.setForeground(new java.awt.Color(51, 51, 76));
         jTFNombre.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jTFNombreActionPerformed(evt);
             }
         });
-
-        jTFApellido.setForeground(new java.awt.Color(51, 51, 76));
 
         jTFUsuario.setForeground(new java.awt.Color(51, 51, 76));
         jTFUsuario.addActionListener(new java.awt.event.ActionListener() {
@@ -398,6 +403,10 @@ public class Registro extends javax.swing.JFrame {
         empleadoD.guardarEmpleado(empleado);
         limpiarCampos();
     }//GEN-LAST:event_jPanel1MouseClicked
+
+    private void jTFApellidoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTFApellidoActionPerformed
+        jTFApellido.setBackground(new Color(51, 51, 76));
+    }//GEN-LAST:event_jTFApellidoActionPerformed
 
     /**
      * @param args the command line arguments

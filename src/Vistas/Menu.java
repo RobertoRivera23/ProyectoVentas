@@ -81,7 +81,7 @@ public class Menu extends javax.swing.JFrame {
         jLabel4.setForeground(new java.awt.Color(255, 255, 255));
         jLabel4.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel4.setText("X");
-        jLabel4.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jLabel4.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         jLabel4.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 jLabel4MouseClicked(evt);
@@ -99,7 +99,7 @@ public class Menu extends javax.swing.JFrame {
         jLabel5.setForeground(new java.awt.Color(255, 255, 255));
         jLabel5.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel5.setText("_");
-        jLabel5.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jLabel5.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         jLabel5.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 jLabel5MouseClicked(evt);
@@ -125,7 +125,7 @@ public class Menu extends javax.swing.JFrame {
         jlProductos.setForeground(new java.awt.Color(255, 255, 255));
         jlProductos.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jlProductos.setText("Productos");
-        jlProductos.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jlProductos.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         jlProductos.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 jlProductosMouseClicked(evt);
@@ -148,7 +148,7 @@ public class Menu extends javax.swing.JFrame {
         jlClientes.setForeground(new java.awt.Color(255, 255, 255));
         jlClientes.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jlClientes.setText("Clientes");
-        jlClientes.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jlClientes.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         jlClientes.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 jlClientesMouseClicked(evt);
@@ -171,7 +171,7 @@ public class Menu extends javax.swing.JFrame {
         jlVentas.setForeground(new java.awt.Color(255, 255, 255));
         jlVentas.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jlVentas.setText("Ventas");
-        jlVentas.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jlVentas.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         jlVentas.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 jlVentasMouseClicked(evt);
@@ -194,7 +194,7 @@ public class Menu extends javax.swing.JFrame {
         jlCerrarSesion.setForeground(new java.awt.Color(255, 255, 255));
         jlCerrarSesion.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jlCerrarSesion.setText("Cerrar Sesion");
-        jlCerrarSesion.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jlCerrarSesion.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         jlCerrarSesion.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseEntered(java.awt.event.MouseEvent evt) {
                 jlCerrarSesionMouseEntered(evt);
