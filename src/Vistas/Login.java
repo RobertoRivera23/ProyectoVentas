@@ -62,7 +62,7 @@ public class Login extends javax.swing.JFrame {
         jLMinimiza.setForeground(new java.awt.Color(255, 255, 255));
         jLMinimiza.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLMinimiza.setText("_");
-        jLMinimiza.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        jLMinimiza.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         jLMinimiza.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 jLMinimizaMouseClicked(evt);
@@ -79,7 +79,7 @@ public class Login extends javax.swing.JFrame {
         jLCierra.setForeground(new java.awt.Color(255, 255, 255));
         jLCierra.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLCierra.setText("X");
-        jLCierra.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        jLCierra.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         jLCierra.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 jLCierraMouseClicked(evt);
@@ -136,7 +136,8 @@ public class Login extends javax.swing.JFrame {
         jLCargo.setForeground(new java.awt.Color(255, 255, 255));
         jLCargo.setText("Cargo:");
 
-        jTFUsuario.setForeground(new java.awt.Color(51, 51, 76));
+        jTFUsuario.setForeground(new java.awt.Color(204, 204, 204));
+        jTFUsuario.setText("Ingrese su usuario");
         jTFUsuario.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jTFUsuarioActionPerformed(evt);
