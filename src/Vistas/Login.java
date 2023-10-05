@@ -5,6 +5,8 @@
  */
 package Vistas;
 
+import java.awt.Color;
+
 /**
  *
  * @author ROMI
@@ -40,8 +42,10 @@ public class Login extends javax.swing.JFrame {
         jCBCargo = new javax.swing.JComboBox<>();
         jTFUsuario = new javax.swing.JTextField();
         jTContraseña = new javax.swing.JTextField();
+        jLabel1 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setUndecorated(true);
 
         jPCabecera.setBackground(new java.awt.Color(0, 150, 136));
         jPCabecera.setPreferredSize(new java.awt.Dimension(456, 113));
@@ -93,6 +97,10 @@ public class Login extends javax.swing.JFrame {
         jPCabeceraLayout.setHorizontalGroup(
             jPCabeceraLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPCabeceraLayout.createSequentialGroup()
+                .addGap(367, 367, 367)
+                .addComponent(jLLogin)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPCabeceraLayout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(jLFravemax, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
@@ -100,10 +108,6 @@ public class Login extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jLCierra, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(14, 14, 14))
-            .addGroup(jPCabeceraLayout.createSequentialGroup()
-                .addGap(367, 367, 367)
-                .addComponent(jLLogin)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPCabeceraLayout.setVerticalGroup(
             jPCabeceraLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -115,7 +119,7 @@ public class Login extends javax.swing.JFrame {
                     .addComponent(jLCierra))
                 .addGap(18, 18, 18)
                 .addComponent(jLLogin, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(35, 35, 35))
+                .addGap(39, 39, 39))
         );
 
         jPCuerpo.setBackground(new java.awt.Color(51, 51, 76));
@@ -141,6 +145,14 @@ public class Login extends javax.swing.JFrame {
 
         jTContraseña.setForeground(new java.awt.Color(51, 51, 76));
 
+        jLabel1.setBackground(new java.awt.Color(0, 150, 136));
+        jLabel1.setFont(new java.awt.Font("Corbel", 1, 14)); // NOI18N
+        jLabel1.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel1.setText("Iniciar sesión");
+        jLabel1.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jLabel1.setOpaque(true);
+
         javax.swing.GroupLayout jPCuerpoLayout = new javax.swing.GroupLayout(jPCuerpo);
         jPCuerpo.setLayout(jPCuerpoLayout);
         jPCuerpoLayout.setHorizontalGroup(
@@ -157,6 +169,10 @@ public class Login extends javax.swing.JFrame {
                     .addComponent(jTFUsuario, javax.swing.GroupLayout.PREFERRED_SIZE, 170, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jTContraseña, javax.swing.GroupLayout.PREFERRED_SIZE, 170, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(308, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPCuerpoLayout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 117, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(337, 337, 337))
         );
         jPCuerpoLayout.setVerticalGroup(
             jPCuerpoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -173,7 +189,9 @@ public class Login extends javax.swing.JFrame {
                 .addGroup(jPCuerpoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLCargo)
                     .addComponent(jCBCargo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(168, Short.MAX_VALUE))
+                .addGap(64, 64, 64)
+                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(78, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout jPBackgroundLayout = new javax.swing.GroupLayout(jPBackground);
@@ -210,13 +228,13 @@ public class Login extends javax.swing.JFrame {
     }//GEN-LAST:event_jLMinimizaMouseClicked
 
     private void jLMinimizaMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLMinimizaMouseEntered
-        jLabel5.setOpaque(true);
-        jLabel5.setBackground(new Color(10,160,140));
+        jLMinimiza.setOpaque(true);
+        jLMinimiza.setBackground(new Color(10,160,140));
     }//GEN-LAST:event_jLMinimizaMouseEntered
 
     private void jLMinimizaMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLMinimizaMouseExited
-        jLabel5.setOpaque(false);
-        jLabel5.setBackground(new Color(0,150,136));
+        jLMinimiza.setOpaque(false);
+        jLMinimiza.setBackground(new Color(0,150,136));
     }//GEN-LAST:event_jLMinimizaMouseExited
 
     private void jLCierraMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLCierraMouseClicked
@@ -281,6 +299,7 @@ public class Login extends javax.swing.JFrame {
     private javax.swing.JLabel jLLogin;
     private javax.swing.JLabel jLMinimiza;
     private javax.swing.JLabel jLUsuario;
+    private javax.swing.JLabel jLabel1;
     private javax.swing.JPanel jPBackground;
     private javax.swing.JPanel jPCabecera;
     private javax.swing.JPanel jPCuerpo;
