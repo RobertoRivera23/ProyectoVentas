@@ -147,10 +147,10 @@ public class Menu extends javax.swing.JFrame {
         jPanelProductos.add(jlProductos, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 200, 40));
 
         jLabel4.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Image/cajas.png"))); // NOI18N
+        jLabel4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Image/Productos.png"))); // NOI18N
         jPanelProductos.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 0, 40, 30));
 
-        jPanelOpciones.add(jPanelProductos, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 80, 200, 50));
+        jPanelOpciones.add(jPanelProductos, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 80, 200, 40));
 
         jPanelClientes.setBackground(new java.awt.Color(51, 51, 76));
         jPanelClientes.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -204,7 +204,7 @@ public class Menu extends javax.swing.JFrame {
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Image/carrito-de-compras.png"))); // NOI18N
         jPanelVentas.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 0, 40, 30));
 
-        jPanelOpciones.add(jPanelVentas, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 130, 200, 50));
+        jPanelOpciones.add(jPanelVentas, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 130, 200, 40));
 
         jPanelCerraSesion.setBackground(new java.awt.Color(51, 51, 76));
         jPanelCerraSesion.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
