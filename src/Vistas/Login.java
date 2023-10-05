@@ -27,22 +27,215 @@ public class Login extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jPBackground = new javax.swing.JPanel();
+        jPCabecera = new javax.swing.JPanel();
+        jLLogin = new javax.swing.JLabel();
+        jLFravemax = new javax.swing.JLabel();
+        jLMinimiza = new javax.swing.JLabel();
+        jLCierra = new javax.swing.JLabel();
+        jPCuerpo = new javax.swing.JPanel();
+        jLUsuario = new javax.swing.JLabel();
+        jLContraseña = new javax.swing.JLabel();
+        jLCargo = new javax.swing.JLabel();
+        jCBCargo = new javax.swing.JComboBox<>();
+        jTFUsuario = new javax.swing.JTextField();
+        jTContraseña = new javax.swing.JTextField();
+
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setPreferredSize(new java.awt.Dimension(800, 500));
+
+        jPCabecera.setBackground(new java.awt.Color(0, 150, 136));
+        jPCabecera.setPreferredSize(new java.awt.Dimension(456, 113));
+
+        jLLogin.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        jLLogin.setForeground(new java.awt.Color(255, 255, 255));
+        jLLogin.setText("Login");
+
+        jLFravemax.setFont(new java.awt.Font("Corbel", 1, 14)); // NOI18N
+        jLFravemax.setForeground(new java.awt.Color(255, 255, 255));
+        jLFravemax.setText("FRAVEMAX");
+
+        jLMinimiza.setFont(new java.awt.Font("Microsoft Yi Baiti", 1, 24)); // NOI18N
+        jLMinimiza.setForeground(new java.awt.Color(255, 255, 255));
+        jLMinimiza.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLMinimiza.setText("_");
+        jLMinimiza.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        jLMinimiza.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jLMinimizaMouseClicked(evt);
+            }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                jLMinimizaMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                jLMinimizaMouseExited(evt);
+            }
+        });
+
+        jLCierra.setFont(new java.awt.Font("Microsoft Yi Baiti", 1, 24)); // NOI18N
+        jLCierra.setForeground(new java.awt.Color(255, 255, 255));
+        jLCierra.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLCierra.setText("X");
+        jLCierra.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        jLCierra.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jLCierraMouseClicked(evt);
+            }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                jLCierraMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                jLCierraMouseExited(evt);
+            }
+        });
+
+        javax.swing.GroupLayout jPCabeceraLayout = new javax.swing.GroupLayout(jPCabecera);
+        jPCabecera.setLayout(jPCabeceraLayout);
+        jPCabeceraLayout.setHorizontalGroup(
+            jPCabeceraLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPCabeceraLayout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jLFravemax, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(jLMinimiza, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jLCierra, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(14, 14, 14))
+            .addGroup(jPCabeceraLayout.createSequentialGroup()
+                .addGap(367, 367, 367)
+                .addComponent(jLLogin)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+        jPCabeceraLayout.setVerticalGroup(
+            jPCabeceraLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPCabeceraLayout.createSequentialGroup()
+                .addGap(4, 4, 4)
+                .addGroup(jPCabeceraLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLFravemax, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jLMinimiza, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jLCierra))
+                .addGap(18, 18, 18)
+                .addComponent(jLLogin, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(35, 35, 35))
+        );
+
+        jPCuerpo.setBackground(new java.awt.Color(51, 51, 76));
+
+        jLUsuario.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        jLUsuario.setForeground(new java.awt.Color(255, 255, 255));
+        jLUsuario.setText("Usuario:");
+
+        jLContraseña.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        jLContraseña.setForeground(new java.awt.Color(255, 255, 255));
+        jLContraseña.setText("Contraseña:");
+
+        jLCargo.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        jLCargo.setForeground(new java.awt.Color(255, 255, 255));
+        jLCargo.setText("Cargo:");
+
+        jTFUsuario.setForeground(new java.awt.Color(51, 51, 76));
+        jTFUsuario.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jTFUsuarioActionPerformed(evt);
+            }
+        });
+
+        jTContraseña.setForeground(new java.awt.Color(51, 51, 76));
+
+        javax.swing.GroupLayout jPCuerpoLayout = new javax.swing.GroupLayout(jPCuerpo);
+        jPCuerpo.setLayout(jPCuerpoLayout);
+        jPCuerpoLayout.setHorizontalGroup(
+            jPCuerpoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPCuerpoLayout.createSequentialGroup()
+                .addGap(185, 185, 185)
+                .addGroup(jPCuerpoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(jLCargo)
+                    .addComponent(jLContraseña)
+                    .addComponent(jLUsuario))
+                .addGap(52, 52, 52)
+                .addGroup(jPCuerpoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(jCBCargo, javax.swing.GroupLayout.PREFERRED_SIZE, 170, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jTFUsuario, javax.swing.GroupLayout.PREFERRED_SIZE, 170, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jTContraseña, javax.swing.GroupLayout.PREFERRED_SIZE, 170, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(308, Short.MAX_VALUE))
+        );
+        jPCuerpoLayout.setVerticalGroup(
+            jPCuerpoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPCuerpoLayout.createSequentialGroup()
+                .addGap(99, 99, 99)
+                .addGroup(jPCuerpoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLUsuario)
+                    .addComponent(jTFUsuario, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(35, 35, 35)
+                .addGroup(jPCuerpoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLContraseña)
+                    .addComponent(jTContraseña, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(31, 31, 31)
+                .addGroup(jPCuerpoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLCargo)
+                    .addComponent(jCBCargo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(168, Short.MAX_VALUE))
+        );
+
+        javax.swing.GroupLayout jPBackgroundLayout = new javax.swing.GroupLayout(jPBackground);
+        jPBackground.setLayout(jPBackgroundLayout);
+        jPBackgroundLayout.setHorizontalGroup(
+            jPBackgroundLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(jPCuerpo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addComponent(jPCabecera, javax.swing.GroupLayout.DEFAULT_SIZE, 800, Short.MAX_VALUE)
+        );
+        jPBackgroundLayout.setVerticalGroup(
+            jPBackgroundLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPBackgroundLayout.createSequentialGroup()
+                .addGap(110, 110, 110)
+                .addComponent(jPCuerpo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+            .addComponent(jPCabecera, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+        );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 800, Short.MAX_VALUE)
+            .addComponent(jPBackground, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 500, Short.MAX_VALUE)
+            .addComponent(jPBackground, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void jLMinimizaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLMinimizaMouseClicked
+        this.setExtendedState(1);
+    }//GEN-LAST:event_jLMinimizaMouseClicked
+
+    private void jLMinimizaMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLMinimizaMouseEntered
+        jLabel5.setOpaque(true);
+        jLabel5.setBackground(new Color(10,160,140));
+    }//GEN-LAST:event_jLMinimizaMouseEntered
+
+    private void jLMinimizaMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLMinimizaMouseExited
+        jLabel5.setOpaque(false);
+        jLabel5.setBackground(new Color(0,150,136));
+    }//GEN-LAST:event_jLMinimizaMouseExited
+
+    private void jLCierraMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLCierraMouseClicked
+        System.exit(0);
+    }//GEN-LAST:event_jLCierraMouseClicked
+
+    private void jLCierraMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLCierraMouseEntered
+        jLCierra.setOpaque(true);
+        jLCierra.setBackground(Color.red);
+    }//GEN-LAST:event_jLCierraMouseEntered
+
+    private void jLCierraMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLCierraMouseExited
+        jLCierra.setOpaque(false);
+        jLCierra.setBackground(new Color(0,150,136));
+    }//GEN-LAST:event_jLCierraMouseExited
+
+    private void jTFUsuarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTFUsuarioActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jTFUsuarioActionPerformed
 
     /**
      * @param args the command line arguments
@@ -80,5 +273,18 @@ public class Login extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JComboBox<String> jCBCargo;
+    private javax.swing.JLabel jLCargo;
+    private javax.swing.JLabel jLCierra;
+    private javax.swing.JLabel jLContraseña;
+    private javax.swing.JLabel jLFravemax;
+    private javax.swing.JLabel jLLogin;
+    private javax.swing.JLabel jLMinimiza;
+    private javax.swing.JLabel jLUsuario;
+    private javax.swing.JPanel jPBackground;
+    private javax.swing.JPanel jPCabecera;
+    private javax.swing.JPanel jPCuerpo;
+    private javax.swing.JTextField jTContraseña;
+    private javax.swing.JTextField jTFUsuario;
     // End of variables declaration//GEN-END:variables
 }
