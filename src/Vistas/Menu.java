@@ -13,6 +13,8 @@ import java.awt.Color;
  */
 public class Menu extends javax.swing.JFrame {
 
+    int xMouse, yMouse;
+
     /**
      * Creates new form Menu
      */
@@ -37,6 +39,7 @@ public class Menu extends javax.swing.JFrame {
         jlNombreUsuario = new javax.swing.JLabel();
         jlSalir = new javax.swing.JLabel();
         jlMinimizar = new javax.swing.JLabel();
+        jLabel5 = new javax.swing.JLabel();
         jPanelOpciones = new javax.swing.JPanel();
         jPanelProductos = new javax.swing.JPanel();
         jlProductos = new javax.swing.JLabel();
@@ -49,6 +52,7 @@ public class Menu extends javax.swing.JFrame {
         jLabel1 = new javax.swing.JLabel();
         jPanelCerraSesion = new javax.swing.JPanel();
         jlCerrarSesion = new javax.swing.JLabel();
+        jLabel9 = new javax.swing.JLabel();
         jPanelInicio = new javax.swing.JPanel();
         jlInicio = new javax.swing.JLabel();
         jLabel8 = new javax.swing.JLabel();
@@ -68,6 +72,16 @@ public class Menu extends javax.swing.JFrame {
         BackGround.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jPanelFravemax.setBackground(new java.awt.Color(0, 150, 136));
+        jPanelFravemax.addMouseMotionListener(new java.awt.event.MouseMotionAdapter() {
+            public void mouseDragged(java.awt.event.MouseEvent evt) {
+                jPanelFravemaxMouseDragged(evt);
+            }
+        });
+        jPanelFravemax.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                jPanelFravemaxMousePressed(evt);
+            }
+        });
         jPanelFravemax.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jPanelUsuario.setBackground(new java.awt.Color(0, 150, 136));
@@ -81,8 +95,9 @@ public class Menu extends javax.swing.JFrame {
 
         jlNombreUsuario.setFont(new java.awt.Font("Corbel", 1, 14)); // NOI18N
         jlNombreUsuario.setForeground(new java.awt.Color(255, 255, 255));
+        jlNombreUsuario.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jlNombreUsuario.setText("nombre de usuario");
-        jPanelFravemax.add(jlNombreUsuario, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 70, -1, -1));
+        jPanelFravemax.add(jlNombreUsuario, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 80, 120, -1));
 
         jlSalir.setFont(new java.awt.Font("Microsoft Yi Baiti", 1, 24)); // NOI18N
         jlSalir.setForeground(new java.awt.Color(255, 255, 255));
@@ -120,7 +135,11 @@ public class Menu extends javax.swing.JFrame {
         });
         jPanelFravemax.add(jlMinimizar, new org.netbeans.lib.awtextra.AbsoluteConstraints(730, 0, 30, 30));
 
-        BackGround.add(jPanelFravemax, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 800, 90));
+        jLabel5.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Image/circulo-de-usuario.png"))); // NOI18N
+        jPanelFravemax.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 4, 120, 70));
+
+        BackGround.add(jPanelFravemax, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 800, 100));
 
         jPanelOpciones.setBackground(new java.awt.Color(51, 51, 76));
         jPanelOpciones.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -222,9 +241,13 @@ public class Menu extends javax.swing.JFrame {
                 jlCerrarSesionMouseExited(evt);
             }
         });
-        jPanelCerraSesion.add(jlCerrarSesion, new org.netbeans.lib.awtextra.AbsoluteConstraints(-40, 0, 200, 38));
+        jPanelCerraSesion.add(jlCerrarSesion, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 0, 190, 38));
 
-        jPanelOpciones.add(jPanelCerraSesion, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 380, 160, 40));
+        jLabel9.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel9.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Image/salir-alt.png"))); // NOI18N
+        jPanelCerraSesion.add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 0, 40, 30));
+
+        jPanelOpciones.add(jPanelCerraSesion, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 380, 200, 40));
 
         jPanelInicio.setBackground(new java.awt.Color(51, 51, 76));
         jPanelInicio.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -233,6 +256,7 @@ public class Menu extends javax.swing.JFrame {
         jlInicio.setForeground(new java.awt.Color(255, 255, 255));
         jlInicio.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jlInicio.setText("Inicio");
+        jlInicio.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         jlInicio.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 jlInicioMouseClicked(evt);
@@ -320,35 +344,35 @@ public class Menu extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jlProductosMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jlProductosMouseEntered
-        jPanelProductos.setBackground(new Color(66,66,76));
+        jPanelProductos.setBackground(new Color(66, 66, 76));
     }//GEN-LAST:event_jlProductosMouseEntered
 
     private void jlProductosMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jlProductosMouseExited
-        jPanelProductos.setBackground(new Color(51,51,76));
+        jPanelProductos.setBackground(new Color(51, 51, 76));
     }//GEN-LAST:event_jlProductosMouseExited
 
     private void jlVentasMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jlVentasMouseEntered
-        jPanelVentas.setBackground(new Color(66,66,76));
+        jPanelVentas.setBackground(new Color(66, 66, 76));
     }//GEN-LAST:event_jlVentasMouseEntered
 
     private void jlVentasMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jlVentasMouseExited
-        jPanelVentas.setBackground(new Color(51,51,76));
+        jPanelVentas.setBackground(new Color(51, 51, 76));
     }//GEN-LAST:event_jlVentasMouseExited
 
     private void jlClientesMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jlClientesMouseEntered
-        jPanelClientes.setBackground(new Color(66,66,76));
+        jPanelClientes.setBackground(new Color(66, 66, 76));
     }//GEN-LAST:event_jlClientesMouseEntered
 
     private void jlClientesMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jlClientesMouseExited
-        jPanelClientes.setBackground(new Color(51,51,76));
+        jPanelClientes.setBackground(new Color(51, 51, 76));
     }//GEN-LAST:event_jlClientesMouseExited
 
     private void jlCerrarSesionMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jlCerrarSesionMouseEntered
-        jPanelCerraSesion.setBackground(new Color(66,66,76));
+        jPanelCerraSesion.setBackground(new Color(66, 66, 76));
     }//GEN-LAST:event_jlCerrarSesionMouseEntered
 
     private void jlCerrarSesionMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jlCerrarSesionMouseExited
-        jPanelCerraSesion.setBackground(new Color(51,51,76));
+        jPanelCerraSesion.setBackground(new Color(51, 51, 76));
     }//GEN-LAST:event_jlCerrarSesionMouseExited
 
     private void jlProductosMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jlProductosMouseClicked
@@ -370,17 +394,17 @@ public class Menu extends javax.swing.JFrame {
 
     private void jlSalirMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jlSalirMouseExited
         jlSalir.setOpaque(false);
-        jlSalir.setBackground(new Color(0,150,136));
+        jlSalir.setBackground(new Color(0, 150, 136));
     }//GEN-LAST:event_jlSalirMouseExited
 
     private void jlMinimizarMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jlMinimizarMouseEntered
         jlMinimizar.setOpaque(true);
-        jlMinimizar.setBackground(new Color(10,160,140));
+        jlMinimizar.setBackground(new Color(10, 160, 140));
     }//GEN-LAST:event_jlMinimizarMouseEntered
 
     private void jlMinimizarMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jlMinimizarMouseExited
         jlMinimizar.setOpaque(false);
-        jlMinimizar.setBackground(new Color(0,150,136));
+        jlMinimizar.setBackground(new Color(0, 150, 136));
     }//GEN-LAST:event_jlMinimizarMouseExited
 
     private void jlSalirMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jlSalirMouseClicked
@@ -392,16 +416,27 @@ public class Menu extends javax.swing.JFrame {
     }//GEN-LAST:event_jlMinimizarMouseClicked
 
     private void jlInicioMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jlInicioMouseEntered
-        jPanelInicio.setBackground(new Color(66,66,76));
+        jPanelInicio.setBackground(new Color(66, 66, 76));
     }//GEN-LAST:event_jlInicioMouseEntered
 
     private void jlInicioMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jlInicioMouseExited
-        jPanelInicio.setBackground(new Color(51,51,76));
+        jPanelInicio.setBackground(new Color(51, 51, 76));
     }//GEN-LAST:event_jlInicioMouseExited
 
     private void jlInicioMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jlInicioMouseClicked
         jtpEscritorio.setSelectedIndex(0);
     }//GEN-LAST:event_jlInicioMouseClicked
+
+    private void jPanelFravemaxMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanelFravemaxMousePressed
+        xMouse = evt.getX();
+        yMouse = evt.getY();
+    }//GEN-LAST:event_jPanelFravemaxMousePressed
+
+    private void jPanelFravemaxMouseDragged(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanelFravemaxMouseDragged
+        int x = evt.getXOnScreen();
+        int y = evt.getYOnScreen();
+        this.setLocation(x - xMouse, y - yMouse);
+    }//GEN-LAST:event_jPanelFravemaxMouseDragged
 
     /**
      * @param args the command line arguments
@@ -444,9 +479,11 @@ public class Menu extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
+    private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
