@@ -176,38 +176,41 @@
           <Layout>
             <DimensionLayout dim="0">
               <Group type="103" groupAlignment="0" attributes="0">
-                  <Group type="102" attributes="0">
-                      <EmptySpace min="-2" pref="183" max="-2" attributes="0"/>
+                  <Group type="102" alignment="0" attributes="0">
+                      <EmptySpace min="-2" pref="52" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="0" attributes="0">
-                          <Component id="jLContraseña" min="-2" max="-2" attributes="0"/>
-                          <Component id="jLUsuario" min="-2" max="-2" attributes="0"/>
-                          <Component id="jLCargo" min="-2" max="-2" attributes="0"/>
-                          <Component id="jLNombre" min="-2" max="-2" attributes="0"/>
-                          <Component id="jLApellido" min="-2" max="-2" attributes="0"/>
+                          <Group type="102" attributes="0">
+                              <Group type="103" groupAlignment="0" attributes="0">
+                                  <Component id="jLContraseña" min="-2" max="-2" attributes="0"/>
+                                  <Component id="jLUsuario" min="-2" max="-2" attributes="0"/>
+                                  <Component id="jLCargo" min="-2" max="-2" attributes="0"/>
+                                  <Component id="jLNombre" min="-2" max="-2" attributes="0"/>
+                                  <Component id="jLApellido" min="-2" max="-2" attributes="0"/>
+                              </Group>
+                              <EmptySpace min="-2" pref="23" max="-2" attributes="0"/>
+                              <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                                  <Component id="jTContraseña" max="32767" attributes="0"/>
+                                  <Component id="jTFUsuario" max="32767" attributes="0"/>
+                                  <Component id="jTFApellido" alignment="0" max="32767" attributes="0"/>
+                                  <Component id="jTFNombre" max="32767" attributes="0"/>
+                                  <Component id="jCBCargo" alignment="0" min="-2" pref="238" max="-2" attributes="0"/>
+                              </Group>
+                              <EmptySpace max="32767" attributes="0"/>
+                          </Group>
+                          <Group type="102" attributes="0">
+                              <Component id="jPanel1" min="-2" max="-2" attributes="0"/>
+                              <EmptySpace pref="350" max="32767" attributes="0"/>
+                              <Component id="jPSalir" min="-2" max="-2" attributes="0"/>
+                              <EmptySpace min="-2" pref="70" max="-2" attributes="0"/>
+                          </Group>
                       </Group>
-                      <EmptySpace min="-2" pref="23" max="-2" attributes="0"/>
-                      <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                          <Component id="jTContraseña" max="32767" attributes="0"/>
-                          <Component id="jTFUsuario" max="32767" attributes="0"/>
-                          <Component id="jTFApellido" alignment="0" max="32767" attributes="0"/>
-                          <Component id="jTFNombre" max="32767" attributes="0"/>
-                          <Component id="jCBCargo" alignment="0" min="-2" pref="238" max="-2" attributes="0"/>
-                      </Group>
-                      <EmptySpace pref="271" max="32767" attributes="0"/>
-                  </Group>
-                  <Group type="102" alignment="1" attributes="0">
-                      <EmptySpace min="-2" pref="56" max="-2" attributes="0"/>
-                      <Component id="jPanel1" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace max="32767" attributes="0"/>
-                      <Component id="jPSalir" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace min="-2" pref="66" max="-2" attributes="0"/>
                   </Group>
               </Group>
             </DimensionLayout>
             <DimensionLayout dim="1">
               <Group type="103" groupAlignment="0" attributes="0">
-                  <Group type="102" attributes="0">
-                      <EmptySpace pref="76" max="32767" attributes="0"/>
+                  <Group type="102" alignment="1" attributes="0">
+                      <EmptySpace pref="67" max="32767" attributes="0"/>
                       <Group type="103" groupAlignment="0" attributes="0">
                           <Component id="jLApellido" min="-2" max="-2" attributes="0"/>
                           <Component id="jTFApellido" min="-2" max="-2" attributes="0"/>
@@ -234,12 +237,12 @@
                           </Group>
                           <Component id="jTFNombre" alignment="0" min="-2" max="-2" attributes="0"/>
                       </Group>
-                      <EmptySpace min="-2" pref="26" max="-2" attributes="0"/>
+                      <EmptySpace min="-2" pref="46" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="1" attributes="0">
                           <Component id="jPSalir" min="-2" max="-2" attributes="0"/>
                           <Component id="jPanel1" min="-2" max="-2" attributes="0"/>
                       </Group>
-                      <EmptySpace min="-2" pref="36" max="-2" attributes="0"/>
+                      <EmptySpace min="-2" pref="25" max="-2" attributes="0"/>
                   </Group>
               </Group>
             </DimensionLayout>
@@ -391,7 +394,7 @@
                     <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                       <Color blue="ff" green="ff" red="ff" type="rgb"/>
                     </Property>
-                    <Property name="text" type="java.lang.String" value="Salir"/>
+                    <Property name="text" type="java.lang.String" value="Volver"/>
                   </Properties>
                 </Component>
               </SubComponents>
