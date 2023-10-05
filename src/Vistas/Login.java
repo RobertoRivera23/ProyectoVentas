@@ -16,6 +16,7 @@ public class Login extends javax.swing.JFrame {
     /**
      * Creates new form Login
      */
+    int xMouse, yMouse;
     public Login() {
         initComponents();
     }
@@ -45,10 +46,22 @@ public class Login extends javax.swing.JFrame {
         jLabel1 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setLocationByPlatform(true);
         setUndecorated(true);
+        setResizable(false);
 
         jPCabecera.setBackground(new java.awt.Color(0, 150, 136));
         jPCabecera.setPreferredSize(new java.awt.Dimension(456, 113));
+        jPCabecera.addMouseMotionListener(new java.awt.event.MouseMotionAdapter() {
+            public void mouseDragged(java.awt.event.MouseEvent evt) {
+                jPCabeceraMouseDragged(evt);
+            }
+        });
+        jPCabecera.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                jPCabeceraMousePressed(evt);
+            }
+        });
 
         jLLogin.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         jLLogin.setForeground(new java.awt.Color(255, 255, 255));
@@ -138,6 +151,11 @@ public class Login extends javax.swing.JFrame {
 
         jTFUsuario.setForeground(new java.awt.Color(204, 204, 204));
         jTFUsuario.setText("Ingrese su usuario");
+        jTFUsuario.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jTFUsuarioMouseClicked(evt);
+            }
+        });
         jTFUsuario.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jTFUsuarioActionPerformed(evt);
@@ -192,21 +210,21 @@ public class Login extends javax.swing.JFrame {
                     .addComponent(jCBCargo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(64, 64, 64)
                 .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(78, Short.MAX_VALUE))
+                .addContainerGap(75, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout jPBackgroundLayout = new javax.swing.GroupLayout(jPBackground);
         jPBackground.setLayout(jPBackgroundLayout);
         jPBackgroundLayout.setHorizontalGroup(
             jPBackgroundLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPCuerpo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addComponent(jPCuerpo, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addComponent(jPCabecera, javax.swing.GroupLayout.DEFAULT_SIZE, 800, Short.MAX_VALUE)
         );
         jPBackgroundLayout.setVerticalGroup(
             jPBackgroundLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPBackgroundLayout.createSequentialGroup()
                 .addGap(110, 110, 110)
-                .addComponent(jPCuerpo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addComponent(jPCuerpo, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
             .addComponent(jPCabecera, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
         );
 
@@ -255,6 +273,24 @@ public class Login extends javax.swing.JFrame {
     private void jTFUsuarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTFUsuarioActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jTFUsuarioActionPerformed
+
+    private void jPCabeceraMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPCabeceraMousePressed
+        xMouse = evt.getX();
+        yMouse = evt.getY();
+    }//GEN-LAST:event_jPCabeceraMousePressed
+
+    private void jPCabeceraMouseDragged(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPCabeceraMouseDragged
+        int x = evt.getXOnScreen();
+        int y = evt.getYOnScreen();
+        this.setLocation(x - xMouse, y - yMouse);
+    }//GEN-LAST:event_jPCabeceraMouseDragged
+
+    private void jTFUsuarioMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTFUsuarioMouseClicked
+        if(jTFUsuario.getText().equals("Ingrese su usuario")){
+            jTFUsuario.setText("");
+            jTFUsuario.setForeground(Color.black);
+        }
+    }//GEN-LAST:event_jTFUsuarioMouseClicked
 
     /**
      * @param args the command line arguments
