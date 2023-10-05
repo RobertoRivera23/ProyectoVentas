@@ -1,6 +1,7 @@
 package AccesoDatos;
 
 import Entidades.Cliente;
+import Entidades.Empleado;
 import Entidades.Producto;
 import Entidades.Venta;
 import java.sql.*;
@@ -13,6 +14,7 @@ public class VentasData {
 
     private Connection con = null;
     private Cliente cliente;
+    private Empleado empleado;
     private Producto producto;
     private Venta venta;
 
@@ -44,9 +46,19 @@ public class VentasData {
         this.venta = venta;
     }
 
+    public Empleado getEmpleado() {
+        return empleado;
+    }
+
+    public void setEmpleado(Empleado empleado) {
+        this.empleado = empleado;
+    }
+    
+    
+
 // Guardar ventas
-    public void guardarVenta(Venta venta) {
-        String sql = "INSERT INTO (idCliente, fechaVenta, estado ) VALUES (? , ?, ?) ";
+    public void guardarVenta(Venta venta) { // cuando le pasamos el id  cliente y del empleado ?????????????
+        String sql = "INSERT INTO (idCliente, idempleado, fechaVenta, estado ) VALUES (? , ?, ?, ?) ";
         try {
             PreparedStatement ps = con.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
             ps.setInt(1, venta.getIdVenta());
@@ -66,6 +78,7 @@ public class VentasData {
     public List<Venta> listarVentasPorFecha(Venta venta) {
         List<Venta> ventas = new ArrayList<>();
         ClienteData clienteData = new ClienteData();
+        EmpleadoData empleadoData = new EmpleadoData(); //////////////////////////////////////7
         String sql = "SELECT * FROM venta WHERE fechaVenta = ? ORDER BY idVenta ASC";
         try {
             PreparedStatement ps = con.prepareStatement(sql);
@@ -78,6 +91,7 @@ public class VentasData {
                     venta = new Venta();
                     venta.setIdVenta(rs.getInt("idVenta"));
                     venta.setCliente(clienteData.buscarCliente(rs.getInt("idCliente")));
+                    venta.setEmpleado(empleadoData.buscarEmpleado(rs.getInt("idempleado"))); ////////////////////
                     venta.setFechaVenta((rs.getDate("fechaVenta").toLocalDate()));
                     venta.setEstado(rs.getBoolean("estado"));
                     ventas.add(venta);
@@ -94,6 +108,7 @@ public class VentasData {
     public List<Venta> listarVentasDeCliente(Cliente cliente) {
         List<Venta> ventas = new ArrayList<>();
         ClienteData clienteD = new ClienteData();
+        EmpleadoData empleadoD = new EmpleadoData(); //////////////////////////////////////7
         String sql = "SELECT * FROM venta WHERE idcliente = ? ORDER BY idVenta ASC";
         try {
             PreparedStatement ps = con.prepareStatement(sql);
@@ -106,6 +121,7 @@ public class VentasData {
                     venta = new Venta();
                     venta.setIdVenta(rs.getInt("idVenta"));
                     venta.setCliente(clienteD.buscarCliente(rs.getInt("idCliente")));
+                    venta.setEmpleado(empleadoD.buscarEmpleado(rs.getInt("idempleado"))); //////////////////////////////////////7
                     venta.setFechaVenta((rs.getDate("fechaVenta").toLocalDate()));
                     venta.setEstado(rs.getBoolean("estado"));
                     ventas.add(venta);

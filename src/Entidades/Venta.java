@@ -15,17 +15,20 @@ public class Venta {
 
     private int idVenta;
     private Cliente cliente;
+    private Empleado empleado;
     private LocalDate fechaVenta;
     private boolean estado;
 
-    public Venta(Cliente cliente, LocalDate fechaVenta) {
+    public Venta(Cliente cliente, Empleado empleado, LocalDate fechaVenta) {
         this.cliente = cliente;
+        this.empleado = empleado;
         this.fechaVenta = fechaVenta;
     }
 
-    public Venta(int idVenta, Cliente cliente, LocalDate fechaVenta) {
+    public Venta(int idVenta, Cliente cliente, Empleado empleado, LocalDate fechaVenta) {
         this.idVenta = idVenta;
         this.cliente = cliente;
+        this.empleado = empleado;
         this.fechaVenta = fechaVenta;
     }
 
@@ -67,4 +70,14 @@ public class Venta {
     public void setEstado(boolean estado) {
         this.estado = estado;
     }
+
+    public Empleado getEmpleado() {
+        return empleado;
+    }
+
+    public void setEmpleado(Empleado empleado) {
+        this.empleado = empleado;
+    }
+    
+    
 }
