@@ -6,6 +6,7 @@
 package Vistas;
 
 import java.awt.Color;
+import java.awt.Cursor;
 
 /**
  *
@@ -35,11 +36,11 @@ public class Menu extends javax.swing.JFrame {
         BackGround = new javax.swing.JPanel();
         jPanelFravemax = new javax.swing.JPanel();
         jPanelUsuario = new javax.swing.JPanel();
-        jlFravemax = new javax.swing.JLabel();
+        jLabel5 = new javax.swing.JLabel();
         jlNombreUsuario = new javax.swing.JLabel();
+        jlFravemax = new javax.swing.JLabel();
         jlSalir = new javax.swing.JLabel();
         jlMinimizar = new javax.swing.JLabel();
-        jLabel5 = new javax.swing.JLabel();
         jPanelOpciones = new javax.swing.JPanel();
         jPanelProductos = new javax.swing.JPanel();
         jlProductos = new javax.swing.JLabel();
@@ -72,6 +73,7 @@ public class Menu extends javax.swing.JFrame {
         BackGround.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jPanelFravemax.setBackground(new java.awt.Color(0, 150, 136));
+        jPanelFravemax.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         jPanelFravemax.addMouseMotionListener(new java.awt.event.MouseMotionAdapter() {
             public void mouseDragged(java.awt.event.MouseEvent evt) {
                 jPanelFravemaxMouseDragged(evt);
@@ -81,23 +83,31 @@ public class Menu extends javax.swing.JFrame {
             public void mousePressed(java.awt.event.MouseEvent evt) {
                 jPanelFravemaxMousePressed(evt);
             }
+            public void mouseReleased(java.awt.event.MouseEvent evt) {
+                jPanelFravemaxMouseReleased(evt);
+            }
         });
         jPanelFravemax.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jPanelUsuario.setBackground(new java.awt.Color(0, 150, 136));
         jPanelUsuario.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-        jPanelFravemax.add(jPanelUsuario, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 200, -1));
 
-        jlFravemax.setFont(new java.awt.Font("Corbel", 1, 14)); // NOI18N
-        jlFravemax.setForeground(new java.awt.Color(255, 255, 255));
-        jlFravemax.setText("FRAVEMAX");
-        jPanelFravemax.add(jlFravemax, new org.netbeans.lib.awtextra.AbsoluteConstraints(610, 0, 80, 40));
+        jLabel5.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Image/circulo-de-usuario.png"))); // NOI18N
+        jPanelUsuario.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 4, 120, 70));
 
         jlNombreUsuario.setFont(new java.awt.Font("Corbel", 1, 14)); // NOI18N
         jlNombreUsuario.setForeground(new java.awt.Color(255, 255, 255));
         jlNombreUsuario.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jlNombreUsuario.setText("nombre de usuario");
-        jPanelFravemax.add(jlNombreUsuario, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 80, 120, -1));
+        jPanelUsuario.add(jlNombreUsuario, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 80, 120, -1));
+
+        jPanelFravemax.add(jPanelUsuario, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 200, 100));
+
+        jlFravemax.setFont(new java.awt.Font("Corbel", 1, 14)); // NOI18N
+        jlFravemax.setForeground(new java.awt.Color(255, 255, 255));
+        jlFravemax.setText("FRAVEMAX");
+        jPanelFravemax.add(jlFravemax, new org.netbeans.lib.awtextra.AbsoluteConstraints(610, 0, 80, 40));
 
         jlSalir.setFont(new java.awt.Font("Microsoft Yi Baiti", 1, 24)); // NOI18N
         jlSalir.setForeground(new java.awt.Color(255, 255, 255));
@@ -134,10 +144,6 @@ public class Menu extends javax.swing.JFrame {
             }
         });
         jPanelFravemax.add(jlMinimizar, new org.netbeans.lib.awtextra.AbsoluteConstraints(730, 0, 30, 30));
-
-        jLabel5.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Image/circulo-de-usuario.png"))); // NOI18N
-        jPanelFravemax.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 4, 120, 70));
 
         BackGround.add(jPanelFravemax, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 800, 100));
 
@@ -430,6 +436,7 @@ public class Menu extends javax.swing.JFrame {
     private void jPanelFravemaxMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanelFravemaxMousePressed
         xMouse = evt.getX();
         yMouse = evt.getY();
+        jPanelFravemax.setCursor(new Cursor(MOVE_CURSOR));
     }//GEN-LAST:event_jPanelFravemaxMousePressed
 
     private void jPanelFravemaxMouseDragged(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanelFravemaxMouseDragged
@@ -437,6 +444,10 @@ public class Menu extends javax.swing.JFrame {
         int y = evt.getYOnScreen();
         this.setLocation(x - xMouse, y - yMouse);
     }//GEN-LAST:event_jPanelFravemaxMouseDragged
+
+    private void jPanelFravemaxMouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanelFravemaxMouseReleased
+        jPanelFravemax.setCursor(new Cursor(DEFAULT_CURSOR));
+    }//GEN-LAST:event_jPanelFravemaxMouseReleased
 
     /**
      * @param args the command line arguments
