@@ -5,8 +5,14 @@
  */
 package Vistas;
 
+import AccesoDatos.ProductoData;
+import Entidades.Producto;
 import java.awt.Color;
 import java.awt.Cursor;
+import java.awt.Font;
+import javax.swing.UIManager;
+import javax.swing.border.BevelBorder;
+import javax.swing.table.DefaultTableModel;
 
 /**
  *
@@ -14,14 +20,46 @@ import java.awt.Cursor;
  */
 public class Menu extends javax.swing.JFrame {
 
-    int xMouse, yMouse;
+    private ProductoData pd = new ProductoData();
+    private Producto p = null;
+    private int xMouse, yMouse;
 
-    /**
-     * Creates new form Menu
-     */
+    private void llenarTabla() {
+        jtListaPro.setModel(Modelo);
+        jtListaPro.setFillsViewportHeight(true);
+        Scroll.getViewport().setBackground(new Color(10, 170, 140));
+        jtListaPro.setBackground(new Color(10, 170, 140));
+        jtListaPro.getTableHeader().setFont(new Font("Corbel", Font.BOLD, 14));
+        jtListaPro.getTableHeader().setForeground(Color.white);
+        jtListaPro.setFont(new Font("Corbel", Font.PLAIN, 12));
+        jtListaPro.getTableHeader().setBorder(new BevelBorder(BevelBorder.RAISED, new Color(0, 102, 102), new Color(0, 51, 51)));
+        jtListaPro.setBorder(new BevelBorder(BevelBorder.RAISED, new Color(0, 102, 102), new Color(0, 51, 51)));
+
+    }
+
+    public DefaultTableModel Modelo = new DefaultTableModel(
+            null,
+            new String[]{
+                "ID", "Nombre", "Descripcion", "Precio Actual", "Stock"
+            }
+    ) {
+        public boolean isCellEditable(int fila, int column) {
+            return false;
+        }
+
+        Class[] types = new Class[]{
+            java.lang.Integer.class, java.lang.String.class, java.lang.String.class, java.lang.Double.class, java.lang.Integer.class
+        };
+
+        public Class getColumnClass(int columnIndex) {
+            return types[columnIndex];
+        }
+    };
+
     public Menu() {
         initComponents();
         this.setLocationRelativeTo(null);
+        llenarTabla();
         text1.setText("<html>Registrar productos: Los usuarios podrán agregar nuevos productos al inventario proporcionando información como nombre, descripción, precio y cantidad disponible</html>");
         text2.setText("<html>Realizar ventas: Los usuarios podrán registrar las ventas de productos a los clientes. el cliente que realiza la compra y la fecha de venta</html>");
         text3.setText("<html>Administrar Clientes: Los usuarios podrán agregar, modificar y eliminar información de los clientes, como nombre, apellido, dirección y número de teléfono</html>");
@@ -83,6 +121,7 @@ public class Menu extends javax.swing.JFrame {
         jtpClientes = new javax.swing.JPanel();
         jLabel3 = new javax.swing.JLabel();
         jtpProductos = new javax.swing.JPanel();
+        jlListar = new javax.swing.JLabel();
         jLabel20 = new javax.swing.JLabel();
         jLabel19 = new javax.swing.JLabel();
         jLabel18 = new javax.swing.JLabel();
@@ -99,6 +138,10 @@ public class Menu extends javax.swing.JFrame {
         jLabel12 = new javax.swing.JLabel();
         jLabel13 = new javax.swing.JLabel();
         jLabel14 = new javax.swing.JLabel();
+        jtpListaP = new javax.swing.JPanel();
+        jLabel24 = new javax.swing.JLabel();
+        Scroll = new javax.swing.JScrollPane();
+        jtListaPro = new javax.swing.JTable();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setUndecorated(true);
@@ -294,6 +337,9 @@ public class Menu extends javax.swing.JFrame {
         jlCerrarSesion.setIconTextGap(15);
         jlCerrarSesion.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
         jlCerrarSesion.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jlCerrarSesionMouseClicked(evt);
+            }
             public void mouseEntered(java.awt.event.MouseEvent evt) {
                 jlCerrarSesionMouseEntered(evt);
             }
@@ -492,6 +538,30 @@ public class Menu extends javax.swing.JFrame {
         jtpProductos.setBackground(new java.awt.Color(255, 255, 255));
         jtpProductos.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
+        jlListar.setBackground(new java.awt.Color(0, 150, 136));
+        jlListar.setFont(new java.awt.Font("Corbel", 1, 14)); // NOI18N
+        jlListar.setForeground(new java.awt.Color(255, 255, 255));
+        jlListar.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jlListar.setText("Listar Productos");
+        jlListar.setVerticalAlignment(javax.swing.SwingConstants.BOTTOM);
+        jlListar.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED, null, new java.awt.Color(0, 150, 136), null, null));
+        jlListar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jlListar.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        jlListar.setOpaque(true);
+        jlListar.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
+        jlListar.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jlListarMouseClicked(evt);
+            }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                jlListarMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                jlListarMouseExited(evt);
+            }
+        });
+        jtpProductos.add(jlListar, new org.netbeans.lib.awtextra.AbsoluteConstraints(460, 40, 120, 30));
+
         jLabel20.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel20.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Image/basura.png"))); // NOI18N
         jtpProductos.add(jLabel20, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 60, 180, 150));
@@ -616,6 +686,37 @@ public class Menu extends javax.swing.JFrame {
         jtpProductos.add(jLabel14, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 110, -1, -1));
 
         jtpEscritorio.addTab("tab4", jtpProductos);
+
+        jtpListaP.setBackground(new java.awt.Color(255, 255, 255));
+        jtpListaP.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        jLabel24.setFont(new java.awt.Font("Corbel", 1, 30)); // NOI18N
+        jLabel24.setForeground(new java.awt.Color(153, 153, 153));
+        jLabel24.setText("Lista de Productos activos");
+        jtpListaP.add(jLabel24, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 40, -1, -1));
+
+        Scroll.setBackground(new java.awt.Color(255, 255, 255));
+        Scroll.setFont(new java.awt.Font("Corbel", 0, 12)); // NOI18N
+
+        jtListaPro.setBackground(new java.awt.Color(204, 204, 204));
+        jtListaPro.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null}
+            },
+            new String [] {
+                "Title 1", "Title 2", "Title 3", "Title 4"
+            }
+        ));
+        jtListaPro.setGridColor(new java.awt.Color(0, 102, 102));
+        jtListaPro.setShowGrid(true);
+        Scroll.setViewportView(jtListaPro);
+
+        jtpListaP.add(Scroll, new org.netbeans.lib.awtextra.AbsoluteConstraints(13, 80, 570, 330));
+
+        jtpEscritorio.addTab("tab5", jtpListaP);
 
         BackGround.add(jtpEscritorio, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 53, 600, 450));
 
@@ -793,6 +894,24 @@ public class Menu extends javax.swing.JFrame {
         jlEliminar.setBackground(new Color(0, 150, 136));
     }//GEN-LAST:event_jlEliminarMouseExited
 
+    private void jlListarMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jlListarMouseEntered
+        jlListar.setBackground(new Color(10, 170, 140));
+    }//GEN-LAST:event_jlListarMouseEntered
+
+    private void jlListarMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jlListarMouseExited
+        jlListar.setBackground(new Color(0, 150, 136));
+    }//GEN-LAST:event_jlListarMouseExited
+
+    private void jlCerrarSesionMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jlCerrarSesionMouseClicked
+        Login log = new Login();
+        log.setVisible(true);
+        dispose();
+    }//GEN-LAST:event_jlCerrarSesionMouseClicked
+
+    private void jlListarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jlListarMouseClicked
+        jtpEscritorio.setSelectedIndex(4);
+    }//GEN-LAST:event_jlListarMouseClicked
+
     /**
      * @param args the command line arguments
      */
@@ -806,6 +925,8 @@ public class Menu extends javax.swing.JFrame {
             for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
                 if ("Nimbus".equals(info.getName())) {
                     javax.swing.UIManager.setLookAndFeel(info.getClassName());
+                    UIManager.put("nimbusBlueGrey", new Color(51, 51, 76));
+                    UIManager.put("control", new Color(0, 150, 136));
                     break;
                 }
             }
@@ -830,6 +951,7 @@ public class Menu extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPanel BackGround;
+    private javax.swing.JScrollPane Scroll;
     private javax.swing.JLabel fravemaxLogo;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
@@ -847,6 +969,7 @@ public class Menu extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel21;
     private javax.swing.JLabel jLabel22;
     private javax.swing.JLabel jLabel23;
+    private javax.swing.JLabel jLabel24;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
@@ -869,15 +992,18 @@ public class Menu extends javax.swing.JFrame {
     private javax.swing.JLabel jlClientes;
     private javax.swing.JLabel jlEliminar;
     private javax.swing.JLabel jlInicio;
+    private javax.swing.JLabel jlListar;
     private javax.swing.JLabel jlMinimizar;
     private javax.swing.JLabel jlModificar;
     private javax.swing.JLabel jlNombreUsuario;
     private javax.swing.JLabel jlProductos;
     private javax.swing.JLabel jlSalir;
     private javax.swing.JLabel jlVentas;
+    private javax.swing.JTable jtListaPro;
     private javax.swing.JPanel jtpClientes;
     private javax.swing.JTabbedPane jtpEscritorio;
     private javax.swing.JPanel jtpInicio;
+    private javax.swing.JPanel jtpListaP;
     private javax.swing.JPanel jtpProductos;
     private javax.swing.JPanel jtpVentas;
     private javax.swing.JLabel text1;
@@ -890,4 +1016,10 @@ public class Menu extends javax.swing.JFrame {
     private javax.swing.JLabel verMasP;
     private javax.swing.JLabel verMasV;
     // End of variables declaration//GEN-END:variables
+
+    private void borrarFila() {
+        for (int f = jtListaPro.getRowCount() - 1; f >= 0; f--) {
+            Modelo.removeRow(f);
+        }
+    }
 }
