@@ -22,9 +22,9 @@ public class Menu extends javax.swing.JFrame {
     public Menu() {
         initComponents();
         this.setLocationRelativeTo(null);
-        text1.setText("<html>Agregar, actualizar y eliminar productos.</html>");
-        text2.setText("<html>Registrar ventas, historial de ventas y actualizar detalles.</html>");
-        text3.setText("<html>Administrar datos de los clientes y lista de clientes</html>");
+        text1.setText("<html>Registrar productos: Los usuarios podrán agregar nuevos productos al inventario proporcionando información como nombre, descripción, precio y cantidad disponible</html>");
+        text2.setText("<html>Realizar ventas: Los usuarios podrán registrar las ventas de productos a los clientes. el cliente que realiza la compra y la fecha de venta</html>");
+        text3.setText("<html>Administrar Clientes: Los usuarios podrán agregar, modificar y eliminar información de los clientes, como nombre, apellido, dirección y número de teléfono</html>");
     }
 
     /**
@@ -313,20 +313,20 @@ public class Menu extends javax.swing.JFrame {
         jtpInicio.setBackground(new java.awt.Color(255, 255, 255));
         jtpInicio.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jLabel11.setFont(new java.awt.Font("Corbel", 1, 14)); // NOI18N
+        jLabel11.setFont(new java.awt.Font("Corbel", 1, 18)); // NOI18N
         jLabel11.setForeground(new java.awt.Color(102, 102, 102));
         jLabel11.setText("Clientes");
-        jtpInicio.add(jLabel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 210, -1, -1));
+        jtpInicio.add(jLabel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 200, -1, -1));
 
-        jLabel6.setFont(new java.awt.Font("Corbel", 1, 14)); // NOI18N
+        jLabel6.setFont(new java.awt.Font("Corbel", 1, 18)); // NOI18N
         jLabel6.setForeground(new java.awt.Color(102, 102, 102));
         jLabel6.setText("Ventas");
-        jtpInicio.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 210, -1, -1));
+        jtpInicio.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 200, -1, -1));
 
-        jLabel4.setFont(new java.awt.Font("Corbel", 1, 14)); // NOI18N
+        jLabel4.setFont(new java.awt.Font("Corbel", 1, 18)); // NOI18N
         jLabel4.setForeground(new java.awt.Color(102, 102, 102));
         jLabel4.setText("Productos");
-        jtpInicio.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 210, -1, -1));
+        jtpInicio.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 200, -1, -1));
 
         verMasC.setBackground(new java.awt.Color(0, 150, 136));
         verMasC.setFont(new java.awt.Font("Corbel", 1, 14)); // NOI18N
@@ -350,7 +350,7 @@ public class Menu extends javax.swing.JFrame {
                 verMasCMouseExited(evt);
             }
         });
-        jtpInicio.add(verMasC, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 330, 80, 30));
+        jtpInicio.add(verMasC, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 340, 80, 30));
 
         verMasV.setBackground(new java.awt.Color(0, 150, 136));
         verMasV.setFont(new java.awt.Font("Corbel", 1, 14)); // NOI18N
@@ -374,7 +374,7 @@ public class Menu extends javax.swing.JFrame {
                 verMasVMouseExited(evt);
             }
         });
-        jtpInicio.add(verMasV, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 330, 80, 30));
+        jtpInicio.add(verMasV, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 340, 80, 30));
 
         verMasP.setBackground(new java.awt.Color(0, 150, 136));
         verMasP.setFont(new java.awt.Font("Corbel", 1, 14)); // NOI18N
@@ -398,23 +398,23 @@ public class Menu extends javax.swing.JFrame {
                 verMasPMouseExited(evt);
             }
         });
-        jtpInicio.add(verMasP, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 330, 80, 30));
+        jtpInicio.add(verMasP, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 340, 80, 30));
 
-        text3.setFont(new java.awt.Font("Corbel", 1, 14)); // NOI18N
+        text3.setFont(new java.awt.Font("Corbel", 0, 12)); // NOI18N
         text3.setForeground(new java.awt.Color(153, 153, 153));
         text3.setVerticalAlignment(javax.swing.SwingConstants.TOP);
-        jtpInicio.add(text3, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 240, 140, 60));
+        jtpInicio.add(text3, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 240, 150, 90));
 
-        text2.setFont(new java.awt.Font("Corbel", 1, 14)); // NOI18N
+        text2.setFont(new java.awt.Font("Corbel", 0, 12)); // NOI18N
         text2.setForeground(new java.awt.Color(153, 153, 153));
         text2.setVerticalAlignment(javax.swing.SwingConstants.TOP);
-        jtpInicio.add(text2, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 240, 140, 60));
+        jtpInicio.add(text2, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 240, 150, 90));
 
-        text1.setFont(new java.awt.Font("Corbel", 1, 14)); // NOI18N
+        text1.setFont(new java.awt.Font("Corbel", 0, 12)); // NOI18N
         text1.setForeground(new java.awt.Color(153, 153, 153));
         text1.setVerticalAlignment(javax.swing.SwingConstants.TOP);
         text1.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
-        jtpInicio.add(text1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 240, 140, 60));
+        jtpInicio.add(text1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 240, 150, 90));
 
         jLabel1.setBackground(new java.awt.Color(102, 102, 102));
         jLabel1.setFont(new java.awt.Font("Corbel", 1, 30)); // NOI18N
@@ -423,13 +423,13 @@ public class Menu extends javax.swing.JFrame {
         jtpInicio.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 40, 250, 30));
 
         jLabel8.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Image/rectangulo.jpg"))); // NOI18N
-        jtpInicio.add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 100, -1, -1));
+        jtpInicio.add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 110, -1, -1));
 
         jLabel9.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Image/rectangulo.jpg"))); // NOI18N
-        jtpInicio.add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 100, -1, -1));
+        jtpInicio.add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 110, -1, -1));
 
         jLabel10.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Image/rectangulo.jpg"))); // NOI18N
-        jtpInicio.add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 100, -1, -1));
+        jtpInicio.add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 110, -1, -1));
 
         jtpEscritorio.addTab("tab1", jtpInicio);
 
@@ -580,27 +580,27 @@ public class Menu extends javax.swing.JFrame {
     }//GEN-LAST:event_jPanelFravemaxMouseReleased
 
     private void verMasPMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_verMasPMouseEntered
-        verMasP.setBackground(new Color(10,170,140));
+        verMasP.setBackground(new Color(10, 170, 140));
     }//GEN-LAST:event_verMasPMouseEntered
 
     private void verMasPMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_verMasPMouseExited
-        verMasP.setBackground(new Color(0,150,136));
+        verMasP.setBackground(new Color(0, 150, 136));
     }//GEN-LAST:event_verMasPMouseExited
 
     private void verMasVMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_verMasVMouseEntered
-        verMasV.setBackground(new Color(10,170,140));
+        verMasV.setBackground(new Color(10, 170, 140));
     }//GEN-LAST:event_verMasVMouseEntered
 
     private void verMasVMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_verMasVMouseExited
-        verMasV.setBackground(new Color(0,150,136));
+        verMasV.setBackground(new Color(0, 150, 136));
     }//GEN-LAST:event_verMasVMouseExited
 
     private void verMasCMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_verMasCMouseEntered
-        verMasC.setBackground(new Color(10,170,140));
+        verMasC.setBackground(new Color(10, 170, 140));
     }//GEN-LAST:event_verMasCMouseEntered
 
     private void verMasCMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_verMasCMouseExited
-        verMasC.setBackground(new Color(0,150,136));
+        verMasC.setBackground(new Color(0, 150, 136));
     }//GEN-LAST:event_verMasCMouseExited
 
     private void verMasPMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_verMasPMouseClicked
