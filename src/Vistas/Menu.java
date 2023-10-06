@@ -25,6 +25,9 @@ public class Menu extends javax.swing.JFrame {
         text1.setText("<html>Registrar productos: Los usuarios podrán agregar nuevos productos al inventario proporcionando información como nombre, descripción, precio y cantidad disponible</html>");
         text2.setText("<html>Realizar ventas: Los usuarios podrán registrar las ventas de productos a los clientes. el cliente que realiza la compra y la fecha de venta</html>");
         text3.setText("<html>Administrar Clientes: Los usuarios podrán agregar, modificar y eliminar información de los clientes, como nombre, apellido, dirección y número de teléfono</html>");
+        textA.setText("<html>Ingresar nuevos productos a la base de datos</html>");
+        textM.setText("<html>Actualizar los datos de los productos en la base de datos</html>");
+        textE.setText("<html>Borrado logico de los productos en la base de datos</html>");
     }
 
     /**
@@ -38,14 +41,14 @@ public class Menu extends javax.swing.JFrame {
 
         BackGround = new javax.swing.JPanel();
         jPanelFravemax = new javax.swing.JPanel();
+        jlSalir = new javax.swing.JLabel();
+        jlMinimizar = new javax.swing.JLabel();
+        fravemaxLogo = new javax.swing.JLabel();
         jSeparator1 = new javax.swing.JSeparator();
         jSeparator2 = new javax.swing.JSeparator();
         jPanelUsuario = new javax.swing.JPanel();
         jLabel5 = new javax.swing.JLabel();
         jlNombreUsuario = new javax.swing.JLabel();
-        jlFravemax = new javax.swing.JLabel();
-        jlSalir = new javax.swing.JLabel();
-        jlMinimizar = new javax.swing.JLabel();
         jPanelOpciones = new javax.swing.JPanel();
         jPanelProductos = new javax.swing.JPanel();
         jlProductos = new javax.swing.JLabel();
@@ -59,6 +62,9 @@ public class Menu extends javax.swing.JFrame {
         jlInicio = new javax.swing.JLabel();
         jtpEscritorio = new javax.swing.JTabbedPane();
         jtpInicio = new javax.swing.JPanel();
+        jLabel23 = new javax.swing.JLabel();
+        jLabel22 = new javax.swing.JLabel();
+        jLabel21 = new javax.swing.JLabel();
         jLabel11 = new javax.swing.JLabel();
         jLabel6 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
@@ -77,7 +83,22 @@ public class Menu extends javax.swing.JFrame {
         jtpClientes = new javax.swing.JPanel();
         jLabel3 = new javax.swing.JLabel();
         jtpProductos = new javax.swing.JPanel();
+        jLabel20 = new javax.swing.JLabel();
+        jLabel19 = new javax.swing.JLabel();
+        jLabel18 = new javax.swing.JLabel();
+        jlAgregar = new javax.swing.JLabel();
+        jlModificar = new javax.swing.JLabel();
+        jlEliminar = new javax.swing.JLabel();
         jLabel7 = new javax.swing.JLabel();
+        textE = new javax.swing.JLabel();
+        textM = new javax.swing.JLabel();
+        textA = new javax.swing.JLabel();
+        jLabel16 = new javax.swing.JLabel();
+        jLabel17 = new javax.swing.JLabel();
+        jLabel15 = new javax.swing.JLabel();
+        jLabel12 = new javax.swing.JLabel();
+        jLabel13 = new javax.swing.JLabel();
+        jLabel14 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setUndecorated(true);
@@ -101,41 +122,6 @@ public class Menu extends javax.swing.JFrame {
             }
         });
         jPanelFravemax.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-
-        jSeparator1.setBackground(new java.awt.Color(0, 102, 102));
-        jSeparator1.setForeground(new java.awt.Color(0, 102, 102));
-        jSeparator1.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED, new java.awt.Color(0, 102, 102), new java.awt.Color(0, 102, 102), new java.awt.Color(0, 51, 51), new java.awt.Color(0, 51, 51)));
-        jPanelFravemax.add(jSeparator1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 200, 100));
-
-        jSeparator2.setBackground(new java.awt.Color(0, 102, 102));
-        jSeparator2.setForeground(new java.awt.Color(0, 102, 102));
-        jSeparator2.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED, new java.awt.Color(0, 102, 102), new java.awt.Color(0, 102, 102), new java.awt.Color(0, 51, 51), new java.awt.Color(0, 51, 51)));
-        jPanelFravemax.add(jSeparator2, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 0, 600, 100));
-
-        jPanelUsuario.setBackground(new java.awt.Color(0, 150, 136));
-        jPanelUsuario.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-
-        jLabel5.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Image/circulo-de-usuario.png"))); // NOI18N
-        jLabel5.setToolTipText("");
-        jPanelUsuario.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 200, 90));
-
-        jlNombreUsuario.setFont(new java.awt.Font("Corbel", 1, 14)); // NOI18N
-        jlNombreUsuario.setForeground(new java.awt.Color(255, 255, 255));
-        jlNombreUsuario.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jlNombreUsuario.setText("nombre de usuario");
-        jlNombreUsuario.setVerticalAlignment(javax.swing.SwingConstants.BOTTOM);
-        jlNombreUsuario.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
-        jPanelUsuario.add(jlNombreUsuario, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, -2, 200, 100));
-
-        jPanelFravemax.add(jPanelUsuario, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 200, 100));
-
-        jlFravemax.setFont(new java.awt.Font("Corbel", 1, 14)); // NOI18N
-        jlFravemax.setForeground(new java.awt.Color(255, 255, 255));
-        jlFravemax.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jlFravemax.setText("BIENVENIDO A FRAVEMAX");
-        jlFravemax.setVerticalAlignment(javax.swing.SwingConstants.BOTTOM);
-        jPanelFravemax.add(jlFravemax, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 70, 190, 20));
 
         jlSalir.setFont(new java.awt.Font("Microsoft Yi Baiti", 1, 24)); // NOI18N
         jlSalir.setForeground(new java.awt.Color(255, 255, 255));
@@ -172,6 +158,44 @@ public class Menu extends javax.swing.JFrame {
             }
         });
         jPanelFravemax.add(jlMinimizar, new org.netbeans.lib.awtextra.AbsoluteConstraints(730, 0, 30, 30));
+
+        fravemaxLogo.setFont(new java.awt.Font("Corbel", 1, 14)); // NOI18N
+        fravemaxLogo.setForeground(new java.awt.Color(255, 255, 255));
+        fravemaxLogo.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        fravemaxLogo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Image/fravemax.png"))); // NOI18N
+        fravemaxLogo.setText("BIENVENIDO A FRAVEMAX");
+        fravemaxLogo.setVerticalAlignment(javax.swing.SwingConstants.BOTTOM);
+        fravemaxLogo.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        fravemaxLogo.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
+        jPanelFravemax.add(fravemaxLogo, new org.netbeans.lib.awtextra.AbsoluteConstraints(550, -3, 170, 100));
+
+        jSeparator1.setBackground(new java.awt.Color(0, 102, 102));
+        jSeparator1.setForeground(new java.awt.Color(0, 102, 102));
+        jSeparator1.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED, new java.awt.Color(0, 102, 102), new java.awt.Color(0, 102, 102), new java.awt.Color(0, 51, 51), new java.awt.Color(0, 51, 51)));
+        jPanelFravemax.add(jSeparator1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 200, 100));
+
+        jSeparator2.setBackground(new java.awt.Color(0, 102, 102));
+        jSeparator2.setForeground(new java.awt.Color(0, 102, 102));
+        jSeparator2.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED, new java.awt.Color(0, 102, 102), new java.awt.Color(0, 102, 102), new java.awt.Color(0, 51, 51), new java.awt.Color(0, 51, 51)));
+        jPanelFravemax.add(jSeparator2, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 0, 600, 100));
+
+        jPanelUsuario.setBackground(new java.awt.Color(0, 150, 136));
+        jPanelUsuario.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        jLabel5.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Image/circulo-de-usuario.png"))); // NOI18N
+        jLabel5.setToolTipText("");
+        jPanelUsuario.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 200, 90));
+
+        jlNombreUsuario.setFont(new java.awt.Font("Corbel", 1, 14)); // NOI18N
+        jlNombreUsuario.setForeground(new java.awt.Color(255, 255, 255));
+        jlNombreUsuario.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jlNombreUsuario.setText("nombre de usuario");
+        jlNombreUsuario.setVerticalAlignment(javax.swing.SwingConstants.BOTTOM);
+        jlNombreUsuario.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
+        jPanelUsuario.add(jlNombreUsuario, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, -2, 200, 100));
+
+        jPanelFravemax.add(jPanelUsuario, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 200, 100));
 
         BackGround.add(jPanelFravemax, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 800, 100));
 
@@ -312,6 +336,18 @@ public class Menu extends javax.swing.JFrame {
 
         jtpInicio.setBackground(new java.awt.Color(255, 255, 255));
         jtpInicio.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        jLabel23.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel23.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Image/plataforma-rodante-alternativa.png"))); // NOI18N
+        jtpInicio.add(jLabel23, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 60, 180, 150));
+
+        jLabel22.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel22.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Image/flecha-del-carrito-hacia-abajo.png"))); // NOI18N
+        jtpInicio.add(jLabel22, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 60, 180, 150));
+
+        jLabel21.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel21.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Image/usuarios-alt.png"))); // NOI18N
+        jtpInicio.add(jLabel21, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 60, 180, 150));
 
         jLabel11.setFont(new java.awt.Font("Corbel", 1, 18)); // NOI18N
         jLabel11.setForeground(new java.awt.Color(102, 102, 102));
@@ -456,10 +492,128 @@ public class Menu extends javax.swing.JFrame {
         jtpProductos.setBackground(new java.awt.Color(255, 255, 255));
         jtpProductos.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jLabel7.setFont(new java.awt.Font("Corbel", 1, 36)); // NOI18N
-        jLabel7.setForeground(new java.awt.Color(102, 102, 102));
-        jLabel7.setText("Productos");
-        jtpProductos.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 137, -1, -1));
+        jLabel20.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel20.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Image/basura.png"))); // NOI18N
+        jtpProductos.add(jLabel20, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 60, 180, 150));
+
+        jLabel19.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel19.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Image/agregar-documento.png"))); // NOI18N
+        jtpProductos.add(jLabel19, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 60, 180, 150));
+
+        jLabel18.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel18.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Image/archivo-de-edicion.png"))); // NOI18N
+        jtpProductos.add(jLabel18, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 60, 180, 150));
+
+        jlAgregar.setBackground(new java.awt.Color(0, 150, 136));
+        jlAgregar.setFont(new java.awt.Font("Corbel", 1, 14)); // NOI18N
+        jlAgregar.setForeground(new java.awt.Color(255, 255, 255));
+        jlAgregar.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jlAgregar.setText("Agregar");
+        jlAgregar.setVerticalAlignment(javax.swing.SwingConstants.BOTTOM);
+        jlAgregar.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED, null, new java.awt.Color(0, 150, 136), null, null));
+        jlAgregar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jlAgregar.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        jlAgregar.setOpaque(true);
+        jlAgregar.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
+        jlAgregar.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                jlAgregarMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                jlAgregarMouseExited(evt);
+            }
+        });
+        jtpProductos.add(jlAgregar, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 340, 80, 30));
+
+        jlModificar.setBackground(new java.awt.Color(0, 150, 136));
+        jlModificar.setFont(new java.awt.Font("Corbel", 1, 14)); // NOI18N
+        jlModificar.setForeground(new java.awt.Color(255, 255, 255));
+        jlModificar.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jlModificar.setText("Modificar");
+        jlModificar.setVerticalAlignment(javax.swing.SwingConstants.BOTTOM);
+        jlModificar.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED, null, new java.awt.Color(0, 150, 136), null, null));
+        jlModificar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jlModificar.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        jlModificar.setOpaque(true);
+        jlModificar.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
+        jlModificar.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                jlModificarMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                jlModificarMouseExited(evt);
+            }
+        });
+        jtpProductos.add(jlModificar, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 340, 80, 30));
+
+        jlEliminar.setBackground(new java.awt.Color(0, 150, 136));
+        jlEliminar.setFont(new java.awt.Font("Corbel", 1, 14)); // NOI18N
+        jlEliminar.setForeground(new java.awt.Color(255, 255, 255));
+        jlEliminar.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jlEliminar.setText("Eliminar");
+        jlEliminar.setVerticalAlignment(javax.swing.SwingConstants.BOTTOM);
+        jlEliminar.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED, null, new java.awt.Color(0, 150, 136), null, null));
+        jlEliminar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jlEliminar.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        jlEliminar.setOpaque(true);
+        jlEliminar.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
+        jlEliminar.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                jlEliminarMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                jlEliminarMouseExited(evt);
+            }
+        });
+        jtpProductos.add(jlEliminar, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 340, 80, 30));
+
+        jLabel7.setFont(new java.awt.Font("Corbel", 1, 30)); // NOI18N
+        jLabel7.setForeground(new java.awt.Color(153, 153, 153));
+        jLabel7.setText("Gestion de Productos");
+        jtpProductos.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 40, 330, 30));
+
+        textE.setFont(new java.awt.Font("Corbel", 0, 12)); // NOI18N
+        textE.setForeground(new java.awt.Color(153, 153, 153));
+        textE.setVerticalAlignment(javax.swing.SwingConstants.TOP);
+        jtpProductos.add(textE, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 240, 150, 90));
+
+        textM.setFont(new java.awt.Font("Corbel", 0, 12)); // NOI18N
+        textM.setForeground(new java.awt.Color(153, 153, 153));
+        textM.setVerticalAlignment(javax.swing.SwingConstants.TOP);
+        jtpProductos.add(textM, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 240, 150, 90));
+
+        textA.setFont(new java.awt.Font("Corbel", 0, 12)); // NOI18N
+        textA.setForeground(new java.awt.Color(153, 153, 153));
+        textA.setVerticalAlignment(javax.swing.SwingConstants.TOP);
+        jtpProductos.add(textA, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 240, 150, 90));
+
+        jLabel16.setFont(new java.awt.Font("Corbel", 1, 18)); // NOI18N
+        jLabel16.setForeground(new java.awt.Color(102, 102, 102));
+        jLabel16.setText("Modificar ");
+        jtpProductos.add(jLabel16, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 200, 80, -1));
+
+        jLabel17.setFont(new java.awt.Font("Corbel", 1, 18)); // NOI18N
+        jLabel17.setForeground(new java.awt.Color(102, 102, 102));
+        jLabel17.setText("Eliminar ");
+        jtpProductos.add(jLabel17, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 200, -1, -1));
+
+        jLabel15.setFont(new java.awt.Font("Corbel", 1, 18)); // NOI18N
+        jLabel15.setForeground(new java.awt.Color(102, 102, 102));
+        jLabel15.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel15.setText("Agregar ");
+        jtpProductos.add(jLabel15, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 200, -1, -1));
+
+        jLabel12.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel12.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Image/rectangulo.jpg"))); // NOI18N
+        jtpProductos.add(jLabel12, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 110, -1, -1));
+
+        jLabel13.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel13.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Image/rectangulo.jpg"))); // NOI18N
+        jtpProductos.add(jLabel13, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 110, -1, -1));
+
+        jLabel14.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel14.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Image/rectangulo.jpg"))); // NOI18N
+        jtpProductos.add(jLabel14, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 110, -1, -1));
 
         jtpEscritorio.addTab("tab4", jtpProductos);
 
@@ -615,6 +769,30 @@ public class Menu extends javax.swing.JFrame {
         jlClientesMouseClicked(evt);
     }//GEN-LAST:event_verMasCMouseClicked
 
+    private void jlAgregarMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jlAgregarMouseEntered
+        jlAgregar.setBackground(new Color(10, 170, 140));
+    }//GEN-LAST:event_jlAgregarMouseEntered
+
+    private void jlAgregarMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jlAgregarMouseExited
+        jlAgregar.setBackground(new Color(0, 150, 136));
+    }//GEN-LAST:event_jlAgregarMouseExited
+
+    private void jlModificarMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jlModificarMouseEntered
+        jlModificar.setBackground(new Color(10, 170, 140));
+    }//GEN-LAST:event_jlModificarMouseEntered
+
+    private void jlModificarMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jlModificarMouseExited
+        jlModificar.setBackground(new Color(0, 150, 136));
+    }//GEN-LAST:event_jlModificarMouseExited
+
+    private void jlEliminarMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jlEliminarMouseEntered
+        jlEliminar.setBackground(new Color(10, 170, 140));
+    }//GEN-LAST:event_jlEliminarMouseEntered
+
+    private void jlEliminarMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jlEliminarMouseExited
+        jlEliminar.setBackground(new Color(0, 150, 136));
+    }//GEN-LAST:event_jlEliminarMouseExited
+
     /**
      * @param args the command line arguments
      */
@@ -652,10 +830,23 @@ public class Menu extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPanel BackGround;
+    private javax.swing.JLabel fravemaxLogo;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
+    private javax.swing.JLabel jLabel12;
+    private javax.swing.JLabel jLabel13;
+    private javax.swing.JLabel jLabel14;
+    private javax.swing.JLabel jLabel15;
+    private javax.swing.JLabel jLabel16;
+    private javax.swing.JLabel jLabel17;
+    private javax.swing.JLabel jLabel18;
+    private javax.swing.JLabel jLabel19;
     private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel20;
+    private javax.swing.JLabel jLabel21;
+    private javax.swing.JLabel jLabel22;
+    private javax.swing.JLabel jLabel23;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
@@ -673,11 +864,13 @@ public class Menu extends javax.swing.JFrame {
     private javax.swing.JPanel jPanelVentas;
     private javax.swing.JSeparator jSeparator1;
     private javax.swing.JSeparator jSeparator2;
+    private javax.swing.JLabel jlAgregar;
     private javax.swing.JLabel jlCerrarSesion;
     private javax.swing.JLabel jlClientes;
-    private javax.swing.JLabel jlFravemax;
+    private javax.swing.JLabel jlEliminar;
     private javax.swing.JLabel jlInicio;
     private javax.swing.JLabel jlMinimizar;
+    private javax.swing.JLabel jlModificar;
     private javax.swing.JLabel jlNombreUsuario;
     private javax.swing.JLabel jlProductos;
     private javax.swing.JLabel jlSalir;
@@ -690,6 +883,9 @@ public class Menu extends javax.swing.JFrame {
     private javax.swing.JLabel text1;
     private javax.swing.JLabel text2;
     private javax.swing.JLabel text3;
+    private javax.swing.JLabel textA;
+    private javax.swing.JLabel textE;
+    private javax.swing.JLabel textM;
     private javax.swing.JLabel verMasC;
     private javax.swing.JLabel verMasP;
     private javax.swing.JLabel verMasV;
