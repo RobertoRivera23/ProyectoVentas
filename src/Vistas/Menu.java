@@ -316,12 +316,12 @@ public class Menu extends javax.swing.JFrame {
         jLabel11.setFont(new java.awt.Font("Corbel", 1, 14)); // NOI18N
         jLabel11.setForeground(new java.awt.Color(102, 102, 102));
         jLabel11.setText("Clientes");
-        jtpInicio.add(jLabel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 210, -1, -1));
+        jtpInicio.add(jLabel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 210, -1, -1));
 
         jLabel6.setFont(new java.awt.Font("Corbel", 1, 14)); // NOI18N
         jLabel6.setForeground(new java.awt.Color(102, 102, 102));
         jLabel6.setText("Ventas");
-        jtpInicio.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 210, -1, -1));
+        jtpInicio.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 210, -1, -1));
 
         jLabel4.setFont(new java.awt.Font("Corbel", 1, 14)); // NOI18N
         jLabel4.setForeground(new java.awt.Color(102, 102, 102));
@@ -340,6 +340,9 @@ public class Menu extends javax.swing.JFrame {
         verMasC.setOpaque(true);
         verMasC.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
         verMasC.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                verMasCMouseClicked(evt);
+            }
             public void mouseEntered(java.awt.event.MouseEvent evt) {
                 verMasCMouseEntered(evt);
             }
@@ -347,7 +350,7 @@ public class Menu extends javax.swing.JFrame {
                 verMasCMouseExited(evt);
             }
         });
-        jtpInicio.add(verMasC, new org.netbeans.lib.awtextra.AbsoluteConstraints(480, 330, 80, 30));
+        jtpInicio.add(verMasC, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 330, 80, 30));
 
         verMasV.setBackground(new java.awt.Color(0, 150, 136));
         verMasV.setFont(new java.awt.Font("Corbel", 1, 14)); // NOI18N
@@ -361,6 +364,9 @@ public class Menu extends javax.swing.JFrame {
         verMasV.setOpaque(true);
         verMasV.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
         verMasV.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                verMasVMouseClicked(evt);
+            }
             public void mouseEntered(java.awt.event.MouseEvent evt) {
                 verMasVMouseEntered(evt);
             }
@@ -382,6 +388,9 @@ public class Menu extends javax.swing.JFrame {
         verMasP.setOpaque(true);
         verMasP.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
         verMasP.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                verMasPMouseClicked(evt);
+            }
             public void mouseEntered(java.awt.event.MouseEvent evt) {
                 verMasPMouseEntered(evt);
             }
@@ -394,7 +403,7 @@ public class Menu extends javax.swing.JFrame {
         text3.setFont(new java.awt.Font("Corbel", 1, 14)); // NOI18N
         text3.setForeground(new java.awt.Color(153, 153, 153));
         text3.setVerticalAlignment(javax.swing.SwingConstants.TOP);
-        jtpInicio.add(text3, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 240, 140, 60));
+        jtpInicio.add(text3, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 240, 140, 60));
 
         text2.setFont(new java.awt.Font("Corbel", 1, 14)); // NOI18N
         text2.setForeground(new java.awt.Color(153, 153, 153));
@@ -420,7 +429,7 @@ public class Menu extends javax.swing.JFrame {
         jtpInicio.add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 100, -1, -1));
 
         jLabel10.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Image/rectangulo.jpg"))); // NOI18N
-        jtpInicio.add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 100, -1, -1));
+        jtpInicio.add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 100, -1, -1));
 
         jtpEscritorio.addTab("tab1", jtpInicio);
 
@@ -593,6 +602,18 @@ public class Menu extends javax.swing.JFrame {
     private void verMasCMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_verMasCMouseExited
         verMasC.setBackground(new Color(0,150,136));
     }//GEN-LAST:event_verMasCMouseExited
+
+    private void verMasPMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_verMasPMouseClicked
+        jlProductosMouseClicked(evt);
+    }//GEN-LAST:event_verMasPMouseClicked
+
+    private void verMasVMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_verMasVMouseClicked
+        jlVentasMouseClicked(evt);
+    }//GEN-LAST:event_verMasVMouseClicked
+
+    private void verMasCMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_verMasCMouseClicked
+        jlClientesMouseClicked(evt);
+    }//GEN-LAST:event_verMasCMouseClicked
 
     /**
      * @param args the command line arguments
