@@ -22,6 +22,10 @@ public class Menu extends javax.swing.JFrame {
     private ProductoData pd = new ProductoData();
     private Producto p = null;
     private int xMouse, yMouse;
+    Color verdeBase = new Color(0,150,136);
+    Color verdeClaro = new Color(10, 170, 140);
+    Color grisBase = new Color(51, 51, 76);
+    Color grisClaro = new Color(66, 66, 76);
 
     public DefaultTableModel Modelo = new DefaultTableModel(
             null,
@@ -147,6 +151,7 @@ public class Menu extends javax.swing.JFrame {
         jLabel24 = new javax.swing.JLabel();
         Scroll = new javax.swing.JScrollPane();
         jtListaPro = new TablaFraveMax();
+        jComboBox1 = new javax.swing.JComboBox<>();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setUndecorated(true);
@@ -861,7 +866,14 @@ public class Menu extends javax.swing.JFrame {
         jtListaPro.setShowGrid(true);
         Scroll.setViewportView(jtListaPro);
 
-        jtpListaP.add(Scroll, new org.netbeans.lib.awtextra.AbsoluteConstraints(13, 80, 570, 330));
+        jtpListaP.add(Scroll, new org.netbeans.lib.awtextra.AbsoluteConstraints(13, 110, 570, 300));
+
+        jComboBox1.setBackground(new java.awt.Color(51, 51, 76));
+        jComboBox1.setFont(new java.awt.Font("Corbel", 1, 12)); // NOI18N
+        jComboBox1.setForeground(new java.awt.Color(255, 255, 255));
+        jComboBox1.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED, null, new java.awt.Color(0, 102, 102), null, new java.awt.Color(0, 51, 51)));
+        jComboBox1.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jtpListaP.add(jComboBox1, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 70, 230, -1));
 
         jtpEscritorio.addTab("tab5", jtpListaP);
 
@@ -882,35 +894,35 @@ public class Menu extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jlProductosMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jlProductosMouseEntered
-        jPanelProductos.setBackground(new Color(66, 66, 76));
+        jPanelProductos.setBackground(grisClaro);
     }//GEN-LAST:event_jlProductosMouseEntered
 
     private void jlProductosMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jlProductosMouseExited
-        jPanelProductos.setBackground(new Color(51, 51, 76));
+        jPanelProductos.setBackground(grisBase);
     }//GEN-LAST:event_jlProductosMouseExited
 
     private void jlVentasMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jlVentasMouseEntered
-        jPanelVentas.setBackground(new Color(66, 66, 76));
+        jPanelVentas.setBackground(grisClaro);
     }//GEN-LAST:event_jlVentasMouseEntered
 
     private void jlVentasMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jlVentasMouseExited
-        jPanelVentas.setBackground(new Color(51, 51, 76));
+        jPanelVentas.setBackground(grisBase);
     }//GEN-LAST:event_jlVentasMouseExited
 
     private void jlClientesMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jlClientesMouseEntered
-        jPanelClientes.setBackground(new Color(66, 66, 76));
+        jPanelClientes.setBackground(grisClaro);
     }//GEN-LAST:event_jlClientesMouseEntered
 
     private void jlClientesMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jlClientesMouseExited
-        jPanelClientes.setBackground(new Color(51, 51, 76));
+        jPanelClientes.setBackground(grisBase);
     }//GEN-LAST:event_jlClientesMouseExited
 
     private void jlCerrarSesionMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jlCerrarSesionMouseEntered
-        jPanelCerraSesion.setBackground(new Color(66, 66, 76));
+        jPanelCerraSesion.setBackground(grisClaro);
     }//GEN-LAST:event_jlCerrarSesionMouseEntered
 
     private void jlCerrarSesionMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jlCerrarSesionMouseExited
-        jPanelCerraSesion.setBackground(new Color(51, 51, 76));
+        jPanelCerraSesion.setBackground(grisBase);
     }//GEN-LAST:event_jlCerrarSesionMouseExited
 
     private void jlProductosMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jlProductosMouseClicked
@@ -932,17 +944,17 @@ public class Menu extends javax.swing.JFrame {
 
     private void jlSalirMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jlSalirMouseExited
         jlSalir.setOpaque(false);
-        jlSalir.setBackground(new Color(0, 150, 136));
+        jlSalir.setBackground(verdeBase);
     }//GEN-LAST:event_jlSalirMouseExited
 
     private void jlMinimizarMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jlMinimizarMouseEntered
         jlMinimizar.setOpaque(true);
-        jlMinimizar.setBackground(new Color(10, 160, 140));
+        jlMinimizar.setBackground(verdeClaro);
     }//GEN-LAST:event_jlMinimizarMouseEntered
 
     private void jlMinimizarMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jlMinimizarMouseExited
         jlMinimizar.setOpaque(false);
-        jlMinimizar.setBackground(new Color(0, 150, 136));
+        jlMinimizar.setBackground(verdeBase);
     }//GEN-LAST:event_jlMinimizarMouseExited
 
     private void jlSalirMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jlSalirMouseClicked
@@ -954,11 +966,11 @@ public class Menu extends javax.swing.JFrame {
     }//GEN-LAST:event_jlMinimizarMouseClicked
 
     private void jlInicioMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jlInicioMouseEntered
-        jPanelInicio.setBackground(new Color(66, 66, 76));
+        jPanelInicio.setBackground(grisClaro);
     }//GEN-LAST:event_jlInicioMouseEntered
 
     private void jlInicioMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jlInicioMouseExited
-        jPanelInicio.setBackground(new Color(51, 51, 76));
+        jPanelInicio.setBackground(grisBase);
     }//GEN-LAST:event_jlInicioMouseExited
 
     private void jlInicioMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jlInicioMouseClicked
@@ -982,27 +994,27 @@ public class Menu extends javax.swing.JFrame {
     }//GEN-LAST:event_jPanelFravemaxMouseReleased
 
     private void verMasPMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_verMasPMouseEntered
-        verMasP.setBackground(new Color(10, 170, 140));
+        verMasP.setBackground(verdeClaro);
     }//GEN-LAST:event_verMasPMouseEntered
 
     private void verMasPMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_verMasPMouseExited
-        verMasP.setBackground(new Color(0, 150, 136));
+        verMasP.setBackground(verdeBase);
     }//GEN-LAST:event_verMasPMouseExited
 
     private void verMasVMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_verMasVMouseEntered
-        verMasV.setBackground(new Color(10, 170, 140));
+        verMasV.setBackground(verdeClaro);
     }//GEN-LAST:event_verMasVMouseEntered
 
     private void verMasVMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_verMasVMouseExited
-        verMasV.setBackground(new Color(0, 150, 136));
+        verMasV.setBackground(verdeBase);
     }//GEN-LAST:event_verMasVMouseExited
 
     private void verMasCMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_verMasCMouseEntered
-        verMasC.setBackground(new Color(10, 170, 140));
+        verMasC.setBackground(verdeClaro);
     }//GEN-LAST:event_verMasCMouseEntered
 
     private void verMasCMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_verMasCMouseExited
-        verMasC.setBackground(new Color(0, 150, 136));
+        verMasC.setBackground(verdeBase);
     }//GEN-LAST:event_verMasCMouseExited
 
     private void verMasPMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_verMasPMouseClicked
@@ -1018,35 +1030,35 @@ public class Menu extends javax.swing.JFrame {
     }//GEN-LAST:event_verMasCMouseClicked
 
     private void jlAgregarMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jlAgregarMouseEntered
-        jlAgregar.setBackground(new Color(10, 170, 140));
+        jlAgregar.setBackground(verdeClaro);
     }//GEN-LAST:event_jlAgregarMouseEntered
 
     private void jlAgregarMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jlAgregarMouseExited
-        jlAgregar.setBackground(new Color(0, 150, 136));
+        jlAgregar.setBackground(verdeBase);
     }//GEN-LAST:event_jlAgregarMouseExited
 
     private void jlModificarMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jlModificarMouseEntered
-        jlModificar.setBackground(new Color(10, 170, 140));
+        jlModificar.setBackground(verdeClaro);
     }//GEN-LAST:event_jlModificarMouseEntered
 
     private void jlModificarMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jlModificarMouseExited
-        jlModificar.setBackground(new Color(0, 150, 136));
+        jlModificar.setBackground(verdeBase);
     }//GEN-LAST:event_jlModificarMouseExited
 
     private void jlEliminarMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jlEliminarMouseEntered
-        jlEliminar.setBackground(new Color(10, 170, 140));
+        jlEliminar.setBackground(verdeClaro);
     }//GEN-LAST:event_jlEliminarMouseEntered
 
     private void jlEliminarMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jlEliminarMouseExited
-        jlEliminar.setBackground(new Color(0, 150, 136));
+        jlEliminar.setBackground(verdeBase);
     }//GEN-LAST:event_jlEliminarMouseExited
 
     private void jlListarMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jlListarMouseEntered
-        jlListar.setBackground(new Color(10, 170, 140));
+        jlListar.setBackground(verdeClaro);
     }//GEN-LAST:event_jlListarMouseEntered
 
     private void jlListarMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jlListarMouseExited
-        jlListar.setBackground(new Color(0, 150, 136));
+        jlListar.setBackground(verdeBase);
     }//GEN-LAST:event_jlListarMouseExited
 
     private void jlCerrarSesionMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jlCerrarSesionMouseClicked
@@ -1065,35 +1077,35 @@ public class Menu extends javax.swing.JFrame {
     }//GEN-LAST:event_jlListarClienteMouseClicked
 
     private void jlListarClienteMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jlListarClienteMouseEntered
-        jlListarCliente.setBackground(new Color(10, 170, 140));
+        jlListarCliente.setBackground(verdeClaro);
     }//GEN-LAST:event_jlListarClienteMouseEntered
 
     private void jlListarClienteMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jlListarClienteMouseExited
-        jlListarCliente.setBackground(new Color(0, 150, 136));
+        jlListarCliente.setBackground(verdeBase);
     }//GEN-LAST:event_jlListarClienteMouseExited
 
     private void jlAgregarClienteMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jlAgregarClienteMouseEntered
-        jlAgregarCliente.setBackground(new Color(10, 170, 140));
+        jlAgregarCliente.setBackground(verdeClaro);
     }//GEN-LAST:event_jlAgregarClienteMouseEntered
 
     private void jlAgregarClienteMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jlAgregarClienteMouseExited
-        jlAgregarCliente.setBackground(new Color(0, 150, 136));
+        jlAgregarCliente.setBackground(verdeBase);
     }//GEN-LAST:event_jlAgregarClienteMouseExited
 
     private void jlModificarClienteMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jlModificarClienteMouseEntered
-        jlModificarCliente.setBackground(new Color(10, 170, 140));
+        jlModificarCliente.setBackground(verdeClaro);
     }//GEN-LAST:event_jlModificarClienteMouseEntered
 
     private void jlModificarClienteMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jlModificarClienteMouseExited
-        jlModificarCliente.setBackground(new Color(0, 150, 136));
+        jlModificarCliente.setBackground(verdeBase);
     }//GEN-LAST:event_jlModificarClienteMouseExited
 
     private void jlEliminarClienteMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jlEliminarClienteMouseEntered
-        jlEliminarCliente.setBackground(new Color(10, 170, 140));
+        jlEliminarCliente.setBackground(verdeClaro);
     }//GEN-LAST:event_jlEliminarClienteMouseEntered
 
     private void jlEliminarClienteMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jlEliminarClienteMouseExited
-        jlEliminarCliente.setBackground(new Color(0, 150, 136));
+        jlEliminarCliente.setBackground(verdeBase);
     }//GEN-LAST:event_jlEliminarClienteMouseExited
 
     /**
@@ -1137,6 +1149,7 @@ public class Menu extends javax.swing.JFrame {
     private javax.swing.JPanel BackGround;
     private javax.swing.JScrollPane Scroll;
     private javax.swing.JLabel fravemaxLogo;
+    private javax.swing.JComboBox<String> jComboBox1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
