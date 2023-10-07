@@ -219,6 +219,7 @@ public class Menu extends javax.swing.JFrame {
         fravemaxLogo.setText("BIENVENIDO A FRAVEMAX");
         fravemaxLogo.setVerticalAlignment(javax.swing.SwingConstants.BOTTOM);
         fravemaxLogo.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        fravemaxLogo.setIconTextGap(0);
         fravemaxLogo.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
         jPanelFravemax.add(fravemaxLogo, new org.netbeans.lib.awtextra.AbsoluteConstraints(550, -3, 170, 100));
 
