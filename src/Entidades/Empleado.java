@@ -13,6 +13,7 @@ public class Empleado {
     private int idEmpleado;
     private String nombre;
     private String apellido;
+    private int dni;
     private String cargo;
     private String usuario;
     private String contraenia;
@@ -22,19 +23,21 @@ public class Empleado {
     public Empleado(){
     }
 
-    public Empleado(String nombre, String apellido, String cargo, String usuario, String contraenia, boolean estado) {
+    public Empleado(String nombre, String apellido, int dni,  String cargo, String usuario, String contraenia, boolean estado) {
         this.nombre = nombre;
         this.apellido = apellido;
+        this.dni = dni;
         this.cargo = cargo;
         this.usuario = usuario;
         this.contraenia = contraenia;
         this.estado= estado;
     }
 
-    public Empleado(int idEmpleado, String nombre, String apellido, String cargo, String usuario, String contraenia, boolean estado) {
+    public Empleado(int idEmpleado, String nombre, String apellido, int dni,  String cargo, String usuario, String contraenia, boolean estado) {
         this.idEmpleado = idEmpleado;
         this.nombre = nombre;
         this.apellido = apellido;
+        this.dni = dni;
         this.cargo = cargo;
         this.usuario = usuario;
         this.contraenia = contraenia;
@@ -63,6 +66,14 @@ public class Empleado {
 
     public void setApellido(String apellido) {
         this.apellido = apellido;
+    }
+
+    public int getDni() {
+        return dni;
+    }
+
+    public void setDni(int dni) {
+        this.dni = dni;
     }
 
     public String getCargo() {
@@ -100,7 +111,7 @@ public class Empleado {
 
     @Override
     public String toString() {
-        return idEmpleado + ", " + nombre + ", " + apellido + ", " + cargo + ", " + usuario + ", " + contraenia + ", " + estado;
+        return idEmpleado + ", " + nombre + ", " + apellido + ", " + dni+  ", " +cargo + ", " + usuario + ", " + contraenia + ", " + estado;
     }
     
     

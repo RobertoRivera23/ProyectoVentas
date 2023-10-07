@@ -14,7 +14,7 @@ public class Conexion {
     private static Connection connection;
 
     // constructor vacio
-    private Conexion() {
+    Conexion() {
     }
 
     public static Connection getConexion() {

@@ -92,7 +92,7 @@ public class VentasData {
                     venta = new Venta();
                     venta.setIdVenta(rs.getInt("idVenta"));
                     venta.setCliente(clienteData.buscarCliente(rs.getInt("idCliente")));
-                    venta.setEmpleado(empleadoData.buscarEmpleado(rs.getInt("idempleado"))); ////////////////////
+                    venta.setEmpleado(empleadoData.buscarEmpleadoPorId(rs.getInt("idempleado"))); ////////////////////
                     venta.setFechaVenta((rs.getDate("fechaVenta").toLocalDate()));
                     venta.setEstado(rs.getBoolean("estado"));
                     ventas.add(venta);
@@ -122,7 +122,7 @@ public class VentasData {
                     venta = new Venta();
                     venta.setIdVenta(rs.getInt("idVenta"));
                     venta.setCliente(clienteD.buscarCliente(rs.getInt("idCliente")));
-                    venta.setEmpleado(empleadoD.buscarEmpleado(rs.getInt("idempleado"))); //////////////////////////////////////7
+                    venta.setEmpleado(empleadoD.buscarEmpleadoPorId(rs.getInt("idempleado"))); //////////////////////////////////////7
                     venta.setFechaVenta((rs.getDate("fechaVenta").toLocalDate()));
                     venta.setEstado(rs.getBoolean("estado"));
                     ventas.add(venta);
