@@ -7,11 +7,10 @@ package Vistas;
 
 import AccesoDatos.ProductoData;
 import Entidades.Producto;
+import Utilidades.TablaFraveMax;
 import java.awt.Color;
 import java.awt.Cursor;
-import java.awt.Font;
 import javax.swing.UIManager;
-import javax.swing.border.BevelBorder;
 import javax.swing.table.DefaultTableModel;
 
 /**
@@ -23,19 +22,6 @@ public class Menu extends javax.swing.JFrame {
     private ProductoData pd = new ProductoData();
     private Producto p = null;
     private int xMouse, yMouse;
-
-    private void llenarTabla() {
-        jtListaPro.setModel(Modelo);
-        jtListaPro.setFillsViewportHeight(true);
-        Scroll.getViewport().setBackground(new Color(10, 170, 140));
-        jtListaPro.setBackground(new Color(10, 170, 140));
-        jtListaPro.getTableHeader().setFont(new Font("Corbel", Font.BOLD, 14));
-        jtListaPro.getTableHeader().setForeground(Color.white);
-        jtListaPro.setFont(new Font("Corbel", Font.PLAIN, 12));
-        jtListaPro.getTableHeader().setBorder(new BevelBorder(BevelBorder.RAISED, new Color(0, 102, 102), new Color(0, 51, 51)));
-        jtListaPro.setBorder(new BevelBorder(BevelBorder.RAISED, new Color(0, 102, 102), new Color(0, 51, 51)));
-
-    }
 
     public DefaultTableModel Modelo = new DefaultTableModel(
             null,
@@ -56,16 +42,19 @@ public class Menu extends javax.swing.JFrame {
         }
     };
 
+    private void llenarTabla() {
+        for (Producto pro : pd.listarProducto()) {
+            Modelo.addRow(new Object[]{pro.getIdProducto(), pro.getNombreProducto(),
+                pro.getDescripcion(), pro.getPrecioActual(), pro.getStock()});
+            jtListaPro.setModel(Modelo);
+        }
+    }
+
     public Menu() {
         initComponents();
         this.setLocationRelativeTo(null);
-        llenarTabla();
-        text1.setText("<html>Registrar productos: Los usuarios podrán agregar nuevos productos al inventario proporcionando información como nombre, descripción, precio y cantidad disponible</html>");
-        text2.setText("<html>Realizar ventas: Los usuarios podrán registrar las ventas de productos a los clientes. el cliente que realiza la compra y la fecha de venta</html>");
-        text3.setText("<html>Administrar Clientes: Los usuarios podrán agregar, modificar y eliminar información de los clientes, como nombre, apellido, dirección y número de teléfono</html>");
-        textA.setText("<html>Ingresar nuevos productos a la base de datos</html>");
-        textM.setText("<html>Actualizar los datos de los productos en la base de datos</html>");
-        textE.setText("<html>Borrado logico de los productos en la base de datos</html>");
+        jtListaPro.setModel(Modelo);
+        llenarText();
     }
 
     /**
@@ -119,7 +108,23 @@ public class Menu extends javax.swing.JFrame {
         jtpVentas = new javax.swing.JPanel();
         jLabel2 = new javax.swing.JLabel();
         jtpClientes = new javax.swing.JPanel();
-        jLabel3 = new javax.swing.JLabel();
+        jlListarCliente = new javax.swing.JLabel();
+        jLabel25 = new javax.swing.JLabel();
+        jLabel26 = new javax.swing.JLabel();
+        jLabel27 = new javax.swing.JLabel();
+        jlAgregarCliente = new javax.swing.JLabel();
+        jlModificarCliente = new javax.swing.JLabel();
+        jlEliminarCliente = new javax.swing.JLabel();
+        jLabel28 = new javax.swing.JLabel();
+        textClienteE = new javax.swing.JLabel();
+        textClienteM = new javax.swing.JLabel();
+        textClienteA = new javax.swing.JLabel();
+        jLabel29 = new javax.swing.JLabel();
+        jLabel30 = new javax.swing.JLabel();
+        jLabel31 = new javax.swing.JLabel();
+        jLabel32 = new javax.swing.JLabel();
+        jLabel33 = new javax.swing.JLabel();
+        jLabel34 = new javax.swing.JLabel();
         jtpProductos = new javax.swing.JPanel();
         jlListar = new javax.swing.JLabel();
         jLabel20 = new javax.swing.JLabel();
@@ -141,7 +146,7 @@ public class Menu extends javax.swing.JFrame {
         jtpListaP = new javax.swing.JPanel();
         jLabel24 = new javax.swing.JLabel();
         Scroll = new javax.swing.JScrollPane();
-        jtListaPro = new javax.swing.JTable();
+        jtListaPro = new TablaFraveMax();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setUndecorated(true);
@@ -528,10 +533,152 @@ public class Menu extends javax.swing.JFrame {
         jtpClientes.setBackground(new java.awt.Color(255, 255, 255));
         jtpClientes.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jLabel3.setFont(new java.awt.Font("Corbel", 0, 36)); // NOI18N
-        jLabel3.setForeground(new java.awt.Color(102, 102, 102));
-        jLabel3.setText("Clientes");
-        jtpClientes.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(219, 144, -1, -1));
+        jlListarCliente.setBackground(new java.awt.Color(0, 150, 136));
+        jlListarCliente.setFont(new java.awt.Font("Corbel", 1, 14)); // NOI18N
+        jlListarCliente.setForeground(new java.awt.Color(255, 255, 255));
+        jlListarCliente.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jlListarCliente.setText("Listar Clientes");
+        jlListarCliente.setVerticalAlignment(javax.swing.SwingConstants.BOTTOM);
+        jlListarCliente.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED, null, new java.awt.Color(0, 150, 136), null, null));
+        jlListarCliente.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jlListarCliente.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        jlListarCliente.setOpaque(true);
+        jlListarCliente.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
+        jlListarCliente.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jlListarClienteMouseClicked(evt);
+            }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                jlListarClienteMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                jlListarClienteMouseExited(evt);
+            }
+        });
+        jtpClientes.add(jlListarCliente, new org.netbeans.lib.awtextra.AbsoluteConstraints(460, 40, 120, 30));
+
+        jLabel25.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel25.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Image/borrar-usuario.png"))); // NOI18N
+        jtpClientes.add(jLabel25, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 60, 180, 150));
+
+        jLabel26.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel26.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Image/agregar-usuario.png"))); // NOI18N
+        jtpClientes.add(jLabel26, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 60, 180, 150));
+
+        jLabel27.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel27.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Image/editar-usuario.png"))); // NOI18N
+        jtpClientes.add(jLabel27, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 60, 180, 150));
+
+        jlAgregarCliente.setBackground(new java.awt.Color(0, 150, 136));
+        jlAgregarCliente.setFont(new java.awt.Font("Corbel", 1, 14)); // NOI18N
+        jlAgregarCliente.setForeground(new java.awt.Color(255, 255, 255));
+        jlAgregarCliente.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jlAgregarCliente.setText("Agregar");
+        jlAgregarCliente.setVerticalAlignment(javax.swing.SwingConstants.BOTTOM);
+        jlAgregarCliente.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED, null, new java.awt.Color(0, 150, 136), null, null));
+        jlAgregarCliente.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jlAgregarCliente.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        jlAgregarCliente.setOpaque(true);
+        jlAgregarCliente.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
+        jlAgregarCliente.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                jlAgregarClienteMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                jlAgregarClienteMouseExited(evt);
+            }
+        });
+        jtpClientes.add(jlAgregarCliente, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 340, 80, 30));
+
+        jlModificarCliente.setBackground(new java.awt.Color(0, 150, 136));
+        jlModificarCliente.setFont(new java.awt.Font("Corbel", 1, 14)); // NOI18N
+        jlModificarCliente.setForeground(new java.awt.Color(255, 255, 255));
+        jlModificarCliente.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jlModificarCliente.setText("Modificar");
+        jlModificarCliente.setVerticalAlignment(javax.swing.SwingConstants.BOTTOM);
+        jlModificarCliente.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED, null, new java.awt.Color(0, 150, 136), null, null));
+        jlModificarCliente.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jlModificarCliente.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        jlModificarCliente.setOpaque(true);
+        jlModificarCliente.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
+        jlModificarCliente.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                jlModificarClienteMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                jlModificarClienteMouseExited(evt);
+            }
+        });
+        jtpClientes.add(jlModificarCliente, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 340, 80, 30));
+
+        jlEliminarCliente.setBackground(new java.awt.Color(0, 150, 136));
+        jlEliminarCliente.setFont(new java.awt.Font("Corbel", 1, 14)); // NOI18N
+        jlEliminarCliente.setForeground(new java.awt.Color(255, 255, 255));
+        jlEliminarCliente.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jlEliminarCliente.setText("Eliminar");
+        jlEliminarCliente.setVerticalAlignment(javax.swing.SwingConstants.BOTTOM);
+        jlEliminarCliente.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED, null, new java.awt.Color(0, 150, 136), null, null));
+        jlEliminarCliente.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jlEliminarCliente.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        jlEliminarCliente.setOpaque(true);
+        jlEliminarCliente.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
+        jlEliminarCliente.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                jlEliminarClienteMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                jlEliminarClienteMouseExited(evt);
+            }
+        });
+        jtpClientes.add(jlEliminarCliente, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 340, 80, 30));
+
+        jLabel28.setFont(new java.awt.Font("Corbel", 1, 30)); // NOI18N
+        jLabel28.setForeground(new java.awt.Color(153, 153, 153));
+        jLabel28.setText("Gestion de Clientes");
+        jtpClientes.add(jLabel28, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 40, 330, 30));
+
+        textClienteE.setFont(new java.awt.Font("Corbel", 0, 12)); // NOI18N
+        textClienteE.setForeground(new java.awt.Color(153, 153, 153));
+        textClienteE.setVerticalAlignment(javax.swing.SwingConstants.TOP);
+        jtpClientes.add(textClienteE, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 240, 150, 90));
+
+        textClienteM.setFont(new java.awt.Font("Corbel", 0, 12)); // NOI18N
+        textClienteM.setForeground(new java.awt.Color(153, 153, 153));
+        textClienteM.setVerticalAlignment(javax.swing.SwingConstants.TOP);
+        jtpClientes.add(textClienteM, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 240, 150, 90));
+
+        textClienteA.setFont(new java.awt.Font("Corbel", 0, 12)); // NOI18N
+        textClienteA.setForeground(new java.awt.Color(153, 153, 153));
+        textClienteA.setVerticalAlignment(javax.swing.SwingConstants.TOP);
+        jtpClientes.add(textClienteA, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 240, 150, 90));
+
+        jLabel29.setFont(new java.awt.Font("Corbel", 1, 18)); // NOI18N
+        jLabel29.setForeground(new java.awt.Color(102, 102, 102));
+        jLabel29.setText("Modificar ");
+        jtpClientes.add(jLabel29, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 200, 80, -1));
+
+        jLabel30.setFont(new java.awt.Font("Corbel", 1, 18)); // NOI18N
+        jLabel30.setForeground(new java.awt.Color(102, 102, 102));
+        jLabel30.setText("Eliminar ");
+        jtpClientes.add(jLabel30, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 200, -1, -1));
+
+        jLabel31.setFont(new java.awt.Font("Corbel", 1, 18)); // NOI18N
+        jLabel31.setForeground(new java.awt.Color(102, 102, 102));
+        jLabel31.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel31.setText("Agregar ");
+        jtpClientes.add(jLabel31, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 200, -1, -1));
+
+        jLabel32.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel32.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Image/rectangulo.jpg"))); // NOI18N
+        jtpClientes.add(jLabel32, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 110, -1, -1));
+
+        jLabel33.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel33.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Image/rectangulo.jpg"))); // NOI18N
+        jtpClientes.add(jLabel33, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 110, -1, -1));
+
+        jLabel34.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel34.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Image/rectangulo.jpg"))); // NOI18N
+        jtpClientes.add(jLabel34, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 110, -1, -1));
 
         jtpEscritorio.addTab("tab3", jtpClientes);
 
@@ -910,7 +1057,44 @@ public class Menu extends javax.swing.JFrame {
 
     private void jlListarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jlListarMouseClicked
         jtpEscritorio.setSelectedIndex(4);
+        llenarTabla();
     }//GEN-LAST:event_jlListarMouseClicked
+
+    private void jlListarClienteMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jlListarClienteMouseClicked
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jlListarClienteMouseClicked
+
+    private void jlListarClienteMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jlListarClienteMouseEntered
+        jlListarCliente.setBackground(new Color(10, 170, 140));
+    }//GEN-LAST:event_jlListarClienteMouseEntered
+
+    private void jlListarClienteMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jlListarClienteMouseExited
+        jlListarCliente.setBackground(new Color(0, 150, 136));
+    }//GEN-LAST:event_jlListarClienteMouseExited
+
+    private void jlAgregarClienteMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jlAgregarClienteMouseEntered
+        jlAgregarCliente.setBackground(new Color(10, 170, 140));
+    }//GEN-LAST:event_jlAgregarClienteMouseEntered
+
+    private void jlAgregarClienteMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jlAgregarClienteMouseExited
+        jlAgregarCliente.setBackground(new Color(0, 150, 136));
+    }//GEN-LAST:event_jlAgregarClienteMouseExited
+
+    private void jlModificarClienteMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jlModificarClienteMouseEntered
+        jlModificarCliente.setBackground(new Color(10, 170, 140));
+    }//GEN-LAST:event_jlModificarClienteMouseEntered
+
+    private void jlModificarClienteMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jlModificarClienteMouseExited
+        jlModificarCliente.setBackground(new Color(0, 150, 136));
+    }//GEN-LAST:event_jlModificarClienteMouseExited
+
+    private void jlEliminarClienteMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jlEliminarClienteMouseEntered
+        jlEliminarCliente.setBackground(new Color(10, 170, 140));
+    }//GEN-LAST:event_jlEliminarClienteMouseEntered
+
+    private void jlEliminarClienteMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jlEliminarClienteMouseExited
+        jlEliminarCliente.setBackground(new Color(0, 150, 136));
+    }//GEN-LAST:event_jlEliminarClienteMouseExited
 
     /**
      * @param args the command line arguments
@@ -970,7 +1154,16 @@ public class Menu extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel22;
     private javax.swing.JLabel jLabel23;
     private javax.swing.JLabel jLabel24;
-    private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel25;
+    private javax.swing.JLabel jLabel26;
+    private javax.swing.JLabel jLabel27;
+    private javax.swing.JLabel jLabel28;
+    private javax.swing.JLabel jLabel29;
+    private javax.swing.JLabel jLabel30;
+    private javax.swing.JLabel jLabel31;
+    private javax.swing.JLabel jLabel32;
+    private javax.swing.JLabel jLabel33;
+    private javax.swing.JLabel jLabel34;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
@@ -988,13 +1181,17 @@ public class Menu extends javax.swing.JFrame {
     private javax.swing.JSeparator jSeparator1;
     private javax.swing.JSeparator jSeparator2;
     private javax.swing.JLabel jlAgregar;
+    private javax.swing.JLabel jlAgregarCliente;
     private javax.swing.JLabel jlCerrarSesion;
     private javax.swing.JLabel jlClientes;
     private javax.swing.JLabel jlEliminar;
+    private javax.swing.JLabel jlEliminarCliente;
     private javax.swing.JLabel jlInicio;
     private javax.swing.JLabel jlListar;
+    private javax.swing.JLabel jlListarCliente;
     private javax.swing.JLabel jlMinimizar;
     private javax.swing.JLabel jlModificar;
+    private javax.swing.JLabel jlModificarCliente;
     private javax.swing.JLabel jlNombreUsuario;
     private javax.swing.JLabel jlProductos;
     private javax.swing.JLabel jlSalir;
@@ -1010,6 +1207,9 @@ public class Menu extends javax.swing.JFrame {
     private javax.swing.JLabel text2;
     private javax.swing.JLabel text3;
     private javax.swing.JLabel textA;
+    private javax.swing.JLabel textClienteA;
+    private javax.swing.JLabel textClienteE;
+    private javax.swing.JLabel textClienteM;
     private javax.swing.JLabel textE;
     private javax.swing.JLabel textM;
     private javax.swing.JLabel verMasC;
@@ -1018,8 +1218,20 @@ public class Menu extends javax.swing.JFrame {
     // End of variables declaration//GEN-END:variables
 
     private void borrarFila() {
-        for (int f = jtListaPro.getRowCount() - 1; f >= 0; f--) {
-            Modelo.removeRow(f);
-        }
+            for (int f = jtListaPro.getRowCount() - 1; f >= 0; f--) {
+                Modelo.removeRow(f);
+            }
+    }
+
+    private void llenarText() {
+        text1.setText("<html>Registrar productos: Los usuarios podrán agregar nuevos productos al inventario proporcionando información como nombre, descripción, precio y cantidad disponible</html>");
+        text2.setText("<html>Realizar ventas: Los usuarios podrán registrar las ventas de productos a los clientes. el cliente que realiza la compra y la fecha de venta</html>");
+        text3.setText("<html>Administrar Clientes: Los usuarios podrán agregar, modificar y eliminar información de los clientes, como nombre, apellido, dirección y número de teléfono</html>");
+        textA.setText("<html>Ingresar nuevos productos a la base de datos</html>");
+        textM.setText("<html>Actualizar los datos de los productos en la base de datos</html>");
+        textE.setText("<html>Borrado logico de los productos en la base de datos</html>");
+        textClienteA.setText("<html> Agregar, actualizar y eliminar Clientes.</html>");
+        textClienteM.setText("<html> Modificar datos de los Clientes.</html>");
+        textClienteE.setText("<html> Eliminar Clientes.</html>");
     }
 }
