@@ -40,9 +40,9 @@ public class Registro extends javax.swing.JFrame {
         jlFravemax = new javax.swing.JLabel();
         jLMinimiza = new javax.swing.JLabel();
         jLCierra = new javax.swing.JLabel();
-        jLabel3 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
         jLTitulo = new javax.swing.JLabel();
+        jLabel1 = new javax.swing.JLabel();
         jPDatos = new javax.swing.JPanel();
         jLApellido = new javax.swing.JLabel();
         jLNombre = new javax.swing.JLabel();
@@ -71,7 +71,7 @@ public class Registro extends javax.swing.JFrame {
         jlFravemax.setFont(new java.awt.Font("Corbel", 1, 14)); // NOI18N
         jlFravemax.setForeground(new java.awt.Color(255, 255, 255));
         jlFravemax.setText("FRAVEMAX");
-        jPFravemax.add(jlFravemax, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 70, 80, 30));
+        jPFravemax.add(jlFravemax, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 80, 80, 20));
 
         jLMinimiza.setFont(new java.awt.Font("Microsoft Yi Baiti", 1, 24)); // NOI18N
         jLMinimiza.setForeground(new java.awt.Color(255, 255, 255));
@@ -109,9 +109,6 @@ public class Registro extends javax.swing.JFrame {
         });
         jPFravemax.add(jLCierra, new org.netbeans.lib.awtextra.AbsoluteConstraints(530, 0, 40, 30));
 
-        jLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Image/fravemax.png"))); // NOI18N
-        jPFravemax.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 0, 110, 80));
-
         jLabel4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Image/usuarios-alt.png"))); // NOI18N
         jPFravemax.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 0, 77, 91));
 
@@ -119,6 +116,9 @@ public class Registro extends javax.swing.JFrame {
         jLTitulo.setForeground(new java.awt.Color(255, 255, 255));
         jLTitulo.setText("Registro de Usuario");
         jPFravemax.add(jLTitulo, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 80, -1, -1));
+
+        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Image/fravemax.png"))); // NOI18N
+        jPFravemax.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 10, 80, 70));
 
         jPDatos.setBackground(new java.awt.Color(51, 51, 76));
         jPDatos.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -392,8 +392,8 @@ public class Registro extends javax.swing.JFrame {
     private javax.swing.JLabel jLTitulo;
     private javax.swing.JLabel jLUsuario;
     private javax.swing.JLabel jLVolver;
+    private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JPanel jPCargar;
     private javax.swing.JPanel jPDatos;
