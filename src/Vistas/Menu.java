@@ -1230,8 +1230,8 @@ public class Menu extends javax.swing.JFrame {
         textA.setText("<html>Ingresar nuevos productos a la base de datos</html>");
         textM.setText("<html>Actualizar los datos de los productos en la base de datos</html>");
         textE.setText("<html>Borrado logico de los productos en la base de datos</html>");
-        textClienteA.setText("<html> Agregar, actualizar y eliminar Clientes.</html>");
-        textClienteM.setText("<html> Modificar datos de los Clientes.</html>");
-        textClienteE.setText("<html> Eliminar Clientes.</html>");
+        textClienteA.setText("<html> Registrar Clientes: Permite agregar Clientes nuevos, ingresando nombre, apellido....</html>");
+        textClienteM.setText("<html> Modificar datos: Permite modificar la informacion almacenda de los Clientes.</html>");
+        textClienteE.setText("<html> Eliminar Clientes: Permite eliminar a los Clientes de manera Lógica.</html>");
     }
 }
