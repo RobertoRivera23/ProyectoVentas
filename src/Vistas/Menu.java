@@ -79,7 +79,6 @@ public class Menu extends javax.swing.JFrame {
         jSeparator2 = new javax.swing.JSeparator();
         jPanelUsuario = new javax.swing.JPanel();
         jLabel5 = new javax.swing.JLabel();
-        jlNombreUsuario = new javax.swing.JLabel();
         jPanelOpciones = new javax.swing.JPanel();
         jPanelProductos = new javax.swing.JPanel();
         jlProductos = new javax.swing.JLabel();
@@ -236,18 +235,17 @@ public class Menu extends javax.swing.JFrame {
         jPanelUsuario.setBackground(new java.awt.Color(0, 150, 136));
         jPanelUsuario.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
+        jLabel5.setFont(new java.awt.Font("Corbel", 1, 14)); // NOI18N
+        jLabel5.setForeground(new java.awt.Color(255, 255, 255));
         jLabel5.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Image/circulo-de-usuario.png"))); // NOI18N
+        jLabel5.setText("Nombre de Usuario");
         jLabel5.setToolTipText("");
-        jPanelUsuario.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 200, 90));
-
-        jlNombreUsuario.setFont(new java.awt.Font("Corbel", 1, 14)); // NOI18N
-        jlNombreUsuario.setForeground(new java.awt.Color(255, 255, 255));
-        jlNombreUsuario.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jlNombreUsuario.setText("nombre de usuario");
-        jlNombreUsuario.setVerticalAlignment(javax.swing.SwingConstants.BOTTOM);
-        jlNombreUsuario.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
-        jPanelUsuario.add(jlNombreUsuario, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, -2, 200, 100));
+        jLabel5.setVerticalAlignment(javax.swing.SwingConstants.BOTTOM);
+        jLabel5.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        jLabel5.setIconTextGap(6);
+        jLabel5.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
+        jPanelUsuario.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 200, 100));
 
         jPanelFravemax.add(jPanelUsuario, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 200, 100));
 
@@ -1206,7 +1204,6 @@ public class Menu extends javax.swing.JFrame {
     private javax.swing.JLabel jlMinimizar;
     private javax.swing.JLabel jlModificar;
     private javax.swing.JLabel jlModificarCliente;
-    private javax.swing.JLabel jlNombreUsuario;
     private javax.swing.JLabel jlProductos;
     private javax.swing.JLabel jlSalir;
     private javax.swing.JLabel jlVentas;
