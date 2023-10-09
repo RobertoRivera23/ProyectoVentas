@@ -8,6 +8,7 @@ package Vistas;
 import AccesoDatos.EmpleadoData;
 import Entidades.Empleado;
 import java.awt.Color;
+import java.awt.event.KeyEvent;
 import javax.swing.JOptionPane;
 import javax.swing.UIManager;
 
@@ -17,13 +18,17 @@ import javax.swing.UIManager;
  */
 public class Registro extends javax.swing.JFrame {
 
+    private String password;
     /**
      * Creates new form Registro
      */
     public Registro() {
         initComponents();
-         this.setLocationRelativeTo(null);
+        this.setLocationRelativeTo(null);
         cargarCombo();
+        jRMostrar.setSelected(false);
+        jPContraseña.setText("             ");
+      
     }
 
     /**
@@ -54,12 +59,13 @@ public class Registro extends javax.swing.JFrame {
         jTFNombre = new javax.swing.JTextField();
         jTFDni = new javax.swing.JTextField();
         jTFUsuario = new javax.swing.JTextField();
-        jTContraseña = new javax.swing.JTextField();
         jCBCargo = new javax.swing.JComboBox<>();
         jPVolver = new javax.swing.JPanel();
         jLVolver = new javax.swing.JLabel();
         jPCargar = new javax.swing.JPanel();
         jLabel2 = new javax.swing.JLabel();
+        jRMostrar = new javax.swing.JRadioButton();
+        jPContraseña = new javax.swing.JPasswordField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -126,7 +132,7 @@ public class Registro extends javax.swing.JFrame {
         jLApellido.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         jLApellido.setForeground(new java.awt.Color(255, 255, 255));
         jLApellido.setText("Apellido:");
-        jPDatos.add(jLApellido, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 40, -1, -1));
+        jPDatos.add(jLApellido, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 50, -1, -1));
 
         jLNombre.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         jLNombre.setForeground(new java.awt.Color(255, 255, 255));
@@ -154,19 +160,31 @@ public class Registro extends javax.swing.JFrame {
         jPDatos.add(jLContraseña, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 260, -1, -1));
 
         jTFApellido.setForeground(new java.awt.Color(51, 51, 76));
+        jTFApellido.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                jTFApellidoKeyTyped(evt);
+            }
+        });
         jPDatos.add(jTFApellido, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 40, 238, -1));
 
         jTFNombre.setForeground(new java.awt.Color(51, 51, 76));
+        jTFNombre.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                jTFNombreKeyTyped(evt);
+            }
+        });
         jPDatos.add(jTFNombre, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 80, 238, -1));
 
         jTFDni.setForeground(new java.awt.Color(51, 51, 76));
+        jTFDni.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                jTFDniKeyTyped(evt);
+            }
+        });
         jPDatos.add(jTFDni, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 120, 238, -1));
 
         jTFUsuario.setForeground(new java.awt.Color(51, 51, 76));
         jPDatos.add(jTFUsuario, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 210, 238, -1));
-
-        jTContraseña.setForeground(new java.awt.Color(51, 51, 76));
-        jPDatos.add(jTContraseña, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 250, 238, -1));
 
         jPDatos.add(jCBCargo, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 160, 238, -1));
 
@@ -243,6 +261,25 @@ public class Registro extends javax.swing.JFrame {
 
         jPDatos.add(jPCargar, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 310, -1, -1));
 
+        jRMostrar.setBackground(new java.awt.Color(51, 51, 76));
+        jRMostrar.setFont(new java.awt.Font("Corbel", 1, 12)); // NOI18N
+        jRMostrar.setForeground(new java.awt.Color(255, 255, 255));
+        jRMostrar.setText("Mostrar");
+        jRMostrar.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                jRMostrarMousePressed(evt);
+            }
+        });
+        jPDatos.add(jRMostrar, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 250, 80, -1));
+
+        jPContraseña.setText("jPasswordField1");
+        jPContraseña.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                jPContraseñaKeyTyped(evt);
+            }
+        });
+        jPDatos.add(jPContraseña, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 250, 240, -1));
+
         javax.swing.GroupLayout jPFondoLayout = new javax.swing.GroupLayout(jPFondo);
         jPFondo.setLayout(jPFondoLayout);
         jPFondoLayout.setHorizontalGroup(
@@ -281,12 +318,12 @@ public class Registro extends javax.swing.JFrame {
 
     private void jLMinimizaMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLMinimizaMouseEntered
         jLMinimiza.setOpaque(true);
-        jLMinimiza.setBackground(new Color(10,160,140));
+        jLMinimiza.setBackground(new Color(10, 160, 140));
     }//GEN-LAST:event_jLMinimizaMouseEntered
 
     private void jLMinimizaMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLMinimizaMouseExited
         jLMinimiza.setOpaque(false);
-        jLMinimiza.setBackground(new Color(0,150,136));
+        jLMinimiza.setBackground(new Color(0, 150, 136));
     }//GEN-LAST:event_jLMinimizaMouseExited
 
     private void jLCierraMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLCierraMouseClicked
@@ -300,11 +337,11 @@ public class Registro extends javax.swing.JFrame {
 
     private void jLCierraMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLCierraMouseExited
         jLCierra.setOpaque(false);
-        jLCierra.setBackground(new Color(0,150,136));
+        jLCierra.setBackground(new Color(0, 150, 136));
     }//GEN-LAST:event_jLCierraMouseExited
 
     private void jPVolverMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPVolverMouseEntered
-        jPVolver.setBackground(new Color(66,66,76));
+        jPVolver.setBackground(new Color(66, 66, 76));
     }//GEN-LAST:event_jPVolverMouseEntered
 
     private void jPVolverMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPVolverMouseExited
@@ -312,42 +349,115 @@ public class Registro extends javax.swing.JFrame {
     }//GEN-LAST:event_jPVolverMouseExited
 
     private void jPCargarMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPCargarMouseEntered
-        jPCargar.setBackground(new Color(66,66,76));
+        jPCargar.setBackground(new Color(66, 66, 76));
     }//GEN-LAST:event_jPCargarMouseEntered
 
     private void jPCargarMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPCargarMouseExited
-       jPCargar.setBackground(new Color(51, 51, 76));
+        jPCargar.setBackground(new Color(51, 51, 76));
     }//GEN-LAST:event_jPCargarMouseExited
 
     private void jPVolverMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPVolverMouseClicked
-       System.exit(0);
+        System.exit(0);
     }//GEN-LAST:event_jPVolverMouseClicked
 
     private void jPCargarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPCargarMouseClicked
-       if(jTFApellido.getText().isEmpty() || jTFNombre.getText().isEmpty() || jTFDni.getText().isEmpty() || 
-               ((String) jCBCargo.getSelectedItem()).isEmpty() || jTFUsuario.getText().isEmpty() || jTContraseña.getText().isEmpty()){
-           JOptionPane.showMessageDialog(this, "No puede haber campos vacios.");
-       } else {
-        EmpleadoData empleadoD = new EmpleadoData();
-        Empleado empleado = empleadoD.buscarEmpleadoPorDni(Integer.parseInt(jTFDni.getText()));
-        if(empleado == null){
-        empleado = new Empleado();
-        empleado.setApellido(jTFApellido.getText());
-        empleado.setNombre(jTFNombre.getText());
-        empleado.setDni(Integer.parseInt(jTFDni.getText()));
-        empleado.setCargo((String)jCBCargo.getSelectedItem());
-        empleado.setUsuario(jTFUsuario.getText());
-        empleado.setContraenia(jTContraseña.getText());
-        empleado.setEstado(true);
-        empleadoD.guardarEmpleado(empleado);
-        limpiarCampos();
-       }
+        if (jTFApellido.getText().isEmpty() || jTFNombre.getText().isEmpty() || jTFDni.getText().isEmpty()
+                || ((String) jCBCargo.getSelectedItem()).isEmpty() || jTFUsuario.getText().isEmpty() || jPContraseña.getText().isEmpty()) {
+            JOptionPane.showMessageDialog(this, "No puede haber campos vacios.");
+        } else {
+            EmpleadoData empleadoD = new EmpleadoData();
+            Empleado empleado = empleadoD.buscarEmpleadoPorDni(Integer.parseInt(jTFDni.getText()));
+            if (empleado == null) {
+                empleado = new Empleado();
+                empleado.setApellido(jTFApellido.getText());
+                empleado.setNombre(jTFNombre.getText());
+                empleado.setDni(Integer.parseInt(jTFDni.getText()));
+                empleado.setCargo((String) jCBCargo.getSelectedItem());
+               
+                empleado.setUsuario(jTFUsuario.getText());
+                empleado.setContraenia(jPContraseña.getText());
+                empleado.setEstado(true);
+                empleadoD.guardarEmpleado(empleado);
+                limpiarCampos();
+            }
+        }
     }//GEN-LAST:event_jPCargarMouseClicked
 
-    /**
-     * @param args the command line arguments               NO ME DEJA USAR MAIN !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
-      */
-       //public static void main(String args[]) {
+    private void jTFApellidoKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTFApellidoKeyTyped
+        controlLetras(evt);
+    }//GEN-LAST:event_jTFApellidoKeyTyped
+
+    private void jTFNombreKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTFNombreKeyTyped
+        controlLetras(evt);
+    }//GEN-LAST:event_jTFNombreKeyTyped
+
+    private void jTFDniKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTFDniKeyTyped
+        if (jTFDni.getText().length() <= 10) {
+            controlNumeros(evt);
+        } else {
+            evt.consume();
+        }
+    }//GEN-LAST:event_jTFDniKeyTyped
+
+
+    private void jPContraseñaKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jPContraseñaKeyTyped
+        
+    }//GEN-LAST:event_jPContraseñaKeyTyped
+
+    private void jRMostrarMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jRMostrarMousePressed
+        if(jRMostrar.isSelected()== false){
+        jPContraseña.setEchoChar((char)0);
+        } else {
+        jPContraseña.setEchoChar('*');
+        }       
+    }//GEN-LAST:event_jRMostrarMousePressed
+
+
+    // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JComboBox<String> jCBCargo;
+    private javax.swing.JLabel jLApellido;
+    private javax.swing.JLabel jLCargo;
+    private javax.swing.JLabel jLCierra;
+    private javax.swing.JLabel jLContraseña;
+    private javax.swing.JLabel jLMinimiza;
+    private javax.swing.JLabel jLNombre;
+    private javax.swing.JLabel jLNombre1;
+    private javax.swing.JLabel jLTitulo;
+    private javax.swing.JLabel jLUsuario;
+    private javax.swing.JLabel jLVolver;
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel4;
+    private javax.swing.JPanel jPCargar;
+    private javax.swing.JPasswordField jPContraseña;
+    private javax.swing.JPanel jPDatos;
+    private javax.swing.JPanel jPFondo;
+    private javax.swing.JPanel jPFravemax;
+    private javax.swing.JPanel jPVolver;
+    private javax.swing.JRadioButton jRMostrar;
+    private javax.swing.JTextField jTFApellido;
+    private javax.swing.JTextField jTFDni;
+    private javax.swing.JTextField jTFNombre;
+    private javax.swing.JTextField jTFUsuario;
+    private javax.swing.JLabel jlFravemax;
+    // End of variables declaration//GEN-END:variables
+
+    public void cargarCombo() {
+        jCBCargo.addItem("");
+        jCBCargo.addItem("Vendedor");
+        jCBCargo.addItem("Supervisor");
+    }
+
+    public void limpiarCampos() {
+        jTFApellido.setText("");
+        jTFNombre.setText("");
+        jTFUsuario.setText("");
+        jPContraseña.setText("");
+        jRMostrar.setSelected(false);
+        jRMostrar.setSelected(false);
+    }
+
+    public static void main(String[] args) {
         /* Set the Nimbus look and feel */
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
         /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
@@ -380,44 +490,23 @@ public class Registro extends javax.swing.JFrame {
         });
     }
 
-    // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JComboBox<String> jCBCargo;
-    private javax.swing.JLabel jLApellido;
-    private javax.swing.JLabel jLCargo;
-    private javax.swing.JLabel jLCierra;
-    private javax.swing.JLabel jLContraseña;
-    private javax.swing.JLabel jLMinimiza;
-    private javax.swing.JLabel jLNombre;
-    private javax.swing.JLabel jLNombre1;
-    private javax.swing.JLabel jLTitulo;
-    private javax.swing.JLabel jLUsuario;
-    private javax.swing.JLabel jLVolver;
-    private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel4;
-    private javax.swing.JPanel jPCargar;
-    private javax.swing.JPanel jPDatos;
-    private javax.swing.JPanel jPFondo;
-    private javax.swing.JPanel jPFravemax;
-    private javax.swing.JPanel jPVolver;
-    private javax.swing.JTextField jTContraseña;
-    private javax.swing.JTextField jTFApellido;
-    private javax.swing.JTextField jTFDni;
-    private javax.swing.JTextField jTFNombre;
-    private javax.swing.JTextField jTFUsuario;
-    private javax.swing.JLabel jlFravemax;
-    // End of variables declaration//GEN-END:variables
-
-    public void cargarCombo(){
-        jCBCargo.addItem("");
-        jCBCargo.addItem("Vendedor");
-        jCBCargo.addItem("Supervisor");
+    public void controlLetras(java.awt.event.KeyEvent evt) {
+        if (!Character.isLetter(evt.getKeyChar())
+                && !(evt.getKeyChar() == KeyEvent.VK_SPACE)
+                && !(evt.getKeyChar() == KeyEvent.VK_BACK_SPACE)) {
+            evt.consume();
+        }
     }
-    
-    public void limpiarCampos(){
-        jTFApellido.setText("");
-        jTFNombre.setText("");
-        jTFUsuario.setText("");
-        jTContraseña.setText("");
+
+    public void controlNumeros(java.awt.event.KeyEvent evt) {
+        if (Character.isLetter(evt.getKeyChar())
+                && !(evt.getKeyChar() == KeyEvent.VK_SPACE)) {
+            evt.consume();
+        }
+    }
+
+    public String usuario(String usuario){
+        
+        return usuario;
     }
 }
