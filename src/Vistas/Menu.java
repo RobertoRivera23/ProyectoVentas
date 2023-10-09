@@ -10,6 +10,7 @@ import Entidades.Producto;
 import Utilidades.TablaFraveMax;
 import java.awt.Color;
 import java.awt.Cursor;
+import javax.swing.ImageIcon;
 import javax.swing.UIManager;
 import javax.swing.table.DefaultTableModel;
 
@@ -161,7 +162,8 @@ public class Menu extends javax.swing.JFrame {
         jLabel24 = new javax.swing.JLabel();
         Scroll = new javax.swing.JScrollPane();
         jtListaPro = new TablaFraveMax();
-        jComboBox1 = new javax.swing.JComboBox<>();
+        jTextField1 = new javax.swing.JTextField();
+        jlBusqueda = new javax.swing.JLabel();
         jPanel1 = new javax.swing.JPanel();
         jLAgregarProducto = new javax.swing.JLabel();
         jLNombreProductoAP = new javax.swing.JLabel();
@@ -1016,6 +1018,7 @@ public class Menu extends javax.swing.JFrame {
         Scroll.setFont(new java.awt.Font("Corbel", 0, 12)); // NOI18N
 
         jtListaPro.setBackground(new java.awt.Color(204, 204, 204));
+        jtListaPro.setFont(new java.awt.Font("Corbel", 1, 14)); // NOI18N
         jtListaPro.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null},
@@ -1028,16 +1031,28 @@ public class Menu extends javax.swing.JFrame {
             }
         ));
         jtListaPro.setGridColor(new java.awt.Color(0, 102, 102));
+        jtListaPro.setIntercellSpacing(new java.awt.Dimension(2, 2));
         Scroll.setViewportView(jtListaPro);
 
-        jtpListaP.add(Scroll, new org.netbeans.lib.awtextra.AbsoluteConstraints(13, 110, 570, 300));
+        jtpListaP.add(Scroll, new org.netbeans.lib.awtextra.AbsoluteConstraints(13, 120, 570, 290));
 
-        jComboBox1.setBackground(new java.awt.Color(51, 51, 76));
-        jComboBox1.setFont(new java.awt.Font("Corbel", 1, 12)); // NOI18N
-        jComboBox1.setForeground(new java.awt.Color(255, 255, 255));
-        jComboBox1.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED, null, new java.awt.Color(0, 102, 102), null, new java.awt.Color(0, 51, 51)));
-        jComboBox1.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
-        jtpListaP.add(jComboBox1, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 70, 230, -1));
+        jTextField1.setBackground(new java.awt.Color(255, 255, 255));
+        jTextField1.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
+        jtpListaP.add(jTextField1, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 80, 160, 30));
+
+        jlBusqueda.setBackground(new java.awt.Color(255, 255, 255));
+        jlBusqueda.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jlBusqueda.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Image/busqueda - gris.png"))); // NOI18N
+        jlBusqueda.setOpaque(true);
+        jlBusqueda.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                jlBusquedaMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                jlBusquedaMouseExited(evt);
+            }
+        });
+        jtpListaP.add(jlBusqueda, new org.netbeans.lib.awtextra.AbsoluteConstraints(550, 80, 30, 30));
 
         jtpEscritorio.addTab("tab5", jtpListaP);
 
@@ -1395,6 +1410,16 @@ public class Menu extends javax.swing.JFrame {
         jlListarVenta.setBackground(verdeBase);
     }//GEN-LAST:event_jlListarVentaMouseExited
 
+    private void jlBusquedaMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jlBusquedaMouseEntered
+        jlBusqueda.setBackground(verdeClaro);
+        jlBusqueda.setIcon(new ImageIcon(getClass().getResource("/Image/busqueda - blanco.png")));
+    }//GEN-LAST:event_jlBusquedaMouseEntered
+
+    private void jlBusquedaMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jlBusquedaMouseExited
+        jlBusqueda.setBackground(Color.white);
+        jlBusqueda.setIcon(new ImageIcon(getClass().getResource("/Image/busqueda - gris.png")));
+    }//GEN-LAST:event_jlBusquedaMouseExited
+
     /**
      * @param args the command line arguments
      */
@@ -1439,7 +1464,6 @@ public class Menu extends javax.swing.JFrame {
     private javax.swing.JLabel RegistrarVenta;
     private javax.swing.JScrollPane Scroll;
     private javax.swing.JLabel fravemaxLogo;
-    private javax.swing.JComboBox<String> jComboBox1;
     private javax.swing.JLabel jLAgregarProducto;
     private javax.swing.JLabel jLBtnAgregarProd;
     private javax.swing.JLabel jLDescripcionAP;
@@ -1494,8 +1518,10 @@ public class Menu extends javax.swing.JFrame {
     private javax.swing.JTextField jTFNombreProductoAgrProd;
     private javax.swing.JTextField jTFPrecioActualAgrProd;
     private javax.swing.JTextField jTFStockAgrProd;
+    private javax.swing.JTextField jTextField1;
     private javax.swing.JLabel jlAgregar;
     private javax.swing.JLabel jlAgregarCliente;
+    private javax.swing.JLabel jlBusqueda;
     private javax.swing.JLabel jlCerrarSesion;
     private javax.swing.JLabel jlClientes;
     private javax.swing.JLabel jlDetalles;

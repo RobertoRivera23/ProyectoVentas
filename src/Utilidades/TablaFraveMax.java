@@ -9,7 +9,6 @@ import java.awt.Font;
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
 import javax.swing.border.BevelBorder;
-import javax.swing.table.DefaultTableModel;
 
 /**
  *
@@ -24,7 +23,7 @@ public class TablaFraveMax extends JTable {
         this.getTableHeader().setFont(new Font("Corbel", Font.BOLD, 14));
         this.getTableHeader().setForeground(Color.white);
         this.setFont(new Font("Corbel", Font.PLAIN, 12));
-        this.getTableHeader().setBorder(new BevelBorder(BevelBorder.RAISED, new Color(0, 102, 102), new Color(0, 51, 51)));
+        //this.getTableHeader().setBorder(new BevelBorder(BevelBorder.RAISED, new Color(0, 102, 102), new Color(0, 51, 51)));
         this.setBorder(new BevelBorder(BevelBorder.RAISED, new Color(0, 102, 102), new Color(0, 51, 51)));
     }
     
