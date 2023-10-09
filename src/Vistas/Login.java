@@ -36,6 +36,8 @@ public class Login extends javax.swing.JFrame {
         jLFravemax = new javax.swing.JLabel();
         jLMinimiza = new javax.swing.JLabel();
         jLCierra = new javax.swing.JLabel();
+        jLIconoLogin = new javax.swing.JLabel();
+        jLabel2 = new javax.swing.JLabel();
         jPCuerpo = new javax.swing.JPanel();
         jLUsuario = new javax.swing.JLabel();
         jLContraseña = new javax.swing.JLabel();
@@ -43,12 +45,15 @@ public class Login extends javax.swing.JFrame {
         jCBCargo = new javax.swing.JComboBox<>();
         jTFUsuario = new javax.swing.JTextField();
         jTContraseña = new javax.swing.JTextField();
-        jLabel1 = new javax.swing.JLabel();
+        jLBtnIniciarSesion = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setLocationByPlatform(true);
         setUndecorated(true);
+        setPreferredSize(new java.awt.Dimension(570, 550));
         setResizable(false);
+
+        jPBackground.setPreferredSize(new java.awt.Dimension(570, 400));
 
         jPCabecera.setBackground(new java.awt.Color(0, 150, 136));
         jPCabecera.setPreferredSize(new java.awt.Dimension(456, 113));
@@ -69,7 +74,7 @@ public class Login extends javax.swing.JFrame {
 
         jLFravemax.setFont(new java.awt.Font("Corbel", 1, 14)); // NOI18N
         jLFravemax.setForeground(new java.awt.Color(255, 255, 255));
-        jLFravemax.setText("FRAVEMAX");
+        jLFravemax.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Image/fravemax.png"))); // NOI18N
 
         jLMinimiza.setFont(new java.awt.Font("Microsoft Yi Baiti", 1, 24)); // NOI18N
         jLMinimiza.setForeground(new java.awt.Color(255, 255, 255));
@@ -105,34 +110,52 @@ public class Login extends javax.swing.JFrame {
             }
         });
 
+        jLIconoLogin.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Image/usuarios-alt.png"))); // NOI18N
+
+        jLabel2.setFont(new java.awt.Font("Corbel", 1, 14)); // NOI18N
+        jLabel2.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel2.setText("FRAVEMAX");
+
         javax.swing.GroupLayout jPCabeceraLayout = new javax.swing.GroupLayout(jPCabecera);
         jPCabecera.setLayout(jPCabeceraLayout);
         jPCabeceraLayout.setHorizontalGroup(
             jPCabeceraLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPCabeceraLayout.createSequentialGroup()
-                .addGap(367, 367, 367)
-                .addComponent(jLLogin)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPCabeceraLayout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jLFravemax, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addComponent(jLMinimiza, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jLCierra, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(14, 14, 14))
+                .addGap(40, 40, 40)
+                .addGroup(jPCabeceraLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLFravemax)
+                    .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(126, 126, 126)
+                .addGroup(jPCabeceraLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPCabeceraLayout.createSequentialGroup()
+                        .addGap(14, 14, 14)
+                        .addComponent(jLLogin))
+                    .addGroup(jPCabeceraLayout.createSequentialGroup()
+                        .addComponent(jLIconoLogin)
+                        .addGap(200, 200, 200)
+                        .addComponent(jLMinimiza, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGap(1, 1, 1)
+                .addComponent(jLCierra, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
         jPCabeceraLayout.setVerticalGroup(
             jPCabeceraLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPCabeceraLayout.createSequentialGroup()
-                .addGap(4, 4, 4)
-                .addGroup(jPCabeceraLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLFravemax, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jLMinimiza, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jLCierra))
-                .addGap(18, 18, 18)
-                .addComponent(jLLogin, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(39, 39, 39))
+            .addGroup(jPCabeceraLayout.createSequentialGroup()
+                .addGroup(jPCabeceraLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPCabeceraLayout.createSequentialGroup()
+                        .addComponent(jLFravemax)
+                        .addGap(0, 0, 0)
+                        .addComponent(jLabel2))
+                    .addGroup(jPCabeceraLayout.createSequentialGroup()
+                        .addGap(11, 11, 11)
+                        .addGroup(jPCabeceraLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLIconoLogin, javax.swing.GroupLayout.PREFERRED_SIZE, 72, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGroup(jPCabeceraLayout.createSequentialGroup()
+                                .addGap(69, 69, 69)
+                                .addComponent(jLLogin, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                    .addGroup(jPCabeceraLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                        .addComponent(jLMinimiza, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 30, Short.MAX_VALUE)
+                        .addComponent(jLCierra, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                .addGap(7, 7, 7))
         );
 
         jPCuerpo.setBackground(new java.awt.Color(51, 51, 76));
@@ -149,8 +172,6 @@ public class Login extends javax.swing.JFrame {
         jLCargo.setForeground(new java.awt.Color(255, 255, 255));
         jLCargo.setText("Cargo:");
 
-        jTFUsuario.setForeground(new java.awt.Color(204, 204, 204));
-        jTFUsuario.setText("Ingrese su usuario");
         jTFUsuario.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 jTFUsuarioMouseClicked(evt);
@@ -164,53 +185,54 @@ public class Login extends javax.swing.JFrame {
 
         jTContraseña.setForeground(new java.awt.Color(51, 51, 76));
 
-        jLabel1.setBackground(new java.awt.Color(0, 150, 136));
-        jLabel1.setFont(new java.awt.Font("Corbel", 1, 14)); // NOI18N
-        jLabel1.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel1.setText("Iniciar sesión");
-        jLabel1.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        jLabel1.setOpaque(true);
+        jLBtnIniciarSesion.setBackground(new java.awt.Color(0, 150, 136));
+        jLBtnIniciarSesion.setFont(new java.awt.Font("Corbel", 1, 14)); // NOI18N
+        jLBtnIniciarSesion.setForeground(new java.awt.Color(255, 255, 255));
+        jLBtnIniciarSesion.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLBtnIniciarSesion.setText("Iniciar sesión");
+        jLBtnIniciarSesion.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jLBtnIniciarSesion.setOpaque(true);
 
         javax.swing.GroupLayout jPCuerpoLayout = new javax.swing.GroupLayout(jPCuerpo);
         jPCuerpo.setLayout(jPCuerpoLayout);
         jPCuerpoLayout.setHorizontalGroup(
             jPCuerpoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPCuerpoLayout.createSequentialGroup()
-                .addGap(185, 185, 185)
-                .addGroup(jPCuerpoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(jLCargo)
-                    .addComponent(jLContraseña)
-                    .addComponent(jLUsuario))
-                .addGap(52, 52, 52)
-                .addGroup(jPCuerpoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(jCBCargo, javax.swing.GroupLayout.PREFERRED_SIZE, 170, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jTFUsuario, javax.swing.GroupLayout.PREFERRED_SIZE, 170, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jTContraseña, javax.swing.GroupLayout.PREFERRED_SIZE, 170, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(308, Short.MAX_VALUE))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPCuerpoLayout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 117, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(337, 337, 337))
+                .addGroup(jPCuerpoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPCuerpoLayout.createSequentialGroup()
+                        .addGap(72, 72, 72)
+                        .addGroup(jPCuerpoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(jLCargo)
+                            .addComponent(jLContraseña)
+                            .addComponent(jLUsuario))
+                        .addGap(45, 45, 45)
+                        .addGroup(jPCuerpoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jTFUsuario, javax.swing.GroupLayout.PREFERRED_SIZE, 170, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jTContraseña, javax.swing.GroupLayout.PREFERRED_SIZE, 170, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jCBCargo, javax.swing.GroupLayout.PREFERRED_SIZE, 170, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addGroup(jPCuerpoLayout.createSequentialGroup()
+                        .addGap(223, 223, 223)
+                        .addComponent(jLBtnIniciarSesion, javax.swing.GroupLayout.PREFERRED_SIZE, 117, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPCuerpoLayout.setVerticalGroup(
             jPCuerpoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPCuerpoLayout.createSequentialGroup()
-                .addGap(99, 99, 99)
+                .addGap(56, 56, 56)
                 .addGroup(jPCuerpoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLUsuario)
-                    .addComponent(jTFUsuario, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(35, 35, 35)
+                    .addComponent(jTFUsuario, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLUsuario))
+                .addGap(39, 39, 39)
                 .addGroup(jPCuerpoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLContraseña)
                     .addComponent(jTContraseña, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(31, 31, 31)
+                .addGap(37, 37, 37)
                 .addGroup(jPCuerpoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLCargo)
                     .addComponent(jCBCargo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(64, 64, 64)
-                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(75, Short.MAX_VALUE))
+                .addGap(42, 42, 42)
+                .addComponent(jLBtnIniciarSesion, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(80, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout jPBackgroundLayout = new javax.swing.GroupLayout(jPBackground);
@@ -218,7 +240,7 @@ public class Login extends javax.swing.JFrame {
         jPBackgroundLayout.setHorizontalGroup(
             jPBackgroundLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(jPCuerpo, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-            .addComponent(jPCabecera, javax.swing.GroupLayout.DEFAULT_SIZE, 800, Short.MAX_VALUE)
+            .addComponent(jPCabecera, javax.swing.GroupLayout.DEFAULT_SIZE, 570, Short.MAX_VALUE)
         );
         jPBackgroundLayout.setVerticalGroup(
             jPBackgroundLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -236,7 +258,7 @@ public class Login extends javax.swing.JFrame {
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPBackground, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(jPBackground, javax.swing.GroupLayout.DEFAULT_SIZE, 450, Short.MAX_VALUE)
         );
 
         pack();
@@ -329,14 +351,16 @@ public class Login extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JComboBox<String> jCBCargo;
+    private javax.swing.JLabel jLBtnIniciarSesion;
     private javax.swing.JLabel jLCargo;
     private javax.swing.JLabel jLCierra;
     private javax.swing.JLabel jLContraseña;
     private javax.swing.JLabel jLFravemax;
+    private javax.swing.JLabel jLIconoLogin;
     private javax.swing.JLabel jLLogin;
     private javax.swing.JLabel jLMinimiza;
     private javax.swing.JLabel jLUsuario;
-    private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
     private javax.swing.JPanel jPBackground;
     private javax.swing.JPanel jPCabecera;
     private javax.swing.JPanel jPCuerpo;
