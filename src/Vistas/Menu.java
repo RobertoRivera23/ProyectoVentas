@@ -163,6 +163,21 @@ public class Menu extends javax.swing.JFrame {
         jtListaPro = new TablaFraveMax();
         jComboBox1 = new javax.swing.JComboBox<>();
         jPanel1 = new javax.swing.JPanel();
+        jPanel4 = new javax.swing.JPanel();
+        jLAgregarProducto = new javax.swing.JLabel();
+        jLNombreProductoAP = new javax.swing.JLabel();
+        jSeparator4 = new javax.swing.JSeparator();
+        jTFNombreProductoAgregarProd = new javax.swing.JTextField();
+        jSeparator5 = new javax.swing.JSeparator();
+        jTFDescripcionAgregarProd = new javax.swing.JTextField();
+        jLDescripcionAP = new javax.swing.JLabel();
+        jSeparator6 = new javax.swing.JSeparator();
+        jTFPrecioActualAgregarProd = new javax.swing.JTextField();
+        jLPrecioActualAP = new javax.swing.JLabel();
+        jSeparator7 = new javax.swing.JSeparator();
+        jTFStockAgregarProd = new javax.swing.JTextField();
+        jLStockAP = new javax.swing.JLabel();
+        jLBtnAgregarProd = new javax.swing.JLabel();
         jPanel2 = new javax.swing.JPanel();
         jPanel3 = new javax.swing.JPanel();
 
@@ -197,7 +212,7 @@ public class Menu extends javax.swing.JFrame {
         jlSalir.setForeground(new java.awt.Color(255, 255, 255));
         jlSalir.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jlSalir.setText("X");
-        jlSalir.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jlSalir.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         jlSalir.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 jlSalirMouseClicked(evt);
@@ -215,7 +230,7 @@ public class Menu extends javax.swing.JFrame {
         jlMinimizar.setForeground(new java.awt.Color(255, 255, 255));
         jlMinimizar.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jlMinimizar.setText("_");
-        jlMinimizar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jlMinimizar.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         jlMinimizar.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 jlMinimizarMouseClicked(evt);
@@ -278,7 +293,7 @@ public class Menu extends javax.swing.JFrame {
         jlProductos.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Image/Productos.png"))); // NOI18N
         jlProductos.setText("Productos");
         jlProductos.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 25, 1, 1));
-        jlProductos.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jlProductos.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         jlProductos.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
         jlProductos.setIconTextGap(15);
         jlProductos.setOpaque(true);
@@ -302,7 +317,7 @@ public class Menu extends javax.swing.JFrame {
         jlClientes.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Image/usuarios.png"))); // NOI18N
         jlClientes.setText("Clientes");
         jlClientes.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 25, 1, 1));
-        jlClientes.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jlClientes.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         jlClientes.setIconTextGap(15);
         jlClientes.setOpaque(true);
         jlClientes.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
@@ -325,7 +340,7 @@ public class Menu extends javax.swing.JFrame {
         jlVentas.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Image/carrito-de-compras.png"))); // NOI18N
         jlVentas.setText("Ventas");
         jlVentas.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 25, 1, 1));
-        jlVentas.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jlVentas.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         jlVentas.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
         jlVentas.setIconTextGap(15);
         jlVentas.setOpaque(true);
@@ -349,7 +364,7 @@ public class Menu extends javax.swing.JFrame {
         jlCerrarSesion.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Image/salir-alt.png"))); // NOI18N
         jlCerrarSesion.setText("Cerrar Sesion");
         jlCerrarSesion.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 25, 1, 1));
-        jlCerrarSesion.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jlCerrarSesion.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         jlCerrarSesion.setIconTextGap(15);
         jlCerrarSesion.setOpaque(true);
         jlCerrarSesion.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
@@ -372,7 +387,7 @@ public class Menu extends javax.swing.JFrame {
         jlInicio.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Image/Inicio.png"))); // NOI18N
         jlInicio.setText("Inicio");
         jlInicio.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 25, 1, 1));
-        jlInicio.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jlInicio.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         jlInicio.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
         jlInicio.setIconTextGap(15);
         jlInicio.setOpaque(true);
@@ -429,7 +444,7 @@ public class Menu extends javax.swing.JFrame {
         verMasC.setText("Ver mas");
         verMasC.setVerticalAlignment(javax.swing.SwingConstants.BOTTOM);
         verMasC.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED, null, new java.awt.Color(0, 150, 136), null, null));
-        verMasC.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        verMasC.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         verMasC.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         verMasC.setOpaque(true);
         verMasC.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
@@ -453,7 +468,7 @@ public class Menu extends javax.swing.JFrame {
         verMasV.setText("Ver mas");
         verMasV.setVerticalAlignment(javax.swing.SwingConstants.BOTTOM);
         verMasV.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED, null, new java.awt.Color(0, 150, 136), null, null));
-        verMasV.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        verMasV.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         verMasV.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         verMasV.setOpaque(true);
         verMasV.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
@@ -477,7 +492,7 @@ public class Menu extends javax.swing.JFrame {
         verMasP.setText("Ver mas");
         verMasP.setVerticalAlignment(javax.swing.SwingConstants.BOTTOM);
         verMasP.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED, null, new java.awt.Color(0, 150, 136), null, null));
-        verMasP.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        verMasP.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         verMasP.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         verMasP.setOpaque(true);
         verMasP.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
@@ -568,7 +583,7 @@ public class Menu extends javax.swing.JFrame {
         RegistrarVenta.setText("Registrar");
         RegistrarVenta.setVerticalAlignment(javax.swing.SwingConstants.BOTTOM);
         RegistrarVenta.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED, null, new java.awt.Color(0, 150, 136), null, null));
-        RegistrarVenta.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        RegistrarVenta.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         RegistrarVenta.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         RegistrarVenta.setOpaque(true);
         RegistrarVenta.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
@@ -592,7 +607,7 @@ public class Menu extends javax.swing.JFrame {
         DetVenta.setText("Detallar");
         DetVenta.setVerticalAlignment(javax.swing.SwingConstants.BOTTOM);
         DetVenta.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED, null, new java.awt.Color(0, 150, 136), null, null));
-        DetVenta.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        DetVenta.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         DetVenta.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         DetVenta.setOpaque(true);
         DetVenta.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
@@ -616,7 +631,7 @@ public class Menu extends javax.swing.JFrame {
         EliminarVenta.setText("Eliminar");
         EliminarVenta.setVerticalAlignment(javax.swing.SwingConstants.BOTTOM);
         EliminarVenta.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED, null, new java.awt.Color(0, 150, 136), null, null));
-        EliminarVenta.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        EliminarVenta.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         EliminarVenta.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         EliminarVenta.setOpaque(true);
         EliminarVenta.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
@@ -667,7 +682,7 @@ public class Menu extends javax.swing.JFrame {
         jlListarVenta.setText("Listar Ventas");
         jlListarVenta.setVerticalAlignment(javax.swing.SwingConstants.BOTTOM);
         jlListarVenta.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED, null, new java.awt.Color(0, 150, 136), null, null));
-        jlListarVenta.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jlListarVenta.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         jlListarVenta.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         jlListarVenta.setOpaque(true);
         jlListarVenta.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
@@ -696,7 +711,7 @@ public class Menu extends javax.swing.JFrame {
         jlListarCliente.setText("Listar Clientes");
         jlListarCliente.setVerticalAlignment(javax.swing.SwingConstants.BOTTOM);
         jlListarCliente.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED, null, new java.awt.Color(0, 150, 136), null, null));
-        jlListarCliente.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jlListarCliente.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         jlListarCliente.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         jlListarCliente.setOpaque(true);
         jlListarCliente.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
@@ -732,7 +747,7 @@ public class Menu extends javax.swing.JFrame {
         jlAgregarCliente.setText("Agregar");
         jlAgregarCliente.setVerticalAlignment(javax.swing.SwingConstants.BOTTOM);
         jlAgregarCliente.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED, null, new java.awt.Color(0, 150, 136), null, null));
-        jlAgregarCliente.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jlAgregarCliente.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         jlAgregarCliente.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         jlAgregarCliente.setOpaque(true);
         jlAgregarCliente.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
@@ -753,7 +768,7 @@ public class Menu extends javax.swing.JFrame {
         jlModificarCliente.setText("Modificar");
         jlModificarCliente.setVerticalAlignment(javax.swing.SwingConstants.BOTTOM);
         jlModificarCliente.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED, null, new java.awt.Color(0, 150, 136), null, null));
-        jlModificarCliente.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jlModificarCliente.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         jlModificarCliente.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         jlModificarCliente.setOpaque(true);
         jlModificarCliente.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
@@ -774,7 +789,7 @@ public class Menu extends javax.swing.JFrame {
         jlEliminarCliente.setText("Eliminar");
         jlEliminarCliente.setVerticalAlignment(javax.swing.SwingConstants.BOTTOM);
         jlEliminarCliente.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED, null, new java.awt.Color(0, 150, 136), null, null));
-        jlEliminarCliente.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jlEliminarCliente.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         jlEliminarCliente.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         jlEliminarCliente.setOpaque(true);
         jlEliminarCliente.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
@@ -848,7 +863,7 @@ public class Menu extends javax.swing.JFrame {
         jlListar.setText("Listar Productos");
         jlListar.setVerticalAlignment(javax.swing.SwingConstants.BOTTOM);
         jlListar.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED, null, new java.awt.Color(0, 150, 136), null, null));
-        jlListar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jlListar.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         jlListar.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         jlListar.setOpaque(true);
         jlListar.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
@@ -884,7 +899,7 @@ public class Menu extends javax.swing.JFrame {
         jlAgregar.setText("Agregar");
         jlAgregar.setVerticalAlignment(javax.swing.SwingConstants.BOTTOM);
         jlAgregar.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED, null, new java.awt.Color(0, 150, 136), null, null));
-        jlAgregar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jlAgregar.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         jlAgregar.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         jlAgregar.setOpaque(true);
         jlAgregar.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
@@ -905,7 +920,7 @@ public class Menu extends javax.swing.JFrame {
         jlModificar.setText("Modificar");
         jlModificar.setVerticalAlignment(javax.swing.SwingConstants.BOTTOM);
         jlModificar.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED, null, new java.awt.Color(0, 150, 136), null, null));
-        jlModificar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jlModificar.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         jlModificar.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         jlModificar.setOpaque(true);
         jlModificar.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
@@ -926,7 +941,7 @@ public class Menu extends javax.swing.JFrame {
         jlEliminar.setText("Eliminar");
         jlEliminar.setVerticalAlignment(javax.swing.SwingConstants.BOTTOM);
         jlEliminar.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED, null, new java.awt.Color(0, 150, 136), null, null));
-        jlEliminar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jlEliminar.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         jlEliminar.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         jlEliminar.setOpaque(true);
         jlEliminar.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
@@ -1014,7 +1029,6 @@ public class Menu extends javax.swing.JFrame {
             }
         ));
         jtListaPro.setGridColor(new java.awt.Color(0, 102, 102));
-        jtListaPro.setShowGrid(true);
         Scroll.setViewportView(jtListaPro);
 
         jtpListaP.add(Scroll, new org.netbeans.lib.awtextra.AbsoluteConstraints(13, 110, 570, 300));
@@ -1023,20 +1037,95 @@ public class Menu extends javax.swing.JFrame {
         jComboBox1.setFont(new java.awt.Font("Corbel", 1, 12)); // NOI18N
         jComboBox1.setForeground(new java.awt.Color(255, 255, 255));
         jComboBox1.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED, null, new java.awt.Color(0, 102, 102), null, new java.awt.Color(0, 51, 51)));
-        jComboBox1.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jComboBox1.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         jtpListaP.add(jComboBox1, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 70, 230, -1));
 
         jtpEscritorio.addTab("tab5", jtpListaP);
+
+        jPanel4.setBackground(new java.awt.Color(255, 255, 255));
+        jPanel4.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        jLAgregarProducto.setFont(new java.awt.Font("Corbel", 1, 30)); // NOI18N
+        jLAgregarProducto.setForeground(new java.awt.Color(153, 153, 153));
+        jLAgregarProducto.setText("Agregar producto");
+        jPanel4.add(jLAgregarProducto, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 50, -1, 38));
+
+        jLNombreProductoAP.setFont(new java.awt.Font("Corbel", 0, 14)); // NOI18N
+        jLNombreProductoAP.setText("Nombre de el producto:");
+        jPanel4.add(jLNombreProductoAP, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 120, -1, 24));
+
+        jSeparator4.setBackground(new java.awt.Color(0, 150, 136));
+        jPanel4.add(jSeparator4, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 140, 210, 20));
+
+        jTFNombreProductoAgregarProd.setBorder(null);
+        jTFNombreProductoAgregarProd.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jTFNombreProductoAgregarProdActionPerformed(evt);
+            }
+        });
+        jPanel4.add(jTFNombreProductoAgregarProd, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 120, 210, 24));
+
+        jSeparator5.setBackground(new java.awt.Color(0, 150, 136));
+        jPanel4.add(jSeparator5, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 190, 210, 20));
+
+        jTFDescripcionAgregarProd.setBorder(null);
+        jTFDescripcionAgregarProd.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jTFDescripcionAgregarProdActionPerformed(evt);
+            }
+        });
+        jPanel4.add(jTFDescripcionAgregarProd, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 170, 210, 24));
+
+        jLDescripcionAP.setFont(new java.awt.Font("Corbel", 0, 14)); // NOI18N
+        jLDescripcionAP.setText("Descripción:");
+        jPanel4.add(jLDescripcionAP, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 170, -1, 24));
+
+        jSeparator6.setBackground(new java.awt.Color(0, 150, 136));
+        jPanel4.add(jSeparator6, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 240, 210, 20));
+
+        jTFPrecioActualAgregarProd.setBorder(null);
+        jTFPrecioActualAgregarProd.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jTFPrecioActualAgregarProdActionPerformed(evt);
+            }
+        });
+        jPanel4.add(jTFPrecioActualAgregarProd, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 220, 210, 24));
+
+        jLPrecioActualAP.setFont(new java.awt.Font("Corbel", 0, 14)); // NOI18N
+        jLPrecioActualAP.setText("Precio Actual:");
+        jPanel4.add(jLPrecioActualAP, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 220, -1, 24));
+
+        jSeparator7.setBackground(new java.awt.Color(0, 150, 136));
+        jPanel4.add(jSeparator7, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 290, 210, 20));
+
+        jTFStockAgregarProd.setBorder(null);
+        jTFStockAgregarProd.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jTFStockAgregarProdActionPerformed(evt);
+            }
+        });
+        jPanel4.add(jTFStockAgregarProd, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 270, 210, 24));
+
+        jLStockAP.setFont(new java.awt.Font("Corbel", 0, 14)); // NOI18N
+        jLStockAP.setText("Stock:");
+        jPanel4.add(jLStockAP, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 270, -1, 24));
+
+        jLBtnAgregarProd.setBackground(new java.awt.Color(0, 150, 136));
+        jLBtnAgregarProd.setFont(new java.awt.Font("Corbel", 1, 14)); // NOI18N
+        jLBtnAgregarProd.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLBtnAgregarProd.setText("Agregar");
+        jLBtnAgregarProd.setOpaque(true);
+        jPanel4.add(jLBtnAgregarProd, new org.netbeans.lib.awtextra.AbsoluteConstraints(259, 350, 80, 30));
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 595, Short.MAX_VALUE)
+            .addComponent(jPanel4, javax.swing.GroupLayout.DEFAULT_SIZE, 600, Short.MAX_VALUE)
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 423, Short.MAX_VALUE)
+            .addComponent(jPanel4, javax.swing.GroupLayout.DEFAULT_SIZE, 422, Short.MAX_VALUE)
         );
 
         jtpEscritorio.addTab("tab6", jPanel1);
@@ -1045,11 +1134,11 @@ public class Menu extends javax.swing.JFrame {
         jPanel2.setLayout(jPanel2Layout);
         jPanel2Layout.setHorizontalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 595, Short.MAX_VALUE)
+            .addGap(0, 600, Short.MAX_VALUE)
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 423, Short.MAX_VALUE)
+            .addGap(0, 422, Short.MAX_VALUE)
         );
 
         jtpEscritorio.addTab("tab7", jPanel2);
@@ -1058,11 +1147,11 @@ public class Menu extends javax.swing.JFrame {
         jPanel3.setLayout(jPanel3Layout);
         jPanel3Layout.setHorizontalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 595, Short.MAX_VALUE)
+            .addGap(0, 600, Short.MAX_VALUE)
         );
         jPanel3Layout.setVerticalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 423, Short.MAX_VALUE)
+            .addGap(0, 422, Short.MAX_VALUE)
         );
 
         jtpEscritorio.addTab("tab8", jPanel3);
@@ -1382,6 +1471,12 @@ public class Menu extends javax.swing.JFrame {
     private javax.swing.JScrollPane Scroll;
     private javax.swing.JLabel fravemaxLogo;
     private javax.swing.JComboBox<String> jComboBox1;
+    private javax.swing.JLabel jLAgregarProducto;
+    private javax.swing.JLabel jLBtnAgregarProd;
+    private javax.swing.JLabel jLDescripcionAP;
+    private javax.swing.JLabel jLNombreProductoAP;
+    private javax.swing.JLabel jLPrecioActualAP;
+    private javax.swing.JLabel jLStockAP;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
@@ -1417,11 +1512,20 @@ public class Menu extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
+    private javax.swing.JPanel jPanel4;
     private javax.swing.JPanel jPanelFravemax;
     private javax.swing.JPanel jPanelOpciones;
     private javax.swing.JPanel jPanelUsuario;
     private javax.swing.JSeparator jSeparator1;
     private javax.swing.JSeparator jSeparator2;
+    private javax.swing.JSeparator jSeparator4;
+    private javax.swing.JSeparator jSeparator5;
+    private javax.swing.JSeparator jSeparator6;
+    private javax.swing.JSeparator jSeparator7;
+    private javax.swing.JTextField jTFDescripcionAgregarProd;
+    private javax.swing.JTextField jTFNombreProductoAgregarProd;
+    private javax.swing.JTextField jTFPrecioActualAgregarProd;
+    private javax.swing.JTextField jTFStockAgregarProd;
     private javax.swing.JLabel jlAgregar;
     private javax.swing.JLabel jlAgregarCliente;
     private javax.swing.JLabel jlCerrarSesion;
