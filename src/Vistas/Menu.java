@@ -60,6 +60,7 @@ public class Menu extends javax.swing.JFrame {
         this.setLocationRelativeTo(null);
         jtListaPro.setModel(Modelo);
         llenarText();
+        llenarCombo();
     }
 
     /**
@@ -196,7 +197,7 @@ public class Menu extends javax.swing.JFrame {
         jLPrecioActualModProd = new javax.swing.JLabel();
         jLStockModProd = new javax.swing.JLabel();
         jLBtnModificarModProd = new javax.swing.JLabel();
-        jComboBox1 = new javax.swing.JComboBox<>();
+        jcbProductos = new javax.swing.JComboBox<>();
         jPanel1 = new javax.swing.JPanel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -1266,9 +1267,10 @@ public class Menu extends javax.swing.JFrame {
         });
         jtpModPro.add(jLBtnModificarModProd, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 360, 100, 30));
 
-        jComboBox1.setBackground(new java.awt.Color(255, 255, 255));
-        jComboBox1.setFont(new java.awt.Font("Corbel", 1, 14)); // NOI18N
-        jtpModPro.add(jComboBox1, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 150, 200, -1));
+        jcbProductos.setBackground(new java.awt.Color(255, 255, 255));
+        jcbProductos.setFont(new java.awt.Font("Corbel", 1, 14)); // NOI18N
+        jcbProductos.setForeground(new java.awt.Color(0, 102, 102));
+        jtpModPro.add(jcbProductos, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 150, 200, 30));
 
         jtpEscritorio.addTab("tab8", jtpModPro);
 
@@ -1648,7 +1650,6 @@ public class Menu extends javax.swing.JFrame {
     private javax.swing.JLabel RegistrarVenta;
     private javax.swing.JScrollPane Scroll;
     private javax.swing.JLabel fravemaxLogo;
-    private javax.swing.JComboBox<String> jComboBox1;
     private javax.swing.JLabel jLAgregarProducto;
     private javax.swing.JLabel jLBtnAgregarProd;
     private javax.swing.JLabel jLBtnModificarModProd;
@@ -1717,6 +1718,7 @@ public class Menu extends javax.swing.JFrame {
     private javax.swing.JTextField jTFPrecioActualModProd;
     private javax.swing.JTextField jTFStockAgrProd;
     private javax.swing.JTextField jTFStockModProd;
+    private javax.swing.JComboBox<Producto> jcbProductos;
     private javax.swing.JLabel jlAgregar;
     private javax.swing.JLabel jlAgregarCliente;
     private javax.swing.JLabel jlBusqueda;
@@ -1792,9 +1794,9 @@ public class Menu extends javax.swing.JFrame {
         textVentaE.setText("<html>Eliminar Venta: Permite dar de baja el registro de una venta para su posterior eliminación");
     }
     
-    private void llenarLista(){
+    private void llenarCombo(){
         for (Producto pro : pd.listarProducto()){
-            
+            jcbProductos.addItem(pro);
         }
     }
 }
