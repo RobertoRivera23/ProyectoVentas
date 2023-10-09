@@ -10,7 +10,6 @@ import Entidades.Empleado;
 import java.awt.Color;
 import java.awt.event.KeyEvent;
 import javax.swing.JOptionPane;
-import javax.swing.UIManager;
 
 /**
  *
@@ -387,7 +386,6 @@ public class Registro extends javax.swing.JFrame {
             evt.consume();
         }
     }//GEN-LAST:event_jTFDniKeyTyped
-
 
     private void jPContraseñaKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jPContraseñaKeyTyped
         
