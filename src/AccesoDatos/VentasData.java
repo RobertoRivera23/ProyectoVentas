@@ -170,7 +170,7 @@ public class VentasData {
         List<Producto> prodPorFecha = new ArrayList<>();
         String sql = "SELECT producto.nombreProducto, detalleventa.cantidad FROM producto, detalledeventa "
                 + "JOIN venta ON (venta.idVenta = detalledeventa.idVenta) "
-                + "WHERE venta.fechaVenta= ? ORDER BY producto.idProducto ASC";
+                + "WHERE venta.fechaVenta = ? ORDER BY producto.idProducto ASC";
         try {
             PreparedStatement ps = con.prepareStatement(sql);
             ps.setDate(1, Date.valueOf(fechaVenta));
@@ -192,7 +192,6 @@ public class VentasData {
             ps.close();
         } catch (SQLException ex) {
             JOptionPane.showMessageDialog(null, " Error al acceder a la tabla Producto " + ex.getMessage());
-
         }
         return prodPorFecha;
     }
