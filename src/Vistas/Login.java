@@ -36,6 +36,7 @@ public class Login extends javax.swing.JFrame {
         jLFravemax = new javax.swing.JLabel();
         jLMinimiza = new javax.swing.JLabel();
         jLCierra = new javax.swing.JLabel();
+        jLIconoLogin = new javax.swing.JLabel();
         jPCuerpo = new javax.swing.JPanel();
         jLUsuario = new javax.swing.JLabel();
         jLContraseña = new javax.swing.JLabel();
@@ -48,6 +49,7 @@ public class Login extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setLocationByPlatform(true);
         setUndecorated(true);
+        setPreferredSize(new java.awt.Dimension(570, 550));
         setResizable(false);
 
         jPCabecera.setBackground(new java.awt.Color(0, 150, 136));
@@ -105,34 +107,45 @@ public class Login extends javax.swing.JFrame {
             }
         });
 
+        jLIconoLogin.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Image/usuarios-alt.png"))); // NOI18N
+
         javax.swing.GroupLayout jPCabeceraLayout = new javax.swing.GroupLayout(jPCabecera);
         jPCabecera.setLayout(jPCabeceraLayout);
         jPCabeceraLayout.setHorizontalGroup(
             jPCabeceraLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPCabeceraLayout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGap(20, 20, 20)
                 .addComponent(jLFravemax, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
+                .addGap(146, 146, 146)
+                .addGroup(jPCabeceraLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLIconoLogin)
+                    .addGroup(jPCabeceraLayout.createSequentialGroup()
+                        .addGap(14, 14, 14)
+                        .addComponent(jLLogin)))
+                .addGap(181, 181, 181)
                 .addComponent(jLMinimiza, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jLCierra, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(14, 14, 14))
-            .addGroup(jPCabeceraLayout.createSequentialGroup()
-                .addGap(211, 211, 211)
-                .addComponent(jLLogin)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGap(6, 6, 6)
+                .addComponent(jLCierra, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
         jPCabeceraLayout.setVerticalGroup(
             jPCabeceraLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPCabeceraLayout.createSequentialGroup()
-                .addGap(4, 4, 4)
-                .addGroup(jPCabeceraLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLFravemax, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jLMinimiza, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jLCierra))
-                .addGap(43, 43, 43)
-                .addComponent(jLLogin, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(44, 44, 44))
+                .addGroup(jPCabeceraLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPCabeceraLayout.createSequentialGroup()
+                        .addGap(11, 11, 11)
+                        .addGroup(jPCabeceraLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(jPCabeceraLayout.createSequentialGroup()
+                                .addGap(69, 69, 69)
+                                .addComponent(jLLogin, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(jLIconoLogin, javax.swing.GroupLayout.PREFERRED_SIZE, 72, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLFravemax, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addGroup(jPCabeceraLayout.createSequentialGroup()
+                        .addGap(4, 4, 4)
+                        .addComponent(jLMinimiza))
+                    .addGroup(jPCabeceraLayout.createSequentialGroup()
+                        .addGap(4, 4, 4)
+                        .addComponent(jLCierra)))
+                .addGap(7, 7, 7))
         );
 
         jPCuerpo.setBackground(new java.awt.Color(51, 51, 76));
@@ -179,39 +192,39 @@ public class Login extends javax.swing.JFrame {
             .addGroup(jPCuerpoLayout.createSequentialGroup()
                 .addGroup(jPCuerpoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPCuerpoLayout.createSequentialGroup()
-                        .addGap(35, 35, 35)
-                        .addGroup(jPCuerpoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLUsuario)
+                        .addGap(72, 72, 72)
+                        .addGroup(jPCuerpoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(jLCargo)
                             .addComponent(jLContraseña)
-                            .addComponent(jLCargo))
-                        .addGap(31, 31, 31)
+                            .addComponent(jLUsuario))
+                        .addGap(45, 45, 45)
                         .addGroup(jPCuerpoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jCBCargo, javax.swing.GroupLayout.PREFERRED_SIZE, 170, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jTFUsuario, javax.swing.GroupLayout.PREFERRED_SIZE, 170, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jTContraseña, javax.swing.GroupLayout.PREFERRED_SIZE, 170, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jTFUsuario, javax.swing.GroupLayout.PREFERRED_SIZE, 170, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                            .addComponent(jCBCargo, javax.swing.GroupLayout.PREFERRED_SIZE, 170, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addGroup(jPCuerpoLayout.createSequentialGroup()
-                        .addGap(173, 173, 173)
+                        .addGap(223, 223, 223)
                         .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 117, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(479, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPCuerpoLayout.setVerticalGroup(
             jPCuerpoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPCuerpoLayout.createSequentialGroup()
-                .addGap(48, 48, 48)
-                .addGroup(jPCuerpoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(jLUsuario)
-                    .addComponent(jTFUsuario, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(31, 31, 31)
+                .addGap(56, 56, 56)
+                .addGroup(jPCuerpoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jTFUsuario, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLUsuario))
+                .addGap(39, 39, 39)
                 .addGroup(jPCuerpoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLContraseña)
                     .addComponent(jTContraseña, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(35, 35, 35)
+                .addGap(37, 37, 37)
                 .addGroup(jPCuerpoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLCargo)
                     .addComponent(jCBCargo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(36, 36, 36)
+                .addGap(42, 42, 42)
                 .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(154, Short.MAX_VALUE))
+                .addContainerGap(80, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout jPBackgroundLayout = new javax.swing.GroupLayout(jPBackground);
@@ -219,7 +232,7 @@ public class Login extends javax.swing.JFrame {
         jPBackgroundLayout.setHorizontalGroup(
             jPBackgroundLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(jPCuerpo, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-            .addComponent(jPCabecera, javax.swing.GroupLayout.DEFAULT_SIZE, 800, Short.MAX_VALUE)
+            .addComponent(jPCabecera, javax.swing.GroupLayout.DEFAULT_SIZE, 570, Short.MAX_VALUE)
         );
         jPBackgroundLayout.setVerticalGroup(
             jPBackgroundLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -334,6 +347,7 @@ public class Login extends javax.swing.JFrame {
     private javax.swing.JLabel jLCierra;
     private javax.swing.JLabel jLContraseña;
     private javax.swing.JLabel jLFravemax;
+    private javax.swing.JLabel jLIconoLogin;
     private javax.swing.JLabel jLLogin;
     private javax.swing.JLabel jLMinimiza;
     private javax.swing.JLabel jLUsuario;
