@@ -70,6 +70,7 @@ public class Registro extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
         jPFondo.setPreferredSize(new java.awt.Dimension(800, 500));
+        jPFondo.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jPFravemax.setBackground(new java.awt.Color(0, 150, 136));
         jPFravemax.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -125,6 +126,8 @@ public class Registro extends javax.swing.JFrame {
 
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Image/fravemax.png"))); // NOI18N
         jPFravemax.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 10, 80, 70));
+
+        jPFondo.add(jPFravemax, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
 
         jPDatos.setBackground(new java.awt.Color(51, 51, 76));
         jPDatos.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -280,21 +283,7 @@ public class Registro extends javax.swing.JFrame {
         });
         jPDatos.add(jPContraseña, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 250, 240, -1));
 
-        javax.swing.GroupLayout jPFondoLayout = new javax.swing.GroupLayout(jPFondo);
-        jPFondo.setLayout(jPFondoLayout);
-        jPFondoLayout.setHorizontalGroup(
-            jPFondoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPDatos, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-            .addComponent(jPFravemax, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-        );
-        jPFondoLayout.setVerticalGroup(
-            jPFondoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPFondoLayout.createSequentialGroup()
-                .addComponent(jPFravemax, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jPDatos, javax.swing.GroupLayout.PREFERRED_SIZE, 442, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(1, 1, 1))
-        );
+        jPFondo.add(jPDatos, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 98, 570, 450));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
