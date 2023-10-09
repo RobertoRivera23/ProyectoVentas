@@ -183,10 +183,6 @@ public class Menu extends javax.swing.JFrame {
         jtpModPro = new javax.swing.JPanel();
         jLModificarProd = new javax.swing.JLabel();
         jLBuscarProdModProd = new javax.swing.JLabel();
-        jScrollPane1 = new javax.swing.JScrollPane();
-        jList1 = new javax.swing.JList<>();
-        jSeparator3 = new javax.swing.JSeparator();
-        jTFBuscadorModProd = new javax.swing.JTextField();
         jSeparator8 = new javax.swing.JSeparator();
         jTFNombreProdModProd = new javax.swing.JTextField();
         jSeparator9 = new javax.swing.JSeparator();
@@ -200,6 +196,8 @@ public class Menu extends javax.swing.JFrame {
         jLPrecioActualModProd = new javax.swing.JLabel();
         jLStockModProd = new javax.swing.JLabel();
         jLBtnModificarModProd = new javax.swing.JLabel();
+        jComboBox1 = new javax.swing.JComboBox<>();
+        jPanel1 = new javax.swing.JPanel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setMinimumSize(new java.awt.Dimension(800, 500));
@@ -924,6 +922,9 @@ public class Menu extends javax.swing.JFrame {
         jlAgregar.setOpaque(true);
         jlAgregar.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
         jlAgregar.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jlAgregarMouseClicked(evt);
+            }
             public void mouseEntered(java.awt.event.MouseEvent evt) {
                 jlAgregarMouseEntered(evt);
             }
@@ -945,6 +946,9 @@ public class Menu extends javax.swing.JFrame {
         jlModificar.setOpaque(true);
         jlModificar.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
         jlModificar.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jlModificarMouseClicked(evt);
+            }
             public void mouseEntered(java.awt.event.MouseEvent evt) {
                 jlModificarMouseEntered(evt);
             }
@@ -1085,9 +1089,11 @@ public class Menu extends javax.swing.JFrame {
         jLAgregarProducto.setFont(new java.awt.Font("Corbel", 1, 30)); // NOI18N
         jLAgregarProducto.setForeground(new java.awt.Color(153, 153, 153));
         jLAgregarProducto.setText("Agregar producto");
-        jtpAgregarPro.add(jLAgregarProducto, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 50, -1, 38));
+        jtpAgregarPro.add(jLAgregarProducto, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 40, -1, 38));
 
-        jLNombreProductoAP.setFont(new java.awt.Font("Corbel", 0, 14)); // NOI18N
+        jLNombreProductoAP.setBackground(new java.awt.Color(153, 153, 153));
+        jLNombreProductoAP.setFont(new java.awt.Font("Corbel", 1, 14)); // NOI18N
+        jLNombreProductoAP.setForeground(new java.awt.Color(153, 153, 153));
         jLNombreProductoAP.setText("Nombre de el producto:");
         jtpAgregarPro.add(jLNombreProductoAP, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 120, -1, 24));
 
@@ -1097,21 +1103,27 @@ public class Menu extends javax.swing.JFrame {
         jSeparator5.setBackground(new java.awt.Color(0, 150, 136));
         jtpAgregarPro.add(jSeparator5, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 190, 210, 20));
 
-        jLDescripcionAP.setFont(new java.awt.Font("Corbel", 0, 14)); // NOI18N
+        jLDescripcionAP.setBackground(new java.awt.Color(153, 153, 153));
+        jLDescripcionAP.setFont(new java.awt.Font("Corbel", 1, 14)); // NOI18N
+        jLDescripcionAP.setForeground(new java.awt.Color(153, 153, 153));
         jLDescripcionAP.setText("Descripción:");
         jtpAgregarPro.add(jLDescripcionAP, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 170, -1, 24));
 
         jSeparator6.setBackground(new java.awt.Color(0, 150, 136));
         jtpAgregarPro.add(jSeparator6, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 240, 210, 20));
 
-        jLPrecioActualAP.setFont(new java.awt.Font("Corbel", 0, 14)); // NOI18N
+        jLPrecioActualAP.setBackground(new java.awt.Color(153, 153, 153));
+        jLPrecioActualAP.setFont(new java.awt.Font("Corbel", 1, 14)); // NOI18N
+        jLPrecioActualAP.setForeground(new java.awt.Color(153, 153, 153));
         jLPrecioActualAP.setText("Precio Actual:");
         jtpAgregarPro.add(jLPrecioActualAP, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 220, -1, 24));
 
         jSeparator7.setBackground(new java.awt.Color(0, 150, 136));
         jtpAgregarPro.add(jSeparator7, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 290, 210, 20));
 
-        jLStockAP.setFont(new java.awt.Font("Corbel", 0, 14)); // NOI18N
+        jLStockAP.setBackground(new java.awt.Color(153, 153, 153));
+        jLStockAP.setFont(new java.awt.Font("Corbel", 1, 14)); // NOI18N
+        jLStockAP.setForeground(new java.awt.Color(153, 153, 153));
         jLStockAP.setText("Stock:");
         jtpAgregarPro.add(jLStockAP, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 270, -1, 24));
 
@@ -1120,9 +1132,19 @@ public class Menu extends javax.swing.JFrame {
         jLBtnAgregarProd.setForeground(new java.awt.Color(255, 255, 255));
         jLBtnAgregarProd.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLBtnAgregarProd.setText("Agregar");
+        jLBtnAgregarProd.setVerticalAlignment(javax.swing.SwingConstants.BOTTOM);
         jLBtnAgregarProd.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
-        jLBtnAgregarProd.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        jLBtnAgregarProd.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jLBtnAgregarProd.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         jLBtnAgregarProd.setOpaque(true);
+        jLBtnAgregarProd.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                jLBtnAgregarProdMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                jLBtnAgregarProdMouseExited(evt);
+            }
+        });
         jtpAgregarPro.add(jLBtnAgregarProd, new org.netbeans.lib.awtextra.AbsoluteConstraints(259, 350, 80, 30));
 
         jTFNombreProductoAgrProd.setFont(new java.awt.Font("Corbel", 0, 14)); // NOI18N
@@ -1162,29 +1184,12 @@ public class Menu extends javax.swing.JFrame {
         jLModificarProd.setFont(new java.awt.Font("Corbel", 1, 30)); // NOI18N
         jLModificarProd.setForeground(new java.awt.Color(153, 153, 153));
         jLModificarProd.setText("Modificar producto");
-        jtpModPro.add(jLModificarProd, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 30, -1, 43));
+        jtpModPro.add(jLModificarProd, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 40, -1, 43));
 
-        jLBuscarProdModProd.setFont(new java.awt.Font("Corbel", 0, 14)); // NOI18N
+        jLBuscarProdModProd.setFont(new java.awt.Font("Corbel", 1, 14)); // NOI18N
+        jLBuscarProdModProd.setForeground(new java.awt.Color(153, 153, 153));
         jLBuscarProdModProd.setText("Buscar producto");
-        jtpModPro.add(jLBuscarProdModProd, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 84, -1, -1));
-
-        jList1.setModel(new javax.swing.AbstractListModel<String>() {
-            String[] strings = { "Item 1", "Item 2", "Item 3", "Item 4", "Item 5" };
-            public int getSize() { return strings.length; }
-            public String getElementAt(int i) { return strings[i]; }
-        });
-        jScrollPane1.setViewportView(jList1);
-
-        jtpModPro.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 100, 310, 90));
-
-        jSeparator3.setBackground(new java.awt.Color(0, 150, 136));
-        jSeparator3.setOpaque(true);
-        jSeparator3.setPreferredSize(new java.awt.Dimension(50, 2));
-        jtpModPro.add(jSeparator3, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 128, 200, -1));
-
-        jTFBuscadorModProd.setFont(new java.awt.Font("Corbel", 0, 14)); // NOI18N
-        jTFBuscadorModProd.setBorder(null);
-        jtpModPro.add(jTFBuscadorModProd, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 100, 200, 30));
+        jtpModPro.add(jLBuscarProdModProd, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 120, -1, -1));
 
         jSeparator8.setBackground(new java.awt.Color(0, 150, 136));
         jSeparator8.setOpaque(true);
@@ -1222,19 +1227,23 @@ public class Menu extends javax.swing.JFrame {
         jTFStockModProd.setBorder(null);
         jtpModPro.add(jTFStockModProd, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 300, 200, 30));
 
-        jLNombreProdModProd.setFont(new java.awt.Font("Corbel", 0, 14)); // NOI18N
+        jLNombreProdModProd.setFont(new java.awt.Font("Corbel", 1, 14)); // NOI18N
+        jLNombreProdModProd.setForeground(new java.awt.Color(153, 153, 153));
         jLNombreProdModProd.setText("Nombre producto");
         jtpModPro.add(jLNombreProdModProd, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 210, -1, -1));
 
-        jLDescripcionModProd.setFont(new java.awt.Font("Corbel", 0, 14)); // NOI18N
+        jLDescripcionModProd.setFont(new java.awt.Font("Corbel", 1, 14)); // NOI18N
+        jLDescripcionModProd.setForeground(new java.awt.Color(153, 153, 153));
         jLDescripcionModProd.setText("Descripción");
         jtpModPro.add(jLDescripcionModProd, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 210, -1, -1));
 
-        jLPrecioActualModProd.setFont(new java.awt.Font("Corbel", 0, 14)); // NOI18N
+        jLPrecioActualModProd.setFont(new java.awt.Font("Corbel", 1, 14)); // NOI18N
+        jLPrecioActualModProd.setForeground(new java.awt.Color(153, 153, 153));
         jLPrecioActualModProd.setText("Precio Actual");
         jtpModPro.add(jLPrecioActualModProd, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 280, -1, -1));
 
-        jLStockModProd.setFont(new java.awt.Font("Corbel", 0, 14)); // NOI18N
+        jLStockModProd.setFont(new java.awt.Font("Corbel", 1, 14)); // NOI18N
+        jLStockModProd.setForeground(new java.awt.Color(153, 153, 153));
         jLStockModProd.setText("Stock");
         jtpModPro.add(jLStockModProd, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 280, -1, -1));
 
@@ -1243,11 +1252,38 @@ public class Menu extends javax.swing.JFrame {
         jLBtnModificarModProd.setForeground(new java.awt.Color(255, 255, 255));
         jLBtnModificarModProd.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLBtnModificarModProd.setText("Modificar");
+        jLBtnModificarModProd.setVerticalAlignment(javax.swing.SwingConstants.BOTTOM);
         jLBtnModificarModProd.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        jLBtnModificarModProd.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         jLBtnModificarModProd.setOpaque(true);
+        jLBtnModificarModProd.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                jLBtnModificarModProdMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                jLBtnModificarModProdMouseExited(evt);
+            }
+        });
         jtpModPro.add(jLBtnModificarModProd, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 360, 100, 30));
 
+        jComboBox1.setBackground(new java.awt.Color(255, 255, 255));
+        jComboBox1.setFont(new java.awt.Font("Corbel", 1, 14)); // NOI18N
+        jtpModPro.add(jComboBox1, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 150, 200, -1));
+
         jtpEscritorio.addTab("tab8", jtpModPro);
+
+        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
+        jPanel1.setLayout(jPanel1Layout);
+        jPanel1Layout.setHorizontalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 595, Short.MAX_VALUE)
+        );
+        jPanel1Layout.setVerticalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 423, Short.MAX_VALUE)
+        );
+
+        jtpEscritorio.addTab("tab9", jPanel1);
 
         BackGround.add(jtpEscritorio, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 53, 600, 450));
 
@@ -1544,6 +1580,30 @@ public class Menu extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_jlBusquedaMouseClicked
 
+    private void jlAgregarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jlAgregarMouseClicked
+        jtpEscritorio.setSelectedIndex(5);
+    }//GEN-LAST:event_jlAgregarMouseClicked
+
+    private void jLBtnAgregarProdMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLBtnAgregarProdMouseEntered
+       jLBtnAgregarProd.setBackground(verdeClaro);
+    }//GEN-LAST:event_jLBtnAgregarProdMouseEntered
+
+    private void jLBtnAgregarProdMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLBtnAgregarProdMouseExited
+        jLBtnAgregarProd.setBackground(verdeBase);
+    }//GEN-LAST:event_jLBtnAgregarProdMouseExited
+
+    private void jlModificarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jlModificarMouseClicked
+        jtpEscritorio.setSelectedIndex(7);
+    }//GEN-LAST:event_jlModificarMouseClicked
+
+    private void jLBtnModificarModProdMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLBtnModificarModProdMouseEntered
+        jLBtnModificarModProd.setBackground(verdeClaro);
+    }//GEN-LAST:event_jLBtnModificarModProdMouseEntered
+
+    private void jLBtnModificarModProdMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLBtnModificarModProdMouseExited
+        jLBtnModificarModProd.setBackground(verdeBase);
+    }//GEN-LAST:event_jLBtnModificarModProdMouseExited
+
     /**
      * @param args the command line arguments
      */
@@ -1588,6 +1648,7 @@ public class Menu extends javax.swing.JFrame {
     private javax.swing.JLabel RegistrarVenta;
     private javax.swing.JScrollPane Scroll;
     private javax.swing.JLabel fravemaxLogo;
+    private javax.swing.JComboBox<String> jComboBox1;
     private javax.swing.JLabel jLAgregarProducto;
     private javax.swing.JLabel jLBtnAgregarProd;
     private javax.swing.JLabel jLBtnModificarModProd;
@@ -1633,24 +1694,21 @@ public class Menu extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
-    private javax.swing.JList<String> jList1;
+    private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanelFravemax;
     private javax.swing.JPanel jPanelOpciones;
     private javax.swing.JPanel jPanelUsuario;
-    private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JSeparator jSeparator1;
     private javax.swing.JSeparator jSeparator10;
     private javax.swing.JSeparator jSeparator11;
     private javax.swing.JSeparator jSeparator2;
-    private javax.swing.JSeparator jSeparator3;
     private javax.swing.JSeparator jSeparator4;
     private javax.swing.JSeparator jSeparator5;
     private javax.swing.JSeparator jSeparator6;
     private javax.swing.JSeparator jSeparator7;
     private javax.swing.JSeparator jSeparator8;
     private javax.swing.JSeparator jSeparator9;
-    private javax.swing.JTextField jTFBuscadorModProd;
     private javax.swing.JTextField jTFDescripcionAgrProd;
     private javax.swing.JTextField jTFDescripcionModProd;
     private javax.swing.JTextField jTFNombreProdModProd;
@@ -1732,5 +1790,11 @@ public class Menu extends javax.swing.JFrame {
         textVentaA.setText("<html>Registrar Venta: Permite ingresar los datos de una venta como producto, precio y cantidad</html>");
         textVentaD.setText("<html>Detallar Venta: Lista completa de los datos de una venta registrada</html>");
         textVentaE.setText("<html>Eliminar Venta: Permite dar de baja el registro de una venta para su posterior eliminación");
+    }
+    
+    private void llenarLista(){
+        for (Producto pro : pd.listarProducto()){
+            
+        }
     }
 }
