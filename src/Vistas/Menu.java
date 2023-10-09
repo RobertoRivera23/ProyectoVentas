@@ -179,6 +179,25 @@ public class Menu extends javax.swing.JFrame {
         jTFStockAgrProd = new javax.swing.JTextField();
         jPanel2 = new javax.swing.JPanel();
         jPanel3 = new javax.swing.JPanel();
+        jLModificarProd = new javax.swing.JLabel();
+        jLBuscarProdModProd = new javax.swing.JLabel();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        jList1 = new javax.swing.JList<>();
+        jSeparator3 = new javax.swing.JSeparator();
+        jTFBuscadorModProd = new javax.swing.JTextField();
+        jSeparator8 = new javax.swing.JSeparator();
+        jTFNombreProdModProd = new javax.swing.JTextField();
+        jSeparator9 = new javax.swing.JSeparator();
+        jTFDescripcionModProd = new javax.swing.JTextField();
+        jSeparator10 = new javax.swing.JSeparator();
+        jTFPrecioActualModProd = new javax.swing.JTextField();
+        jSeparator11 = new javax.swing.JSeparator();
+        jTFStockModProd = new javax.swing.JTextField();
+        jLNombreProdModProd = new javax.swing.JLabel();
+        jLDescripcionModProd = new javax.swing.JLabel();
+        jLPrecioActualModProd = new javax.swing.JLabel();
+        jLStockModProd = new javax.swing.JLabel();
+        jLBtnModificarModProd = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setMinimumSize(new java.awt.Dimension(800, 500));
@@ -1079,21 +1098,27 @@ public class Menu extends javax.swing.JFrame {
 
         jLBtnAgregarProd.setBackground(new java.awt.Color(0, 150, 136));
         jLBtnAgregarProd.setFont(new java.awt.Font("Corbel", 1, 14)); // NOI18N
+        jLBtnAgregarProd.setForeground(new java.awt.Color(255, 255, 255));
         jLBtnAgregarProd.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLBtnAgregarProd.setText("Agregar");
         jLBtnAgregarProd.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        jLBtnAgregarProd.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         jLBtnAgregarProd.setOpaque(true);
         jPanel1.add(jLBtnAgregarProd, new org.netbeans.lib.awtextra.AbsoluteConstraints(259, 350, 80, 30));
 
+        jTFNombreProductoAgrProd.setFont(new java.awt.Font("Corbel", 0, 14)); // NOI18N
         jTFNombreProductoAgrProd.setBorder(null);
         jPanel1.add(jTFNombreProductoAgrProd, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 120, 210, 20));
 
+        jTFDescripcionAgrProd.setFont(new java.awt.Font("Corbel", 0, 14)); // NOI18N
         jTFDescripcionAgrProd.setBorder(null);
         jPanel1.add(jTFDescripcionAgrProd, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 170, 210, 20));
 
+        jTFPrecioActualAgrProd.setFont(new java.awt.Font("Corbel", 0, 14)); // NOI18N
         jTFPrecioActualAgrProd.setBorder(null);
         jPanel1.add(jTFPrecioActualAgrProd, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 220, 210, 20));
 
+        jTFStockAgrProd.setFont(new java.awt.Font("Corbel", 0, 14)); // NOI18N
         jTFStockAgrProd.setBorder(null);
         jPanel1.add(jTFStockAgrProd, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 270, 210, 20));
 
@@ -1112,16 +1137,96 @@ public class Menu extends javax.swing.JFrame {
 
         jtpEscritorio.addTab("tab7", jPanel2);
 
-        javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
-        jPanel3.setLayout(jPanel3Layout);
-        jPanel3Layout.setHorizontalGroup(
-            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 600, Short.MAX_VALUE)
-        );
-        jPanel3Layout.setVerticalGroup(
-            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 422, Short.MAX_VALUE)
-        );
+        jPanel3.setBackground(new java.awt.Color(255, 255, 255));
+        jPanel3.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        jLModificarProd.setFont(new java.awt.Font("Corbel", 1, 30)); // NOI18N
+        jLModificarProd.setForeground(new java.awt.Color(153, 153, 153));
+        jLModificarProd.setText("Modificar producto");
+        jPanel3.add(jLModificarProd, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 30, -1, 43));
+
+        jLBuscarProdModProd.setFont(new java.awt.Font("Corbel", 0, 14)); // NOI18N
+        jLBuscarProdModProd.setText("Buscar producto");
+        jPanel3.add(jLBuscarProdModProd, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 84, -1, -1));
+
+        jList1.setModel(new javax.swing.AbstractListModel<String>() {
+            String[] strings = { "Item 1", "Item 2", "Item 3", "Item 4", "Item 5" };
+            public int getSize() { return strings.length; }
+            public String getElementAt(int i) { return strings[i]; }
+        });
+        jScrollPane1.setViewportView(jList1);
+
+        jPanel3.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 100, 310, 90));
+
+        jSeparator3.setBackground(new java.awt.Color(0, 150, 136));
+        jSeparator3.setOpaque(true);
+        jSeparator3.setPreferredSize(new java.awt.Dimension(50, 2));
+        jPanel3.add(jSeparator3, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 128, 200, -1));
+
+        jTFBuscadorModProd.setFont(new java.awt.Font("Corbel", 0, 14)); // NOI18N
+        jTFBuscadorModProd.setBorder(null);
+        jPanel3.add(jTFBuscadorModProd, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 100, 200, 30));
+
+        jSeparator8.setBackground(new java.awt.Color(0, 150, 136));
+        jSeparator8.setOpaque(true);
+        jSeparator8.setPreferredSize(new java.awt.Dimension(50, 2));
+        jPanel3.add(jSeparator8, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 260, 200, -1));
+
+        jTFNombreProdModProd.setFont(new java.awt.Font("Corbel", 0, 14)); // NOI18N
+        jTFNombreProdModProd.setBorder(null);
+        jPanel3.add(jTFNombreProdModProd, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 230, 200, 30));
+
+        jSeparator9.setBackground(new java.awt.Color(0, 150, 136));
+        jSeparator9.setOpaque(true);
+        jSeparator9.setPreferredSize(new java.awt.Dimension(50, 2));
+        jPanel3.add(jSeparator9, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 260, 200, -1));
+
+        jTFDescripcionModProd.setFont(new java.awt.Font("Corbel", 0, 14)); // NOI18N
+        jTFDescripcionModProd.setBorder(null);
+        jPanel3.add(jTFDescripcionModProd, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 230, 200, 30));
+
+        jSeparator10.setBackground(new java.awt.Color(0, 150, 136));
+        jSeparator10.setOpaque(true);
+        jSeparator10.setPreferredSize(new java.awt.Dimension(50, 2));
+        jPanel3.add(jSeparator10, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 330, 200, -1));
+
+        jTFPrecioActualModProd.setFont(new java.awt.Font("Corbel", 0, 14)); // NOI18N
+        jTFPrecioActualModProd.setBorder(null);
+        jPanel3.add(jTFPrecioActualModProd, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 300, 200, 30));
+
+        jSeparator11.setBackground(new java.awt.Color(0, 150, 136));
+        jSeparator11.setOpaque(true);
+        jSeparator11.setPreferredSize(new java.awt.Dimension(50, 2));
+        jPanel3.add(jSeparator11, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 330, 200, -1));
+
+        jTFStockModProd.setFont(new java.awt.Font("Corbel", 0, 14)); // NOI18N
+        jTFStockModProd.setBorder(null);
+        jPanel3.add(jTFStockModProd, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 300, 200, 30));
+
+        jLNombreProdModProd.setFont(new java.awt.Font("Corbel", 0, 14)); // NOI18N
+        jLNombreProdModProd.setText("Nombre producto");
+        jPanel3.add(jLNombreProdModProd, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 210, -1, -1));
+
+        jLDescripcionModProd.setFont(new java.awt.Font("Corbel", 0, 14)); // NOI18N
+        jLDescripcionModProd.setText("Descripción");
+        jPanel3.add(jLDescripcionModProd, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 210, -1, -1));
+
+        jLPrecioActualModProd.setFont(new java.awt.Font("Corbel", 0, 14)); // NOI18N
+        jLPrecioActualModProd.setText("Precio Actual");
+        jPanel3.add(jLPrecioActualModProd, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 280, -1, -1));
+
+        jLStockModProd.setFont(new java.awt.Font("Corbel", 0, 14)); // NOI18N
+        jLStockModProd.setText("Stock");
+        jPanel3.add(jLStockModProd, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 280, -1, -1));
+
+        jLBtnModificarModProd.setBackground(new java.awt.Color(0, 150, 136));
+        jLBtnModificarModProd.setFont(new java.awt.Font("Corbel", 1, 14)); // NOI18N
+        jLBtnModificarModProd.setForeground(new java.awt.Color(255, 255, 255));
+        jLBtnModificarModProd.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLBtnModificarModProd.setText("Modificar");
+        jLBtnModificarModProd.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        jLBtnModificarModProd.setOpaque(true);
+        jPanel3.add(jLBtnModificarModProd, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 360, 100, 30));
 
         jtpEscritorio.addTab("tab8", jPanel3);
 
@@ -1442,10 +1547,17 @@ public class Menu extends javax.swing.JFrame {
     private javax.swing.JComboBox<String> jComboBox1;
     private javax.swing.JLabel jLAgregarProducto;
     private javax.swing.JLabel jLBtnAgregarProd;
+    private javax.swing.JLabel jLBtnModificarModProd;
+    private javax.swing.JLabel jLBuscarProdModProd;
     private javax.swing.JLabel jLDescripcionAP;
+    private javax.swing.JLabel jLDescripcionModProd;
+    private javax.swing.JLabel jLModificarProd;
+    private javax.swing.JLabel jLNombreProdModProd;
     private javax.swing.JLabel jLNombreProductoAP;
     private javax.swing.JLabel jLPrecioActualAP;
+    private javax.swing.JLabel jLPrecioActualModProd;
     private javax.swing.JLabel jLStockAP;
+    private javax.swing.JLabel jLStockModProd;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
@@ -1478,22 +1590,34 @@ public class Menu extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
+    private javax.swing.JList<String> jList1;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
     private javax.swing.JPanel jPanelFravemax;
     private javax.swing.JPanel jPanelOpciones;
     private javax.swing.JPanel jPanelUsuario;
+    private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JSeparator jSeparator1;
+    private javax.swing.JSeparator jSeparator10;
+    private javax.swing.JSeparator jSeparator11;
     private javax.swing.JSeparator jSeparator2;
+    private javax.swing.JSeparator jSeparator3;
     private javax.swing.JSeparator jSeparator4;
     private javax.swing.JSeparator jSeparator5;
     private javax.swing.JSeparator jSeparator6;
     private javax.swing.JSeparator jSeparator7;
+    private javax.swing.JSeparator jSeparator8;
+    private javax.swing.JSeparator jSeparator9;
+    private javax.swing.JTextField jTFBuscadorModProd;
     private javax.swing.JTextField jTFDescripcionAgrProd;
+    private javax.swing.JTextField jTFDescripcionModProd;
+    private javax.swing.JTextField jTFNombreProdModProd;
     private javax.swing.JTextField jTFNombreProductoAgrProd;
     private javax.swing.JTextField jTFPrecioActualAgrProd;
+    private javax.swing.JTextField jTFPrecioActualModProd;
     private javax.swing.JTextField jTFStockAgrProd;
+    private javax.swing.JTextField jTFStockModProd;
     private javax.swing.JLabel jlAgregar;
     private javax.swing.JLabel jlAgregarCliente;
     private javax.swing.JLabel jlCerrarSesion;
