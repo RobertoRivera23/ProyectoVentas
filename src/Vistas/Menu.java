@@ -2089,6 +2089,7 @@ public class Menu extends javax.swing.JFrame {
 
     private void jlSalirMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jlSalirMouseExited
         jlSalir.setOpaque(false);
+        jlSalir.setBackground(verdeBase);
     }//GEN-LAST:event_jlSalirMouseExited
 
     private void jlMinimizarMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jlMinimizarMouseEntered
@@ -2098,6 +2099,7 @@ public class Menu extends javax.swing.JFrame {
 
     private void jlMinimizarMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jlMinimizarMouseExited
         jlMinimizar.setOpaque(false);
+        jlMinimizar.setBackground(verdeBase);
     }//GEN-LAST:event_jlMinimizarMouseExited
 
     private void jlSalirMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jlSalirMouseClicked
