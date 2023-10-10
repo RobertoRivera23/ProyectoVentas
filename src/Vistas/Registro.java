@@ -116,32 +116,32 @@ public class Registro extends javax.swing.JFrame {
         jPDatos.setForeground(new java.awt.Color(255, 255, 255));
         jPDatos.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jLApellido.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        jLApellido.setFont(new java.awt.Font("Corbel", 1, 18)); // NOI18N
         jLApellido.setForeground(new java.awt.Color(0, 150, 136));
         jLApellido.setText("Apellido:");
         jPDatos.add(jLApellido, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 100, -1, -1));
 
-        jLNombre.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        jLNombre.setFont(new java.awt.Font("Corbel", 1, 18)); // NOI18N
         jLNombre.setForeground(new java.awt.Color(0, 150, 136));
         jLNombre.setText("Nombre:");
         jPDatos.add(jLNombre, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 140, -1, -1));
 
-        jLNombre1.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        jLNombre1.setFont(new java.awt.Font("Corbel", 1, 18)); // NOI18N
         jLNombre1.setForeground(new java.awt.Color(0, 150, 136));
         jLNombre1.setText("Dni:");
         jPDatos.add(jLNombre1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 180, -1, -1));
 
-        jLCargo.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        jLCargo.setFont(new java.awt.Font("Corbel", 1, 18)); // NOI18N
         jLCargo.setForeground(new java.awt.Color(0, 150, 136));
         jLCargo.setText("Cargo:");
         jPDatos.add(jLCargo, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 220, -1, -1));
 
-        jLUsuario.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        jLUsuario.setFont(new java.awt.Font("Corbel", 1, 18)); // NOI18N
         jLUsuario.setForeground(new java.awt.Color(0, 150, 136));
         jLUsuario.setText("Usuario:");
         jPDatos.add(jLUsuario, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 260, -1, -1));
 
-        jLContraseña.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        jLContraseña.setFont(new java.awt.Font("Corbel", 1, 18)); // NOI18N
         jLContraseña.setForeground(new java.awt.Color(0, 150, 136));
         jLContraseña.setText("Contraseña:");
         jPDatos.add(jLContraseña, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 310, -1, -1));

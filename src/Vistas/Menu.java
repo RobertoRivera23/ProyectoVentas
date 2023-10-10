@@ -141,22 +141,22 @@ public class Menu extends javax.swing.JFrame {
         jLabel34 = new javax.swing.JLabel();
         jtpProductos = new javax.swing.JPanel();
         jlListar = new javax.swing.JLabel();
-        jLabel20 = new javax.swing.JLabel();
-        jLabel19 = new javax.swing.JLabel();
-        jLabel18 = new javax.swing.JLabel();
+        jlIconoBorrarPro = new javax.swing.JLabel();
+        jlIconoAgregarPro = new javax.swing.JLabel();
+        jlIconoModPro = new javax.swing.JLabel();
         jlAgregar = new javax.swing.JLabel();
         jlModificar = new javax.swing.JLabel();
         jlEliminar = new javax.swing.JLabel();
-        jLabel7 = new javax.swing.JLabel();
+        jlGestionPro = new javax.swing.JLabel();
         textE = new javax.swing.JLabel();
         textM = new javax.swing.JLabel();
         textA = new javax.swing.JLabel();
-        jLabel16 = new javax.swing.JLabel();
-        jLabel17 = new javax.swing.JLabel();
-        jLabel15 = new javax.swing.JLabel();
-        jLabel12 = new javax.swing.JLabel();
-        jLabel13 = new javax.swing.JLabel();
-        jLabel14 = new javax.swing.JLabel();
+        jlModPro = new javax.swing.JLabel();
+        jlEliminarPro = new javax.swing.JLabel();
+        jlAgregarPro = new javax.swing.JLabel();
+        rectangulo1Pro = new javax.swing.JLabel();
+        rectangulo2Pro = new javax.swing.JLabel();
+        rectangulo3Pro = new javax.swing.JLabel();
         jtpListaP = new javax.swing.JPanel();
         jLabel24 = new javax.swing.JLabel();
         Scroll = new javax.swing.JScrollPane();
@@ -953,17 +953,17 @@ public class Menu extends javax.swing.JFrame {
         });
         jtpProductos.add(jlListar, new org.netbeans.lib.awtextra.AbsoluteConstraints(460, 40, 120, 30));
 
-        jLabel20.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel20.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Image/basura.png"))); // NOI18N
-        jtpProductos.add(jLabel20, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 60, 180, 150));
+        jlIconoBorrarPro.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jlIconoBorrarPro.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Image/basura.png"))); // NOI18N
+        jtpProductos.add(jlIconoBorrarPro, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 60, 180, 150));
 
-        jLabel19.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel19.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Image/agregar-documento.png"))); // NOI18N
-        jtpProductos.add(jLabel19, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 60, 180, 150));
+        jlIconoAgregarPro.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jlIconoAgregarPro.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Image/agregar-documento.png"))); // NOI18N
+        jtpProductos.add(jlIconoAgregarPro, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 60, 180, 150));
 
-        jLabel18.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel18.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Image/archivo-de-edicion.png"))); // NOI18N
-        jtpProductos.add(jLabel18, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 60, 180, 150));
+        jlIconoModPro.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jlIconoModPro.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Image/archivo-de-edicion.png"))); // NOI18N
+        jtpProductos.add(jlIconoModPro, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 60, 180, 150));
 
         jlAgregar.setBackground(new java.awt.Color(0, 150, 136));
         jlAgregar.setFont(new java.awt.Font("Corbel", 1, 14)); // NOI18N
@@ -1034,10 +1034,10 @@ public class Menu extends javax.swing.JFrame {
         });
         jtpProductos.add(jlEliminar, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 340, 80, 30));
 
-        jLabel7.setFont(new java.awt.Font("Corbel", 1, 30)); // NOI18N
-        jLabel7.setForeground(new java.awt.Color(153, 153, 153));
-        jLabel7.setText("Gestion de Productos");
-        jtpProductos.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 40, 330, 30));
+        jlGestionPro.setFont(new java.awt.Font("Corbel", 1, 30)); // NOI18N
+        jlGestionPro.setForeground(new java.awt.Color(153, 153, 153));
+        jlGestionPro.setText("Gestion de Productos");
+        jtpProductos.add(jlGestionPro, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 40, 330, 30));
 
         textE.setFont(new java.awt.Font("Corbel", 0, 12)); // NOI18N
         textE.setForeground(new java.awt.Color(153, 153, 153));
@@ -1054,33 +1054,33 @@ public class Menu extends javax.swing.JFrame {
         textA.setVerticalAlignment(javax.swing.SwingConstants.TOP);
         jtpProductos.add(textA, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 240, 150, 90));
 
-        jLabel16.setFont(new java.awt.Font("Corbel", 1, 18)); // NOI18N
-        jLabel16.setForeground(new java.awt.Color(102, 102, 102));
-        jLabel16.setText("Modificar ");
-        jtpProductos.add(jLabel16, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 200, 80, -1));
+        jlModPro.setFont(new java.awt.Font("Corbel", 1, 18)); // NOI18N
+        jlModPro.setForeground(new java.awt.Color(102, 102, 102));
+        jlModPro.setText("Modificar ");
+        jtpProductos.add(jlModPro, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 200, 80, -1));
 
-        jLabel17.setFont(new java.awt.Font("Corbel", 1, 18)); // NOI18N
-        jLabel17.setForeground(new java.awt.Color(102, 102, 102));
-        jLabel17.setText("Eliminar ");
-        jtpProductos.add(jLabel17, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 200, -1, -1));
+        jlEliminarPro.setFont(new java.awt.Font("Corbel", 1, 18)); // NOI18N
+        jlEliminarPro.setForeground(new java.awt.Color(102, 102, 102));
+        jlEliminarPro.setText("Eliminar ");
+        jtpProductos.add(jlEliminarPro, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 200, -1, -1));
 
-        jLabel15.setFont(new java.awt.Font("Corbel", 1, 18)); // NOI18N
-        jLabel15.setForeground(new java.awt.Color(102, 102, 102));
-        jLabel15.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel15.setText("Agregar ");
-        jtpProductos.add(jLabel15, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 200, -1, -1));
+        jlAgregarPro.setFont(new java.awt.Font("Corbel", 1, 18)); // NOI18N
+        jlAgregarPro.setForeground(new java.awt.Color(102, 102, 102));
+        jlAgregarPro.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jlAgregarPro.setText("Agregar ");
+        jtpProductos.add(jlAgregarPro, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 200, -1, -1));
 
-        jLabel12.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel12.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Image/rectangulo.jpg"))); // NOI18N
-        jtpProductos.add(jLabel12, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 110, -1, -1));
+        rectangulo1Pro.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        rectangulo1Pro.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Image/rectangulo.jpg"))); // NOI18N
+        jtpProductos.add(rectangulo1Pro, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 110, -1, -1));
 
-        jLabel13.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel13.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Image/rectangulo.jpg"))); // NOI18N
-        jtpProductos.add(jLabel13, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 110, -1, -1));
+        rectangulo2Pro.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        rectangulo2Pro.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Image/rectangulo.jpg"))); // NOI18N
+        jtpProductos.add(rectangulo2Pro, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 110, -1, -1));
 
-        jLabel14.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel14.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Image/rectangulo.jpg"))); // NOI18N
-        jtpProductos.add(jLabel14, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 110, -1, -1));
+        rectangulo3Pro.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        rectangulo3Pro.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Image/rectangulo.jpg"))); // NOI18N
+        jtpProductos.add(rectangulo3Pro, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 110, -1, -1));
 
         jtpEscritorio.addTab("tab4", jtpProductos);
 
@@ -2163,15 +2163,6 @@ public class Menu extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
-    private javax.swing.JLabel jLabel12;
-    private javax.swing.JLabel jLabel13;
-    private javax.swing.JLabel jLabel14;
-    private javax.swing.JLabel jLabel15;
-    private javax.swing.JLabel jLabel16;
-    private javax.swing.JLabel jLabel17;
-    private javax.swing.JLabel jLabel18;
-    private javax.swing.JLabel jLabel19;
-    private javax.swing.JLabel jLabel20;
     private javax.swing.JLabel jLabel21;
     private javax.swing.JLabel jLabel22;
     private javax.swing.JLabel jLabel23;
@@ -2189,7 +2180,6 @@ public class Menu extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
-    private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanelFravemax;
@@ -2247,19 +2237,26 @@ public class Menu extends javax.swing.JFrame {
     private javax.swing.JComboBox<Producto> jcbProductos;
     private javax.swing.JLabel jlAgregar;
     private javax.swing.JLabel jlAgregarCliente;
+    private javax.swing.JLabel jlAgregarPro;
     private javax.swing.JLabel jlBusqueda;
     private javax.swing.JLabel jlCerrarSesion;
     private javax.swing.JLabel jlClientes;
     private javax.swing.JLabel jlDetalles;
     private javax.swing.JLabel jlEliminar;
     private javax.swing.JLabel jlEliminarCliente;
+    private javax.swing.JLabel jlEliminarPro;
     private javax.swing.JLabel jlEliminarVenta;
+    private javax.swing.JLabel jlGestionPro;
     private javax.swing.JLabel jlGestionV;
+    private javax.swing.JLabel jlIconoAgregarPro;
+    private javax.swing.JLabel jlIconoBorrarPro;
+    private javax.swing.JLabel jlIconoModPro;
     private javax.swing.JLabel jlInicio;
     private javax.swing.JLabel jlListar;
     private javax.swing.JLabel jlListarCliente;
     private javax.swing.JLabel jlListarVenta;
     private javax.swing.JLabel jlMinimizar;
+    private javax.swing.JLabel jlModPro;
     private javax.swing.JLabel jlModificar;
     private javax.swing.JLabel jlModificarCliente;
     private javax.swing.JLabel jlProductos;
@@ -2283,6 +2280,9 @@ public class Menu extends javax.swing.JFrame {
     private javax.swing.JPanel jtpModPro;
     private javax.swing.JPanel jtpProductos;
     private javax.swing.JPanel jtpVentas;
+    private javax.swing.JLabel rectangulo1Pro;
+    private javax.swing.JLabel rectangulo2Pro;
+    private javax.swing.JLabel rectangulo3Pro;
     private javax.swing.JLabel rectanguloV1;
     private javax.swing.JLabel rectanguloV2;
     private javax.swing.JLabel rectanguloV3;
