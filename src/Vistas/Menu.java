@@ -453,7 +453,7 @@ public class Menu extends javax.swing.JFrame {
         verMasC.setText("Ver mas");
         verMasC.setVerticalAlignment(javax.swing.SwingConstants.BOTTOM);
         verMasC.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED, null, new java.awt.Color(0, 150, 136), null, null));
-        verMasC.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        verMasC.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         verMasC.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         verMasC.setOpaque(true);
         verMasC.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
@@ -477,7 +477,7 @@ public class Menu extends javax.swing.JFrame {
         verMasV.setText("Ver mas");
         verMasV.setVerticalAlignment(javax.swing.SwingConstants.BOTTOM);
         verMasV.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED, null, new java.awt.Color(0, 150, 136), null, null));
-        verMasV.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        verMasV.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         verMasV.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         verMasV.setOpaque(true);
         verMasV.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
@@ -501,7 +501,7 @@ public class Menu extends javax.swing.JFrame {
         verMasP.setText("Ver mas");
         verMasP.setVerticalAlignment(javax.swing.SwingConstants.BOTTOM);
         verMasP.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED, null, new java.awt.Color(0, 150, 136), null, null));
-        verMasP.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        verMasP.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         verMasP.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         verMasP.setOpaque(true);
         verMasP.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);

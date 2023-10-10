@@ -95,7 +95,7 @@ public class Login extends javax.swing.JFrame {
         jLBtnIniciarSesion.setText("Iniciar sesión");
         jLBtnIniciarSesion.setVerticalAlignment(javax.swing.SwingConstants.BOTTOM);
         jLBtnIniciarSesion.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED, null, new java.awt.Color(0, 102, 102), null, null));
-        jLBtnIniciarSesion.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        jLBtnIniciarSesion.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         jLBtnIniciarSesion.setOpaque(true);
         jPCuerpo.add(jLBtnIniciarSesion, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 370, 117, 26));
 
@@ -117,7 +117,7 @@ public class Login extends javax.swing.JFrame {
         jLMinimiza.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLMinimiza.setText("_");
         jLMinimiza.setVerticalAlignment(javax.swing.SwingConstants.TOP);
-        jLMinimiza.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        jLMinimiza.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         jLMinimiza.setOpaque(true);
         jLMinimiza.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -137,7 +137,7 @@ public class Login extends javax.swing.JFrame {
         jLCierra.setForeground(new java.awt.Color(255, 255, 255));
         jLCierra.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLCierra.setText("X");
-        jLCierra.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        jLCierra.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         jLCierra.setOpaque(true);
         jLCierra.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -152,7 +152,7 @@ public class Login extends javax.swing.JFrame {
         });
         jPanel1.add(jLCierra, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 0, 30, 30));
 
-        jPCuerpo.add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 340, 30));
+        jPCuerpo.add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 350, 30));
 
         jPBackground.add(jPCuerpo, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 0, 350, 450));
 
