@@ -261,6 +261,12 @@ public class Menu extends javax.swing.JFrame {
         jSElimClien3 = new javax.swing.JSeparator();
         jTFDomicilioElimClien = new javax.swing.JTextField();
         jSElimClien4 = new javax.swing.JSeparator();
+        jtpListClien = new javax.swing.JPanel();
+        jLTituloListaClien = new javax.swing.JLabel();
+        ScrollListClien = new javax.swing.JScrollPane();
+        jtListClien = new TablaFraveMax();
+        jtfBuscadorClienListClien = new javax.swing.JTextField();
+        jlImgBusqueda = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setMinimumSize(new java.awt.Dimension(800, 500));
@@ -1731,6 +1737,59 @@ public class Menu extends javax.swing.JFrame {
 
         jtpEscritorio.addTab("tab11", jtpElimClien);
 
+        jtpListClien.setBackground(new java.awt.Color(255, 255, 255));
+        jtpListClien.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        jLTituloListaClien.setFont(new java.awt.Font("Corbel", 1, 30)); // NOI18N
+        jLTituloListaClien.setForeground(new java.awt.Color(153, 153, 153));
+        jLTituloListaClien.setText("Lista de clientes  ");
+        jtpListClien.add(jLTituloListaClien, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 40, -1, -1));
+
+        ScrollListClien.setBackground(new java.awt.Color(255, 255, 255));
+        ScrollListClien.setFont(new java.awt.Font("Corbel", 0, 12)); // NOI18N
+
+        jtListClien.setBackground(new java.awt.Color(204, 204, 204));
+        jtListClien.setFont(new java.awt.Font("Corbel", 1, 14)); // NOI18N
+        jtListClien.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null}
+            },
+            new String [] {
+                "Title 1", "Title 2", "Title 3", "Title 4"
+            }
+        ));
+        jtListClien.setGridColor(new java.awt.Color(0, 102, 102));
+        jtListClien.setMinimumSize(new java.awt.Dimension(60, 60));
+        ScrollListClien.setViewportView(jtListClien);
+
+        jtpListClien.add(ScrollListClien, new org.netbeans.lib.awtextra.AbsoluteConstraints(13, 120, 570, 290));
+
+        jtfBuscadorClienListClien.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
+        jtpListClien.add(jtfBuscadorClienListClien, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 80, 160, 30));
+
+        jlImgBusqueda.setBackground(new java.awt.Color(255, 255, 255));
+        jlImgBusqueda.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jlImgBusqueda.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Image/busqueda - gris.png"))); // NOI18N
+        jlImgBusqueda.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        jlImgBusqueda.setOpaque(true);
+        jlImgBusqueda.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jlImgBusquedaMouseClicked(evt);
+            }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                jlImgBusquedaMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                jlImgBusquedaMouseExited(evt);
+            }
+        });
+        jtpListClien.add(jlImgBusqueda, new org.netbeans.lib.awtextra.AbsoluteConstraints(550, 80, 30, 30));
+
+        jtpEscritorio.addTab("tab12", jtpListClien);
+
         BackGround.add(jtpEscritorio, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 53, 600, 450));
 
         getContentPane().add(BackGround, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
@@ -2074,6 +2133,18 @@ public class Menu extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_jLBtnEliminarElimClienMouseExited
 
+    private void jlImgBusquedaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jlImgBusquedaMouseClicked
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jlImgBusquedaMouseClicked
+
+    private void jlImgBusquedaMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jlImgBusquedaMouseEntered
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jlImgBusquedaMouseEntered
+
+    private void jlImgBusquedaMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jlImgBusquedaMouseExited
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jlImgBusquedaMouseExited
+
     /**
      * @param args the command line arguments
      */
@@ -2117,6 +2188,7 @@ public class Menu extends javax.swing.JFrame {
     private javax.swing.JLabel EliminarVenta;
     private javax.swing.JLabel RegistrarVenta;
     private javax.swing.JScrollPane Scroll;
+    private javax.swing.JScrollPane ScrollListClien;
     private javax.swing.JLabel fravemaxLogo;
     private javax.swing.JComboBox<String> jCBBuscarClienElimClien;
     private javax.swing.JComboBox<String> jCBBuscarProdElimProd;
@@ -2159,6 +2231,7 @@ public class Menu extends javax.swing.JFrame {
     private javax.swing.JLabel jLTituloAgrClien;
     private javax.swing.JLabel jLTituloEliminarCliente;
     private javax.swing.JLabel jLTituloEliminarProducto;
+    private javax.swing.JLabel jLTituloListaClien;
     private javax.swing.JLabel jLTituloModClien;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
@@ -2251,6 +2324,7 @@ public class Menu extends javax.swing.JFrame {
     private javax.swing.JLabel jlIconoAgregarPro;
     private javax.swing.JLabel jlIconoBorrarPro;
     private javax.swing.JLabel jlIconoModPro;
+    private javax.swing.JLabel jlImgBusqueda;
     private javax.swing.JLabel jlInicio;
     private javax.swing.JLabel jlListar;
     private javax.swing.JLabel jlListarCliente;
@@ -2266,8 +2340,10 @@ public class Menu extends javax.swing.JFrame {
     private javax.swing.JLabel jlVentaIcon2;
     private javax.swing.JLabel jlVentaIcon3;
     private javax.swing.JLabel jlVentas;
+    private javax.swing.JTable jtListClien;
     private javax.swing.JTable jtListaPro;
     private javax.swing.JTextField jtfBuscador;
+    private javax.swing.JTextField jtfBuscadorClienListClien;
     private javax.swing.JPanel jtpAgrClien;
     private javax.swing.JPanel jtpAgregarPro;
     private javax.swing.JPanel jtpClientes;
@@ -2275,6 +2351,7 @@ public class Menu extends javax.swing.JFrame {
     private javax.swing.JPanel jtpEliminarPro;
     private javax.swing.JTabbedPane jtpEscritorio;
     private javax.swing.JPanel jtpInicio;
+    private javax.swing.JPanel jtpListClien;
     private javax.swing.JPanel jtpListaP;
     private javax.swing.JPanel jtpModClien;
     private javax.swing.JPanel jtpModPro;
