@@ -28,6 +28,15 @@ public class Cliente {
         this.domicilio = domicilio;
         this.telefono = telefono;
     }
+    
+     public Cliente(int idCliente, String apellido, String nombre, String domicilio, String telefono, boolean estado) {
+        this.idCliente = idCliente;
+        this.apellido = apellido;
+        this.nombre = nombre;
+        this.domicilio = domicilio;
+        this.telefono = telefono;
+        this.estado = estado;
+    }
 
     public Cliente() {
     }
@@ -79,5 +88,13 @@ public class Cliente {
     public void setEstado(boolean estado) {
         this.estado = estado;
     }
+
+    @Override
+    public String toString() {
+        return "idCliente=" + idCliente + ", apellido=" + apellido + ", nombre=" + nombre + ", domicilio=" + domicilio + ", telefono=" + 
+                telefono + ", estado=" + estado;
+    }
+    
+    
     
 }
