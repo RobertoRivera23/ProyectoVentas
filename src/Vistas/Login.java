@@ -5,6 +5,8 @@
  */
 package Vistas;
 
+import static Vistas.Menu.verdeBase;
+import static Vistas.Menu.verdeClaro;
 import java.awt.Color;
 
 /**
@@ -97,6 +99,14 @@ public class Login extends javax.swing.JFrame {
         jLBtnIniciarSesion.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED, null, new java.awt.Color(0, 102, 102), null, null));
         jLBtnIniciarSesion.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         jLBtnIniciarSesion.setOpaque(true);
+        jLBtnIniciarSesion.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                jLBtnIniciarSesionMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                jLBtnIniciarSesionMouseExited(evt);
+            }
+        });
         jPCuerpo.add(jLBtnIniciarSesion, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 370, 117, 26));
 
         jLIconoLogin.setFont(new java.awt.Font("Corbel", 1, 18)); // NOI18N
@@ -106,7 +116,7 @@ public class Login extends javax.swing.JFrame {
         jLIconoLogin.setText("Login");
         jLIconoLogin.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         jLIconoLogin.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
-        jPCuerpo.add(jLIconoLogin, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 30, 140, 120));
+        jPCuerpo.add(jLIconoLogin, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 40, 140, 120));
 
         jPanel1.setBackground(new java.awt.Color(0, 150, 136));
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -156,7 +166,7 @@ public class Login extends javax.swing.JFrame {
 
         jPBackground.add(jPCuerpo, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 0, 350, 450));
 
-        jLabel3.setIcon(new javax.swing.ImageIcon("C:\\Users\\Mauri\\Desktop\\Banner FM.png")); // NOI18N
+        jLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Image/Banner FM.png"))); // NOI18N
         jPBackground.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 170, -1));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -211,6 +221,14 @@ public class Login extends javax.swing.JFrame {
     private void jLMinimizaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLMinimizaMouseClicked
         this.setExtendedState(1);
     }//GEN-LAST:event_jLMinimizaMouseClicked
+
+    private void jLBtnIniciarSesionMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLBtnIniciarSesionMouseEntered
+        jLBtnIniciarSesion.setBackground(verdeClaro);
+    }//GEN-LAST:event_jLBtnIniciarSesionMouseEntered
+
+    private void jLBtnIniciarSesionMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLBtnIniciarSesionMouseExited
+        jLBtnIniciarSesion.setBackground(verdeBase);
+    }//GEN-LAST:event_jLBtnIniciarSesionMouseExited
 
     /**
      * @param args the command line arguments
