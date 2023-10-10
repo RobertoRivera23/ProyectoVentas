@@ -77,8 +77,6 @@ public class Menu extends javax.swing.JFrame {
         jlSalir = new javax.swing.JLabel();
         jlMinimizar = new javax.swing.JLabel();
         fravemaxLogo = new javax.swing.JLabel();
-        jSeparator1 = new javax.swing.JSeparator();
-        jSeparator2 = new javax.swing.JSeparator();
         jPanelUsuario = new javax.swing.JPanel();
         jLabel5 = new javax.swing.JLabel();
         jPanelOpciones = new javax.swing.JPanel();
@@ -273,16 +271,6 @@ public class Menu extends javax.swing.JFrame {
         fravemaxLogo.setIconTextGap(0);
         fravemaxLogo.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
         jPanelFravemax.add(fravemaxLogo, new org.netbeans.lib.awtextra.AbsoluteConstraints(550, -3, 170, 100));
-
-        jSeparator1.setBackground(new java.awt.Color(0, 102, 102));
-        jSeparator1.setForeground(new java.awt.Color(0, 102, 102));
-        jSeparator1.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED, new java.awt.Color(0, 102, 102), new java.awt.Color(0, 102, 102), new java.awt.Color(0, 51, 51), new java.awt.Color(0, 51, 51)));
-        jPanelFravemax.add(jSeparator1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 200, 100));
-
-        jSeparator2.setBackground(new java.awt.Color(0, 102, 102));
-        jSeparator2.setForeground(new java.awt.Color(0, 102, 102));
-        jSeparator2.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED, new java.awt.Color(0, 102, 102), new java.awt.Color(0, 102, 102), new java.awt.Color(0, 51, 51), new java.awt.Color(0, 51, 51)));
-        jPanelFravemax.add(jSeparator2, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 0, 600, 100));
 
         jPanelUsuario.setBackground(new java.awt.Color(0, 150, 136));
         jPanelUsuario.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -1700,10 +1688,8 @@ public class Menu extends javax.swing.JFrame {
     private javax.swing.JPanel jPanelFravemax;
     private javax.swing.JPanel jPanelOpciones;
     private javax.swing.JPanel jPanelUsuario;
-    private javax.swing.JSeparator jSeparator1;
     private javax.swing.JSeparator jSeparator10;
     private javax.swing.JSeparator jSeparator11;
-    private javax.swing.JSeparator jSeparator2;
     private javax.swing.JSeparator jSeparator4;
     private javax.swing.JSeparator jSeparator5;
     private javax.swing.JSeparator jSeparator6;
