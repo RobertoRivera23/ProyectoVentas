@@ -23,10 +23,10 @@ public class Menu extends javax.swing.JFrame {
     private ProductoData pd = new ProductoData();
     private Producto p = null;
     private int xMouse, yMouse;
-    Color verdeBase = new Color(0,150,136);
-    Color verdeClaro = new Color(10, 170, 140);
-    Color grisBase = new Color(51, 51, 76);
-    Color grisClaro = new Color(66, 66, 76);
+    public static Color verdeBase = new Color(0,150,136);
+    public static Color verdeClaro = new Color(10, 170, 140);
+    public static Color grisBase = new Color(51, 51, 76);
+    public static Color grisClaro = new Color(66, 66, 76);
 
     public DefaultTableModel Modelo = new DefaultTableModel(
             null,
