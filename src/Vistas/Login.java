@@ -45,7 +45,7 @@ public class Login extends javax.swing.JFrame {
         jPanel1 = new javax.swing.JPanel();
         jLMinimiza = new javax.swing.JLabel();
         jLCierra = new javax.swing.JLabel();
-        jLabel3 = new javax.swing.JLabel();
+        jlBanner1 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setLocationByPlatform(true);
@@ -166,8 +166,8 @@ public class Login extends javax.swing.JFrame {
 
         jPBackground.add(jPCuerpo, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 0, 350, 450));
 
-        jLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Image/Banner FM.png"))); // NOI18N
-        jPBackground.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 170, -1));
+        jlBanner1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Image/Banner FM.png"))); // NOI18N
+        jPBackground.add(jlBanner1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 170, -1));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -275,11 +275,11 @@ public class Login extends javax.swing.JFrame {
     private javax.swing.JLabel jLIconoLogin;
     private javax.swing.JLabel jLMinimiza;
     private javax.swing.JLabel jLUsuario;
-    private javax.swing.JLabel jLabel3;
     private javax.swing.JPanel jPBackground;
     private javax.swing.JPanel jPCuerpo;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JTextField jTContraseña;
     private javax.swing.JTextField jTFUsuario;
+    private javax.swing.JLabel jlBanner1;
     // End of variables declaration//GEN-END:variables
 }
