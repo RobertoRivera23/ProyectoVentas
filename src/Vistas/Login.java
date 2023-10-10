@@ -33,6 +33,7 @@ public class Login extends javax.swing.JFrame {
     private void initComponents() {
 
         jPBackground = new javax.swing.JPanel();
+        jlBanner1 = new javax.swing.JLabel();
         jPCuerpo = new javax.swing.JPanel();
         jLUsuario = new javax.swing.JLabel();
         jLContraseña = new javax.swing.JLabel();
@@ -45,7 +46,6 @@ public class Login extends javax.swing.JFrame {
         jPanel1 = new javax.swing.JPanel();
         jLMinimiza = new javax.swing.JLabel();
         jLCierra = new javax.swing.JLabel();
-        jlBanner1 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setLocationByPlatform(true);
@@ -54,6 +54,9 @@ public class Login extends javax.swing.JFrame {
 
         jPBackground.setPreferredSize(new java.awt.Dimension(570, 400));
         jPBackground.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        jlBanner1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Image/Banner FM.png"))); // NOI18N
+        jPBackground.add(jlBanner1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 170, -1));
 
         jPCuerpo.setBackground(new java.awt.Color(255, 255, 255));
         jPCuerpo.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -107,7 +110,7 @@ public class Login extends javax.swing.JFrame {
                 jLBtnIniciarSesionMouseExited(evt);
             }
         });
-        jPCuerpo.add(jLBtnIniciarSesion, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 370, 117, 26));
+        jPCuerpo.add(jLBtnIniciarSesion, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 366, 117, 30));
 
         jLIconoLogin.setFont(new java.awt.Font("Corbel", 1, 18)); // NOI18N
         jLIconoLogin.setForeground(new java.awt.Color(0, 150, 136));
@@ -140,7 +143,7 @@ public class Login extends javax.swing.JFrame {
                 jLMinimizaMouseExited(evt);
             }
         });
-        jPanel1.add(jLMinimiza, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 0, 29, 30));
+        jPanel1.add(jLMinimiza, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 0, 29, 30));
 
         jLCierra.setBackground(new java.awt.Color(0, 150, 136));
         jLCierra.setFont(new java.awt.Font("Microsoft Yi Baiti", 1, 24)); // NOI18N
@@ -160,14 +163,11 @@ public class Login extends javax.swing.JFrame {
                 jLCierraMouseExited(evt);
             }
         });
-        jPanel1.add(jLCierra, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 0, 30, 30));
+        jPanel1.add(jLCierra, new org.netbeans.lib.awtextra.AbsoluteConstraints(480, 0, 30, 30));
 
-        jPCuerpo.add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 350, 30));
+        jPCuerpo.add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(-170, 0, 520, 30));
 
         jPBackground.add(jPCuerpo, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 0, 350, 450));
-
-        jlBanner1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Image/Banner FM.png"))); // NOI18N
-        jPBackground.add(jlBanner1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 170, -1));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
