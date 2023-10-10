@@ -41,12 +41,8 @@ public class Registro extends javax.swing.JFrame {
 
         jPFondo = new javax.swing.JPanel();
         jPFravemax = new javax.swing.JPanel();
-        jlFravemax = new javax.swing.JLabel();
         jLMinimiza = new javax.swing.JLabel();
         jLCierra = new javax.swing.JLabel();
-        jLabel4 = new javax.swing.JLabel();
-        jLTitulo = new javax.swing.JLabel();
-        jLabel1 = new javax.swing.JLabel();
         jPDatos = new javax.swing.JPanel();
         jLApellido = new javax.swing.JLabel();
         jLNombre = new javax.swing.JLabel();
@@ -59,30 +55,29 @@ public class Registro extends javax.swing.JFrame {
         jTFDni = new javax.swing.JTextField();
         jTFUsuario = new javax.swing.JTextField();
         jCBCargo = new javax.swing.JComboBox<>();
-        jPVolver = new javax.swing.JPanel();
-        jLVolver = new javax.swing.JLabel();
-        jPCargar = new javax.swing.JPanel();
-        jLabel2 = new javax.swing.JLabel();
         jRMostrar = new javax.swing.JRadioButton();
         jPContraseña = new javax.swing.JPasswordField();
+        jLabel2 = new javax.swing.JLabel();
+        jLVolver = new javax.swing.JLabel();
+        jLabel4 = new javax.swing.JLabel();
+        jLTitulo = new javax.swing.JLabel();
+        jLabel1 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setPreferredSize(new java.awt.Dimension(512, 450));
+        setSize(new java.awt.Dimension(510, 450));
 
-        jPFondo.setPreferredSize(new java.awt.Dimension(800, 500));
+        jPFondo.setPreferredSize(new java.awt.Dimension(512, 450));
         jPFondo.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jPFravemax.setBackground(new java.awt.Color(0, 150, 136));
         jPFravemax.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jlFravemax.setFont(new java.awt.Font("Corbel", 1, 14)); // NOI18N
-        jlFravemax.setForeground(new java.awt.Color(255, 255, 255));
-        jlFravemax.setText("FRAVEMAX");
-        jPFravemax.add(jlFravemax, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 80, 80, 20));
-
         jLMinimiza.setFont(new java.awt.Font("Microsoft Yi Baiti", 1, 24)); // NOI18N
         jLMinimiza.setForeground(new java.awt.Color(255, 255, 255));
         jLMinimiza.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLMinimiza.setText("_");
+        jLMinimiza.setVerticalAlignment(javax.swing.SwingConstants.TOP);
         jLMinimiza.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         jLMinimiza.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -95,7 +90,7 @@ public class Registro extends javax.swing.JFrame {
                 jLMinimizaMouseExited(evt);
             }
         });
-        jPFravemax.add(jLMinimiza, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 0, 30, 30));
+        jPFravemax.add(jLMinimiza, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 0, 30, 30));
 
         jLCierra.setFont(new java.awt.Font("Microsoft Yi Baiti", 1, 24)); // NOI18N
         jLCierra.setForeground(new java.awt.Color(255, 255, 255));
@@ -113,53 +108,43 @@ public class Registro extends javax.swing.JFrame {
                 jLCierraMouseExited(evt);
             }
         });
-        jPFravemax.add(jLCierra, new org.netbeans.lib.awtextra.AbsoluteConstraints(530, 0, 40, 30));
+        jPFravemax.add(jLCierra, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 0, 40, 30));
 
-        jLabel4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Image/usuarios-alt.png"))); // NOI18N
-        jPFravemax.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 0, 77, 91));
+        jPFondo.add(jPFravemax, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 0, 340, -1));
 
-        jLTitulo.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
-        jLTitulo.setForeground(new java.awt.Color(255, 255, 255));
-        jLTitulo.setText("Registro de Usuario");
-        jPFravemax.add(jLTitulo, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 80, -1, -1));
-
-        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Image/fravemax.png"))); // NOI18N
-        jPFravemax.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 10, 80, 70));
-
-        jPFondo.add(jPFravemax, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
-
-        jPDatos.setBackground(new java.awt.Color(51, 51, 76));
+        jPDatos.setBackground(new java.awt.Color(255, 255, 255));
+        jPDatos.setForeground(new java.awt.Color(255, 255, 255));
         jPDatos.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jLApellido.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
-        jLApellido.setForeground(new java.awt.Color(255, 255, 255));
+        jLApellido.setForeground(new java.awt.Color(0, 150, 136));
         jLApellido.setText("Apellido:");
-        jPDatos.add(jLApellido, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 50, -1, -1));
+        jPDatos.add(jLApellido, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 110, -1, -1));
 
         jLNombre.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
-        jLNombre.setForeground(new java.awt.Color(255, 255, 255));
+        jLNombre.setForeground(new java.awt.Color(0, 150, 136));
         jLNombre.setText("Nombre:");
-        jPDatos.add(jLNombre, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 90, -1, -1));
+        jPDatos.add(jLNombre, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 150, -1, -1));
 
         jLNombre1.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
-        jLNombre1.setForeground(new java.awt.Color(255, 255, 255));
+        jLNombre1.setForeground(new java.awt.Color(0, 150, 136));
         jLNombre1.setText("Dni:");
-        jPDatos.add(jLNombre1, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 130, -1, -1));
+        jPDatos.add(jLNombre1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 190, -1, -1));
 
         jLCargo.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
-        jLCargo.setForeground(new java.awt.Color(255, 255, 255));
+        jLCargo.setForeground(new java.awt.Color(0, 150, 136));
         jLCargo.setText("Cargo:");
-        jPDatos.add(jLCargo, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 170, -1, -1));
+        jPDatos.add(jLCargo, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 230, -1, -1));
 
         jLUsuario.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
-        jLUsuario.setForeground(new java.awt.Color(255, 255, 255));
+        jLUsuario.setForeground(new java.awt.Color(0, 150, 136));
         jLUsuario.setText("Usuario:");
-        jPDatos.add(jLUsuario, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 210, -1, -1));
+        jPDatos.add(jLUsuario, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 270, -1, -1));
 
         jLContraseña.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
-        jLContraseña.setForeground(new java.awt.Color(255, 255, 255));
+        jLContraseña.setForeground(new java.awt.Color(0, 150, 136));
         jLContraseña.setText("Contraseña:");
-        jPDatos.add(jLContraseña, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 260, -1, -1));
+        jPDatos.add(jLContraseña, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 320, -1, -1));
 
         jTFApellido.setForeground(new java.awt.Color(51, 51, 76));
         jTFApellido.addKeyListener(new java.awt.event.KeyAdapter() {
@@ -167,7 +152,7 @@ public class Registro extends javax.swing.JFrame {
                 jTFApellidoKeyTyped(evt);
             }
         });
-        jPDatos.add(jTFApellido, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 40, 238, -1));
+        jPDatos.add(jTFApellido, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 100, 170, -1));
 
         jTFNombre.setForeground(new java.awt.Color(51, 51, 76));
         jTFNombre.addKeyListener(new java.awt.event.KeyAdapter() {
@@ -175,7 +160,7 @@ public class Registro extends javax.swing.JFrame {
                 jTFNombreKeyTyped(evt);
             }
         });
-        jPDatos.add(jTFNombre, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 80, 238, -1));
+        jPDatos.add(jTFNombre, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 140, 170, -1));
 
         jTFDni.setForeground(new java.awt.Color(51, 51, 76));
         jTFDni.addKeyListener(new java.awt.event.KeyAdapter() {
@@ -183,96 +168,23 @@ public class Registro extends javax.swing.JFrame {
                 jTFDniKeyTyped(evt);
             }
         });
-        jPDatos.add(jTFDni, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 120, 238, -1));
+        jPDatos.add(jTFDni, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 180, 170, -1));
 
         jTFUsuario.setForeground(new java.awt.Color(51, 51, 76));
-        jPDatos.add(jTFUsuario, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 210, 238, -1));
+        jPDatos.add(jTFUsuario, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 270, 170, -1));
 
-        jPDatos.add(jCBCargo, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 160, 238, -1));
-
-        jPVolver.setBackground(new java.awt.Color(51, 51, 76));
-        jPVolver.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jPVolverMouseClicked(evt);
-            }
-            public void mouseEntered(java.awt.event.MouseEvent evt) {
-                jPVolverMouseEntered(evt);
-            }
-            public void mouseExited(java.awt.event.MouseEvent evt) {
-                jPVolverMouseExited(evt);
-            }
-        });
-
-        jLVolver.setBackground(new java.awt.Color(255, 255, 255));
-        jLVolver.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
-        jLVolver.setForeground(new java.awt.Color(255, 255, 255));
-        jLVolver.setText("Volver");
-
-        javax.swing.GroupLayout jPVolverLayout = new javax.swing.GroupLayout(jPVolver);
-        jPVolver.setLayout(jPVolverLayout);
-        jPVolverLayout.setHorizontalGroup(
-            jPVolverLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPVolverLayout.createSequentialGroup()
-                .addGap(57, 57, 57)
-                .addComponent(jLVolver)
-                .addContainerGap(64, Short.MAX_VALUE))
-        );
-        jPVolverLayout.setVerticalGroup(
-            jPVolverLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPVolverLayout.createSequentialGroup()
-                .addGap(21, 21, 21)
-                .addComponent(jLVolver)
-                .addContainerGap(22, Short.MAX_VALUE))
-        );
-
-        jPDatos.add(jPVolver, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 310, -1, -1));
-
-        jPCargar.setBackground(new java.awt.Color(51, 51, 76));
-        jPCargar.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jPCargarMouseClicked(evt);
-            }
-            public void mouseEntered(java.awt.event.MouseEvent evt) {
-                jPCargarMouseEntered(evt);
-            }
-            public void mouseExited(java.awt.event.MouseEvent evt) {
-                jPCargarMouseExited(evt);
-            }
-        });
-
-        jLabel2.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
-        jLabel2.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel2.setText("Cargar");
-
-        javax.swing.GroupLayout jPCargarLayout = new javax.swing.GroupLayout(jPCargar);
-        jPCargar.setLayout(jPCargarLayout);
-        jPCargarLayout.setHorizontalGroup(
-            jPCargarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPCargarLayout.createSequentialGroup()
-                .addContainerGap(62, Short.MAX_VALUE)
-                .addComponent(jLabel2)
-                .addGap(54, 54, 54))
-        );
-        jPCargarLayout.setVerticalGroup(
-            jPCargarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPCargarLayout.createSequentialGroup()
-                .addGap(22, 22, 22)
-                .addComponent(jLabel2)
-                .addContainerGap(24, Short.MAX_VALUE))
-        );
-
-        jPDatos.add(jPCargar, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 310, -1, -1));
+        jPDatos.add(jCBCargo, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 220, 170, -1));
 
         jRMostrar.setBackground(new java.awt.Color(51, 51, 76));
         jRMostrar.setFont(new java.awt.Font("Corbel", 1, 12)); // NOI18N
-        jRMostrar.setForeground(new java.awt.Color(255, 255, 255));
+        jRMostrar.setForeground(new java.awt.Color(0, 150, 136));
         jRMostrar.setText("Mostrar");
         jRMostrar.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mousePressed(java.awt.event.MouseEvent evt) {
                 jRMostrarMousePressed(evt);
             }
         });
-        jPDatos.add(jRMostrar, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 250, 80, -1));
+        jPDatos.add(jRMostrar, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 350, 80, -1));
 
         jPContraseña.setText("jPasswordField1");
         jPContraseña.addKeyListener(new java.awt.event.KeyAdapter() {
@@ -280,21 +192,42 @@ public class Registro extends javax.swing.JFrame {
                 jPContraseñaKeyTyped(evt);
             }
         });
-        jPDatos.add(jPContraseña, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 250, 240, -1));
+        jPDatos.add(jPContraseña, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 310, 170, -1));
 
-        jPFondo.add(jPDatos, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 98, 570, 450));
+        jLabel2.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        jLabel2.setForeground(new java.awt.Color(0, 150, 136));
+        jLabel2.setText("Cargar");
+        jPDatos.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 380, -1, -1));
+
+        jLVolver.setBackground(new java.awt.Color(255, 255, 255));
+        jLVolver.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        jLVolver.setForeground(new java.awt.Color(0, 150, 136));
+        jLVolver.setText("Volver");
+        jPDatos.add(jLVolver, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 380, -1, -1));
+
+        jLabel4.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Image/usuarios-alt.png"))); // NOI18N
+        jPDatos.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 10, 77, 80));
+
+        jLTitulo.setFont(new java.awt.Font("Corbel", 1, 18)); // NOI18N
+        jLTitulo.setForeground(new java.awt.Color(0, 150, 136));
+        jLTitulo.setText("Registro de Usuario");
+        jPDatos.add(jLTitulo, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 40, -1, -1));
+
+        jPFondo.add(jPDatos, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 28, 340, 420));
+
+        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Image/Banner FM.png"))); // NOI18N
+        jPFondo.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 170, 450));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPFondo, javax.swing.GroupLayout.DEFAULT_SIZE, 570, Short.MAX_VALUE)
+            .addComponent(jPFondo, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addComponent(jPFondo, javax.swing.GroupLayout.PREFERRED_SIZE, 549, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 1, Short.MAX_VALUE))
+            .addComponent(jPFondo, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
 
         pack();
@@ -327,49 +260,6 @@ public class Registro extends javax.swing.JFrame {
         jLCierra.setOpaque(false);
         jLCierra.setBackground(new Color(0, 150, 136));
     }//GEN-LAST:event_jLCierraMouseExited
-
-    private void jPVolverMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPVolverMouseEntered
-        jPVolver.setBackground(new Color(66, 66, 76));
-    }//GEN-LAST:event_jPVolverMouseEntered
-
-    private void jPVolverMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPVolverMouseExited
-        jPVolver.setBackground(new Color(51, 51, 76));
-    }//GEN-LAST:event_jPVolverMouseExited
-
-    private void jPCargarMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPCargarMouseEntered
-        jPCargar.setBackground(new Color(66, 66, 76));
-    }//GEN-LAST:event_jPCargarMouseEntered
-
-    private void jPCargarMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPCargarMouseExited
-        jPCargar.setBackground(new Color(51, 51, 76));
-    }//GEN-LAST:event_jPCargarMouseExited
-
-    private void jPVolverMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPVolverMouseClicked
-        System.exit(0);
-    }//GEN-LAST:event_jPVolverMouseClicked
-
-    private void jPCargarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPCargarMouseClicked
-        if (jTFApellido.getText().isEmpty() || jTFNombre.getText().isEmpty() || jTFDni.getText().isEmpty()
-                || ((String) jCBCargo.getSelectedItem()).isEmpty() || jTFUsuario.getText().isEmpty() || jPContraseña.getText().isEmpty()) {
-            JOptionPane.showMessageDialog(this, "No puede haber campos vacios.");
-        } else {
-            EmpleadoData empleadoD = new EmpleadoData();
-            Empleado empleado = empleadoD.buscarEmpleadoPorDni(Integer.parseInt(jTFDni.getText()));
-            if (empleado == null) {
-                empleado = new Empleado();
-                empleado.setApellido(jTFApellido.getText());
-                empleado.setNombre(jTFNombre.getText());
-                empleado.setDni(Integer.parseInt(jTFDni.getText()));
-                empleado.setCargo((String) jCBCargo.getSelectedItem());
-               
-                empleado.setUsuario(jTFUsuario.getText());
-                empleado.setContraenia(jPContraseña.getText());
-                empleado.setEstado(true);
-                empleadoD.guardarEmpleado(empleado);
-                limpiarCampos();
-            }
-        }
-    }//GEN-LAST:event_jPCargarMouseClicked
 
     private void jTFApellidoKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTFApellidoKeyTyped
         controlLetras(evt);
@@ -415,18 +305,15 @@ public class Registro extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel4;
-    private javax.swing.JPanel jPCargar;
     private javax.swing.JPasswordField jPContraseña;
     private javax.swing.JPanel jPDatos;
     private javax.swing.JPanel jPFondo;
     private javax.swing.JPanel jPFravemax;
-    private javax.swing.JPanel jPVolver;
     private javax.swing.JRadioButton jRMostrar;
     private javax.swing.JTextField jTFApellido;
     private javax.swing.JTextField jTFDni;
     private javax.swing.JTextField jTFNombre;
     private javax.swing.JTextField jTFUsuario;
-    private javax.swing.JLabel jlFravemax;
     // End of variables declaration//GEN-END:variables
 
     public void cargarCombo() {

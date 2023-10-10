@@ -213,6 +213,7 @@ public class Menu extends javax.swing.JFrame {
         jLBtnModificarModProd = new javax.swing.JLabel();
         jcbProductos = new javax.swing.JComboBox<>();
         jPanel1 = new javax.swing.JPanel();
+        jPanel2 = new javax.swing.JPanel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setMinimumSize(new java.awt.Dimension(800, 500));
@@ -1235,7 +1236,7 @@ public class Menu extends javax.swing.JFrame {
         jLBtnEliminarElimProd.setText("Eliminar");
         jLBtnEliminarElimProd.setVerticalAlignment(javax.swing.SwingConstants.BOTTOM);
         jLBtnEliminarElimProd.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
-        jLBtnEliminarElimProd.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jLBtnEliminarElimProd.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         jLBtnEliminarElimProd.setOpaque(true);
         jLBtnEliminarElimProd.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseEntered(java.awt.event.MouseEvent evt) {
@@ -1433,6 +1434,19 @@ public class Menu extends javax.swing.JFrame {
         );
 
         jtpEscritorio.addTab("tab9", jPanel1);
+
+        javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
+        jPanel2.setLayout(jPanel2Layout);
+        jPanel2Layout.setHorizontalGroup(
+            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 595, Short.MAX_VALUE)
+        );
+        jPanel2Layout.setVerticalGroup(
+            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 423, Short.MAX_VALUE)
+        );
+
+        jtpEscritorio.addTab("tab10", jPanel2);
 
         BackGround.add(jtpEscritorio, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 53, 600, 450));
 
@@ -1859,6 +1873,7 @@ public class Menu extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel1;
+    private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanelFravemax;
     private javax.swing.JPanel jPanelOpciones;
     private javax.swing.JPanel jPanelUsuario;
