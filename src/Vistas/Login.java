@@ -31,13 +31,6 @@ public class Login extends javax.swing.JFrame {
     private void initComponents() {
 
         jPBackground = new javax.swing.JPanel();
-        jPCabecera = new javax.swing.JPanel();
-        jLLogin = new javax.swing.JLabel();
-        jLFravemax = new javax.swing.JLabel();
-        jLMinimiza = new javax.swing.JLabel();
-        jLCierra = new javax.swing.JLabel();
-        jLIconoLogin = new javax.swing.JLabel();
-        jLabel2 = new javax.swing.JLabel();
         jPCuerpo = new javax.swing.JPanel();
         jLUsuario = new javax.swing.JLabel();
         jLContraseña = new javax.swing.JLabel();
@@ -46,131 +39,39 @@ public class Login extends javax.swing.JFrame {
         jTFUsuario = new javax.swing.JTextField();
         jTContraseña = new javax.swing.JTextField();
         jLBtnIniciarSesion = new javax.swing.JLabel();
+        jLIconoLogin = new javax.swing.JLabel();
+        jPanel1 = new javax.swing.JPanel();
+        jLMinimiza = new javax.swing.JLabel();
+        jLCierra = new javax.swing.JLabel();
+        jLabel3 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setLocationByPlatform(true);
         setUndecorated(true);
-        setPreferredSize(new java.awt.Dimension(570, 550));
         setResizable(false);
 
         jPBackground.setPreferredSize(new java.awt.Dimension(570, 400));
+        jPBackground.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jPCabecera.setBackground(new java.awt.Color(0, 150, 136));
-        jPCabecera.setPreferredSize(new java.awt.Dimension(456, 113));
-        jPCabecera.addMouseMotionListener(new java.awt.event.MouseMotionAdapter() {
-            public void mouseDragged(java.awt.event.MouseEvent evt) {
-                jPCabeceraMouseDragged(evt);
-            }
-        });
-        jPCabecera.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mousePressed(java.awt.event.MouseEvent evt) {
-                jPCabeceraMousePressed(evt);
-            }
-        });
-
-        jLLogin.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
-        jLLogin.setForeground(new java.awt.Color(255, 255, 255));
-        jLLogin.setText("Login");
-
-        jLFravemax.setFont(new java.awt.Font("Corbel", 1, 14)); // NOI18N
-        jLFravemax.setForeground(new java.awt.Color(255, 255, 255));
-        jLFravemax.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Image/fravemax.png"))); // NOI18N
-
-        jLMinimiza.setFont(new java.awt.Font("Microsoft Yi Baiti", 1, 24)); // NOI18N
-        jLMinimiza.setForeground(new java.awt.Color(255, 255, 255));
-        jLMinimiza.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLMinimiza.setText("_");
-        jLMinimiza.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        jLMinimiza.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jLMinimizaMouseClicked(evt);
-            }
-            public void mouseEntered(java.awt.event.MouseEvent evt) {
-                jLMinimizaMouseEntered(evt);
-            }
-            public void mouseExited(java.awt.event.MouseEvent evt) {
-                jLMinimizaMouseExited(evt);
-            }
-        });
-
-        jLCierra.setFont(new java.awt.Font("Microsoft Yi Baiti", 1, 24)); // NOI18N
-        jLCierra.setForeground(new java.awt.Color(255, 255, 255));
-        jLCierra.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLCierra.setText("X");
-        jLCierra.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        jLCierra.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jLCierraMouseClicked(evt);
-            }
-            public void mouseEntered(java.awt.event.MouseEvent evt) {
-                jLCierraMouseEntered(evt);
-            }
-            public void mouseExited(java.awt.event.MouseEvent evt) {
-                jLCierraMouseExited(evt);
-            }
-        });
-
-        jLIconoLogin.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Image/usuarios-alt.png"))); // NOI18N
-
-        jLabel2.setFont(new java.awt.Font("Corbel", 1, 14)); // NOI18N
-        jLabel2.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel2.setText("FRAVEMAX");
-
-        javax.swing.GroupLayout jPCabeceraLayout = new javax.swing.GroupLayout(jPCabecera);
-        jPCabecera.setLayout(jPCabeceraLayout);
-        jPCabeceraLayout.setHorizontalGroup(
-            jPCabeceraLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPCabeceraLayout.createSequentialGroup()
-                .addGap(40, 40, 40)
-                .addGroup(jPCabeceraLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLFravemax)
-                    .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(126, 126, 126)
-                .addGroup(jPCabeceraLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPCabeceraLayout.createSequentialGroup()
-                        .addGap(14, 14, 14)
-                        .addComponent(jLLogin))
-                    .addGroup(jPCabeceraLayout.createSequentialGroup()
-                        .addComponent(jLIconoLogin)
-                        .addGap(200, 200, 200)
-                        .addComponent(jLMinimiza, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addGap(1, 1, 1)
-                .addComponent(jLCierra, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
-        );
-        jPCabeceraLayout.setVerticalGroup(
-            jPCabeceraLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPCabeceraLayout.createSequentialGroup()
-                .addGroup(jPCabeceraLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPCabeceraLayout.createSequentialGroup()
-                        .addComponent(jLFravemax)
-                        .addGap(0, 0, 0)
-                        .addComponent(jLabel2))
-                    .addGroup(jPCabeceraLayout.createSequentialGroup()
-                        .addGap(11, 11, 11)
-                        .addGroup(jPCabeceraLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLIconoLogin, javax.swing.GroupLayout.PREFERRED_SIZE, 72, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGroup(jPCabeceraLayout.createSequentialGroup()
-                                .addGap(69, 69, 69)
-                                .addComponent(jLLogin, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                    .addGroup(jPCabeceraLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                        .addComponent(jLMinimiza, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 30, Short.MAX_VALUE)
-                        .addComponent(jLCierra, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
-                .addGap(7, 7, 7))
-        );
-
-        jPCuerpo.setBackground(new java.awt.Color(51, 51, 76));
+        jPCuerpo.setBackground(new java.awt.Color(255, 255, 255));
+        jPCuerpo.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jLUsuario.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
-        jLUsuario.setForeground(new java.awt.Color(255, 255, 255));
+        jLUsuario.setForeground(new java.awt.Color(0, 0, 0));
         jLUsuario.setText("Usuario:");
+        jPCuerpo.add(jLUsuario, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 180, -1, -1));
 
         jLContraseña.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
-        jLContraseña.setForeground(new java.awt.Color(255, 255, 255));
+        jLContraseña.setForeground(new java.awt.Color(0, 0, 0));
         jLContraseña.setText("Contraseña:");
+        jPCuerpo.add(jLContraseña, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 240, -1, -1));
 
         jLCargo.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
-        jLCargo.setForeground(new java.awt.Color(255, 255, 255));
+        jLCargo.setForeground(new java.awt.Color(0, 0, 0));
         jLCargo.setText("Cargo:");
+        jPCuerpo.add(jLCargo, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 300, -1, -1));
+
+        jPCuerpo.add(jCBCargo, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 300, 170, -1));
 
         jTFUsuario.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -182,79 +83,87 @@ public class Login extends javax.swing.JFrame {
                 jTFUsuarioActionPerformed(evt);
             }
         });
+        jPCuerpo.add(jTFUsuario, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 180, 170, -1));
 
         jTContraseña.setForeground(new java.awt.Color(51, 51, 76));
+        jPCuerpo.add(jTContraseña, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 240, 170, -1));
 
         jLBtnIniciarSesion.setBackground(new java.awt.Color(0, 150, 136));
         jLBtnIniciarSesion.setFont(new java.awt.Font("Corbel", 1, 14)); // NOI18N
         jLBtnIniciarSesion.setForeground(new java.awt.Color(255, 255, 255));
         jLBtnIniciarSesion.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLBtnIniciarSesion.setText("Iniciar sesión");
-        jLBtnIniciarSesion.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jLBtnIniciarSesion.setVerticalAlignment(javax.swing.SwingConstants.BOTTOM);
+        jLBtnIniciarSesion.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED, null, new java.awt.Color(0, 102, 102), null, null));
+        jLBtnIniciarSesion.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         jLBtnIniciarSesion.setOpaque(true);
+        jPCuerpo.add(jLBtnIniciarSesion, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 370, 117, 26));
 
-        javax.swing.GroupLayout jPCuerpoLayout = new javax.swing.GroupLayout(jPCuerpo);
-        jPCuerpo.setLayout(jPCuerpoLayout);
-        jPCuerpoLayout.setHorizontalGroup(
-            jPCuerpoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPCuerpoLayout.createSequentialGroup()
-                .addGroup(jPCuerpoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPCuerpoLayout.createSequentialGroup()
-                        .addGap(72, 72, 72)
-                        .addGroup(jPCuerpoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(jLCargo)
-                            .addComponent(jLContraseña)
-                            .addComponent(jLUsuario))
-                        .addGap(45, 45, 45)
-                        .addGroup(jPCuerpoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jTFUsuario, javax.swing.GroupLayout.PREFERRED_SIZE, 170, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jTContraseña, javax.swing.GroupLayout.PREFERRED_SIZE, 170, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jCBCargo, javax.swing.GroupLayout.PREFERRED_SIZE, 170, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                    .addGroup(jPCuerpoLayout.createSequentialGroup()
-                        .addGap(223, 223, 223)
-                        .addComponent(jLBtnIniciarSesion, javax.swing.GroupLayout.PREFERRED_SIZE, 117, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-        );
-        jPCuerpoLayout.setVerticalGroup(
-            jPCuerpoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPCuerpoLayout.createSequentialGroup()
-                .addGap(56, 56, 56)
-                .addGroup(jPCuerpoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jTFUsuario, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLUsuario))
-                .addGap(39, 39, 39)
-                .addGroup(jPCuerpoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLContraseña)
-                    .addComponent(jTContraseña, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(37, 37, 37)
-                .addGroup(jPCuerpoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLCargo)
-                    .addComponent(jCBCargo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(42, 42, 42)
-                .addComponent(jLBtnIniciarSesion, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(80, Short.MAX_VALUE))
-        );
+        jLIconoLogin.setFont(new java.awt.Font("Corbel", 1, 18)); // NOI18N
+        jLIconoLogin.setForeground(new java.awt.Color(0, 150, 136));
+        jLIconoLogin.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLIconoLogin.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Image/usuarios-alt.png"))); // NOI18N
+        jLIconoLogin.setText("Login");
+        jLIconoLogin.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        jLIconoLogin.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
+        jPCuerpo.add(jLIconoLogin, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 30, 140, 120));
 
-        javax.swing.GroupLayout jPBackgroundLayout = new javax.swing.GroupLayout(jPBackground);
-        jPBackground.setLayout(jPBackgroundLayout);
-        jPBackgroundLayout.setHorizontalGroup(
-            jPBackgroundLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPCuerpo, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-            .addComponent(jPCabecera, javax.swing.GroupLayout.DEFAULT_SIZE, 570, Short.MAX_VALUE)
-        );
-        jPBackgroundLayout.setVerticalGroup(
-            jPBackgroundLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPBackgroundLayout.createSequentialGroup()
-                .addGap(110, 110, 110)
-                .addComponent(jPCuerpo, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-            .addComponent(jPCabecera, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-        );
+        jPanel1.setBackground(new java.awt.Color(0, 150, 136));
+        jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        jLMinimiza.setBackground(new java.awt.Color(0, 150, 136));
+        jLMinimiza.setFont(new java.awt.Font("Microsoft Yi Baiti", 1, 24)); // NOI18N
+        jLMinimiza.setForeground(new java.awt.Color(255, 255, 255));
+        jLMinimiza.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLMinimiza.setText("_");
+        jLMinimiza.setVerticalAlignment(javax.swing.SwingConstants.TOP);
+        jLMinimiza.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        jLMinimiza.setOpaque(true);
+        jLMinimiza.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jLMinimizaMouseClicked(evt);
+            }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                jLMinimizaMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                jLMinimizaMouseExited(evt);
+            }
+        });
+        jPanel1.add(jLMinimiza, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 0, 29, 30));
+
+        jLCierra.setBackground(new java.awt.Color(0, 150, 136));
+        jLCierra.setFont(new java.awt.Font("Microsoft Yi Baiti", 1, 24)); // NOI18N
+        jLCierra.setForeground(new java.awt.Color(255, 255, 255));
+        jLCierra.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLCierra.setText("X");
+        jLCierra.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        jLCierra.setOpaque(true);
+        jLCierra.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jLCierraMouseClicked(evt);
+            }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                jLCierraMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                jLCierraMouseExited(evt);
+            }
+        });
+        jPanel1.add(jLCierra, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 0, 30, 30));
+
+        jPCuerpo.add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 340, 30));
+
+        jPBackground.add(jPCuerpo, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 0, 350, 450));
+
+        jLabel3.setIcon(new javax.swing.ImageIcon("C:\\Users\\Mauri\\Desktop\\Banner FM.png")); // NOI18N
+        jPBackground.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 170, -1));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPBackground, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(jPBackground, javax.swing.GroupLayout.PREFERRED_SIZE, 512, javax.swing.GroupLayout.PREFERRED_SIZE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -264,48 +173,9 @@ public class Login extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jLMinimizaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLMinimizaMouseClicked
-        this.setExtendedState(1);
-    }//GEN-LAST:event_jLMinimizaMouseClicked
-
-    private void jLMinimizaMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLMinimizaMouseEntered
-        jLMinimiza.setOpaque(true);
-        jLMinimiza.setBackground(new Color(10,160,140));
-    }//GEN-LAST:event_jLMinimizaMouseEntered
-
-    private void jLMinimizaMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLMinimizaMouseExited
-        jLMinimiza.setOpaque(false);
-        jLMinimiza.setBackground(new Color(0,150,136));
-    }//GEN-LAST:event_jLMinimizaMouseExited
-
-    private void jLCierraMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLCierraMouseClicked
-        System.exit(0);
-    }//GEN-LAST:event_jLCierraMouseClicked
-
-    private void jLCierraMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLCierraMouseEntered
-        jLCierra.setOpaque(true);
-        jLCierra.setBackground(Color.red);
-    }//GEN-LAST:event_jLCierraMouseEntered
-
-    private void jLCierraMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLCierraMouseExited
-        jLCierra.setOpaque(false);
-        jLCierra.setBackground(new Color(0,150,136));
-    }//GEN-LAST:event_jLCierraMouseExited
-
     private void jTFUsuarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTFUsuarioActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jTFUsuarioActionPerformed
-
-    private void jPCabeceraMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPCabeceraMousePressed
-        xMouse = evt.getX();
-        yMouse = evt.getY();
-    }//GEN-LAST:event_jPCabeceraMousePressed
-
-    private void jPCabeceraMouseDragged(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPCabeceraMouseDragged
-        int x = evt.getXOnScreen();
-        int y = evt.getYOnScreen();
-        this.setLocation(x - xMouse, y - yMouse);
-    }//GEN-LAST:event_jPCabeceraMouseDragged
 
     private void jTFUsuarioMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTFUsuarioMouseClicked
         if(jTFUsuario.getText().equals("Ingrese su usuario")){
@@ -313,6 +183,34 @@ public class Login extends javax.swing.JFrame {
             jTFUsuario.setForeground(Color.black);
         }
     }//GEN-LAST:event_jTFUsuarioMouseClicked
+
+    private void jLCierraMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLCierraMouseExited
+        jLCierra.setOpaque(false);
+        jLCierra.setBackground(new Color(0,150,136));
+    }//GEN-LAST:event_jLCierraMouseExited
+
+    private void jLCierraMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLCierraMouseEntered
+        jLCierra.setOpaque(true);
+        jLCierra.setBackground(Color.red);
+    }//GEN-LAST:event_jLCierraMouseEntered
+
+    private void jLCierraMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLCierraMouseClicked
+        System.exit(0);
+    }//GEN-LAST:event_jLCierraMouseClicked
+
+    private void jLMinimizaMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLMinimizaMouseExited
+        jLMinimiza.setOpaque(false);
+        jLMinimiza.setBackground(new Color(0,150,136));
+    }//GEN-LAST:event_jLMinimizaMouseExited
+
+    private void jLMinimizaMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLMinimizaMouseEntered
+        jLMinimiza.setOpaque(true);
+        jLMinimiza.setBackground(new Color(10,160,140));
+    }//GEN-LAST:event_jLMinimizaMouseEntered
+
+    private void jLMinimizaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLMinimizaMouseClicked
+        this.setExtendedState(1);
+    }//GEN-LAST:event_jLMinimizaMouseClicked
 
     /**
      * @param args the command line arguments
@@ -340,6 +238,7 @@ public class Login extends javax.swing.JFrame {
             java.util.logging.Logger.getLogger(Login.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
+        //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
@@ -355,15 +254,13 @@ public class Login extends javax.swing.JFrame {
     private javax.swing.JLabel jLCargo;
     private javax.swing.JLabel jLCierra;
     private javax.swing.JLabel jLContraseña;
-    private javax.swing.JLabel jLFravemax;
     private javax.swing.JLabel jLIconoLogin;
-    private javax.swing.JLabel jLLogin;
     private javax.swing.JLabel jLMinimiza;
     private javax.swing.JLabel jLUsuario;
-    private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
     private javax.swing.JPanel jPBackground;
-    private javax.swing.JPanel jPCabecera;
     private javax.swing.JPanel jPCuerpo;
+    private javax.swing.JPanel jPanel1;
     private javax.swing.JTextField jTContraseña;
     private javax.swing.JTextField jTFUsuario;
     // End of variables declaration//GEN-END:variables
