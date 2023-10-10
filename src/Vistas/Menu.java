@@ -1048,14 +1048,13 @@ public class Menu extends javax.swing.JFrame {
 
         jtpListaP.add(Scroll, new org.netbeans.lib.awtextra.AbsoluteConstraints(13, 120, 570, 290));
 
-        jtfBuscador.setBackground(new java.awt.Color(255, 255, 255));
         jtfBuscador.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
         jtpListaP.add(jtfBuscador, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 80, 160, 30));
 
         jlBusqueda.setBackground(new java.awt.Color(255, 255, 255));
         jlBusqueda.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jlBusqueda.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Image/busqueda - gris.png"))); // NOI18N
-        jlBusqueda.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jlBusqueda.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         jlBusqueda.setOpaque(true);
         jlBusqueda.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -1123,7 +1122,7 @@ public class Menu extends javax.swing.JFrame {
         jLBtnAgregarProd.setText("Agregar");
         jLBtnAgregarProd.setVerticalAlignment(javax.swing.SwingConstants.BOTTOM);
         jLBtnAgregarProd.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
-        jLBtnAgregarProd.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jLBtnAgregarProd.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         jLBtnAgregarProd.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         jLBtnAgregarProd.setOpaque(true);
         jLBtnAgregarProd.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -1255,7 +1254,6 @@ public class Menu extends javax.swing.JFrame {
         });
         jtpModPro.add(jLBtnModificarModProd, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 360, 100, 30));
 
-        jcbProductos.setBackground(new java.awt.Color(255, 255, 255));
         jcbProductos.setFont(new java.awt.Font("Corbel", 1, 14)); // NOI18N
         jcbProductos.setForeground(new java.awt.Color(0, 102, 102));
         jtpModPro.add(jcbProductos, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 150, 200, 30));
@@ -1266,7 +1264,7 @@ public class Menu extends javax.swing.JFrame {
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 595, Short.MAX_VALUE)
+            .addGap(0, 600, Short.MAX_VALUE)
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
