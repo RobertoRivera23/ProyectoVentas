@@ -222,11 +222,11 @@ public class Menu extends javax.swing.JFrame {
         jLDomicilioClienteAgrClien = new javax.swing.JLabel();
         jSAgrClien4 = new javax.swing.JSeparator();
         jLTelefonoClienteAgrClien = new javax.swing.JLabel();
-        jLBtnAgregarCliente = new javax.swing.JLabel();
         jTFNombreClienteAgrClien = new javax.swing.JTextField();
         jTFApellidoClienteAgrClien = new javax.swing.JTextField();
         jTFDomicilioClienteAgrClien = new javax.swing.JTextField();
         jTFTelefonoClienteAgrClien = new javax.swing.JTextField();
+        jLabel2 = new javax.swing.JLabel();
         jtpModClien = new javax.swing.JPanel();
         jLTituloModificarCliente = new javax.swing.JLabel();
         jLBuscarClienteModClien = new javax.swing.JLabel();
@@ -1496,26 +1496,6 @@ public class Menu extends javax.swing.JFrame {
         jLTelefonoClienteAgrClien.setText("Telefono:");
         jtpAgrClien.add(jLTelefonoClienteAgrClien, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 270, -1, 24));
 
-        jLBtnAgregarCliente.setBackground(new java.awt.Color(0, 150, 136));
-        jLBtnAgregarCliente.setFont(new java.awt.Font("Corbel", 1, 14)); // NOI18N
-        jLBtnAgregarCliente.setForeground(new java.awt.Color(255, 255, 255));
-        jLBtnAgregarCliente.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLBtnAgregarCliente.setText("Agregar");
-        jLBtnAgregarCliente.setVerticalAlignment(javax.swing.SwingConstants.BOTTOM);
-        jLBtnAgregarCliente.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
-        jLBtnAgregarCliente.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
-        jLBtnAgregarCliente.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
-        jLBtnAgregarCliente.setOpaque(true);
-        jLBtnAgregarCliente.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseEntered(java.awt.event.MouseEvent evt) {
-                jLBtnAgregarClienteMouseEntered(evt);
-            }
-            public void mouseExited(java.awt.event.MouseEvent evt) {
-                jLBtnAgregarClienteMouseExited(evt);
-            }
-        });
-        jtpAgrClien.add(jLBtnAgregarCliente, new org.netbeans.lib.awtextra.AbsoluteConstraints(259, 350, 80, 30));
-
         jTFNombreClienteAgrClien.setFont(new java.awt.Font("Corbel", 0, 14)); // NOI18N
         jTFNombreClienteAgrClien.setBorder(null);
         jtpAgrClien.add(jTFNombreClienteAgrClien, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 120, 210, 20));
@@ -1531,6 +1511,16 @@ public class Menu extends javax.swing.JFrame {
         jTFTelefonoClienteAgrClien.setFont(new java.awt.Font("Corbel", 0, 14)); // NOI18N
         jTFTelefonoClienteAgrClien.setBorder(null);
         jtpAgrClien.add(jTFTelefonoClienteAgrClien, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 270, 210, 20));
+
+        jLabel2.setBackground(new java.awt.Color(0, 150, 136));
+        jLabel2.setFont(new java.awt.Font("Corbel", 1, 14)); // NOI18N
+        jLabel2.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel2.setText("Agregar");
+        jLabel2.setVerticalAlignment(javax.swing.SwingConstants.BOTTOM);
+        jLabel2.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        jLabel2.setOpaque(true);
+        jtpAgrClien.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 350, 100, 30));
 
         jtpEscritorio.addTab("tab9", jtpAgrClien);
 
@@ -2011,7 +2001,6 @@ public class Menu extends javax.swing.JFrame {
     private javax.swing.JLabel jLAgregarProducto;
     private javax.swing.JLabel jLApellidoClienModClien;
     private javax.swing.JLabel jLApellidoClienteAgrClien;
-    private javax.swing.JLabel jLBtnAgregarCliente;
     private javax.swing.JLabel jLBtnAgregarProd;
     private javax.swing.JLabel jLBtnEliminarElimProd;
     private javax.swing.JLabel jLBtnModificarModProd;
@@ -2052,6 +2041,7 @@ public class Menu extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel17;
     private javax.swing.JLabel jLabel18;
     private javax.swing.JLabel jLabel19;
+    private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel20;
     private javax.swing.JLabel jLabel21;
     private javax.swing.JLabel jLabel22;
