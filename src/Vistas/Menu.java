@@ -5,9 +5,7 @@
  */
 package Vistas;
 
-import AccesoDatos.ClienteData;
 import AccesoDatos.ProductoData;
-import Entidades.Cliente;
 import Entidades.Producto;
 import Utilidades.TablaFraveMax;
 import java.awt.Color;
@@ -79,8 +77,6 @@ public class Menu extends javax.swing.JFrame {
         jlSalir = new javax.swing.JLabel();
         jlMinimizar = new javax.swing.JLabel();
         fravemaxLogo = new javax.swing.JLabel();
-        jSeparator1 = new javax.swing.JSeparator();
-        jSeparator2 = new javax.swing.JSeparator();
         jPanelUsuario = new javax.swing.JPanel();
         jLabel5 = new javax.swing.JLabel();
         jPanelOpciones = new javax.swing.JPanel();
@@ -201,24 +197,6 @@ public class Menu extends javax.swing.JFrame {
         jLBtnModificarModProd = new javax.swing.JLabel();
         jcbProductos = new javax.swing.JComboBox<>();
         jPanel1 = new javax.swing.JPanel();
-        jTPAgregarCliente = new javax.swing.JPanel();
-        jPFondoAgCli = new javax.swing.JPanel();
-        jLTitulo = new javax.swing.JLabel();
-        jLApellidoAgCli = new javax.swing.JLabel();
-        jLNombreAgCli = new javax.swing.JLabel();
-        jLDomicilioAgCli = new javax.swing.JLabel();
-        jLTelefonoAgCli = new javax.swing.JLabel();
-        jTFApellidoAgCli = new javax.swing.JTextField();
-        jSeparator3 = new javax.swing.JSeparator();
-        jSeparator4 = new javax.swing.JSeparator();
-        jTFNombreAgCli = new javax.swing.JTextField();
-        jSeparator5 = new javax.swing.JSeparator();
-        jTFTelefonoAgCli = new javax.swing.JTextField();
-        jTFDomicilioAgCli = new javax.swing.JTextField();
-        jSeparator6 = new javax.swing.JSeparator();
-        jPBotonAgregarCLienteAgCli = new javax.swing.JPanel();
-        jLabel2 = new javax.swing.JLabel();
-        jPanel3 = new javax.swing.JPanel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setMinimumSize(new java.awt.Dimension(800, 500));
@@ -293,16 +271,6 @@ public class Menu extends javax.swing.JFrame {
         fravemaxLogo.setIconTextGap(0);
         fravemaxLogo.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
         jPanelFravemax.add(fravemaxLogo, new org.netbeans.lib.awtextra.AbsoluteConstraints(550, -3, 170, 100));
-
-        jSeparator1.setBackground(new java.awt.Color(0, 102, 102));
-        jSeparator1.setForeground(new java.awt.Color(0, 102, 102));
-        jSeparator1.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED, new java.awt.Color(0, 102, 102), new java.awt.Color(0, 102, 102), new java.awt.Color(0, 51, 51), new java.awt.Color(0, 51, 51)));
-        jPanelFravemax.add(jSeparator1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 200, 100));
-
-        jSeparator2.setBackground(new java.awt.Color(0, 102, 102));
-        jSeparator2.setForeground(new java.awt.Color(0, 102, 102));
-        jSeparator2.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED, new java.awt.Color(0, 102, 102), new java.awt.Color(0, 102, 102), new java.awt.Color(0, 51, 51), new java.awt.Color(0, 51, 51)));
-        jPanelFravemax.add(jSeparator2, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 0, 600, 100));
 
         jPanelUsuario.setBackground(new java.awt.Color(0, 150, 136));
         jPanelUsuario.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -615,18 +583,6 @@ public class Menu extends javax.swing.JFrame {
         textVentaE.setVerticalAlignment(javax.swing.SwingConstants.TOP);
         jtpVentas.add(textVentaE, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 240, 150, 90));
 
-        AgregarVenta.setBackground(new java.awt.Color(0, 150, 136));
-        AgregarVenta.setFont(new java.awt.Font("Corbel", 1, 14)); // NOI18N
-        AgregarVenta.setForeground(new java.awt.Color(255, 255, 255));
-        AgregarVenta.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        AgregarVenta.setText("Agregar");
-        AgregarVenta.setVerticalAlignment(javax.swing.SwingConstants.BOTTOM);
-        AgregarVenta.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED, null, new java.awt.Color(0, 150, 136), null, null));
-        AgregarVenta.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
-        AgregarVenta.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
-        AgregarVenta.setOpaque(true);
-        AgregarVenta.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
-        AgregarVenta.addMouseListener(new java.awt.event.MouseAdapter() {
         RegistrarVenta.setBackground(new java.awt.Color(0, 150, 136));
         RegistrarVenta.setFont(new java.awt.Font("Corbel", 1, 14)); // NOI18N
         RegistrarVenta.setForeground(new java.awt.Color(255, 255, 255));
@@ -639,7 +595,6 @@ public class Menu extends javax.swing.JFrame {
         RegistrarVenta.setOpaque(true);
         RegistrarVenta.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
         RegistrarVenta.addMouseListener(new java.awt.event.MouseAdapter() {
-
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 RegistrarVentaMouseClicked(evt);
             }
@@ -652,18 +607,6 @@ public class Menu extends javax.swing.JFrame {
         });
         jtpVentas.add(RegistrarVenta, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 340, 80, 30));
 
-        ModVenta.setBackground(new java.awt.Color(0, 150, 136));
-        ModVenta.setFont(new java.awt.Font("Corbel", 1, 14)); // NOI18N
-        ModVenta.setForeground(new java.awt.Color(255, 255, 255));
-        ModVenta.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        ModVenta.setText("Modificar");
-        ModVenta.setVerticalAlignment(javax.swing.SwingConstants.BOTTOM);
-        ModVenta.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED, null, new java.awt.Color(0, 150, 136), null, null));
-        ModVenta.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
-        ModVenta.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
-        ModVenta.setOpaque(true);
-        ModVenta.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
-        ModVenta.addMouseListener(new java.awt.event.MouseAdapter() {
         DetVenta.setBackground(new java.awt.Color(0, 150, 136));
         DetVenta.setFont(new java.awt.Font("Corbel", 1, 14)); // NOI18N
         DetVenta.setForeground(new java.awt.Color(255, 255, 255));
@@ -676,7 +619,6 @@ public class Menu extends javax.swing.JFrame {
         DetVenta.setOpaque(true);
         DetVenta.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
         DetVenta.addMouseListener(new java.awt.event.MouseAdapter() {
-
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 DetVentaMouseClicked(evt);
             }
@@ -805,7 +747,7 @@ public class Menu extends javax.swing.JFrame {
         jLabel27.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Image/editar-usuario.png"))); // NOI18N
         jtpClientes.add(jLabel27, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 60, 180, 150));
 
-        jlAgregarCliente.setBackground(new java.awt.Color(51, 51, 76));
+        jlAgregarCliente.setBackground(new java.awt.Color(0, 150, 136));
         jlAgregarCliente.setFont(new java.awt.Font("Corbel", 1, 14)); // NOI18N
         jlAgregarCliente.setForeground(new java.awt.Color(255, 255, 255));
         jlAgregarCliente.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
@@ -817,9 +759,6 @@ public class Menu extends javax.swing.JFrame {
         jlAgregarCliente.setOpaque(true);
         jlAgregarCliente.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
         jlAgregarCliente.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jlAgregarClienteMouseClicked(evt);
-            }
             public void mouseEntered(java.awt.event.MouseEvent evt) {
                 jlAgregarClienteMouseEntered(evt);
             }
@@ -1109,12 +1048,6 @@ public class Menu extends javax.swing.JFrame {
 
         jtpListaP.add(Scroll, new org.netbeans.lib.awtextra.AbsoluteConstraints(13, 120, 570, 290));
 
-        jComboBox1.setBackground(new java.awt.Color(51, 51, 76));
-        jComboBox1.setFont(new java.awt.Font("Corbel", 1, 12)); // NOI18N
-        jComboBox1.setForeground(new java.awt.Color(255, 255, 255));
-        jComboBox1.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED, null, new java.awt.Color(0, 102, 102), null, new java.awt.Color(0, 51, 51)));
-        jComboBox1.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
-        jtpListaP.add(jComboBox1, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 70, 230, -1));
         jtfBuscador.setBackground(new java.awt.Color(255, 255, 255));
         jtfBuscador.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
         jtpListaP.add(jtfBuscador, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 80, 160, 30));
@@ -1337,175 +1270,9 @@ public class Menu extends javax.swing.JFrame {
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 422, Short.MAX_VALUE)
+            .addGap(0, 423, Short.MAX_VALUE)
         );
 
-        jtpEscritorio.addTab("tab6", jPanel1);
-
-        jPFondoAgCli.setBackground(new java.awt.Color(255, 255, 255));
-
-        jLTitulo.setFont(new java.awt.Font("Corbel", 1, 24)); // NOI18N
-        jLTitulo.setForeground(new java.awt.Color(0, 150, 136));
-        jLTitulo.setText("Agregar Cliente");
-
-        jLApellidoAgCli.setFont(new java.awt.Font("Corbel", 1, 18)); // NOI18N
-        jLApellidoAgCli.setForeground(new java.awt.Color(0, 150, 136));
-        jLApellidoAgCli.setText("Apellido:");
-
-        jLNombreAgCli.setFont(new java.awt.Font("Corbel", 1, 18)); // NOI18N
-        jLNombreAgCli.setForeground(new java.awt.Color(0, 150, 136));
-        jLNombreAgCli.setText("Nombre:");
-
-        jLDomicilioAgCli.setFont(new java.awt.Font("Corbel", 1, 18)); // NOI18N
-        jLDomicilioAgCli.setForeground(new java.awt.Color(0, 150, 136));
-        jLDomicilioAgCli.setText("Domicilio:");
-
-        jLTelefonoAgCli.setFont(new java.awt.Font("Corbel", 1, 18)); // NOI18N
-        jLTelefonoAgCli.setForeground(new java.awt.Color(0, 150, 136));
-        jLTelefonoAgCli.setText("Telefono:");
-
-        jTFApellidoAgCli.setBorder(null);
-
-        jTFNombreAgCli.setBorder(null);
-        jTFNombreAgCli.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTFNombreAgCliActionPerformed(evt);
-            }
-        });
-
-        jTFTelefonoAgCli.setBorder(null);
-
-        jTFDomicilioAgCli.setBorder(null);
-        jTFDomicilioAgCli.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTFDomicilioAgCliActionPerformed(evt);
-            }
-        });
-
-        jPBotonAgregarCLienteAgCli.setBackground(new java.awt.Color(52, 52, 76));
-        jPBotonAgregarCLienteAgCli.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jPBotonAgregarCLienteAgCliMouseClicked(evt);
-            }
-            public void mouseEntered(java.awt.event.MouseEvent evt) {
-                jPBotonAgregarCLienteAgCliMouseEntered(evt);
-            }
-            public void mouseExited(java.awt.event.MouseEvent evt) {
-                jPBotonAgregarCLienteAgCliMouseExited(evt);
-            }
-        });
-        jPBotonAgregarCLienteAgCli.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-
-        jLabel2.setBackground(new java.awt.Color(255, 255, 255));
-        jLabel2.setFont(new java.awt.Font("Corbel", 1, 14)); // NOI18N
-        jLabel2.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel2.setText("Agregar");
-        jLabel2.setVerticalAlignment(javax.swing.SwingConstants.BOTTOM);
-        jLabel2.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
-        jPBotonAgregarCLienteAgCli.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 10, 80, 20));
-
-        javax.swing.GroupLayout jPFondoAgCliLayout = new javax.swing.GroupLayout(jPFondoAgCli);
-        jPFondoAgCli.setLayout(jPFondoAgCliLayout);
-        jPFondoAgCliLayout.setHorizontalGroup(
-            jPFondoAgCliLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPFondoAgCliLayout.createSequentialGroup()
-                .addGap(150, 150, 150)
-                .addGroup(jPFondoAgCliLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addGroup(jPFondoAgCliLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                        .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPFondoAgCliLayout.createSequentialGroup()
-                            .addComponent(jLNombreAgCli)
-                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addGroup(jPFondoAgCliLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                .addComponent(jTFNombreAgCli)
-                                .addComponent(jSeparator4, javax.swing.GroupLayout.PREFERRED_SIZE, 232, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                        .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPFondoAgCliLayout.createSequentialGroup()
-                            .addComponent(jLDomicilioAgCli)
-                            .addGap(18, 18, 18)
-                            .addGroup(jPFondoAgCliLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                .addComponent(jTFDomicilioAgCli)
-                                .addComponent(jSeparator6, javax.swing.GroupLayout.PREFERRED_SIZE, 232, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                        .addGroup(jPFondoAgCliLayout.createSequentialGroup()
-                            .addComponent(jLTelefonoAgCli)
-                            .addGap(18, 18, 18)
-                            .addGroup(jPFondoAgCliLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                .addGroup(jPFondoAgCliLayout.createSequentialGroup()
-                                    .addGap(22, 22, 22)
-                                    .addComponent(jPBotonAgregarCLienteAgCli, javax.swing.GroupLayout.PREFERRED_SIZE, 122, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addGroup(jPFondoAgCliLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                    .addComponent(jTFTelefonoAgCli)
-                                    .addComponent(jSeparator5, javax.swing.GroupLayout.PREFERRED_SIZE, 232, javax.swing.GroupLayout.PREFERRED_SIZE)))))
-                    .addGroup(jPFondoAgCliLayout.createSequentialGroup()
-                        .addComponent(jLApellidoAgCli)
-                        .addGap(27, 27, 27)
-                        .addGroup(jPFondoAgCliLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLTitulo)
-                            .addGroup(jPFondoAgCliLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                .addComponent(jTFApellidoAgCli, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 232, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addComponent(jSeparator3, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 232, javax.swing.GroupLayout.PREFERRED_SIZE)))))
-                .addContainerGap(116, Short.MAX_VALUE))
-        );
-        jPFondoAgCliLayout.setVerticalGroup(
-            jPFondoAgCliLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPFondoAgCliLayout.createSequentialGroup()
-                .addContainerGap(97, Short.MAX_VALUE)
-                .addComponent(jLTitulo)
-                .addGap(32, 32, 32)
-                .addGroup(jPFondoAgCliLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jSeparator3, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPFondoAgCliLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(jLApellidoAgCli)
-                        .addComponent(jTFApellidoAgCli, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addGap(18, 18, 18)
-                .addGroup(jPFondoAgCliLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPFondoAgCliLayout.createSequentialGroup()
-                        .addComponent(jTFNombreAgCli, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jSeparator4, javax.swing.GroupLayout.PREFERRED_SIZE, 2, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(jLNombreAgCli, javax.swing.GroupLayout.Alignment.TRAILING))
-                .addGap(18, 18, 18)
-                .addGroup(jPFondoAgCliLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLDomicilioAgCli)
-                    .addGroup(jPFondoAgCliLayout.createSequentialGroup()
-                        .addComponent(jTFDomicilioAgCli, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jSeparator6, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addGap(18, 18, 18)
-                .addGroup(jPFondoAgCliLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLTelefonoAgCli)
-                    .addGroup(jPFondoAgCliLayout.createSequentialGroup()
-                        .addComponent(jTFTelefonoAgCli, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jSeparator5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addGap(49, 49, 49)
-                .addComponent(jPBotonAgregarCLienteAgCli, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(66, 66, 66))
-        );
-
-        javax.swing.GroupLayout jTPAgregarClienteLayout = new javax.swing.GroupLayout(jTPAgregarCliente);
-        jTPAgregarCliente.setLayout(jTPAgregarClienteLayout);
-        jTPAgregarClienteLayout.setHorizontalGroup(
-            jTPAgregarClienteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPFondoAgCli, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-        );
-        jTPAgregarClienteLayout.setVerticalGroup(
-            jTPAgregarClienteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPFondoAgCli, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-        );
-
-        jtpEscritorio.addTab("tab7", jTPAgregarCliente);
-
-        javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
-        jPanel3.setLayout(jPanel3Layout);
-        jPanel3Layout.setHorizontalGroup(
-            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 595, Short.MAX_VALUE)
-        );
-        jPanel3Layout.setVerticalGroup(
-            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 422, Short.MAX_VALUE)
-        );
-
-        jtpEscritorio.addTab("tab8", jPanel3);
         jtpEscritorio.addTab("tab9", jPanel1);
 
         BackGround.add(jtpEscritorio, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 53, 600, 450));
@@ -1766,38 +1533,6 @@ public class Menu extends javax.swing.JFrame {
         jtpEscritorio.setSelectedIndex(3);
     }//GEN-LAST:event_jlProductosMouseClicked
 
-    private void jTFDomicilioAgCliActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTFDomicilioAgCliActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jTFDomicilioAgCliActionPerformed
-
-    private void jTFNombreAgCliActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTFNombreAgCliActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jTFNombreAgCliActionPerformed
-
-    private void jPBotonAgregarCLienteAgCliMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPBotonAgregarCLienteAgCliMouseEntered
-        jPBotonAgregarCLienteAgCli.setOpaque(true);
-    }//GEN-LAST:event_jPBotonAgregarCLienteAgCliMouseEntered
-
-    private void jPBotonAgregarCLienteAgCliMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPBotonAgregarCLienteAgCliMouseExited
-        jPBotonAgregarCLienteAgCli.setOpaque(false);
-    }//GEN-LAST:event_jPBotonAgregarCLienteAgCliMouseExited
-
-    private void jPBotonAgregarCLienteAgCliMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPBotonAgregarCLienteAgCliMouseClicked
-        ClienteData clienteD = new ClienteData();
-        Cliente c = new Cliente();
-        c.setApellido(jTFApellidoAgCli.getText());
-        c.setNombre(jTFNombreAgCli.getText());
-        c.setDomicilio(jTFDomicilioAgCli.getText());
-        c.setTelefono(jTFTelefonoAgCli.getText());
-        clienteD.guardarCliente(c);
-        
-    }//GEN-LAST:event_jPBotonAgregarCLienteAgCliMouseClicked
-
-    private void jlAgregarClienteMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jlAgregarClienteMouseClicked
-            
-        jtpEscritorio.setSelectedComponent(jTPAgregarCliente);
-       
-    }//GEN-LAST:event_jlAgregarClienteMouseClicked
     private void jlListarVentaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jlListarVentaMouseClicked
         // TODO add your handling code here:
     }//GEN-LAST:event_jlListarVentaMouseClicked
@@ -1903,13 +1638,6 @@ public class Menu extends javax.swing.JFrame {
     private javax.swing.JLabel RegistrarVenta;
     private javax.swing.JScrollPane Scroll;
     private javax.swing.JLabel fravemaxLogo;
-    private javax.swing.JComboBox<String> jComboBox1;
-
-    private javax.swing.JLabel jLApellidoAgCli;
-    private javax.swing.JLabel jLDomicilioAgCli;
-    private javax.swing.JLabel jLNombreAgCli;
-    private javax.swing.JLabel jLTelefonoAgCli;
-    private javax.swing.JLabel jLTitulo;
     private javax.swing.JLabel jLAgregarProducto;
     private javax.swing.JLabel jLBtnAgregarProd;
     private javax.swing.JLabel jLBtnModificarModProd;
@@ -1934,7 +1662,6 @@ public class Menu extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel17;
     private javax.swing.JLabel jLabel18;
     private javax.swing.JLabel jLabel19;
-    private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel20;
     private javax.swing.JLabel jLabel21;
     private javax.swing.JLabel jLabel22;
@@ -1956,27 +1683,13 @@ public class Menu extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
-    private javax.swing.JPanel jPBotonAgregarCLienteAgCli;
-    private javax.swing.JPanel jPFondoAgCli;
     private javax.swing.JPanel jPanel1;
-    private javax.swing.JPanel jPanel3;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanelFravemax;
     private javax.swing.JPanel jPanelOpciones;
     private javax.swing.JPanel jPanelUsuario;
-    private javax.swing.JSeparator jSeparator1;
     private javax.swing.JSeparator jSeparator10;
     private javax.swing.JSeparator jSeparator11;
-    private javax.swing.JSeparator jSeparator2;
-    private javax.swing.JSeparator jSeparator3;
-    private javax.swing.JSeparator jSeparator4;
-    private javax.swing.JSeparator jSeparator5;
-    private javax.swing.JSeparator jSeparator6;
-    private javax.swing.JTextField jTFApellidoAgCli;
-    private javax.swing.JTextField jTFDomicilioAgCli;
-    private javax.swing.JTextField jTFNombreAgCli;
-    private javax.swing.JTextField jTFTelefonoAgCli;
-    private javax.swing.JPanel jTPAgregarCliente;
     private javax.swing.JSeparator jSeparator4;
     private javax.swing.JSeparator jSeparator5;
     private javax.swing.JSeparator jSeparator6;
