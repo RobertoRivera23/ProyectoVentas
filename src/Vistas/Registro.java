@@ -40,6 +40,7 @@ public class Registro extends javax.swing.JFrame {
     private void initComponents() {
 
         jPFondo = new javax.swing.JPanel();
+        jlBanner2 = new javax.swing.JLabel();
         jPFravemax = new javax.swing.JPanel();
         jLMinimiza = new javax.swing.JLabel();
         jLCierra = new javax.swing.JLabel();
@@ -60,7 +61,6 @@ public class Registro extends javax.swing.JFrame {
         jlCargar = new javax.swing.JLabel();
         jLVolver = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
-        jlBanner2 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setUndecorated(true);
@@ -69,6 +69,9 @@ public class Registro extends javax.swing.JFrame {
 
         jPFondo.setPreferredSize(new java.awt.Dimension(512, 450));
         jPFondo.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        jlBanner2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Image/Banner FM.png"))); // NOI18N
+        jPFondo.add(jlBanner2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 170, 450));
 
         jPFravemax.setBackground(new java.awt.Color(0, 150, 136));
         jPFravemax.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -90,7 +93,7 @@ public class Registro extends javax.swing.JFrame {
                 jLMinimizaMouseExited(evt);
             }
         });
-        jPFravemax.add(jLMinimiza, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 0, 30, 30));
+        jPFravemax.add(jLMinimiza, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 0, 30, 30));
 
         jLCierra.setFont(new java.awt.Font("Microsoft Yi Baiti", 1, 24)); // NOI18N
         jLCierra.setForeground(new java.awt.Color(255, 255, 255));
@@ -108,9 +111,9 @@ public class Registro extends javax.swing.JFrame {
                 jLCierraMouseExited(evt);
             }
         });
-        jPFravemax.add(jLCierra, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 0, 40, 30));
+        jPFravemax.add(jLCierra, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 0, 40, 30));
 
-        jPFondo.add(jPFravemax, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 0, 340, -1));
+        jPFondo.add(jPFravemax, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 510, -1));
 
         jPDatos.setBackground(new java.awt.Color(255, 255, 255));
         jPDatos.setForeground(new java.awt.Color(255, 255, 255));
@@ -233,9 +236,6 @@ public class Registro extends javax.swing.JFrame {
         jPDatos.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 10, 290, 90));
 
         jPFondo.add(jPDatos, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 28, 340, 420));
-
-        jlBanner2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Image/Banner FM.png"))); // NOI18N
-        jPFondo.add(jlBanner2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 170, 450));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
