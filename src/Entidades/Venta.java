@@ -79,5 +79,8 @@ public class Venta {
         this.empleado = empleado;
     }
     
-    
+    @Override
+    public String toString(){
+        return cliente.getTelefono() + ", " + empleado.getApellido() + ", " + fechaVenta;
+    }
 }

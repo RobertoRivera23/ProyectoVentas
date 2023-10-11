@@ -61,22 +61,22 @@ public class Login extends javax.swing.JFrame {
         jPCuerpo.setBackground(new java.awt.Color(255, 255, 255));
         jPCuerpo.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jLUsuario.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
-        jLUsuario.setForeground(new java.awt.Color(0, 0, 0));
+        jLUsuario.setFont(new java.awt.Font("Corbel", 1, 18)); // NOI18N
+        jLUsuario.setForeground(new java.awt.Color(0, 150, 136));
         jLUsuario.setText("Usuario:");
         jPCuerpo.add(jLUsuario, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 180, -1, -1));
 
-        jLContraseña.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
-        jLContraseña.setForeground(new java.awt.Color(0, 0, 0));
+        jLContraseña.setFont(new java.awt.Font("Corbel", 1, 18)); // NOI18N
+        jLContraseña.setForeground(new java.awt.Color(0, 150, 136));
         jLContraseña.setText("Contraseña:");
         jPCuerpo.add(jLContraseña, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 240, -1, -1));
 
-        jLCargo.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
-        jLCargo.setForeground(new java.awt.Color(0, 0, 0));
+        jLCargo.setFont(new java.awt.Font("Corbel", 1, 18)); // NOI18N
+        jLCargo.setForeground(new java.awt.Color(0, 150, 136));
         jLCargo.setText("Cargo:");
         jPCuerpo.add(jLCargo, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 300, -1, -1));
 
-        jPCuerpo.add(jCBCargo, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 300, 170, -1));
+        jPCuerpo.add(jCBCargo, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 300, 170, -1));
 
         jTFUsuario.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -88,10 +88,10 @@ public class Login extends javax.swing.JFrame {
                 jTFUsuarioActionPerformed(evt);
             }
         });
-        jPCuerpo.add(jTFUsuario, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 180, 170, -1));
+        jPCuerpo.add(jTFUsuario, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 180, 170, -1));
 
         jTContraseña.setForeground(new java.awt.Color(51, 51, 76));
-        jPCuerpo.add(jTContraseña, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 240, 170, -1));
+        jPCuerpo.add(jTContraseña, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 240, 170, -1));
 
         jLBtnIniciarSesion.setBackground(new java.awt.Color(0, 150, 136));
         jLBtnIniciarSesion.setFont(new java.awt.Font("Corbel", 1, 14)); // NOI18N
