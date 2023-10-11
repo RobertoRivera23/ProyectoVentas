@@ -137,8 +137,10 @@ public class VentasData {
 //Mostrar que clientes compraron el  producto X.
     public List<Cliente> obtenerClientesPorProducto(Producto producto) {
         List<Cliente> clientes = new ArrayList<>();
-        String sql = "SELECT cliente.apellido, cliente.nombre, cliente.domicilio, cliente.telefono "
-                + "FROM cliente, producto WHERE idProducto = ? ORDER BY cliente.idCliente ASC";
+        String sql = "SELECT cliente.idCliente, cliente.apellido, cliente.nombre, cliente.domicilio, cliente.telefono "
+                + "FROM cliente, venta JOIN detalledeventa ON (venta.idVenta = detalledeventa.idVenta) "
+                + "WHERE detalledeventa.idProducto = ? AND cliente.estado = 1 AND producto.estado = 1 "
+                + "AND venta.estado = 1 AND detalledeventa.estado = 1 ORDER BY cliente.idCliente ASC";
         try {
             PreparedStatement ps = con.prepareStatement(sql);
             ps.setInt(1, producto.getIdProducto());
