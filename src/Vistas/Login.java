@@ -53,6 +53,7 @@ public class Login extends javax.swing.JFrame {
         setLocationByPlatform(true);
         setUndecorated(true);
         setResizable(false);
+        setSize(new java.awt.Dimension(512, 450));
 
         jPBackground.setPreferredSize(new java.awt.Dimension(570, 400));
         jPBackground.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -155,7 +156,7 @@ public class Login extends javax.swing.JFrame {
                 jLMinimizaMouseExited(evt);
             }
         });
-        jPanel1.add(jLMinimiza, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 0, 29, 30));
+        jPanel1.add(jLMinimiza, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 0, 30, 30));
 
         jLCierra.setBackground(new java.awt.Color(0, 150, 136));
         jLCierra.setFont(new java.awt.Font("Microsoft Yi Baiti", 1, 24)); // NOI18N
@@ -175,7 +176,7 @@ public class Login extends javax.swing.JFrame {
                 jLCierraMouseExited(evt);
             }
         });
-        jPanel1.add(jLCierra, new org.netbeans.lib.awtextra.AbsoluteConstraints(480, 0, 30, 30));
+        jPanel1.add(jLCierra, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 0, 40, 30));
 
         jPCuerpo.add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(-170, 0, 520, 30));
 

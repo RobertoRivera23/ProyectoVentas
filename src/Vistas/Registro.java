@@ -26,9 +26,7 @@ public class Registro extends javax.swing.JFrame {
         initComponents();
         this.setLocationRelativeTo(null);
         cargarCombo();
-        jRMostrar.setSelected(false);
-        jPContraseña.setText("             ");
-      
+        jRMostrar.setSelected(false); 
     }
 
     /**
@@ -68,7 +66,6 @@ public class Registro extends javax.swing.JFrame {
         setUndecorated(true);
         setPreferredSize(new java.awt.Dimension(512, 450));
         setSize(new java.awt.Dimension(512, 450));
-        getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jPFondo.setPreferredSize(new java.awt.Dimension(512, 450));
         jPFondo.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -211,8 +208,6 @@ public class Registro extends javax.swing.JFrame {
             }
         });
         jPDatos.add(jRMostrar, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 310, 80, 20));
-
-        jPContraseña.setText("jPasswordField1");
         jPDatos.add(jPContraseña, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 310, 120, -1));
 
         jlCargar.setBackground(new java.awt.Color(0, 150, 136));
@@ -266,7 +261,16 @@ public class Registro extends javax.swing.JFrame {
 
         jPFondo.add(jPDatos, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 28, 350, 430));
 
-        getContentPane().add(jPFondo, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 510, -1));
+        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
+        getContentPane().setLayout(layout);
+        layout.setHorizontalGroup(
+            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(jPFondo, javax.swing.GroupLayout.PREFERRED_SIZE, 513, javax.swing.GroupLayout.PREFERRED_SIZE)
+        );
+        layout.setVerticalGroup(
+            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(jPFondo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+        );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
