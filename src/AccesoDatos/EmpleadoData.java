@@ -69,9 +69,10 @@ public class EmpleadoData {
                 empleado.setUsuario(rs.getString("usuario"));
                 empleado.setContraenia(rs.getString("contraseña"));
                 empleado.setEstado(true);
+            }else {
+           JOptionPane.showMessageDialog(null, "No se econtro al Empleado"); 
             }
-            
-        } catch (SQLException ex) {
+         } catch (SQLException ex) {
              JOptionPane.showMessageDialog(null, "Error al conectar a la tabla Empleado" + ex.getMessage()); 
         }
         return empleado;
