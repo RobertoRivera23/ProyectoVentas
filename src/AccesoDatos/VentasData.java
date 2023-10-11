@@ -53,11 +53,9 @@ public class VentasData {
     public void setEmpleado(Empleado empleado) {
         this.empleado = empleado;
     }
-    
-    
 
 // Guardar ventas
-    public void guardarVenta(Venta venta) { 
+    public void guardarVenta(Venta venta) {
         String sql = "INSERT INTO venta (idCliente, idempleado, fechaVenta, estado ) VALUES (? , ?, ?, ?) ";
         try {
             PreparedStatement ps = con.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
@@ -65,7 +63,7 @@ public class VentasData {
             ps.setInt(2, venta.getEmpleado().getIdEmpleado());
             ps.setDate(3, Date.valueOf(venta.getFechaVenta()));
             ps.setBoolean(4, true);
-           ps.executeUpdate();
+            ps.executeUpdate();
             ResultSet rs = ps.getGeneratedKeys();
             if (rs.next()) {
                 venta.setIdVenta(rs.getInt(1));
@@ -139,8 +137,10 @@ public class VentasData {
 //Mostrar que clientes compraron el  producto X.
     public List<Cliente> obtenerClientesPorProducto(Producto producto) {
         List<Cliente> clientes = new ArrayList<>();
-        String sql = "SELECT cliente.apellido, cliente.nombre, cliente.domicilio, cliente.telefono "
-                + "FROM cliente, producto WHERE idProducto = ? ORDER BY cliente.idCliente ASC";
+        String sql = "SELECT cliente.idCliente, cliente.apellido, cliente.nombre, cliente.domicilio, cliente.telefono "
+                + "FROM cliente, venta JOIN detalledeventa ON (venta.idVenta = detalledeventa.idVenta) "
+                + "WHERE detalledeventa.idProducto = ? AND cliente.estado = 1 AND producto.estado = 1 "
+                + "AND venta.estado = 1 AND detalledeventa.estado = 1 ORDER BY cliente.idCliente ASC";
         try {
             PreparedStatement ps = con.prepareStatement(sql);
             ps.setInt(1, producto.getIdProducto());
@@ -196,9 +196,32 @@ public class VentasData {
         }
         return prodPorFecha;
     }
-    
-    public Venta buscarVentaId(int idVenta){
-        Venta venta = new Venta();
+
+    public Venta buscarVentaId(int idVenta) {
+        String sql = "SELECT idCliente, idEmpleado, fechaVenta, estado FROM venta "
+                + "WHERE idVenta = ? AND estado = 1";
+        ClienteData c1 = new ClienteData();
+        EmpleadoData e1 = new EmpleadoData();
+        try {
+            PreparedStatement ps = con.prepareStatement(sql);
+            ps.setInt(1,idVenta);
+            ResultSet rs = ps.executeQuery();
+            if (rs.next()){
+                venta = new Venta();
+                venta.setIdVenta(idVenta);
+                cliente = c1.buscarCliente(rs.getInt("idCliente"));
+                venta.setCliente(cliente);
+                empleado = e1.buscarEmpleadoPorId(rs.getInt("idEmpleado"));
+                venta.setEmpleado(empleado);
+                venta.setFechaVenta(rs.getDate("fechaVenta").toLocalDate());
+                venta.setEstado(rs.getBoolean("estado"));
+            } else {
+                JOptionPane.showMessageDialog(null, "No existe la Venta");
+            }
+            ps.close();
+        } catch (SQLException ex) {
+            JOptionPane.showMessageDialog(null, " Error al acceder a la tabla Venta " + ex.getMessage());
+        }
         return venta;
     }
 }
