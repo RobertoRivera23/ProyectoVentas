@@ -45,7 +45,7 @@ public class ClienteData {
     }
 
     public Cliente buscarCliente(int idCliente) {
-        String sql = "SELECT apellido, nombre, domicilio, telefon FROM cliente WHERE idCliente = ? AND estado = 1";
+        String sql = "SELECT apellido, nombre, domicilio, telefono, estado FROM cliente WHERE idCliente = ? AND estado = 1";
         PreparedStatement ps;
         try {
             ps = con.prepareStatement(sql);
