@@ -196,4 +196,9 @@ public class VentasData {
         }
         return prodPorFecha;
     }
+    
+    public Venta buscarVentaId(int idVenta){
+        Venta venta = new Venta();
+        return venta;
+    }
 }
