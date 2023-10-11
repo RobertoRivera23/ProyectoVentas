@@ -6,8 +6,11 @@ import Entidades.Producto;
 import Entidades.Venta;
 import java.sql.*;
 import java.time.LocalDate;
+import java.time.Month;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 
 public class VentasData {
@@ -59,7 +62,7 @@ public class VentasData {
         String sql = "INSERT INTO venta (idCliente, idempleado, fechaVenta, estado ) VALUES (? , ?, ?, ?) ";
         try {
             PreparedStatement ps = con.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
-            ps.setInt(1, venta.getIdCliente());
+            ps.setInt(1, venta.getCliente().getIdCliente());
             ps.setInt(2, venta.getEmpleado().getIdEmpleado());
             ps.setDate(3, Date.valueOf(venta.getFechaVenta()));
             ps.setBoolean(4, true);
@@ -223,5 +226,30 @@ public class VentasData {
             JOptionPane.showMessageDialog(null, " Error al acceder a la tabla Venta " + ex.getMessage());
         }
         return venta;
+    }
+    
+    public void modificarVenta(Venta venta1){
+     EmpleadoData empleadoD = new EmpleadoData();
+     ClienteData clienteD = new ClienteData();
+     Venta v1 = buscarVentaId(venta1.getIdVenta());
+    String sql = "UPDATE venta SET idCliente = ?, idempleado = ?, fechaVenta = ?, estado = ? WHERE idVenta = ? ";
+        try {
+            PreparedStatement ps = con.prepareStatement(sql);
+            ps.setInt(1, venta1.getCliente().getIdCliente());
+            ps.setInt(2, venta1.getEmpleado().getIdEmpleado());
+            ps.setDate(3, Date.valueOf(venta1.getFechaVenta()));
+            ps.setBoolean(4, venta1.isEstado());
+            ps.setInt(5, venta1.getIdVenta());
+               int modificado = ps.executeUpdate();
+            if (modificado == 1) {
+                JOptionPane.showMessageDialog(null, "Venta modificada Exitosamente.");
+            } else {
+                JOptionPane.showMessageDialog(null, "La venta no pudo modificarse");
+            }
+
+        } catch (SQLException ex) {
+           JOptionPane.showMessageDialog(null, " Error al acceder a la tabla Venta " + ex.getMessage());
+     }
+    
     }
 }

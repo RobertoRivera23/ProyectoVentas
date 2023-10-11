@@ -287,7 +287,6 @@ public class Menu extends javax.swing.JFrame {
         jlAsteriscoPro = new javax.swing.JLabel();
         jlAgrVenta = new javax.swing.JLabel();
         jlEliminarProList = new javax.swing.JLabel();
-        jdcFechaVenta = new com.toedter.calendar.JDateChooser();
         jlFechaVenta = new javax.swing.JLabel();
         jlTelCliente = new javax.swing.JLabel();
         jtfTelCliente = new javax.swing.JTextField();
@@ -303,7 +302,6 @@ public class Menu extends javax.swing.JFrame {
         jlListaVenta = new javax.swing.JLabel();
         ScrollTablaVentas = new javax.swing.JScrollPane();
         jtListaVentas = new TablaFraveMax();
-        jdcListVenta = new com.toedter.calendar.JDateChooser();
         jlSelecFechaVenta = new javax.swing.JLabel();
         jtpDetallesVenta = new javax.swing.JPanel();
         jlDetallesVenta = new javax.swing.JLabel();
@@ -333,7 +331,6 @@ public class Menu extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setMinimumSize(new java.awt.Dimension(800, 500));
         setUndecorated(true);
-        setPreferredSize(new java.awt.Dimension(800, 500));
         setSize(new java.awt.Dimension(800, 500));
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
@@ -1903,9 +1900,6 @@ public class Menu extends javax.swing.JFrame {
         });
         jtpAgrVenta.add(jlEliminarProList, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 220, 80, 30));
 
-        jdcFechaVenta.setFont(new java.awt.Font("Corbel", 1, 14)); // NOI18N
-        jtpAgrVenta.add(jdcFechaVenta, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 110, 200, 30));
-
         jlFechaVenta.setFont(new java.awt.Font("Corbel", 1, 14)); // NOI18N
         jlFechaVenta.setForeground(new java.awt.Color(153, 153, 153));
         jlFechaVenta.setText("Selecciones la Fecha de la Venta");
@@ -2002,9 +1996,6 @@ public class Menu extends javax.swing.JFrame {
         ScrollTablaVentas.setViewportView(jtListaVentas);
 
         jtpListaVentas.add(ScrollTablaVentas, new org.netbeans.lib.awtextra.AbsoluteConstraints(13, 120, 570, 290));
-
-        jdcListVenta.setFont(new java.awt.Font("Corbel", 1, 14)); // NOI18N
-        jtpListaVentas.add(jdcListVenta, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 80, 200, 30));
 
         jlSelecFechaVenta.setFont(new java.awt.Font("Corbel", 1, 14)); // NOI18N
         jlSelecFechaVenta.setForeground(new java.awt.Color(153, 153, 153));
@@ -2726,8 +2717,6 @@ public class Menu extends javax.swing.JFrame {
     private javax.swing.JComboBox<Producto> jcbClientes;
     private javax.swing.JComboBox<Producto> jcbProVenta;
     private javax.swing.JComboBox<Producto> jcbProductos;
-    private com.toedter.calendar.JDateChooser jdcFechaVenta;
-    private com.toedter.calendar.JDateChooser jdcListVenta;
     private javax.swing.JLabel jlAgrVenta;
     private javax.swing.JLabel jlAgrVentas;
     private javax.swing.JLabel jlAgregar;

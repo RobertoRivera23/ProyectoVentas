@@ -102,22 +102,22 @@ public class Main {
         Empleado e9 = empleadoD.buscarEmpleadoPorId(3);
         Cliente c9= clienteD.buscarCliente(2);
                                 // Guardar Venta
-            Venta v1= new Venta(c9, e9, LocalDate.of(10, Month.OCTOBER, 10)); /// MODIFICAAAAR
-            ventasD.guardarVenta(v1);
+//            Venta v1= new Venta(c9, e9, LocalDate.of(10, Month.OCTOBER, 10)); /// MODIFICAAAAR
+//            ventasD.guardarVenta(v1);
         
-                                // Buscar Empelado
-       
+                                // Buscar Venta
+//            System.out.println(ventasD.buscarVentaId(1));
            
-                                //Modificar Empleado
-//              Empleado e1= new Empleado(7, "Genaro", "Almeida", 43567567, "Vendedor", "GerardoFabiani", "Fabiani2023", true);
-//              empleadoD.modificarEmpleadoPorId(e1);
+                                //Modificar Venta
+//              Venta v1= new Venta(3, c9, e9, LocalDate.of(2023, Month.OCTOBER, 07));
+//              ventasD.modificarVenta(v1);
 //                               
            
-                            // Listar Empleados
-//                     List<Empleado> listaempleados = empleadoD.listarEmpleado();
-//                 for (Empleado listaempleado : listaempleados) {
-//                     System.out.println(listaempleado.toString());
-//        }
+                            // Listar Venta Por Cliente
+                     List<Venta> listaVentas = ventasD.listarVentasDeCliente(c9);
+                 for (Venta lista : listaVentas) {
+                     System.out.println(lista.toString());
+        }
    
                         
                         //Eliminar Empleado
