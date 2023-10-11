@@ -12,6 +12,8 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JOptionPane;
@@ -21,13 +23,14 @@ import javax.swing.JOptionPane;
  * @author rober
  */
 public class DetalleVentasData {
-   private Connection con = null;
-   private Venta venta;
-   private Producto producto;
 
-public DetalleVentasData(){
-    con = Conexion.getConexion();
-}
+    private Connection con = null;
+    private Venta venta;
+    private Producto producto;
+
+    public DetalleVentasData() {
+        con = Conexion.getConexion();
+    }
 
     public DetalleVentasData(Venta venta, Producto producto) {
         this.venta = venta;
@@ -50,56 +53,124 @@ public DetalleVentasData(){
         this.producto = producto;
     }
 
-
-   public void guardarDetalleVenta(DetalleVenta detalleVenta){
-       String sql = "INSET INTO detalleVenta (cantidad, idVenta, precioVenta, idProducto, estado) VALUES (?, ?, ?, ?, ?)";
-       try {
-           PreparedStatement ps = con.prepareStatement(sql, PreparedStatement.RETURN_GENERATED_KEYS);
-           ps.setInt(1, detalleVenta.getCantidad());
-           ps.setInt(2, detalleVenta.getIdDetalleVenta());
-           ps.setDouble(3, detalleVenta.getPrecioVenta());
-           ps.setInt(4, detalleVenta.getIdProducto());
-           ps.setBoolean(5, true);
-           ps.executeUpdate();
+    public void guardarDetalleVenta(DetalleVenta detalleVenta) {
+        String sql = "INSET INTO detalleVenta (cantidad, idVenta, precioVenta, idProducto, estado) VALUES (?, ?, ?, ?, ?)";
+        try {
+            PreparedStatement ps = con.prepareStatement(sql, PreparedStatement.RETURN_GENERATED_KEYS);
+            ps.setInt(1, detalleVenta.getCantidad());
+            ps.setInt(2, detalleVenta.getIdDetalleVenta());
+            ps.setDouble(3, detalleVenta.getPrecioVenta());
+            ps.setInt(4, detalleVenta.getIdProducto());
+            ps.setBoolean(5, true);
+            ps.executeUpdate();
             ResultSet rs = ps.getGeneratedKeys();
-            if(rs.next()){
-               detalleVenta.setIdDetalleVenta(rs.getInt(1));
+            if (rs.next()) {
+                detalleVenta.setIdDetalleVenta(rs.getInt(1));
                 JOptionPane.showMessageDialog(null, "Se añadio con exito el detalle de Venta");
             }
-          
-       } catch (SQLException ex) {
-           JOptionPane.showMessageDialog(null, "Error al conectar a la tabla Detalle de  Venta" + ex.getMessage()); }
-       }
-   
-   public void buscarDetalleVenta(int idDetalleVenta){
-       DetalleVenta detalleV = null;
-       String sql ="SELECT * FROM detalleVenta WHERE idVenta = ? ";
-   //cantidad, idVenta, precioVenta, idProducto, estado
-       try {
-           PreparedStatement ps = con.prepareStatement(sql);
-           ps.setInt(1, idDetalleVenta);
-           ResultSet rs = ps.executeQuery();
-           if(rs.next()){
-              detalleV = new DetalleVenta();
-              VentasData ventasD = new VentasData();
-              detalleV.setIdDetalleVenta(idDetalleVenta);
-              detalleV.setCantidad(rs.getInt("cantidad"));
-              detalleV.setVenta(ventasD.buscarVentasPorId(rs.getInt("idVenta")));// ESPERAR METODO BUSCAR POR ID
-              detalleV.setPrecioVenta(idDetalleVenta);
-           }
-           
-       } catch (SQLException ex) {
-           Logger.getLogger(DetalleVentasData.class.getName()).log(Level.SEVERE, null, ex);
-       }
-   }
-   
-   public void modificarDetalleVenta(int idVenta){
-       
-   }
-   
-   
-   }
-   
-   
-   
 
+        } catch (SQLException ex) {
+            JOptionPane.showMessageDialog(null, "Error al conectar a la tabla Detalle de  Venta" + ex.getMessage());
+        }
+    }
+
+    public DetalleVenta buscarDetalleVenta(int idDetalleVenta) {
+        DetalleVenta detalleV = null;
+        String sql = "SELECT * FROM detalleVenta WHERE idVenta = ? ";
+
+        try {
+            PreparedStatement ps = con.prepareStatement(sql);
+            ps.setInt(1, idDetalleVenta);
+            ResultSet rs = ps.executeQuery();
+            if (rs.next()) {
+                detalleV = new DetalleVenta();
+                VentasData ventasD = new VentasData();
+                ProductoData productoD = new ProductoData();
+                detalleV.setIdDetalleVenta(idDetalleVenta);
+                detalleV.setCantidad(rs.getInt("cantidad"));
+                detalleV.setVenta(ventasD.buscarVentaId(rs.getInt("idVenta")));
+                detalleV.setPrecioVenta(rs.getDouble("precioVenta"));
+                detalleV.setProducto(productoD.buscarProducto(rs.getInt("idProducto")));
+                detalleV.setEstado(rs.getBoolean("estado"));
+            } else {
+                JOptionPane.showMessageDialog(null, "No se encontro el Detalle de Venta");
+            }
+
+        } catch (SQLException ex) {
+            JOptionPane.showMessageDialog(null, "Error al conectar con la tabla detalleVenta" + ex.getMessage());
+        }
+        return detalleV;
+    }
+    
+
+    public void modificarDetalleVenta(DetalleVenta detalleVenta) {
+        DetalleVenta detalleV = buscarDetalleVenta(detalleVenta.getIdDetalleVenta());
+        String sql = "UPDATE detalleVenta SET cantidad = ?, idVenta = ?, precioVenta = ?, idProducto = ?, estado = ? WHERE idDetalleVenta = ? ";
+        try {
+            PreparedStatement ps = con.prepareStatement(sql);
+            ps.setInt(1, detalleV.getCantidad());
+            ps.setInt(2, detalleV.getIdVenta());
+            ps.setDouble(3, detalleV.getPrecioVenta());
+            ps.setInt(4, detalleV.getIdProducto());
+            ps.setBoolean(5, detalleV.isEstado());
+            ps.setInt(6, detalleVenta.getIdDetalleVenta());
+            
+            int Exito = ps.executeUpdate();
+            if (Exito == 1) {
+                JOptionPane.showMessageDialog(null, "Detalle de Venta modificado Exitosamente.");
+            } else {
+                JOptionPane.showMessageDialog(null, "El Detalle de Venta no se pudo modificar");
+            }
+
+        } catch (SQLException ex) {
+            JOptionPane.showMessageDialog(null, "Error al conectar con la tabla detalleVenta" + ex.getMessage());
+        }
+    }
+    
+    public List<DetalleVenta> listarDetalleVentaPorProducto(Producto producto){
+        List<DetalleVenta> listaDetalleVenta = new ArrayList<>();
+        String sql = "SELECT * FROM detalleVenta WHERE idProducto = ? AND estado = 1 ORDER BY idDetalleVenta ASC ";
+        try {
+            PreparedStatement ps = con.prepareStatement(sql);
+            ps.setInt(1, producto.getIdProducto());
+            ResultSet rs = ps.executeQuery();
+            if (!rs.next()) {
+                JOptionPane.showMessageDialog(null, "No hay Detalle de Venta para ese producto " + producto.getNombreProducto());
+            } else {
+                while (rs.next()) { //cantidad, idVenta, precioVenta, idProducto, estado
+                    DetalleVenta detalleV = new DetalleVenta();
+                    VentasData ventasD = new VentasData();
+                    ProductoData productoD = new ProductoData();
+                    detalleV.setCantidad(rs.getInt("cantidad"));
+                    detalleV.setVenta(ventasD.buscarVentaId(rs.getInt("idVenta")));
+                    detalleV.setPrecioVenta(rs.getDouble("precioVenta"));
+                    detalleV.setProducto(productoD.buscarProducto(rs.getInt("idProducto")));
+                    detalleV.setEstado(rs.getBoolean("estado"));
+                    listaDetalleVenta.add(detalleV);
+                }
+            }
+            ps.close();
+        } catch (SQLException ex) {
+           JOptionPane.showMessageDialog(null, "Error al conectar con la tabla detalleVenta" + ex.getMessage());
+        }
+        
+        
+        return listaDetalleVenta;
+    }
+
+    public void eliminarDetalleVentaPorId(int IdDetalleVenta){
+        String sql = "UPDATE detalleVenta SET estado = 0  WHERE idDetalleVenta = ? ";
+        try {
+            PreparedStatement ps = con.prepareStatement(sql);
+            ps.setInt(1, IdDetalleVenta);
+            int modificado = ps.executeUpdate();
+            if(modificado == 1){
+                JOptionPane.showMessageDialog(null, "Detalle de Venta Eliminado Exitosamente.");
+            } else {
+                JOptionPane.showMessageDialog(null, "El Detalle de Venta no pudo ser Eliminado");
+            }
+        } catch (SQLException ex) {
+         JOptionPane.showMessageDialog(null, "Error al conectar con la tabla detalleVenta" + ex.getMessage());
+       }
+    }
+}
