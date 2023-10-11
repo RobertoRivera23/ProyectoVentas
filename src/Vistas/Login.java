@@ -19,6 +19,7 @@ public class Login extends javax.swing.JFrame {
      * Creates new form Login
      */
     int xMouse, yMouse;
+
     public Login() {
         initComponents();
         this.setLocationRelativeTo(null);
@@ -84,6 +85,8 @@ public class Login extends javax.swing.JFrame {
         jLCargo.setText("Cargo:");
         jPCuerpo.add(jLCargo, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 300, -1, -1));
 
+        jCBCargo.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Supervisor", "Vendedor" }));
+        jCBCargo.setSelectedItem(null);
         jPCuerpo.add(jCBCargo, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 300, 170, -1));
 
         jTFUsuario.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -197,7 +200,7 @@ public class Login extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jTFUsuarioMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTFUsuarioMouseClicked
-        if(jTFUsuario.getText().equals("Ingrese su usuario")){
+        if (jTFUsuario.getText().equals("Ingrese su usuario")) {
             jTFUsuario.setText("");
             jTFUsuario.setForeground(Color.black);
         }
@@ -205,7 +208,7 @@ public class Login extends javax.swing.JFrame {
 
     private void jLCierraMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLCierraMouseExited
         jLCierra.setOpaque(false);
-        jLCierra.setBackground(new Color(0,150,136));
+        jLCierra.setBackground(new Color(0, 150, 136));
     }//GEN-LAST:event_jLCierraMouseExited
 
     private void jLCierraMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLCierraMouseEntered
@@ -219,12 +222,12 @@ public class Login extends javax.swing.JFrame {
 
     private void jLMinimizaMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLMinimizaMouseExited
         jLMinimiza.setOpaque(false);
-        jLMinimiza.setBackground(new Color(0,150,136));
+        jLMinimiza.setBackground(new Color(0, 150, 136));
     }//GEN-LAST:event_jLMinimizaMouseExited
 
     private void jLMinimizaMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLMinimizaMouseEntered
         jLMinimiza.setOpaque(true);
-        jLMinimiza.setBackground(new Color(10,160,140));
+        jLMinimiza.setBackground(new Color(10, 160, 140));
     }//GEN-LAST:event_jLMinimizaMouseEntered
 
     private void jLMinimizaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLMinimizaMouseClicked

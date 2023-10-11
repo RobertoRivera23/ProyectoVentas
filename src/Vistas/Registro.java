@@ -25,7 +25,6 @@ public class Registro extends javax.swing.JFrame {
     public Registro() {
         initComponents();
         this.setLocationRelativeTo(null);
-        cargarCombo();
         jRMostrar.setSelected(false); 
     }
 
@@ -191,6 +190,8 @@ public class Registro extends javax.swing.JFrame {
         jTFUsuario.setForeground(new java.awt.Color(51, 51, 76));
         jPDatos.add(jTFUsuario, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 270, 170, -1));
 
+        jCBCargo.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Supervisor", "Vendedor" }));
+        jCBCargo.setSelectedItem(null);
         jPDatos.add(jCBCargo, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 220, 170, -1));
 
         jRMostrar.setBackground(new java.awt.Color(51, 51, 76));
@@ -380,12 +381,6 @@ public class Registro extends javax.swing.JFrame {
     private javax.swing.JLabel jlCargar;
     private javax.swing.JLabel jlFravemax;
     // End of variables declaration//GEN-END:variables
-
-    private void cargarCombo() {
-        jCBCargo.addItem("");
-        jCBCargo.addItem("Vendedor");
-        jCBCargo.addItem("Supervisor");
-    }
 
     private void limpiarCampos() {
         jTFApellido.setText("");
