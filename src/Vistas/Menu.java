@@ -74,8 +74,8 @@ public class Menu extends javax.swing.JFrame {
     private void initComponents() {
 
         BackGround = new javax.swing.JPanel();
-        jPanel5 = new javax.swing.JPanel();
-        jLabel5 = new javax.swing.JLabel();
+        jPanelCabecera = new javax.swing.JPanel();
+        jlNombreUsuario = new javax.swing.JLabel();
         fravemaxLogo = new javax.swing.JLabel();
         jlMinimizar = new javax.swing.JLabel();
         jlSalir = new javax.swing.JLabel();
@@ -340,19 +340,19 @@ public class Menu extends javax.swing.JFrame {
         BackGround.setBackground(new java.awt.Color(255, 255, 255));
         BackGround.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jPanel5.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+        jPanelCabecera.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jLabel5.setFont(new java.awt.Font("Corbel", 1, 14)); // NOI18N
-        jLabel5.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel5.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Image/circulo-de-usuario.png"))); // NOI18N
-        jLabel5.setText("Nombre de Usuario");
-        jLabel5.setToolTipText("");
-        jLabel5.setVerticalAlignment(javax.swing.SwingConstants.BOTTOM);
-        jLabel5.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
-        jLabel5.setIconTextGap(6);
-        jLabel5.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
-        jPanel5.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 200, 100));
+        jlNombreUsuario.setFont(new java.awt.Font("Corbel", 1, 14)); // NOI18N
+        jlNombreUsuario.setForeground(new java.awt.Color(255, 255, 255));
+        jlNombreUsuario.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jlNombreUsuario.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Image/circulo-de-usuario.png"))); // NOI18N
+        jlNombreUsuario.setText("Nombre de Usuario");
+        jlNombreUsuario.setToolTipText("");
+        jlNombreUsuario.setVerticalAlignment(javax.swing.SwingConstants.BOTTOM);
+        jlNombreUsuario.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        jlNombreUsuario.setIconTextGap(6);
+        jlNombreUsuario.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
+        jPanelCabecera.add(jlNombreUsuario, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 200, 100));
 
         fravemaxLogo.setFont(new java.awt.Font("Corbel", 1, 14)); // NOI18N
         fravemaxLogo.setForeground(new java.awt.Color(255, 255, 255));
@@ -363,7 +363,7 @@ public class Menu extends javax.swing.JFrame {
         fravemaxLogo.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         fravemaxLogo.setIconTextGap(0);
         fravemaxLogo.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
-        jPanel5.add(fravemaxLogo, new org.netbeans.lib.awtextra.AbsoluteConstraints(590, 0, 170, 100));
+        jPanelCabecera.add(fravemaxLogo, new org.netbeans.lib.awtextra.AbsoluteConstraints(590, 0, 170, 100));
 
         jlMinimizar.setFont(new java.awt.Font("Microsoft Yi Baiti", 1, 24)); // NOI18N
         jlMinimizar.setForeground(new java.awt.Color(255, 255, 255));
@@ -381,7 +381,7 @@ public class Menu extends javax.swing.JFrame {
                 jlMinimizarMouseExited(evt);
             }
         });
-        jPanel5.add(jlMinimizar, new org.netbeans.lib.awtextra.AbsoluteConstraints(730, 0, 30, 30));
+        jPanelCabecera.add(jlMinimizar, new org.netbeans.lib.awtextra.AbsoluteConstraints(730, 0, 30, 30));
 
         jlSalir.setFont(new java.awt.Font("Microsoft Yi Baiti", 1, 24)); // NOI18N
         jlSalir.setForeground(new java.awt.Color(255, 255, 255));
@@ -399,7 +399,7 @@ public class Menu extends javax.swing.JFrame {
                 jlSalirMouseExited(evt);
             }
         });
-        jPanel5.add(jlSalir, new org.netbeans.lib.awtextra.AbsoluteConstraints(760, 0, 40, 30));
+        jPanelCabecera.add(jlSalir, new org.netbeans.lib.awtextra.AbsoluteConstraints(760, 0, 40, 30));
 
         jlCabecera.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jlCabecera.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Image/Cabecera.png"))); // NOI18N
@@ -415,9 +415,9 @@ public class Menu extends javax.swing.JFrame {
                 jlCabeceraMousePressed(evt);
             }
         });
-        jPanel5.add(jlCabecera, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
+        jPanelCabecera.add(jlCabecera, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
 
-        BackGround.add(jPanel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 800, 100));
+        BackGround.add(jPanelCabecera, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 800, 100));
 
         jPanelOpciones.setBackground(new java.awt.Color(51, 51, 76));
         jPanelOpciones.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -2666,9 +2666,8 @@ public class Menu extends javax.swing.JFrame {
     private javax.swing.JLabel jLTituloListaClien;
     private javax.swing.JLabel jLTituloModClien;
     private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel5;
     private javax.swing.JList<Producto> jListaProductos;
-    private javax.swing.JPanel jPanel5;
+    private javax.swing.JPanel jPanelCabecera;
     private javax.swing.JPanel jPanelOpciones;
     private javax.swing.JSeparator jSAgrClien1;
     private javax.swing.JSeparator jSAgrClien2;
@@ -2794,6 +2793,7 @@ public class Menu extends javax.swing.JFrame {
     private javax.swing.JLabel jlModificarCliente;
     private javax.swing.JLabel jlNombreEmpleadoEliminar;
     private javax.swing.JLabel jlNombreProEliminar;
+    private javax.swing.JLabel jlNombreUsuario;
     private javax.swing.JLabel jlPrecioVenta;
     private javax.swing.JLabel jlProIn;
     private javax.swing.JLabel jlProductos;
