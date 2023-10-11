@@ -21,6 +21,7 @@ public class Login extends javax.swing.JFrame {
     int xMouse, yMouse;
     public Login() {
         initComponents();
+        this.setLocationRelativeTo(null);
     }
 
     /**
@@ -33,6 +34,7 @@ public class Login extends javax.swing.JFrame {
     private void initComponents() {
 
         jPBackground = new javax.swing.JPanel();
+        jlFravemax = new javax.swing.JLabel();
         jlBanner1 = new javax.swing.JLabel();
         jPCuerpo = new javax.swing.JPanel();
         jLUsuario = new javax.swing.JLabel();
@@ -54,6 +56,11 @@ public class Login extends javax.swing.JFrame {
 
         jPBackground.setPreferredSize(new java.awt.Dimension(570, 400));
         jPBackground.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        jlFravemax.setFont(new java.awt.Font("Corbel", 1, 18)); // NOI18N
+        jlFravemax.setForeground(new java.awt.Color(255, 255, 255));
+        jlFravemax.setText("FRAVEMAX");
+        jPBackground.add(jlFravemax, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 120, 100, -1));
 
         jlBanner1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Image/Banner FM.png"))); // NOI18N
         jPBackground.add(jlBanner1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 170, -1));
@@ -81,11 +88,6 @@ public class Login extends javax.swing.JFrame {
         jTFUsuario.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 jTFUsuarioMouseClicked(evt);
-            }
-        });
-        jTFUsuario.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTFUsuarioActionPerformed(evt);
             }
         });
         jPCuerpo.add(jTFUsuario, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 180, 170, -1));
@@ -122,6 +124,16 @@ public class Login extends javax.swing.JFrame {
         jPCuerpo.add(jLIconoLogin, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 40, 140, 120));
 
         jPanel1.setBackground(new java.awt.Color(0, 150, 136));
+        jPanel1.addMouseMotionListener(new java.awt.event.MouseMotionAdapter() {
+            public void mouseDragged(java.awt.event.MouseEvent evt) {
+                jPanel1MouseDragged(evt);
+            }
+        });
+        jPanel1.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                jPanel1MousePressed(evt);
+            }
+        });
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jLMinimiza.setBackground(new java.awt.Color(0, 150, 136));
@@ -183,10 +195,6 @@ public class Login extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jTFUsuarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTFUsuarioActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jTFUsuarioActionPerformed
-
     private void jTFUsuarioMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTFUsuarioMouseClicked
         if(jTFUsuario.getText().equals("Ingrese su usuario")){
             jTFUsuario.setText("");
@@ -229,6 +237,17 @@ public class Login extends javax.swing.JFrame {
     private void jLBtnIniciarSesionMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLBtnIniciarSesionMouseExited
         jLBtnIniciarSesion.setBackground(verdeBase);
     }//GEN-LAST:event_jLBtnIniciarSesionMouseExited
+
+    private void jPanel1MousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel1MousePressed
+        xMouse = evt.getX();
+        yMouse = evt.getY();
+    }//GEN-LAST:event_jPanel1MousePressed
+
+    private void jPanel1MouseDragged(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel1MouseDragged
+        int x = evt.getXOnScreen();
+        int y = evt.getYOnScreen();
+        this.setLocation(x - xMouse, y - yMouse);
+    }//GEN-LAST:event_jPanel1MouseDragged
 
     /**
      * @param args the command line arguments
@@ -281,5 +300,6 @@ public class Login extends javax.swing.JFrame {
     private javax.swing.JTextField jTContraseña;
     private javax.swing.JTextField jTFUsuario;
     private javax.swing.JLabel jlBanner1;
+    private javax.swing.JLabel jlFravemax;
     // End of variables declaration//GEN-END:variables
 }
