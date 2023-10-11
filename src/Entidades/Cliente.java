@@ -4,12 +4,12 @@ package Entidades;
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
-
 /**
  *
  * @author Diosito
  */
 public class Cliente {
+
     private int idCliente;
     private String apellido, nombre, domicilio, telefono;
     private boolean estado;
@@ -28,14 +28,18 @@ public class Cliente {
         this.domicilio = domicilio;
         this.telefono = telefono;
     }
-    
-     public Cliente(int idCliente, String apellido, String nombre, String domicilio, String telefono, boolean estado) {
+
+    public Cliente(int idCliente, String apellido, String nombre, String domicilio, String telefono, boolean estado) {
         this.idCliente = idCliente;
         this.apellido = apellido;
         this.nombre = nombre;
         this.domicilio = domicilio;
         this.telefono = telefono;
         this.estado = estado;
+    }
+
+    public Cliente(String telefono) {
+        this.telefono = telefono;
     }
 
     public Cliente() {
@@ -91,10 +95,7 @@ public class Cliente {
 
     @Override
     public String toString() {
-        return "idCliente=" + idCliente + ", apellido=" + apellido + ", nombre=" + nombre + ", domicilio=" + domicilio + ", telefono=" + 
-                telefono + ", estado=" + estado;
+        return apellido + ", " + nombre + ", " + domicilio + ", " + telefono;
     }
-    
-    
-    
+
 }
