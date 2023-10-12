@@ -1,9 +1,11 @@
 
 import AccesoDatos.ClienteData;
+import AccesoDatos.DetalleVentasData;
 import AccesoDatos.EmpleadoData;
 import AccesoDatos.ProductoData;
 import AccesoDatos.VentasData;
 import Entidades.Cliente;
+import Entidades.DetalleVenta;
 import Entidades.Empleado;
 import Entidades.Producto;
 import Entidades.Venta;
@@ -29,10 +31,10 @@ public class Main {
      */
     public static void main(String[] args) {
         ProductoData p1 = new ProductoData();
-//        Producto p = p1.buscarProducto(1);
-//        p.setNombreProducto("Heladera");
-//        p.setPrecioActual(600000);
-//        p1.modificarProducto(p);
+       Producto p = p1.buscarProducto(1);
+        p.setNombreProducto("Heladera");
+        p.setPrecioActual(600000);
+      //  p1.modificarProducto(p);
         Producto p2 = new Producto(45, "Microondas", "Electrico", 500000, true);
      //    p1.guardarProducto(p2);
         // p1.eliminarProducto(1);
@@ -87,7 +89,11 @@ public class Main {
         //Eliminar Empleado
 //                        empleadoD.eliminarEmpleadoPorId(7);
 //                        System.out.println(empleadoD.buscarEmpleadoPorId(7));
-        // **********************************Ventas: ********************************************
+        
+
+
+
+                    // **********************************Ventas: ********************************************
         VentasData ventasD = new VentasData();
         Empleado e9 = empleadoD.buscarEmpleadoPorId(3);
         Cliente c9 = clienteD.buscarCliente(2);
@@ -126,12 +132,41 @@ public class Main {
 //        }
         
                         //Listar Productos Por Fecha    // VER NO FUNCIONAAAAAAA
-                     List<Producto> listaProductos = ventasD.obtenerProductosPorFecha(LocalDate.of(2023, Month.OCTOBER, 10));
-                 for (Producto lista : listaProductos) {
-                     System.out.println(lista.toString());
-                 }
+//                     List<Producto> listaProductos = ventasD.obtenerProductosPorFecha(LocalDate.of(2023, Month.OCTOBER, 10));
+//                 for (Producto lista : listaProductos) {
+//                     System.out.println(lista.toString());
+//                 }
 
+        // **********************************Detalle de Venta: ********************************************
+        DetalleVentasData detalleVentasD = new DetalleVentasData();
 
+        // Guardar Detalle de Venta
+          Venta v3 = ventasD.buscarVentaId(1);
+//        DetalleVenta detalleV1 = new DetalleVenta(1, v3, 250000, p);
+//         detalleVentasD.guardarDetalleVenta(detalleV1);
+        
+        // Buscar Detalle de Venta
+//           System.out.println(detalleVentasD.buscarDetalleVenta(1).toString());
+
+        //Modificar Detalle de Venta
+              
+//              int idDetVta = detalleVentasD.buscarDetalleVenta(1).getIdDetalleVenta();
+//              DetalleVenta detalleV2= new DetalleVenta( idDetVta, 1, v3, 345987, p);
+//              detalleVentasD.modificarDetalleVenta(detalleV2);
+                               
+        // Listar Detalle deVenta Por Producto
+//                    ProductoData pd = new ProductoData();
+//                    Producto prod4 = pd.buscarProducto(2);
+//                    System.out.println("HOLA:  "+pd.buscarProducto(2).getIdProducto());
+//                     List<DetalleVenta> listaDetalleVenta= detalleVentasD.listarDetalleVentaPorProducto(prod4);
+//                 for (DetalleVenta prod : listaDetalleVenta ) {
+//                     System.out.println(listaDetalleVenta.toString());
+//        }
+
+        //Eliminar Detalle de Venta
+                       detalleVentasD.eliminarDetalleVentaPorId(5);
+                        System.out.println(detalleVentasD.buscarDetalleVenta(5));
+                     
 
                  
                  

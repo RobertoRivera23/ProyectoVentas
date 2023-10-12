@@ -184,12 +184,12 @@ public class VentasData {
         List<Producto> prodPorFecha = new ArrayList<>();
         String sql = "SELECT producto.nombreProducto, detalledeventa.cantidad FROM venta, detalledeventa "
                 + "JOIN producto ON (detalledeventa.idProducto = producto.idProducto)"
-                + "WHERE  venta.fechaVenta = '2023-10-10'  ORDER BY producto.idProducto ASC";
+                + "WHERE  venta.fechaVenta = ?  ORDER BY producto.idProducto ASC";
 
         try {
             PreparedStatement ps = con.prepareStatement(sql);
             System.out.println("..." + fechaVenta);
-            //  ps.setDate(1, Date.valueOf(fechaVenta));
+            ps.setDate(1, Date.valueOf(fechaVenta));
             ResultSet rs = ps.executeQuery();
             if (!rs.next()) {
                 JOptionPane.showMessageDialog(null, "No hay productos en esa fecha");

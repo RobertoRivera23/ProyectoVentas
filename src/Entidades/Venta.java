@@ -93,9 +93,12 @@ public class Venta {
     public void setEmpleado(Empleado empleado) {
         this.empleado = empleado;
     }
-    
+
     @Override
-    public String toString(){
-        return cliente.getTelefono() + ", " + empleado.getApellido() + ", " + fechaVenta;
+    public String toString() {
+        return "Venta: " + "idVenta=" + idVenta + ", cliente=" + cliente + ", empleado=" + empleado + ", fechaVenta=" 
+                + fechaVenta + ", estado=" + estado + '}';
     }
+    
+   
 }
