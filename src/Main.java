@@ -13,6 +13,7 @@ import java.time.LocalDate;
 import java.time.Month;
 import java.util.ArrayList;
 import java.util.List;
+import javax.swing.JOptionPane;
 
 /*
  * To change this license header, choose License Headers in Project Properties.
@@ -172,5 +173,32 @@ public class Main {
                  
                  //INSERT INTO `detalledeventa`(`idDetalleVenta`, `cantidad`, `idVenta`, `precioVenta`, `idProducto`, `estado`) VALUES (null, 1, 1, 500000, 2, 1)
 
+                 
+                 
+                 
+                 ClienteData clienteDat = new ClienteData();
+                 String Hola = "hola";
+            if (Hola.isEmpty()) {
+                JOptionPane.showMessageDialog(null, "No puede haber campos vacios.");
+            } else {
+                System.out.println("-.------");
+                try{
+                Cliente cli = clienteD.buscarClientePorTel("1120232023");
+                System.out.println("ver "+ cli.toString());
+                if (cli == null) {
+                    cli.setApellido("Ricardo");
+                    cli.setNombre("Darin");
+                    cli.setDomicilio("Pavon 244, CABA");
+                    cli.setTelefono("1120232023");
+                    System.out.println("Guardar "+ cli.getNombre());
+                    clienteD.guardarCliente(cli);
+                } else {
+                    JOptionPane.showMessageDialog(null, "Ya existe un producto similar, si desea modificar el producto"
+                            + "vaya a la pestaña Modificar.");
+                } 
+                } catch (NullPointerException ex) {
+        }
+            }
+                 
     }
 }

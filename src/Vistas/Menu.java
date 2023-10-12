@@ -26,6 +26,7 @@ public class Menu extends javax.swing.JFrame {
 
     private ProductoData pd = new ProductoData();
     private Producto p = null;
+    private ClienteData cD = new ClienteData();
     private int xMouse, yMouse;
     public static Color verdeBase = new Color(0, 150, 136);
     public static Color verdeClaro = new Color(10, 170, 140);
@@ -65,6 +66,7 @@ public class Menu extends javax.swing.JFrame {
         jtListaPro.setModel(Modelo);
         llenarText();
         llenarCombo();
+        llenarComboCliente();
     }
 
     /**
@@ -230,9 +232,9 @@ public class Menu extends javax.swing.JFrame {
         jSAgrClien4 = new javax.swing.JSeparator();
         jLTelefonoClienteAgrClien = new javax.swing.JLabel();
         jTFNombreClienteAgrClien = new javax.swing.JTextField();
-        jTFApellidoClienteAgrClien = new javax.swing.JTextField();
+        jTFTelefonoClienteAg = new javax.swing.JTextField();
         jTFDomicilioClienteAgrClien = new javax.swing.JTextField();
-        jTFTelefonoClienteAgrClien = new javax.swing.JTextField();
+        jTFApellidoClienteAgrClien = new javax.swing.JTextField();
         jLBtnAgregarCliente = new javax.swing.JLabel();
         jlIconAgreCli1 = new javax.swing.JLabel();
         jtpModClien = new javax.swing.JPanel();
@@ -251,7 +253,7 @@ public class Menu extends javax.swing.JFrame {
         jLDomicilioModClien = new javax.swing.JLabel();
         jLTelefonoModClien = new javax.swing.JLabel();
         jLBtnModificarModClien = new javax.swing.JLabel();
-        jcbClientes = new javax.swing.JComboBox<>();
+        jcbClienteModifCli = new javax.swing.JComboBox<>();
         jlIconModCli1 = new javax.swing.JLabel();
         jtpElimClien = new javax.swing.JPanel();
         jLDomicilioElimClien = new javax.swing.JLabel();
@@ -1552,6 +1554,19 @@ public class Menu extends javax.swing.JFrame {
         });
         jtpAgrClien.add(jTFNombreClienteAgrClien, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 200, 210, 30));
 
+        jTFTelefonoClienteAg.setFont(new java.awt.Font("Corbel", 0, 14)); // NOI18N
+        jTFTelefonoClienteAg.setBorder(null);
+        jTFTelefonoClienteAg.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                jTFTelefonoClienteAgKeyTyped(evt);
+            }
+        });
+        jtpAgrClien.add(jTFTelefonoClienteAg, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 200, 210, 30));
+
+        jTFDomicilioClienteAgrClien.setFont(new java.awt.Font("Corbel", 0, 14)); // NOI18N
+        jTFDomicilioClienteAgrClien.setBorder(null);
+        jtpAgrClien.add(jTFDomicilioClienteAgrClien, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 260, 210, 30));
+
         jTFApellidoClienteAgrClien.setFont(new java.awt.Font("Corbel", 0, 14)); // NOI18N
         jTFApellidoClienteAgrClien.setBorder(null);
         jTFApellidoClienteAgrClien.addKeyListener(new java.awt.event.KeyAdapter() {
@@ -1559,20 +1574,7 @@ public class Menu extends javax.swing.JFrame {
                 jTFApellidoClienteAgrClienKeyTyped(evt);
             }
         });
-        jtpAgrClien.add(jTFApellidoClienteAgrClien, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 200, 210, 30));
-
-        jTFDomicilioClienteAgrClien.setFont(new java.awt.Font("Corbel", 0, 14)); // NOI18N
-        jTFDomicilioClienteAgrClien.setBorder(null);
-        jtpAgrClien.add(jTFDomicilioClienteAgrClien, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 260, 210, 30));
-
-        jTFTelefonoClienteAgrClien.setFont(new java.awt.Font("Corbel", 0, 14)); // NOI18N
-        jTFTelefonoClienteAgrClien.setBorder(null);
-        jTFTelefonoClienteAgrClien.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyTyped(java.awt.event.KeyEvent evt) {
-                jTFTelefonoClienteAgrClienKeyTyped(evt);
-            }
-        });
-        jtpAgrClien.add(jTFTelefonoClienteAgrClien, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 260, 210, 30));
+        jtpAgrClien.add(jTFApellidoClienteAgrClien, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 260, 210, 30));
 
         jLBtnAgregarCliente.setBackground(new java.awt.Color(0, 150, 136));
         jLBtnAgregarCliente.setFont(new java.awt.Font("Corbel", 1, 14)); // NOI18N
@@ -1688,12 +1690,20 @@ public class Menu extends javax.swing.JFrame {
             public void mouseExited(java.awt.event.MouseEvent evt) {
                 jLBtnModificarModClienMouseExited(evt);
             }
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                jLBtnModificarModClienMousePressed(evt);
+            }
         });
         jtpModClien.add(jLBtnModificarModClien, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 340, 100, 30));
 
-        jcbClientes.setFont(new java.awt.Font("Corbel", 1, 14)); // NOI18N
-        jcbClientes.setForeground(new java.awt.Color(0, 102, 102));
-        jtpModClien.add(jcbClientes, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 120, 200, 30));
+        jcbClienteModifCli.setFont(new java.awt.Font("Corbel", 1, 14)); // NOI18N
+        jcbClienteModifCli.setForeground(new java.awt.Color(0, 102, 102));
+        jcbClienteModifCli.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jcbClienteModifCliActionPerformed(evt);
+            }
+        });
+        jtpModClien.add(jcbClienteModifCli, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 120, 290, 30));
 
         jlIconModCli1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jlIconModCli1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Image/editar-usuario.png"))); // NOI18N
@@ -1724,6 +1734,9 @@ public class Menu extends javax.swing.JFrame {
         jLBtnEliminarElimClien.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         jLBtnEliminarElimClien.setOpaque(true);
         jLBtnEliminarElimClien.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jLBtnEliminarElimClienMouseClicked(evt);
+            }
             public void mouseEntered(java.awt.event.MouseEvent evt) {
                 jLBtnEliminarElimClienMouseEntered(evt);
             }
@@ -1744,6 +1757,11 @@ public class Menu extends javax.swing.JFrame {
         jtpElimClien.add(jLApellidoElimClien, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 190, -1, -1));
 
         jCBBuscarClienElimClien.setFont(new java.awt.Font("Corbel", 1, 14)); // NOI18N
+        jCBBuscarClienElimClien.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jCBBuscarClienElimClienActionPerformed(evt);
+            }
+        });
         jtpElimClien.add(jCBBuscarClienElimClien, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 120, 200, 30));
 
         jSElimClien1.setBackground(new java.awt.Color(0, 150, 136));
@@ -2601,13 +2619,13 @@ public class Menu extends javax.swing.JFrame {
         controlLetras(evt);
     }//GEN-LAST:event_jTFNombreClienteAgrClienKeyTyped
 
-    private void jTFTelefonoClienteAgrClienKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTFTelefonoClienteAgrClienKeyTyped
-        controlLetras(evt);
-    }//GEN-LAST:event_jTFTelefonoClienteAgrClienKeyTyped
-
     private void jTFApellidoClienteAgrClienKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTFApellidoClienteAgrClienKeyTyped
-        controlNumeros(evt);
+        controlLetras(evt);
     }//GEN-LAST:event_jTFApellidoClienteAgrClienKeyTyped
+
+    private void jTFTelefonoClienteAgKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTFTelefonoClienteAgKeyTyped
+        controlNumeros(evt);
+    }//GEN-LAST:event_jTFTelefonoClienteAgKeyTyped
 
     private void jLBtnAgregarClienteMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLBtnAgregarClienteMouseEntered
         jLBtnAgregarCliente.setBackground(verdeClaro);
@@ -2619,37 +2637,38 @@ public class Menu extends javax.swing.JFrame {
 
     private void jLBtnAgregarClienteMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLBtnAgregarClienteMouseClicked
         ClienteData clienteD = new ClienteData();
-            Cliente cli = null;
-            if (jTFApellidoClienteAgrClien.getText().trim().isEmpty() || jTFNombreClienteAgrClien.getText().trim().isEmpty()
-                    || jTFDomicilioClienteAgrClien.getText().trim().isEmpty() || jTFTelefonoClienteAgrClien.getText().trim().isEmpty()) {
-                JOptionPane.showMessageDialog(null, "No puede haber campos vacios.");
-            } else {
-                try{
-                cli = clienteD.buscarClientePorTel(jTFTelefonoClienteAgrClien.getText());
-                System.out.println("ver "+ cli.toString());
+        if (jTFTelefonoClienteAg.getText().trim().isEmpty() || jTFNombreClienteAgrClien.getText().trim().isEmpty()
+                || jTFDomicilioClienteAgrClien.getText().trim().isEmpty() || jTFApellidoClienteAgrClien.getText().trim().isEmpty()) {
+            JOptionPane.showMessageDialog(null, "No puede haber campos vacios.");
+        } else {
+            try {
+                Cliente cli = clienteD.buscarClientePorTel(jTFApellidoClienteAgrClien.getText());
                 if (cli == null) {
-                    cli.setApellido(jTFApellidoClienteAgrClien.getText());
-                    cli.setNombre(jTFNombreClienteAgrClien.getText());
-                    cli.setDomicilio(jTFDomicilioClienteAgrClien.getText());
-                    cli.setTelefono(jTFTelefonoClienteAgrClien.getText());
-                    System.out.println("Guardar "+ cli.getNombre());
-                    clienteD.guardarCliente(cli);
-                } 
-                } catch (NullPointerException ex) {
-        }
+                    Cliente c1 = new Cliente();
+                    c1.setApellido(jTFTelefonoClienteAg.getText());
+                    c1.setNombre(jTFNombreClienteAgrClien.getText());
+                    c1.setDomicilio(jTFDomicilioClienteAgrClien.getText());
+                    c1.setTelefono(jTFApellidoClienteAgrClien.getText());
+                    clienteD.guardarCliente(c1);
+                    borrarCamposAgCliente();
+                } else {
+                    JOptionPane.showMessageDialog(null, "Ya existe un producto similar, si desea modificar el producto"
+                            + "vaya a la pestaña Modificar.");
+                }
+            } catch (NullPointerException ex) {
             }
-       
+        }
     }//GEN-LAST:event_jLBtnAgregarClienteMouseClicked
 
     private void jLBtnAgregarProdMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLBtnAgregarProdMousePressed
-        if(jTFNombreProductoAgrProd.getText().trim().isEmpty() || jTFPrecioActualAgrProd.getText().trim().isEmpty()
-                || jTFDescripcionAgrProd.getText().trim().isEmpty() || jTFStockAgrProd.getText().trim().isEmpty()){
+        if (jTFNombreProductoAgrProd.getText().trim().isEmpty() || jTFPrecioActualAgrProd.getText().trim().isEmpty()
+                || jTFDescripcionAgrProd.getText().trim().isEmpty() || jTFStockAgrProd.getText().trim().isEmpty()) {
             JOptionPane.showMessageDialog(this, "No puede haber campos vacios");
-        }else{
-            try{
+        } else {
+            try {
                 ProductoData productoD = new ProductoData();
                 Producto producto = productoD.buscarProductoPorNombre(jTFNombreProductoAgrProd.getText());
-                if(producto == null){
+                if (producto == null) {
                     Producto product = new Producto();
                     product.setNombreProducto(jTFNombreProductoAgrProd.getText());
                     product.setDescripcion(jTFDescripcionAgrProd.getText());
@@ -2657,18 +2676,67 @@ public class Menu extends javax.swing.JFrame {
                     product.setStock(Integer.parseInt(jTFStockAgrProd.getText()));
                     product.setEstado(true);
                     productoD.guardarProducto(product);
-                }else{
+                } else {
                     JOptionPane.showMessageDialog(this, "Ya hay un producto con ese nombre si quiere modificarlo vaya a la pestaña de modificar producto");
                 }
-            }catch(NullPointerException ex){
-                
+            } catch (NullPointerException ex) {
+
             }
         }
     }//GEN-LAST:event_jLBtnAgregarProdMousePressed
 
+    private void jcbClienteModifCliActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jcbClienteModifCliActionPerformed
+       Cliente cli = (Cliente) jcbClienteModifCli.getSelectedItem();
+        jTFApellidoModClien.setText(cli.getApellido());
+        jTFNombreClienModClien.setText(cli.getNombre());
+        jTFDomicilioModClien.setText(cli.getDomicilio());
+        jTFTelefonoModClien.setText(cli.getTelefono());
+    }//GEN-LAST:event_jcbClienteModifCliActionPerformed
+
+    private void jLBtnModificarModClienMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLBtnModificarModClienMousePressed
+        Cliente cli = (Cliente) jcbClienteModifCli.getSelectedItem();
+        if (jTFApellidoModClien.getText().trim().isEmpty() || jTFNombreClienModClien.getText().trim().isEmpty()
+                || jTFDomicilioModClien.getText().trim().isEmpty() || jTFTelefonoModClien.getText().trim().isEmpty()) {
+        JOptionPane.showMessageDialog(null, "No pude haber campos vacios.");
+        }else {
+            if (!jTFNombreClienModClien.getText().equalsIgnoreCase(cli.getApellido())
+                    || !jTFApellidoModClien.getText().equalsIgnoreCase(cli.getApellido())
+                    || !jTFDomicilioModClien.getText().equalsIgnoreCase(cli.getDomicilio())
+                    || !jTFTelefonoModClien.getText().equalsIgnoreCase(cli.getTelefono())) {
+
+                cli.setIdCliente(cli.getIdCliente());
+                cli.setApellido(jTFApellidoModClien.getText());
+                cli.setNombre(jTFNombreClienModClien.getText());
+                cli.setDomicilio(jTFDomicilioModClien.getText());
+                cli.setTelefono(jTFTelefonoModClien.getText());
+                cD.modicifarCliente(cli);
+                borrarCamposModCli();
+            }
+            }
+    }//GEN-LAST:event_jLBtnModificarModClienMousePressed
+
+    private void jCBBuscarClienElimClienActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jCBBuscarClienElimClienActionPerformed
+        Cliente cli = (Cliente) jCBBuscarClienElimClien .getSelectedItem();
+        jTFApellidoClienElimClien.setText(cli.getApellido());
+        jTFNombreClienElimClien.setText(cli.getNombre());
+        jTFDomicilioElimClien.setText(cli.getDomicilio());
+        jTFTelefonoElimClien.setText(cli.getTelefono());
+    }//GEN-LAST:event_jCBBuscarClienElimClienActionPerformed
+
+    private void jLBtnEliminarElimClienMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLBtnEliminarElimClienMouseClicked
+        Cliente cli = (Cliente) jCBBuscarClienElimClien.getSelectedItem();
+        if (jTFApellidoClienElimClien.getText().trim().isEmpty() || jTFNombreClienElimClien.getText().trim().isEmpty()
+                || jTFDomicilioElimClien.getText().trim().isEmpty() || jTFTelefonoElimClien.getText().trim().isEmpty()) {
+        JOptionPane.showMessageDialog(null, "No pude haber campos vacios.");
+        }else {
+            cD.eliminarCliente(cli.getIdCliente());
+        }
+        
+    }//GEN-LAST:event_jLBtnEliminarElimClienMouseClicked
+
     /**
-     * @param args the command line arguments
-     */
+         * @param args the command line arguments
+         */
     public static void main(String args[]) {
         /* Set the Nimbus look and feel */
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
@@ -2809,13 +2877,13 @@ public class Menu extends javax.swing.JFrame {
     private javax.swing.JTextField jTFStockAgrProd;
     private javax.swing.JTextField jTFStockElimProd;
     private javax.swing.JTextField jTFStockModProd;
-    private javax.swing.JTextField jTFTelefonoClienteAgrClien;
+    private javax.swing.JTextField jTFTelefonoClienteAg;
     private javax.swing.JTextField jTFTelefonoElimClien;
     private javax.swing.JTextField jTFTelefonoModClien;
     private javax.swing.JTextField jTextField1;
     private javax.swing.JTextField jTextField2;
     private javax.swing.JComboBox<Venta> jcbBuscarVenta;
-    private javax.swing.JComboBox<Producto> jcbClientes;
+    private javax.swing.JComboBox<Cliente> jcbClienteModifCli;
     private javax.swing.JComboBox<Producto> jcbProVenta;
     private javax.swing.JComboBox<Producto> jcbProductos;
     private javax.swing.JLabel jlAgrVenta;
@@ -2987,6 +3055,34 @@ public class Menu extends javax.swing.JFrame {
         }
     }
 
+    private void llenarComboCliente() {
+        for (Cliente cli : cD.listarClientes()) {
+            jcbClienteModifCli.addItem(cli);
+            jCBBuscarClienElimClien.addItem(cli);
+        }
+    }
+
+    private void borrarCamposAgCliente() {
+        jTFApellidoClienteAgrClien.setText("");
+        jTFApellidoClienteAgrClien.setText("");
+        jTFDomicilioClienteAgrClien.setText("");
+        jTFTelefonoClienteAg.setText("");
+    }
+
+    public void borrarCamposModCli() {
+        jTFNombreClienModClien.setText("");
+        jTFApellidoModClien.setText("");
+        jTFDomicilioModClien.setText("");
+        jTFTelefonoModClien.setText("");
+    }
+
+    public void borrarCamposElimCli() {
+        jTFNombreClienElimClien.setText("");
+        jTFApellidoClienElimClien.setText("");
+        jTFDomicilioElimClien.setText("");
+        jTFTelefonoElimClien.setText("");
+    }
+    
     private void controlLetras(java.awt.event.KeyEvent evt) {
         if (!Character.isLetter(evt.getKeyChar())
                 && !(evt.getKeyChar() == KeyEvent.VK_SPACE)
