@@ -11,8 +11,8 @@ import Entidades.Producto;
 import Entidades.Venta;
 import Utilidades.TablaFraveMax;
 import java.awt.Color;
+import java.awt.event.KeyEvent;
 import javax.swing.ImageIcon;
-import javax.swing.JOptionPane;
 import javax.swing.UIManager;
 import javax.swing.table.DefaultTableModel;
 
@@ -1270,9 +1270,6 @@ public class Menu extends javax.swing.JFrame {
             public void mouseExited(java.awt.event.MouseEvent evt) {
                 jLBtnAgregarProdMouseExited(evt);
             }
-            public void mousePressed(java.awt.event.MouseEvent evt) {
-                jLBtnAgregarProdMousePressed(evt);
-            }
         });
         jtpAgregarPro.add(jLBtnAgregarProd, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 350, 80, 30));
 
@@ -1543,6 +1540,11 @@ public class Menu extends javax.swing.JFrame {
 
         jTFNombreClienteAgrClien.setFont(new java.awt.Font("Corbel", 0, 14)); // NOI18N
         jTFNombreClienteAgrClien.setBorder(null);
+        jTFNombreClienteAgrClien.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                jTFNombreClienteAgrClienKeyTyped(evt);
+            }
+        });
         jtpAgrClien.add(jTFNombreClienteAgrClien, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 200, 210, 30));
 
         jTFApellidoClienteAgrClien.setFont(new java.awt.Font("Corbel", 0, 14)); // NOI18N
@@ -2569,17 +2571,9 @@ public class Menu extends javax.swing.JFrame {
         jtpEscritorio.setSelectedIndex(10);
     }//GEN-LAST:event_jlEliminarClienteMouseClicked
 
-    private void jLBtnAgregarProdMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLBtnAgregarProdMousePressed
-        if(jTFNombreProductoAgrProd.getText().trim().isEmpty() || jTFDescripcionAgrProd.getText().trim().isEmpty() || 
-                jTFPrecioActualAgrProd.getText().trim().isEmpty() || jTFStockAgrProd.getText().trim().isEmpty()){
-            JOptionPane.showMessageDialog(this, "No puede haber campos vacios");
-        }else{
-            try{
-                ProductoData productoD = new ProductoData();
-                Producto producto = productoD.buscarProducto(Integer.parseInt())
-            }
-        }
-    }//GEN-LAST:event_jLBtnAgregarProdMousePressed
+    private void jTFNombreClienteAgrClienKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTFNombreClienteAgrClienKeyTyped
+        controlLetras(evt);
+    }//GEN-LAST:event_jTFNombreClienteAgrClienKeyTyped
 
     /**
      * @param args the command line arguments
@@ -2899,6 +2893,21 @@ public class Menu extends javax.swing.JFrame {
     private void llenarCombo() {
         for (Producto pro : pd.listarProducto()) {
             jcbProductos.addItem(pro);
+        }
+    }
+    
+       private void controlLetras(java.awt.event.KeyEvent evt) {
+        if (!Character.isLetter(evt.getKeyChar())
+                && !(evt.getKeyChar() == KeyEvent.VK_SPACE)
+                && !(evt.getKeyChar() == KeyEvent.VK_BACK_SPACE)) {
+            evt.consume();
+        }
+    }
+
+    private void controlNumeros(java.awt.event.KeyEvent evt) {
+        if (Character.isLetter(evt.getKeyChar())
+                && !(evt.getKeyChar() == KeyEvent.VK_SPACE)) {
+            evt.consume();
         }
     }
 }
