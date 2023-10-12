@@ -86,6 +86,8 @@ public class ProductoData {
                 producto.setStock(rs.getInt("stock"));
                 producto.setEstado(true);
                 ps.close();
+            }else{
+                JOptionPane.showMessageDialog(null, "No existe el producto");
             }
         }catch (SQLException ex){
             JOptionPane.showMessageDialog(null, "Error al acceder a la tabla Producto" + ex.getMessage());
