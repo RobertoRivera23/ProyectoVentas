@@ -78,33 +78,40 @@ public class VentasData {
     }
 
     //Listar todas las ventas en una fecha.
-    public List<Venta> listarVentasPorFecha(Venta venta) {
-        List<Venta> ventas = new ArrayList<>();
+    public List<Venta> listarVentasPorFecha(Venta ventas) {
+        List<Venta> listaventas = new ArrayList<>();
         ClienteData clienteData = new ClienteData();
         EmpleadoData empleadoData = new EmpleadoData(); //////////////////////////////////////7
-        String sql = "SELECT * FROM venta WHERE fechaVenta = ? ORDER BY idVenta ASC";
+        String sql = "SELECT * FROM venta WHERE fechaVenta = ? "; //ORDER BY idVenta ASC
         try {
             PreparedStatement ps = con.prepareStatement(sql);
-            ps.setDate(1, Date.valueOf("fechaVenta"));
+            ps.setDate(1, Date.valueOf(ventas.getFechaVenta()));
             ResultSet rs = ps.executeQuery();
-            if (!rs.next()) {
-                JOptionPane.showMessageDialog(null, "No hay ventas para esa fecha ");
-            } else {
-                while (rs.next()) {
-                    venta = new Venta();
-                    venta.setIdVenta(rs.getInt("idVenta"));
-                    venta.setCliente(clienteData.buscarCliente(rs.getInt("idCliente")));
-                    venta.setEmpleado(empleadoData.buscarEmpleadoPorId(rs.getInt("idempleado"))); ////////////////////
-                    venta.setFechaVenta((rs.getDate("fechaVenta").toLocalDate()));
-                    venta.setEstado(rs.getBoolean("estado"));
-                    ventas.add(venta);
-                }
+            boolean cont = false;
+//            if (!rs.next()) {                  // VER QUE SI DEJO EL IF  NO DEVUELVE EL SEGUNDO OBJETO
+//                JOptionPane.showMessageDialog(null, "No hay ventas para esa fecha ");
+//            } else {
+
+            while (rs.next()) {
+                venta = new Venta();
+                venta.setIdVenta(rs.getInt("idVenta"));
+                venta.setCliente(clienteData.buscarCliente(rs.getInt("idCliente")));
+                venta.setEmpleado(empleadoData.buscarEmpleadoPorId(rs.getInt("idempleado"))); ////////////////////
+                venta.setFechaVenta((rs.getDate("fechaVenta").toLocalDate()));
+                venta.setEstado(rs.getBoolean("estado"));
+                listaventas.add(venta);
+                cont = true;
             }
+//            }
+            if (!cont) {
+                JOptionPane.showMessageDialog(null, "No hay ventas para esa fecha ");
+            }
+
             ps.close();
         } catch (SQLException ex) {
             JOptionPane.showMessageDialog(null, "Error al acceder a la tabla venta");
         }
-        return ventas;
+        return listaventas;
     }
 
     //Listar todas las ventas a un Cliente X.
@@ -142,6 +149,7 @@ public class VentasData {
         List<Cliente> clientes = new ArrayList<>();
         String sql = "SELECT cliente.idCliente, cliente.apellido, cliente.nombre, cliente.domicilio, cliente.telefono "
                 + "FROM cliente, venta JOIN detalledeventa ON (venta.idVenta = detalledeventa.idVenta) "
+                + "JOIN producto ON (detalledeventa.idProducto = producto.idProducto) "
                 + "WHERE detalledeventa.idProducto = ? AND cliente.estado = 1 AND producto.estado = 1 "
                 + "AND venta.estado = 1 AND detalledeventa.estado = 1 ORDER BY cliente.idCliente ASC";
         try {
@@ -164,20 +172,24 @@ public class VentasData {
             }
             ps.close();
         } catch (SQLException ex) {
-            JOptionPane.showMessageDialog(null, "Error al acceder a la tabla cliente");
+            JOptionPane.showMessageDialog(null, "Error al acceder a la tabla cliente" + ex.getMessage());
         }
         return clientes;
     }
 
-// Listar todos los productos de una venta en una fecha específica.
+
+//SELECT producto.nombreProducto, detalledeventa.cantidad FROM venta, detalledeventa JOIN producto 
+//        ON (detalledeventa.idProducto = producto.idProducto) WHERE venta.fechaVenta = '2023-10-10' ORDER BY producto.idProducto ASC
     public List<Producto> obtenerProductosPorFecha(LocalDate fechaVenta) {
         List<Producto> prodPorFecha = new ArrayList<>();
-        String sql = "SELECT producto.nombreProducto, detalleventa.cantidad FROM producto, detalledeventa "
-                + "JOIN venta ON (venta.idVenta = detalledeventa.idVenta) "
-                + "WHERE venta.fechaVenta = ? ORDER BY producto.idProducto ASC";
+        String sql = "SELECT producto.nombreProducto, detalledeventa.cantidad FROM venta, detalledeventa "
+                + "JOIN producto ON (detalledeventa.idProducto = producto.idProducto)"
+                + "WHERE  venta.fechaVenta = '2023-10-10'  ORDER BY producto.idProducto ASC";
+
         try {
             PreparedStatement ps = con.prepareStatement(sql);
-            ps.setDate(1, Date.valueOf(fechaVenta));
+            System.out.println("..." + fechaVenta);
+            //  ps.setDate(1, Date.valueOf(fechaVenta));
             ResultSet rs = ps.executeQuery();
             if (!rs.next()) {
                 JOptionPane.showMessageDialog(null, "No hay productos en esa fecha");
@@ -207,9 +219,9 @@ public class VentasData {
         EmpleadoData e1 = new EmpleadoData();
         try {
             PreparedStatement ps = con.prepareStatement(sql);
-            ps.setInt(1,idVenta);
+            ps.setInt(1, idVenta);
             ResultSet rs = ps.executeQuery();
-            if (rs.next()){
+            if (rs.next()) {
                 venta = new Venta();
                 venta.setIdVenta(idVenta);
                 cliente = c1.buscarCliente(rs.getInt("idCliente"));
@@ -227,20 +239,20 @@ public class VentasData {
         }
         return venta;
     }
-    
-    public void modificarVenta(Venta venta1){
-     EmpleadoData empleadoD = new EmpleadoData();
-     ClienteData clienteD = new ClienteData();
-     Venta v1 = buscarVentaId(venta1.getIdVenta());
-    String sql = "UPDATE venta SET idCliente = ?, idempleado = ?, fechaVenta = ?, estado = ? WHERE idVenta = ? ";
+
+    public void modificarVenta(Venta venta1) {
+        EmpleadoData empleadoD = new EmpleadoData();
+        ClienteData clienteD = new ClienteData();
+        Venta v1 = buscarVentaId(venta1.getIdVenta());
+        String sql = "UPDATE venta SET idCliente = ?, idempleado = ?, fechaVenta = ?, estado = ? WHERE idVenta = ? ";
         try {
             PreparedStatement ps = con.prepareStatement(sql);
             ps.setInt(1, venta1.getCliente().getIdCliente());
             ps.setInt(2, venta1.getEmpleado().getIdEmpleado());
             ps.setDate(3, Date.valueOf(venta1.getFechaVenta()));
             ps.setBoolean(4, venta1.isEstado());
-            ps.setInt(5, venta1.getIdVenta());
-               int modificado = ps.executeUpdate();
+            ps.setInt(5, v1.getIdVenta());
+            int modificado = ps.executeUpdate();
             if (modificado == 1) {
                 JOptionPane.showMessageDialog(null, "Venta modificada Exitosamente.");
             } else {
@@ -248,8 +260,8 @@ public class VentasData {
             }
 
         } catch (SQLException ex) {
-           JOptionPane.showMessageDialog(null, " Error al acceder a la tabla Venta " + ex.getMessage());
-     }
-    
+            JOptionPane.showMessageDialog(null, " Error al acceder a la tabla Venta " + ex.getMessage());
+        }
+
     }
 }

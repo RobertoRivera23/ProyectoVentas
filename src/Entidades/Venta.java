@@ -31,6 +31,21 @@ public class Venta {
         this.empleado = empleado;
         this.fechaVenta = fechaVenta;
     }
+    
+     public Venta(Cliente cliente, Empleado empleado, LocalDate fechaVenta, boolean estado) {
+        this.cliente = cliente;
+        this.empleado = empleado;
+        this.fechaVenta = fechaVenta;
+        this.estado = estado;
+    }
+
+        public Venta(int idVenta, Cliente cliente, Empleado empleado, LocalDate fechaVenta, boolean estado) {
+        this.idVenta = idVenta;
+        this.cliente = cliente;
+        this.empleado = empleado;
+        this.fechaVenta = fechaVenta;
+        this.estado = estado;
+    }
 
     public Venta() {
     }
