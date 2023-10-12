@@ -2616,7 +2616,6 @@ public class Menu extends javax.swing.JFrame {
 
     private void jLBtnAgregarClienteMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLBtnAgregarClienteMouseClicked
         ClienteData clienteD = new ClienteData();
-        
             Cliente cli = null;
             if (jTFApellidoClienteAgrClien.getText().trim().isEmpty() || jTFNombreClienteAgrClien.getText().trim().isEmpty()
                     || jTFDomicilioClienteAgrClien.getText().trim().isEmpty() || jTFTelefonoClienteAgrClien.getText().trim().isEmpty()) {
