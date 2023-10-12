@@ -164,9 +164,9 @@ public class Main {
 //        }
 
         //Eliminar Detalle de Venta
-                       detalleVentasD.eliminarDetalleVentaPorId(5);
-                        System.out.println(detalleVentasD.buscarDetalleVenta(5));
-                     
+//                       detalleVentasD.eliminarDetalleVentaPorId(5);
+//                        System.out.println(detalleVentasD.buscarDetalleVenta(5));
+//                     
 
                  
                  
