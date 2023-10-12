@@ -1272,6 +1272,9 @@ public class Menu extends javax.swing.JFrame {
             public void mouseExited(java.awt.event.MouseEvent evt) {
                 jLBtnAgregarProdMouseExited(evt);
             }
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                jLBtnAgregarProdMousePressed(evt);
+            }
         });
         jtpAgregarPro.add(jLBtnAgregarProd, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 350, 80, 30));
 
@@ -2630,7 +2633,33 @@ public class Menu extends javax.swing.JFrame {
                 clienteD.guardarCliente(cli);
             }
         }
+        
     }//GEN-LAST:event_jLBtnAgregarClienteMouseClicked
+
+    private void jLBtnAgregarProdMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLBtnAgregarProdMousePressed
+        if(jTFNombreProductoAgrProd.getText().trim().isEmpty() || jTFPrecioActualAgrProd.getText().trim().isEmpty()
+                || jTFDescripcionAgrProd.getText().trim().isEmpty() || jTFStockAgrProd.getText().trim().isEmpty()){
+            JOptionPane.showMessageDialog(this, "No puede haber campos vacios");
+        }else{
+            try{
+                ProductoData productoD = new ProductoData();
+                Producto producto = productoD.buscarProductoPorNombre(jTFNombreProductoAgrProd.getText());
+                if(producto == null){
+                    Producto product = new Producto();
+                    product.setNombreProducto(jTFNombreProductoAgrProd.getText());
+                    product.setDescripcion(jTFDescripcionAgrProd.getText());
+                    product.setPrecioActual(Double.parseDouble(jTFPrecioActualAgrProd.getText()));
+                    product.setStock(Integer.parseInt(jTFStockAgrProd.getText()));
+                    product.setEstado(true);
+                    productoD.guardarProducto(product);
+                }else{
+                    JOptionPane.showMessageDialog(this, "Ya hay un producto con ese nombre si quiere modificarlo vaya a la pestaña de modificar producto");
+                }
+            }catch(NullPointerException ex){
+                
+            }
+        }
+    }//GEN-LAST:event_jLBtnAgregarProdMousePressed
 
     /**
      * @param args the command line arguments
