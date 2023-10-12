@@ -12,6 +12,7 @@ import Entidades.Venta;
 import Utilidades.TablaFraveMax;
 import java.awt.Color;
 import javax.swing.ImageIcon;
+import javax.swing.JOptionPane;
 import javax.swing.UIManager;
 import javax.swing.table.DefaultTableModel;
 
@@ -1268,6 +1269,9 @@ public class Menu extends javax.swing.JFrame {
             }
             public void mouseExited(java.awt.event.MouseEvent evt) {
                 jLBtnAgregarProdMouseExited(evt);
+            }
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                jLBtnAgregarProdMousePressed(evt);
             }
         });
         jtpAgregarPro.add(jLBtnAgregarProd, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 350, 80, 30));
@@ -2564,6 +2568,18 @@ public class Menu extends javax.swing.JFrame {
     private void jlEliminarClienteMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jlEliminarClienteMouseClicked
         jtpEscritorio.setSelectedIndex(10);
     }//GEN-LAST:event_jlEliminarClienteMouseClicked
+
+    private void jLBtnAgregarProdMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLBtnAgregarProdMousePressed
+        if(jTFNombreProductoAgrProd.getText().trim().isEmpty() || jTFDescripcionAgrProd.getText().trim().isEmpty() || 
+                jTFPrecioActualAgrProd.getText().trim().isEmpty() || jTFStockAgrProd.getText().trim().isEmpty()){
+            JOptionPane.showMessageDialog(this, "No puede haber campos vacios");
+        }else{
+            try{
+                ProductoData productoD = new ProductoData();
+                Producto producto = productoD.buscarProducto(Integer.parseInt())
+            }
+        }
+    }//GEN-LAST:event_jLBtnAgregarProdMousePressed
 
     /**
      * @param args the command line arguments
