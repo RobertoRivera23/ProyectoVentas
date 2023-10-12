@@ -2616,20 +2616,27 @@ public class Menu extends javax.swing.JFrame {
 
     private void jLBtnAgregarClienteMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLBtnAgregarClienteMouseClicked
         ClienteData clienteD = new ClienteData();
-        Cliente cli = null;
-        if (jTFApellidoClienteAgrClien.getText().trim().isEmpty() ||  jTFNombreClienteAgrClien.getText().trim().isEmpty() ||
-              jTFDomicilioClienteAgrClien.getText().trim().isEmpty() ||  jTFTelefonoClienteAgrClien.getText().trim().isEmpty() ) {
-            JOptionPane.showMessageDialog(null, "No puede haber campos vacios.");
-        } else{        
-            cli = clienteD.buscarClientePorTel(jTFTelefonoClienteAgrClien.getText());
-            if (cli == null) {
-                cli.setApellido(jTFApellidoClienteAgrClien.getText());
-                cli.setNombre(jTFNombreClienteAgrClien.getText());
-                cli.setDomicilio(jTFDomicilioClienteAgrClien.getText());
-                cli.setTelefono(jTFTelefonoClienteAgrClien.getText());
-                clienteD.guardarCliente(cli);
-            }
+        
+            Cliente cli = null;
+            if (jTFApellidoClienteAgrClien.getText().trim().isEmpty() || jTFNombreClienteAgrClien.getText().trim().isEmpty()
+                    || jTFDomicilioClienteAgrClien.getText().trim().isEmpty() || jTFTelefonoClienteAgrClien.getText().trim().isEmpty()) {
+                JOptionPane.showMessageDialog(null, "No puede haber campos vacios.");
+            } else {
+                try{
+                cli = clienteD.buscarClientePorTel(jTFTelefonoClienteAgrClien.getText());
+                System.out.println("ver "+ cli.toString());
+                if (cli == null) {
+                    cli.setApellido(jTFApellidoClienteAgrClien.getText());
+                    cli.setNombre(jTFNombreClienteAgrClien.getText());
+                    cli.setDomicilio(jTFDomicilioClienteAgrClien.getText());
+                    cli.setTelefono(jTFTelefonoClienteAgrClien.getText());
+                    System.out.println("Guardar "+ cli.getNombre());
+                    clienteD.guardarCliente(cli);
+                } 
+                } catch (NullPointerException ex) {
         }
+            }
+       
     }//GEN-LAST:event_jLBtnAgregarClienteMouseClicked
 
     /**
