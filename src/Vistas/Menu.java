@@ -23,7 +23,7 @@ import javax.swing.table.DefaultTableModel;
  * @author ROMI
  */
 public class Menu extends javax.swing.JFrame {
-
+    
     private ProductoData pd = new ProductoData();
     private Producto p = null;
     private ClienteData cD = new ClienteData();
@@ -32,7 +32,7 @@ public class Menu extends javax.swing.JFrame {
     public static Color verdeClaro = new Color(10, 170, 140);
     public static Color grisBase = new Color(51, 51, 76);
     public static Color grisClaro = new Color(66, 66, 76);
-
+    
     public DefaultTableModel Modelo = new DefaultTableModel(
             null,
             new String[]{
@@ -42,16 +42,16 @@ public class Menu extends javax.swing.JFrame {
         public boolean isCellEditable(int fila, int column) {
             return false;
         }
-
+        
         Class[] types = new Class[]{
             java.lang.Integer.class, java.lang.String.class, java.lang.String.class, java.lang.Double.class, java.lang.Integer.class
         };
-
+        
         public Class getColumnClass(int columnIndex) {
             return types[columnIndex];
         }
     };
-
+    
     private void llenarTabla() {
         for (Producto pro : pd.listarProducto()) {
             Modelo.addRow(new Object[]{pro.getIdProducto(), pro.getNombreProducto(),
@@ -59,11 +59,31 @@ public class Menu extends javax.swing.JFrame {
             jtListaPro.setModel(Modelo);
         }
     }
-
+    
+    public DefaultTableModel Modelo1 = new DefaultTableModel(
+            null,
+            new String[]{
+                "ID", "Apellido", "Nombre", "Domicilio", "Telefono"
+            }
+    ) {
+        public boolean isCellEditable(int fila, int column) {
+            return false;
+        }
+        
+        Class[] types = new Class[]{
+            java.lang.Integer.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class
+        };
+        
+        public Class getColumnClass(int columnIndex) {
+            return types[columnIndex];
+        }
+    };
+    
     public Menu() {
         initComponents();
         this.setLocationRelativeTo(null);
         jtListaPro.setModel(Modelo);
+        jtListClien.setModel(Modelo1);
         llenarText();
         llenarCombo();
         llenarComboCliente();
@@ -1851,6 +1871,11 @@ public class Menu extends javax.swing.JFrame {
         jtpListClien.add(ScrollListClien, new org.netbeans.lib.awtextra.AbsoluteConstraints(13, 120, 570, 290));
 
         jtfBuscadorClienListClien.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
+        jtfBuscadorClienListClien.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                jtfBuscadorClienListClienKeyTyped(evt);
+            }
+        });
         jtpListClien.add(jtfBuscadorClienListClien, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 80, 160, 30));
 
         jlImgBusqueda.setBackground(new java.awt.Color(255, 255, 255));
@@ -2501,7 +2526,13 @@ public class Menu extends javax.swing.JFrame {
     }//GEN-LAST:event_jLBtnEliminarElimClienMouseExited
 
     private void jlImgBusquedaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jlImgBusquedaMouseClicked
-        // TODO add your handling code here:
+        borrarFilaC();
+        String nombre = jtfBuscadorClienListClien.getText().toUpperCase();
+        for (Cliente cli : cD.listarClientes()) {
+            if(cli.getApellido().trim().toUpperCase().contains(nombre)){
+                Modelo1.addRow(new Object[]{cli.getIdCliente(), cli.getApellido(), cli.getNombre(), cli.getDomicilio(), cli.getTelefono()});
+                  }
+        }
     }//GEN-LAST:event_jlImgBusquedaMouseClicked
 
     private void jlImgBusquedaMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jlImgBusquedaMouseEntered
@@ -2680,13 +2711,13 @@ public class Menu extends javax.swing.JFrame {
                     JOptionPane.showMessageDialog(this, "Ya hay un producto con ese nombre si quiere modificarlo vaya a la pestaña de modificar producto");
                 }
             } catch (NullPointerException ex) {
-
+                
             }
         }
     }//GEN-LAST:event_jLBtnAgregarProdMousePressed
 
     private void jcbClienteModifCliActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jcbClienteModifCliActionPerformed
-       Cliente cli = (Cliente) jcbClienteModifCli.getSelectedItem();
+        Cliente cli = (Cliente) jcbClienteModifCli.getSelectedItem();
         jTFApellidoModClien.setText(cli.getApellido());
         jTFNombreClienModClien.setText(cli.getNombre());
         jTFDomicilioModClien.setText(cli.getDomicilio());
@@ -2697,13 +2728,13 @@ public class Menu extends javax.swing.JFrame {
         Cliente cli = (Cliente) jcbClienteModifCli.getSelectedItem();
         if (jTFApellidoModClien.getText().trim().isEmpty() || jTFNombreClienModClien.getText().trim().isEmpty()
                 || jTFDomicilioModClien.getText().trim().isEmpty() || jTFTelefonoModClien.getText().trim().isEmpty()) {
-        JOptionPane.showMessageDialog(null, "No pude haber campos vacios.");
-        }else {
+            JOptionPane.showMessageDialog(null, "No pude haber campos vacios.");
+        } else {
             if (!jTFNombreClienModClien.getText().equalsIgnoreCase(cli.getApellido())
                     || !jTFApellidoModClien.getText().equalsIgnoreCase(cli.getApellido())
                     || !jTFDomicilioModClien.getText().equalsIgnoreCase(cli.getDomicilio())
                     || !jTFTelefonoModClien.getText().equalsIgnoreCase(cli.getTelefono())) {
-
+                
                 cli.setIdCliente(cli.getIdCliente());
                 cli.setApellido(jTFApellidoModClien.getText());
                 cli.setNombre(jTFNombreClienModClien.getText());
@@ -2712,11 +2743,11 @@ public class Menu extends javax.swing.JFrame {
                 cD.modicifarCliente(cli);
                 borrarCamposModCli();
             }
-            }
+        }
     }//GEN-LAST:event_jLBtnModificarModClienMousePressed
 
     private void jCBBuscarClienElimClienActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jCBBuscarClienElimClienActionPerformed
-        Cliente cli = (Cliente) jCBBuscarClienElimClien .getSelectedItem();
+        Cliente cli = (Cliente) jCBBuscarClienElimClien.getSelectedItem();
         jTFApellidoClienElimClien.setText(cli.getApellido());
         jTFNombreClienElimClien.setText(cli.getNombre());
         jTFDomicilioElimClien.setText(cli.getDomicilio());
@@ -2727,16 +2758,20 @@ public class Menu extends javax.swing.JFrame {
         Cliente cli = (Cliente) jCBBuscarClienElimClien.getSelectedItem();
         if (jTFApellidoClienElimClien.getText().trim().isEmpty() || jTFNombreClienElimClien.getText().trim().isEmpty()
                 || jTFDomicilioElimClien.getText().trim().isEmpty() || jTFTelefonoElimClien.getText().trim().isEmpty()) {
-        JOptionPane.showMessageDialog(null, "No pude haber campos vacios.");
-        }else {
+            JOptionPane.showMessageDialog(null, "No pude haber campos vacios.");
+        } else {
             cD.eliminarCliente(cli.getIdCliente());
         }
         
     }//GEN-LAST:event_jLBtnEliminarElimClienMouseClicked
 
+    private void jtfBuscadorClienListClienKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jtfBuscadorClienListClienKeyTyped
+        controlLetras(evt);
+    }//GEN-LAST:event_jtfBuscadorClienListClienKeyTyped
+
     /**
-         * @param args the command line arguments
-         */
+     * @param args the command line arguments
+     */
     public static void main(String args[]) {
         /* Set the Nimbus look and feel */
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
@@ -3033,7 +3068,13 @@ public class Menu extends javax.swing.JFrame {
             Modelo.removeRow(f);
         }
     }
-
+    
+    private void borrarFilaC() {
+        for (int i = jtListClien.getRowCount() - 1; i >= 0; i--) {
+            Modelo1.removeRow(i);
+        }
+    }
+    
     private void llenarText() {
         text1.setText("<html>Registrar productos: Los usuarios podrán agregar nuevos productos al inventario proporcionando información como nombre, descripción, precio y cantidad disponible</html>");
         text2.setText("<html>Realizar ventas: Los usuarios podrán registrar las ventas de productos a los clientes. el cliente que realiza la compra y la fecha de venta</html>");
@@ -3048,34 +3089,34 @@ public class Menu extends javax.swing.JFrame {
         textVentaD.setText("<html>Detallar Venta: Lista completa de los datos de una venta registrada</html>");
         textVentaE.setText("<html>Eliminar Venta: Permite dar de baja el registro de una venta para su posterior eliminación");
     }
-
+    
     private void llenarCombo() {
         for (Producto pro : pd.listarProducto()) {
             jcbProductos.addItem(pro);
         }
     }
-
+    
     private void llenarComboCliente() {
         for (Cliente cli : cD.listarClientes()) {
             jcbClienteModifCli.addItem(cli);
             jCBBuscarClienElimClien.addItem(cli);
         }
     }
-
+    
     private void borrarCamposAgCliente() {
         jTFApellidoClienteAgrClien.setText("");
         jTFApellidoClienteAgrClien.setText("");
         jTFDomicilioClienteAgrClien.setText("");
         jTFTelefonoClienteAg.setText("");
     }
-
+    
     public void borrarCamposModCli() {
         jTFNombreClienModClien.setText("");
         jTFApellidoModClien.setText("");
         jTFDomicilioModClien.setText("");
         jTFTelefonoModClien.setText("");
     }
-
+    
     public void borrarCamposElimCli() {
         jTFNombreClienElimClien.setText("");
         jTFApellidoClienElimClien.setText("");
@@ -3090,7 +3131,7 @@ public class Menu extends javax.swing.JFrame {
             evt.consume();
         }
     }
-
+    
     private void controlNumeros(java.awt.event.KeyEvent evt) {
         if (Character.isLetter(evt.getKeyChar())
                 && !(evt.getKeyChar() == KeyEvent.VK_SPACE)) {
