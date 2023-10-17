@@ -283,11 +283,13 @@ public class Login extends javax.swing.JFrame {
             //Instanciamos Menu 
                 Menu menu = new Menu();
             // traemos los eventos a traves de las ventanas creadas
-                java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
+//                java.awt.EventQueue.invokeLater(new Runnable() {
+//            public void run() {
                 new Menu().setVisible(true);
-            }
-        });
+//            }
+//        });
+                dispose();
+                break;
             }
         } 
         }catch(NullPointerException ex) {

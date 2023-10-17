@@ -2153,6 +2153,11 @@ public class Menu extends javax.swing.JFrame {
         jtpEliminarVenta.add(jlBuscarVenta, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 100, -1, -1));
 
         jcbBuscarVenta.setFont(new java.awt.Font("Corbel", 1, 14)); // NOI18N
+        jcbBuscarVenta.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jcbBuscarVentaActionPerformed(evt);
+            }
+        });
         jtpEliminarVenta.add(jcbBuscarVenta, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 120, 200, 30));
 
         jlNombreProEliminar.setFont(new java.awt.Font("Corbel", 1, 14)); // NOI18N
@@ -2775,6 +2780,10 @@ public class Menu extends javax.swing.JFrame {
     private void jtfBuscadorClienListClienKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jtfBuscadorClienListClienKeyTyped
         controlLetras(evt);
     }//GEN-LAST:event_jtfBuscadorClienListClienKeyTyped
+
+    private void jcbBuscarVentaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jcbBuscarVentaActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jcbBuscarVentaActionPerformed
 
     /**
      * @param args the command line arguments
