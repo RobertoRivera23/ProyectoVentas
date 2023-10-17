@@ -5,10 +5,13 @@
  */
 package Vistas;
 
+import AccesoDatos.EmpleadoData;
+import Entidades.Empleado;
 import static Vistas.Menu.verdeBase;
 import static Vistas.Menu.verdeClaro;
 import java.awt.Color;
 import java.awt.event.KeyEvent;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -63,7 +66,6 @@ public class Registro extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setUndecorated(true);
-        setPreferredSize(new java.awt.Dimension(512, 450));
         setSize(new java.awt.Dimension(512, 450));
 
         jPFondo.setPreferredSize(new java.awt.Dimension(512, 450));
@@ -222,6 +224,9 @@ public class Registro extends javax.swing.JFrame {
         jlCargar.setOpaque(true);
         jlCargar.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
         jlCargar.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jlCargarMouseClicked(evt);
+            }
             public void mouseEntered(java.awt.event.MouseEvent evt) {
                 jlCargarMouseEntered(evt);
             }
@@ -355,6 +360,26 @@ public class Registro extends javax.swing.JFrame {
         jLVolver.setBackground(verdeBase);
     }//GEN-LAST:event_jLVolverMouseExited
 
+    private void jlCargarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jlCargarMouseClicked
+    EmpleadoData eD= new EmpleadoData();
+    try{
+    Empleado empleado1 = eD.buscarEmpleadoPorDni(Integer.parseInt(jTFDni.getText()));
+    if(empleado1 == null){
+     Empleado empleado = new Empleado();
+     empleado.setApellido(jTFApellido.getText());
+     empleado.setNombre(jTFNombre.getText());
+     empleado.setDni(Integer.parseInt(jTFDni.getText()));
+     empleado.setCargo(jCBCargo.getSelectedItem()+"");
+     empleado.setUsuario(jTFUsuario.getText());
+     empleado.setContraenia(jPContraseña.getText());
+     eD.guardarEmpleado(empleado);
+     limpiarCampos();
+    } else
+        JOptionPane.showMessageDialog(null, "El empleado"+empleado1.getApellido()+ "ya existe");
+    } catch(NullPointerException ex ){
+    }  
+    }//GEN-LAST:event_jlCargarMouseClicked
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JComboBox<String> jCBCargo;
@@ -386,6 +411,7 @@ public class Registro extends javax.swing.JFrame {
         jTFApellido.setText("");
         jTFNombre.setText("");
         jTFUsuario.setText("");
+        jTFDni.setText("");
         jPContraseña.setText("");
         jRMostrar.setSelected(false);
         jRMostrar.setSelected(false);

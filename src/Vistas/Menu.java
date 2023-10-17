@@ -2676,10 +2676,10 @@ public class Menu extends javax.swing.JFrame {
                 Cliente cli = clienteD.buscarClientePorTel(jTFApellidoClienteAgrClien.getText());
                 if (cli == null) {
                     Cliente c1 = new Cliente();
-                    c1.setApellido(jTFTelefonoClienteAg.getText());
+                    c1.setApellido(jTFApellidoClienteAgrClien.getText());
                     c1.setNombre(jTFNombreClienteAgrClien.getText());
                     c1.setDomicilio(jTFDomicilioClienteAgrClien.getText());
-                    c1.setTelefono(jTFApellidoClienteAgrClien.getText());
+                    c1.setTelefono(jTFTelefonoClienteAg.getText()); 
                     clienteD.guardarCliente(c1);
                     borrarCamposAgCliente();
                 } else {
@@ -2752,15 +2752,22 @@ public class Menu extends javax.swing.JFrame {
         jTFNombreClienElimClien.setText(cli.getNombre());
         jTFDomicilioElimClien.setText(cli.getDomicilio());
         jTFTelefonoElimClien.setText(cli.getTelefono());
+     
+     
     }//GEN-LAST:event_jCBBuscarClienElimClienActionPerformed
 
     private void jLBtnEliminarElimClienMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLBtnEliminarElimClienMouseClicked
+        try{
         Cliente cli = (Cliente) jCBBuscarClienElimClien.getSelectedItem();
         if (jTFApellidoClienElimClien.getText().trim().isEmpty() || jTFNombreClienElimClien.getText().trim().isEmpty()
                 || jTFDomicilioElimClien.getText().trim().isEmpty() || jTFTelefonoElimClien.getText().trim().isEmpty()) {
             JOptionPane.showMessageDialog(null, "No pude haber campos vacios.");
         } else {
             cD.eliminarCliente(cli.getIdCliente());
+            jCBBuscarClienElimClien.removeItemAt(jCBBuscarClienElimClien.getSelectedIndex());
+        }
+        } catch (NullPointerException ex){
+            
         }
         
     }//GEN-LAST:event_jLBtnEliminarElimClienMouseClicked
@@ -3097,6 +3104,7 @@ public class Menu extends javax.swing.JFrame {
     }
     
     private void llenarComboCliente() {
+        jCBBuscarClienElimClien.addItem(null);
         for (Cliente cli : cD.listarClientes()) {
             jcbClienteModifCli.addItem(cli);
             jCBBuscarClienElimClien.addItem(cli);
