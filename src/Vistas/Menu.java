@@ -1316,6 +1316,11 @@ public class Menu extends javax.swing.JFrame {
         jtpEliminarPro.add(jLBuscarProdElimProd, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 100, -1, -1));
 
         jCBBuscarProdElimProd.setFont(new java.awt.Font("Corbel", 1, 14)); // NOI18N
+        jCBBuscarProdElimProd.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jCBBuscarProdElimProdActionPerformed(evt);
+            }
+        });
         jtpEliminarPro.add(jCBBuscarProdElimProd, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 120, 200, 30));
 
         jLNombreProdElimProd.setFont(new java.awt.Font("Corbel", 1, 14)); // NOI18N
@@ -1393,6 +1398,9 @@ public class Menu extends javax.swing.JFrame {
             }
             public void mouseExited(java.awt.event.MouseEvent evt) {
                 jLBtnEliminarElimProdMouseExited(evt);
+            }
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                jLBtnEliminarElimProdMousePressed(evt);
             }
         });
         jtpEliminarPro.add(jLBtnEliminarElimProd, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 340, 100, 30));
@@ -1493,6 +1501,11 @@ public class Menu extends javax.swing.JFrame {
 
         jcbProductos.setFont(new java.awt.Font("Corbel", 1, 14)); // NOI18N
         jcbProductos.setForeground(new java.awt.Color(0, 102, 102));
+        jcbProductos.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jcbProductosActionPerformed(evt);
+            }
+        });
         jtpModPro.add(jcbProductos, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 120, 200, 30));
 
         jlIconoModPro1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
@@ -2734,6 +2747,26 @@ public class Menu extends javax.swing.JFrame {
         
     }//GEN-LAST:event_jLBtnEliminarElimClienMouseClicked
 
+    private void jCBBuscarProdElimProdActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jCBBuscarProdElimProdActionPerformed
+        Producto pro = (Producto) jCBBuscarProdElimProd.getSelectedItem();
+        jTFNombreProdElimProd.setText(pro.getNombreProducto());
+        jTFDescripcionElimProd.setText(pro.getDescripcion());
+        jTFPrecioActuaElimProd.setText(pro.getPrecioActual()+"");
+        jTFStockElimProd.setText(pro.getStock()+"");
+    }//GEN-LAST:event_jCBBuscarProdElimProdActionPerformed
+
+    private void jcbProductosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jcbProductosActionPerformed
+        Producto pro = (Producto) jcbProductos.getSelectedItem();
+        jTFNombreProdModProd.setText(pro.getNombreProducto());
+        jTFDescripcionModProd.setText(pro.getDescripcion());
+        jTFPrecioActualModProd.setText(pro.getPrecioActual()+"");
+        jTFStockModProd.setText(pro.getStock()+"");
+    }//GEN-LAST:event_jcbProductosActionPerformed
+
+    private void jLBtnEliminarElimProdMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLBtnEliminarElimProdMousePressed
+        Producto pro = pd.buscarProductoPorNombre(jTFNombreProdElimProd.getText());
+    }//GEN-LAST:event_jLBtnEliminarElimProdMousePressed
+
     /**
          * @param args the command line arguments
          */
@@ -3052,6 +3085,7 @@ public class Menu extends javax.swing.JFrame {
     private void llenarCombo() {
         for (Producto pro : pd.listarProducto()) {
             jcbProductos.addItem(pro);
+            jCBBuscarProdElimProd.addItem(pro);
         }
     }
 
