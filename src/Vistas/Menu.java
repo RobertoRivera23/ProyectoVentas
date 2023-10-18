@@ -6,14 +6,17 @@
 package Vistas;
 
 import AccesoDatos.ClienteData;
+import AccesoDatos.DetalleVentasData;
 import AccesoDatos.ProductoData;
 import AccesoDatos.VentasData;
 import Entidades.Cliente;
+import Entidades.DetalleVenta;
 import Entidades.Producto;
 import Entidades.Venta;
 import Utilidades.TablaFraveMax;
 import java.awt.Color;
 import java.awt.event.KeyEvent;
+import java.sql.Date;
 import javax.swing.DefaultListModel;
 import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
@@ -55,6 +58,7 @@ public class Menu extends javax.swing.JFrame {
     };
 
     private void llenarTabla() {
+        borrarFila();
         for (Producto pro : pd.listarProducto()) {
             Modelo.addRow(new Object[]{pro.getIdProducto(), pro.getNombreProducto(),
                 pro.getDescripcion(), pro.getPrecioActual(), pro.getStock()});
@@ -356,8 +360,8 @@ public class Menu extends javax.swing.JFrame {
         jlNombreEmpleadoEliminar = new javax.swing.JLabel();
         jlFechaVentaEliminar = new javax.swing.JLabel();
         jlEliminarVentaBorrar = new javax.swing.JLabel();
-        jTextField2 = new javax.swing.JTextField();
         jlVentaIconEliminar = new javax.swing.JLabel();
+        jdcFechaVentEliminar = new com.toedter.calendar.JDateChooser();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setMinimumSize(new java.awt.Dimension(800, 500));
@@ -1788,7 +1792,7 @@ public class Menu extends javax.swing.JFrame {
                 jCBBuscarClienElimClienActionPerformed(evt);
             }
         });
-        jtpElimClien.add(jCBBuscarClienElimClien, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 120, 290, 30));
+        jtpElimClien.add(jCBBuscarClienElimClien, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 120, 200, 30));
 
         jSElimClien1.setBackground(new java.awt.Color(0, 150, 136));
         jSElimClien1.setOpaque(true);
@@ -2264,13 +2268,12 @@ public class Menu extends javax.swing.JFrame {
         });
         jtpEliminarVenta.add(jlEliminarVentaBorrar, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 340, 100, 30));
 
-        jTextField2.setEditable(false);
-        jTextField2.setFont(new java.awt.Font("Corbel", 1, 14)); // NOI18N
-        jtpEliminarVenta.add(jTextField2, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 210, 200, 30));
-
         jlVentaIconEliminar.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jlVentaIconEliminar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Image/archivo-menos.png"))); // NOI18N
         jtpEliminarVenta.add(jlVentaIconEliminar, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 30, 200, 150));
+
+        jdcFechaVentEliminar.setEnabled(false);
+        jtpEliminarVenta.add(jdcFechaVentEliminar, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 210, 200, 30));
 
         jtpEscritorio.addTab("tab16", jtpEliminarVenta);
 
@@ -2792,8 +2795,6 @@ public class Menu extends javax.swing.JFrame {
         jTFNombreClienElimClien.setText(cli.getNombre());
         jTFDomicilioElimClien.setText(cli.getDomicilio());
         jTFTelefonoElimClien.setText(cli.getTelefono());
-
-
     }//GEN-LAST:event_jCBBuscarClienElimClienActionPerformed
 
     private void jLBtnEliminarElimClienMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLBtnEliminarElimClienMouseClicked
@@ -2861,7 +2862,13 @@ public class Menu extends javax.swing.JFrame {
     }//GEN-LAST:event_jlEliminarProListMouseClicked
 
     private void jcbBuscarVentaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jcbBuscarVentaActionPerformed
-        // TODO add your handling code here:
+        DetalleVentasData dvd = new DetalleVentasData();
+        Venta venta = (Venta) jcbBuscarVenta.getSelectedItem();
+        DetalleVenta dv = dvd.buscarDetalleProVenta(venta.getIdVenta());
+        jtfNombreProEliminar.setText(dv.getProducto().getNombreProducto());
+        jtfTelCliEliminar.setText(venta.getCliente().getTelefono());
+        jtfNombreEmpleadoEliminar.setText(venta.getEmpleado().getNombre() + " " + venta.getEmpleado().getApellido());
+        jdcFechaVentEliminar.setDate(Date.valueOf(venta.getFechaVenta()));
     }//GEN-LAST:event_jcbBuscarVentaActionPerformed
 
     /**
@@ -2877,8 +2884,8 @@ public class Menu extends javax.swing.JFrame {
             for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
                 if ("Nimbus".equals(info.getName())) {
                     javax.swing.UIManager.setLookAndFeel(info.getClassName());
-                    UIManager.put("nimbusBlueGrey", new Color(51, 51, 76));
-                    UIManager.put("control", new Color(0, 150, 136));
+//                    UIManager.put("nimbusBlueGrey", new Color(51, 51, 76));
+//                    UIManager.put("control", new Color(0, 150, 136));
                     break;
                 }
             }
@@ -3013,12 +3020,12 @@ public class Menu extends javax.swing.JFrame {
     private javax.swing.JTextField jTFTelefonoElimClien;
     private javax.swing.JTextField jTFTelefonoModClien;
     private javax.swing.JTextField jTextField1;
-    private javax.swing.JTextField jTextField2;
     private javax.swing.JComboBox<Venta> jcbBuscarVenta;
     private javax.swing.JComboBox<Cliente> jcbClienteModifCli;
     private javax.swing.JComboBox<Producto> jcbProVenta;
     private javax.swing.JComboBox<Producto> jcbProductos;
     private com.toedter.calendar.JDateChooser jdcFechaAgr;
+    private com.toedter.calendar.JDateChooser jdcFechaVentEliminar;
     private javax.swing.JLabel jlAgrVenta;
     private javax.swing.JLabel jlAgrVentas;
     private javax.swing.JLabel jlAgregar;
@@ -3197,7 +3204,6 @@ public class Menu extends javax.swing.JFrame {
     }
 
     private void llenarComboCliente() {
-        jCBBuscarClienElimClien.addItem(null);
         for (Cliente cli : cD.listarClientes()) {
             jcbClienteModifCli.addItem(cli);
             jCBBuscarClienElimClien.addItem(cli);
@@ -3205,7 +3211,7 @@ public class Menu extends javax.swing.JFrame {
     }
 
     private void llenarComboV() {
-        for (Venta ven : vd.listaVenta()){
+        for (Venta ven : vd.listaVenta()) {
             jcbBuscarVenta.addItem(ven);
         }
     }

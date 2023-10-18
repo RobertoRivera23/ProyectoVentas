@@ -1,6 +1,5 @@
 package Entidades;
 
-
 import java.time.LocalDate;
 
 /*
@@ -31,15 +30,15 @@ public class Venta {
         this.empleado = empleado;
         this.fechaVenta = fechaVenta;
     }
-    
-     public Venta(Cliente cliente, Empleado empleado, LocalDate fechaVenta, boolean estado) {
+
+    public Venta(Cliente cliente, Empleado empleado, LocalDate fechaVenta, boolean estado) {
         this.cliente = cliente;
         this.empleado = empleado;
         this.fechaVenta = fechaVenta;
         this.estado = estado;
     }
 
-        public Venta(int idVenta, Cliente cliente, Empleado empleado, LocalDate fechaVenta, boolean estado) {
+    public Venta(int idVenta, Cliente cliente, Empleado empleado, LocalDate fechaVenta, boolean estado) {
         this.idVenta = idVenta;
         this.cliente = cliente;
         this.empleado = empleado;
@@ -73,8 +72,8 @@ public class Venta {
     public void setFechaVenta(LocalDate fechaVenta) {
         this.fechaVenta = fechaVenta;
     }
-    
-    public Integer getIdCliente(){
+
+    public Integer getIdCliente() {
         return cliente.getIdCliente();
     }
 
@@ -96,9 +95,7 @@ public class Venta {
 
     @Override
     public String toString() {
-        return "Venta: " + "idVenta=" + idVenta + ", cliente=" + cliente + ", empleado=" + empleado + ", fechaVenta=" 
-                + fechaVenta + ", estado=" + estado + '}';
+        return fechaVenta + "/" + cliente.getTelefono() + "/" + empleado.getNombre() + "/" + empleado.getApellido();
     }
-    
-   
+
 }
