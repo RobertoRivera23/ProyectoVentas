@@ -330,7 +330,6 @@ public class Menu extends javax.swing.JFrame {
         jlCamposOblig = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
         jTextField1 = new javax.swing.JTextField();
-        jdcFechaAgr = new com.toedter.calendar.JDateChooser();
         jScrollPane1 = new javax.swing.JScrollPane();
         jListaCantidad = new javax.swing.JList<>();
         jtpListaVentas = new javax.swing.JPanel();
@@ -361,7 +360,6 @@ public class Menu extends javax.swing.JFrame {
         jlFechaVentaEliminar = new javax.swing.JLabel();
         jlEliminarVentaBorrar = new javax.swing.JLabel();
         jlVentaIconEliminar = new javax.swing.JLabel();
-        jdcFechaVentEliminar = new com.toedter.calendar.JDateChooser();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setMinimumSize(new java.awt.Dimension(800, 500));
@@ -1346,6 +1344,11 @@ public class Menu extends javax.swing.JFrame {
         jtpEliminarPro.add(jLBuscarProdElimProd, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 100, -1, -1));
 
         jCBBuscarProdElimProd.setFont(new java.awt.Font("Corbel", 1, 14)); // NOI18N
+        jCBBuscarProdElimProd.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jCBBuscarProdElimProdMouseClicked(evt);
+            }
+        });
         jtpEliminarPro.add(jCBBuscarProdElimProd, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 120, 200, 30));
 
         jLNombreProdElimProd.setFont(new java.awt.Font("Corbel", 1, 14)); // NOI18N
@@ -1423,6 +1426,9 @@ public class Menu extends javax.swing.JFrame {
             }
             public void mouseExited(java.awt.event.MouseEvent evt) {
                 jLBtnEliminarElimProdMouseExited(evt);
+            }
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                jLBtnEliminarElimProdMousePressed(evt);
             }
         });
         jtpEliminarPro.add(jLBtnEliminarElimProd, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 340, 100, 30));
@@ -1518,11 +1524,19 @@ public class Menu extends javax.swing.JFrame {
             public void mouseExited(java.awt.event.MouseEvent evt) {
                 jLBtnModificarModProdMouseExited(evt);
             }
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                jLBtnModificarModProdMousePressed(evt);
+            }
         });
         jtpModPro.add(jLBtnModificarModProd, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 340, 100, 30));
 
         jcbProductos.setFont(new java.awt.Font("Corbel", 1, 14)); // NOI18N
         jcbProductos.setForeground(new java.awt.Color(0, 102, 102));
+        jcbProductos.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jcbProductosMouseClicked(evt);
+            }
+        });
         jtpModPro.add(jcbProductos, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 120, 200, 30));
 
         jlIconoModPro1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
@@ -2068,7 +2082,6 @@ public class Menu extends javax.swing.JFrame {
 
         jTextField1.setFont(new java.awt.Font("Corbel", 1, 14)); // NOI18N
         jtpAgrVenta.add(jTextField1, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 230, 200, 30));
-        jtpAgrVenta.add(jdcFechaAgr, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 110, 200, 30));
 
         jListaCantidad.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -2271,9 +2284,6 @@ public class Menu extends javax.swing.JFrame {
         jlVentaIconEliminar.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jlVentaIconEliminar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Image/archivo-menos.png"))); // NOI18N
         jtpEliminarVenta.add(jlVentaIconEliminar, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 30, 200, 150));
-
-        jdcFechaVentEliminar.setEnabled(false);
-        jtpEliminarVenta.add(jdcFechaVentEliminar, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 210, 200, 30));
 
         jtpEscritorio.addTab("tab16", jtpEliminarVenta);
 
@@ -2868,8 +2878,71 @@ public class Menu extends javax.swing.JFrame {
         jtfNombreProEliminar.setText(dv.getProducto().getNombreProducto());
         jtfTelCliEliminar.setText(venta.getCliente().getTelefono());
         jtfNombreEmpleadoEliminar.setText(venta.getEmpleado().getNombre() + " " + venta.getEmpleado().getApellido());
-        jdcFechaVentEliminar.setDate(Date.valueOf(venta.getFechaVenta()));
+//        jdcFechaVentEliminar.setDate(Date.valueOf(venta.getFechaVenta()));
     }//GEN-LAST:event_jcbBuscarVentaActionPerformed
+
+    private void jcbProductosMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jcbProductosMouseClicked
+        Producto pro = (Producto) jcbProductos.getSelectedItem();
+        jTFNombreProdModProd.setText(pro.getNombreProducto());
+        jTFDescripcionModProd.setText(pro.getDescripcion());
+        jTFPrecioActualModProd.setText(pro.getPrecioActual()+"");
+        jTFStockModProd.setText(pro.getStock()+"");
+    }//GEN-LAST:event_jcbProductosMouseClicked
+
+    private void jCBBuscarProdElimProdMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jCBBuscarProdElimProdMouseClicked
+        Producto pro = (Producto) jCBBuscarProdElimProd.getSelectedItem();
+        jTFNombreProdElimProd.setText(pro.getNombreProducto());
+        jTFDescripcionElimProd.setText(pro.getDescripcion());
+        jTFPrecioActuaElimProd.setText(pro.getPrecioActual()+"");
+        jTFStockElimProd.setText(pro.getStock()+"");
+    }//GEN-LAST:event_jCBBuscarProdElimProdMouseClicked
+
+    private void jLBtnEliminarElimProdMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLBtnEliminarElimProdMousePressed
+        try{
+            ProductoData proD = new ProductoData();
+            Producto pro = proD.buscarProductoPorNombre(jTFNombreProdElimProd.getText().trim());
+            if(pro.getNombreProducto().trim().equals(jTFNombreProdElimProd.getText()) && pro.getDescripcion().trim().equals(jTFDescripcionElimProd.getText())
+                    && pro.getPrecioActual() == Double.parseDouble(jTFPrecioActuaElimProd.getText()) && pro.getStock() == Integer.parseInt(jTFStockElimProd.getText())){
+                int opcion = JOptionPane.showConfirmDialog(this, "Esta seguro que desea eliminar el alumno?", "Selecione una opcion", JOptionPane.YES_NO_OPTION);
+                switch(opcion){
+                    case 0:
+                        proD.eliminarProducto(pro.getIdProducto());
+                        break;
+                    case 1:
+                        break;
+                }
+            }else{
+                JOptionPane.showMessageDialog(null, "Los datos de el producto no coinciden con los de la Base de Datos.");
+            }
+        }catch (NullPointerException | NumberFormatException ex) {
+            JOptionPane.showMessageDialog(this, "No puede haber campos vacios");
+        }
+    }//GEN-LAST:event_jLBtnEliminarElimProdMousePressed
+
+    private void jLBtnModificarModProdMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLBtnModificarModProdMousePressed
+        if(jTFNombreProdModProd.getText().trim().isEmpty() || jTFDescripcionModProd.getText().trim().isEmpty() || jTFPrecioActualModProd.getText().trim().isEmpty()
+                || jTFStockModProd.getText().trim().isEmpty()){
+            JOptionPane.showMessageDialog(this, "No puede haber espacios vacios");
+        }else{
+            try{
+                Producto pro = pd.buscarProductoPorNombre(jTFNombreProdModProd.getText());
+                int opcion = JOptionPane.showConfirmDialog(this, "¿Desea Modificar los Datos?", "Seleccione una opcion", JOptionPane.YES_NO_OPTION);
+                switch(opcion){
+                    case 0:
+                        pro.setNombreProducto(jTFNombreProdModProd.getText());
+                        pro.setDescripcion(jTFDescripcionModProd.getText());
+                        pro.setPrecioActual(Double.parseDouble(jTFPrecioActualModProd.getText()));
+                        pro.setStock(Integer.parseInt(jTFStockModProd.getText()));
+                        pd.modificarProducto(pro);
+                        break;
+                    case 1:
+                        break;
+                }
+            }catch (NumberFormatException ex){
+                
+            }
+        }
+    }//GEN-LAST:event_jLBtnModificarModProdMousePressed
 
     /**
      * @param args the command line arguments
@@ -3024,8 +3097,6 @@ public class Menu extends javax.swing.JFrame {
     private javax.swing.JComboBox<Cliente> jcbClienteModifCli;
     private javax.swing.JComboBox<Producto> jcbProVenta;
     private javax.swing.JComboBox<Producto> jcbProductos;
-    private com.toedter.calendar.JDateChooser jdcFechaAgr;
-    private com.toedter.calendar.JDateChooser jdcFechaVentEliminar;
     private javax.swing.JLabel jlAgrVenta;
     private javax.swing.JLabel jlAgrVentas;
     private javax.swing.JLabel jlAgregar;
