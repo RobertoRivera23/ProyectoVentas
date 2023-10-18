@@ -6,11 +6,8 @@ import Entidades.Producto;
 import Entidades.Venta;
 import java.sql.*;
 import java.time.LocalDate;
-import java.time.Month;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 
 public class VentasData {
@@ -177,18 +174,16 @@ public class VentasData {
         return clientes;
     }
 
-
 //SELECT producto.nombreProducto, detalledeventa.cantidad FROM venta, detalledeventa JOIN producto 
 //        ON (detalledeventa.idProducto = producto.idProducto) WHERE venta.fechaVenta = '2023-10-10' ORDER BY producto.idProducto ASC
     public List<Producto> obtenerProductosPorFecha(LocalDate fechaVenta) {
         List<Producto> prodPorFecha = new ArrayList<>();
-        String sql = "SELECT producto.nombreProducto, detalledeventa.cantidad FROM venta, detalledeventa "
-                + "JOIN producto ON (detalledeventa.idProducto = producto.idProducto)"
+        String sql = "SELECT producto.nombreProducto, detalledeventa.cantidad FROM producto, detalledeventa "
+                + "JOIN venta ON (detalledeventa.idVenta = venta.idVenta)"
                 + "WHERE  venta.fechaVenta = ?  ORDER BY producto.idProducto ASC";
 
         try {
             PreparedStatement ps = con.prepareStatement(sql);
-            System.out.println("..." + fechaVenta);
             ps.setDate(1, Date.valueOf(fechaVenta));
             ResultSet rs = ps.executeQuery();
             if (!rs.next()) {
@@ -196,12 +191,12 @@ public class VentasData {
             } else {
                 while (rs.next()) {
                     Producto prod = new Producto();
-                    prod.setIdProducto(rs.getInt("idProducto"));
-                    prod.setNombreProducto(rs.getString("nombre"));
-                    prod.setDescripcion(rs.getString("descripcion"));
-                    prod.setPrecioActual(rs.getDouble("precioActual"));
-                    prod.setStock(rs.getInt("stock"));
-                    prod.setEstado(rs.getBoolean("estado"));
+//                    prod.setIdProducto(rs.getInt("idProducto"));
+                    prod.setNombreProducto(rs.getString("nombreProducto"));
+//                    prod.setDescripcion(rs.getString("descripcion"));
+//                    prod.setPrecioActual(rs.getDouble("precioActual"));
+//                    prod.setStock(rs.getInt("stock"));
+//                    prod.setEstado(rs.getBoolean("estado"));
                     prodPorFecha.add(prod);
                 }
             }
@@ -241,8 +236,6 @@ public class VentasData {
     }
 
     public void modificarVenta(Venta venta1) {
-        EmpleadoData empleadoD = new EmpleadoData();
-        ClienteData clienteD = new ClienteData();
         Venta v1 = buscarVentaId(venta1.getIdVenta());
         String sql = "UPDATE venta SET idCliente = ?, idempleado = ?, fechaVenta = ?, estado = ? WHERE idVenta = ? ";
         try {
@@ -262,6 +255,31 @@ public class VentasData {
         } catch (SQLException ex) {
             JOptionPane.showMessageDialog(null, " Error al acceder a la tabla Venta " + ex.getMessage());
         }
+    }
 
+    public List<Venta> listaVenta() {
+        List<Venta> listaV = new ArrayList<>();
+        ClienteData cd = new ClienteData();
+        EmpleadoData ed = new EmpleadoData();
+        String sql = "SELECT * FROM venta WHERE estado = 1";
+        try {
+            PreparedStatement ps = con.prepareStatement(sql);
+            ResultSet rs = ps.executeQuery();
+            while (rs.next()) {
+                venta = new Venta();
+                venta.setIdVenta(rs.getInt("idVenta"));
+                cliente = cd.buscarCliente(rs.getInt("idCliente"));
+                venta.setCliente(cliente);
+                empleado = ed.buscarEmpleadoPorId(rs.getInt("idEmpleado"));
+                venta.setEmpleado(empleado);
+                venta.setFechaVenta(rs.getDate("fechaVenta").toLocalDate());
+                venta.setEstado(rs.getBoolean("estado"));
+                listaV.add(venta);
+            }
+            ps.close();
+        } catch (SQLException ex) {
+            JOptionPane.showMessageDialog(null, "Error al acceder a la tabla Venta" + ex.getMessage());
+        }
+        return listaV;
     }
 }

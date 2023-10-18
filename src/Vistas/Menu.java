@@ -7,12 +7,14 @@ package Vistas;
 
 import AccesoDatos.ClienteData;
 import AccesoDatos.ProductoData;
+import AccesoDatos.VentasData;
 import Entidades.Cliente;
 import Entidades.Producto;
 import Entidades.Venta;
 import Utilidades.TablaFraveMax;
 import java.awt.Color;
 import java.awt.event.KeyEvent;
+import javax.swing.DefaultListModel;
 import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
 import javax.swing.UIManager;
@@ -23,16 +25,16 @@ import javax.swing.table.DefaultTableModel;
  * @author ROMI
  */
 public class Menu extends javax.swing.JFrame {
-    
+
     private ProductoData pd = new ProductoData();
-    private Producto p = null;
     private ClienteData cD = new ClienteData();
+    private VentasData vd = new VentasData();
     private int xMouse, yMouse;
     public static Color verdeBase = new Color(0, 150, 136);
     public static Color verdeClaro = new Color(10, 170, 140);
     public static Color grisBase = new Color(51, 51, 76);
     public static Color grisClaro = new Color(66, 66, 76);
-    
+
     public DefaultTableModel Modelo = new DefaultTableModel(
             null,
             new String[]{
@@ -42,16 +44,16 @@ public class Menu extends javax.swing.JFrame {
         public boolean isCellEditable(int fila, int column) {
             return false;
         }
-        
+
         Class[] types = new Class[]{
             java.lang.Integer.class, java.lang.String.class, java.lang.String.class, java.lang.Double.class, java.lang.Integer.class
         };
-        
+
         public Class getColumnClass(int columnIndex) {
             return types[columnIndex];
         }
     };
-    
+
     private void llenarTabla() {
         for (Producto pro : pd.listarProducto()) {
             Modelo.addRow(new Object[]{pro.getIdProducto(), pro.getNombreProducto(),
@@ -59,7 +61,7 @@ public class Menu extends javax.swing.JFrame {
             jtListaPro.setModel(Modelo);
         }
     }
-    
+
     public DefaultTableModel Modelo1 = new DefaultTableModel(
             null,
             new String[]{
@@ -69,16 +71,16 @@ public class Menu extends javax.swing.JFrame {
         public boolean isCellEditable(int fila, int column) {
             return false;
         }
-        
+
         Class[] types = new Class[]{
             java.lang.Integer.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class
         };
-        
+
         public Class getColumnClass(int columnIndex) {
             return types[columnIndex];
         }
     };
-    
+
     public Menu() {
         initComponents();
         this.setLocationRelativeTo(null);
@@ -87,6 +89,7 @@ public class Menu extends javax.swing.JFrame {
         llenarText();
         llenarCombo();
         llenarComboCliente();
+        llenarComboV();
     }
 
     /**
@@ -323,6 +326,9 @@ public class Menu extends javax.swing.JFrame {
         jlCamposOblig = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
         jTextField1 = new javax.swing.JTextField();
+        jdcFechaAgr = new com.toedter.calendar.JDateChooser();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        jListaCantidad = new javax.swing.JList<>();
         jtpListaVentas = new javax.swing.JPanel();
         jlListaVenta = new javax.swing.JLabel();
         ScrollTablaVentas = new javax.swing.JScrollPane();
@@ -1782,7 +1788,7 @@ public class Menu extends javax.swing.JFrame {
                 jCBBuscarClienElimClienActionPerformed(evt);
             }
         });
-        jtpElimClien.add(jCBBuscarClienElimClien, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 120, 200, 30));
+        jtpElimClien.add(jCBBuscarClienElimClien, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 120, 290, 30));
 
         jSElimClien1.setBackground(new java.awt.Color(0, 150, 136));
         jSElimClien1.setOpaque(true);
@@ -1918,9 +1924,14 @@ public class Menu extends javax.swing.JFrame {
         jlAgrVentas.setText("Agregar Venta");
         jtpAgrVenta.add(jlAgrVentas, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 40, -1, -1));
 
+        jListaProductos.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jListaProductosMouseClicked(evt);
+            }
+        });
         ScrollListPro.setViewportView(jListaProductos);
 
-        jtpAgrVenta.add(ScrollListPro, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 260, 200, -1));
+        jtpAgrVenta.add(ScrollListPro, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 260, 160, 130));
 
         jlSelecProVenta.setFont(new java.awt.Font("Corbel", 1, 14)); // NOI18N
         jlSelecProVenta.setForeground(new java.awt.Color(153, 153, 153));
@@ -1954,6 +1965,17 @@ public class Menu extends javax.swing.JFrame {
         jlAgrVenta.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         jlAgrVenta.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         jlAgrVenta.setOpaque(true);
+        jlAgrVenta.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jlAgrVentaMouseClicked(evt);
+            }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                jlAgrVentaMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                jlAgrVentaMouseExited(evt);
+            }
+        });
         jtpAgrVenta.add(jlAgrVenta, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 220, 80, 30));
 
         jlEliminarProList.setBackground(new java.awt.Color(0, 150, 136));
@@ -1966,6 +1988,9 @@ public class Menu extends javax.swing.JFrame {
         jlEliminarProList.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         jlEliminarProList.setOpaque(true);
         jlEliminarProList.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jlEliminarProListMouseClicked(evt);
+            }
             public void mouseEntered(java.awt.event.MouseEvent evt) {
                 jlEliminarProListMouseEntered(evt);
             }
@@ -2039,6 +2064,16 @@ public class Menu extends javax.swing.JFrame {
 
         jTextField1.setFont(new java.awt.Font("Corbel", 1, 14)); // NOI18N
         jtpAgrVenta.add(jTextField1, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 230, 200, 30));
+        jtpAgrVenta.add(jdcFechaAgr, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 110, 200, 30));
+
+        jListaCantidad.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jListaCantidadMouseClicked(evt);
+            }
+        });
+        jScrollPane1.setViewportView(jListaCantidad);
+
+        jtpAgrVenta.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 260, 40, 130));
 
         jtpEscritorio.addTab("tab13", jtpAgrVenta);
 
@@ -2529,9 +2564,9 @@ public class Menu extends javax.swing.JFrame {
         borrarFilaC();
         String nombre = jtfBuscadorClienListClien.getText().toUpperCase();
         for (Cliente cli : cD.listarClientes()) {
-            if(cli.getApellido().trim().toUpperCase().contains(nombre)){
+            if (cli.getApellido().trim().toUpperCase().contains(nombre)) {
                 Modelo1.addRow(new Object[]{cli.getIdCliente(), cli.getApellido(), cli.getNombre(), cli.getDomicilio(), cli.getTelefono()});
-                  }
+            }
         }
     }//GEN-LAST:event_jlImgBusquedaMouseClicked
 
@@ -2679,7 +2714,7 @@ public class Menu extends javax.swing.JFrame {
                     c1.setApellido(jTFApellidoClienteAgrClien.getText());
                     c1.setNombre(jTFNombreClienteAgrClien.getText());
                     c1.setDomicilio(jTFDomicilioClienteAgrClien.getText());
-                    c1.setTelefono(jTFTelefonoClienteAg.getText()); 
+                    c1.setTelefono(jTFTelefonoClienteAg.getText());
                     clienteD.guardarCliente(c1);
                     borrarCamposAgCliente();
                 } else {
@@ -2711,7 +2746,7 @@ public class Menu extends javax.swing.JFrame {
                     JOptionPane.showMessageDialog(this, "Ya hay un producto con ese nombre si quiere modificarlo vaya a la pestaña de modificar producto");
                 }
             } catch (NullPointerException ex) {
-                
+
             }
         }
     }//GEN-LAST:event_jLBtnAgregarProdMousePressed
@@ -2734,7 +2769,7 @@ public class Menu extends javax.swing.JFrame {
                     || !jTFApellidoModClien.getText().equalsIgnoreCase(cli.getApellido())
                     || !jTFDomicilioModClien.getText().equalsIgnoreCase(cli.getDomicilio())
                     || !jTFTelefonoModClien.getText().equalsIgnoreCase(cli.getTelefono())) {
-                
+
                 cli.setIdCliente(cli.getIdCliente());
                 cli.setApellido(jTFApellidoModClien.getText());
                 cli.setNombre(jTFNombreClienModClien.getText());
@@ -2752,29 +2787,73 @@ public class Menu extends javax.swing.JFrame {
         jTFNombreClienElimClien.setText(cli.getNombre());
         jTFDomicilioElimClien.setText(cli.getDomicilio());
         jTFTelefonoElimClien.setText(cli.getTelefono());
-     
-     
+
+
     }//GEN-LAST:event_jCBBuscarClienElimClienActionPerformed
 
     private void jLBtnEliminarElimClienMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLBtnEliminarElimClienMouseClicked
-        try{
-        Cliente cli = (Cliente) jCBBuscarClienElimClien.getSelectedItem();
-        if (jTFApellidoClienElimClien.getText().trim().isEmpty() || jTFNombreClienElimClien.getText().trim().isEmpty()
-                || jTFDomicilioElimClien.getText().trim().isEmpty() || jTFTelefonoElimClien.getText().trim().isEmpty()) {
-            JOptionPane.showMessageDialog(null, "No pude haber campos vacios.");
-        } else {
-            cD.eliminarCliente(cli.getIdCliente());
-            jCBBuscarClienElimClien.removeItemAt(jCBBuscarClienElimClien.getSelectedIndex());
+        try {
+            Cliente cli = (Cliente) jCBBuscarClienElimClien.getSelectedItem();
+            if (jTFApellidoClienElimClien.getText().trim().isEmpty() || jTFNombreClienElimClien.getText().trim().isEmpty()
+                    || jTFDomicilioElimClien.getText().trim().isEmpty() || jTFTelefonoElimClien.getText().trim().isEmpty()) {
+                JOptionPane.showMessageDialog(null, "No pude haber campos vacios.");
+            } else {
+                cD.eliminarCliente(cli.getIdCliente());
+                jCBBuscarClienElimClien.removeItemAt(jCBBuscarClienElimClien.getSelectedIndex());
+            }
+        } catch (NullPointerException ex) {
         }
-        } catch (NullPointerException ex){
-            
-        }
-        
     }//GEN-LAST:event_jLBtnEliminarElimClienMouseClicked
 
     private void jtfBuscadorClienListClienKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jtfBuscadorClienListClienKeyTyped
         controlLetras(evt);
     }//GEN-LAST:event_jtfBuscadorClienListClienKeyTyped
+
+    private void jlAgrVentaMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jlAgrVentaMouseEntered
+        jlAgrVenta.setBackground(verdeClaro);
+    }//GEN-LAST:event_jlAgrVentaMouseEntered
+
+    private void jlAgrVentaMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jlAgrVentaMouseExited
+        jlAgrVenta.setBackground(verdeBase);
+    }//GEN-LAST:event_jlAgrVentaMouseExited
+
+    private void jlAgrVentaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jlAgrVentaMouseClicked
+        if (jtfCantidadVenta.getText().trim().isEmpty() || jcbProVenta.getSelectedItem() == null) {
+            JOptionPane.showMessageDialog(this, "Ingrese datos de Cantidad y Producto");
+        } else {
+            listaPro.addElement(jcbProVenta.getSelectedItem());
+            listaCan.addElement(Integer.valueOf(jtfCantidadVenta.getText().trim()));
+            jListaProductos.setModel(listaPro);
+            jListaCantidad.setModel(listaCan);
+        }
+    }//GEN-LAST:event_jlAgrVentaMouseClicked
+
+    private void jListaProductosMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jListaProductosMouseClicked
+        if (jListaProductos.getSelectedIndex() >= 0) {
+            int a = jListaProductos.getSelectedIndex();
+            jListaCantidad.setSelectedIndex(a);
+        }
+    }//GEN-LAST:event_jListaProductosMouseClicked
+
+    private void jListaCantidadMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jListaCantidadMouseClicked
+        if (jListaCantidad.getSelectedIndex() >= 0) {
+            int a = jListaCantidad.getSelectedIndex();
+            jListaProductos.setSelectedIndex(a);
+        }
+    }//GEN-LAST:event_jListaCantidadMouseClicked
+
+    private void jlEliminarProListMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jlEliminarProListMouseClicked
+        try {
+            int can = jListaCantidad.getSelectedIndex();
+            int pro = jListaProductos.getSelectedIndex();
+            listaCan.removeElementAt(can);
+            listaPro.removeElementAt(pro);
+            jListaCantidad.setModel(listaCan);
+            jListaProductos.setModel(listaPro);
+        } catch (ArrayIndexOutOfBoundsException ex) {
+            JOptionPane.showMessageDialog(this, "Debe seleccionar un elemento de la lista");
+        }
+    }//GEN-LAST:event_jlEliminarProListMouseClicked
 
     /**
      * @param args the command line arguments
@@ -2868,6 +2947,7 @@ public class Menu extends javax.swing.JFrame {
     private javax.swing.JLabel jLTituloListaClien;
     private javax.swing.JLabel jLTituloModClien;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JList<Integer> jListaCantidad;
     private javax.swing.JList<Producto> jListaProductos;
     private javax.swing.JPanel jPanelCabecera;
     private javax.swing.JPanel jPanelOpciones;
@@ -2898,6 +2978,7 @@ public class Menu extends javax.swing.JFrame {
     private javax.swing.JSeparator jSModProd2;
     private javax.swing.JSeparator jSModProd3;
     private javax.swing.JSeparator jSModProd4;
+    private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTextField jTFApellidoClienElimClien;
     private javax.swing.JTextField jTFApellidoClienteAgrClien;
     private javax.swing.JTextField jTFApellidoModClien;
@@ -2928,6 +3009,7 @@ public class Menu extends javax.swing.JFrame {
     private javax.swing.JComboBox<Cliente> jcbClienteModifCli;
     private javax.swing.JComboBox<Producto> jcbProVenta;
     private javax.swing.JComboBox<Producto> jcbProductos;
+    private com.toedter.calendar.JDateChooser jdcFechaAgr;
     private javax.swing.JLabel jlAgrVenta;
     private javax.swing.JLabel jlAgrVentas;
     private javax.swing.JLabel jlAgregar;
@@ -3075,13 +3157,13 @@ public class Menu extends javax.swing.JFrame {
             Modelo.removeRow(f);
         }
     }
-    
+
     private void borrarFilaC() {
         for (int i = jtListClien.getRowCount() - 1; i >= 0; i--) {
             Modelo1.removeRow(i);
         }
     }
-    
+
     private void llenarText() {
         text1.setText("<html>Registrar productos: Los usuarios podrán agregar nuevos productos al inventario proporcionando información como nombre, descripción, precio y cantidad disponible</html>");
         text2.setText("<html>Realizar ventas: Los usuarios podrán registrar las ventas de productos a los clientes. el cliente que realiza la compra y la fecha de venta</html>");
@@ -3096,13 +3178,15 @@ public class Menu extends javax.swing.JFrame {
         textVentaD.setText("<html>Detallar Venta: Lista completa de los datos de una venta registrada</html>");
         textVentaE.setText("<html>Eliminar Venta: Permite dar de baja el registro de una venta para su posterior eliminación");
     }
-    
+
     private void llenarCombo() {
         for (Producto pro : pd.listarProducto()) {
             jcbProductos.addItem(pro);
+            jCBBuscarProdElimProd.addItem(pro);
+            jcbProVenta.addItem(pro);
         }
     }
-    
+
     private void llenarComboCliente() {
         jCBBuscarClienElimClien.addItem(null);
         for (Cliente cli : cD.listarClientes()) {
@@ -3110,28 +3194,34 @@ public class Menu extends javax.swing.JFrame {
             jCBBuscarClienElimClien.addItem(cli);
         }
     }
-    
+
+    private void llenarComboV() {
+        for (Venta ven : vd.listaVenta()){
+            jcbBuscarVenta.addItem(ven);
+        }
+    }
+
     private void borrarCamposAgCliente() {
         jTFApellidoClienteAgrClien.setText("");
         jTFApellidoClienteAgrClien.setText("");
         jTFDomicilioClienteAgrClien.setText("");
         jTFTelefonoClienteAg.setText("");
     }
-    
+
     public void borrarCamposModCli() {
         jTFNombreClienModClien.setText("");
         jTFApellidoModClien.setText("");
         jTFDomicilioModClien.setText("");
         jTFTelefonoModClien.setText("");
     }
-    
+
     public void borrarCamposElimCli() {
         jTFNombreClienElimClien.setText("");
         jTFApellidoClienElimClien.setText("");
         jTFDomicilioElimClien.setText("");
         jTFTelefonoElimClien.setText("");
     }
-    
+
     private void controlLetras(java.awt.event.KeyEvent evt) {
         if (!Character.isLetter(evt.getKeyChar())
                 && !(evt.getKeyChar() == KeyEvent.VK_SPACE)
@@ -3139,11 +3229,14 @@ public class Menu extends javax.swing.JFrame {
             evt.consume();
         }
     }
-    
+
     private void controlNumeros(java.awt.event.KeyEvent evt) {
         if (Character.isLetter(evt.getKeyChar())
                 && !(evt.getKeyChar() == KeyEvent.VK_SPACE)) {
             evt.consume();
         }
     }
+
+    DefaultListModel listaPro = new DefaultListModel();
+    DefaultListModel listaCan = new DefaultListModel();
 }
