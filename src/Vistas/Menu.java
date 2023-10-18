@@ -2767,6 +2767,7 @@ public class Menu extends javax.swing.JFrame {
 
             }
         }
+        borrarCamposAgrProd();
     }//GEN-LAST:event_jLBtnAgregarProdMousePressed
 
     private void jcbClienteModifCliActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jcbClienteModifCliActionPerformed
@@ -2901,6 +2902,7 @@ public class Menu extends javax.swing.JFrame {
         }catch (NullPointerException | NumberFormatException ex) {
             JOptionPane.showMessageDialog(this, "No puede haber campos vacios");
         }
+        borrarCamposElimProd();
     }//GEN-LAST:event_jLBtnEliminarElimProdMousePressed
 
     private void jLBtnModificarModProdMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLBtnModificarModProdMousePressed
@@ -2926,6 +2928,7 @@ public class Menu extends javax.swing.JFrame {
                 
             }
         }
+        borrarCamposModProd();
     }//GEN-LAST:event_jLBtnModificarModProdMousePressed
 
     private void jcbProductosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jcbProductosActionPerformed
@@ -3306,6 +3309,27 @@ public class Menu extends javax.swing.JFrame {
         jTFApellidoClienElimClien.setText("");
         jTFDomicilioElimClien.setText("");
         jTFTelefonoElimClien.setText("");
+    }
+    
+    public void borrarCamposAgrProd(){
+        jTFNombreProductoAgrProd.setText("");
+        jTFPrecioActualAgrProd.setText("");
+        jTFDescripcionAgrProd.setText("");
+        jTFStockAgrProd.setText("");
+    }
+    
+    public void borrarCamposModProd(){
+        jTFNombreProdModProd.setText("");
+        jTFDescripcionModProd.setText("");
+        jTFPrecioActualModProd.setText("");
+        jTFStockModProd.setText("");
+    }
+    
+    public void borrarCamposElimProd(){
+        jTFNombreProdElimProd.setText("");
+        jTFDescripcionElimProd.setText("");
+        jTFPrecioActuaElimProd.setText("");
+        jTFStockElimProd.setText("");
     }
 
     private void controlLetras(java.awt.event.KeyEvent evt) {
