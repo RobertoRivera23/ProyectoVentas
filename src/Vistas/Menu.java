@@ -1344,9 +1344,9 @@ public class Menu extends javax.swing.JFrame {
         jtpEliminarPro.add(jLBuscarProdElimProd, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 100, -1, -1));
 
         jCBBuscarProdElimProd.setFont(new java.awt.Font("Corbel", 1, 14)); // NOI18N
-        jCBBuscarProdElimProd.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jCBBuscarProdElimProdMouseClicked(evt);
+        jCBBuscarProdElimProd.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jCBBuscarProdElimProdActionPerformed(evt);
             }
         });
         jtpEliminarPro.add(jCBBuscarProdElimProd, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 120, 200, 30));
@@ -1532,9 +1532,9 @@ public class Menu extends javax.swing.JFrame {
 
         jcbProductos.setFont(new java.awt.Font("Corbel", 1, 14)); // NOI18N
         jcbProductos.setForeground(new java.awt.Color(0, 102, 102));
-        jcbProductos.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jcbProductosMouseClicked(evt);
+        jcbProductos.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jcbProductosActionPerformed(evt);
             }
         });
         jtpModPro.add(jcbProductos, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 120, 200, 30));
@@ -2881,22 +2881,6 @@ public class Menu extends javax.swing.JFrame {
 //        jdcFechaVentEliminar.setDate(Date.valueOf(venta.getFechaVenta()));
     }//GEN-LAST:event_jcbBuscarVentaActionPerformed
 
-    private void jcbProductosMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jcbProductosMouseClicked
-        Producto pro = (Producto) jcbProductos.getSelectedItem();
-        jTFNombreProdModProd.setText(pro.getNombreProducto());
-        jTFDescripcionModProd.setText(pro.getDescripcion());
-        jTFPrecioActualModProd.setText(pro.getPrecioActual()+"");
-        jTFStockModProd.setText(pro.getStock()+"");
-    }//GEN-LAST:event_jcbProductosMouseClicked
-
-    private void jCBBuscarProdElimProdMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jCBBuscarProdElimProdMouseClicked
-        Producto pro = (Producto) jCBBuscarProdElimProd.getSelectedItem();
-        jTFNombreProdElimProd.setText(pro.getNombreProducto());
-        jTFDescripcionElimProd.setText(pro.getDescripcion());
-        jTFPrecioActuaElimProd.setText(pro.getPrecioActual()+"");
-        jTFStockElimProd.setText(pro.getStock()+"");
-    }//GEN-LAST:event_jCBBuscarProdElimProdMouseClicked
-
     private void jLBtnEliminarElimProdMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLBtnEliminarElimProdMousePressed
         try{
             ProductoData proD = new ProductoData();
@@ -2943,6 +2927,22 @@ public class Menu extends javax.swing.JFrame {
             }
         }
     }//GEN-LAST:event_jLBtnModificarModProdMousePressed
+
+    private void jcbProductosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jcbProductosActionPerformed
+        Producto pro = (Producto) jcbProductos.getSelectedItem();
+        jTFNombreProdModProd.setText(pro.getNombreProducto());
+        jTFDescripcionModProd.setText(pro.getDescripcion());
+        jTFPrecioActualModProd.setText(pro.getPrecioActual()+"");
+        jTFStockModProd.setText(pro.getStock()+"");
+    }//GEN-LAST:event_jcbProductosActionPerformed
+
+    private void jCBBuscarProdElimProdActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jCBBuscarProdElimProdActionPerformed
+        Producto pro = (Producto) jCBBuscarProdElimProd.getSelectedItem();
+        jTFNombreProdElimProd.setText(pro.getNombreProducto());
+        jTFDescripcionElimProd.setText(pro.getDescripcion());
+        jTFPrecioActuaElimProd.setText(pro.getPrecioActual()+"");
+        jTFStockElimProd.setText(pro.getStock()+"");
+    }//GEN-LAST:event_jCBBuscarProdElimProdActionPerformed
 
     /**
      * @param args the command line arguments
