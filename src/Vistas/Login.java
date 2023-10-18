@@ -5,9 +5,12 @@
  */
 package Vistas;
 
+import AccesoDatos.EmpleadoData;
+import Entidades.Empleado;
 import static Vistas.Menu.verdeBase;
 import static Vistas.Menu.verdeClaro;
 import java.awt.Color;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -19,6 +22,7 @@ public class Login extends javax.swing.JFrame {
      * Creates new form Login
      */
     int xMouse, yMouse;
+    public static Empleado empleado;
 
     public Login() {
         initComponents();
@@ -106,9 +110,12 @@ public class Login extends javax.swing.JFrame {
         jLBtnIniciarSesion.setText("Iniciar sesión");
         jLBtnIniciarSesion.setVerticalAlignment(javax.swing.SwingConstants.BOTTOM);
         jLBtnIniciarSesion.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED, null, new java.awt.Color(0, 102, 102), null, null));
-        jLBtnIniciarSesion.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jLBtnIniciarSesion.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         jLBtnIniciarSesion.setOpaque(true);
         jLBtnIniciarSesion.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jLBtnIniciarSesionMouseClicked(evt);
+            }
             public void mouseEntered(java.awt.event.MouseEvent evt) {
                 jLBtnIniciarSesionMouseEntered(evt);
             }
@@ -146,7 +153,7 @@ public class Login extends javax.swing.JFrame {
         jLMinimiza.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLMinimiza.setText("_");
         jLMinimiza.setVerticalAlignment(javax.swing.SwingConstants.TOP);
-        jLMinimiza.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jLMinimiza.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         jLMinimiza.setOpaque(true);
         jLMinimiza.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -166,7 +173,7 @@ public class Login extends javax.swing.JFrame {
         jLCierra.setForeground(new java.awt.Color(255, 255, 255));
         jLCierra.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLCierra.setText("X");
-        jLCierra.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jLCierra.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         jLCierra.setOpaque(true);
         jLCierra.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -252,6 +259,47 @@ public class Login extends javax.swing.JFrame {
         int y = evt.getYOnScreen();
         this.setLocation(x - xMouse, y - yMouse);
     }//GEN-LAST:event_jPanel1MouseDragged
+
+    private void jLBtnIniciarSesionMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLBtnIniciarSesionMouseClicked
+        int cont = 0;
+        EmpleadoData eD = new EmpleadoData();
+        if(jTFUsuario.getText().isEmpty() || jTFUsuario.getText().isEmpty() || jCBCargo.getSelectedItem()== null){
+            JOptionPane.showMessageDialog(null, "No puede haber campos vacios");
+        } else {
+        try{
+        for (Empleado emp : eD.listarEmpleado()) {
+            if (emp.getUsuario().equals(jTFUsuario.getText()) && emp.getContraenia().equals(jTContraseña.getText())
+                    && emp.getCargo().equals(jCBCargo.getSelectedItem())) {
+                cont++;
+                empleado = new Empleado();
+                empleado.setIdEmpleado(emp.getIdEmpleado());
+                empleado.setApellido(emp.getApellido());
+                empleado.setNombre(emp.getNombre());
+                empleado.setDni(emp.getDni());
+                empleado.setCargo(emp.getCargo());
+                empleado.setUsuario(emp.getUsuario());
+                empleado.setContraenia(emp.getContraenia());
+                empleado.setEstado(emp.isEstado());
+            //Instanciamos Menu 
+                Menu menu = new Menu();
+            // traemos los eventos a traves de las ventanas creadas
+//                java.awt.EventQueue.invokeLater(new Runnable() {
+//            public void run() {
+                new Menu().setVisible(true);
+//            }
+//        });
+                dispose();
+                break;
+            }
+        } 
+        }catch(NullPointerException ex) {
+            
+        }
+        if (cont == 0) {
+            JOptionPane.showMessageDialog(null, "El Ususario, Contraseña y/o Cargo, son incorrectos");
+        } 
+        }
+    }//GEN-LAST:event_jLBtnIniciarSesionMouseClicked
 
     /**
      * @param args the command line arguments
