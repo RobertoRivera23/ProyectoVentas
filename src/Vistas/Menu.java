@@ -92,7 +92,7 @@ public class Menu extends javax.swing.JFrame {
         jtListClien.setModel(Modelo1);
         llenarText();
         llenarCombo();
-        llenarComboCliente();
+//        llenarComboCliente();
         llenarComboV();
     }
 
@@ -2817,7 +2817,7 @@ public class Menu extends javax.swing.JFrame {
             } else {
                 cD.eliminarCliente(cli.getIdCliente());
                 jCBBuscarClienElimClien.removeItemAt(jCBBuscarClienElimClien.getSelectedIndex());
-            }
+              }
         } catch (NullPointerException ex) {
         }
     }//GEN-LAST:event_jLBtnEliminarElimClienMouseClicked
@@ -2915,6 +2915,7 @@ public class Menu extends javax.swing.JFrame {
                 int opcion = JOptionPane.showConfirmDialog(this, "¿Desea Modificar los Datos?", "Seleccione una opcion", JOptionPane.YES_NO_OPTION);
                 switch(opcion){
                     case 0:
+                        pro.setIdProducto(pro.getIdProducto());
                         pro.setNombreProducto(jTFNombreProdModProd.getText());
                         pro.setDescripcion(jTFDescripcionModProd.getText());
                         pro.setPrecioActual(Double.parseDouble(jTFPrecioActualModProd.getText()));
