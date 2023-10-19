@@ -2703,20 +2703,19 @@ public class Menu extends javax.swing.JFrame {
     }//GEN-LAST:event_jLBtnAgregarClienteMouseExited
 
     private void jLBtnAgregarClienteMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLBtnAgregarClienteMouseClicked
-        ClienteData clienteD = new ClienteData();
         if (jTFTelefonoClienteAg.getText().trim().isEmpty() || jTFNombreClienteAgrClien.getText().trim().isEmpty()
                 || jTFDomicilioClienteAgrClien.getText().trim().isEmpty() || jTFApellidoClienteAgrClien.getText().trim().isEmpty()) {
             JOptionPane.showMessageDialog(null, "No puede haber campos vacios.");
         } else {
             try {
-                Cliente cli = clienteD.buscarClientePorTel(jTFApellidoClienteAgrClien.getText());
+                Cliente cli = cD.buscarClientePorTel(jTFApellidoClienteAgrClien.getText());
                 if (cli == null) {
                     Cliente c1 = new Cliente();
                     c1.setApellido(jTFApellidoClienteAgrClien.getText());
                     c1.setNombre(jTFNombreClienteAgrClien.getText());
                     c1.setDomicilio(jTFDomicilioClienteAgrClien.getText());
                     c1.setTelefono(jTFTelefonoClienteAg.getText());
-                    clienteD.guardarCliente(c1);
+                    cD.guardarCliente(c1);
                     borrarCamposAgCliente();
                 } else {
                     JOptionPane.showMessageDialog(null, "Ya existe un producto similar, si desea modificar el producto"
@@ -2733,8 +2732,7 @@ public class Menu extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(this, "No puede haber campos vacios");
         } else {
             try {
-                ProductoData productoD = new ProductoData();
-                Producto producto = productoD.buscarProductoPorNombre(jTFNombreProductoAgrProd.getText());
+                Producto producto = pd.buscarProductoPorNombre(jTFNombreProductoAgrProd.getText());
                 if (producto == null) {
                     Producto product = new Producto();
                     product.setNombreProducto(jTFNombreProductoAgrProd.getText());
@@ -2742,12 +2740,11 @@ public class Menu extends javax.swing.JFrame {
                     product.setPrecioActual(Double.parseDouble(jTFPrecioActualAgrProd.getText()));
                     product.setStock(Integer.parseInt(jTFStockAgrProd.getText()));
                     product.setEstado(true);
-                    productoD.guardarProducto(product);
+                    pd.guardarProducto(product);
                 } else {
                     JOptionPane.showMessageDialog(this, "Ya hay un producto con ese nombre si quiere modificarlo vaya a la pestaña de modificar producto");
                 }
             } catch (NullPointerException ex) {
-
             }
         }
         borrarCamposAgrProd();
@@ -2775,8 +2772,6 @@ public class Menu extends javax.swing.JFrame {
                         || !jTFApellidoModClien.getText().equalsIgnoreCase(cli.getApellido())
                         || !jTFDomicilioModClien.getText().equalsIgnoreCase(cli.getDomicilio())
                         || !jTFTelefonoModClien.getText().equalsIgnoreCase(cli.getTelefono())) {
-
-                    cli.setIdCliente(cli.getIdCliente());
                     cli.setApellido(jTFApellidoModClien.getText());
                     cli.setNombre(jTFNombreClienModClien.getText());
                     cli.setDomicilio(jTFDomicilioModClien.getText());
@@ -2819,7 +2814,6 @@ public class Menu extends javax.swing.JFrame {
     }//GEN-LAST:event_jtfBuscadorClienListClienKeyTyped
 
     private void jcbBuscarVentaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jcbBuscarVentaActionPerformed
-        DetalleVentasData dvd = new DetalleVentasData();
         Venta venta = (Venta) jcbBuscarVenta.getSelectedItem();
         DetalleVenta dv = dvd.buscarDetalleProVenta(venta.getIdVenta());
         jtfNombreProEliminar.setText(dv.getProducto().getNombreProducto());
@@ -2830,14 +2824,13 @@ public class Menu extends javax.swing.JFrame {
 
     private void jLBtnEliminarElimProdMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLBtnEliminarElimProdMousePressed
         try {
-            ProductoData proD = new ProductoData();
-            Producto pro = proD.buscarProductoPorNombre(jTFNombreProdElimProd.getText().trim());
+            Producto pro = pd.buscarProductoPorNombre(jTFNombreProdElimProd.getText().trim());
             if (pro.getNombreProducto().trim().equals(jTFNombreProdElimProd.getText()) && pro.getDescripcion().trim().equals(jTFDescripcionElimProd.getText())
                     && pro.getPrecioActual() == Double.parseDouble(jTFPrecioActuaElimProd.getText()) && pro.getStock() == Integer.parseInt(jTFStockElimProd.getText())) {
                 int opcion = JOptionPane.showConfirmDialog(this, "Esta seguro que desea eliminar el alumno?", "Selecione una opcion", JOptionPane.YES_NO_OPTION);
                 switch (opcion) {
                     case 0:
-                        proD.eliminarProducto(pro.getIdProducto());
+                        pd.eliminarProducto(pro.getIdProducto());
                         break;
                     case 1:
                         break;
