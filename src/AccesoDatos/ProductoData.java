@@ -79,7 +79,7 @@ public class ProductoData {
             ResultSet rs = ps.executeQuery();
             if(rs.next()){
                 producto = new Producto();
-                producto.setIdProducto(rs.getInt("idProducto"));
+//                producto.setIdProducto(rs.getInt("idProducto"));
                 producto.setNombreProducto(rs.getString(nombre));
                 producto.setDescripcion(rs.getString("descripcion"));
                 producto.setPrecioActual(rs.getDouble("precioActual"));
