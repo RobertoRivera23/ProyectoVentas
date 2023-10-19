@@ -10,19 +10,20 @@ import AccesoDatos.DetalleVentasData;
 import AccesoDatos.EmpleadoData;
 import AccesoDatos.ProductoData;
 import AccesoDatos.VentasData;
+
 import Entidades.Cliente;
 import Entidades.DetalleVenta;
 import Entidades.Empleado;
 import Entidades.Producto;
 import Entidades.Venta;
+import Entidades.*;
 import Utilidades.TablaFraveMax;
 import java.awt.Color;
 import java.awt.event.KeyEvent;
 import java.sql.Date;
-import javax.swing.DefaultListModel;
+import java.time.ZoneId;
 import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
-import javax.swing.UIManager;
 import javax.swing.table.DefaultTableModel;
 
 /**
@@ -35,11 +36,14 @@ public class Menu extends javax.swing.JFrame {
     private ClienteData cD = new ClienteData();
     private VentasData vd = new VentasData();
     private EmpleadoData eD = new EmpleadoData();
+    private DetalleVentasData dvd = new DetalleVentasData();
+    private EmpleadoData ed = new EmpleadoData();
     private int xMouse, yMouse;
     public static Color verdeBase = new Color(0, 150, 136);
     public static Color verdeClaro = new Color(10, 170, 140);
     public static Color grisBase = new Color(51, 51, 76);
     public static Color grisClaro = new Color(66, 66, 76);
+    private double precioTotal;
 
     public DefaultTableModel Modelo = new DefaultTableModel(
             null,
@@ -100,6 +104,8 @@ public class Menu extends javax.swing.JFrame {
         llenarComboEmpelado();
         llenarComboCargo();
         //empleadosVisible(); // PARA MOSTRAR JLEMPLEADOS 
+        empleadosVisible(); // PARA MOSTRAR JLEMPLEADOS 
+        jlNombreUsuario.setText(Login.empleado.getNombre() + " " + Login.empleado.getApellido());
     }
 
     /**
@@ -314,18 +320,14 @@ public class Menu extends javax.swing.JFrame {
         jtfBuscadorClienListClien = new javax.swing.JTextField();
         jlImgBusqueda = new javax.swing.JLabel();
         jtpAgrVenta = new javax.swing.JPanel();
-        jlAsteriscoTel = new javax.swing.JLabel();
+        jlAsteriscoEmp = new javax.swing.JLabel();
         jlAsteriscoFecha = new javax.swing.JLabel();
         jlAgrVentas = new javax.swing.JLabel();
-        ScrollListPro = new javax.swing.JScrollPane();
-        jListaProductos = new javax.swing.JList<>();
         jlSelecProVenta = new javax.swing.JLabel();
         jcbProVenta = new javax.swing.JComboBox<>();
         jlCantidadVenta = new javax.swing.JLabel();
         jtfCantidadVenta = new javax.swing.JTextField();
         jlAsteriscoPro = new javax.swing.JLabel();
-        jlAgrVenta = new javax.swing.JLabel();
-        jlEliminarProList = new javax.swing.JLabel();
         jlFechaVenta = new javax.swing.JLabel();
         jlTelCliente = new javax.swing.JLabel();
         jtfTelCliente = new javax.swing.JTextField();
@@ -335,10 +337,11 @@ public class Menu extends javax.swing.JFrame {
         jlAsteriscoCan = new javax.swing.JLabel();
         jlAsteriscoSup = new javax.swing.JLabel();
         jlCamposOblig = new javax.swing.JLabel();
-        jLabel1 = new javax.swing.JLabel();
-        jTextField1 = new javax.swing.JTextField();
-        jScrollPane1 = new javax.swing.JScrollPane();
-        jListaCantidad = new javax.swing.JList<>();
+        jlNombreEmp = new javax.swing.JLabel();
+        jtfNombreEmpVenta = new javax.swing.JTextField();
+        jlIconVentaAgr = new javax.swing.JLabel();
+        jdcAgrVenta = new com.toedter.calendar.JDateChooser();
+        jlAsteriscoTel1 = new javax.swing.JLabel();
         jtpListaVentas = new javax.swing.JPanel();
         jlListaVenta = new javax.swing.JLabel();
         ScrollTablaVentas = new javax.swing.JScrollPane();
@@ -2026,120 +2029,79 @@ public class Menu extends javax.swing.JFrame {
         jtpAgrVenta.setBackground(new java.awt.Color(255, 255, 255));
         jtpAgrVenta.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jlAsteriscoTel.setFont(new java.awt.Font("Corbel", 1, 14)); // NOI18N
-        jlAsteriscoTel.setForeground(new java.awt.Color(255, 0, 0));
-        jlAsteriscoTel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jlAsteriscoTel.setText("*");
-        jtpAgrVenta.add(jlAsteriscoTel, new org.netbeans.lib.awtextra.AbsoluteConstraints(520, 150, 10, -1));
+        jlAsteriscoEmp.setFont(new java.awt.Font("Corbel", 1, 14)); // NOI18N
+        jlAsteriscoEmp.setForeground(new java.awt.Color(255, 0, 0));
+        jlAsteriscoEmp.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jlAsteriscoEmp.setText("*");
+        jtpAgrVenta.add(jlAsteriscoEmp, new org.netbeans.lib.awtextra.AbsoluteConstraints(530, 280, 10, -1));
 
         jlAsteriscoFecha.setFont(new java.awt.Font("Corbel", 1, 14)); // NOI18N
         jlAsteriscoFecha.setForeground(new java.awt.Color(255, 0, 0));
         jlAsteriscoFecha.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jlAsteriscoFecha.setText("*");
-        jtpAgrVenta.add(jlAsteriscoFecha, new org.netbeans.lib.awtextra.AbsoluteConstraints(530, 90, 10, -1));
+        jtpAgrVenta.add(jlAsteriscoFecha, new org.netbeans.lib.awtextra.AbsoluteConstraints(530, 160, 10, -1));
 
         jlAgrVentas.setFont(new java.awt.Font("Corbel", 1, 30)); // NOI18N
         jlAgrVentas.setForeground(new java.awt.Color(153, 153, 153));
         jlAgrVentas.setText("Agregar Venta");
         jtpAgrVenta.add(jlAgrVentas, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 40, -1, -1));
 
-        jListaProductos.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jListaProductosMouseClicked(evt);
-            }
-        });
-        ScrollListPro.setViewportView(jListaProductos);
-
-        jtpAgrVenta.add(ScrollListPro, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 260, 160, 130));
-
         jlSelecProVenta.setFont(new java.awt.Font("Corbel", 1, 14)); // NOI18N
         jlSelecProVenta.setForeground(new java.awt.Color(153, 153, 153));
         jlSelecProVenta.setText("Seleccione el Producto en Venta");
-        jtpAgrVenta.add(jlSelecProVenta, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 90, 200, -1));
+        jtpAgrVenta.add(jlSelecProVenta, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 160, 200, -1));
 
         jcbProVenta.setFont(new java.awt.Font("Corbel", 1, 14)); // NOI18N
-        jtpAgrVenta.add(jcbProVenta, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 110, 200, 30));
+        jcbProVenta.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jcbProVentaActionPerformed(evt);
+            }
+        });
+        jtpAgrVenta.add(jcbProVenta, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 180, 200, 30));
 
         jlCantidadVenta.setFont(new java.awt.Font("Corbel", 1, 14)); // NOI18N
         jlCantidadVenta.setForeground(new java.awt.Color(153, 153, 153));
         jlCantidadVenta.setText("Ingrese la cantidad");
-        jtpAgrVenta.add(jlCantidadVenta, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 150, 200, -1));
+        jtpAgrVenta.add(jlCantidadVenta, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 220, 200, -1));
 
         jtfCantidadVenta.setFont(new java.awt.Font("Corbel", 1, 14)); // NOI18N
-        jtpAgrVenta.add(jtfCantidadVenta, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 170, 200, 30));
+        jtfCantidadVenta.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                jtfCantidadVentaKeyReleased(evt);
+            }
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                jtfCantidadVentaKeyTyped(evt);
+            }
+        });
+        jtpAgrVenta.add(jtfCantidadVenta, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 240, 200, 30));
 
         jlAsteriscoPro.setFont(new java.awt.Font("Corbel", 1, 14)); // NOI18N
         jlAsteriscoPro.setForeground(new java.awt.Color(255, 0, 0));
         jlAsteriscoPro.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jlAsteriscoPro.setText("*");
-        jtpAgrVenta.add(jlAsteriscoPro, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 90, 10, -1));
-
-        jlAgrVenta.setBackground(new java.awt.Color(0, 150, 136));
-        jlAgrVenta.setFont(new java.awt.Font("Corbel", 1, 14)); // NOI18N
-        jlAgrVenta.setForeground(new java.awt.Color(255, 255, 255));
-        jlAgrVenta.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jlAgrVenta.setText("Agregar");
-        jlAgrVenta.setVerticalAlignment(javax.swing.SwingConstants.BOTTOM);
-        jlAgrVenta.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
-        jlAgrVenta.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
-        jlAgrVenta.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
-        jlAgrVenta.setOpaque(true);
-        jlAgrVenta.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jlAgrVentaMouseClicked(evt);
-            }
-            public void mouseEntered(java.awt.event.MouseEvent evt) {
-                jlAgrVentaMouseEntered(evt);
-            }
-            public void mouseExited(java.awt.event.MouseEvent evt) {
-                jlAgrVentaMouseExited(evt);
-            }
-        });
-        jtpAgrVenta.add(jlAgrVenta, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 220, 80, 30));
-
-        jlEliminarProList.setBackground(new java.awt.Color(0, 150, 136));
-        jlEliminarProList.setFont(new java.awt.Font("Corbel", 1, 14)); // NOI18N
-        jlEliminarProList.setForeground(new java.awt.Color(255, 255, 255));
-        jlEliminarProList.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jlEliminarProList.setText("Eliminar");
-        jlEliminarProList.setVerticalAlignment(javax.swing.SwingConstants.BOTTOM);
-        jlEliminarProList.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
-        jlEliminarProList.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
-        jlEliminarProList.setOpaque(true);
-        jlEliminarProList.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jlEliminarProListMouseClicked(evt);
-            }
-            public void mouseEntered(java.awt.event.MouseEvent evt) {
-                jlEliminarProListMouseEntered(evt);
-            }
-            public void mouseExited(java.awt.event.MouseEvent evt) {
-                jlEliminarProListMouseExited(evt);
-            }
-        });
-        jtpAgrVenta.add(jlEliminarProList, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 220, 80, 30));
+        jtpAgrVenta.add(jlAsteriscoPro, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 160, 10, -1));
 
         jlFechaVenta.setFont(new java.awt.Font("Corbel", 1, 14)); // NOI18N
         jlFechaVenta.setForeground(new java.awt.Color(153, 153, 153));
         jlFechaVenta.setText("Selecciones la Fecha de la Venta");
-        jtpAgrVenta.add(jlFechaVenta, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 90, -1, -1));
+        jtpAgrVenta.add(jlFechaVenta, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 160, -1, -1));
 
         jlTelCliente.setFont(new java.awt.Font("Corbel", 1, 14)); // NOI18N
         jlTelCliente.setForeground(new java.awt.Color(153, 153, 153));
         jlTelCliente.setText("Ingrese el Telefono del Cliente");
-        jtpAgrVenta.add(jlTelCliente, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 150, -1, -1));
+        jtpAgrVenta.add(jlTelCliente, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 220, -1, -1));
 
         jtfTelCliente.setFont(new java.awt.Font("Corbel", 1, 14)); // NOI18N
-        jtpAgrVenta.add(jtfTelCliente, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 170, 200, 30));
+        jtpAgrVenta.add(jtfTelCliente, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 240, 200, 30));
 
         jlPrecioVenta.setFont(new java.awt.Font("Corbel", 1, 14)); // NOI18N
         jlPrecioVenta.setForeground(new java.awt.Color(153, 153, 153));
         jlPrecioVenta.setText("Precio Total de Venta");
-        jtpAgrVenta.add(jlPrecioVenta, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 270, -1, -1));
+        jtpAgrVenta.add(jlPrecioVenta, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 280, -1, -1));
 
         jtfPrecioVenta.setEditable(false);
         jtfPrecioVenta.setFont(new java.awt.Font("Corbel", 1, 14)); // NOI18N
-        jtpAgrVenta.add(jtfPrecioVenta, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 290, 200, 30));
+        jtpAgrVenta.add(jtfPrecioVenta, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 300, 200, 30));
 
         jlRealizarVenta.setBackground(new java.awt.Color(0, 150, 136));
         jlRealizarVenta.setFont(new java.awt.Font("Corbel", 1, 14)); // NOI18N
@@ -2151,6 +2113,9 @@ public class Menu extends javax.swing.JFrame {
         jlRealizarVenta.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         jlRealizarVenta.setOpaque(true);
         jlRealizarVenta.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jlRealizarVentaMouseClicked(evt);
+            }
             public void mouseEntered(java.awt.event.MouseEvent evt) {
                 jlRealizarVentaMouseEntered(evt);
             }
@@ -2158,40 +2123,42 @@ public class Menu extends javax.swing.JFrame {
                 jlRealizarVentaMouseExited(evt);
             }
         });
-        jtpAgrVenta.add(jlRealizarVenta, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 350, 120, 30));
+        jtpAgrVenta.add(jlRealizarVenta, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 350, 120, 30));
 
         jlAsteriscoCan.setFont(new java.awt.Font("Corbel", 1, 14)); // NOI18N
         jlAsteriscoCan.setForeground(new java.awt.Color(255, 0, 0));
         jlAsteriscoCan.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jlAsteriscoCan.setText("*");
-        jtpAgrVenta.add(jlAsteriscoCan, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 150, 10, -1));
+        jtpAgrVenta.add(jlAsteriscoCan, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 220, 10, -1));
 
         jlAsteriscoSup.setFont(new java.awt.Font("Corbel", 1, 12)); // NOI18N
         jlAsteriscoSup.setForeground(new java.awt.Color(255, 0, 0));
         jlAsteriscoSup.setText("*");
-        jtpAgrVenta.add(jlAsteriscoSup, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 390, 30, -1));
+        jtpAgrVenta.add(jlAsteriscoSup, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 390, 30, -1));
 
         jlCamposOblig.setFont(new java.awt.Font("Corbel", 0, 12)); // NOI18N
         jlCamposOblig.setForeground(new java.awt.Color(153, 153, 153));
         jlCamposOblig.setText("Los campos con ( ) son Obligatorios");
-        jtpAgrVenta.add(jlCamposOblig, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 390, 190, -1));
+        jtpAgrVenta.add(jlCamposOblig, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 390, 190, -1));
 
-        jLabel1.setFont(new java.awt.Font("Corbel", 1, 14)); // NOI18N
-        jLabel1.setForeground(new java.awt.Color(153, 153, 153));
-        jLabel1.setText("Ingrese el Nombre del Cliente");
-        jtpAgrVenta.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 210, -1, -1));
+        jlNombreEmp.setFont(new java.awt.Font("Corbel", 1, 14)); // NOI18N
+        jlNombreEmp.setForeground(new java.awt.Color(153, 153, 153));
+        jlNombreEmp.setText("Ingrese el Nombre del Empleado");
+        jtpAgrVenta.add(jlNombreEmp, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 280, -1, -1));
 
-        jTextField1.setFont(new java.awt.Font("Corbel", 1, 14)); // NOI18N
-        jtpAgrVenta.add(jTextField1, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 230, 200, 30));
+        jtfNombreEmpVenta.setFont(new java.awt.Font("Corbel", 1, 14)); // NOI18N
+        jtpAgrVenta.add(jtfNombreEmpVenta, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 300, 200, 30));
 
-        jListaCantidad.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jListaCantidadMouseClicked(evt);
-            }
-        });
-        jScrollPane1.setViewportView(jListaCantidad);
+        jlIconVentaAgr.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jlIconVentaAgr.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Image/flecha-del-carrito-hacia-abajo.png"))); // NOI18N
+        jtpAgrVenta.add(jlIconVentaAgr, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 20, 210, 150));
+        jtpAgrVenta.add(jdcAgrVenta, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 180, 200, 30));
 
-        jtpAgrVenta.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 260, 40, 130));
+        jlAsteriscoTel1.setFont(new java.awt.Font("Corbel", 1, 14)); // NOI18N
+        jlAsteriscoTel1.setForeground(new java.awt.Color(255, 0, 0));
+        jlAsteriscoTel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jlAsteriscoTel1.setText("*");
+        jtpAgrVenta.add(jlAsteriscoTel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(520, 220, 10, -1));
 
         jtpEscritorio.addTab("tab13", jtpAgrVenta);
 
@@ -2996,13 +2963,16 @@ public class Menu extends javax.swing.JFrame {
        jtpEscritorio.setSelectedIndex(17);
     }//GEN-LAST:event_jLEmpleadosMouseClicked
 
-    private void jLEmpleadosMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLEmpleadosMouseEntered
+    private void jLEmpleadosMouseEntered(java.awt.event.MouseEvent evt) {                                         
        jLEmpleados.setBackground(grisClaro);
-    }//GEN-LAST:event_jLEmpleadosMouseEntered
+    }                                        
 
-    private void jLEmpleadosMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLEmpleadosMouseExited
+    private void jLEmpleadosMouseExited(java.awt.event.MouseEvent evt) {                                        
         jLEmpleados.setBackground(grisBase);
-    }//GEN-LAST:event_jLEmpleadosMouseExited
+    }                                       
+    private void jlRealizarVentaMouseEntered(java.awt.event.MouseEvent evt) {                                             
+        jlRealizarVenta.setBackground(verdeClaro);
+    }                                            
 
     private void jlEliminarVentaBorrarMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jlEliminarVentaBorrarMouseExited
         jlEliminarVenta.setBackground(verdeBase);
@@ -3012,7 +2982,7 @@ public class Menu extends javax.swing.JFrame {
         jlEliminarVenta.setBackground(verdeClaro);
     }//GEN-LAST:event_jlEliminarVentaBorrarMouseEntered
 
-    private void jcbBuscarVentaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jcbBuscarVentaActionPerformed
+    private void jcbBuscarVentaActionPerformed(java.awt.event.ActionEvent evt) {                                               
         DetalleVentasData dvd = new DetalleVentasData();
         Venta venta = (Venta) jcbBuscarVenta.getSelectedItem();
         DetalleVenta dv = dvd.buscarDetalleProVenta(venta.getIdVenta());
@@ -3020,7 +2990,7 @@ public class Menu extends javax.swing.JFrame {
         jtfTelCliEliminar.setText(venta.getCliente().getTelefono());
         jtfNombreEmpleadoEliminar.setText(venta.getEmpleado().getNombre() + " " + venta.getEmpleado().getApellido());
         //        jdcFechaVentEliminar.setDate(Date.valueOf(venta.getFechaVenta()));
-    }//GEN-LAST:event_jcbBuscarVentaActionPerformed
+    }                                              
 
     private void jlIconBuscarMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jlIconBuscarMouseExited
         jlIconBuscar.setBackground(Color.white);
@@ -3122,7 +3092,7 @@ public class Menu extends javax.swing.JFrame {
         controlLetras(evt);
     }//GEN-LAST:event_jtfBuscadorClienListClienKeyTyped
 
-    private void jCBBuscarClienElimClienActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jCBBuscarClienElimClienActionPerformed
+    private void jCBBuscarClienElimClienActionPerformed(java.awt.event.ActionEvent evt) {                                                        
         try {
             Cliente cli = (Cliente) jCBBuscarClienElimClien.getSelectedItem();
             jTFApellidoClienElimClien.setText(cli.getApellido());
@@ -3131,7 +3101,7 @@ public class Menu extends javax.swing.JFrame {
             jTFTelefonoElimClien.setText(cli.getTelefono());
         } catch (Exception e) {
         }
-    }//GEN-LAST:event_jCBBuscarClienElimClienActionPerformed
+    }                                                       
 
     private void jLBtnEliminarElimClienMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLBtnEliminarElimClienMouseExited
         jLBtnEliminarElimClien.setBackground(verdeBase);
@@ -3141,7 +3111,7 @@ public class Menu extends javax.swing.JFrame {
         jLBtnEliminarElimClien.setBackground(verdeClaro);
     }//GEN-LAST:event_jLBtnEliminarElimClienMouseEntered
 
-    private void jLBtnEliminarElimClienMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLBtnEliminarElimClienMouseClicked
+    private void jLBtnEliminarElimClienMouseClicked(java.awt.event.MouseEvent evt) {                                                    
         try {
             Cliente cli = (Cliente) jCBBuscarClienElimClien.getSelectedItem();
             if (jTFApellidoClienElimClien.getText().trim().isEmpty() || jTFNombreClienElimClien.getText().trim().isEmpty()
@@ -3153,9 +3123,9 @@ public class Menu extends javax.swing.JFrame {
             }
         } catch (NullPointerException ex) {
         }
-    }//GEN-LAST:event_jLBtnEliminarElimClienMouseClicked
+    }                                                   
 
-    private void jcbClienteModifCliActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jcbClienteModifCliActionPerformed
+    private void jcbClienteModifCliActionPerformed(java.awt.event.ActionEvent evt) {                                                   
         try {
             Cliente cli = (Cliente) jcbClienteModifCli.getSelectedItem();
             jTFApellidoModClien.setText(cli.getApellido());
@@ -3164,9 +3134,9 @@ public class Menu extends javax.swing.JFrame {
             jTFTelefonoModClien.setText(cli.getTelefono());
         } catch (Exception e) {
         }
-    }//GEN-LAST:event_jcbClienteModifCliActionPerformed
+    }                                                  
 
-    private void jLBtnModificarModClienMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLBtnModificarModClienMousePressed
+    private void jLBtnModificarModClienMousePressed(java.awt.event.MouseEvent evt) {                                                    
         try {
             Cliente cli = (Cliente) jcbClienteModifCli.getSelectedItem();
             if (jTFApellidoModClien.getText().trim().isEmpty() || jTFNombreClienModClien.getText().trim().isEmpty()
@@ -3189,7 +3159,7 @@ public class Menu extends javax.swing.JFrame {
             }
         } catch (Exception e) {
         }
-    }//GEN-LAST:event_jLBtnModificarModClienMousePressed
+    }                                                   
 
     private void jLBtnModificarModClienMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLBtnModificarModClienMouseExited
         jLBtnModificarModClien.setBackground(verdeBase);
@@ -3232,9 +3202,99 @@ public class Menu extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_jLBtnAgregarClienteMouseClicked
 
-    private void jTFApellidoClienteAgrClienKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTFApellidoClienteAgrClienKeyTyped
+
+    private void jTFApellidoClienteAgrClienKeyTyped(java.awt.event.KeyEvent evt) {                                                    
+    }
+    private void jLBtnAgregarProdMousePressed(java.awt.event.MouseEvent evt) {                                              
+        if (jTFNombreProductoAgrProd.getText().trim().isEmpty() || jTFPrecioActualAgrProd.getText().trim().isEmpty()
+                || jTFDescripcionAgrProd.getText().trim().isEmpty() || jTFStockAgrProd.getText().trim().isEmpty()) {
+            JOptionPane.showMessageDialog(this, "No puede haber campos vacios");
+        } else {
+            try {
+                ProductoData productoD = new ProductoData();
+                Producto producto = productoD.buscarProductoPorNombre(jTFNombreProductoAgrProd.getText());
+                if (producto == null) {
+                    Producto product = new Producto();
+                    product.setNombreProducto(jTFNombreProductoAgrProd.getText());
+                    product.setDescripcion(jTFDescripcionAgrProd.getText());
+                    product.setPrecioActual(Double.parseDouble(jTFPrecioActualAgrProd.getText()));
+                    product.setStock(Integer.parseInt(jTFStockAgrProd.getText()));
+                    product.setEstado(true);
+                    productoD.guardarProducto(product);
+                } else {
+                    JOptionPane.showMessageDialog(this, "Ya hay un producto con ese nombre si quiere modificarlo vaya a la pestaña de modificar producto");
+                }
+            } catch (NullPointerException ex) {
+
+            }
+        }
+        borrarCamposAgrProd();
+    }                                             
+
+    private void jcbClienteModifCliActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jcbClienteModifCliActionPerformed
+        try {
+            Cliente cli = (Cliente) jcbClienteModifCli.getSelectedItem();
+            jTFApellidoModClien.setText(cli.getApellido());
+            jTFNombreClienModClien.setText(cli.getNombre());
+            jTFDomicilioModClien.setText(cli.getDomicilio());
+            jTFTelefonoModClien.setText(cli.getTelefono());
+        } catch (Exception e) {
+        }
+    }//GEN-LAST:event_jcbClienteModifCliActionPerformed
+
+    private void jLBtnModificarModClienMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLBtnModificarModClienMousePressed
+        try {
+            Cliente cli = (Cliente) jcbClienteModifCli.getSelectedItem();
+            if (jTFApellidoModClien.getText().trim().isEmpty() || jTFNombreClienModClien.getText().trim().isEmpty()
+                    || jTFDomicilioModClien.getText().trim().isEmpty() || jTFTelefonoModClien.getText().trim().isEmpty()) {
+                JOptionPane.showMessageDialog(null, "No pude haber campos vacios.");
+            } else {
+                if (!jTFNombreClienModClien.getText().equalsIgnoreCase(cli.getApellido())
+                        || !jTFApellidoModClien.getText().equalsIgnoreCase(cli.getApellido())
+                        || !jTFDomicilioModClien.getText().equalsIgnoreCase(cli.getDomicilio())
+                        || !jTFTelefonoModClien.getText().equalsIgnoreCase(cli.getTelefono())) {
+
+                    cli.setIdCliente(cli.getIdCliente());
+                    cli.setApellido(jTFApellidoModClien.getText());
+                    cli.setNombre(jTFNombreClienModClien.getText());
+                    cli.setDomicilio(jTFDomicilioModClien.getText());
+                    cli.setTelefono(jTFTelefonoModClien.getText());
+                    cD.modicifarCliente(cli);
+                    borrarCamposModCli();
+                }
+            }
+        } catch (Exception e) {
+        }
+    }//GEN-LAST:event_jLBtnModificarModClienMousePressed
+
+    private void jCBBuscarClienElimClienActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jCBBuscarClienElimClienActionPerformed
+        try {
+            Cliente cli = (Cliente) jCBBuscarClienElimClien.getSelectedItem();
+            jTFApellidoClienElimClien.setText(cli.getApellido());
+            jTFNombreClienElimClien.setText(cli.getNombre());
+            jTFDomicilioElimClien.setText(cli.getDomicilio());
+            jTFTelefonoElimClien.setText(cli.getTelefono());
+        } catch (Exception e) {
+        }
+    }//GEN-LAST:event_jCBBuscarClienElimClienActionPerformed
+
+    private void jLBtnEliminarElimClienMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLBtnEliminarElimClienMouseClicked
+        try {
+            Cliente cli = (Cliente) jCBBuscarClienElimClien.getSelectedItem();
+            if (jTFApellidoClienElimClien.getText().trim().isEmpty() || jTFNombreClienElimClien.getText().trim().isEmpty()
+                    || jTFDomicilioElimClien.getText().trim().isEmpty() || jTFTelefonoElimClien.getText().trim().isEmpty()) {
+                JOptionPane.showMessageDialog(null, "No pude haber campos vacios.");
+            } else {
+                cD.eliminarCliente(cli.getIdCliente());
+                jCBBuscarClienElimClien.removeItemAt(jCBBuscarClienElimClien.getSelectedIndex());
+            }
+        } catch (NullPointerException ex) {
+        }
+    }//GEN-LAST:event_jLBtnEliminarElimClienMouseClicked
+
+    private void jtfBuscadorClienListClienKeyTyped(java.awt.event.KeyEvent evt) {                                                   
         controlLetras(evt);
-    }//GEN-LAST:event_jTFApellidoClienteAgrClienKeyTyped
+    }                                                   
 
     private void jTFTelefonoClienteAgKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTFTelefonoClienteAgKeyTyped
         controlNumeros(evt);
@@ -3252,6 +3312,40 @@ public class Menu extends javax.swing.JFrame {
         jTFStockModProd.setText(pro.getStock() + "");
     }//GEN-LAST:event_jcbProductosActionPerformed
 
+    private void jcbBuscarVentaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jcbBuscarVentaActionPerformed
+        DetalleVentasData dvd = new DetalleVentasData();
+        Venta venta = (Venta) jcbBuscarVenta.getSelectedItem();
+        DetalleVenta dv = dvd.buscarDetalleProVenta(venta.getIdVenta());
+        jtfNombreProEliminar.setText(dv.getProducto().getNombreProducto());
+        jtfTelCliEliminar.setText(venta.getCliente().getTelefono());
+        jtfNombreEmpleadoEliminar.setText(venta.getEmpleado().getNombre() + " " + venta.getEmpleado().getApellido());
+//        jdcFechaVentEliminar.setDate(Date.valueOf(venta.getFechaVenta()));
+    }//GEN-LAST:event_jcbBuscarVentaActionPerformed
+
+    private void jLBtnEliminarElimProdMousePressed(java.awt.event.MouseEvent evt) {                                                   
+        try {
+            ProductoData proD = new ProductoData();
+            Producto pro = proD.buscarProductoPorNombre(jTFNombreProdElimProd.getText().trim());
+            if (pro.getNombreProducto().trim().equals(jTFNombreProdElimProd.getText()) && pro.getDescripcion().trim().equals(jTFDescripcionElimProd.getText())
+                    && pro.getPrecioActual() == Double.parseDouble(jTFPrecioActuaElimProd.getText()) && pro.getStock() == Integer.parseInt(jTFStockElimProd.getText())) {
+                int opcion = JOptionPane.showConfirmDialog(this, "Esta seguro que desea eliminar el alumno?", "Selecione una opcion", JOptionPane.YES_NO_OPTION);
+                switch (opcion) {
+                    case 0:
+                        proD.eliminarProducto(pro.getIdProducto());
+                        break;
+                    case 1:
+                        break;
+                }
+            } else {
+                JOptionPane.showMessageDialog(null, "Los datos de el producto no coinciden con los de la Base de Datos.");
+            }
+        } catch (NullPointerException | NumberFormatException ex) {
+            JOptionPane.showMessageDialog(this, "No puede haber campos vacios");
+        }
+        borrarCamposElimProd();
+    }                                                  
+
+    
     private void jLBtnModificarModProdMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLBtnModificarModProdMousePressed
         if (jTFNombreProdModProd.getText().trim().isEmpty() || jTFDescripcionModProd.getText().trim().isEmpty() || jTFPrecioActualModProd.getText().trim().isEmpty()
                 || jTFStockModProd.getText().trim().isEmpty()) {
@@ -3682,6 +3776,61 @@ public class Menu extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_jlImgBusquedaEmplMouseExited
 
+    private void jLEmpleadosMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLEmpleadosMouseEntered
+        jLEmpleados.setBackground(grisClaro);
+    }//GEN-LAST:event_jLEmpleadosMouseEntered
+
+    private void jLEmpleadosMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLEmpleadosMouseExited
+        jLEmpleados.setBackground(grisBase);
+    }//GEN-LAST:event_jLEmpleadosMouseExited
+
+    private void jlRealizarVentaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jlRealizarVentaMouseClicked
+        if (jtfCantidadVenta.getText().trim().isEmpty() || jtfTelCliente.getText().trim().isEmpty()
+                || jdcAgrVenta.getDate() == null || jtfNombreEmpVenta.getText().trim().isEmpty()) {
+            JOptionPane.showMessageDialog(this, "Debe llenar los campos Obligatorios");
+        } else {
+            try {
+                int can = Integer.parseInt(jtfCantidadVenta.getText());
+                double pre = Double.parseDouble(jtfPrecioVenta.getText());
+                Producto pro = (Producto) jcbProVenta.getSelectedItem();
+                Cliente cli = cD.buscarClientePorTel(jtfTelCliente.getText());
+                if (cli == null) {
+                    cli = new Cliente(jtfTelCliente.getText());
+                }
+                Empleado emp = ed.buscarPorNombre(jtfNombreEmpVenta.getText());
+                if (emp == null) {
+                    JOptionPane.showMessageDialog(this, "El empleado no existe");
+                } else {
+                    Venta ven = new Venta(cli, emp, jdcAgrVenta.getDate().toInstant().atZone(ZoneId.systemDefault()).toLocalDate());
+                    vd.guardarVenta(ven);
+                    DetalleVenta dv = new DetalleVenta(can, ven, pre, pro);
+                    dvd.guardarDetalleVenta(dv);
+                }
+            } catch (NumberFormatException ex) {
+                JOptionPane.showMessageDialog(this, "La cantidad ingresada es invalida");
+            }
+        }
+    }//GEN-LAST:event_jlRealizarVentaMouseClicked
+
+    private void jcbProVentaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jcbProVentaActionPerformed
+        Producto pro = (Producto) jcbProVenta.getSelectedItem();
+        precioTotal = pro.getPrecioActual();
+        jtfPrecioVenta.setText(precioTotal + "");
+    }//GEN-LAST:event_jcbProVentaActionPerformed
+
+    private void jtfCantidadVentaKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jtfCantidadVentaKeyTyped
+        controlNumeros(evt);
+    }//GEN-LAST:event_jtfCantidadVentaKeyTyped
+
+    private void jtfCantidadVentaKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jtfCantidadVentaKeyReleased
+        try {
+            int can = Integer.parseInt(jtfCantidadVenta.getText());
+            double total = precioTotal * can;
+            jtfPrecioVenta.setText(total + "");
+        } catch (NumberFormatException ex) {
+        }
+    }//GEN-LAST:event_jtfCantidadVentaKeyReleased
+
     /**
      * @param args the command line arguments
      */
@@ -3726,8 +3875,11 @@ public class Menu extends javax.swing.JFrame {
     private javax.swing.JLabel RegistrarVenta;
     private javax.swing.JScrollPane Scroll;
     private javax.swing.JScrollPane ScrollListClien;
+<<<<<<< HEAD
     private javax.swing.JScrollPane ScrollListClien1;
     private javax.swing.JScrollPane ScrollListPro;
+=======
+>>>>>>> d1a158592c654177d2dda428ec27efa10789f60e
     private javax.swing.JScrollPane ScrollTablaDetalles;
     private javax.swing.JScrollPane ScrollTablaVentas;
     private javax.swing.JLabel fravemaxLogo;
@@ -3794,6 +3946,7 @@ public class Menu extends javax.swing.JFrame {
     private javax.swing.JLabel jLTituloListaClien;
     private javax.swing.JLabel jLTituloListaEmpleados;
     private javax.swing.JLabel jLTituloModClien;
+<<<<<<< HEAD
     private javax.swing.JLabel jLTituloModClien1;
     private javax.swing.JLabel jLTituloModEmpleado;
     private javax.swing.JLabel jLUsuarioElimEmp;
@@ -3804,6 +3957,8 @@ public class Menu extends javax.swing.JFrame {
     private javax.swing.JPanel jPEliminarEmpelado;
     private javax.swing.JPanel jPListarEmpleado;
     private javax.swing.JPanel jPModificarEmpleado;
+=======
+>>>>>>> d1a158592c654177d2dda428ec27efa10789f60e
     private javax.swing.JPanel jPanelCabecera;
     private javax.swing.JPanel jPanelOpciones;
     private javax.swing.JSeparator jSAgrClien1;
@@ -3843,7 +3998,6 @@ public class Menu extends javax.swing.JFrame {
     private javax.swing.JSeparator jSModProd2;
     private javax.swing.JSeparator jSModProd3;
     private javax.swing.JSeparator jSModProd4;
-    private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTextField jTFApellidoClienElimClien;
     private javax.swing.JTextField jTFApellidoClienteAgrClien;
     private javax.swing.JTextField jTFApellidoElimEmp;
@@ -3876,15 +4030,18 @@ public class Menu extends javax.swing.JFrame {
     private javax.swing.JTextField jTFTelefonoClienteAg;
     private javax.swing.JTextField jTFTelefonoElimClien;
     private javax.swing.JTextField jTFTelefonoModClien;
+<<<<<<< HEAD
     private javax.swing.JTextField jTFUsuarioElimEmp;
     private javax.swing.JTextField jTFUsuarioModEmp;
     private javax.swing.JPanel jTPGestionEmpleado;
     private javax.swing.JTextField jTextField1;
+=======
+>>>>>>> d1a158592c654177d2dda428ec27efa10789f60e
     private javax.swing.JComboBox<Venta> jcbBuscarVenta;
     private javax.swing.JComboBox<Cliente> jcbClienteModifCli;
     private javax.swing.JComboBox<Producto> jcbProVenta;
     private javax.swing.JComboBox<Producto> jcbProductos;
-    private javax.swing.JLabel jlAgrVenta;
+    private com.toedter.calendar.JDateChooser jdcAgrVenta;
     private javax.swing.JLabel jlAgrVentas;
     private javax.swing.JLabel jlAgregar;
     private javax.swing.JLabel jlAgregarCliente;
@@ -3893,10 +4050,11 @@ public class Menu extends javax.swing.JFrame {
     private javax.swing.JLabel jlAgregarEmpleado;
     private javax.swing.JLabel jlAgregarPro;
     private javax.swing.JLabel jlAsteriscoCan;
+    private javax.swing.JLabel jlAsteriscoEmp;
     private javax.swing.JLabel jlAsteriscoFecha;
     private javax.swing.JLabel jlAsteriscoPro;
     private javax.swing.JLabel jlAsteriscoSup;
-    private javax.swing.JLabel jlAsteriscoTel;
+    private javax.swing.JLabel jlAsteriscoTel1;
     private javax.swing.JLabel jlBorrarVenta;
     private javax.swing.JLabel jlBuscarVenta;
     private javax.swing.JLabel jlBusqueda;
@@ -3914,7 +4072,6 @@ public class Menu extends javax.swing.JFrame {
     private javax.swing.JLabel jlEliminarEmp;
     private javax.swing.JLabel jlEliminarEmpleado;
     private javax.swing.JLabel jlEliminarPro;
-    private javax.swing.JLabel jlEliminarProList;
     private javax.swing.JLabel jlEliminarVenta;
     private javax.swing.JLabel jlEliminarVentaBorrar;
     private javax.swing.JLabel jlFechaVenta;
@@ -3939,6 +4096,7 @@ public class Menu extends javax.swing.JFrame {
     private javax.swing.JLabel jlIconModEmp2;
     private javax.swing.JLabel jlIconPro;
     private javax.swing.JLabel jlIconVenta;
+    private javax.swing.JLabel jlIconVentaAgr;
     private javax.swing.JLabel jlIconoAgregarPro;
     private javax.swing.JLabel jlIconoAgregarPro1;
     private javax.swing.JLabel jlIconoBorrarPro;
@@ -3960,7 +4118,11 @@ public class Menu extends javax.swing.JFrame {
     private javax.swing.JLabel jlModPro;
     private javax.swing.JLabel jlModificar;
     private javax.swing.JLabel jlModificarCliente;
+<<<<<<< HEAD
     private javax.swing.JLabel jlModificarEmpleado;
+=======
+    private javax.swing.JLabel jlNombreEmp;
+>>>>>>> d1a158592c654177d2dda428ec27efa10789f60e
     private javax.swing.JLabel jlNombreEmpleadoEliminar;
     private javax.swing.JLabel jlNombreProEliminar;
     private javax.swing.JLabel jlNombreUsuario;
@@ -3990,6 +4152,7 @@ public class Menu extends javax.swing.JFrame {
     private javax.swing.JTextField jtfBuscadorEmpleadosListEmp;
     private javax.swing.JTextField jtfBuscarCli;
     private javax.swing.JTextField jtfCantidadVenta;
+    private javax.swing.JTextField jtfNombreEmpVenta;
     private javax.swing.JTextField jtfNombreEmpleadoEliminar;
     private javax.swing.JTextField jtfNombreProEliminar;
     private javax.swing.JTextField jtfPrecioVenta;
@@ -4167,7 +4330,6 @@ public class Menu extends javax.swing.JFrame {
             evt.consume();
         }
     }
-
     DefaultListModel listaPro = new DefaultListModel();
     DefaultListModel listaCan = new DefaultListModel();
 
@@ -4181,4 +4343,12 @@ public class Menu extends javax.swing.JFrame {
 //            jPModificarEmpleado.setVisible(false);
 //        }
 //    }
+    private void empleadosVisible() {         // VALIDA CARGO DEL QUE HIZO LOGIN!!!!!!
+        boolean si = false;
+        if (Login.empleado.getCargo().equalsIgnoreCase("supervisor")) {
+            jLEmpleados.setVisible(true);
+        } else {
+            jLEmpleados.setVisible(false);
+        }
+    }
 }
