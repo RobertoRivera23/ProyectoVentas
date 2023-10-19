@@ -12,8 +12,6 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 
 /**
@@ -46,7 +44,7 @@ public class EmpleadoData {
                 empleado.setIdEmpleado(rs.getInt(1));
                 JOptionPane.showMessageDialog(null, "Se añadio con exito el empleado " + empleado.getApellido() + "\n " + empleado.getNombre());
             }
-
+            ps.close();
         } catch (SQLException ex) {
             JOptionPane.showMessageDialog(null, "Error al conectar a la tabla Empleado" + ex.getMessage());
         }
@@ -73,6 +71,7 @@ public class EmpleadoData {
             } else {
                 JOptionPane.showMessageDialog(null, "No se econtro al Empleado");
             }
+            ps.close();
         } catch (SQLException ex) {
             JOptionPane.showMessageDialog(null, "Error al conectar a la tabla Empleado" + ex.getMessage());
         }
@@ -86,7 +85,6 @@ public class EmpleadoData {
         try {
             PreparedStatement ps = con.prepareStatement(sql);
             ps.setInt(1, idempleado);
-
             ResultSet rs = ps.executeQuery();
             if (rs.next()) {
                 empleado = new Empleado();
@@ -99,7 +97,7 @@ public class EmpleadoData {
                 empleado.setContraenia(rs.getString("contraseña"));
                 empleado.setEstado(true);
             }
-
+            ps.close();
         } catch (SQLException ex) {
             JOptionPane.showMessageDialog(null, "Error al conectar a la tabla Empleado" + ex.getMessage());
         }
@@ -112,7 +110,6 @@ public class EmpleadoData {
         String sql = "SELECT * FROM empleado WHERE estado = 1 ";
         try {
             PreparedStatement ps = con.prepareStatement(sql);
-
             ResultSet rs = ps.executeQuery();
             while (rs.next()) {
                 empleado = new Empleado();
@@ -127,7 +124,6 @@ public class EmpleadoData {
                 empleados.add(empleado);
             }
             ps.close();
-
         } catch (SQLException ex) {
             JOptionPane.showMessageDialog(null, "Error al conectar a la tabla Empleado" + ex.getMessage());
         }
@@ -135,8 +131,6 @@ public class EmpleadoData {
     }
 
     public void modificarEmpleadoPorId(Empleado empleado1) {
-
-        Empleado empleado = buscarEmpleadoPorId(empleado1.getIdEmpleado()); 
         String sql = "UPDATE  empleado SET apellido = ?, nombre = ?, dni = ?, cargo = ?, usuario = ?, contraseña = ?, estado = ?  WHERE idempleado = ? ";
         try {
             PreparedStatement ps = con.prepareStatement(sql);
@@ -148,7 +142,6 @@ public class EmpleadoData {
             ps.setString(6, empleado1.getContraenia());
             ps.setBoolean(7, empleado1.isEstado());
             ps.setInt(8, empleado1.getIdEmpleado());
-
             int modificado = ps.executeUpdate();
             if (modificado == 1) {
                 JOptionPane.showMessageDialog(null, "Empleado modificado Exitosamente.");
@@ -175,4 +168,30 @@ public class EmpleadoData {
         }
     }
 
+    public Empleado buscarPorNombre(String nombre) {
+        String sql = "SELECT * WHERE nombre = ?";
+        Empleado emp = null;
+        try {
+            PreparedStatement ps = con.prepareStatement(sql);
+            ps.setString(1, nombre);
+            ResultSet rs = ps.executeQuery();
+            if (rs.next()) {
+                emp = new Empleado();
+                emp.setIdEmpleado(rs.getInt("idempleado"));
+                emp.setApellido(rs.getString("apellido"));
+                emp.setNombre(nombre);
+                emp.setDni(rs.getInt("dni"));
+                emp.setCargo(rs.getString("cargo"));
+                emp.setUsuario(rs.getString("usuario"));
+                emp.setContraenia(rs.getString("contraseña"));
+                emp.setEstado(rs.getBoolean("estado"));
+            } else {
+                JOptionPane.showMessageDialog(null, "El Empleado no existe");
+            }
+            ps.close();
+        } catch (SQLException ex) {
+            JOptionPane.showMessageDialog(null, " Error al acceder a la tabla Empleado. " + ex.getMessage());
+        }
+        return emp;
+    }
 }
