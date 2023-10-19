@@ -169,7 +169,7 @@ public class EmpleadoData {
     }
 
     public Empleado buscarPorNombre(String nombre) {
-        String sql = "SELECT * WHERE nombre = ?";
+        String sql = "SELECT * FROM empleado WHERE nombre = ?";
         Empleado emp = null;
         try {
             PreparedStatement ps = con.prepareStatement(sql);

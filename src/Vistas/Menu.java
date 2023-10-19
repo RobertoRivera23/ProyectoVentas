@@ -2918,6 +2918,7 @@ public class Menu extends javax.swing.JFrame {
                 Cliente cli = cD.buscarClientePorTel(jtfTelCliente.getText());
                 if (cli == null) {
                     cli = new Cliente(jtfTelCliente.getText());
+                    cD.guardarCliente(cli);
                 }
                 Empleado emp = ed.buscarPorNombre(jtfNombreEmpVenta.getText());
                 if (emp == null) {
@@ -2950,6 +2951,7 @@ public class Menu extends javax.swing.JFrame {
             double total = precioTotal * can;
             jtfPrecioVenta.setText(total + "");
         } catch (NumberFormatException ex) {
+            jtfPrecioVenta.setText(precioTotal + "");
         }
     }//GEN-LAST:event_jtfCantidadVentaKeyReleased
 
