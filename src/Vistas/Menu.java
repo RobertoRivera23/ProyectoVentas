@@ -10,12 +10,6 @@ import AccesoDatos.DetalleVentasData;
 import AccesoDatos.EmpleadoData;
 import AccesoDatos.ProductoData;
 import AccesoDatos.VentasData;
-
-import Entidades.Cliente;
-import Entidades.DetalleVenta;
-import Entidades.Empleado;
-import Entidades.Producto;
-import Entidades.Venta;
 import Entidades.*;
 import Utilidades.TablaFraveMax;
 import java.awt.Color;
@@ -35,7 +29,6 @@ public class Menu extends javax.swing.JFrame {
     private ProductoData pd = new ProductoData();
     private ClienteData cD = new ClienteData();
     private VentasData vd = new VentasData();
-    private EmpleadoData eD = new EmpleadoData();
     private DetalleVentasData dvd = new DetalleVentasData();
     private EmpleadoData ed = new EmpleadoData();
     private int xMouse, yMouse;
@@ -101,9 +94,6 @@ public class Menu extends javax.swing.JFrame {
         llenarCombo();
         llenarComboCliente();
         llenarComboV();
-        llenarComboEmpelado();
-        llenarComboCargo();
-        //empleadosVisible(); // PARA MOSTRAR JLEMPLEADOS 
         empleadosVisible(); // PARA MOSTRAR JLEMPLEADOS 
         jlNombreUsuario.setText(Login.empleado.getNombre() + " " + Login.empleado.getApellido());
     }
@@ -370,77 +360,6 @@ public class Menu extends javax.swing.JFrame {
         jlFechaVentaEliminar = new javax.swing.JLabel();
         jlEliminarVentaBorrar = new javax.swing.JLabel();
         jlVentaIconEliminar = new javax.swing.JLabel();
-        jTPGestionEmpleado = new javax.swing.JPanel();
-        jlGestionEmpleado1 = new javax.swing.JLabel();
-        textEmpleadoA = new javax.swing.JLabel();
-        jlIconAgreEmp2 = new javax.swing.JLabel();
-        jlAgregarEmpl = new javax.swing.JLabel();
-        jlAgregarEmpleado = new javax.swing.JLabel();
-        rectanguloEmp1 = new javax.swing.JLabel();
-        jlModificarEmpleado = new javax.swing.JLabel();
-        textEmpleadoM1 = new javax.swing.JLabel();
-        jlModEmpl = new javax.swing.JLabel();
-        jlIconModEmp2 = new javax.swing.JLabel();
-        rectanguloEmpM = new javax.swing.JLabel();
-        jlEliminarEmpleado = new javax.swing.JLabel();
-        textEmpleadoElim = new javax.swing.JLabel();
-        jlIconEliEmp = new javax.swing.JLabel();
-        jlEliminarEmp = new javax.swing.JLabel();
-        jlListarEmpleado = new javax.swing.JLabel();
-        rectanguloEmpE = new javax.swing.JLabel();
-        jPModificarEmpleado = new javax.swing.JPanel();
-        jtpModEmp = new javax.swing.JPanel();
-        jLTituloModClien1 = new javax.swing.JLabel();
-        jLBuscarEmpleadoModEmpl = new javax.swing.JLabel();
-        jSModEmpl5 = new javax.swing.JSeparator();
-        jLNombreEmpModEmp1 = new javax.swing.JLabel();
-        jTFNombreEmpleadoModEmp = new javax.swing.JTextField();
-        jSModEmp6 = new javax.swing.JSeparator();
-        jLApellidoModEmp = new javax.swing.JLabel();
-        jTFApellidoModEmp = new javax.swing.JTextField();
-        jSModEmp7 = new javax.swing.JSeparator();
-        jLDniModEmp = new javax.swing.JLabel();
-        jTFDniModEmp = new javax.swing.JTextField();
-        jLCargoModEmp = new javax.swing.JLabel();
-        jLBtnCargoModificarModEmp = new javax.swing.JLabel();
-        jCBModificarEmpleado = new javax.swing.JComboBox<>();
-        jlIconModEmp = new javax.swing.JLabel();
-        jLUsuarioModEmp = new javax.swing.JLabel();
-        jTFUsuarioModEmp = new javax.swing.JTextField();
-        jSModEmp9 = new javax.swing.JSeparator();
-        jLContraseñaModEmp = new javax.swing.JLabel();
-        jSModEmp = new javax.swing.JSeparator();
-        jTFContraseñaModEmp = new javax.swing.JTextField();
-        jCBCargoModifEmp = new javax.swing.JComboBox<>();
-        jPEliminarEmpelado = new javax.swing.JPanel();
-        jLBtnEliminarEmpleado = new javax.swing.JLabel();
-        jSModEmp10 = new javax.swing.JSeparator();
-        jTFUsuarioElimEmp = new javax.swing.JTextField();
-        jLUsuarioElimEmp = new javax.swing.JLabel();
-        jSModEmp8 = new javax.swing.JSeparator();
-        jTFDniElimEmp = new javax.swing.JTextField();
-        jLDniElimEmp = new javax.swing.JLabel();
-        jSModEmpl6 = new javax.swing.JSeparator();
-        jTFNombreEmpleadoElimEmp = new javax.swing.JTextField();
-        jLNombreEmpElimEmp = new javax.swing.JLabel();
-        jCBEliminarEmpleado = new javax.swing.JComboBox<>();
-        jLEliminarEmpleadoModEmpl = new javax.swing.JLabel();
-        jLTituloModEmpleado = new javax.swing.JLabel();
-        jLApellidoElimEmp = new javax.swing.JLabel();
-        jSModEmp11 = new javax.swing.JSeparator();
-        jTFApellidoElimEmp = new javax.swing.JTextField();
-        jLCargoElimEmp = new javax.swing.JLabel();
-        jCBCargoElimEmp = new javax.swing.JComboBox<>();
-        jLContraseñaElimEmp = new javax.swing.JLabel();
-        jSModEmp1 = new javax.swing.JSeparator();
-        jTFContraseñaElimEmp = new javax.swing.JTextField();
-        jlIconEliEmpl = new javax.swing.JLabel();
-        jPListarEmpleado = new javax.swing.JPanel();
-        jLTituloListaEmpleados = new javax.swing.JLabel();
-        jtfBuscadorEmpleadosListEmp = new javax.swing.JTextField();
-        jlImgBusquedaEmpl = new javax.swing.JLabel();
-        ScrollListClien1 = new javax.swing.JScrollPane();
-        jtListEmpleado = new TablaFraveMax();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setMinimumSize(new java.awt.Dimension(800, 500));
@@ -2355,502 +2274,6 @@ public class Menu extends javax.swing.JFrame {
 
         jtpEscritorio.addTab("tab16", jtpEliminarVenta);
 
-        jTPGestionEmpleado.setBackground(new java.awt.Color(255, 255, 255));
-        jTPGestionEmpleado.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-
-        jlGestionEmpleado1.setFont(new java.awt.Font("Corbel", 1, 30)); // NOI18N
-        jlGestionEmpleado1.setForeground(new java.awt.Color(153, 153, 153));
-        jlGestionEmpleado1.setText("Gestion de Empleados");
-        jTPGestionEmpleado.add(jlGestionEmpleado1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 40, 330, 30));
-
-        textEmpleadoA.setFont(new java.awt.Font("Corbel", 0, 12)); // NOI18N
-        textEmpleadoA.setForeground(new java.awt.Color(153, 153, 153));
-        textEmpleadoA.setVerticalAlignment(javax.swing.SwingConstants.TOP);
-        jTPGestionEmpleado.add(textEmpleadoA, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 240, 150, 90));
-
-        jlIconAgreEmp2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jlIconAgreEmp2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Image/agregar-usuario.png"))); // NOI18N
-        jTPGestionEmpleado.add(jlIconAgreEmp2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 60, 180, 150));
-
-        jlAgregarEmpl.setFont(new java.awt.Font("Corbel", 1, 18)); // NOI18N
-        jlAgregarEmpl.setForeground(new java.awt.Color(102, 102, 102));
-        jlAgregarEmpl.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jlAgregarEmpl.setText("Agregar ");
-        jTPGestionEmpleado.add(jlAgregarEmpl, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 200, -1, -1));
-
-        jlAgregarEmpleado.setBackground(new java.awt.Color(0, 150, 136));
-        jlAgregarEmpleado.setFont(new java.awt.Font("Corbel", 1, 14)); // NOI18N
-        jlAgregarEmpleado.setForeground(new java.awt.Color(255, 255, 255));
-        jlAgregarEmpleado.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jlAgregarEmpleado.setText("Agregar");
-        jlAgregarEmpleado.setVerticalAlignment(javax.swing.SwingConstants.BOTTOM);
-        jlAgregarEmpleado.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED, null, new java.awt.Color(0, 150, 136), null, null));
-        jlAgregarEmpleado.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
-        jlAgregarEmpleado.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
-        jlAgregarEmpleado.setOpaque(true);
-        jlAgregarEmpleado.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
-        jlAgregarEmpleado.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jlAgregarEmpleadoMouseClicked(evt);
-            }
-            public void mouseEntered(java.awt.event.MouseEvent evt) {
-                jlAgregarEmpleadoMouseEntered(evt);
-            }
-            public void mouseExited(java.awt.event.MouseEvent evt) {
-                jlAgregarEmpleadoMouseExited(evt);
-            }
-        });
-        jTPGestionEmpleado.add(jlAgregarEmpleado, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 340, 80, 30));
-
-        rectanguloEmp1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        rectanguloEmp1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Image/rectangulo.jpg"))); // NOI18N
-        jTPGestionEmpleado.add(rectanguloEmp1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 110, -1, -1));
-
-        jlModificarEmpleado.setBackground(new java.awt.Color(0, 150, 136));
-        jlModificarEmpleado.setFont(new java.awt.Font("Corbel", 1, 14)); // NOI18N
-        jlModificarEmpleado.setForeground(new java.awt.Color(255, 255, 255));
-        jlModificarEmpleado.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jlModificarEmpleado.setText("Modificar");
-        jlModificarEmpleado.setVerticalAlignment(javax.swing.SwingConstants.BOTTOM);
-        jlModificarEmpleado.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED, null, new java.awt.Color(0, 150, 136), null, null));
-        jlModificarEmpleado.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
-        jlModificarEmpleado.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
-        jlModificarEmpleado.setOpaque(true);
-        jlModificarEmpleado.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
-        jlModificarEmpleado.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jlModificarEmpleadoMouseClicked(evt);
-            }
-            public void mouseEntered(java.awt.event.MouseEvent evt) {
-                jlModificarEmpleadoMouseEntered(evt);
-            }
-            public void mouseExited(java.awt.event.MouseEvent evt) {
-                jlModificarEmpleadoMouseExited(evt);
-            }
-        });
-        jTPGestionEmpleado.add(jlModificarEmpleado, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 340, 80, 30));
-
-        textEmpleadoM1.setFont(new java.awt.Font("Corbel", 0, 12)); // NOI18N
-        textEmpleadoM1.setForeground(new java.awt.Color(153, 153, 153));
-        textEmpleadoM1.setVerticalAlignment(javax.swing.SwingConstants.TOP);
-        jTPGestionEmpleado.add(textEmpleadoM1, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 240, 150, 90));
-
-        jlModEmpl.setFont(new java.awt.Font("Corbel", 1, 18)); // NOI18N
-        jlModEmpl.setForeground(new java.awt.Color(102, 102, 102));
-        jlModEmpl.setText("Modificar ");
-        jTPGestionEmpleado.add(jlModEmpl, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 200, 80, -1));
-
-        jlIconModEmp2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jlIconModEmp2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Image/editar-usuario.png"))); // NOI18N
-        jTPGestionEmpleado.add(jlIconModEmp2, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 60, 180, 150));
-
-        rectanguloEmpM.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        rectanguloEmpM.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Image/rectangulo.jpg"))); // NOI18N
-        jTPGestionEmpleado.add(rectanguloEmpM, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 110, -1, -1));
-
-        jlEliminarEmpleado.setBackground(new java.awt.Color(0, 150, 136));
-        jlEliminarEmpleado.setFont(new java.awt.Font("Corbel", 1, 14)); // NOI18N
-        jlEliminarEmpleado.setForeground(new java.awt.Color(255, 255, 255));
-        jlEliminarEmpleado.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jlEliminarEmpleado.setText("Eliminar");
-        jlEliminarEmpleado.setVerticalAlignment(javax.swing.SwingConstants.BOTTOM);
-        jlEliminarEmpleado.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED, null, new java.awt.Color(0, 150, 136), null, null));
-        jlEliminarEmpleado.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
-        jlEliminarEmpleado.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
-        jlEliminarEmpleado.setOpaque(true);
-        jlEliminarEmpleado.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
-        jlEliminarEmpleado.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jlEliminarEmpleadoMouseClicked(evt);
-            }
-            public void mouseEntered(java.awt.event.MouseEvent evt) {
-                jlEliminarEmpleadoMouseEntered(evt);
-            }
-            public void mouseExited(java.awt.event.MouseEvent evt) {
-                jlEliminarEmpleadoMouseExited(evt);
-            }
-        });
-        jTPGestionEmpleado.add(jlEliminarEmpleado, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 340, 80, 30));
-
-        textEmpleadoElim.setFont(new java.awt.Font("Corbel", 0, 12)); // NOI18N
-        textEmpleadoElim.setForeground(new java.awt.Color(153, 153, 153));
-        textEmpleadoElim.setVerticalAlignment(javax.swing.SwingConstants.TOP);
-        jTPGestionEmpleado.add(textEmpleadoElim, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 240, 150, 90));
-
-        jlIconEliEmp.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jlIconEliEmp.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Image/borrar-usuario.png"))); // NOI18N
-        jTPGestionEmpleado.add(jlIconEliEmp, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 60, 180, 150));
-
-        jlEliminarEmp.setFont(new java.awt.Font("Corbel", 1, 18)); // NOI18N
-        jlEliminarEmp.setForeground(new java.awt.Color(102, 102, 102));
-        jlEliminarEmp.setText("Eliminar ");
-        jTPGestionEmpleado.add(jlEliminarEmp, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 200, -1, -1));
-
-        jlListarEmpleado.setBackground(new java.awt.Color(0, 150, 136));
-        jlListarEmpleado.setFont(new java.awt.Font("Corbel", 1, 14)); // NOI18N
-        jlListarEmpleado.setForeground(new java.awt.Color(255, 255, 255));
-        jlListarEmpleado.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jlListarEmpleado.setText("Listar Empleados");
-        jlListarEmpleado.setVerticalAlignment(javax.swing.SwingConstants.BOTTOM);
-        jlListarEmpleado.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED, null, new java.awt.Color(0, 150, 136), null, null));
-        jlListarEmpleado.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
-        jlListarEmpleado.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
-        jlListarEmpleado.setOpaque(true);
-        jlListarEmpleado.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
-        jlListarEmpleado.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jlListarEmpleadoMouseClicked(evt);
-            }
-            public void mouseEntered(java.awt.event.MouseEvent evt) {
-                jlListarEmpleadoMouseEntered(evt);
-            }
-            public void mouseExited(java.awt.event.MouseEvent evt) {
-                jlListarEmpleadoMouseExited(evt);
-            }
-        });
-        jTPGestionEmpleado.add(jlListarEmpleado, new org.netbeans.lib.awtextra.AbsoluteConstraints(460, 40, 120, 30));
-
-        rectanguloEmpE.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        rectanguloEmpE.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Image/rectangulo.jpg"))); // NOI18N
-        jTPGestionEmpleado.add(rectanguloEmpE, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 110, -1, -1));
-
-        jtpEscritorio.addTab("tab17", jTPGestionEmpleado);
-
-        jPModificarEmpleado.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-
-        jtpModEmp.setBackground(new java.awt.Color(255, 255, 255));
-        jtpModEmp.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-
-        jLTituloModClien1.setFont(new java.awt.Font("Corbel", 1, 30)); // NOI18N
-        jLTituloModClien1.setForeground(new java.awt.Color(153, 153, 153));
-        jLTituloModClien1.setText("Modificar Empleado");
-        jtpModEmp.add(jLTituloModClien1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 30, -1, -1));
-
-        jLBuscarEmpleadoModEmpl.setFont(new java.awt.Font("Corbel", 1, 14)); // NOI18N
-        jLBuscarEmpleadoModEmpl.setForeground(new java.awt.Color(153, 153, 153));
-        jLBuscarEmpleadoModEmpl.setText("Buscar Empleado");
-        jtpModEmp.add(jLBuscarEmpleadoModEmpl, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 90, -1, -1));
-
-        jSModEmpl5.setBackground(new java.awt.Color(0, 150, 136));
-        jSModEmpl5.setOpaque(true);
-        jSModEmpl5.setPreferredSize(new java.awt.Dimension(50, 2));
-        jtpModEmp.add(jSModEmpl5, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 210, 200, -1));
-
-        jLNombreEmpModEmp1.setFont(new java.awt.Font("Corbel", 1, 14)); // NOI18N
-        jLNombreEmpModEmp1.setForeground(new java.awt.Color(153, 153, 153));
-        jLNombreEmpModEmp1.setText("Nombre empleado");
-        jtpModEmp.add(jLNombreEmpModEmp1, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 160, -1, -1));
-
-        jTFNombreEmpleadoModEmp.setFont(new java.awt.Font("Corbel", 0, 14)); // NOI18N
-        jTFNombreEmpleadoModEmp.setBorder(null);
-        jtpModEmp.add(jTFNombreEmpleadoModEmp, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 180, 200, 30));
-
-        jSModEmp6.setBackground(new java.awt.Color(0, 150, 136));
-        jSModEmp6.setOpaque(true);
-        jSModEmp6.setPreferredSize(new java.awt.Dimension(50, 2));
-        jtpModEmp.add(jSModEmp6, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 210, 200, -1));
-
-        jLApellidoModEmp.setFont(new java.awt.Font("Corbel", 1, 14)); // NOI18N
-        jLApellidoModEmp.setForeground(new java.awt.Color(153, 153, 153));
-        jLApellidoModEmp.setText("Apellido empleado");
-        jtpModEmp.add(jLApellidoModEmp, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 160, -1, -1));
-
-        jTFApellidoModEmp.setFont(new java.awt.Font("Corbel", 0, 14)); // NOI18N
-        jTFApellidoModEmp.setBorder(null);
-        jtpModEmp.add(jTFApellidoModEmp, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 180, 200, 30));
-
-        jSModEmp7.setBackground(new java.awt.Color(0, 150, 136));
-        jSModEmp7.setOpaque(true);
-        jSModEmp7.setPreferredSize(new java.awt.Dimension(50, 2));
-        jtpModEmp.add(jSModEmp7, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 280, 200, -1));
-
-        jLDniModEmp.setFont(new java.awt.Font("Corbel", 1, 14)); // NOI18N
-        jLDniModEmp.setForeground(new java.awt.Color(153, 153, 153));
-        jLDniModEmp.setText("DNI");
-        jtpModEmp.add(jLDniModEmp, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 230, -1, -1));
-
-        jTFDniModEmp.setFont(new java.awt.Font("Corbel", 0, 14)); // NOI18N
-        jTFDniModEmp.setBorder(null);
-        jTFDniModEmp.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTFDniModEmpActionPerformed(evt);
-            }
-        });
-        jtpModEmp.add(jTFDniModEmp, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 250, 200, 30));
-
-        jLCargoModEmp.setFont(new java.awt.Font("Corbel", 1, 14)); // NOI18N
-        jLCargoModEmp.setForeground(new java.awt.Color(153, 153, 153));
-        jLCargoModEmp.setText("Cargo");
-        jtpModEmp.add(jLCargoModEmp, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 230, -1, -1));
-
-        jLBtnCargoModificarModEmp.setBackground(new java.awt.Color(0, 150, 136));
-        jLBtnCargoModificarModEmp.setFont(new java.awt.Font("Corbel", 1, 14)); // NOI18N
-        jLBtnCargoModificarModEmp.setForeground(new java.awt.Color(255, 255, 255));
-        jLBtnCargoModificarModEmp.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLBtnCargoModificarModEmp.setText("Modificar");
-        jLBtnCargoModificarModEmp.setVerticalAlignment(javax.swing.SwingConstants.BOTTOM);
-        jLBtnCargoModificarModEmp.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
-        jLBtnCargoModificarModEmp.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
-        jLBtnCargoModificarModEmp.setOpaque(true);
-        jLBtnCargoModificarModEmp.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseEntered(java.awt.event.MouseEvent evt) {
-                jLBtnCargoModificarModEmpMouseEntered(evt);
-            }
-            public void mouseExited(java.awt.event.MouseEvent evt) {
-                jLBtnCargoModificarModEmpMouseExited(evt);
-            }
-            public void mousePressed(java.awt.event.MouseEvent evt) {
-                jLBtnCargoModificarModEmpMousePressed(evt);
-            }
-        });
-        jtpModEmp.add(jLBtnCargoModificarModEmp, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 370, 100, 30));
-
-        jCBModificarEmpleado.setFont(new java.awt.Font("Corbel", 1, 14)); // NOI18N
-        jCBModificarEmpleado.setForeground(new java.awt.Color(0, 102, 102));
-        jCBModificarEmpleado.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jCBModificarEmpleadoActionPerformed(evt);
-            }
-        });
-        jtpModEmp.add(jCBModificarEmpleado, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 110, 290, 30));
-
-        jlIconModEmp.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jlIconModEmp.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Image/editar-usuario.png"))); // NOI18N
-        jtpModEmp.add(jlIconModEmp, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 10, 200, 150));
-
-        jLUsuarioModEmp.setFont(new java.awt.Font("Corbel", 1, 14)); // NOI18N
-        jLUsuarioModEmp.setForeground(new java.awt.Color(153, 153, 153));
-        jLUsuarioModEmp.setText("Usuario");
-        jtpModEmp.add(jLUsuarioModEmp, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 300, -1, -1));
-
-        jTFUsuarioModEmp.setFont(new java.awt.Font("Corbel", 0, 14)); // NOI18N
-        jTFUsuarioModEmp.setBorder(null);
-        jTFUsuarioModEmp.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTFUsuarioModEmpActionPerformed(evt);
-            }
-        });
-        jtpModEmp.add(jTFUsuarioModEmp, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 320, 200, 30));
-
-        jSModEmp9.setBackground(new java.awt.Color(0, 150, 136));
-        jSModEmp9.setOpaque(true);
-        jSModEmp9.setPreferredSize(new java.awt.Dimension(50, 2));
-        jtpModEmp.add(jSModEmp9, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 350, 200, -1));
-
-        jLContraseñaModEmp.setFont(new java.awt.Font("Corbel", 1, 14)); // NOI18N
-        jLContraseñaModEmp.setForeground(new java.awt.Color(153, 153, 153));
-        jLContraseñaModEmp.setText("Contraseña");
-        jtpModEmp.add(jLContraseñaModEmp, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 300, -1, -1));
-
-        jSModEmp.setBackground(new java.awt.Color(0, 150, 136));
-        jSModEmp.setOpaque(true);
-        jSModEmp.setPreferredSize(new java.awt.Dimension(50, 2));
-        jtpModEmp.add(jSModEmp, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 350, 200, -1));
-
-        jTFContraseñaModEmp.setFont(new java.awt.Font("Corbel", 0, 14)); // NOI18N
-        jTFContraseñaModEmp.setBorder(null);
-        jtpModEmp.add(jTFContraseñaModEmp, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 320, 200, 30));
-
-        jtpModEmp.add(jCBCargoModifEmp, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 260, 200, -1));
-
-        jPModificarEmpleado.add(jtpModEmp, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 700, 450));
-
-        jtpEscritorio.addTab("tab18", jPModificarEmpleado);
-
-        jPEliminarEmpelado.setBackground(new java.awt.Color(255, 255, 255));
-        jPEliminarEmpelado.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-
-        jLBtnEliminarEmpleado.setBackground(new java.awt.Color(0, 150, 136));
-        jLBtnEliminarEmpleado.setFont(new java.awt.Font("Corbel", 1, 14)); // NOI18N
-        jLBtnEliminarEmpleado.setForeground(new java.awt.Color(255, 255, 255));
-        jLBtnEliminarEmpleado.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLBtnEliminarEmpleado.setText("Eliminar");
-        jLBtnEliminarEmpleado.setVerticalAlignment(javax.swing.SwingConstants.BOTTOM);
-        jLBtnEliminarEmpleado.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
-        jLBtnEliminarEmpleado.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
-        jLBtnEliminarEmpleado.setOpaque(true);
-        jLBtnEliminarEmpleado.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseEntered(java.awt.event.MouseEvent evt) {
-                jLBtnEliminarEmpleadoMouseEntered(evt);
-            }
-            public void mouseExited(java.awt.event.MouseEvent evt) {
-                jLBtnEliminarEmpleadoMouseExited(evt);
-            }
-            public void mousePressed(java.awt.event.MouseEvent evt) {
-                jLBtnEliminarEmpleadoMousePressed(evt);
-            }
-        });
-        jPEliminarEmpelado.add(jLBtnEliminarEmpleado, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 370, 100, 30));
-
-        jSModEmp10.setBackground(new java.awt.Color(0, 150, 136));
-        jSModEmp10.setOpaque(true);
-        jSModEmp10.setPreferredSize(new java.awt.Dimension(50, 2));
-        jPEliminarEmpelado.add(jSModEmp10, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 350, 200, -1));
-
-        jTFUsuarioElimEmp.setFont(new java.awt.Font("Corbel", 0, 14)); // NOI18N
-        jTFUsuarioElimEmp.setBorder(null);
-        jTFUsuarioElimEmp.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTFUsuarioElimEmpActionPerformed(evt);
-            }
-        });
-        jPEliminarEmpelado.add(jTFUsuarioElimEmp, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 320, 200, 30));
-
-        jLUsuarioElimEmp.setFont(new java.awt.Font("Corbel", 1, 14)); // NOI18N
-        jLUsuarioElimEmp.setForeground(new java.awt.Color(153, 153, 153));
-        jLUsuarioElimEmp.setText("Usuario");
-        jPEliminarEmpelado.add(jLUsuarioElimEmp, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 300, -1, -1));
-
-        jSModEmp8.setBackground(new java.awt.Color(0, 150, 136));
-        jSModEmp8.setOpaque(true);
-        jSModEmp8.setPreferredSize(new java.awt.Dimension(50, 2));
-        jPEliminarEmpelado.add(jSModEmp8, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 280, 200, -1));
-
-        jTFDniElimEmp.setFont(new java.awt.Font("Corbel", 0, 14)); // NOI18N
-        jTFDniElimEmp.setBorder(null);
-        jTFDniElimEmp.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTFDniElimEmpActionPerformed(evt);
-            }
-        });
-        jPEliminarEmpelado.add(jTFDniElimEmp, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 250, 200, 30));
-
-        jLDniElimEmp.setFont(new java.awt.Font("Corbel", 1, 14)); // NOI18N
-        jLDniElimEmp.setForeground(new java.awt.Color(153, 153, 153));
-        jLDniElimEmp.setText("DNI");
-        jPEliminarEmpelado.add(jLDniElimEmp, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 230, -1, -1));
-
-        jSModEmpl6.setBackground(new java.awt.Color(0, 150, 136));
-        jSModEmpl6.setOpaque(true);
-        jSModEmpl6.setPreferredSize(new java.awt.Dimension(50, 2));
-        jPEliminarEmpelado.add(jSModEmpl6, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 210, 200, -1));
-
-        jTFNombreEmpleadoElimEmp.setFont(new java.awt.Font("Corbel", 0, 14)); // NOI18N
-        jTFNombreEmpleadoElimEmp.setBorder(null);
-        jPEliminarEmpelado.add(jTFNombreEmpleadoElimEmp, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 180, 200, 30));
-
-        jLNombreEmpElimEmp.setFont(new java.awt.Font("Corbel", 1, 14)); // NOI18N
-        jLNombreEmpElimEmp.setForeground(new java.awt.Color(153, 153, 153));
-        jLNombreEmpElimEmp.setText("Nombre empleado");
-        jPEliminarEmpelado.add(jLNombreEmpElimEmp, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 160, -1, -1));
-
-        jCBEliminarEmpleado.setFont(new java.awt.Font("Corbel", 1, 14)); // NOI18N
-        jCBEliminarEmpleado.setForeground(new java.awt.Color(0, 102, 102));
-        jCBEliminarEmpleado.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jCBEliminarEmpleadoActionPerformed(evt);
-            }
-        });
-        jPEliminarEmpelado.add(jCBEliminarEmpleado, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 110, 290, 30));
-
-        jLEliminarEmpleadoModEmpl.setFont(new java.awt.Font("Corbel", 1, 14)); // NOI18N
-        jLEliminarEmpleadoModEmpl.setForeground(new java.awt.Color(153, 153, 153));
-        jLEliminarEmpleadoModEmpl.setText("Buscar Empleado");
-        jPEliminarEmpelado.add(jLEliminarEmpleadoModEmpl, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 90, -1, -1));
-
-        jLTituloModEmpleado.setFont(new java.awt.Font("Corbel", 1, 30)); // NOI18N
-        jLTituloModEmpleado.setForeground(new java.awt.Color(153, 153, 153));
-        jLTituloModEmpleado.setText("Eliminar Empleado");
-        jPEliminarEmpelado.add(jLTituloModEmpleado, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 30, -1, -1));
-
-        jLApellidoElimEmp.setFont(new java.awt.Font("Corbel", 1, 14)); // NOI18N
-        jLApellidoElimEmp.setForeground(new java.awt.Color(153, 153, 153));
-        jLApellidoElimEmp.setText("Apellido empleado");
-        jPEliminarEmpelado.add(jLApellidoElimEmp, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 160, -1, -1));
-
-        jSModEmp11.setBackground(new java.awt.Color(0, 150, 136));
-        jSModEmp11.setOpaque(true);
-        jSModEmp11.setPreferredSize(new java.awt.Dimension(50, 2));
-        jPEliminarEmpelado.add(jSModEmp11, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 210, 200, -1));
-
-        jTFApellidoElimEmp.setFont(new java.awt.Font("Corbel", 0, 14)); // NOI18N
-        jTFApellidoElimEmp.setBorder(null);
-        jPEliminarEmpelado.add(jTFApellidoElimEmp, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 180, 200, 30));
-
-        jLCargoElimEmp.setFont(new java.awt.Font("Corbel", 1, 14)); // NOI18N
-        jLCargoElimEmp.setForeground(new java.awt.Color(153, 153, 153));
-        jLCargoElimEmp.setText("Cargo");
-        jPEliminarEmpelado.add(jLCargoElimEmp, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 230, -1, -1));
-
-        jPEliminarEmpelado.add(jCBCargoElimEmp, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 260, 200, -1));
-
-        jLContraseñaElimEmp.setFont(new java.awt.Font("Corbel", 1, 14)); // NOI18N
-        jLContraseñaElimEmp.setForeground(new java.awt.Color(153, 153, 153));
-        jLContraseñaElimEmp.setText("Contraseña");
-        jPEliminarEmpelado.add(jLContraseñaElimEmp, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 300, -1, -1));
-
-        jSModEmp1.setBackground(new java.awt.Color(0, 150, 136));
-        jSModEmp1.setOpaque(true);
-        jSModEmp1.setPreferredSize(new java.awt.Dimension(50, 2));
-        jPEliminarEmpelado.add(jSModEmp1, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 350, 200, -1));
-
-        jTFContraseñaElimEmp.setFont(new java.awt.Font("Corbel", 0, 14)); // NOI18N
-        jTFContraseñaElimEmp.setBorder(null);
-        jPEliminarEmpelado.add(jTFContraseñaElimEmp, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 320, 200, 30));
-
-        jlIconEliEmpl.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jlIconEliEmpl.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Image/borrar-usuario.png"))); // NOI18N
-        jPEliminarEmpelado.add(jlIconEliEmpl, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 20, 180, 150));
-
-        jtpEscritorio.addTab("tab19", jPEliminarEmpelado);
-
-        jPListarEmpleado.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-
-        jLTituloListaEmpleados.setFont(new java.awt.Font("Corbel", 1, 30)); // NOI18N
-        jLTituloListaEmpleados.setForeground(new java.awt.Color(153, 153, 153));
-        jLTituloListaEmpleados.setText("Lista de Empleados  ");
-        jPListarEmpleado.add(jLTituloListaEmpleados, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 40, -1, -1));
-
-        jtfBuscadorEmpleadosListEmp.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
-        jtfBuscadorEmpleadosListEmp.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyTyped(java.awt.event.KeyEvent evt) {
-                jtfBuscadorEmpleadosListEmpKeyTyped(evt);
-            }
-        });
-        jPListarEmpleado.add(jtfBuscadorEmpleadosListEmp, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 80, 160, 30));
-
-        jlImgBusquedaEmpl.setBackground(new java.awt.Color(255, 255, 255));
-        jlImgBusquedaEmpl.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jlImgBusquedaEmpl.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Image/busqueda - gris.png"))); // NOI18N
-        jlImgBusquedaEmpl.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
-        jlImgBusquedaEmpl.setOpaque(true);
-        jlImgBusquedaEmpl.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jlImgBusquedaEmplMouseClicked(evt);
-            }
-            public void mouseEntered(java.awt.event.MouseEvent evt) {
-                jlImgBusquedaEmplMouseEntered(evt);
-            }
-            public void mouseExited(java.awt.event.MouseEvent evt) {
-                jlImgBusquedaEmplMouseExited(evt);
-            }
-        });
-        jPListarEmpleado.add(jlImgBusquedaEmpl, new org.netbeans.lib.awtextra.AbsoluteConstraints(550, 80, 30, 30));
-
-        ScrollListClien1.setBackground(new java.awt.Color(255, 255, 255));
-        ScrollListClien1.setFont(new java.awt.Font("Corbel", 0, 12)); // NOI18N
-
-        jtListEmpleado.setBackground(new java.awt.Color(204, 204, 204));
-        jtListEmpleado.setFont(new java.awt.Font("Corbel", 1, 14)); // NOI18N
-        jtListEmpleado.setModel(new javax.swing.table.DefaultTableModel(
-            new Object [][] {
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null}
-            },
-            new String [] {
-                "Title 1", "Title 2", "Title 3", "Title 4"
-            }
-        ));
-        jtListEmpleado.setGridColor(new java.awt.Color(0, 102, 102));
-        jtListEmpleado.setMinimumSize(new java.awt.Dimension(60, 60));
-        ScrollListClien1.setViewportView(jtListEmpleado);
-
-        jPListarEmpleado.add(ScrollListClien1, new org.netbeans.lib.awtextra.AbsoluteConstraints(13, 120, 570, 290));
-
-        jtpEscritorio.addTab("tab20", jPListarEmpleado);
-
         BackGround.add(jtpEscritorio, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 43, 600, 460));
 
         getContentPane().add(BackGround, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
@@ -2902,11 +2325,148 @@ public class Menu extends javax.swing.JFrame {
         jtpEscritorio.setSelectedIndex(0);
     }//GEN-LAST:event_jlInicioMouseClicked
 
+    private void verMasPMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_verMasPMouseEntered
+        verMasP.setBackground(verdeClaro);
+    }//GEN-LAST:event_verMasPMouseEntered
+
+    private void verMasPMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_verMasPMouseExited
+        verMasP.setBackground(verdeBase);
+    }//GEN-LAST:event_verMasPMouseExited
+
+    private void verMasVMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_verMasVMouseEntered
+        verMasV.setBackground(verdeClaro);
+    }//GEN-LAST:event_verMasVMouseEntered
+
+    private void verMasVMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_verMasVMouseExited
+        verMasV.setBackground(verdeBase);
+    }//GEN-LAST:event_verMasVMouseExited
+
+    private void verMasCMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_verMasCMouseEntered
+        verMasC.setBackground(verdeClaro);
+    }//GEN-LAST:event_verMasCMouseEntered
+
+    private void verMasCMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_verMasCMouseExited
+        verMasC.setBackground(verdeBase);
+    }//GEN-LAST:event_verMasCMouseExited
+
+    private void verMasPMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_verMasPMouseClicked
+        jlProductosMouseClicked(evt);
+    }//GEN-LAST:event_verMasPMouseClicked
+
+    private void verMasVMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_verMasVMouseClicked
+        jlVentasMouseClicked(evt);
+    }//GEN-LAST:event_verMasVMouseClicked
+
+    private void verMasCMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_verMasCMouseClicked
+        jlClientesMouseClicked(evt);
+    }//GEN-LAST:event_verMasCMouseClicked
+
+    private void jlAgregarMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jlAgregarMouseEntered
+        jlAgregar.setBackground(verdeClaro);
+    }//GEN-LAST:event_jlAgregarMouseEntered
+
+    private void jlAgregarMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jlAgregarMouseExited
+        jlAgregar.setBackground(verdeBase);
+    }//GEN-LAST:event_jlAgregarMouseExited
+
+    private void jlModificarMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jlModificarMouseEntered
+        jlModificar.setBackground(verdeClaro);
+    }//GEN-LAST:event_jlModificarMouseEntered
+
+    private void jlModificarMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jlModificarMouseExited
+        jlModificar.setBackground(verdeBase);
+    }//GEN-LAST:event_jlModificarMouseExited
+
+    private void jlListarMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jlListarMouseEntered
+        jlListar.setBackground(verdeClaro);
+    }//GEN-LAST:event_jlListarMouseEntered
+
+    private void jlListarMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jlListarMouseExited
+        jlListar.setBackground(verdeBase);
+    }//GEN-LAST:event_jlListarMouseExited
+
     private void jlCerrarSesionMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jlCerrarSesionMouseClicked
         Login log = new Login();
         log.setVisible(true);
         dispose();
     }//GEN-LAST:event_jlCerrarSesionMouseClicked
+
+    private void jlListarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jlListarMouseClicked
+        jtpEscritorio.setSelectedIndex(4);
+        llenarTabla();
+    }//GEN-LAST:event_jlListarMouseClicked
+
+    private void jlListarClienteMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jlListarClienteMouseClicked
+        jtpEscritorio.setSelectedIndex(11);
+    }//GEN-LAST:event_jlListarClienteMouseClicked
+
+    private void jlListarClienteMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jlListarClienteMouseEntered
+        jlListarCliente.setBackground(verdeClaro);
+    }//GEN-LAST:event_jlListarClienteMouseEntered
+
+    private void jlListarClienteMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jlListarClienteMouseExited
+        jlListarCliente.setBackground(verdeBase);
+    }//GEN-LAST:event_jlListarClienteMouseExited
+
+    private void jlAgregarClienteMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jlAgregarClienteMouseEntered
+        jlAgregarCliente.setBackground(verdeClaro);
+    }//GEN-LAST:event_jlAgregarClienteMouseEntered
+
+    private void jlAgregarClienteMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jlAgregarClienteMouseExited
+        jlAgregarCliente.setBackground(verdeBase);
+    }//GEN-LAST:event_jlAgregarClienteMouseExited
+
+    private void jlModificarClienteMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jlModificarClienteMouseEntered
+        jlModificarCliente.setBackground(verdeClaro);
+    }//GEN-LAST:event_jlModificarClienteMouseEntered
+
+    private void jlModificarClienteMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jlModificarClienteMouseExited
+        jlModificarCliente.setBackground(verdeBase);
+    }//GEN-LAST:event_jlModificarClienteMouseExited
+
+    private void jlEliminarClienteMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jlEliminarClienteMouseEntered
+        jlEliminarCliente.setBackground(verdeClaro);
+    }//GEN-LAST:event_jlEliminarClienteMouseEntered
+
+    private void jlEliminarClienteMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jlEliminarClienteMouseExited
+        jlEliminarCliente.setBackground(verdeBase);
+    }//GEN-LAST:event_jlEliminarClienteMouseExited
+
+    private void RegistrarVentaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_RegistrarVentaMouseClicked
+        jtpEscritorio.setSelectedIndex(12);
+    }//GEN-LAST:event_RegistrarVentaMouseClicked
+
+    private void RegistrarVentaMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_RegistrarVentaMouseEntered
+        RegistrarVenta.setBackground(verdeClaro);
+    }//GEN-LAST:event_RegistrarVentaMouseEntered
+
+    private void RegistrarVentaMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_RegistrarVentaMouseExited
+        RegistrarVenta.setBackground(verdeBase);
+    }//GEN-LAST:event_RegistrarVentaMouseExited
+
+    private void DetVentaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_DetVentaMouseClicked
+        jtpEscritorio.setSelectedIndex(14);
+    }//GEN-LAST:event_DetVentaMouseClicked
+
+    private void DetVentaMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_DetVentaMouseEntered
+        DetVenta.setBackground(verdeClaro);
+    }//GEN-LAST:event_DetVentaMouseEntered
+
+    private void DetVentaMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_DetVentaMouseExited
+        DetVenta.setBackground(verdeBase);
+    }//GEN-LAST:event_DetVentaMouseExited
+
+    private void EliminarVentaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_EliminarVentaMouseClicked
+        jtpEscritorio.setSelectedIndex(15);
+    }//GEN-LAST:event_EliminarVentaMouseClicked
+
+    private void EliminarVentaMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_EliminarVentaMouseEntered
+        EliminarVenta.setBackground(verdeClaro);
+    }//GEN-LAST:event_EliminarVentaMouseEntered
+
+    private void EliminarVentaMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_EliminarVentaMouseExited
+        EliminarVenta.setBackground(verdeBase);
+    }//GEN-LAST:event_EliminarVentaMouseExited
 
     private void jlProductosMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jlProductosMouseExited
         jlProductos.setBackground(grisBase);
@@ -2919,6 +2479,111 @@ public class Menu extends javax.swing.JFrame {
     private void jlProductosMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jlProductosMouseClicked
         jtpEscritorio.setSelectedIndex(3);
     }//GEN-LAST:event_jlProductosMouseClicked
+
+    private void jlListarVentaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jlListarVentaMouseClicked
+        jtpEscritorio.setSelectedIndex(13);
+    }//GEN-LAST:event_jlListarVentaMouseClicked
+
+    private void jlListarVentaMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jlListarVentaMouseEntered
+        jlListarVenta.setBackground(verdeClaro);
+    }//GEN-LAST:event_jlListarVentaMouseEntered
+
+    private void jlListarVentaMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jlListarVentaMouseExited
+        jlListarVenta.setBackground(verdeBase);
+    }//GEN-LAST:event_jlListarVentaMouseExited
+
+    private void jlBusquedaMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jlBusquedaMouseEntered
+        jlBusqueda.setBackground(verdeClaro);
+        jlBusqueda.setIcon(new ImageIcon(getClass().getResource("/Image/busqueda - blanco.png")));
+    }//GEN-LAST:event_jlBusquedaMouseEntered
+
+    private void jlBusquedaMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jlBusquedaMouseExited
+        jlBusqueda.setBackground(Color.white);
+        jlBusqueda.setIcon(new ImageIcon(getClass().getResource("/Image/busqueda - gris.png")));
+    }//GEN-LAST:event_jlBusquedaMouseExited
+
+    private void jlBusquedaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jlBusquedaMouseClicked
+        borrarFila();
+        for (Producto pro : pd.listarProducto()) {
+            if (pro.getNombreProducto().toLowerCase().contains(jtfBuscador.getText()) || pro.getNombreProducto().toUpperCase().contains(jtfBuscador.getText())) {
+                Modelo.addRow(new Object[]{
+                    pro.getIdProducto(),
+                    pro.getNombreProducto(),
+                    pro.getDescripcion(),
+                    pro.getPrecioActual(),
+                    pro.getStock()
+                });
+            }
+        }
+    }//GEN-LAST:event_jlBusquedaMouseClicked
+
+    private void jlAgregarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jlAgregarMouseClicked
+        jtpEscritorio.setSelectedIndex(5);
+    }//GEN-LAST:event_jlAgregarMouseClicked
+
+    private void jLBtnAgregarProdMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLBtnAgregarProdMouseEntered
+        jLBtnAgregarProd.setBackground(verdeClaro);
+    }//GEN-LAST:event_jLBtnAgregarProdMouseEntered
+
+    private void jLBtnAgregarProdMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLBtnAgregarProdMouseExited
+        jLBtnAgregarProd.setBackground(verdeBase);
+    }//GEN-LAST:event_jLBtnAgregarProdMouseExited
+
+    private void jlModificarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jlModificarMouseClicked
+        jtpEscritorio.setSelectedIndex(7);
+    }//GEN-LAST:event_jlModificarMouseClicked
+
+    private void jLBtnModificarModProdMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLBtnModificarModProdMouseEntered
+        jLBtnModificarModProd.setBackground(verdeClaro);
+    }//GEN-LAST:event_jLBtnModificarModProdMouseEntered
+
+    private void jLBtnModificarModProdMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLBtnModificarModProdMouseExited
+        jLBtnModificarModProd.setBackground(verdeBase);
+    }//GEN-LAST:event_jLBtnModificarModProdMouseExited
+
+    private void jLBtnEliminarElimProdMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLBtnEliminarElimProdMouseEntered
+        jLBtnEliminarElimProd.setBackground(verdeClaro);
+    }//GEN-LAST:event_jLBtnEliminarElimProdMouseEntered
+
+    private void jLBtnEliminarElimProdMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLBtnEliminarElimProdMouseExited
+        jLBtnEliminarElimProd.setBackground(verdeBase);
+    }//GEN-LAST:event_jLBtnEliminarElimProdMouseExited
+
+    private void jLBtnModificarModClienMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLBtnModificarModClienMouseEntered
+        jLBtnModificarModClien.setBackground(verdeClaro);
+    }//GEN-LAST:event_jLBtnModificarModClienMouseEntered
+
+    private void jLBtnModificarModClienMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLBtnModificarModClienMouseExited
+        jLBtnModificarModClien.setBackground(verdeBase);
+    }//GEN-LAST:event_jLBtnModificarModClienMouseExited
+
+    private void jLBtnEliminarElimClienMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLBtnEliminarElimClienMouseEntered
+        jLBtnEliminarElimClien.setBackground(verdeClaro);
+    }//GEN-LAST:event_jLBtnEliminarElimClienMouseEntered
+
+    private void jLBtnEliminarElimClienMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLBtnEliminarElimClienMouseExited
+        jLBtnEliminarElimClien.setBackground(verdeBase);
+    }//GEN-LAST:event_jLBtnEliminarElimClienMouseExited
+
+    private void jlImgBusquedaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jlImgBusquedaMouseClicked
+        borrarFilaC();
+        String nombre = jtfBuscadorClienListClien.getText().toUpperCase();
+        for (Cliente cli : cD.listarClientes()) {
+            if (cli.getApellido().trim().toUpperCase().contains(nombre)) {
+                Modelo1.addRow(new Object[]{cli.getIdCliente(), cli.getApellido(), cli.getNombre(), cli.getDomicilio(), cli.getTelefono()});
+            }
+        }
+    }//GEN-LAST:event_jlImgBusquedaMouseClicked
+
+    private void jlImgBusquedaMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jlImgBusquedaMouseEntered
+        jlImgBusqueda.setBackground(verdeClaro);
+        jlImgBusqueda.setIcon(new ImageIcon(getClass().getResource("/Image/busqueda - blanco.png")));
+    }//GEN-LAST:event_jlImgBusquedaMouseEntered
+
+    private void jlImgBusquedaMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jlImgBusquedaMouseExited
+        jlImgBusqueda.setBackground(Color.white);
+        jlImgBusqueda.setIcon(new ImageIcon(getClass().getResource("/Image/busqueda - gris.png")));
+    }//GEN-LAST:event_jlImgBusquedaMouseExited
 
     private void jlCabeceraMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jlCabeceraMousePressed
         xMouse = evt.getX();
@@ -2959,223 +2624,83 @@ public class Menu extends javax.swing.JFrame {
         this.setExtendedState(1);
     }//GEN-LAST:event_jlMinimizarMouseClicked
 
-    private void jLEmpleadosMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLEmpleadosMouseClicked
-       jtpEscritorio.setSelectedIndex(17);
-    }//GEN-LAST:event_jLEmpleadosMouseClicked
-
-    private void jLEmpleadosMouseEntered(java.awt.event.MouseEvent evt) {                                         
-       jLEmpleados.setBackground(grisClaro);
-    }                                        
-
-    private void jLEmpleadosMouseExited(java.awt.event.MouseEvent evt) {                                        
-        jLEmpleados.setBackground(grisBase);
-    }                                       
-    private void jlRealizarVentaMouseEntered(java.awt.event.MouseEvent evt) {                                             
+    private void jlRealizarVentaMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jlRealizarVentaMouseEntered
         jlRealizarVenta.setBackground(verdeClaro);
-    }                                            
+    }//GEN-LAST:event_jlRealizarVentaMouseEntered
 
-    private void jlEliminarVentaBorrarMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jlEliminarVentaBorrarMouseExited
-        jlEliminarVenta.setBackground(verdeBase);
-    }//GEN-LAST:event_jlEliminarVentaBorrarMouseExited
+    private void jlRealizarVentaMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jlRealizarVentaMouseExited
+        jlRealizarVenta.setBackground(verdeBase);
+    }//GEN-LAST:event_jlRealizarVentaMouseExited
 
-    private void jlEliminarVentaBorrarMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jlEliminarVentaBorrarMouseEntered
-        jlEliminarVenta.setBackground(verdeClaro);
-    }//GEN-LAST:event_jlEliminarVentaBorrarMouseEntered
-
-    private void jcbBuscarVentaActionPerformed(java.awt.event.ActionEvent evt) {                                               
-        DetalleVentasData dvd = new DetalleVentasData();
-        Venta venta = (Venta) jcbBuscarVenta.getSelectedItem();
-        DetalleVenta dv = dvd.buscarDetalleProVenta(venta.getIdVenta());
-        jtfNombreProEliminar.setText(dv.getProducto().getNombreProducto());
-        jtfTelCliEliminar.setText(venta.getCliente().getTelefono());
-        jtfNombreEmpleadoEliminar.setText(venta.getEmpleado().getNombre() + " " + venta.getEmpleado().getApellido());
-        //        jdcFechaVentEliminar.setDate(Date.valueOf(venta.getFechaVenta()));
-    }                                              
-
-    private void jlIconBuscarMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jlIconBuscarMouseExited
-        jlIconBuscar.setBackground(Color.white);
-        jlIconBuscar.setIcon(new ImageIcon(getClass().getResource("/Image/busqueda - gris.png")));
-    }//GEN-LAST:event_jlIconBuscarMouseExited
+    private void jlIconBuscarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jlIconBuscarMouseClicked
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jlIconBuscarMouseClicked
 
     private void jlIconBuscarMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jlIconBuscarMouseEntered
         jlIconBuscar.setBackground(verdeClaro);
         jlIconBuscar.setIcon(new ImageIcon(getClass().getResource("/Image/busqueda - blanco.png")));
     }//GEN-LAST:event_jlIconBuscarMouseEntered
 
-    private void jlIconBuscarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jlIconBuscarMouseClicked
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jlIconBuscarMouseClicked
+    private void jlIconBuscarMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jlIconBuscarMouseExited
+        jlIconBuscar.setBackground(Color.white);
+        jlIconBuscar.setIcon(new ImageIcon(getClass().getResource("/Image/busqueda - gris.png")));
+    }//GEN-LAST:event_jlIconBuscarMouseExited
 
-    private void jListaCantidadMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jListaCantidadMouseClicked
-        if (jListaCantidad.getSelectedIndex() >= 0) {
-            int a = jListaCantidad.getSelectedIndex();
-            jListaProductos.setSelectedIndex(a);
-        }
-    }//GEN-LAST:event_jListaCantidadMouseClicked
+    private void jlEliminarVentaBorrarMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jlEliminarVentaBorrarMouseEntered
+        jlEliminarVenta.setBackground(verdeClaro);
+    }//GEN-LAST:event_jlEliminarVentaBorrarMouseEntered
 
-    private void jlRealizarVentaMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jlRealizarVentaMouseExited
-        jlRealizarVenta.setBackground(verdeBase);
-    }//GEN-LAST:event_jlRealizarVentaMouseExited
+    private void jlEliminarVentaBorrarMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jlEliminarVentaBorrarMouseExited
+        jlEliminarVenta.setBackground(verdeBase);
+    }//GEN-LAST:event_jlEliminarVentaBorrarMouseExited
 
-    private void jlRealizarVentaMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jlRealizarVentaMouseEntered
-        jlRealizarVenta.setBackground(verdeClaro);
-    }//GEN-LAST:event_jlRealizarVentaMouseEntered
+    private void jlEliminarMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jlEliminarMouseEntered
+        jlEliminar.setBackground(verdeClaro);
+    }//GEN-LAST:event_jlEliminarMouseEntered
 
-    private void jlEliminarProListMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jlEliminarProListMouseExited
-        jlEliminarProList.setBackground(verdeBase);
-    }//GEN-LAST:event_jlEliminarProListMouseExited
+    private void jlEliminarMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jlEliminarMouseExited
+        jlEliminar.setBackground(verdeBase);
+    }//GEN-LAST:event_jlEliminarMouseExited
 
-    private void jlEliminarProListMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jlEliminarProListMouseEntered
-        jlEliminarProList.setBackground(verdeClaro);
-    }//GEN-LAST:event_jlEliminarProListMouseEntered
+    private void jlEliminarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jlEliminarMouseClicked
+        jtpEscritorio.setSelectedIndex(6);
+    }//GEN-LAST:event_jlEliminarMouseClicked
 
-    private void jlEliminarProListMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jlEliminarProListMouseClicked
-        try {
-            int can = jListaCantidad.getSelectedIndex();
-            int pro = jListaProductos.getSelectedIndex();
-            listaCan.removeElementAt(can);
-            listaPro.removeElementAt(pro);
-            jListaCantidad.setModel(listaCan);
-            jListaProductos.setModel(listaPro);
-        } catch (ArrayIndexOutOfBoundsException ex) {
-            JOptionPane.showMessageDialog(this, "Debe seleccionar un elemento de la lista");
-        }
-    }//GEN-LAST:event_jlEliminarProListMouseClicked
+    private void jlAgregarClienteMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jlAgregarClienteMouseClicked
+        jtpEscritorio.setSelectedIndex(8);
+    }//GEN-LAST:event_jlAgregarClienteMouseClicked
 
-    private void jlAgrVentaMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jlAgrVentaMouseExited
-        jlAgrVenta.setBackground(verdeBase);
-    }//GEN-LAST:event_jlAgrVentaMouseExited
+    private void jlModificarClienteMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jlModificarClienteMouseClicked
+        jtpEscritorio.setSelectedIndex(9);
+        jcbClienteModifCli.removeAllItems();
+        llenarComboCliente();
+    }//GEN-LAST:event_jlModificarClienteMouseClicked
 
-    private void jlAgrVentaMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jlAgrVentaMouseEntered
-        jlAgrVenta.setBackground(verdeClaro);
-    }//GEN-LAST:event_jlAgrVentaMouseEntered
+    private void jlEliminarClienteMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jlEliminarClienteMouseClicked
+        jtpEscritorio.setSelectedIndex(10);
+        jCBBuscarClienElimClien.removeAllItems();
+        llenarComboCliente();
+    }//GEN-LAST:event_jlEliminarClienteMouseClicked
 
-    private void jlAgrVentaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jlAgrVentaMouseClicked
-        if (jtfCantidadVenta.getText().trim().isEmpty() || jcbProVenta.getSelectedItem() == null) {
-            JOptionPane.showMessageDialog(this, "Ingrese datos de Cantidad y Producto");
-        } else {
-            listaPro.addElement(jcbProVenta.getSelectedItem());
-            listaCan.addElement(Integer.valueOf(jtfCantidadVenta.getText().trim()));
-            jListaProductos.setModel(listaPro);
-            jListaCantidad.setModel(listaCan);
-        }
-    }//GEN-LAST:event_jlAgrVentaMouseClicked
-
-    private void jListaProductosMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jListaProductosMouseClicked
-        if (jListaProductos.getSelectedIndex() >= 0) {
-            int a = jListaProductos.getSelectedIndex();
-            jListaCantidad.setSelectedIndex(a);
-        }
-    }//GEN-LAST:event_jListaProductosMouseClicked
-
-    private void jlImgBusquedaMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jlImgBusquedaMouseExited
-        jlImgBusqueda.setBackground(Color.white);
-        jlImgBusqueda.setIcon(new ImageIcon(getClass().getResource("/Image/busqueda - gris.png")));
-    }//GEN-LAST:event_jlImgBusquedaMouseExited
-
-    private void jlImgBusquedaMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jlImgBusquedaMouseEntered
-        jlImgBusqueda.setBackground(verdeClaro);
-        jlImgBusqueda.setIcon(new ImageIcon(getClass().getResource("/Image/busqueda - blanco.png")));
-    }//GEN-LAST:event_jlImgBusquedaMouseEntered
-
-    private void jlImgBusquedaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jlImgBusquedaMouseClicked
-        borrarFilaC();
-        String nombre = jtfBuscadorClienListClien.getText().toUpperCase();
-        for (Cliente cli : cD.listarClientes()) {
-            if (cli.getApellido().trim().toUpperCase().contains(nombre)) {
-                Modelo1.addRow(new Object[]{cli.getIdCliente(), cli.getApellido(), cli.getNombre(), cli.getDomicilio(), cli.getTelefono()});
-            }
-        }
-    }//GEN-LAST:event_jlImgBusquedaMouseClicked
-
-    private void jtfBuscadorClienListClienKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jtfBuscadorClienListClienKeyTyped
+    private void jTFNombreClienteAgrClienKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTFNombreClienteAgrClienKeyTyped
         controlLetras(evt);
-    }//GEN-LAST:event_jtfBuscadorClienListClienKeyTyped
+    }//GEN-LAST:event_jTFNombreClienteAgrClienKeyTyped
 
-    private void jCBBuscarClienElimClienActionPerformed(java.awt.event.ActionEvent evt) {                                                        
-        try {
-            Cliente cli = (Cliente) jCBBuscarClienElimClien.getSelectedItem();
-            jTFApellidoClienElimClien.setText(cli.getApellido());
-            jTFNombreClienElimClien.setText(cli.getNombre());
-            jTFDomicilioElimClien.setText(cli.getDomicilio());
-            jTFTelefonoElimClien.setText(cli.getTelefono());
-        } catch (Exception e) {
-        }
-    }                                                       
+    private void jTFApellidoClienteAgrClienKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTFApellidoClienteAgrClienKeyTyped
+        controlLetras(evt);
+    }//GEN-LAST:event_jTFApellidoClienteAgrClienKeyTyped
 
-    private void jLBtnEliminarElimClienMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLBtnEliminarElimClienMouseExited
-        jLBtnEliminarElimClien.setBackground(verdeBase);
-    }//GEN-LAST:event_jLBtnEliminarElimClienMouseExited
-
-    private void jLBtnEliminarElimClienMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLBtnEliminarElimClienMouseEntered
-        jLBtnEliminarElimClien.setBackground(verdeClaro);
-    }//GEN-LAST:event_jLBtnEliminarElimClienMouseEntered
-
-    private void jLBtnEliminarElimClienMouseClicked(java.awt.event.MouseEvent evt) {                                                    
-        try {
-            Cliente cli = (Cliente) jCBBuscarClienElimClien.getSelectedItem();
-            if (jTFApellidoClienElimClien.getText().trim().isEmpty() || jTFNombreClienElimClien.getText().trim().isEmpty()
-                    || jTFDomicilioElimClien.getText().trim().isEmpty() || jTFTelefonoElimClien.getText().trim().isEmpty()) {
-                JOptionPane.showMessageDialog(null, "No pude haber campos vacios.");
-            } else {
-                cD.eliminarCliente(cli.getIdCliente());
-                jCBBuscarClienElimClien.removeItemAt(jCBBuscarClienElimClien.getSelectedIndex());
-            }
-        } catch (NullPointerException ex) {
-        }
-    }                                                   
-
-    private void jcbClienteModifCliActionPerformed(java.awt.event.ActionEvent evt) {                                                   
-        try {
-            Cliente cli = (Cliente) jcbClienteModifCli.getSelectedItem();
-            jTFApellidoModClien.setText(cli.getApellido());
-            jTFNombreClienModClien.setText(cli.getNombre());
-            jTFDomicilioModClien.setText(cli.getDomicilio());
-            jTFTelefonoModClien.setText(cli.getTelefono());
-        } catch (Exception e) {
-        }
-    }                                                  
-
-    private void jLBtnModificarModClienMousePressed(java.awt.event.MouseEvent evt) {                                                    
-        try {
-            Cliente cli = (Cliente) jcbClienteModifCli.getSelectedItem();
-            if (jTFApellidoModClien.getText().trim().isEmpty() || jTFNombreClienModClien.getText().trim().isEmpty()
-                    || jTFDomicilioModClien.getText().trim().isEmpty() || jTFTelefonoModClien.getText().trim().isEmpty()) {
-                JOptionPane.showMessageDialog(null, "No pude haber campos vacios.");
-            } else {
-                if (!jTFNombreClienModClien.getText().equalsIgnoreCase(cli.getApellido())
-                        || !jTFApellidoModClien.getText().equalsIgnoreCase(cli.getApellido())
-                        || !jTFDomicilioModClien.getText().equalsIgnoreCase(cli.getDomicilio())
-                        || !jTFTelefonoModClien.getText().equalsIgnoreCase(cli.getTelefono())) {
-
-                    cli.setIdCliente(cli.getIdCliente());
-                    cli.setApellido(jTFApellidoModClien.getText());
-                    cli.setNombre(jTFNombreClienModClien.getText());
-                    cli.setDomicilio(jTFDomicilioModClien.getText());
-                    cli.setTelefono(jTFTelefonoModClien.getText());
-                    cD.modicifarCliente(cli);
-                    borrarCamposModCli();
-                }
-            }
-        } catch (Exception e) {
-        }
-    }                                                   
-
-    private void jLBtnModificarModClienMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLBtnModificarModClienMouseExited
-        jLBtnModificarModClien.setBackground(verdeBase);
-    }//GEN-LAST:event_jLBtnModificarModClienMouseExited
-
-    private void jLBtnModificarModClienMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLBtnModificarModClienMouseEntered
-        jLBtnModificarModClien.setBackground(verdeClaro);
-    }//GEN-LAST:event_jLBtnModificarModClienMouseEntered
-
-    private void jLBtnAgregarClienteMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLBtnAgregarClienteMouseExited
-        jLBtnAgregarCliente.setBackground(verdeBase);
-    }//GEN-LAST:event_jLBtnAgregarClienteMouseExited
+    private void jTFTelefonoClienteAgKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTFTelefonoClienteAgKeyTyped
+        controlNumeros(evt);
+    }//GEN-LAST:event_jTFTelefonoClienteAgKeyTyped
 
     private void jLBtnAgregarClienteMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLBtnAgregarClienteMouseEntered
         jLBtnAgregarCliente.setBackground(verdeClaro);
     }//GEN-LAST:event_jLBtnAgregarClienteMouseEntered
+
+    private void jLBtnAgregarClienteMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLBtnAgregarClienteMouseExited
+        jLBtnAgregarCliente.setBackground(verdeBase);
+    }//GEN-LAST:event_jLBtnAgregarClienteMouseExited
 
     private void jLBtnAgregarClienteMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLBtnAgregarClienteMouseClicked
         ClienteData clienteD = new ClienteData();
@@ -3202,10 +2727,7 @@ public class Menu extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_jLBtnAgregarClienteMouseClicked
 
-
-    private void jTFApellidoClienteAgrClienKeyTyped(java.awt.event.KeyEvent evt) {                                                    
-    }
-    private void jLBtnAgregarProdMousePressed(java.awt.event.MouseEvent evt) {                                              
+    private void jLBtnAgregarProdMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLBtnAgregarProdMousePressed
         if (jTFNombreProductoAgrProd.getText().trim().isEmpty() || jTFPrecioActualAgrProd.getText().trim().isEmpty()
                 || jTFDescripcionAgrProd.getText().trim().isEmpty() || jTFStockAgrProd.getText().trim().isEmpty()) {
             JOptionPane.showMessageDialog(this, "No puede haber campos vacios");
@@ -3229,7 +2751,7 @@ public class Menu extends javax.swing.JFrame {
             }
         }
         borrarCamposAgrProd();
-    }                                             
+    }//GEN-LAST:event_jLBtnAgregarProdMousePressed
 
     private void jcbClienteModifCliActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jcbClienteModifCliActionPerformed
         try {
@@ -3292,25 +2814,9 @@ public class Menu extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_jLBtnEliminarElimClienMouseClicked
 
-    private void jtfBuscadorClienListClienKeyTyped(java.awt.event.KeyEvent evt) {                                                   
+    private void jtfBuscadorClienListClienKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jtfBuscadorClienListClienKeyTyped
         controlLetras(evt);
-    }                                                   
-
-    private void jTFTelefonoClienteAgKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTFTelefonoClienteAgKeyTyped
-        controlNumeros(evt);
-    }//GEN-LAST:event_jTFTelefonoClienteAgKeyTyped
-
-    private void jTFNombreClienteAgrClienKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTFNombreClienteAgrClienKeyTyped
-        controlLetras(evt);
-    }//GEN-LAST:event_jTFNombreClienteAgrClienKeyTyped
-
-    private void jcbProductosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jcbProductosActionPerformed
-        Producto pro = (Producto) jcbProductos.getSelectedItem();
-        jTFNombreProdModProd.setText(pro.getNombreProducto());
-        jTFDescripcionModProd.setText(pro.getDescripcion());
-        jTFPrecioActualModProd.setText(pro.getPrecioActual() + "");
-        jTFStockModProd.setText(pro.getStock() + "");
-    }//GEN-LAST:event_jcbProductosActionPerformed
+    }//GEN-LAST:event_jtfBuscadorClienListClienKeyTyped
 
     private void jcbBuscarVentaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jcbBuscarVentaActionPerformed
         DetalleVentasData dvd = new DetalleVentasData();
@@ -3322,7 +2828,7 @@ public class Menu extends javax.swing.JFrame {
 //        jdcFechaVentEliminar.setDate(Date.valueOf(venta.getFechaVenta()));
     }//GEN-LAST:event_jcbBuscarVentaActionPerformed
 
-    private void jLBtnEliminarElimProdMousePressed(java.awt.event.MouseEvent evt) {                                                   
+    private void jLBtnEliminarElimProdMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLBtnEliminarElimProdMousePressed
         try {
             ProductoData proD = new ProductoData();
             Producto pro = proD.buscarProductoPorNombre(jTFNombreProdElimProd.getText().trim());
@@ -3343,9 +2849,8 @@ public class Menu extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(this, "No puede haber campos vacios");
         }
         borrarCamposElimProd();
-    }                                                  
+    }//GEN-LAST:event_jLBtnEliminarElimProdMousePressed
 
-    
     private void jLBtnModificarModProdMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLBtnModificarModProdMousePressed
         if (jTFNombreProdModProd.getText().trim().isEmpty() || jTFDescripcionModProd.getText().trim().isEmpty() || jTFPrecioActualModProd.getText().trim().isEmpty()
                 || jTFStockModProd.getText().trim().isEmpty()) {
@@ -3373,44 +2878,13 @@ public class Menu extends javax.swing.JFrame {
         borrarCamposModProd();
     }//GEN-LAST:event_jLBtnModificarModProdMousePressed
 
-    private void jLBtnModificarModProdMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLBtnModificarModProdMouseExited
-        jLBtnModificarModProd.setBackground(verdeBase);
-    }//GEN-LAST:event_jLBtnModificarModProdMouseExited
-
-    private void jLBtnModificarModProdMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLBtnModificarModProdMouseEntered
-        jLBtnModificarModProd.setBackground(verdeClaro);
-    }//GEN-LAST:event_jLBtnModificarModProdMouseEntered
-
-    private void jLBtnEliminarElimProdMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLBtnEliminarElimProdMousePressed
-        try {
-            ProductoData proD = new ProductoData();
-            Producto pro = proD.buscarProductoPorNombre(jTFNombreProdElimProd.getText().trim());
-            if (pro.getNombreProducto().trim().equals(jTFNombreProdElimProd.getText()) && pro.getDescripcion().trim().equals(jTFDescripcionElimProd.getText())
-                    && pro.getPrecioActual() == Double.parseDouble(jTFPrecioActuaElimProd.getText()) && pro.getStock() == Integer.parseInt(jTFStockElimProd.getText())) {
-                int opcion = JOptionPane.showConfirmDialog(this, "Esta seguro que desea eliminar el alumno?", "Selecione una opcion", JOptionPane.YES_NO_OPTION);
-                switch (opcion) {
-                    case 0:
-                        proD.eliminarProducto(pro.getIdProducto());
-                        break;
-                    case 1:
-                        break;
-                }
-            } else {
-                JOptionPane.showMessageDialog(null, "Los datos de el producto no coinciden con los de la Base de Datos.");
-            }
-        } catch (NullPointerException | NumberFormatException ex) {
-            JOptionPane.showMessageDialog(this, "No puede haber campos vacios");
-        }
-        borrarCamposElimProd();
-    }//GEN-LAST:event_jLBtnEliminarElimProdMousePressed
-
-    private void jLBtnEliminarElimProdMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLBtnEliminarElimProdMouseExited
-        jLBtnEliminarElimProd.setBackground(verdeBase);
-    }//GEN-LAST:event_jLBtnEliminarElimProdMouseExited
-
-    private void jLBtnEliminarElimProdMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLBtnEliminarElimProdMouseEntered
-        jLBtnEliminarElimProd.setBackground(verdeClaro);
-    }//GEN-LAST:event_jLBtnEliminarElimProdMouseEntered
+    private void jcbProductosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jcbProductosActionPerformed
+        Producto pro = (Producto) jcbProductos.getSelectedItem();
+        jTFNombreProdModProd.setText(pro.getNombreProducto());
+        jTFDescripcionModProd.setText(pro.getDescripcion());
+        jTFPrecioActualModProd.setText(pro.getPrecioActual() + "");
+        jTFStockModProd.setText(pro.getStock() + "");
+    }//GEN-LAST:event_jcbProductosActionPerformed
 
     private void jCBBuscarProdElimProdActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jCBBuscarProdElimProdActionPerformed
         Producto pro = (Producto) jCBBuscarProdElimProd.getSelectedItem();
@@ -3420,361 +2894,9 @@ public class Menu extends javax.swing.JFrame {
         jTFStockElimProd.setText(pro.getStock() + "");
     }//GEN-LAST:event_jCBBuscarProdElimProdActionPerformed
 
-    private void jLBtnAgregarProdMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLBtnAgregarProdMousePressed
-        if (jTFNombreProductoAgrProd.getText().trim().isEmpty() || jTFPrecioActualAgrProd.getText().trim().isEmpty()
-                || jTFDescripcionAgrProd.getText().trim().isEmpty() || jTFStockAgrProd.getText().trim().isEmpty()) {
-            JOptionPane.showMessageDialog(this, "No puede haber campos vacios");
-        } else {
-            try {
-                ProductoData productoD = new ProductoData();
-                Producto producto = productoD.buscarProductoPorNombre(jTFNombreProductoAgrProd.getText());
-                if (producto == null) {
-                    Producto product = new Producto();
-                    product.setNombreProducto(jTFNombreProductoAgrProd.getText());
-                    product.setDescripcion(jTFDescripcionAgrProd.getText());
-                    product.setPrecioActual(Double.parseDouble(jTFPrecioActualAgrProd.getText()));
-                    product.setStock(Integer.parseInt(jTFStockAgrProd.getText()));
-                    product.setEstado(true);
-                    productoD.guardarProducto(product);
-                } else {
-                    JOptionPane.showMessageDialog(this, "Ya hay un producto con ese nombre si quiere modificarlo vaya a la pestaña de modificar producto");
-                }
-            } catch (NullPointerException ex) {
-
-            }
-        }
-        borrarCamposAgrProd();
-    }//GEN-LAST:event_jLBtnAgregarProdMousePressed
-
-    private void jLBtnAgregarProdMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLBtnAgregarProdMouseExited
-        jLBtnAgregarProd.setBackground(verdeBase);
-    }//GEN-LAST:event_jLBtnAgregarProdMouseExited
-
-    private void jLBtnAgregarProdMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLBtnAgregarProdMouseEntered
-        jLBtnAgregarProd.setBackground(verdeClaro);
-    }//GEN-LAST:event_jLBtnAgregarProdMouseEntered
-
-    private void jlBusquedaMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jlBusquedaMouseExited
-        jlBusqueda.setBackground(Color.white);
-        jlBusqueda.setIcon(new ImageIcon(getClass().getResource("/Image/busqueda - gris.png")));
-    }//GEN-LAST:event_jlBusquedaMouseExited
-
-    private void jlBusquedaMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jlBusquedaMouseEntered
-        jlBusqueda.setBackground(verdeClaro);
-        jlBusqueda.setIcon(new ImageIcon(getClass().getResource("/Image/busqueda - blanco.png")));
-    }//GEN-LAST:event_jlBusquedaMouseEntered
-
-    private void jlBusquedaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jlBusquedaMouseClicked
-        borrarFila();
-        for (Producto pro : pd.listarProducto()) {
-            if (pro.getNombreProducto().toLowerCase().contains(jtfBuscador.getText()) || pro.getNombreProducto().toUpperCase().contains(jtfBuscador.getText())) {
-                Modelo.addRow(new Object[]{
-                    pro.getIdProducto(),
-                    pro.getNombreProducto(),
-                    pro.getDescripcion(),
-                    pro.getPrecioActual(),
-                    pro.getStock()
-                });
-            }
-        }
-    }//GEN-LAST:event_jlBusquedaMouseClicked
-
-    private void jlModificarMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jlModificarMouseExited
-        jlModificar.setBackground(verdeBase);
-    }//GEN-LAST:event_jlModificarMouseExited
-
-    private void jlModificarMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jlModificarMouseEntered
-        jlModificar.setBackground(verdeClaro);
-    }//GEN-LAST:event_jlModificarMouseEntered
-
-    private void jlModificarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jlModificarMouseClicked
-        jtpEscritorio.setSelectedIndex(7);
-    }//GEN-LAST:event_jlModificarMouseClicked
-
-    private void jlAgregarMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jlAgregarMouseExited
-        jlAgregar.setBackground(verdeBase);
-    }//GEN-LAST:event_jlAgregarMouseExited
-
-    private void jlAgregarMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jlAgregarMouseEntered
-        jlAgregar.setBackground(verdeClaro);
-    }//GEN-LAST:event_jlAgregarMouseEntered
-
-    private void jlAgregarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jlAgregarMouseClicked
-        jtpEscritorio.setSelectedIndex(5);
-    }//GEN-LAST:event_jlAgregarMouseClicked
-
-    private void jlEliminarMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jlEliminarMouseExited
-        jlEliminar.setBackground(verdeBase);
-    }//GEN-LAST:event_jlEliminarMouseExited
-
-    private void jlEliminarMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jlEliminarMouseEntered
-        jlEliminar.setBackground(verdeClaro);
-    }//GEN-LAST:event_jlEliminarMouseEntered
-
-    private void jlEliminarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jlEliminarMouseClicked
-        jtpEscritorio.setSelectedIndex(6);
-    }//GEN-LAST:event_jlEliminarMouseClicked
-
-    private void jlListarMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jlListarMouseExited
-        jlListar.setBackground(verdeBase);
-    }//GEN-LAST:event_jlListarMouseExited
-
-    private void jlListarMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jlListarMouseEntered
-        jlListar.setBackground(verdeClaro);
-    }//GEN-LAST:event_jlListarMouseEntered
-
-    private void jlListarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jlListarMouseClicked
-        jtpEscritorio.setSelectedIndex(4);
-        llenarTabla();
-    }//GEN-LAST:event_jlListarMouseClicked
-
-    private void jlEliminarClienteMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jlEliminarClienteMouseExited
-        jlEliminarCliente.setBackground(verdeBase);
-    }//GEN-LAST:event_jlEliminarClienteMouseExited
-
-    private void jlEliminarClienteMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jlEliminarClienteMouseEntered
-        jlEliminarCliente.setBackground(verdeClaro);
-    }//GEN-LAST:event_jlEliminarClienteMouseEntered
-
-    private void jlEliminarClienteMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jlEliminarClienteMouseClicked
-        jtpEscritorio.setSelectedIndex(10);
-        jCBBuscarClienElimClien.removeAllItems();
-        llenarComboCliente();
-    }//GEN-LAST:event_jlEliminarClienteMouseClicked
-
-    private void jlModificarClienteMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jlModificarClienteMouseExited
-        jlModificarCliente.setBackground(verdeBase);
-    }//GEN-LAST:event_jlModificarClienteMouseExited
-
-    private void jlModificarClienteMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jlModificarClienteMouseEntered
-        jlModificarCliente.setBackground(verdeClaro);
-    }//GEN-LAST:event_jlModificarClienteMouseEntered
-
-    private void jlModificarClienteMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jlModificarClienteMouseClicked
-        jtpEscritorio.setSelectedIndex(9);
-        jcbClienteModifCli.removeAllItems();
-        llenarComboCliente();
-    }//GEN-LAST:event_jlModificarClienteMouseClicked
-
-    private void jlAgregarClienteMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jlAgregarClienteMouseExited
-        jlAgregarCliente.setBackground(verdeBase);
-    }//GEN-LAST:event_jlAgregarClienteMouseExited
-
-    private void jlAgregarClienteMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jlAgregarClienteMouseEntered
-        jlAgregarCliente.setBackground(verdeClaro);
-    }//GEN-LAST:event_jlAgregarClienteMouseEntered
-
-    private void jlAgregarClienteMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jlAgregarClienteMouseClicked
-        jtpEscritorio.setSelectedIndex(8);
-    }//GEN-LAST:event_jlAgregarClienteMouseClicked
-
-    private void jlListarClienteMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jlListarClienteMouseExited
-        jlListarCliente.setBackground(verdeBase);
-    }//GEN-LAST:event_jlListarClienteMouseExited
-
-    private void jlListarClienteMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jlListarClienteMouseEntered
-        jlListarCliente.setBackground(verdeClaro);
-    }//GEN-LAST:event_jlListarClienteMouseEntered
-
-    private void jlListarClienteMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jlListarClienteMouseClicked
-        jtpEscritorio.setSelectedIndex(11);
-    }//GEN-LAST:event_jlListarClienteMouseClicked
-
-    private void jlListarVentaMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jlListarVentaMouseExited
-        jlListarVenta.setBackground(verdeBase);
-    }//GEN-LAST:event_jlListarVentaMouseExited
-
-    private void jlListarVentaMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jlListarVentaMouseEntered
-        jlListarVenta.setBackground(verdeClaro);
-    }//GEN-LAST:event_jlListarVentaMouseEntered
-
-    private void jlListarVentaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jlListarVentaMouseClicked
-        jtpEscritorio.setSelectedIndex(13);
-    }//GEN-LAST:event_jlListarVentaMouseClicked
-
-    private void EliminarVentaMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_EliminarVentaMouseExited
-        EliminarVenta.setBackground(verdeBase);
-    }//GEN-LAST:event_EliminarVentaMouseExited
-
-    private void EliminarVentaMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_EliminarVentaMouseEntered
-        EliminarVenta.setBackground(verdeClaro);
-    }//GEN-LAST:event_EliminarVentaMouseEntered
-
-    private void EliminarVentaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_EliminarVentaMouseClicked
-        jtpEscritorio.setSelectedIndex(15);
-    }//GEN-LAST:event_EliminarVentaMouseClicked
-
-    private void DetVentaMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_DetVentaMouseExited
-        DetVenta.setBackground(verdeBase);
-    }//GEN-LAST:event_DetVentaMouseExited
-
-    private void DetVentaMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_DetVentaMouseEntered
-        DetVenta.setBackground(verdeClaro);
-    }//GEN-LAST:event_DetVentaMouseEntered
-
-    private void DetVentaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_DetVentaMouseClicked
-        jtpEscritorio.setSelectedIndex(14);
-    }//GEN-LAST:event_DetVentaMouseClicked
-
-    private void RegistrarVentaMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_RegistrarVentaMouseExited
-        RegistrarVenta.setBackground(verdeBase);
-    }//GEN-LAST:event_RegistrarVentaMouseExited
-
-    private void RegistrarVentaMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_RegistrarVentaMouseEntered
-        RegistrarVenta.setBackground(verdeClaro);
-    }//GEN-LAST:event_RegistrarVentaMouseEntered
-
-    private void RegistrarVentaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_RegistrarVentaMouseClicked
-        jtpEscritorio.setSelectedIndex(12);
-    }//GEN-LAST:event_RegistrarVentaMouseClicked
-
-    private void verMasPMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_verMasPMouseExited
-        verMasP.setBackground(verdeBase);
-    }//GEN-LAST:event_verMasPMouseExited
-
-    private void verMasPMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_verMasPMouseEntered
-        verMasP.setBackground(verdeClaro);
-    }//GEN-LAST:event_verMasPMouseEntered
-
-    private void verMasPMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_verMasPMouseClicked
-        jlProductosMouseClicked(evt);
-    }//GEN-LAST:event_verMasPMouseClicked
-
-    private void verMasVMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_verMasVMouseExited
-        verMasV.setBackground(verdeBase);
-    }//GEN-LAST:event_verMasVMouseExited
-
-    private void verMasVMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_verMasVMouseEntered
-        verMasV.setBackground(verdeClaro);
-    }//GEN-LAST:event_verMasVMouseEntered
-
-    private void verMasVMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_verMasVMouseClicked
-        jlVentasMouseClicked(evt);
-    }//GEN-LAST:event_verMasVMouseClicked
-
-    private void verMasCMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_verMasCMouseExited
-        verMasC.setBackground(verdeBase);
-    }//GEN-LAST:event_verMasCMouseExited
-
-    private void verMasCMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_verMasCMouseEntered
-        verMasC.setBackground(verdeClaro);
-    }//GEN-LAST:event_verMasCMouseEntered
-
-    private void verMasCMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_verMasCMouseClicked
-        jlClientesMouseClicked(evt);
-    }//GEN-LAST:event_verMasCMouseClicked
-
-    private void jlAgregarEmpleadoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jlAgregarEmpleadoMouseClicked
+    private void jLEmpleadosMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLEmpleadosMouseClicked
         // TODO add your handling code here:
-    }//GEN-LAST:event_jlAgregarEmpleadoMouseClicked
-
-    private void jlAgregarEmpleadoMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jlAgregarEmpleadoMouseEntered
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jlAgregarEmpleadoMouseEntered
-
-    private void jlAgregarEmpleadoMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jlAgregarEmpleadoMouseExited
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jlAgregarEmpleadoMouseExited
-
-    private void jlModificarEmpleadoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jlModificarEmpleadoMouseClicked
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jlModificarEmpleadoMouseClicked
-
-    private void jlModificarEmpleadoMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jlModificarEmpleadoMouseEntered
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jlModificarEmpleadoMouseEntered
-
-    private void jlModificarEmpleadoMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jlModificarEmpleadoMouseExited
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jlModificarEmpleadoMouseExited
-
-    private void jlEliminarEmpleadoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jlEliminarEmpleadoMouseClicked
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jlEliminarEmpleadoMouseClicked
-
-    private void jlEliminarEmpleadoMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jlEliminarEmpleadoMouseEntered
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jlEliminarEmpleadoMouseEntered
-
-    private void jlEliminarEmpleadoMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jlEliminarEmpleadoMouseExited
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jlEliminarEmpleadoMouseExited
-
-    private void jlListarEmpleadoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jlListarEmpleadoMouseClicked
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jlListarEmpleadoMouseClicked
-
-    private void jlListarEmpleadoMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jlListarEmpleadoMouseEntered
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jlListarEmpleadoMouseEntered
-
-    private void jlListarEmpleadoMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jlListarEmpleadoMouseExited
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jlListarEmpleadoMouseExited
-
-    private void jLBtnCargoModificarModEmpMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLBtnCargoModificarModEmpMouseEntered
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jLBtnCargoModificarModEmpMouseEntered
-
-    private void jLBtnCargoModificarModEmpMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLBtnCargoModificarModEmpMouseExited
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jLBtnCargoModificarModEmpMouseExited
-
-    private void jLBtnCargoModificarModEmpMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLBtnCargoModificarModEmpMousePressed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jLBtnCargoModificarModEmpMousePressed
-
-    private void jCBModificarEmpleadoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jCBModificarEmpleadoActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jCBModificarEmpleadoActionPerformed
-
-    private void jTFDniModEmpActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTFDniModEmpActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jTFDniModEmpActionPerformed
-
-    private void jTFUsuarioModEmpActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTFUsuarioModEmpActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jTFUsuarioModEmpActionPerformed
-
-    private void jLBtnEliminarEmpleadoMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLBtnEliminarEmpleadoMouseEntered
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jLBtnEliminarEmpleadoMouseEntered
-
-    private void jLBtnEliminarEmpleadoMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLBtnEliminarEmpleadoMouseExited
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jLBtnEliminarEmpleadoMouseExited
-
-    private void jLBtnEliminarEmpleadoMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLBtnEliminarEmpleadoMousePressed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jLBtnEliminarEmpleadoMousePressed
-
-    private void jTFUsuarioElimEmpActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTFUsuarioElimEmpActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jTFUsuarioElimEmpActionPerformed
-
-    private void jTFDniElimEmpActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTFDniElimEmpActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jTFDniElimEmpActionPerformed
-
-    private void jCBEliminarEmpleadoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jCBEliminarEmpleadoActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jCBEliminarEmpleadoActionPerformed
-
-    private void jtfBuscadorEmpleadosListEmpKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jtfBuscadorEmpleadosListEmpKeyTyped
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jtfBuscadorEmpleadosListEmpKeyTyped
-
-    private void jlImgBusquedaEmplMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jlImgBusquedaEmplMouseClicked
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jlImgBusquedaEmplMouseClicked
-
-    private void jlImgBusquedaEmplMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jlImgBusquedaEmplMouseEntered
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jlImgBusquedaEmplMouseEntered
-
-    private void jlImgBusquedaEmplMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jlImgBusquedaEmplMouseExited
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jlImgBusquedaEmplMouseExited
+    }//GEN-LAST:event_jLEmpleadosMouseClicked
 
     private void jLEmpleadosMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLEmpleadosMouseEntered
         jLEmpleados.setBackground(grisClaro);
@@ -3877,59 +2999,36 @@ public class Menu extends javax.swing.JFrame {
     private javax.swing.JLabel RegistrarVenta;
     private javax.swing.JScrollPane Scroll;
     private javax.swing.JScrollPane ScrollListClien;
-<<<<<<< HEAD
-    private javax.swing.JScrollPane ScrollListClien1;
-    private javax.swing.JScrollPane ScrollListPro;
-=======
->>>>>>> d1a158592c654177d2dda428ec27efa10789f60e
     private javax.swing.JScrollPane ScrollTablaDetalles;
     private javax.swing.JScrollPane ScrollTablaVentas;
     private javax.swing.JLabel fravemaxLogo;
     private javax.swing.JComboBox<Cliente> jCBBuscarClienElimClien;
     private javax.swing.JComboBox<Producto> jCBBuscarProdElimProd;
-    private javax.swing.JComboBox<String> jCBCargoElimEmp;
-    private javax.swing.JComboBox<String> jCBCargoModifEmp;
-    private javax.swing.JComboBox<Empleado> jCBEliminarEmpleado;
-    private javax.swing.JComboBox<Empleado> jCBModificarEmpleado;
     private javax.swing.JLabel jLAgregarProducto;
     private javax.swing.JLabel jLApellidoClienteAgrClien;
     private javax.swing.JLabel jLApellidoElimClien;
-    private javax.swing.JLabel jLApellidoElimEmp;
     private javax.swing.JLabel jLApellidoModClien;
-    private javax.swing.JLabel jLApellidoModEmp;
     private javax.swing.JLabel jLBtnAgregarCliente;
     private javax.swing.JLabel jLBtnAgregarProd;
-    private javax.swing.JLabel jLBtnCargoModificarModEmp;
     private javax.swing.JLabel jLBtnEliminarElimClien;
     private javax.swing.JLabel jLBtnEliminarElimProd;
-    private javax.swing.JLabel jLBtnEliminarEmpleado;
     private javax.swing.JLabel jLBtnModificarModClien;
     private javax.swing.JLabel jLBtnModificarModProd;
     private javax.swing.JLabel jLBuscarClienElimClien;
     private javax.swing.JLabel jLBuscarClienModClien;
-    private javax.swing.JLabel jLBuscarEmpleadoModEmpl;
     private javax.swing.JLabel jLBuscarProdElimProd;
     private javax.swing.JLabel jLBuscarProdModProd;
-    private javax.swing.JLabel jLCargoElimEmp;
-    private javax.swing.JLabel jLCargoModEmp;
-    private javax.swing.JLabel jLContraseñaElimEmp;
-    private javax.swing.JLabel jLContraseñaModEmp;
     private javax.swing.JLabel jLDescripcionAP;
     private javax.swing.JLabel jLDescripcionElimProd;
     private javax.swing.JLabel jLDescripcionModProd;
-    private javax.swing.JLabel jLDniElimEmp;
-    private javax.swing.JLabel jLDniModEmp;
     private javax.swing.JLabel jLDomicilioClienteAgrClien;
     private javax.swing.JLabel jLDomicilioElimClien;
     private javax.swing.JLabel jLDomicilioModClien;
-    private javax.swing.JLabel jLEliminarEmpleadoModEmpl;
     private javax.swing.JLabel jLEmpleados;
     private javax.swing.JLabel jLModificarProd;
     private javax.swing.JLabel jLNombreClienElimClien;
     private javax.swing.JLabel jLNombreClienModClien;
     private javax.swing.JLabel jLNombreClienteAgrClien;
-    private javax.swing.JLabel jLNombreEmpElimEmp;
-    private javax.swing.JLabel jLNombreEmpModEmp1;
     private javax.swing.JLabel jLNombreProdElimProd;
     private javax.swing.JLabel jLNombreProdModProd;
     private javax.swing.JLabel jLNombreProductoAP;
@@ -3946,21 +3045,7 @@ public class Menu extends javax.swing.JFrame {
     private javax.swing.JLabel jLTituloEliminarCliente;
     private javax.swing.JLabel jLTituloEliminarProducto;
     private javax.swing.JLabel jLTituloListaClien;
-    private javax.swing.JLabel jLTituloListaEmpleados;
     private javax.swing.JLabel jLTituloModClien;
-<<<<<<< HEAD
-    private javax.swing.JLabel jLTituloModClien1;
-    private javax.swing.JLabel jLTituloModEmpleado;
-    private javax.swing.JLabel jLUsuarioElimEmp;
-    private javax.swing.JLabel jLUsuarioModEmp;
-    private javax.swing.JLabel jLabel1;
-    private javax.swing.JList<Integer> jListaCantidad;
-    private javax.swing.JList<Producto> jListaProductos;
-    private javax.swing.JPanel jPEliminarEmpelado;
-    private javax.swing.JPanel jPListarEmpleado;
-    private javax.swing.JPanel jPModificarEmpleado;
-=======
->>>>>>> d1a158592c654177d2dda428ec27efa10789f60e
     private javax.swing.JPanel jPanelCabecera;
     private javax.swing.JPanel jPanelOpciones;
     private javax.swing.JSeparator jSAgrClien1;
@@ -3986,40 +3071,22 @@ public class Menu extends javax.swing.JFrame {
     private javax.swing.JSeparator jSModClien2;
     private javax.swing.JSeparator jSModClien3;
     private javax.swing.JSeparator jSModClien4;
-    private javax.swing.JSeparator jSModEmp;
-    private javax.swing.JSeparator jSModEmp1;
-    private javax.swing.JSeparator jSModEmp10;
-    private javax.swing.JSeparator jSModEmp11;
-    private javax.swing.JSeparator jSModEmp6;
-    private javax.swing.JSeparator jSModEmp7;
-    private javax.swing.JSeparator jSModEmp8;
-    private javax.swing.JSeparator jSModEmp9;
-    private javax.swing.JSeparator jSModEmpl5;
-    private javax.swing.JSeparator jSModEmpl6;
     private javax.swing.JSeparator jSModProd1;
     private javax.swing.JSeparator jSModProd2;
     private javax.swing.JSeparator jSModProd3;
     private javax.swing.JSeparator jSModProd4;
     private javax.swing.JTextField jTFApellidoClienElimClien;
     private javax.swing.JTextField jTFApellidoClienteAgrClien;
-    private javax.swing.JTextField jTFApellidoElimEmp;
     private javax.swing.JTextField jTFApellidoModClien;
-    private javax.swing.JTextField jTFApellidoModEmp;
-    private javax.swing.JTextField jTFContraseñaElimEmp;
-    private javax.swing.JTextField jTFContraseñaModEmp;
     private javax.swing.JTextField jTFDescripcionAgrProd;
     private javax.swing.JTextField jTFDescripcionElimProd;
     private javax.swing.JTextField jTFDescripcionModProd;
-    private javax.swing.JTextField jTFDniElimEmp;
-    private javax.swing.JTextField jTFDniModEmp;
     private javax.swing.JTextField jTFDomicilioClienteAgrClien;
     private javax.swing.JTextField jTFDomicilioElimClien;
     private javax.swing.JTextField jTFDomicilioModClien;
     private javax.swing.JTextField jTFNombreClienElimClien;
     private javax.swing.JTextField jTFNombreClienModClien;
     private javax.swing.JTextField jTFNombreClienteAgrClien;
-    private javax.swing.JTextField jTFNombreEmpleadoElimEmp;
-    private javax.swing.JTextField jTFNombreEmpleadoModEmp;
     private javax.swing.JTextField jTFNombreProdElimProd;
     private javax.swing.JTextField jTFNombreProdModProd;
     private javax.swing.JTextField jTFNombreProductoAgrProd;
@@ -4032,13 +3099,6 @@ public class Menu extends javax.swing.JFrame {
     private javax.swing.JTextField jTFTelefonoClienteAg;
     private javax.swing.JTextField jTFTelefonoElimClien;
     private javax.swing.JTextField jTFTelefonoModClien;
-<<<<<<< HEAD
-    private javax.swing.JTextField jTFUsuarioElimEmp;
-    private javax.swing.JTextField jTFUsuarioModEmp;
-    private javax.swing.JPanel jTPGestionEmpleado;
-    private javax.swing.JTextField jTextField1;
-=======
->>>>>>> d1a158592c654177d2dda428ec27efa10789f60e
     private javax.swing.JComboBox<Venta> jcbBuscarVenta;
     private javax.swing.JComboBox<Cliente> jcbClienteModifCli;
     private javax.swing.JComboBox<Producto> jcbProVenta;
@@ -4048,8 +3108,6 @@ public class Menu extends javax.swing.JFrame {
     private javax.swing.JLabel jlAgregar;
     private javax.swing.JLabel jlAgregarCliente;
     private javax.swing.JLabel jlAgregarClientes;
-    private javax.swing.JLabel jlAgregarEmpl;
-    private javax.swing.JLabel jlAgregarEmpleado;
     private javax.swing.JLabel jlAgregarPro;
     private javax.swing.JLabel jlAsteriscoCan;
     private javax.swing.JLabel jlAsteriscoEmp;
@@ -4071,8 +3129,6 @@ public class Menu extends javax.swing.JFrame {
     private javax.swing.JLabel jlEliminar;
     private javax.swing.JLabel jlEliminarCliente;
     private javax.swing.JLabel jlEliminarClientes;
-    private javax.swing.JLabel jlEliminarEmp;
-    private javax.swing.JLabel jlEliminarEmpleado;
     private javax.swing.JLabel jlEliminarPro;
     private javax.swing.JLabel jlEliminarVenta;
     private javax.swing.JLabel jlEliminarVentaBorrar;
@@ -4080,22 +3136,16 @@ public class Menu extends javax.swing.JFrame {
     private javax.swing.JLabel jlFechaVentaEliminar;
     private javax.swing.JLabel jlGestionClientes;
     private javax.swing.JLabel jlGestionDe;
-    private javax.swing.JLabel jlGestionEmpleado1;
     private javax.swing.JLabel jlGestionPro;
     private javax.swing.JLabel jlGestionV;
     private javax.swing.JLabel jlIconAgreCli;
     private javax.swing.JLabel jlIconAgreCli1;
-    private javax.swing.JLabel jlIconAgreEmp2;
     private javax.swing.JLabel jlIconBuscar;
     private javax.swing.JLabel jlIconCliente;
     private javax.swing.JLabel jlIconEliCli;
     private javax.swing.JLabel jlIconEliCli1;
-    private javax.swing.JLabel jlIconEliEmp;
-    private javax.swing.JLabel jlIconEliEmpl;
     private javax.swing.JLabel jlIconModCli;
     private javax.swing.JLabel jlIconModCli1;
-    private javax.swing.JLabel jlIconModEmp;
-    private javax.swing.JLabel jlIconModEmp2;
     private javax.swing.JLabel jlIconPro;
     private javax.swing.JLabel jlIconVenta;
     private javax.swing.JLabel jlIconVentaAgr;
@@ -4106,25 +3156,18 @@ public class Menu extends javax.swing.JFrame {
     private javax.swing.JLabel jlIconoModPro;
     private javax.swing.JLabel jlIconoModPro1;
     private javax.swing.JLabel jlImgBusqueda;
-    private javax.swing.JLabel jlImgBusquedaEmpl;
     private javax.swing.JLabel jlInicio;
     private javax.swing.JLabel jlListaProAc;
     private javax.swing.JLabel jlListaVenta;
     private javax.swing.JLabel jlListar;
     private javax.swing.JLabel jlListarCliente;
-    private javax.swing.JLabel jlListarEmpleado;
     private javax.swing.JLabel jlListarVenta;
     private javax.swing.JLabel jlMinimizar;
     private javax.swing.JLabel jlModClientes;
-    private javax.swing.JLabel jlModEmpl;
     private javax.swing.JLabel jlModPro;
     private javax.swing.JLabel jlModificar;
     private javax.swing.JLabel jlModificarCliente;
-<<<<<<< HEAD
-    private javax.swing.JLabel jlModificarEmpleado;
-=======
     private javax.swing.JLabel jlNombreEmp;
->>>>>>> d1a158592c654177d2dda428ec27efa10789f60e
     private javax.swing.JLabel jlNombreEmpleadoEliminar;
     private javax.swing.JLabel jlNombreProEliminar;
     private javax.swing.JLabel jlNombreUsuario;
@@ -4145,13 +3188,11 @@ public class Menu extends javax.swing.JFrame {
     private javax.swing.JLabel jlVentas;
     private javax.swing.JLabel jlVentasIn;
     private javax.swing.JTable jtListClien;
-    private javax.swing.JTable jtListEmpleado;
     private javax.swing.JTable jtListaDetalles;
     private javax.swing.JTable jtListaPro;
     private javax.swing.JTable jtListaVentas;
     private javax.swing.JTextField jtfBuscador;
     private javax.swing.JTextField jtfBuscadorClienListClien;
-    private javax.swing.JTextField jtfBuscadorEmpleadosListEmp;
     private javax.swing.JTextField jtfBuscarCli;
     private javax.swing.JTextField jtfCantidadVenta;
     private javax.swing.JTextField jtfNombreEmpVenta;
@@ -4175,7 +3216,6 @@ public class Menu extends javax.swing.JFrame {
     private javax.swing.JPanel jtpListaP;
     private javax.swing.JPanel jtpListaVentas;
     private javax.swing.JPanel jtpModClien;
-    private javax.swing.JPanel jtpModEmp;
     private javax.swing.JPanel jtpModPro;
     private javax.swing.JPanel jtpProductos;
     private javax.swing.JPanel jtpVentas;
@@ -4185,9 +3225,6 @@ public class Menu extends javax.swing.JFrame {
     private javax.swing.JLabel rectanguloCli1;
     private javax.swing.JLabel rectanguloCli2;
     private javax.swing.JLabel rectanguloCli3;
-    private javax.swing.JLabel rectanguloEmp1;
-    private javax.swing.JLabel rectanguloEmpE;
-    private javax.swing.JLabel rectanguloEmpM;
     private javax.swing.JLabel rectanguloIn1;
     private javax.swing.JLabel rectanguloIn2;
     private javax.swing.JLabel rectanguloIn3;
@@ -4202,9 +3239,6 @@ public class Menu extends javax.swing.JFrame {
     private javax.swing.JLabel textClienteE;
     private javax.swing.JLabel textClienteM;
     private javax.swing.JLabel textE;
-    private javax.swing.JLabel textEmpleadoA;
-    private javax.swing.JLabel textEmpleadoElim;
-    private javax.swing.JLabel textEmpleadoM1;
     private javax.swing.JLabel textM;
     private javax.swing.JLabel textVentaA;
     private javax.swing.JLabel textVentaD;
@@ -4262,20 +3296,6 @@ public class Menu extends javax.swing.JFrame {
         }
     }
 
-    private void llenarComboEmpelado() {
-        for (Empleado empl : eD.listarEmpleado()) {
-            jCBModificarEmpleado.addItem(empl);
-            jCBEliminarEmpleado.addItem(empl);
-        }
-    }
-
-    private void llenarComboCargo(){
-        String c1 = "Vendedor", c2 = "Supervisor";
-        jCBCargoElimEmp.addItem(c1);
-        jCBCargoElimEmp.addItem(c2);
-        jCBCargoModifEmp.addItem(c1);
-        jCBCargoModifEmp.addItem(c2);
-    }
     private void borrarCamposAgCliente() {
         jTFApellidoClienteAgrClien.setText("");
         jTFApellidoClienteAgrClien.setText("");
@@ -4332,19 +3352,7 @@ public class Menu extends javax.swing.JFrame {
             evt.consume();
         }
     }
-    DefaultListModel listaPro = new DefaultListModel();
-    DefaultListModel listaCan = new DefaultListModel();
 
-//    public void empleadosVisible() {         // VALIDA CARGO DEL QUE HIZO LOGIN!!!!!!
-//        boolean si = false;
-//        if (Login.empleado.getCargo().equalsIgnoreCase("supervisor")) {
-//            jLEmpleados.setVisible(true);
-//        } else {
-//            jLEmpleados.setVisible(false);
-//            jPEliminarEmpelado.setVisible(false);
-//            jPModificarEmpleado.setVisible(false);
-//        }
-//    }
     private void empleadosVisible() {         // VALIDA CARGO DEL QUE HIZO LOGIN!!!!!!
         boolean si = false;
         if (Login.empleado.getCargo().equalsIgnoreCase("supervisor")) {
