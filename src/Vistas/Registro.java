@@ -194,6 +194,11 @@ public class Registro extends javax.swing.JFrame {
 
         jCBCargo.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Supervisor", "Vendedor" }));
         jCBCargo.setSelectedItem(null);
+        jCBCargo.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jCBCargoActionPerformed(evt);
+            }
+        });
         jPDatos.add(jCBCargo, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 220, 170, -1));
 
         jRMostrar.setBackground(new java.awt.Color(51, 51, 76));
@@ -379,6 +384,10 @@ public class Registro extends javax.swing.JFrame {
     } catch(NullPointerException ex ){
     }  
     }//GEN-LAST:event_jlCargarMouseClicked
+
+    private void jCBCargoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jCBCargoActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jCBCargoActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
