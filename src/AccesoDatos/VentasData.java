@@ -69,6 +69,7 @@ public class VentasData {
                 venta.setIdVenta(rs.getInt(1));
                 JOptionPane.showMessageDialog(null, "La venta añadida con exito.");
             }
+            ps.close();
         } catch (SQLException ex) {
             JOptionPane.showMessageDialog(null, "Error al acceder a la tabla Ventas " + ex);
         }
@@ -85,10 +86,6 @@ public class VentasData {
             ps.setDate(1, Date.valueOf(ventas.getFechaVenta()));
             ResultSet rs = ps.executeQuery();
             boolean cont = false;
-//            if (!rs.next()) {                  // VER QUE SI DEJO EL IF  NO DEVUELVE EL SEGUNDO OBJETO
-//                JOptionPane.showMessageDialog(null, "No hay ventas para esa fecha ");
-//            } else {
-
             while (rs.next()) {
                 venta = new Venta();
                 venta.setIdVenta(rs.getInt("idVenta"));
@@ -99,11 +96,9 @@ public class VentasData {
                 listaventas.add(venta);
                 cont = true;
             }
-//            }
             if (!cont) {
                 JOptionPane.showMessageDialog(null, "No hay ventas para esa fecha ");
             }
-
             ps.close();
         } catch (SQLException ex) {
             JOptionPane.showMessageDialog(null, "Error al acceder a la tabla venta");
@@ -181,7 +176,6 @@ public class VentasData {
         String sql = "SELECT producto.nombreProducto, detalledeventa.cantidad FROM producto, detalledeventa "
                 + "JOIN venta ON (detalledeventa.idVenta = venta.idVenta)"
                 + "WHERE  venta.fechaVenta = ?  ORDER BY producto.idProducto ASC";
-
         try {
             PreparedStatement ps = con.prepareStatement(sql);
             ps.setDate(1, Date.valueOf(fechaVenta));
@@ -251,7 +245,7 @@ public class VentasData {
             } else {
                 JOptionPane.showMessageDialog(null, "La venta no pudo modificarse");
             }
-
+            ps.close();
         } catch (SQLException ex) {
             JOptionPane.showMessageDialog(null, " Error al acceder a la tabla Venta " + ex.getMessage());
         }

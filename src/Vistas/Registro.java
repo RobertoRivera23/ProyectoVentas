@@ -21,14 +21,14 @@ public class Registro extends javax.swing.JFrame {
 
     private int xMouse;
     private int yMouse;
-    
+
     /**
      * Creates new form Registro
      */
     public Registro() {
         initComponents();
         this.setLocationRelativeTo(null);
-        jRMostrar.setSelected(false); 
+        jRMostrar.setSelected(false);
     }
 
     /**
@@ -326,11 +326,11 @@ public class Registro extends javax.swing.JFrame {
     }//GEN-LAST:event_jTFDniKeyTyped
 
     private void jRMostrarMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jRMostrarMousePressed
-        if(jRMostrar.isSelected()== false){
-        jPContraseña.setEchoChar((char)0);
+        if (jRMostrar.isSelected() == false) {
+            jPContraseña.setEchoChar((char) 0);
         } else {
-        jPContraseña.setEchoChar('*');
-        }       
+            jPContraseña.setEchoChar('*');
+        }
     }//GEN-LAST:event_jRMostrarMousePressed
 
     private void jPFravemaxMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPFravemaxMousePressed
@@ -361,23 +361,24 @@ public class Registro extends javax.swing.JFrame {
     }//GEN-LAST:event_jLVolverMouseExited
 
     private void jlCargarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jlCargarMouseClicked
-    EmpleadoData eD= new EmpleadoData();
-    try{
-    Empleado empleado1 = eD.buscarEmpleadoPorDni(Integer.parseInt(jTFDni.getText()));
-    if(empleado1 == null){
-     Empleado empleado = new Empleado();
-     empleado.setApellido(jTFApellido.getText());
-     empleado.setNombre(jTFNombre.getText());
-     empleado.setDni(Integer.parseInt(jTFDni.getText()));
-     empleado.setCargo(jCBCargo.getSelectedItem()+"");
-     empleado.setUsuario(jTFUsuario.getText());
-     empleado.setContraenia(jPContraseña.getText());
-     eD.guardarEmpleado(empleado);
-     limpiarCampos();
-    } else
-        JOptionPane.showMessageDialog(null, "El empleado"+empleado1.getApellido()+ "ya existe");
-    } catch(NullPointerException ex ){
-    }  
+        EmpleadoData eD = new EmpleadoData();
+        try {
+            Empleado empleado1 = eD.buscarEmpleadoPorDni(Integer.parseInt(jTFDni.getText()));
+            if (empleado1 == null) {
+                Empleado empleado = new Empleado();
+                empleado.setApellido(jTFApellido.getText());
+                empleado.setNombre(jTFNombre.getText());
+                empleado.setDni(Integer.parseInt(jTFDni.getText()));
+                empleado.setCargo(jCBCargo.getSelectedItem() + "");
+                empleado.setUsuario(jTFUsuario.getText());
+                empleado.setContraenia(jPContraseña.getText());
+                eD.guardarEmpleado(empleado);
+                limpiarCampos();
+            } else {
+                JOptionPane.showMessageDialog(null, "El empleado" + empleado1.getApellido() + "ya existe");
+            }
+        } catch (NullPointerException ex) {
+        }
     }//GEN-LAST:event_jlCargarMouseClicked
 
 
@@ -463,9 +464,5 @@ public class Registro extends javax.swing.JFrame {
                 && !(evt.getKeyChar() == KeyEvent.VK_SPACE)) {
             evt.consume();
         }
-    }
-
-    public String usuario(String usuario){
-        return usuario;
     }
 }

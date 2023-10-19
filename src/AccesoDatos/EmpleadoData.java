@@ -56,7 +56,6 @@ public class EmpleadoData {
         try {
             PreparedStatement ps = con.prepareStatement(sql);
             ps.setInt(1, dni);
-
             ResultSet rs = ps.executeQuery();
             if (rs.next()) {
                 empleado = new Empleado();
@@ -79,7 +78,6 @@ public class EmpleadoData {
     }
 
     public Empleado buscarEmpleadoPorId(int idempleado) {
-
         Empleado empleado = null;
         String sql = "SELECT * FROM empleado WHERE idempleado = ? AND estado = 1 ";
         try {
@@ -148,10 +146,10 @@ public class EmpleadoData {
             } else {
                 JOptionPane.showMessageDialog(null, "No se pudo modificar el empleado");
             }
+            ps.close();
         } catch (SQLException ex) {
             JOptionPane.showMessageDialog(null, "Error al acceder a la tabla empleado " + ex.getMessage());
         }
-
     }
 
     public void eliminarEmpleadoPorId(int id) {
@@ -163,6 +161,7 @@ public class EmpleadoData {
             if (rs == 1) {
                 JOptionPane.showMessageDialog(null, "Se elimino con exito al empleado.");
             }
+            ps.close();
         } catch (SQLException ex) {
             JOptionPane.showMessageDialog(null, " Error al acceder a la tabla Empleado. " + ex.getMessage());
         }

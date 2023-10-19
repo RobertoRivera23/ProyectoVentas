@@ -62,22 +62,22 @@ public class ProductoData {
                 producto.setEstado(true);
             } else {
                 JOptionPane.showMessageDialog(null, "No existe el producto");
-                ps.close();
             }
+            ps.close();
         } catch (SQLException ex) {
             JOptionPane.showMessageDialog(null, "Error al acceder a la tabla Producto" + ex.getMessage());
         }
         return producto;
     }
-    
-    public Producto buscarProductoPorNombre(String nombre){
+
+    public Producto buscarProductoPorNombre(String nombre) {
         String sql = "SELECT * FROM producto WHERE nombreProducto = ? AND estado = 1";
         PreparedStatement ps;
-        try{
+        try {
             ps = con.prepareStatement(sql);
             ps.setString(1, nombre);
             ResultSet rs = ps.executeQuery();
-            if(rs.next()){
+            if (rs.next()) {
                 producto = new Producto();
                 producto.setIdProducto(rs.getInt("idProducto"));
                 producto.setNombreProducto(rs.getString("nombreProducto"));
@@ -85,11 +85,11 @@ public class ProductoData {
                 producto.setPrecioActual(rs.getDouble("precioActual"));
                 producto.setStock(rs.getInt("stock"));
                 producto.setEstado(true);
-                ps.close();
-            }else{
+            } else {
                 JOptionPane.showMessageDialog(null, "No existe el producto");
             }
-        }catch (SQLException ex){
+            ps.close();
+        } catch (SQLException ex) {
             JOptionPane.showMessageDialog(null, "Error al acceder a la tabla Producto" + ex.getMessage());
         }
         return producto;
@@ -111,6 +111,7 @@ public class ProductoData {
             } else {
                 JOptionPane.showMessageDialog(null, "El producto no existe");
             }
+            ps.close();
         } catch (SQLException ex) {
             JOptionPane.showMessageDialog(null, "Error al acceder a la tabla Producto" + ex.getMessage());
         }
@@ -130,14 +131,14 @@ public class ProductoData {
             JOptionPane.showMessageDialog(null, "Error al acceder a la tabla Producto" + ex.getMessage());
         }
     }
-    
-    public List<Producto> listarProducto(){
+
+    public List<Producto> listarProducto() {
         List<Producto> productos = new ArrayList<>();
-        try{
+        try {
             String sql = "SELECT * FROM producto WHERE estado = 1 ORDER BY idProducto ASC";
             PreparedStatement ps = con.prepareStatement(sql);
             ResultSet rs = ps.executeQuery();
-            while(rs.next()){
+            while (rs.next()) {
                 producto = new Producto();
                 producto.setIdProducto(rs.getInt("idProducto"));
                 producto.setNombreProducto(rs.getString("nombreProducto"));

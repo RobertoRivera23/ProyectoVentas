@@ -3303,28 +3303,28 @@ public class Menu extends javax.swing.JFrame {
         jTFTelefonoModClien.setText("");
     }
 
-    public void borrarCamposElimCli() {
+    private void borrarCamposElimCli() {
         jTFNombreClienElimClien.setText("");
         jTFApellidoClienElimClien.setText("");
         jTFDomicilioElimClien.setText("");
         jTFTelefonoElimClien.setText("");
     }
 
-    public void borrarCamposAgrProd() {
+    private void borrarCamposAgrProd() {
         jTFNombreProductoAgrProd.setText("");
         jTFPrecioActualAgrProd.setText("");
         jTFDescripcionAgrProd.setText("");
         jTFStockAgrProd.setText("");
     }
 
-    public void borrarCamposModProd() {
+    private void borrarCamposModProd() {
         jTFNombreProdModProd.setText("");
         jTFDescripcionModProd.setText("");
         jTFPrecioActualModProd.setText("");
         jTFStockModProd.setText("");
     }
 
-    public void borrarCamposElimProd() {
+    private void borrarCamposElimProd() {
         jTFNombreProdElimProd.setText("");
         jTFDescripcionElimProd.setText("");
         jTFPrecioActuaElimProd.setText("");
@@ -3347,7 +3347,6 @@ public class Menu extends javax.swing.JFrame {
     }
 
     private void empleadosVisible() {         // VALIDA CARGO DEL QUE HIZO LOGIN!!!!!!
-        boolean si = false;
         if (Login.empleado.getCargo().equalsIgnoreCase("supervisor")) {
             jLEmpleados.setVisible(true);
         } else {
