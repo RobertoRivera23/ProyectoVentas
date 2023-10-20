@@ -282,7 +282,7 @@ public class Login extends javax.swing.JFrame {
                 empleado.setEstado(emp.isEstado());
             //Instanciamos Menu 
                 Menu menu = new Menu();
-            // traemos los eventos a traves de las ventanas creadas
+                // traemos los eventos a traves de las ventanas creadas
 //                java.awt.EventQueue.invokeLater(new Runnable() {
 //            public void run() {
                 new Menu().setVisible(true);
@@ -354,4 +354,5 @@ public class Login extends javax.swing.JFrame {
     private javax.swing.JLabel jlBanner1;
     private javax.swing.JLabel jlFravemax;
     // End of variables declaration//GEN-END:variables
+
 }

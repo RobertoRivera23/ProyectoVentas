@@ -3665,7 +3665,20 @@ public class Menu extends javax.swing.JFrame {
 
     private void jLBtnModificarModEmpMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLBtnModificarModEmpMouseClicked
         borrarCamposModEmple();
-//        llenarComboCargo();
+        Empleado emp = ed.buscarEmpleadoPorDni(Integer.parseInt(jTFDniModEmp.getText()));
+        if(emp!=null){
+            Empleado emp1 = new Empleado();
+            emp1.setIdEmpleado(emp.getIdEmpleado());
+            emp1.setApellido(jTFApellidoModEmp.getText());
+            emp1.setNombre(jTFNombreEmpleadoModEmp.getText());
+            emp1.setDni(Integer.parseInt(jTFDniModEmp.getText()));
+            emp1.setCargo(jCBCargoModifEmp.getSelectedItem()+"");
+            emp1.setUsuario(jTFUsuarioModEmp.getText());
+            emp1.setContraenia(jTFContraseñaModEmp.getText());
+            ed.modificarEmpleadoPorId(emp1);
+        } else {
+            JOptionPane.showMessageDialog(null, "No se pudo modificar el empleado");
+        }
     }//GEN-LAST:event_jLBtnModificarModEmpMouseClicked
 
     private void jLBtnModificarModEmpMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLBtnModificarModEmpMouseEntered
