@@ -2920,33 +2920,41 @@ public class Menu extends javax.swing.JFrame {
                 LocalDate fv = jdcAgrVenta.getDate().toInstant().atZone(ZoneId.systemDefault()).toLocalDate();
                 Producto pro = (Producto) jcbProVenta.getSelectedItem();
                 Cliente cli = cD.buscarClientePorTel(jtfTelCliente.getText());
-                if (cli != null) {
-                    Empleado emp = ed.buscarPorNombre(jtfNombreEmpVenta.getText());
-                    if (!emp.getNombre().equalsIgnoreCase(Login.empleado.getNombre())) {
-                        JOptionPane.showMessageDialog(this, "El empleado no coincide");
-                    } else {
-                        Venta ven = new Venta(cli, emp, fv);
-                        vd.guardarVenta(ven);
-                        DetalleVenta dv = new DetalleVenta(can, ven, pre, pro);
-                        dvd.guardarDetalleVenta(dv);
-                    }
+                if (can > pro.getStock()) {
+                    JOptionPane.showMessageDialog(this, "La cantidad ingresada es superior al stock disponible");
                 } else {
-                    int op = JOptionPane.showConfirmDialog(this, "¿Desea agregar un nuevo cliente?", "Selecione una opcion", JOptionPane.YES_NO_OPTION);
-                    switch (op) {
-                        case 0:
-                            cli = new Cliente(null, null, null, jtfTelCliente.getText());
-                            cD.guardarCliente(cli);
-                            Empleado emp = ed.buscarPorNombre(jtfNombreEmpVenta.getText());
-                            if (!emp.getNombre().equalsIgnoreCase(Login.empleado.getNombre())) {
-                                JOptionPane.showMessageDialog(this, "El empleado no coincide");
-                            } else {
-                                Venta ven = new Venta(cli, emp, fv);
-                                vd.guardarVenta(ven);
-                                DetalleVenta dv = new DetalleVenta(can, ven, pre, pro);
-                                dvd.guardarDetalleVenta(dv);
-                            }
-                        case 1:
-                            break;
+                    if (cli != null) {
+                        Empleado emp = ed.buscarPorNombre(jtfNombreEmpVenta.getText());
+                        if (!emp.getNombre().equalsIgnoreCase(Login.empleado.getNombre())) {
+                            JOptionPane.showMessageDialog(this, "El empleado no coincide");
+                        } else {
+                            Venta ven = new Venta(cli, emp, fv);
+                            vd.guardarVenta(ven);
+                            DetalleVenta dv = new DetalleVenta(can, ven, pre, pro);
+                            dvd.guardarDetalleVenta(dv);
+                            pro.setStock(pro.getStock() - can);
+                            pd.modificarProducto(pro);
+                        }
+                    } else {
+                        int op = JOptionPane.showConfirmDialog(this, "¿Desea agregar un nuevo cliente?", "Selecione una opcion", JOptionPane.YES_NO_OPTION);
+                        switch (op) {
+                            case 0:
+                                cli = new Cliente(null, null, null, jtfTelCliente.getText());
+                                cD.guardarCliente(cli);
+                                Empleado emp = ed.buscarPorNombre(jtfNombreEmpVenta.getText());
+                                if (!emp.getNombre().equalsIgnoreCase(Login.empleado.getNombre())) {
+                                    JOptionPane.showMessageDialog(this, "El empleado no coincide");
+                                } else {
+                                    Venta ven = new Venta(cli, emp, fv);
+                                    vd.guardarVenta(ven);
+                                    DetalleVenta dv = new DetalleVenta(can, ven, pre, pro);
+                                    dvd.guardarDetalleVenta(dv);
+                                    pro.setStock(pro.getStock() - can);
+                                    pd.modificarProducto(pro);
+                                }
+                            case 1:
+                                break;
+                        }
                     }
                 }
             } catch (NullPointerException ex) {
