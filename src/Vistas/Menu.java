@@ -30,7 +30,7 @@ public class Menu extends javax.swing.JFrame {
     private ClienteData cD = new ClienteData();
     private VentasData vd = new VentasData();
     private DetalleVentasData dvd = new DetalleVentasData();
-    private EmpleadoData ed = new EmpleadoData();
+    private EmpleadoData eD = new EmpleadoData();
     private int xMouse, yMouse;
     public static Color verdeBase = new Color(0, 150, 136);
     public static Color verdeClaro = new Color(10, 170, 140);
@@ -94,6 +94,8 @@ public class Menu extends javax.swing.JFrame {
         llenarCombo();
         llenarComboCliente();
         llenarComboV();
+        llenarCargoComboEmpleado();
+        llenarComboEmpleado();
 //        empleadosVisible(); // PARA MOSTRAR JLEMPLEADOS 
 //        jlNombreUsuario.setText(Login.empleado.getNombre() + " " + Login.empleado.getApellido());
     }
@@ -3466,7 +3468,7 @@ public class Menu extends javax.swing.JFrame {
                     cli = new Cliente(jtfTelCliente.getText());
                     cD.guardarCliente(cli);
                 }
-                Empleado emp = ed.buscarPorNombre(jtfNombreEmpVenta.getText());
+                Empleado emp = eD.buscarPorNombre(jtfNombreEmpVenta.getText());
                 if (emp == null) {
                     JOptionPane.showMessageDialog(this, "El empleado no existe");
                 } else {
@@ -3516,6 +3518,8 @@ public class Menu extends javax.swing.JFrame {
 
     private void jlModificarEmpleadoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jlModificarEmpleadoMouseClicked
         jtpEscritorio.setSelectedIndex(17);
+        jCBModificarEmpleado.removeAllItems();
+        llenarComboEmpleado();
     }//GEN-LAST:event_jlModificarEmpleadoMouseClicked
 
     private void jlModificarEmpleadoMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jlModificarEmpleadoMouseEntered
@@ -3528,6 +3532,8 @@ public class Menu extends javax.swing.JFrame {
 
     private void jlEliminarEmpleadoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jlEliminarEmpleadoMouseClicked
         jtpEscritorio.setSelectedIndex(18);
+        jCBEliminarEmpleado.removeAllItems();
+        llenarComboEmpleado();
     }//GEN-LAST:event_jlEliminarEmpleadoMouseClicked
 
     private void jlEliminarEmpleadoMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jlEliminarEmpleadoMouseEntered
@@ -3551,7 +3557,17 @@ public class Menu extends javax.swing.JFrame {
     }//GEN-LAST:event_jlListarEmpleadoMouseExited
 
     private void jCBModificarEmpleadoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jCBModificarEmpleadoActionPerformed
-        // TODO add your handling code here:
+       try{
+        Empleado emp = (Empleado) jCBModificarEmpleado.getSelectedItem();
+        jTFNombreEmpleadoModEmp.setText(emp.getNombre());
+        jTFApellidoModEmp.setText(emp.getApellido());
+        jTFDniModEmp.setText(emp.getDni()+"");
+        jTFUsuarioModEmp.setText(emp.getUsuario());
+        jTFContraseñaModEmp.setText(emp.getContraenia());
+       } catch (NullPointerException ex){
+           
+       }
+        
     }//GEN-LAST:event_jCBModificarEmpleadoActionPerformed
 
     private void jTFDniModEmpActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTFDniModEmpActionPerformed
@@ -3575,7 +3591,18 @@ public class Menu extends javax.swing.JFrame {
     }//GEN-LAST:event_jLBtnCargoModificarModEmpMousePressed
 
     private void jCBEliminarEmpleadoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jCBEliminarEmpleadoActionPerformed
-        // TODO add your handling code here:
+        try{
+        Empleado emp = (Empleado) jCBEliminarEmpleado.getSelectedItem();
+        jTFNombreEmpleadoElimEmp.setText(emp.getNombre());
+        jTFApellidoElimEmp.setText(emp.getApellido());
+        jTFDniElimEmp.setText(emp.getDni()+"");
+        jTFUsuarioElimEmp.setText(emp.getUsuario());
+        jTFContraseñaElimEmp.setText(emp.getContraenia());
+        jCBCargoElimEmp.removeAllItems();
+        jCBCargoElimEmp.addItem(emp.getCargo());
+       } catch (NullPointerException ex){
+           
+       }
     }//GEN-LAST:event_jCBEliminarEmpleadoActionPerformed
 
     private void jTFDniElimEmpActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTFDniElimEmpActionPerformed
@@ -4020,6 +4047,19 @@ public class Menu extends javax.swing.JFrame {
     private void llenarComboV() {
         for (Venta ven : vd.listaVenta()) {
             jcbBuscarVenta.addItem(ven);
+        }
+    }
+    
+    private void llenarCargoComboEmpleado(){
+        String c1 = "Vendedor", c2 = "Supervisor"; 
+        jCBCargoModifEmp.addItem(c1);
+        jCBCargoModifEmp.addItem(c2);
+    }
+    
+    private void llenarComboEmpleado(){
+        for (Empleado emp : eD.listarEmpleado()) {
+            jCBEliminarEmpleado.addItem(emp);
+            jCBModificarEmpleado.addItem(emp);
         }
     }
 
