@@ -362,6 +362,7 @@ public class Menu extends javax.swing.JFrame {
         jtListaVentas = new TablaFraveMax();
         jlSelecFechaVenta = new javax.swing.JLabel();
         jDateChooser1 = new com.toedter.calendar.JDateChooser();
+        jLabel1 = new javax.swing.JLabel();
         jtpDetallesVenta = new javax.swing.JPanel();
         jlDetallesVenta = new javax.swing.JLabel();
         ScrollTablaDetalles = new javax.swing.JScrollPane();
@@ -2196,7 +2197,7 @@ public class Menu extends javax.swing.JFrame {
                 {null, null, null, null}
             },
             new String [] {
-                "Title 1", "Title 2", "Title 3", "Title 4"
+                "ID", "Datos Cliente", "Datos Empleado", "Fecha de Venta"
             }
         ));
         jtListaVentas.setGridColor(new java.awt.Color(0, 102, 102));
@@ -2211,6 +2212,10 @@ public class Menu extends javax.swing.JFrame {
         jlSelecFechaVenta.setVerticalAlignment(javax.swing.SwingConstants.BOTTOM);
         jtpListaVentas.add(jlSelecFechaVenta, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 50, 200, 30));
         jtpListaVentas.add(jDateChooser1, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 80, 160, 30));
+
+        jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Image/busqueda - gris.png"))); // NOI18N
+        jtpListaVentas.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(540, 80, 40, 30));
 
         jtpEscritorio.addTab("tab14", jtpListaVentas);
 
@@ -3829,6 +3834,7 @@ public class Menu extends javax.swing.JFrame {
     private javax.swing.JLabel jLTituloModEmpl;
     private javax.swing.JLabel jLUsuarioElimEmp;
     private javax.swing.JLabel jLUsuarioModEmp;
+    private javax.swing.JLabel jLabel1;
     private javax.swing.JPanel jPGestrionEmpleados;
     private javax.swing.JPanel jPanelCabecera;
     private javax.swing.JPanel jPanelOpciones;
