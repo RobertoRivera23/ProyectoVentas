@@ -29,7 +29,7 @@ public class Registro extends javax.swing.JFrame {
         initComponents();
         this.setLocationRelativeTo(null);
         jRMostrar.setSelected(false);
-    }
+        }
 
     /**
      * This method is called from within the constructor to initialize the form.

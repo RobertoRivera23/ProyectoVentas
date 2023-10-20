@@ -349,4 +349,5 @@ public class Login extends javax.swing.JFrame {
     private javax.swing.JLabel jlBanner1;
     private javax.swing.JLabel jlFravemax;
     // End of variables declaration//GEN-END:variables
+
 }
