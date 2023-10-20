@@ -89,7 +89,7 @@ public class Menu extends javax.swing.JFrame {
     public DefaultTableModel Modelo2 = new DefaultTableModel(
             null,
             new String[]{
-                "ID", "Apellido", "Nombre", "DNI",  "Cargo", "Usuario", "Contraseña"
+                "ID", "Apellido", "Nombre", "DNI", "Cargo", "Usuario", "Contraseña"
             }
     ) {
         public boolean isCellEditable(int fila, int column) {
@@ -97,7 +97,7 @@ public class Menu extends javax.swing.JFrame {
         }
 
         Class[] types = new Class[]{
-            java.lang.Integer.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, 
+            java.lang.Integer.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class,
             java.lang.String.class, java.lang.String.class
         };
 
@@ -105,7 +105,7 @@ public class Menu extends javax.swing.JFrame {
             return types[columnIndex];
         }
     };
-    
+
     public Menu() {
         initComponents();
         this.setLocationRelativeTo(null);
@@ -116,6 +116,8 @@ public class Menu extends javax.swing.JFrame {
         llenarCombo();
         llenarComboCliente();
         llenarComboV();
+        llenarComboEmpleado();
+        llenarComboCargo();
 //        empleadosVisible(); // PARA MOSTRAR JLEMPLEADOS 
 //        jlNombreUsuario.setText(Login.empleado.getNombre() + " " + Login.empleado.getApellido());
     }
@@ -415,7 +417,7 @@ public class Menu extends javax.swing.JFrame {
         jLUsuarioModEmp = new javax.swing.JLabel();
         jSModEmp9 = new javax.swing.JSeparator();
         jTFUsuarioModEmp = new javax.swing.JTextField();
-        jLBtnCargoModificarModEmp = new javax.swing.JLabel();
+        jLBtnModificarModEmp = new javax.swing.JLabel();
         jSModEmp = new javax.swing.JSeparator();
         jTFContraseñaModEmp = new javax.swing.JTextField();
         jLContraseñaModEmp = new javax.swing.JLabel();
@@ -2396,6 +2398,17 @@ public class Menu extends javax.swing.JFrame {
         jlAgregarEmpleado.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         jlAgregarEmpleado.setOpaque(true);
         jlAgregarEmpleado.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
+        jlAgregarEmpleado.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jlAgregarEmpleadoMouseClicked(evt);
+            }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                jlAgregarEmpleadoMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                jlAgregarEmpleadoMouseExited(evt);
+            }
+        });
         jPGestrionEmpleados.add(jlAgregarEmpleado, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 340, 80, 30));
 
         jlAgregarEmpl.setFont(new java.awt.Font("Corbel", 1, 18)); // NOI18N
@@ -2429,6 +2442,17 @@ public class Menu extends javax.swing.JFrame {
         jlModificarEmpleado.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         jlModificarEmpleado.setOpaque(true);
         jlModificarEmpleado.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
+        jlModificarEmpleado.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jlModificarEmpleadoMouseClicked(evt);
+            }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                jlModificarEmpleadoMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                jlModificarEmpleadoMouseExited(evt);
+            }
+        });
         jPGestrionEmpleados.add(jlModificarEmpleado, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 340, 80, 30));
 
         jlModEmpl.setFont(new java.awt.Font("Corbel", 1, 18)); // NOI18N
@@ -2465,6 +2489,17 @@ public class Menu extends javax.swing.JFrame {
         jlEliminarEmpleado.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         jlEliminarEmpleado.setOpaque(true);
         jlEliminarEmpleado.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
+        jlEliminarEmpleado.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jlEliminarEmpleadoMouseClicked(evt);
+            }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                jlEliminarEmpleadoMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                jlEliminarEmpleadoMouseExited(evt);
+            }
+        });
         jPGestrionEmpleados.add(jlEliminarEmpleado, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 340, 80, 30));
 
         jlIconEliEmpl.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
@@ -2482,6 +2517,17 @@ public class Menu extends javax.swing.JFrame {
         jlListarEmpleado.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         jlListarEmpleado.setOpaque(true);
         jlListarEmpleado.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
+        jlListarEmpleado.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jlListarEmpleadoMouseClicked(evt);
+            }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                jlListarEmpleadoMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                jlListarEmpleadoMouseExited(evt);
+            }
+        });
         jPGestrionEmpleados.add(jlListarEmpleado, new org.netbeans.lib.awtextra.AbsoluteConstraints(460, 40, 120, 30));
 
         rectanguloElimEmpl.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
@@ -2505,6 +2551,11 @@ public class Menu extends javax.swing.JFrame {
 
         jCBModificarEmpleado.setFont(new java.awt.Font("Corbel", 1, 14)); // NOI18N
         jCBModificarEmpleado.setForeground(new java.awt.Color(0, 102, 102));
+        jCBModificarEmpleado.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jCBModificarEmpleadoActionPerformed(evt);
+            }
+        });
         jtpModificarEmpleado.add(jCBModificarEmpleado, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 110, 290, 30));
 
         jLNombreEmpModEmp1.setFont(new java.awt.Font("Corbel", 1, 14)); // NOI18N
@@ -2549,16 +2600,27 @@ public class Menu extends javax.swing.JFrame {
         jTFUsuarioModEmp.setBorder(null);
         jtpModificarEmpleado.add(jTFUsuarioModEmp, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 320, 200, 30));
 
-        jLBtnCargoModificarModEmp.setBackground(new java.awt.Color(0, 150, 136));
-        jLBtnCargoModificarModEmp.setFont(new java.awt.Font("Corbel", 1, 14)); // NOI18N
-        jLBtnCargoModificarModEmp.setForeground(new java.awt.Color(255, 255, 255));
-        jLBtnCargoModificarModEmp.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLBtnCargoModificarModEmp.setText("Modificar");
-        jLBtnCargoModificarModEmp.setVerticalAlignment(javax.swing.SwingConstants.BOTTOM);
-        jLBtnCargoModificarModEmp.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
-        jLBtnCargoModificarModEmp.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
-        jLBtnCargoModificarModEmp.setOpaque(true);
-        jtpModificarEmpleado.add(jLBtnCargoModificarModEmp, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 370, 100, 30));
+        jLBtnModificarModEmp.setBackground(new java.awt.Color(0, 150, 136));
+        jLBtnModificarModEmp.setFont(new java.awt.Font("Corbel", 1, 14)); // NOI18N
+        jLBtnModificarModEmp.setForeground(new java.awt.Color(255, 255, 255));
+        jLBtnModificarModEmp.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLBtnModificarModEmp.setText("Modificar");
+        jLBtnModificarModEmp.setVerticalAlignment(javax.swing.SwingConstants.BOTTOM);
+        jLBtnModificarModEmp.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        jLBtnModificarModEmp.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        jLBtnModificarModEmp.setOpaque(true);
+        jLBtnModificarModEmp.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jLBtnModificarModEmpMouseClicked(evt);
+            }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                jLBtnModificarModEmpMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                jLBtnModificarModEmpMouseExited(evt);
+            }
+        });
+        jtpModificarEmpleado.add(jLBtnModificarModEmp, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 370, 100, 30));
 
         jSModEmp.setBackground(new java.awt.Color(0, 150, 136));
         jSModEmp.setOpaque(true);
@@ -2612,6 +2674,11 @@ public class Menu extends javax.swing.JFrame {
 
         jCBEliminarEmpleado.setFont(new java.awt.Font("Corbel", 1, 14)); // NOI18N
         jCBEliminarEmpleado.setForeground(new java.awt.Color(0, 102, 102));
+        jCBEliminarEmpleado.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jCBEliminarEmpleadoActionPerformed(evt);
+            }
+        });
         jtpEliminarEmpleado.add(jCBEliminarEmpleado, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 110, 290, 30));
 
         jLNombreEmpElimEmp.setFont(new java.awt.Font("Corbel", 1, 14)); // NOI18N
@@ -2679,7 +2746,11 @@ public class Menu extends javax.swing.JFrame {
         jLCargoElimEmp.setText("Cargo");
         jtpEliminarEmpleado.add(jLCargoElimEmp, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 230, -1, -1));
 
-        jCBCargoElimEmp.setEnabled(false);
+        jCBCargoElimEmp.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jCBCargoElimEmpActionPerformed(evt);
+            }
+        });
         jtpEliminarEmpleado.add(jCBCargoElimEmp, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 250, 200, 30));
 
         jLApellidoElimEmp.setFont(new java.awt.Font("Corbel", 1, 14)); // NOI18N
@@ -2706,6 +2777,17 @@ public class Menu extends javax.swing.JFrame {
         jLBtnEliminarEmpleado.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
         jLBtnEliminarEmpleado.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         jLBtnEliminarEmpleado.setOpaque(true);
+        jLBtnEliminarEmpleado.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jLBtnEliminarEmpleadoMouseClicked(evt);
+            }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                jLBtnEliminarEmpleadoMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                jLBtnEliminarEmpleadoMouseExited(evt);
+            }
+        });
         jtpEliminarEmpleado.add(jLBtnEliminarEmpleado, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 370, 100, 30));
 
         jtpEscritorio.addTab("tab19", jtpEliminarEmpleado);
@@ -2726,6 +2808,12 @@ public class Menu extends javax.swing.JFrame {
         jlImgBusquedaEmpl.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 jlImgBusquedaEmplMouseClicked(evt);
+            }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                jlImgBusquedaEmplMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                jlImgBusquedaEmplMouseExited(evt);
             }
         });
         jtpListaEmp.add(jlImgBusquedaEmpl, new org.netbeans.lib.awtextra.AbsoluteConstraints(550, 80, 30, 30));
@@ -3484,15 +3572,133 @@ public class Menu extends javax.swing.JFrame {
     }//GEN-LAST:event_jlEliminarVentaBorrarMouseClicked
 
     private void jlImgBusquedaEmplMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jlImgBusquedaEmplMouseClicked
-         borrarFilaC();
+        borrarFilaC();
         String nombre = jtfBuscadorEmpleadosListEmp.getText().toUpperCase();
         for (Empleado empl : ed.listarEmpleado()) {
             if (empl.getApellido().trim().toUpperCase().contains(nombre)) {
-                Modelo1.addRow(new Object[]{empl.getIdEmpleado(), empl.getApellido(), empl.getNombre(), empl.getDni(), 
+                Modelo1.addRow(new Object[]{empl.getIdEmpleado(), empl.getApellido(), empl.getNombre(), empl.getDni(),
                     empl.getCargo(), empl.getUsuario(), empl.getContraenia()});
             }
         }
     }//GEN-LAST:event_jlImgBusquedaEmplMouseClicked
+
+    private void jlAgregarEmpleadoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jlAgregarEmpleadoMouseClicked
+        Registro reg = new Registro();
+        reg.setVisible(true);
+    }//GEN-LAST:event_jlAgregarEmpleadoMouseClicked
+
+    private void jlAgregarEmpleadoMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jlAgregarEmpleadoMouseEntered
+        jlAgregarEmpleado.setBackground(verdeClaro);
+    }//GEN-LAST:event_jlAgregarEmpleadoMouseEntered
+
+    private void jlAgregarEmpleadoMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jlAgregarEmpleadoMouseExited
+        jlAgregarEmpleado.setBackground(verdeBase);
+    }//GEN-LAST:event_jlAgregarEmpleadoMouseExited
+
+    private void jlModificarEmpleadoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jlModificarEmpleadoMouseClicked
+        jtpEscritorio.setSelectedIndex(17);
+        jCBModificarEmpleado.removeAllItems();
+        llenarComboEmpleado();
+    }//GEN-LAST:event_jlModificarEmpleadoMouseClicked
+
+    private void jlModificarEmpleadoMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jlModificarEmpleadoMouseEntered
+        jlModificarEmpleado.setBackground(verdeClaro);
+    }//GEN-LAST:event_jlModificarEmpleadoMouseEntered
+
+    private void jlModificarEmpleadoMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jlModificarEmpleadoMouseExited
+        jlModificarEmpleado.setBackground(verdeBase);
+    }//GEN-LAST:event_jlModificarEmpleadoMouseExited
+
+    private void jlEliminarEmpleadoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jlEliminarEmpleadoMouseClicked
+        jtpEscritorio.setSelectedIndex(18);
+        jCBEliminarEmpleado.removeAllItems();
+        llenarComboEmpleado();
+    }//GEN-LAST:event_jlEliminarEmpleadoMouseClicked
+
+    private void jlEliminarEmpleadoMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jlEliminarEmpleadoMouseEntered
+        jlEliminarEmpleado.setBackground(verdeClaro);
+    }//GEN-LAST:event_jlEliminarEmpleadoMouseEntered
+
+    private void jlEliminarEmpleadoMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jlEliminarEmpleadoMouseExited
+        jlEliminarEmpleado.setBackground(verdeBase);
+    }//GEN-LAST:event_jlEliminarEmpleadoMouseExited
+
+    private void jlListarEmpleadoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jlListarEmpleadoMouseClicked
+        jtpEscritorio.setSelectedIndex(19);
+    }//GEN-LAST:event_jlListarEmpleadoMouseClicked
+
+    private void jlListarEmpleadoMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jlListarEmpleadoMouseEntered
+        jlListarEmpleado.setBackground(verdeClaro);
+    }//GEN-LAST:event_jlListarEmpleadoMouseEntered
+
+    private void jlListarEmpleadoMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jlListarEmpleadoMouseExited
+        jlListarEmpleado.setBackground(verdeBase);
+    }//GEN-LAST:event_jlListarEmpleadoMouseExited
+
+    private void jCBModificarEmpleadoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jCBModificarEmpleadoActionPerformed
+        try {
+            Empleado emp = (Empleado) jCBModificarEmpleado.getSelectedItem();
+            jTFApellidoModEmp.setText(emp.getApellido());
+            jTFNombreEmpleadoModEmp.setText(emp.getNombre());
+            jTFDniModEmp.setText(emp.getDni() + "");
+            jTFUsuarioModEmp.setText(emp.getUsuario());
+            jTFContraseñaModEmp.setText(emp.getContraenia());
+            jCBCargoModifEmp.removeAllItems();
+            llenarComboCargo();
+        } catch (NullPointerException ex) {
+        }
+    }//GEN-LAST:event_jCBModificarEmpleadoActionPerformed
+
+    private void jCBEliminarEmpleadoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jCBEliminarEmpleadoActionPerformed
+        try {
+            Empleado emp = (Empleado) jCBEliminarEmpleado.getSelectedItem();
+            jCBCargoElimEmp.removeAllItems();
+            jTFApellidoElimEmp.setText(emp.getApellido());
+            jTFNombreEmpleadoElimEmp.setText(emp.getNombre());
+            jTFDniElimEmp.setText(emp.getDni() + "");
+            jCBCargoElimEmp.addItem(emp.getCargo() + "");
+            jTFUsuarioElimEmp.setText(emp.getUsuario());
+            jTFContraseñaElimEmp.setText(emp.getContraenia());
+        } catch (NullPointerException ex) {
+        }
+    }//GEN-LAST:event_jCBEliminarEmpleadoActionPerformed
+
+    private void jLBtnModificarModEmpMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLBtnModificarModEmpMouseClicked
+        borrarCamposModEmple();
+//        llenarComboCargo();
+    }//GEN-LAST:event_jLBtnModificarModEmpMouseClicked
+
+    private void jLBtnModificarModEmpMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLBtnModificarModEmpMouseEntered
+        jLBtnModificarModEmp.setBackground(verdeClaro);
+    }//GEN-LAST:event_jLBtnModificarModEmpMouseEntered
+
+    private void jLBtnModificarModEmpMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLBtnModificarModEmpMouseExited
+        jLBtnModificarModEmp.setBackground(verdeBase);
+    }//GEN-LAST:event_jLBtnModificarModEmpMouseExited
+
+    private void jLBtnEliminarEmpleadoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLBtnEliminarEmpleadoMouseClicked
+        borrarCamposElimEmpl();
+    }//GEN-LAST:event_jLBtnEliminarEmpleadoMouseClicked
+
+    private void jLBtnEliminarEmpleadoMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLBtnEliminarEmpleadoMouseEntered
+        jLBtnEliminarEmpleado.setBackground(verdeClaro);
+    }//GEN-LAST:event_jLBtnEliminarEmpleadoMouseEntered
+
+    private void jLBtnEliminarEmpleadoMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLBtnEliminarEmpleadoMouseExited
+        jLBtnEliminarEmpleado.setBackground(verdeBase);
+    }//GEN-LAST:event_jLBtnEliminarEmpleadoMouseExited
+
+    private void jCBCargoElimEmpActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jCBCargoElimEmpActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jCBCargoElimEmpActionPerformed
+
+    private void jlImgBusquedaEmplMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jlImgBusquedaEmplMouseEntered
+        jlImgBusquedaEmpl.setBackground(verdeClaro);
+    }//GEN-LAST:event_jlImgBusquedaEmplMouseEntered
+
+    private void jlImgBusquedaEmplMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jlImgBusquedaEmplMouseExited
+        jlImgBusquedaEmpl.setBackground(Color.WHITE);
+    }//GEN-LAST:event_jlImgBusquedaEmplMouseExited
 
     /**
      * @param args the command line arguments
@@ -3557,11 +3763,11 @@ public class Menu extends javax.swing.JFrame {
     private javax.swing.JLabel jLApellidoModEmp;
     private javax.swing.JLabel jLBtnAgregarCliente;
     private javax.swing.JLabel jLBtnAgregarProd;
-    private javax.swing.JLabel jLBtnCargoModificarModEmp;
     private javax.swing.JLabel jLBtnEliminarElimClien;
     private javax.swing.JLabel jLBtnEliminarElimProd;
     private javax.swing.JLabel jLBtnEliminarEmpleado;
     private javax.swing.JLabel jLBtnModificarModClien;
+    private javax.swing.JLabel jLBtnModificarModEmp;
     private javax.swing.JLabel jLBtnModificarModProd;
     private javax.swing.JLabel jLBuscarClienElimClien;
     private javax.swing.JLabel jLBuscarClienModClien;
@@ -3905,6 +4111,23 @@ public class Menu extends javax.swing.JFrame {
         }
     }
 
+    private void llenarComboEmpleado() {
+        try {
+            for (Empleado empl : ed.listarEmpleado()) {
+                jCBModificarEmpleado.addItem(empl);
+                jCBEliminarEmpleado.addItem(empl);
+            }
+        } catch (NullPointerException ex) {
+        }
+    }
+
+    private void llenarComboCargo() {
+        String c1 = "Vendedor", c2 = "Supervisor";
+        jCBCargoModifEmp.addItem(c1);
+
+        jCBCargoModifEmp.addItem(c2);
+    }
+
     private void borrarCamposAgCliente() {
         jTFApellidoClienteAgrClien.setText("");
         jTFApellidoClienteAgrClien.setText("");
@@ -3945,6 +4168,25 @@ public class Menu extends javax.swing.JFrame {
         jTFDescripcionElimProd.setText("");
         jTFPrecioActuaElimProd.setText("");
         jTFStockElimProd.setText("");
+    }
+
+    private void borrarCamposModEmple() {
+        jTFApellidoModEmp.setText("");
+        jTFNombreEmpleadoModEmp.setText("");
+        jTFDniModEmp.setText("");
+        jTFUsuarioModEmp.setText("");
+        jTFContraseñaModEmp.setText("");
+        jCBCargoModifEmp.removeAllItems();
+        llenarComboCargo();
+    }
+
+    private void borrarCamposElimEmpl() {
+        jTFApellidoElimEmp.setText("");
+        jTFNombreEmpleadoElimEmp.setText("");
+        jTFDniElimEmp.setText("");
+        jTFUsuarioElimEmp.setText("");
+        jTFContraseñaElimEmp.setText("");
+        jCBCargoModifEmp.removeAllItems();
     }
 
     private void controlLetras(java.awt.event.KeyEvent evt) {
