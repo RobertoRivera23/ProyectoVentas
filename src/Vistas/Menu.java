@@ -94,8 +94,8 @@ public class Menu extends javax.swing.JFrame {
         llenarCombo();
         llenarComboCliente();
         llenarComboV();
-        empleadosVisible(); // PARA MOSTRAR JLEMPLEADOS 
-        jlNombreUsuario.setText(Login.empleado.getNombre() + " " + Login.empleado.getApellido());
+//        empleadosVisible(); // PARA MOSTRAR JLEMPLEADOS 
+//        jlNombreUsuario.setText(Login.empleado.getNombre() + " " + Login.empleado.getApellido());
     }
 
     /**
@@ -3441,7 +3441,7 @@ public class Menu extends javax.swing.JFrame {
     }//GEN-LAST:event_jCBBuscarProdElimProdActionPerformed
 
     private void jLEmpleadosMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLEmpleadosMouseClicked
-        // TODO add your handling code here:
+        jtpEscritorio.setSelectedIndex(16);
     }//GEN-LAST:event_jLEmpleadosMouseClicked
 
     private void jLEmpleadosMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLEmpleadosMouseEntered
@@ -3506,11 +3506,11 @@ public class Menu extends javax.swing.JFrame {
     }//GEN-LAST:event_jlAgregarEmpleadoMouseClicked
 
     private void jlAgregarEmpleadoMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jlAgregarEmpleadoMouseEntered
-        // TODO add your handling code here:
+        jlAgregarEmpleado.setBackground(verdeClaro);
     }//GEN-LAST:event_jlAgregarEmpleadoMouseEntered
 
     private void jlAgregarEmpleadoMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jlAgregarEmpleadoMouseExited
-        // TODO add your handling code here:
+      jlAgregarEmpleado.setBackground(verdeBase);
     }//GEN-LAST:event_jlAgregarEmpleadoMouseExited
 
     private void jlModificarEmpleadoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jlModificarEmpleadoMouseClicked
@@ -3518,11 +3518,11 @@ public class Menu extends javax.swing.JFrame {
     }//GEN-LAST:event_jlModificarEmpleadoMouseClicked
 
     private void jlModificarEmpleadoMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jlModificarEmpleadoMouseEntered
-        // TODO add your handling code here:
+       jlModificarEmpleado.setBackground(verdeClaro);
     }//GEN-LAST:event_jlModificarEmpleadoMouseEntered
 
     private void jlModificarEmpleadoMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jlModificarEmpleadoMouseExited
-        // TODO add your handling code here:
+        jlModificarEmpleado.setBackground(verdeBase);
     }//GEN-LAST:event_jlModificarEmpleadoMouseExited
 
     private void jlEliminarEmpleadoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jlEliminarEmpleadoMouseClicked
@@ -4079,11 +4079,11 @@ public class Menu extends javax.swing.JFrame {
         }
     }
 
-    private void empleadosVisible() {         // VALIDA CARGO DEL QUE HIZO LOGIN!!!!!!
-        if (Login.empleado.getCargo().equalsIgnoreCase("supervisor")) {
-            jLEmpleados.setVisible(true);
-        } else {
-            jLEmpleados.setVisible(false);
-        }
-    }
+//    private void empleadosVisible() {         // VALIDA CARGO DEL QUE HIZO LOGIN!!!!!!
+//        if (Login.empleado.getCargo().equalsIgnoreCase("supervisor")) {
+//            jLEmpleados.setVisible(true);
+//        } else {
+//            jLEmpleados.setVisible(false);
+//        }
+//    }
 }
