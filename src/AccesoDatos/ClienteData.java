@@ -145,6 +145,7 @@ public class ClienteData {
                 cliente.setEstado(rs.getBoolean("estado"));
             } else {
                 JOptionPane.showMessageDialog(null, "No existe el Cliente.");
+                cliente = null;
             }
             ps.close();
         } catch (SQLException ex) {

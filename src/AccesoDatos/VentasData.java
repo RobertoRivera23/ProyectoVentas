@@ -8,6 +8,8 @@ import java.sql.*;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 
 public class VentasData {
@@ -275,5 +277,22 @@ public class VentasData {
             JOptionPane.showMessageDialog(null, "Error al acceder a la tabla Venta" + ex.getMessage());
         }
         return listaV;
+    }
+    
+    public void eliminarVentaId(int idVenta){
+        String sql = "UPDATE venta SET estado = 0 WHERE idVenta = ?";
+        try {
+            PreparedStatement ps = con.prepareStatement(sql);
+            ps.setInt(1, idVenta);
+            int op = ps.executeUpdate();
+            if (op == 1) {
+                JOptionPane.showMessageDialog(null, "Venta Eliminada Exitosamente.");
+            } else {
+                JOptionPane.showMessageDialog(null, "Venta no pudo ser Eliminada");
+            }
+            ps.close();
+        } catch (SQLException ex) {
+            JOptionPane.showMessageDialog(null, "Error al acceder a la tabla Venta" + ex.getMessage());
+        }
     }
 }

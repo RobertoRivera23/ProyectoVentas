@@ -15,6 +15,7 @@ import Utilidades.TablaFraveMax;
 import java.awt.Color;
 import java.awt.event.KeyEvent;
 import java.sql.Date;
+import java.time.LocalDate;
 import java.time.ZoneId;
 import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
@@ -337,6 +338,7 @@ public class Menu extends javax.swing.JFrame {
         ScrollTablaVentas = new javax.swing.JScrollPane();
         jtListaVentas = new TablaFraveMax();
         jlSelecFechaVenta = new javax.swing.JLabel();
+        jDateChooser1 = new com.toedter.calendar.JDateChooser();
         jtpDetallesVenta = new javax.swing.JPanel();
         jlDetallesVenta = new javax.swing.JLabel();
         ScrollTablaDetalles = new javax.swing.JScrollPane();
@@ -360,6 +362,7 @@ public class Menu extends javax.swing.JFrame {
         jlFechaVentaEliminar = new javax.swing.JLabel();
         jlEliminarVentaBorrar = new javax.swing.JLabel();
         jlVentaIconEliminar = new javax.swing.JLabel();
+        jdcElimVenta = new com.toedter.calendar.JDateChooser();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setMinimumSize(new java.awt.Dimension(800, 500));
@@ -2116,6 +2119,7 @@ public class Menu extends javax.swing.JFrame {
         jlSelecFechaVenta.setText("Seleccione la Fecha de la Venta");
         jlSelecFechaVenta.setVerticalAlignment(javax.swing.SwingConstants.BOTTOM);
         jtpListaVentas.add(jlSelecFechaVenta, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 50, 200, 30));
+        jtpListaVentas.add(jDateChooser1, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 80, 160, 30));
 
         jtpEscritorio.addTab("tab14", jtpListaVentas);
 
@@ -2259,6 +2263,9 @@ public class Menu extends javax.swing.JFrame {
         jlEliminarVentaBorrar.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         jlEliminarVentaBorrar.setOpaque(true);
         jlEliminarVentaBorrar.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jlEliminarVentaBorrarMouseClicked(evt);
+            }
             public void mouseEntered(java.awt.event.MouseEvent evt) {
                 jlEliminarVentaBorrarMouseEntered(evt);
             }
@@ -2271,6 +2278,9 @@ public class Menu extends javax.swing.JFrame {
         jlVentaIconEliminar.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jlVentaIconEliminar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Image/archivo-menos.png"))); // NOI18N
         jtpEliminarVenta.add(jlVentaIconEliminar, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 30, 200, 150));
+
+        jdcElimVenta.setEnabled(false);
+        jtpEliminarVenta.add(jdcElimVenta, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 210, 200, 30));
 
         jtpEscritorio.addTab("tab16", jtpEliminarVenta);
 
@@ -2647,11 +2657,11 @@ public class Menu extends javax.swing.JFrame {
     }//GEN-LAST:event_jlIconBuscarMouseExited
 
     private void jlEliminarVentaBorrarMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jlEliminarVentaBorrarMouseEntered
-        jlEliminarVenta.setBackground(verdeClaro);
+        jlEliminarVentaBorrar.setBackground(verdeClaro);
     }//GEN-LAST:event_jlEliminarVentaBorrarMouseEntered
 
     private void jlEliminarVentaBorrarMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jlEliminarVentaBorrarMouseExited
-        jlEliminarVenta.setBackground(verdeBase);
+        jlEliminarVentaBorrar.setBackground(verdeBase);
     }//GEN-LAST:event_jlEliminarVentaBorrarMouseExited
 
     private void jlEliminarMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jlEliminarMouseEntered
@@ -2819,7 +2829,7 @@ public class Menu extends javax.swing.JFrame {
         jtfNombreProEliminar.setText(dv.getProducto().getNombreProducto());
         jtfTelCliEliminar.setText(venta.getCliente().getTelefono());
         jtfNombreEmpleadoEliminar.setText(venta.getEmpleado().getNombre() + " " + venta.getEmpleado().getApellido());
-//        jdcFechaVentEliminar.setDate(Date.valueOf(venta.getFechaVenta()));
+        jdcElimVenta.setDate(Date.valueOf(venta.getFechaVenta()));
     }//GEN-LAST:event_jcbBuscarVentaActionPerformed
 
     private void jLBtnEliminarElimProdMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLBtnEliminarElimProdMousePressed
@@ -2907,21 +2917,39 @@ public class Menu extends javax.swing.JFrame {
             try {
                 int can = Integer.parseInt(jtfCantidadVenta.getText());
                 double pre = Double.parseDouble(jtfPrecioVenta.getText());
+                LocalDate fv = jdcAgrVenta.getDate().toInstant().atZone(ZoneId.systemDefault()).toLocalDate();
                 Producto pro = (Producto) jcbProVenta.getSelectedItem();
                 Cliente cli = cD.buscarClientePorTel(jtfTelCliente.getText());
-                if (cli == null) {
-                    cli = new Cliente(jtfTelCliente.getText());
-                    cD.guardarCliente(cli);
-                }
-                Empleado emp = ed.buscarPorNombre(jtfNombreEmpVenta.getText());
-                if (emp == null) {
-                    JOptionPane.showMessageDialog(this, "El empleado no existe");
+                if (cli != null) {
+                    Empleado emp = ed.buscarPorNombre(jtfNombreEmpVenta.getText());
+                    if (!emp.getNombre().equalsIgnoreCase(Login.empleado.getNombre())) {
+                        JOptionPane.showMessageDialog(this, "El empleado no coincide");
+                    } else {
+                        Venta ven = new Venta(cli, emp, fv);
+                        vd.guardarVenta(ven);
+                        DetalleVenta dv = new DetalleVenta(can, ven, pre, pro);
+                        dvd.guardarDetalleVenta(dv);
+                    }
                 } else {
-                    Venta ven = new Venta(cli, emp, jdcAgrVenta.getDate().toInstant().atZone(ZoneId.systemDefault()).toLocalDate());
-                    vd.guardarVenta(ven);
-                    DetalleVenta dv = new DetalleVenta(can, ven, pre, pro);
-                    dvd.guardarDetalleVenta(dv);
+                    int op = JOptionPane.showConfirmDialog(this, "¿Desea agregar un nuevo cliente?", "Selecione una opcion", JOptionPane.YES_NO_OPTION);
+                    switch (op) {
+                        case 0:
+                            cli = new Cliente(null, null, null, jtfTelCliente.getText());
+                            cD.guardarCliente(cli);
+                            Empleado emp = ed.buscarPorNombre(jtfNombreEmpVenta.getText());
+                            if (!emp.getNombre().equalsIgnoreCase(Login.empleado.getNombre())) {
+                                JOptionPane.showMessageDialog(this, "El empleado no coincide");
+                            } else {
+                                Venta ven = new Venta(cli, emp, fv);
+                                vd.guardarVenta(ven);
+                                DetalleVenta dv = new DetalleVenta(can, ven, pre, pro);
+                                dvd.guardarDetalleVenta(dv);
+                            }
+                        case 1:
+                            break;
+                    }
                 }
+            } catch (NullPointerException ex) {
             } catch (NumberFormatException ex) {
                 JOptionPane.showMessageDialog(this, "La cantidad ingresada es invalida");
             }
@@ -2929,9 +2957,15 @@ public class Menu extends javax.swing.JFrame {
     }//GEN-LAST:event_jlRealizarVentaMouseClicked
 
     private void jcbProVentaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jcbProVentaActionPerformed
-        Producto pro = (Producto) jcbProVenta.getSelectedItem();
-        precioTotal = pro.getPrecioActual();
-        jtfPrecioVenta.setText(precioTotal + "");
+        try {
+            Producto pro = (Producto) jcbProVenta.getSelectedItem();
+            precioTotal = pro.getPrecioActual();
+            int can = Integer.parseInt(jtfCantidadVenta.getText());
+            double total = precioTotal * can;
+            jtfPrecioVenta.setText(total + "");
+        } catch (NumberFormatException ex) {
+            jtfPrecioVenta.setText(precioTotal + "");
+        }
     }//GEN-LAST:event_jcbProVentaActionPerformed
 
     private void jtfCantidadVentaKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jtfCantidadVentaKeyTyped
@@ -2947,6 +2981,27 @@ public class Menu extends javax.swing.JFrame {
             jtfPrecioVenta.setText(precioTotal + "");
         }
     }//GEN-LAST:event_jtfCantidadVentaKeyReleased
+
+    private void jlEliminarVentaBorrarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jlEliminarVentaBorrarMouseClicked
+        Venta v = (Venta) jcbBuscarVenta.getSelectedItem();
+        DetalleVenta dv = dvd.buscarDetalleProVenta(v.getIdVenta());
+        if (jtfNombreProEliminar.getText().equals(dv.getProducto().getNombreProducto())
+                || jtfTelCliEliminar.getText().equals(v.getCliente().getTelefono())
+                || jdcElimVenta.getDate().equals(Date.valueOf(v.getFechaVenta()))
+                || jtfNombreEmpleadoEliminar.getText().equals(Login.empleado.getNombre())) {
+            int opcion = JOptionPane.showConfirmDialog(this, "¿Esta seguro que desea eliminar la Venta?", "Selecione una opcion", JOptionPane.YES_NO_OPTION);
+            switch (opcion) {
+                case 0:
+                    vd.eliminarVentaId(v.getIdVenta());
+                    dvd.eliminarDetalleVentaPorId(dv.getIdDetalleVenta());
+                    jcbBuscarVenta.removeItemAt(jcbBuscarVenta.getSelectedIndex());
+                case 1:
+                    break;
+            }
+        } else {
+            JOptionPane.showMessageDialog(this, "Los Datos no coinciden");
+        }
+    }//GEN-LAST:event_jlEliminarVentaBorrarMouseClicked
 
     /**
      * @param args the command line arguments
@@ -2997,6 +3052,7 @@ public class Menu extends javax.swing.JFrame {
     private javax.swing.JLabel fravemaxLogo;
     private javax.swing.JComboBox<Cliente> jCBBuscarClienElimClien;
     private javax.swing.JComboBox<Producto> jCBBuscarProdElimProd;
+    private com.toedter.calendar.JDateChooser jDateChooser1;
     private javax.swing.JLabel jLAgregarProducto;
     private javax.swing.JLabel jLApellidoClienteAgrClien;
     private javax.swing.JLabel jLApellidoElimClien;
@@ -3097,6 +3153,7 @@ public class Menu extends javax.swing.JFrame {
     private javax.swing.JComboBox<Producto> jcbProVenta;
     private javax.swing.JComboBox<Producto> jcbProductos;
     private com.toedter.calendar.JDateChooser jdcAgrVenta;
+    private com.toedter.calendar.JDateChooser jdcElimVenta;
     private javax.swing.JLabel jlAgrVentas;
     private javax.swing.JLabel jlAgregar;
     private javax.swing.JLabel jlAgregarCliente;
