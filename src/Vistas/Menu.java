@@ -2199,7 +2199,19 @@ public class Menu extends javax.swing.JFrame {
             new String [] {
                 "ID", "Datos Cliente", "Datos Empleado", "Fecha de Venta"
             }
-        ));
+        ){
+            public boolean isCellEditable(int fila, int column) {
+                return false;
+            }
+
+            Class[] types = new Class[]{
+                java.lang.Integer.class, java.lang.String.class, java.lang.String.class, java.time.LocalDate.class
+            };
+
+            public Class getColumnClass(int columnIndex) {
+                return types[columnIndex];
+            }
+        });
         jtListaVentas.setGridColor(new java.awt.Color(0, 102, 102));
         jtListaVentas.setMinimumSize(new java.awt.Dimension(60, 60));
         ScrollTablaVentas.setViewportView(jtListaVentas);
@@ -2213,8 +2225,10 @@ public class Menu extends javax.swing.JFrame {
         jtpListaVentas.add(jlSelecFechaVenta, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 50, 200, 30));
         jtpListaVentas.add(jDateChooser1, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 80, 160, 30));
 
+        jLabel1.setBackground(new java.awt.Color(255, 255, 255));
         jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Image/busqueda - gris.png"))); // NOI18N
+        jLabel1.setOpaque(true);
         jtpListaVentas.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(540, 80, 40, 30));
 
         jtpEscritorio.addTab("tab14", jtpListaVentas);
