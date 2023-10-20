@@ -2375,17 +2375,6 @@ public class Menu extends javax.swing.JFrame {
         jlAgregarEmpleado.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         jlAgregarEmpleado.setOpaque(true);
         jlAgregarEmpleado.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
-        jlAgregarEmpleado.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jlAgregarEmpleadoMouseClicked(evt);
-            }
-            public void mouseEntered(java.awt.event.MouseEvent evt) {
-                jlAgregarEmpleadoMouseEntered(evt);
-            }
-            public void mouseExited(java.awt.event.MouseEvent evt) {
-                jlAgregarEmpleadoMouseExited(evt);
-            }
-        });
         jPGestrionEmpleados.add(jlAgregarEmpleado, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 340, 80, 30));
 
         jlAgregarEmpl.setFont(new java.awt.Font("Corbel", 1, 18)); // NOI18N
@@ -2419,17 +2408,6 @@ public class Menu extends javax.swing.JFrame {
         jlModificarEmpleado.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         jlModificarEmpleado.setOpaque(true);
         jlModificarEmpleado.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
-        jlModificarEmpleado.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jlModificarEmpleadoMouseClicked(evt);
-            }
-            public void mouseEntered(java.awt.event.MouseEvent evt) {
-                jlModificarEmpleadoMouseEntered(evt);
-            }
-            public void mouseExited(java.awt.event.MouseEvent evt) {
-                jlModificarEmpleadoMouseExited(evt);
-            }
-        });
         jPGestrionEmpleados.add(jlModificarEmpleado, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 340, 80, 30));
 
         jlModEmpl.setFont(new java.awt.Font("Corbel", 1, 18)); // NOI18N
@@ -2466,17 +2444,6 @@ public class Menu extends javax.swing.JFrame {
         jlEliminarEmpleado.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         jlEliminarEmpleado.setOpaque(true);
         jlEliminarEmpleado.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
-        jlEliminarEmpleado.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jlEliminarEmpleadoMouseClicked(evt);
-            }
-            public void mouseEntered(java.awt.event.MouseEvent evt) {
-                jlEliminarEmpleadoMouseEntered(evt);
-            }
-            public void mouseExited(java.awt.event.MouseEvent evt) {
-                jlEliminarEmpleadoMouseExited(evt);
-            }
-        });
         jPGestrionEmpleados.add(jlEliminarEmpleado, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 340, 80, 30));
 
         jlIconEliEmpl.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
@@ -2494,17 +2461,6 @@ public class Menu extends javax.swing.JFrame {
         jlListarEmpleado.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         jlListarEmpleado.setOpaque(true);
         jlListarEmpleado.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
-        jlListarEmpleado.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jlListarEmpleadoMouseClicked(evt);
-            }
-            public void mouseEntered(java.awt.event.MouseEvent evt) {
-                jlListarEmpleadoMouseEntered(evt);
-            }
-            public void mouseExited(java.awt.event.MouseEvent evt) {
-                jlListarEmpleadoMouseExited(evt);
-            }
-        });
         jPGestrionEmpleados.add(jlListarEmpleado, new org.netbeans.lib.awtextra.AbsoluteConstraints(460, 40, 120, 30));
 
         rectanguloElimEmpl.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
@@ -2528,11 +2484,6 @@ public class Menu extends javax.swing.JFrame {
 
         jCBModificarEmpleado.setFont(new java.awt.Font("Corbel", 1, 14)); // NOI18N
         jCBModificarEmpleado.setForeground(new java.awt.Color(0, 102, 102));
-        jCBModificarEmpleado.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jCBModificarEmpleadoActionPerformed(evt);
-            }
-        });
         jtpModificarEmpleado.add(jCBModificarEmpleado, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 110, 290, 30));
 
         jLNombreEmpModEmp1.setFont(new java.awt.Font("Corbel", 1, 14)); // NOI18N
@@ -2556,11 +2507,6 @@ public class Menu extends javax.swing.JFrame {
 
         jTFDniModEmp.setFont(new java.awt.Font("Corbel", 0, 14)); // NOI18N
         jTFDniModEmp.setBorder(null);
-        jTFDniModEmp.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTFDniModEmpActionPerformed(evt);
-            }
-        });
         jtpModificarEmpleado.add(jTFDniModEmp, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 250, 200, 30));
 
         jSModEmp7.setBackground(new java.awt.Color(0, 150, 136));
@@ -2580,11 +2526,6 @@ public class Menu extends javax.swing.JFrame {
 
         jTFUsuarioModEmp.setFont(new java.awt.Font("Corbel", 0, 14)); // NOI18N
         jTFUsuarioModEmp.setBorder(null);
-        jTFUsuarioModEmp.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTFUsuarioModEmpActionPerformed(evt);
-            }
-        });
         jtpModificarEmpleado.add(jTFUsuarioModEmp, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 320, 200, 30));
 
         jLBtnCargoModificarModEmp.setBackground(new java.awt.Color(0, 150, 136));
@@ -2596,17 +2537,6 @@ public class Menu extends javax.swing.JFrame {
         jLBtnCargoModificarModEmp.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
         jLBtnCargoModificarModEmp.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         jLBtnCargoModificarModEmp.setOpaque(true);
-        jLBtnCargoModificarModEmp.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseEntered(java.awt.event.MouseEvent evt) {
-                jLBtnCargoModificarModEmpMouseEntered(evt);
-            }
-            public void mouseExited(java.awt.event.MouseEvent evt) {
-                jLBtnCargoModificarModEmpMouseExited(evt);
-            }
-            public void mousePressed(java.awt.event.MouseEvent evt) {
-                jLBtnCargoModificarModEmpMousePressed(evt);
-            }
-        });
         jtpModificarEmpleado.add(jLBtnCargoModificarModEmp, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 370, 100, 30));
 
         jSModEmp.setBackground(new java.awt.Color(0, 150, 136));
@@ -2661,11 +2591,6 @@ public class Menu extends javax.swing.JFrame {
 
         jCBEliminarEmpleado.setFont(new java.awt.Font("Corbel", 1, 14)); // NOI18N
         jCBEliminarEmpleado.setForeground(new java.awt.Color(0, 102, 102));
-        jCBEliminarEmpleado.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jCBEliminarEmpleadoActionPerformed(evt);
-            }
-        });
         jtpEliminarEmpleado.add(jCBEliminarEmpleado, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 110, 290, 30));
 
         jLNombreEmpElimEmp.setFont(new java.awt.Font("Corbel", 1, 14)); // NOI18N
@@ -2691,11 +2616,6 @@ public class Menu extends javax.swing.JFrame {
         jTFDniElimEmp.setEditable(false);
         jTFDniElimEmp.setFont(new java.awt.Font("Corbel", 0, 14)); // NOI18N
         jTFDniElimEmp.setBorder(null);
-        jTFDniElimEmp.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTFDniElimEmpActionPerformed(evt);
-            }
-        });
         jtpEliminarEmpleado.add(jTFDniElimEmp, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 250, 200, 30));
 
         jSModEmp8.setBackground(new java.awt.Color(0, 150, 136));
@@ -2711,11 +2631,6 @@ public class Menu extends javax.swing.JFrame {
         jTFUsuarioElimEmp.setEditable(false);
         jTFUsuarioElimEmp.setFont(new java.awt.Font("Corbel", 0, 14)); // NOI18N
         jTFUsuarioElimEmp.setBorder(null);
-        jTFUsuarioElimEmp.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTFUsuarioElimEmpActionPerformed(evt);
-            }
-        });
         jtpEliminarEmpleado.add(jTFUsuarioElimEmp, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 320, 200, 30));
 
         jSModEmp10.setBackground(new java.awt.Color(0, 150, 136));
@@ -2770,17 +2685,6 @@ public class Menu extends javax.swing.JFrame {
         jLBtnEliminarEmpleado.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
         jLBtnEliminarEmpleado.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         jLBtnEliminarEmpleado.setOpaque(true);
-        jLBtnEliminarEmpleado.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseEntered(java.awt.event.MouseEvent evt) {
-                jLBtnEliminarEmpleadoMouseEntered(evt);
-            }
-            public void mouseExited(java.awt.event.MouseEvent evt) {
-                jLBtnEliminarEmpleadoMouseExited(evt);
-            }
-            public void mousePressed(java.awt.event.MouseEvent evt) {
-                jLBtnEliminarEmpleadoMousePressed(evt);
-            }
-        });
         jtpEliminarEmpleado.add(jLBtnEliminarEmpleado, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 370, 100, 30));
 
         jtpEscritorio.addTab("tab19", jtpEliminarEmpleado);
@@ -2798,25 +2702,9 @@ public class Menu extends javax.swing.JFrame {
         jlImgBusquedaEmpl.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Image/busqueda - gris.png"))); // NOI18N
         jlImgBusquedaEmpl.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         jlImgBusquedaEmpl.setOpaque(true);
-        jlImgBusquedaEmpl.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jlImgBusquedaEmplMouseClicked(evt);
-            }
-            public void mouseEntered(java.awt.event.MouseEvent evt) {
-                jlImgBusquedaEmplMouseEntered(evt);
-            }
-            public void mouseExited(java.awt.event.MouseEvent evt) {
-                jlImgBusquedaEmplMouseExited(evt);
-            }
-        });
         jtpListaEmp.add(jlImgBusquedaEmpl, new org.netbeans.lib.awtextra.AbsoluteConstraints(550, 80, 30, 30));
 
         jtfBuscadorEmpleadosListEmp.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
-        jtfBuscadorEmpleadosListEmp.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyTyped(java.awt.event.KeyEvent evt) {
-                jtfBuscadorEmpleadosListEmpKeyTyped(evt);
-            }
-        });
         jtpListaEmp.add(jtfBuscadorEmpleadosListEmp, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 80, 160, 30));
 
         ScrollListClien1.setBackground(new java.awt.Color(255, 255, 255));
@@ -3434,7 +3322,6 @@ public class Menu extends javax.swing.JFrame {
                         break;
                 }
             } catch (NumberFormatException ex) {
-
             }
         }
         borrarCamposModProd();
