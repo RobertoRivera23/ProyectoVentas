@@ -247,6 +247,9 @@ public class Registro extends javax.swing.JFrame {
         jLVolver.setOpaque(true);
         jLVolver.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
         jLVolver.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jLVolverMouseClicked(evt);
+            }
             public void mouseEntered(java.awt.event.MouseEvent evt) {
                 jLVolverMouseEntered(evt);
             }
@@ -380,6 +383,10 @@ public class Registro extends javax.swing.JFrame {
         } catch (NullPointerException ex) {
         }
     }//GEN-LAST:event_jlCargarMouseClicked
+
+    private void jLVolverMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLVolverMouseClicked
+        this.dispose();
+    }//GEN-LAST:event_jLVolverMouseClicked
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

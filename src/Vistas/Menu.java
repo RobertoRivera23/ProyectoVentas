@@ -3502,7 +3502,8 @@ public class Menu extends javax.swing.JFrame {
     }//GEN-LAST:event_jtfCantidadVentaKeyReleased
 
     private void jlAgregarEmpleadoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jlAgregarEmpleadoMouseClicked
-        // TODO add your handling code here:
+        Registro reg = new Registro();
+        reg.setVisible(true);
     }//GEN-LAST:event_jlAgregarEmpleadoMouseClicked
 
     private void jlAgregarEmpleadoMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jlAgregarEmpleadoMouseEntered
@@ -3514,7 +3515,7 @@ public class Menu extends javax.swing.JFrame {
     }//GEN-LAST:event_jlAgregarEmpleadoMouseExited
 
     private void jlModificarEmpleadoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jlModificarEmpleadoMouseClicked
-        // TODO add your handling code here:
+        jtpEscritorio.setSelectedIndex(17);
     }//GEN-LAST:event_jlModificarEmpleadoMouseClicked
 
     private void jlModificarEmpleadoMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jlModificarEmpleadoMouseEntered
@@ -3526,27 +3527,27 @@ public class Menu extends javax.swing.JFrame {
     }//GEN-LAST:event_jlModificarEmpleadoMouseExited
 
     private void jlEliminarEmpleadoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jlEliminarEmpleadoMouseClicked
-        // TODO add your handling code here:
+        jtpEscritorio.setSelectedIndex(18);
     }//GEN-LAST:event_jlEliminarEmpleadoMouseClicked
 
     private void jlEliminarEmpleadoMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jlEliminarEmpleadoMouseEntered
-        // TODO add your handling code here:
+        jlEliminarEmpleado.setBackground(verdeClaro);
     }//GEN-LAST:event_jlEliminarEmpleadoMouseEntered
 
     private void jlEliminarEmpleadoMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jlEliminarEmpleadoMouseExited
-        // TODO add your handling code here:
+        jlEliminarEmpleado.setBackground(verdeBase);
     }//GEN-LAST:event_jlEliminarEmpleadoMouseExited
 
     private void jlListarEmpleadoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jlListarEmpleadoMouseClicked
-        // TODO add your handling code here:
+        jtpEscritorio.setSelectedIndex(19);
     }//GEN-LAST:event_jlListarEmpleadoMouseClicked
 
     private void jlListarEmpleadoMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jlListarEmpleadoMouseEntered
-        // TODO add your handling code here:
+         jlListarEmpleado.setBackground(verdeClaro);
     }//GEN-LAST:event_jlListarEmpleadoMouseEntered
 
     private void jlListarEmpleadoMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jlListarEmpleadoMouseExited
-        // TODO add your handling code here:
+         jlListarEmpleado.setBackground(verdeBase);
     }//GEN-LAST:event_jlListarEmpleadoMouseExited
 
     private void jCBModificarEmpleadoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jCBModificarEmpleadoActionPerformed
