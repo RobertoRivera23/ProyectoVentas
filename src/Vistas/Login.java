@@ -263,41 +263,36 @@ public class Login extends javax.swing.JFrame {
     private void jLBtnIniciarSesionMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLBtnIniciarSesionMouseClicked
         int cont = 0;
         EmpleadoData eD = new EmpleadoData();
-        if(jTFUsuario.getText().isEmpty() || jTFUsuario.getText().isEmpty() || jCBCargo.getSelectedItem()== null){
+        if (jTFUsuario.getText().isEmpty() || jTFUsuario.getText().isEmpty() || jCBCargo.getSelectedItem() == null) {
             JOptionPane.showMessageDialog(null, "No puede haber campos vacios");
         } else {
-        try{
-        for (Empleado emp : eD.listarEmpleado()) {
-            if (emp.getUsuario().equals(jTFUsuario.getText()) && emp.getContraenia().equals(jTContraseña.getText())
-                    && emp.getCargo().equals(jCBCargo.getSelectedItem())) {
-                cont++;
-                empleado = new Empleado();
-                empleado.setIdEmpleado(emp.getIdEmpleado());
-                empleado.setApellido(emp.getApellido());
-                empleado.setNombre(emp.getNombre());
-                empleado.setDni(emp.getDni());
-                empleado.setCargo(emp.getCargo());
-                empleado.setUsuario(emp.getUsuario());
-                empleado.setContraenia(emp.getContraenia());
-                empleado.setEstado(emp.isEstado());
-            //Instanciamos Menu 
-                Menu menu = new Menu();
-                // traemos los eventos a traves de las ventanas creadas
-//                java.awt.EventQueue.invokeLater(new Runnable() {
-//            public void run() {
-                new Menu().setVisible(true);
-//            }
-//        });
-                dispose();
-                break;
+            try {
+                for (Empleado emp : eD.listarEmpleado()) {
+                    if (emp.getUsuario().equals(jTFUsuario.getText()) && emp.getContraenia().equals(jTContraseña.getText())
+                            && emp.getCargo().equals(jCBCargo.getSelectedItem())) {
+                        cont++;
+                        empleado = new Empleado();
+                        empleado.setIdEmpleado(emp.getIdEmpleado());
+                        empleado.setApellido(emp.getApellido());
+                        empleado.setNombre(emp.getNombre());
+                        empleado.setDni(emp.getDni());
+                        empleado.setCargo(emp.getCargo());
+                        empleado.setUsuario(emp.getUsuario());
+                        empleado.setContraenia(emp.getContraenia());
+                        empleado.setEstado(emp.isEstado());
+                        //Instanciamos Menu 
+                        Menu menu = new Menu();
+                        menu.setVisible(true);
+                        dispose();
+                        break;
+                    }
+                }
+            } catch (NullPointerException ex) {
+
             }
-        } 
-        }catch(NullPointerException ex) {
-            
-        }
-        if (cont == 0) {
-            JOptionPane.showMessageDialog(null, "El Ususario, Contraseña y/o Cargo, son incorrectos");
-        } 
+            if (cont == 0) {
+                JOptionPane.showMessageDialog(null, "El Ususario, Contraseña y/o Cargo, son incorrectos");
+            }
         }
     }//GEN-LAST:event_jLBtnIniciarSesionMouseClicked
 

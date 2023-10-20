@@ -667,7 +667,7 @@ public class Menu extends javax.swing.JFrame {
         jLEmpleados.setBackground(new java.awt.Color(51, 51, 76));
         jLEmpleados.setFont(new java.awt.Font("Corbel", 1, 14)); // NOI18N
         jLEmpleados.setForeground(new java.awt.Color(255, 255, 255));
-        jLEmpleados.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Image/usuarios.png"))); // NOI18N
+        jLEmpleados.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Image/empleado_icon.png"))); // NOI18N
         jLEmpleados.setText("Empleados");
         jLEmpleados.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 25, 1, 1));
         jLEmpleados.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
@@ -2384,7 +2384,7 @@ public class Menu extends javax.swing.JFrame {
         jPGestrionEmpleados.add(jlGestionEmpleado1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 40, 330, 30));
 
         jlIconAgreEmpl.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jlIconAgreEmpl.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Image/agregar-usuario.png"))); // NOI18N
+        jlIconAgreEmpl.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Image/agregar_empleado.png"))); // NOI18N
         jPGestrionEmpleados.add(jlIconAgreEmpl, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 60, 180, 150));
 
         jlAgregarEmpleado.setBackground(new java.awt.Color(0, 150, 136));
@@ -2461,7 +2461,7 @@ public class Menu extends javax.swing.JFrame {
         jPGestrionEmpleados.add(jlModEmpl, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 200, 80, -1));
 
         jlIconModEmpl.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jlIconModEmpl.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Image/editar-usuario.png"))); // NOI18N
+        jlIconModEmpl.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Image/editar_empleado.png"))); // NOI18N
         jPGestrionEmpleados.add(jlIconModEmpl, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 60, 180, 150));
 
         rectanguloModifEmpl.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
@@ -2503,7 +2503,7 @@ public class Menu extends javax.swing.JFrame {
         jPGestrionEmpleados.add(jlEliminarEmpleado, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 340, 80, 30));
 
         jlIconEliEmpl.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jlIconEliEmpl.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Image/borrar-usuario.png"))); // NOI18N
+        jlIconEliEmpl.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Image/borrar_empleado.png"))); // NOI18N
         jPGestrionEmpleados.add(jlIconEliEmpl, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 60, 180, 150));
 
         jlListarEmpleado.setBackground(new java.awt.Color(0, 150, 136));
