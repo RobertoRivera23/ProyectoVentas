@@ -86,17 +86,38 @@ public class Menu extends javax.swing.JFrame {
         }
     };
 
+    public DefaultTableModel Modelo2 = new DefaultTableModel(
+            null,
+            new String[]{
+                "ID", "Apellido", "Nombre", "DNI",  "Cargo", "Usuario", "Contraseña"
+            }
+    ) {
+        public boolean isCellEditable(int fila, int column) {
+            return false;
+        }
+
+        Class[] types = new Class[]{
+            java.lang.Integer.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, 
+            java.lang.String.class, java.lang.String.class
+        };
+
+        public Class getColumnClass(int columnIndex) {
+            return types[columnIndex];
+        }
+    };
+    
     public Menu() {
         initComponents();
         this.setLocationRelativeTo(null);
         jtListaPro.setModel(Modelo);
         jtListClien.setModel(Modelo1);
+        jtListEmpleado.setModel(Modelo2);
         llenarText();
         llenarCombo();
         llenarComboCliente();
         llenarComboV();
-        empleadosVisible(); // PARA MOSTRAR JLEMPLEADOS 
-        jlNombreUsuario.setText(Login.empleado.getNombre() + " " + Login.empleado.getApellido());
+//        empleadosVisible(); // PARA MOSTRAR JLEMPLEADOS 
+//        jlNombreUsuario.setText(Login.empleado.getNombre() + " " + Login.empleado.getApellido());
     }
 
     /**
@@ -2702,6 +2723,11 @@ public class Menu extends javax.swing.JFrame {
         jlImgBusquedaEmpl.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Image/busqueda - gris.png"))); // NOI18N
         jlImgBusquedaEmpl.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         jlImgBusquedaEmpl.setOpaque(true);
+        jlImgBusquedaEmpl.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jlImgBusquedaEmplMouseClicked(evt);
+            }
+        });
         jtpListaEmp.add(jlImgBusquedaEmpl, new org.netbeans.lib.awtextra.AbsoluteConstraints(550, 80, 30, 30));
 
         jtfBuscadorEmpleadosListEmp.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
@@ -3344,7 +3370,7 @@ public class Menu extends javax.swing.JFrame {
     }//GEN-LAST:event_jCBBuscarProdElimProdActionPerformed
 
     private void jLEmpleadosMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLEmpleadosMouseClicked
-        // TODO add your handling code here:
+        jtpEscritorio.setSelectedIndex(16);
     }//GEN-LAST:event_jLEmpleadosMouseClicked
 
     private void jLEmpleadosMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLEmpleadosMouseEntered
@@ -3456,6 +3482,17 @@ public class Menu extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(this, "Los Datos no coinciden");
         }
     }//GEN-LAST:event_jlEliminarVentaBorrarMouseClicked
+
+    private void jlImgBusquedaEmplMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jlImgBusquedaEmplMouseClicked
+         borrarFilaC();
+        String nombre = jtfBuscadorEmpleadosListEmp.getText().toUpperCase();
+        for (Empleado empl : ed.listarEmpleado()) {
+            if (empl.getApellido().trim().toUpperCase().contains(nombre)) {
+                Modelo1.addRow(new Object[]{empl.getIdEmpleado(), empl.getApellido(), empl.getNombre(), empl.getDni(), 
+                    empl.getCargo(), empl.getUsuario(), empl.getContraenia()});
+            }
+        }
+    }//GEN-LAST:event_jlImgBusquedaEmplMouseClicked
 
     /**
      * @param args the command line arguments
@@ -3925,11 +3962,11 @@ public class Menu extends javax.swing.JFrame {
         }
     }
 
-    private void empleadosVisible() {         // VALIDA CARGO DEL QUE HIZO LOGIN!!!!!!
-        if (Login.empleado.getCargo().equalsIgnoreCase("supervisor")) {
-            jLEmpleados.setVisible(true);
-        } else {
-            jLEmpleados.setVisible(false);
-        }
-    }
+//    private void empleadosVisible() {         // VALIDA CARGO DEL QUE HIZO LOGIN!!!!!!
+//        if (Login.empleado.getCargo().equalsIgnoreCase("supervisor")) {
+//            jLEmpleados.setVisible(true);
+//        } else {
+//            jLEmpleados.setVisible(false);
+//        }
+//    }
 }
