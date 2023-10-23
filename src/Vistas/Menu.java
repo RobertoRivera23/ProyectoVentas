@@ -38,7 +38,10 @@ public class Menu extends javax.swing.JFrame {
     public static Color grisBase = new Color(51, 51, 76);
     public static Color grisClaro = new Color(66, 66, 76);
     private double precioTotal;
-
+    
+    public DefaultTableModel modeloDV;
+    public DefaultTableModel modeloV;
+    
     public DefaultTableModel Modelo = new DefaultTableModel(
             null,
             new String[]{
@@ -2189,7 +2192,7 @@ public class Menu extends javax.swing.JFrame {
 
         jtListaVentas.setBackground(new java.awt.Color(204, 204, 204));
         jtListaVentas.setFont(new java.awt.Font("Corbel", 1, 14)); // NOI18N
-        jtListaVentas.setModel(new javax.swing.table.DefaultTableModel(
+        jtListaVentas.setModel(modeloV = new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null},
                 {null, null, null, null},
@@ -2197,7 +2200,7 @@ public class Menu extends javax.swing.JFrame {
                 {null, null, null, null}
             },
             new String [] {
-                "ID", "Datos Cliente", "Datos Empleado", "Fecha de Venta"
+                "ID", "Telefono Cliente", "Datos Empleado", "Fecha de Venta"
             }
         ){
             public boolean isCellEditable(int fila, int column) {
@@ -2246,7 +2249,7 @@ public class Menu extends javax.swing.JFrame {
 
         jtListaDetalles.setBackground(new java.awt.Color(204, 204, 204));
         jtListaDetalles.setFont(new java.awt.Font("Corbel", 1, 14)); // NOI18N
-        jtListaDetalles.setModel(new javax.swing.table.DefaultTableModel(
+        jtListaDetalles.setModel(modeloDV = new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null},
                 {null, null, null, null},
@@ -2254,9 +2257,21 @@ public class Menu extends javax.swing.JFrame {
                 {null, null, null, null}
             },
             new String [] {
-                "Title 1", "Title 2", "Title 3", "Title 4"
+                "ID", "Producto Vendido", "Telefono Cliente", "Fecha de venta", "Cantidad", "Precio Total"
             }
-        ));
+        ){
+            public boolean isCellEditable(int fila, int column) {
+                return false;
+            }
+
+            Class[] types = new Class[]{
+                java.lang.Integer.class, java.lang.String.class, java.lang.String.class, java.time.LocalDate.class, java.lang.Integer.class, java.lang.Double.class
+            };
+
+            public Class getColumnClass(int columnIndex) {
+                return types[columnIndex];
+            }
+        });
         jtListaDetalles.setGridColor(new java.awt.Color(0, 102, 102));
         jtListaDetalles.setMinimumSize(new java.awt.Dimension(60, 60));
         ScrollTablaDetalles.setViewportView(jtListaDetalles);
@@ -3036,6 +3051,7 @@ public class Menu extends javax.swing.JFrame {
 
     private void DetVentaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_DetVentaMouseClicked
         jtpEscritorio.setSelectedIndex(14);
+        llenarTablaDetVen();
     }//GEN-LAST:event_DetVentaMouseClicked
 
     private void DetVentaMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_DetVentaMouseEntered
@@ -3072,6 +3088,7 @@ public class Menu extends javax.swing.JFrame {
 
     private void jlListarVentaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jlListarVentaMouseClicked
         jtpEscritorio.setSelectedIndex(13);
+        llenarTablaVen();
     }//GEN-LAST:event_jlListarVentaMouseClicked
 
     private void jlListarVentaMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jlListarVentaMouseEntered
@@ -4107,6 +4124,18 @@ public class Menu extends javax.swing.JFrame {
             Modelo1.removeRow(i);
         }
     }
+    
+    private void borrarFilaDV() {
+        for (int i = jtListaDetalles.getRowCount() - 1; i >= 0; i--) {
+            modeloDV.removeRow(i);
+        }
+    }
+    
+    private void borrarFilaV() {
+        for (int i = jtListaVentas.getRowCount() - 1; i >= 0; i--) {
+            modeloV.removeRow(i);
+        }
+    }
 
     private void llenarText() {
         text1.setText("<html>Registrar productos: Los usuarios podrán agregar nuevos productos al inventario proporcionando información como nombre, descripción, precio y cantidad disponible</html>");
@@ -4244,4 +4273,28 @@ public class Menu extends javax.swing.JFrame {
 //            jLEmpleados.setVisible(false);
 //        }
 //    }
+    
+    private void llenarTablaDetVen(){
+        borrarFilaDV();
+        for (DetalleVenta dv : dvd.listaDV()){
+            modeloDV.addRow(new Object[]{dv.getIdDetalleVenta(),
+                dv.getProducto().getNombreProducto(),
+                dv.getVenta().getCliente().getTelefono(),
+                dv.getVenta().getFechaVenta(),
+                dv.getCantidad(),
+                dv.getPrecioVenta()
+            });
+        }
+    }
+    
+    private void llenarTablaVen(){
+        borrarFilaV();
+        for (Venta v : vd.listaVenta()){
+            modeloV.addRow(new Object[]{v.getIdVenta(),
+                v.getCliente().getTelefono(),
+                v.getEmpleado().getApellido() + " " + v.getEmpleado().getNombre(),
+                v.getFechaVenta()
+            });
+        }
+    }
 }
