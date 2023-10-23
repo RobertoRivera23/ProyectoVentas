@@ -121,7 +121,8 @@ public class Menu extends javax.swing.JFrame {
         llenarComboV();
         llenarComboEmpleado();
         llenarComboCargo();
-//        empleadosVisible(); // PARA MOSTRAR JLEMPLEADOS 
+//        botonesSupervisorVisible(); 
+// PARA MOSTRAR JLEMPLEADOS 
 //        jlNombreUsuario.setText(Login.empleado.getNombre() + " " + Login.empleado.getApellido());
     }
 
@@ -148,6 +149,7 @@ public class Menu extends javax.swing.JFrame {
         jlCerrarSesion = new javax.swing.JLabel();
         jlInicio = new javax.swing.JLabel();
         jLEmpleados = new javax.swing.JLabel();
+        jLPapelera = new javax.swing.JLabel();
         jtpEscritorio = new javax.swing.JTabbedPane();
         jtpInicio = new javax.swing.JPanel();
         jlIconPro = new javax.swing.JLabel();
@@ -700,6 +702,29 @@ public class Menu extends javax.swing.JFrame {
             }
         });
         jPanelOpciones.add(jLEmpleados, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 180, 200, 40));
+
+        jLPapelera.setBackground(new java.awt.Color(51, 51, 76));
+        jLPapelera.setFont(new java.awt.Font("Corbel", 1, 14)); // NOI18N
+        jLPapelera.setForeground(new java.awt.Color(255, 255, 255));
+        jLPapelera.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Image/usuarios.png"))); // NOI18N
+        jLPapelera.setText("Papelera");
+        jLPapelera.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 25, 1, 1));
+        jLPapelera.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        jLPapelera.setIconTextGap(15);
+        jLPapelera.setOpaque(true);
+        jLPapelera.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
+        jLPapelera.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jLPapeleraMouseClicked(evt);
+            }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                jLPapeleraMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                jLPapeleraMouseExited(evt);
+            }
+        });
+        jPanelOpciones.add(jLPapelera, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 220, 200, 40));
 
         BackGround.add(jPanelOpciones, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 83, 200, 420));
 
@@ -4004,6 +4029,18 @@ public class Menu extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_jlRestaurarPapeleraMouseExited
 
+    private void jLPapeleraMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLPapeleraMouseClicked
+        jtpEscritorio.setSelectedIndex(20);
+    }//GEN-LAST:event_jLPapeleraMouseClicked
+
+    private void jLPapeleraMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLPapeleraMouseEntered
+        jLPapelera.setBackground(grisClaro);
+    }//GEN-LAST:event_jLPapeleraMouseEntered
+
+    private void jLPapeleraMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLPapeleraMouseExited
+        jLPapelera.setBackground(grisBase);
+    }//GEN-LAST:event_jLPapeleraMouseExited
+
     /**
      * @param args the command line arguments
      */
@@ -4101,6 +4138,7 @@ public class Menu extends javax.swing.JFrame {
     private javax.swing.JLabel jLNombreProdElimProd;
     private javax.swing.JLabel jLNombreProdModProd;
     private javax.swing.JLabel jLNombreProductoAP;
+    private javax.swing.JLabel jLPapelera;
     private javax.swing.JLabel jLPrecioActualAP;
     private javax.swing.JLabel jLPrecioActualElimProd;
     private javax.swing.JLabel jLPrecioActualModProd;
@@ -4560,6 +4598,16 @@ public class Menu extends javax.swing.JFrame {
                 v.getEmpleado().getApellido() + " " + v.getEmpleado().getNombre(),
                 v.getFechaVenta()
             });
+        }
+    }
+    
+        private void botonesSupervisorVisible() {         // VALIDA CARGO DEL QUE HIZO LOGIN!!!!!!
+        if (Login.empleado.getCargo().equalsIgnoreCase("supervisor")) {
+            jLEmpleados.setVisible(true);
+            jLPapelera.setVisible(true);
+        } else {
+            jLEmpleados.setVisible(false);
+            jLPapelera.setVisible(false);
         }
     }
 }
