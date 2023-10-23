@@ -3929,7 +3929,10 @@ public class Menu extends javax.swing.JFrame {
     }//GEN-LAST:event_jlImgBusquedaEmplMouseExited
 
     private void jlVentaPapeleraMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jlVentaPapeleraMouseClicked
-        // TODO add your handling code here:
+        for (Venta ven : vd.listaVentaBaja()) {
+            Modelo.addRow(new Object[]{ven.getIdVenta(), ven.getFechaVenta(), ven.getEmpleado(), ven.getCliente()});
+            jTablePapelera.setModel(Modelo);
+        }
     }//GEN-LAST:event_jlVentaPapeleraMouseClicked
 
     private void jlVentaPapeleraMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jlVentaPapeleraMouseEntered
@@ -3941,7 +3944,11 @@ public class Menu extends javax.swing.JFrame {
     }//GEN-LAST:event_jlVentaPapeleraMouseExited
 
     private void jlClienteMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jlClienteMouseClicked
-        // TODO add your handling code here:
+        for (Cliente cli : cD.listarClientesBaja()){
+            Modelo.addRow(new Object[]{cli.getIdCliente(), cli.getNombre(), cli.getApellido(),
+            cli.getTelefono(), cli.getDomicilio()});
+            jTablePapelera.setModel(Modelo);
+        }
     }//GEN-LAST:event_jlClienteMouseClicked
 
     private void jlClienteMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jlClienteMouseEntered
@@ -3969,7 +3976,11 @@ public class Menu extends javax.swing.JFrame {
     }//GEN-LAST:event_jlProductoPapeleraMouseExited
 
     private void jlEmpleadoPapeleraMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jlEmpleadoPapeleraMouseClicked
-        // TODO add your handling code here:
+        for (Empleado emp : ed.listarEmpleadoBaja()){
+            Modelo.addRow(new Object[]{emp.getIdEmpleado(), emp.getUsuario(), emp.getNombre(),
+            emp.getApellido(), emp.getCargo()});
+            jTablePapelera.setModel(Modelo);
+        }
     }//GEN-LAST:event_jlEmpleadoPapeleraMouseClicked
 
     private void jlEmpleadoPapeleraMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jlEmpleadoPapeleraMouseEntered
