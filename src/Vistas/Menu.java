@@ -455,6 +455,16 @@ public class Menu extends javax.swing.JFrame {
         jtfBuscadorEmpleadosListEmp = new javax.swing.JTextField();
         ScrollListClien1 = new javax.swing.JScrollPane();
         jtListEmpleado = new TablaFraveMax();
+        jtpPapelera = new javax.swing.JPanel();
+        jlVentaPapelera = new javax.swing.JLabel();
+        jlCliente = new javax.swing.JLabel();
+        jlProductoPapelera = new javax.swing.JLabel();
+        jlEmpleadoPapelera = new javax.swing.JLabel();
+        jlEliminarPapelera = new javax.swing.JLabel();
+        jlRestaurarPapelera = new javax.swing.JLabel();
+        jScrollPanePapelera = new javax.swing.JScrollPane();
+        jTablePapelera = new javax.swing.JTable();
+        jlPapelera = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setMinimumSize(new java.awt.Dimension(800, 500));
@@ -2864,6 +2874,175 @@ public class Menu extends javax.swing.JFrame {
 
         jtpEscritorio.addTab("tab20", jtpListaEmp);
 
+        jtpPapelera.setBackground(new java.awt.Color(255, 255, 255));
+        jtpPapelera.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        jlVentaPapelera.setBackground(new java.awt.Color(0, 150, 136));
+        jlVentaPapelera.setFont(new java.awt.Font("Corbel", 1, 14)); // NOI18N
+        jlVentaPapelera.setForeground(new java.awt.Color(255, 255, 255));
+        jlVentaPapelera.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jlVentaPapelera.setText("Venta");
+        jlVentaPapelera.setVerticalAlignment(javax.swing.SwingConstants.BOTTOM);
+        jlVentaPapelera.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED, null, new java.awt.Color(0, 150, 136), null, null));
+        jlVentaPapelera.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        jlVentaPapelera.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        jlVentaPapelera.setOpaque(true);
+        jlVentaPapelera.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
+        jlVentaPapelera.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jlVentaPapeleraMouseClicked(evt);
+            }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                jlVentaPapeleraMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                jlVentaPapeleraMouseExited(evt);
+            }
+        });
+        jtpPapelera.add(jlVentaPapelera, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 80, 80, 30));
+
+        jlCliente.setBackground(new java.awt.Color(0, 150, 136));
+        jlCliente.setFont(new java.awt.Font("Corbel", 1, 14)); // NOI18N
+        jlCliente.setForeground(new java.awt.Color(255, 255, 255));
+        jlCliente.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jlCliente.setText("Cliente");
+        jlCliente.setVerticalAlignment(javax.swing.SwingConstants.BOTTOM);
+        jlCliente.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED, null, new java.awt.Color(0, 150, 136), null, null));
+        jlCliente.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        jlCliente.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        jlCliente.setOpaque(true);
+        jlCliente.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
+        jlCliente.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jlClienteMouseClicked(evt);
+            }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                jlClienteMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                jlClienteMouseExited(evt);
+            }
+        });
+        jtpPapelera.add(jlCliente, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 80, 80, 30));
+
+        jlProductoPapelera.setBackground(new java.awt.Color(0, 150, 136));
+        jlProductoPapelera.setFont(new java.awt.Font("Corbel", 1, 14)); // NOI18N
+        jlProductoPapelera.setForeground(new java.awt.Color(255, 255, 255));
+        jlProductoPapelera.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jlProductoPapelera.setText("Producto");
+        jlProductoPapelera.setVerticalAlignment(javax.swing.SwingConstants.BOTTOM);
+        jlProductoPapelera.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED, null, new java.awt.Color(0, 150, 136), null, null));
+        jlProductoPapelera.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        jlProductoPapelera.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        jlProductoPapelera.setOpaque(true);
+        jlProductoPapelera.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
+        jlProductoPapelera.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jlProductoPapeleraMouseClicked(evt);
+            }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                jlProductoPapeleraMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                jlProductoPapeleraMouseExited(evt);
+            }
+        });
+        jtpPapelera.add(jlProductoPapelera, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 80, 80, 30));
+
+        jlEmpleadoPapelera.setBackground(new java.awt.Color(0, 150, 136));
+        jlEmpleadoPapelera.setFont(new java.awt.Font("Corbel", 1, 14)); // NOI18N
+        jlEmpleadoPapelera.setForeground(new java.awt.Color(255, 255, 255));
+        jlEmpleadoPapelera.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jlEmpleadoPapelera.setText("Empleado");
+        jlEmpleadoPapelera.setVerticalAlignment(javax.swing.SwingConstants.BOTTOM);
+        jlEmpleadoPapelera.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED, null, new java.awt.Color(0, 150, 136), null, null));
+        jlEmpleadoPapelera.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        jlEmpleadoPapelera.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        jlEmpleadoPapelera.setOpaque(true);
+        jlEmpleadoPapelera.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
+        jlEmpleadoPapelera.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jlEmpleadoPapeleraMouseClicked(evt);
+            }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                jlEmpleadoPapeleraMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                jlEmpleadoPapeleraMouseExited(evt);
+            }
+        });
+        jtpPapelera.add(jlEmpleadoPapelera, new org.netbeans.lib.awtextra.AbsoluteConstraints(480, 80, 80, 30));
+
+        jlEliminarPapelera.setBackground(new java.awt.Color(0, 150, 136));
+        jlEliminarPapelera.setFont(new java.awt.Font("Corbel", 1, 14)); // NOI18N
+        jlEliminarPapelera.setForeground(new java.awt.Color(255, 255, 255));
+        jlEliminarPapelera.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jlEliminarPapelera.setText("Eliminar");
+        jlEliminarPapelera.setVerticalAlignment(javax.swing.SwingConstants.BOTTOM);
+        jlEliminarPapelera.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED, null, new java.awt.Color(0, 150, 136), null, null));
+        jlEliminarPapelera.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        jlEliminarPapelera.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        jlEliminarPapelera.setOpaque(true);
+        jlEliminarPapelera.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
+        jlEliminarPapelera.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jlEliminarPapeleraMouseClicked(evt);
+            }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                jlEliminarPapeleraMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                jlEliminarPapeleraMouseExited(evt);
+            }
+        });
+        jtpPapelera.add(jlEliminarPapelera, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 350, 80, 30));
+
+        jlRestaurarPapelera.setBackground(new java.awt.Color(0, 150, 136));
+        jlRestaurarPapelera.setFont(new java.awt.Font("Corbel", 1, 14)); // NOI18N
+        jlRestaurarPapelera.setForeground(new java.awt.Color(255, 255, 255));
+        jlRestaurarPapelera.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jlRestaurarPapelera.setText("Restaurar");
+        jlRestaurarPapelera.setVerticalAlignment(javax.swing.SwingConstants.BOTTOM);
+        jlRestaurarPapelera.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED, null, new java.awt.Color(0, 150, 136), null, null));
+        jlRestaurarPapelera.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        jlRestaurarPapelera.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        jlRestaurarPapelera.setOpaque(true);
+        jlRestaurarPapelera.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
+        jlRestaurarPapelera.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jlRestaurarPapeleraMouseClicked(evt);
+            }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                jlRestaurarPapeleraMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                jlRestaurarPapeleraMouseExited(evt);
+            }
+        });
+        jtpPapelera.add(jlRestaurarPapelera, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 350, 80, 30));
+
+        jTablePapelera.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null}
+            },
+            new String [] {
+                "Title 1", "Title 2", "Title 3", "Title 4"
+            }
+        ));
+        jScrollPanePapelera.setViewportView(jTablePapelera);
+
+        jtpPapelera.add(jScrollPanePapelera, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 130, 560, 180));
+
+        jlPapelera.setFont(new java.awt.Font("Corbel", 1, 30)); // NOI18N
+        jlPapelera.setForeground(new java.awt.Color(153, 153, 153));
+        jlPapelera.setText("Papelera");
+        jtpPapelera.add(jlPapelera, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 20, -1, -1));
+
+        jtpEscritorio.addTab("tab21", jtpPapelera);
+
         BackGround.add(jtpEscritorio, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 43, 600, 460));
 
         getContentPane().add(BackGround, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
@@ -3732,6 +3911,82 @@ public class Menu extends javax.swing.JFrame {
         jlImgBusquedaEmpl.setBackground(Color.WHITE);
     }//GEN-LAST:event_jlImgBusquedaEmplMouseExited
 
+    private void jlVentaPapeleraMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jlVentaPapeleraMouseClicked
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jlVentaPapeleraMouseClicked
+
+    private void jlVentaPapeleraMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jlVentaPapeleraMouseEntered
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jlVentaPapeleraMouseEntered
+
+    private void jlVentaPapeleraMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jlVentaPapeleraMouseExited
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jlVentaPapeleraMouseExited
+
+    private void jlClienteMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jlClienteMouseClicked
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jlClienteMouseClicked
+
+    private void jlClienteMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jlClienteMouseEntered
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jlClienteMouseEntered
+
+    private void jlClienteMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jlClienteMouseExited
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jlClienteMouseExited
+
+    private void jlProductoPapeleraMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jlProductoPapeleraMouseClicked
+        for (Producto pro : pd.listarProductoBaja()) {
+            Modelo.addRow(new Object[]{pro.getIdProducto(), pro.getNombreProducto(),
+                pro.getDescripcion(), pro.getPrecioActual(), pro.getStock()});
+            jTablePapelera.setModel(Modelo);
+        }
+    }//GEN-LAST:event_jlProductoPapeleraMouseClicked
+
+    private void jlProductoPapeleraMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jlProductoPapeleraMouseEntered
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jlProductoPapeleraMouseEntered
+
+    private void jlProductoPapeleraMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jlProductoPapeleraMouseExited
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jlProductoPapeleraMouseExited
+
+    private void jlEmpleadoPapeleraMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jlEmpleadoPapeleraMouseClicked
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jlEmpleadoPapeleraMouseClicked
+
+    private void jlEmpleadoPapeleraMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jlEmpleadoPapeleraMouseEntered
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jlEmpleadoPapeleraMouseEntered
+
+    private void jlEmpleadoPapeleraMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jlEmpleadoPapeleraMouseExited
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jlEmpleadoPapeleraMouseExited
+
+    private void jlEliminarPapeleraMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jlEliminarPapeleraMouseClicked
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jlEliminarPapeleraMouseClicked
+
+    private void jlEliminarPapeleraMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jlEliminarPapeleraMouseEntered
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jlEliminarPapeleraMouseEntered
+
+    private void jlEliminarPapeleraMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jlEliminarPapeleraMouseExited
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jlEliminarPapeleraMouseExited
+
+    private void jlRestaurarPapeleraMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jlRestaurarPapeleraMouseClicked
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jlRestaurarPapeleraMouseClicked
+
+    private void jlRestaurarPapeleraMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jlRestaurarPapeleraMouseEntered
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jlRestaurarPapeleraMouseEntered
+
+    private void jlRestaurarPapeleraMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jlRestaurarPapeleraMouseExited
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jlRestaurarPapeleraMouseExited
+
     /**
      * @param args the command line arguments
      */
@@ -3889,6 +4144,7 @@ public class Menu extends javax.swing.JFrame {
     private javax.swing.JSeparator jSModProd2;
     private javax.swing.JSeparator jSModProd3;
     private javax.swing.JSeparator jSModProd4;
+    private javax.swing.JScrollPane jScrollPanePapelera;
     private javax.swing.JTextField jTFApellidoClienElimClien;
     private javax.swing.JTextField jTFApellidoClienteAgrClien;
     private javax.swing.JTextField jTFApellidoElimEmp;
@@ -3923,6 +4179,7 @@ public class Menu extends javax.swing.JFrame {
     private javax.swing.JTextField jTFTelefonoModClien;
     private javax.swing.JTextField jTFUsuarioElimEmp;
     private javax.swing.JTextField jTFUsuarioModEmp;
+    private javax.swing.JTable jTablePapelera;
     private javax.swing.JComboBox<Venta> jcbBuscarVenta;
     private javax.swing.JComboBox<Cliente> jcbClienteModifCli;
     private javax.swing.JComboBox<Producto> jcbProVenta;
@@ -3950,6 +4207,7 @@ public class Menu extends javax.swing.JFrame {
     private javax.swing.JLabel jlCantidadVenta;
     private javax.swing.JLabel jlCerrarSesion;
     private javax.swing.JLabel jlClentesIn;
+    private javax.swing.JLabel jlCliente;
     private javax.swing.JLabel jlClientes;
     private javax.swing.JLabel jlDetalles;
     private javax.swing.JLabel jlDetallesVenta;
@@ -3958,9 +4216,11 @@ public class Menu extends javax.swing.JFrame {
     private javax.swing.JLabel jlEliminarClientes;
     private javax.swing.JLabel jlEliminarEmp;
     private javax.swing.JLabel jlEliminarEmpleado;
+    private javax.swing.JLabel jlEliminarPapelera;
     private javax.swing.JLabel jlEliminarPro;
     private javax.swing.JLabel jlEliminarVenta;
     private javax.swing.JLabel jlEliminarVentaBorrar;
+    private javax.swing.JLabel jlEmpleadoPapelera;
     private javax.swing.JLabel jlFechaVenta;
     private javax.swing.JLabel jlFechaVentaEliminar;
     private javax.swing.JLabel jlGestionClientes;
@@ -4008,11 +4268,14 @@ public class Menu extends javax.swing.JFrame {
     private javax.swing.JLabel jlNombreEmpleadoEliminar;
     private javax.swing.JLabel jlNombreProEliminar;
     private javax.swing.JLabel jlNombreUsuario;
+    private javax.swing.JLabel jlPapelera;
     private javax.swing.JLabel jlPrecioVenta;
     private javax.swing.JLabel jlProIn;
+    private javax.swing.JLabel jlProductoPapelera;
     private javax.swing.JLabel jlProductos;
     private javax.swing.JLabel jlRealizarVenta;
     private javax.swing.JLabel jlRegistrar;
+    private javax.swing.JLabel jlRestaurarPapelera;
     private javax.swing.JLabel jlSalir;
     private javax.swing.JLabel jlSelecFechaVenta;
     private javax.swing.JLabel jlSelecProVenta;
@@ -4022,6 +4285,7 @@ public class Menu extends javax.swing.JFrame {
     private javax.swing.JLabel jlVentaIcon2;
     private javax.swing.JLabel jlVentaIcon3;
     private javax.swing.JLabel jlVentaIconEliminar;
+    private javax.swing.JLabel jlVentaPapelera;
     private javax.swing.JLabel jlVentas;
     private javax.swing.JLabel jlVentasIn;
     private javax.swing.JTable jtListClien;
@@ -4059,6 +4323,7 @@ public class Menu extends javax.swing.JFrame {
     private javax.swing.JPanel jtpModClien;
     private javax.swing.JPanel jtpModPro;
     private javax.swing.JPanel jtpModificarEmpleado;
+    private javax.swing.JPanel jtpPapelera;
     private javax.swing.JPanel jtpProductos;
     private javax.swing.JPanel jtpVentas;
     private javax.swing.JLabel rectangulo1Pro;
