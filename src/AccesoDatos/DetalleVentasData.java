@@ -14,6 +14,8 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 
 /**
@@ -131,7 +133,6 @@ public class DetalleVentasData {
         try {
             PreparedStatement ps = con.prepareStatement(sql);
             ps.setInt(1, producto.getIdProducto());
-            System.out.println("-----" + producto.getIdProducto());
             ResultSet rs = ps.executeQuery();
             boolean cont = false;
             while (rs.next()) { //cantidad, idVenta, precioVenta, idProducto, estado
@@ -198,5 +199,32 @@ public class DetalleVentasData {
             JOptionPane.showMessageDialog(null, "Error al acceder a la tabla Detalle de Venta " + ex.getMessage());
         }
         return dv;
+    }
+
+    public List<DetalleVenta> listaDV() {
+        List<DetalleVenta> lista = new ArrayList<>();
+        VentasData vd = new VentasData();
+        ProductoData pd = new ProductoData();
+        String sql = "SELECT * FROM detalledeventa WHERE estado = 1";
+        try {
+            PreparedStatement ps = con.prepareStatement(sql);
+            ResultSet rs = ps.executeQuery();
+            while (rs.next()) {
+                dv = new DetalleVenta();
+                dv.setIdDetalleVenta(rs.getInt("idDetalleVenta"));
+                dv.setCantidad(rs.getInt("cantidad"));
+                venta = vd.buscarVentaId(rs.getInt("idVenta"));
+                dv.setVenta(venta);
+                dv.setPrecioVenta(rs.getDouble("precioVenta"));
+                producto = pd.buscarProducto(rs.getInt("idProducto"));
+                dv.setProducto(producto);
+                dv.setEstado(rs.getBoolean("estado"));
+                lista.add(dv);
+            }
+            ps.close();
+        } catch (SQLException ex) {
+            JOptionPane.showMessageDialog(null, "Error al acceder a la tabla Detalle de Venta " + ex.getMessage());
+        }
+        return lista;
     }
 }
