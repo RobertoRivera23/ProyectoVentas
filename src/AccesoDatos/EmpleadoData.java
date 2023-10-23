@@ -193,4 +193,30 @@ public class EmpleadoData {
         }
         return emp;
     }
+    
+    public List<Empleado> listarEmpleadoBaja() {
+        List<Empleado> empleados = new ArrayList<>();
+        Empleado empleado = null;
+        String sql = "SELECT * FROM empleado WHERE estado = 0 ";
+        try {
+            PreparedStatement ps = con.prepareStatement(sql);
+            ResultSet rs = ps.executeQuery();
+            while (rs.next()) {
+                empleado = new Empleado();
+                empleado.setIdEmpleado(rs.getInt("idempleado"));
+                empleado.setApellido(rs.getString("apellido"));
+                empleado.setNombre(rs.getString("nombre"));
+                empleado.setDni(rs.getInt("dni"));
+                empleado.setCargo(rs.getString("cargo"));
+                empleado.setUsuario(rs.getString("usuario"));
+                empleado.setContraenia(rs.getString("contraseña"));
+                empleado.setEstado(rs.getBoolean("estado"));
+                empleados.add(empleado);
+            }
+            ps.close();
+        } catch (SQLException ex) {
+            JOptionPane.showMessageDialog(null, "Error al conectar a la tabla Empleado" + ex.getMessage());
+        }
+        return empleados;
+    }
 }

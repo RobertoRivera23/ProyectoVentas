@@ -295,4 +295,30 @@ public class VentasData {
             JOptionPane.showMessageDialog(null, "Error al acceder a la tabla Venta" + ex.getMessage());
         }
     }
+    
+    public List<Venta> listaVentaBaja() {
+        List<Venta> listaV = new ArrayList<>();
+        ClienteData cd = new ClienteData();
+        EmpleadoData ed = new EmpleadoData();
+        String sql = "SELECT * FROM venta WHERE estado = 0";
+        try {
+            PreparedStatement ps = con.prepareStatement(sql);
+            ResultSet rs = ps.executeQuery();
+            while (rs.next()) {
+                venta = new Venta();
+                venta.setIdVenta(rs.getInt("idVenta"));
+                cliente = cd.buscarCliente(rs.getInt("idCliente"));
+                venta.setCliente(cliente);
+                empleado = ed.buscarEmpleadoPorId(rs.getInt("idEmpleado"));
+                venta.setEmpleado(empleado);
+                venta.setFechaVenta(rs.getDate("fechaVenta").toLocalDate());
+                venta.setEstado(rs.getBoolean("estado"));
+                listaV.add(venta);
+            }
+            ps.close();
+        } catch (SQLException ex) {
+            JOptionPane.showMessageDialog(null, "Error al acceder a la tabla Venta" + ex.getMessage());
+        }
+        return listaV;
+    }
 }
