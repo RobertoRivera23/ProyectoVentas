@@ -23,6 +23,7 @@ public class Login extends javax.swing.JFrame {
      */
     int xMouse, yMouse;
     public static Empleado empleado;
+    private int contadorIntentos = 0;
 
     public Login() {
         initComponents();
@@ -262,7 +263,10 @@ public class Login extends javax.swing.JFrame {
 
     private void jLBtnIniciarSesionMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLBtnIniciarSesionMouseClicked
         int cont = 0;
+        contadorIntentos = contadorIntentos + 1;
+        System.out.println("contInt " + contadorIntentos);
         EmpleadoData eD = new EmpleadoData();
+
         if (jTFUsuario.getText().isEmpty() || jTFUsuario.getText().isEmpty() || jCBCargo.getSelectedItem() == null) {
             JOptionPane.showMessageDialog(null, "No puede haber campos vacios");
         } else {
@@ -286,12 +290,31 @@ public class Login extends javax.swing.JFrame {
                         dispose();
                         break;
                     }
-                }
+                } 
             } catch (NullPointerException ex) {
-
             }
             if (cont == 0) {
                 JOptionPane.showMessageDialog(null, "El Ususario, Contraseña y/o Cargo, son incorrectos");
+            }
+            // Avisa posible bloqueo de Usuario
+            if (contadorIntentos == 2) {
+                int opcion = JOptionPane.showConfirmDialog(this, "Si vuleve a equivocarse, su cuenta sera bloqueada!", "¿ Desea Volver a intentar?", JOptionPane.YES_NO_OPTION);
+                switch (opcion) {
+                    case 0:
+                        break;
+                    case 1:
+                        contadorIntentos = 0;
+                        dispose();
+                }
+            }
+            //Bloquea Usuario
+            if (contadorIntentos >= 3) {
+                JOptionPane.showMessageDialog(null, "Supero la cantidad de intentos, Cuenta Bloqueda. solicite ayuda al supervisor");
+                for (Empleado emplElim : eD.listarEmpleado()) {
+                    if (emplElim.getUsuario().equalsIgnoreCase(jTFUsuario.getText())) {
+                        eD.eliminarEmpleadoPorId(emplElim.getIdEmpleado());
+                    }
+                }
             }
         }
     }//GEN-LAST:event_jLBtnIniciarSesionMouseClicked
