@@ -95,6 +95,7 @@ public class Menu extends javax.swing.JFrame {
         jlCerrarSesion = new javax.swing.JLabel();
         jlInicio = new javax.swing.JLabel();
         jLEmpleados = new javax.swing.JLabel();
+        jLabel2 = new javax.swing.JLabel();
         jtpEscritorio = new javax.swing.JTabbedPane();
         jtpInicio = new javax.swing.JPanel();
         jlIconPro = new javax.swing.JLabel();
@@ -632,6 +633,7 @@ public class Menu extends javax.swing.JFrame {
         jLEmpleados.setText("Empleados");
         jLEmpleados.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 25, 1, 1));
         jLEmpleados.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        jLEmpleados.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
         jLEmpleados.setIconTextGap(15);
         jLEmpleados.setOpaque(true);
         jLEmpleados.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
@@ -647,6 +649,18 @@ public class Menu extends javax.swing.JFrame {
             }
         });
         jPanelOpciones.add(jLEmpleados, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 180, 200, 40));
+
+        jLabel2.setBackground(new java.awt.Color(51, 51, 76));
+        jLabel2.setFont(new java.awt.Font("Corbel", 1, 14)); // NOI18N
+        jLabel2.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Image/reciclar.png"))); // NOI18N
+        jLabel2.setText("Papelera");
+        jLabel2.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 25, 1, 1));
+        jLabel2.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
+        jLabel2.setIconTextGap(15);
+        jLabel2.setOpaque(true);
+        jLabel2.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
+        jPanelOpciones.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 220, 200, 40));
 
         BackGround.add(jPanelOpciones, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 83, 200, 420));
 
@@ -2898,7 +2912,7 @@ public class Menu extends javax.swing.JFrame {
                 jlVentaPapeleraMouseExited(evt);
             }
         });
-        jtpPapelera.add(jlVentaPapelera, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 80, 80, 30));
+        jtpPapelera.add(jlVentaPapelera, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 100, 80, 30));
 
         jlCliente.setBackground(new java.awt.Color(0, 150, 136));
         jlCliente.setFont(new java.awt.Font("Corbel", 1, 14)); // NOI18N
@@ -2922,7 +2936,7 @@ public class Menu extends javax.swing.JFrame {
                 jlClienteMouseExited(evt);
             }
         });
-        jtpPapelera.add(jlCliente, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 80, 80, 30));
+        jtpPapelera.add(jlCliente, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 100, 80, 30));
 
         jlProductoPapelera.setBackground(new java.awt.Color(0, 150, 136));
         jlProductoPapelera.setFont(new java.awt.Font("Corbel", 1, 14)); // NOI18N
@@ -2946,7 +2960,7 @@ public class Menu extends javax.swing.JFrame {
                 jlProductoPapeleraMouseExited(evt);
             }
         });
-        jtpPapelera.add(jlProductoPapelera, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 80, 80, 30));
+        jtpPapelera.add(jlProductoPapelera, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 100, 80, 30));
 
         jlEmpleadoPapelera.setBackground(new java.awt.Color(0, 150, 136));
         jlEmpleadoPapelera.setFont(new java.awt.Font("Corbel", 1, 14)); // NOI18N
@@ -2970,7 +2984,7 @@ public class Menu extends javax.swing.JFrame {
                 jlEmpleadoPapeleraMouseExited(evt);
             }
         });
-        jtpPapelera.add(jlEmpleadoPapelera, new org.netbeans.lib.awtextra.AbsoluteConstraints(480, 80, 80, 30));
+        jtpPapelera.add(jlEmpleadoPapelera, new org.netbeans.lib.awtextra.AbsoluteConstraints(480, 100, 80, 30));
 
         jlEliminarPapelera.setBackground(new java.awt.Color(0, 150, 136));
         jlEliminarPapelera.setFont(new java.awt.Font("Corbel", 1, 14)); // NOI18N
@@ -2994,7 +3008,7 @@ public class Menu extends javax.swing.JFrame {
                 jlEliminarPapeleraMouseExited(evt);
             }
         });
-        jtpPapelera.add(jlEliminarPapelera, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 350, 80, 30));
+        jtpPapelera.add(jlEliminarPapelera, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 370, 80, 30));
 
         jlRestaurarPapelera.setBackground(new java.awt.Color(0, 150, 136));
         jlRestaurarPapelera.setFont(new java.awt.Font("Corbel", 1, 14)); // NOI18N
@@ -3018,7 +3032,7 @@ public class Menu extends javax.swing.JFrame {
                 jlRestaurarPapeleraMouseExited(evt);
             }
         });
-        jtpPapelera.add(jlRestaurarPapelera, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 350, 80, 30));
+        jtpPapelera.add(jlRestaurarPapelera, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 370, 80, 30));
 
         jTablePapelera.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -3033,12 +3047,12 @@ public class Menu extends javax.swing.JFrame {
         ));
         jScrollPanePapelera.setViewportView(jTablePapelera);
 
-        jtpPapelera.add(jScrollPanePapelera, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 130, 560, 180));
+        jtpPapelera.add(jScrollPanePapelera, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 150, 560, 200));
 
         jlPapelera.setFont(new java.awt.Font("Corbel", 1, 30)); // NOI18N
         jlPapelera.setForeground(new java.awt.Color(153, 153, 153));
         jlPapelera.setText("Papelera");
-        jtpPapelera.add(jlPapelera, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 20, -1, -1));
+        jtpPapelera.add(jlPapelera, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 40, -1, -1));
 
         jtpEscritorio.addTab("tab21", jtpPapelera);
 
@@ -4116,6 +4130,7 @@ public class Menu extends javax.swing.JFrame {
     private javax.swing.JLabel jLUsuarioElimEmp;
     private javax.swing.JLabel jLUsuarioModEmp;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
     private javax.swing.JPanel jPGestrionEmpleados;
     private javax.swing.JPanel jPanelCabecera;
     private javax.swing.JPanel jPanelOpciones;
