@@ -38,28 +38,12 @@ public class Menu extends javax.swing.JFrame {
     public static Color grisBase = new Color(51, 51, 76);
     public static Color grisClaro = new Color(66, 66, 76);
     private double precioTotal;
-    
+
     public DefaultTableModel modeloDV;
     public DefaultTableModel modeloV;
-    
-    public DefaultTableModel Modelo = new DefaultTableModel(
-            null,
-            new String[]{
-                "ID", "Nombre", "Descripcion", "Precio Actual", "Stock"
-            }
-    ) {
-        public boolean isCellEditable(int fila, int column) {
-            return false;
-        }
-
-        Class[] types = new Class[]{
-            java.lang.Integer.class, java.lang.String.class, java.lang.String.class, java.lang.Double.class, java.lang.Integer.class
-        };
-
-        public Class getColumnClass(int columnIndex) {
-            return types[columnIndex];
-        }
-    };
+    public DefaultTableModel Modelo;
+    public DefaultTableModel Modelo1;
+    public DefaultTableModel Modelo2;
 
     private void llenarTabla() {
         borrarFila();
@@ -70,44 +54,7 @@ public class Menu extends javax.swing.JFrame {
         }
     }
 
-    public DefaultTableModel Modelo1 = new DefaultTableModel(
-            null,
-            new String[]{
-                "ID", "Apellido", "Nombre", "Domicilio", "Telefono"
-            }
-    ) {
-        public boolean isCellEditable(int fila, int column) {
-            return false;
-        }
-
-        Class[] types = new Class[]{
-            java.lang.Integer.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class
-        };
-
-        public Class getColumnClass(int columnIndex) {
-            return types[columnIndex];
-        }
-    };
-
-    public DefaultTableModel Modelo2 = new DefaultTableModel(
-            null,
-            new String[]{
-                "ID", "Apellido", "Nombre", "DNI", "Cargo", "Usuario", "Contraseña"
-            }
-    ) {
-        public boolean isCellEditable(int fila, int column) {
-            return false;
-        }
-
-        Class[] types = new Class[]{
-            java.lang.Integer.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class,
-            java.lang.String.class, java.lang.String.class
-        };
-
-        public Class getColumnClass(int columnIndex) {
-            return types[columnIndex];
-        }
-    };
+    
 
     public Menu() {
         initComponents();
@@ -1332,17 +1279,29 @@ public class Menu extends javax.swing.JFrame {
 
         jtListaPro.setBackground(new java.awt.Color(204, 204, 204));
         jtListaPro.setFont(new java.awt.Font("Corbel", 1, 14)); // NOI18N
-        jtListaPro.setModel(new javax.swing.table.DefaultTableModel(
+        jtListaPro.setModel(Modelo = new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null},
                 {null, null, null, null},
                 {null, null, null, null},
                 {null, null, null, null}
             },
-            new String [] {
-                "Title 1", "Title 2", "Title 3", "Title 4"
+            new String[]{
+                "ID", "Nombre", "Descripcion", "Precio Actual", "Stock"
             }
-        ));
+        ) {
+            public boolean isCellEditable(int fila, int column) {
+                return false;
+            }
+
+            Class[] types = new Class[]{
+                java.lang.Integer.class, java.lang.String.class, java.lang.String.class, java.lang.Double.class, java.lang.Integer.class
+            };
+
+            public Class getColumnClass(int columnIndex) {
+                return types[columnIndex];
+            }
+        });
         jtListaPro.setGridColor(new java.awt.Color(0, 102, 102));
         jtListaPro.setMinimumSize(new java.awt.Dimension(60, 60));
         Scroll.setViewportView(jtListaPro);
@@ -2008,17 +1967,29 @@ public class Menu extends javax.swing.JFrame {
 
         jtListClien.setBackground(new java.awt.Color(204, 204, 204));
         jtListClien.setFont(new java.awt.Font("Corbel", 1, 14)); // NOI18N
-        jtListClien.setModel(new javax.swing.table.DefaultTableModel(
+        jtListClien.setModel(Modelo1 = new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null},
                 {null, null, null, null},
                 {null, null, null, null},
                 {null, null, null, null}
             },
-            new String [] {
-                "Title 1", "Title 2", "Title 3", "Title 4"
+            new String[]{
+                "ID", "Apellido", "Nombre", "Domicilio", "Telefono"
             }
-        ));
+        ) {
+            public boolean isCellEditable(int fila, int column) {
+                return false;
+            }
+
+            Class[] types = new Class[]{
+                java.lang.Integer.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class
+            };
+
+            public Class getColumnClass(int columnIndex) {
+                return types[columnIndex];
+            }
+        });
         jtListClien.setGridColor(new java.awt.Color(0, 102, 102));
         jtListClien.setMinimumSize(new java.awt.Dimension(60, 60));
         ScrollListClien.setViewportView(jtListClien);
@@ -2870,17 +2841,30 @@ public class Menu extends javax.swing.JFrame {
 
         jtListEmpleado.setBackground(new java.awt.Color(204, 204, 204));
         jtListEmpleado.setFont(new java.awt.Font("Corbel", 1, 14)); // NOI18N
-        jtListEmpleado.setModel(new javax.swing.table.DefaultTableModel(
+        jtListEmpleado.setModel(Modelo2 = new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null},
                 {null, null, null, null},
                 {null, null, null, null},
                 {null, null, null, null}
             },
-            new String [] {
-                "Title 1", "Title 2", "Title 3", "Title 4"
+            new String[]{
+                "ID", "Apellido", "Nombre", "DNI", "Cargo", "Usuario", "Contraseña"
             }
-        ));
+        ) {
+            public boolean isCellEditable(int fila, int column) {
+                return false;
+            }
+
+            Class[] types = new Class[]{
+                java.lang.Integer.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class,
+                java.lang.String.class, java.lang.String.class
+            };
+
+            public Class getColumnClass(int columnIndex) {
+                return types[columnIndex];
+            }
+        });
         jtListEmpleado.setGridColor(new java.awt.Color(0, 102, 102));
         jtListEmpleado.setMinimumSize(new java.awt.Dimension(60, 60));
         ScrollListClien1.setViewportView(jtListEmpleado);
@@ -3881,13 +3865,13 @@ public class Menu extends javax.swing.JFrame {
     private void jLBtnModificarModEmpMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLBtnModificarModEmpMouseClicked
         borrarCamposModEmple();
         Empleado emp = ed.buscarEmpleadoPorDni(Integer.parseInt(jTFDniModEmp.getText()));
-        if(emp!=null){
+        if (emp != null) {
             Empleado emp1 = new Empleado();
             emp1.setIdEmpleado(emp.getIdEmpleado());
             emp1.setApellido(jTFApellidoModEmp.getText());
             emp1.setNombre(jTFNombreEmpleadoModEmp.getText());
             emp1.setDni(Integer.parseInt(jTFDniModEmp.getText()));
-            emp1.setCargo(jCBCargoModifEmp.getSelectedItem()+"");
+            emp1.setCargo(jCBCargoModifEmp.getSelectedItem() + "");
             emp1.setUsuario(jTFUsuarioModEmp.getText());
             emp1.setContraenia(jTFContraseñaModEmp.getText());
             ed.modificarEmpleadoPorId(emp1);
@@ -3944,9 +3928,9 @@ public class Menu extends javax.swing.JFrame {
     }//GEN-LAST:event_jlVentaPapeleraMouseExited
 
     private void jlClienteMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jlClienteMouseClicked
-        for (Cliente cli : cD.listarClientesBaja()){
+        for (Cliente cli : cD.listarClientesBaja()) {
             Modelo.addRow(new Object[]{cli.getIdCliente(), cli.getNombre(), cli.getApellido(),
-            cli.getTelefono(), cli.getDomicilio()});
+                cli.getTelefono(), cli.getDomicilio()});
             jTablePapelera.setModel(Modelo);
         }
     }//GEN-LAST:event_jlClienteMouseClicked
@@ -3976,9 +3960,9 @@ public class Menu extends javax.swing.JFrame {
     }//GEN-LAST:event_jlProductoPapeleraMouseExited
 
     private void jlEmpleadoPapeleraMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jlEmpleadoPapeleraMouseClicked
-        for (Empleado emp : ed.listarEmpleadoBaja()){
+        for (Empleado emp : ed.listarEmpleadoBaja()) {
             Modelo.addRow(new Object[]{emp.getIdEmpleado(), emp.getUsuario(), emp.getNombre(),
-            emp.getApellido(), emp.getCargo()});
+                emp.getApellido(), emp.getCargo()});
             jTablePapelera.setModel(Modelo);
         }
     }//GEN-LAST:event_jlEmpleadoPapeleraMouseClicked
@@ -4400,13 +4384,13 @@ public class Menu extends javax.swing.JFrame {
             Modelo1.removeRow(i);
         }
     }
-    
+
     private void borrarFilaDV() {
         for (int i = jtListaDetalles.getRowCount() - 1; i >= 0; i--) {
             modeloDV.removeRow(i);
         }
     }
-    
+
     private void borrarFilaV() {
         for (int i = jtListaVentas.getRowCount() - 1; i >= 0; i--) {
             modeloV.removeRow(i);
@@ -4550,9 +4534,9 @@ public class Menu extends javax.swing.JFrame {
 //        }
 //    }
     
-    private void llenarTablaDetVen(){
+    private void llenarTablaDetVen() {
         borrarFilaDV();
-        for (DetalleVenta dv : dvd.listaDV()){
+        for (DetalleVenta dv : dvd.listaDV()) {
             modeloDV.addRow(new Object[]{dv.getIdDetalleVenta(),
                 dv.getProducto().getNombreProducto(),
                 dv.getVenta().getCliente().getTelefono(),
@@ -4562,10 +4546,10 @@ public class Menu extends javax.swing.JFrame {
             });
         }
     }
-    
-    private void llenarTablaVen(){
+
+    private void llenarTablaVen() {
         borrarFilaV();
-        for (Venta v : vd.listaVenta()){
+        for (Venta v : vd.listaVenta()) {
             modeloV.addRow(new Object[]{v.getIdVenta(),
                 v.getCliente().getTelefono(),
                 v.getEmpleado().getApellido() + " " + v.getEmpleado().getNombre(),
