@@ -39,11 +39,81 @@ public class Menu extends javax.swing.JFrame {
     public static Color grisClaro = new Color(66, 66, 76);
     private double precioTotal;
 
-    public DefaultTableModel modeloDV;
-    public DefaultTableModel modeloV;
+//Modelos tablas    
     public DefaultTableModel Modelo;
     public DefaultTableModel Modelo1;
     public DefaultTableModel Modelo2;
+    public DefaultTableModel Modelo3;
+    public DefaultTableModel Modelo4;
+//Modelos tablas de Papelera
+    public DefaultTableModel modeloP = new DefaultTableModel(null, new String[]{
+        "ID", "Nombre", "Descripcion", "Precio Actual", "Stock"
+    }
+    ) {
+        public boolean isCellEditable(int fila, int column) {
+            return false;
+        }
+
+        Class[] types = new Class[]{
+            java.lang.Integer.class, java.lang.String.class, java.lang.String.class, java.lang.Double.class, java.lang.Integer.class
+        };
+
+        public Class getColumnClass(int columnIndex) {
+            return types[columnIndex];
+        }
+    };
+
+    public DefaultTableModel modeloV = new DefaultTableModel(null, new String[]{
+        "ID", "Telefono Cliente", "Datos Empleado", "Fecha de Venta"
+    }
+    ) {
+        public boolean isCellEditable(int fila, int column) {
+            return false;
+        }
+
+        Class[] types = new Class[]{
+            java.lang.Integer.class, java.lang.String.class, java.lang.String.class, java.time.LocalDate.class
+        };
+
+        public Class getColumnClass(int columnIndex) {
+            return types[columnIndex];
+        }
+    };
+
+    public DefaultTableModel modeloC = new DefaultTableModel(null, new String[]{
+        "ID", "Apellido", "Nombre", "Domicilio", "Telefono"
+    }
+    ) {
+        public boolean isCellEditable(int fila, int column) {
+            return false;
+        }
+
+        Class[] types = new Class[]{
+            java.lang.Integer.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class
+        };
+
+        public Class getColumnClass(int columnIndex) {
+            return types[columnIndex];
+        }
+    };
+
+    public DefaultTableModel modeloE = new DefaultTableModel(null, new String[]{
+        "ID", "Apellido", "Nombre", "DNI", "Cargo", "Usuario", "Contraseña"
+    }
+    ) {
+        public boolean isCellEditable(int fila, int column) {
+            return false;
+        }
+
+        Class[] types = new Class[]{
+            java.lang.Integer.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class,
+            java.lang.String.class, java.lang.String.class
+        };
+
+        public Class getColumnClass(int columnIndex) {
+            return types[columnIndex];
+        }
+    };
 
     private void llenarTabla() {
         borrarFila();
@@ -53,8 +123,6 @@ public class Menu extends javax.swing.JFrame {
             jtListaPro.setModel(Modelo);
         }
     }
-
-    
 
     public Menu() {
         initComponents();
@@ -2187,7 +2255,7 @@ public class Menu extends javax.swing.JFrame {
 
         jtListaVentas.setBackground(new java.awt.Color(204, 204, 204));
         jtListaVentas.setFont(new java.awt.Font("Corbel", 1, 14)); // NOI18N
-        jtListaVentas.setModel(modeloV = new javax.swing.table.DefaultTableModel(
+        jtListaVentas.setModel(Modelo4 = new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null},
                 {null, null, null, null},
@@ -2244,7 +2312,7 @@ public class Menu extends javax.swing.JFrame {
 
         jtListaDetalles.setBackground(new java.awt.Color(204, 204, 204));
         jtListaDetalles.setFont(new java.awt.Font("Corbel", 1, 14)); // NOI18N
-        jtListaDetalles.setModel(modeloDV = new javax.swing.table.DefaultTableModel(
+        jtListaDetalles.setModel(Modelo3 = new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null},
                 {null, null, null, null},
@@ -3934,11 +4002,11 @@ public class Menu extends javax.swing.JFrame {
     }//GEN-LAST:event_jlVentaPapeleraMouseClicked
 
     private void jlVentaPapeleraMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jlVentaPapeleraMouseEntered
-        // TODO add your handling code here:
+        jlVentaPapelera.setBackground(verdeClaro);
     }//GEN-LAST:event_jlVentaPapeleraMouseEntered
 
     private void jlVentaPapeleraMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jlVentaPapeleraMouseExited
-        // TODO add your handling code here:
+        jlVentaPapelera.setBackground(verdeBase);
     }//GEN-LAST:event_jlVentaPapeleraMouseExited
 
     private void jlClienteMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jlClienteMouseClicked
@@ -3950,11 +4018,11 @@ public class Menu extends javax.swing.JFrame {
     }//GEN-LAST:event_jlClienteMouseClicked
 
     private void jlClienteMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jlClienteMouseEntered
-        // TODO add your handling code here:
+        jlCliente.setBackground(verdeClaro);
     }//GEN-LAST:event_jlClienteMouseEntered
 
     private void jlClienteMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jlClienteMouseExited
-        // TODO add your handling code here:
+        jlCliente.setBackground(verdeBase);
     }//GEN-LAST:event_jlClienteMouseExited
 
     private void jlProductoPapeleraMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jlProductoPapeleraMouseClicked
@@ -3966,11 +4034,11 @@ public class Menu extends javax.swing.JFrame {
     }//GEN-LAST:event_jlProductoPapeleraMouseClicked
 
     private void jlProductoPapeleraMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jlProductoPapeleraMouseEntered
-        // TODO add your handling code here:
+        jlProductoPapelera.setBackground(verdeClaro);
     }//GEN-LAST:event_jlProductoPapeleraMouseEntered
 
     private void jlProductoPapeleraMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jlProductoPapeleraMouseExited
-        // TODO add your handling code here:
+        jlProductoPapelera.setBackground(verdeBase);
     }//GEN-LAST:event_jlProductoPapeleraMouseExited
 
     private void jlEmpleadoPapeleraMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jlEmpleadoPapeleraMouseClicked
@@ -3982,11 +4050,11 @@ public class Menu extends javax.swing.JFrame {
     }//GEN-LAST:event_jlEmpleadoPapeleraMouseClicked
 
     private void jlEmpleadoPapeleraMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jlEmpleadoPapeleraMouseEntered
-        // TODO add your handling code here:
+        jlEmpleadoPapelera.setBackground(verdeClaro);
     }//GEN-LAST:event_jlEmpleadoPapeleraMouseEntered
 
     private void jlEmpleadoPapeleraMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jlEmpleadoPapeleraMouseExited
-        // TODO add your handling code here:
+        jlEmpleadoPapelera.setBackground(verdeBase);
     }//GEN-LAST:event_jlEmpleadoPapeleraMouseExited
 
     private void jlEliminarPapeleraMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jlEliminarPapeleraMouseClicked
@@ -3994,11 +4062,11 @@ public class Menu extends javax.swing.JFrame {
     }//GEN-LAST:event_jlEliminarPapeleraMouseClicked
 
     private void jlEliminarPapeleraMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jlEliminarPapeleraMouseEntered
-        // TODO add your handling code here:
+        jlEliminarPapelera.setBackground(verdeClaro);
     }//GEN-LAST:event_jlEliminarPapeleraMouseEntered
 
     private void jlEliminarPapeleraMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jlEliminarPapeleraMouseExited
-        // TODO add your handling code here:
+        jlEliminarPapelera.setBackground(verdeBase);
     }//GEN-LAST:event_jlEliminarPapeleraMouseExited
 
     private void jlRestaurarPapeleraMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jlRestaurarPapeleraMouseClicked
@@ -4006,11 +4074,11 @@ public class Menu extends javax.swing.JFrame {
     }//GEN-LAST:event_jlRestaurarPapeleraMouseClicked
 
     private void jlRestaurarPapeleraMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jlRestaurarPapeleraMouseEntered
-        // TODO add your handling code here:
+        jlRestaurarPapelera.setBackground(verdeClaro);
     }//GEN-LAST:event_jlRestaurarPapeleraMouseEntered
 
     private void jlRestaurarPapeleraMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jlRestaurarPapeleraMouseExited
-        // TODO add your handling code here:
+        jlRestaurarPapelera.setBackground(verdeBase);
     }//GEN-LAST:event_jlRestaurarPapeleraMouseExited
 
     /**
@@ -4402,13 +4470,13 @@ public class Menu extends javax.swing.JFrame {
 
     private void borrarFilaDV() {
         for (int i = jtListaDetalles.getRowCount() - 1; i >= 0; i--) {
-            modeloDV.removeRow(i);
+            Modelo3.removeRow(i);
         }
     }
 
     private void borrarFilaV() {
         for (int i = jtListaVentas.getRowCount() - 1; i >= 0; i--) {
-            modeloV.removeRow(i);
+            Modelo4.removeRow(i);
         }
     }
 
@@ -4548,11 +4616,10 @@ public class Menu extends javax.swing.JFrame {
 //            jLEmpleados.setVisible(false);
 //        }
 //    }
-    
     private void llenarTablaDetVen() {
         borrarFilaDV();
         for (DetalleVenta dv : dvd.listaDV()) {
-            modeloDV.addRow(new Object[]{dv.getIdDetalleVenta(),
+            Modelo3.addRow(new Object[]{dv.getIdDetalleVenta(),
                 dv.getProducto().getNombreProducto(),
                 dv.getVenta().getCliente().getTelefono(),
                 dv.getVenta().getFechaVenta(),
@@ -4565,7 +4632,7 @@ public class Menu extends javax.swing.JFrame {
     private void llenarTablaVen() {
         borrarFilaV();
         for (Venta v : vd.listaVenta()) {
-            modeloV.addRow(new Object[]{v.getIdVenta(),
+            Modelo4.addRow(new Object[]{v.getIdVenta(),
                 v.getCliente().getTelefono(),
                 v.getEmpleado().getApellido() + " " + v.getEmpleado().getNombre(),
                 v.getFechaVenta()
