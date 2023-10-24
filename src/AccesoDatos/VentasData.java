@@ -257,7 +257,10 @@ public class VentasData {
         List<Venta> listaV = new ArrayList<>();
         ClienteData cd = new ClienteData();
         EmpleadoData ed = new EmpleadoData();
-        String sql = "SELECT * FROM venta WHERE estado = 1";
+        String sql = "SELECT venta.idVenta, venta.idCliente, venta.idEmpleado,"
+                + " venta.fechaVenta, venta.estado FROM venta JOIN empleado "
+                + "ON (venta.idEmpleado = empleado.idEmpleado) "
+                + "WHERE venta.estado = 1 AND empleado.estado = 1";
         try {
             PreparedStatement ps = con.prepareStatement(sql);
             ResultSet rs = ps.executeQuery();

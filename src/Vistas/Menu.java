@@ -3396,7 +3396,6 @@ public class Menu extends javax.swing.JFrame {
         jtpEscritorio.setSelectedIndex(7);
         jcbProductos.removeAllItems();
         llenarCombo();
-
     }//GEN-LAST:event_jlModificarMouseClicked
 
     private void jLBtnModificarModProdMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLBtnModificarModProdMouseEntered
