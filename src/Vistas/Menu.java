@@ -163,7 +163,7 @@ public class Menu extends javax.swing.JFrame {
         jlCerrarSesion = new javax.swing.JLabel();
         jlInicio = new javax.swing.JLabel();
         jLEmpleados = new javax.swing.JLabel();
-        jLabel2 = new javax.swing.JLabel();
+        jLPapelera = new javax.swing.JLabel();
         jtpEscritorio = new javax.swing.JTabbedPane();
         jtpInicio = new javax.swing.JPanel();
         jlIconPro = new javax.swing.JLabel();
@@ -718,17 +718,28 @@ public class Menu extends javax.swing.JFrame {
         });
         jPanelOpciones.add(jLEmpleados, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 180, 200, 40));
 
-        jLabel2.setBackground(new java.awt.Color(51, 51, 76));
-        jLabel2.setFont(new java.awt.Font("Corbel", 1, 14)); // NOI18N
-        jLabel2.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Image/reciclar.png"))); // NOI18N
-        jLabel2.setText("Papelera");
-        jLabel2.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 25, 1, 1));
-        jLabel2.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
-        jLabel2.setIconTextGap(15);
-        jLabel2.setOpaque(true);
-        jLabel2.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
-        jPanelOpciones.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 220, 200, 40));
+        jLPapelera.setBackground(new java.awt.Color(51, 51, 76));
+        jLPapelera.setFont(new java.awt.Font("Corbel", 1, 14)); // NOI18N
+        jLPapelera.setForeground(new java.awt.Color(255, 255, 255));
+        jLPapelera.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Image/reciclar.png"))); // NOI18N
+        jLPapelera.setText("Papelera");
+        jLPapelera.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 25, 1, 1));
+        jLPapelera.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
+        jLPapelera.setIconTextGap(15);
+        jLPapelera.setOpaque(true);
+        jLPapelera.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
+        jLPapelera.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                jLPapeleraMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                jLPapeleraMouseExited(evt);
+            }
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                jLPapeleraMousePressed(evt);
+            }
+        });
+        jPanelOpciones.add(jLPapelera, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 220, 200, 40));
 
         BackGround.add(jPanelOpciones, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 83, 200, 420));
 
@@ -4081,6 +4092,18 @@ public class Menu extends javax.swing.JFrame {
         jlRestaurarPapelera.setBackground(verdeBase);
     }//GEN-LAST:event_jlRestaurarPapeleraMouseExited
 
+    private void jLPapeleraMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLPapeleraMouseEntered
+     jLPapelera.setBackground(grisClaro);
+    }//GEN-LAST:event_jLPapeleraMouseEntered
+
+    private void jLPapeleraMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLPapeleraMouseExited
+        jLPapelera.setBackground(grisBase);
+    }//GEN-LAST:event_jLPapeleraMouseExited
+
+    private void jLPapeleraMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLPapeleraMousePressed
+    jtpEscritorio.setSelectedIndex(20);
+    }//GEN-LAST:event_jLPapeleraMousePressed
+
     /**
      * @param args the command line arguments
      */
@@ -4178,6 +4201,7 @@ public class Menu extends javax.swing.JFrame {
     private javax.swing.JLabel jLNombreProdElimProd;
     private javax.swing.JLabel jLNombreProdModProd;
     private javax.swing.JLabel jLNombreProductoAP;
+    private javax.swing.JLabel jLPapelera;
     private javax.swing.JLabel jLPrecioActualAP;
     private javax.swing.JLabel jLPrecioActualElimProd;
     private javax.swing.JLabel jLPrecioActualModProd;
@@ -4198,7 +4222,6 @@ public class Menu extends javax.swing.JFrame {
     private javax.swing.JLabel jLUsuarioElimEmp;
     private javax.swing.JLabel jLUsuarioModEmp;
     private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel2;
     private javax.swing.JPanel jPGestrionEmpleados;
     private javax.swing.JPanel jPanelCabecera;
     private javax.swing.JPanel jPanelOpciones;
