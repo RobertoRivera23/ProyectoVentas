@@ -24,6 +24,7 @@ public class Login extends javax.swing.JFrame {
     int xMouse, yMouse;
     public static Empleado empleado;
     private int contadorIntentos = 0;
+    private int contadorUsuario = 0;
 
     public Login() {
         initComponents();
@@ -263,7 +264,8 @@ public class Login extends javax.swing.JFrame {
 
     private void jLBtnIniciarSesionMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLBtnIniciarSesionMouseClicked
         int cont = 0;
-        contadorIntentos = contadorIntentos + 1;
+        boolean usuario = false;
+        
         System.out.println("contInt " + contadorIntentos);
         EmpleadoData eD = new EmpleadoData();
 
@@ -272,32 +274,41 @@ public class Login extends javax.swing.JFrame {
         } else {
             try {
                 for (Empleado emp : eD.listarEmpleado()) {
-                    if (emp.getUsuario().equals(jTFUsuario.getText()) && emp.getContraenia().equals(jTContraseña.getText())
-                            && emp.getCargo().equals(jCBCargo.getSelectedItem())) {
-                        cont++;
-                        empleado = new Empleado();
-                        empleado.setIdEmpleado(emp.getIdEmpleado());
-                        empleado.setApellido(emp.getApellido());
-                        empleado.setNombre(emp.getNombre());
-                        empleado.setDni(emp.getDni());
-                        empleado.setCargo(emp.getCargo());
-                        empleado.setUsuario(emp.getUsuario());
-                        empleado.setContraenia(emp.getContraenia());
-                        empleado.setEstado(emp.isEstado());
-                        //Instanciamos Menu 
-                        Menu menu = new Menu();
-                        menu.setVisible(true);
-                        dispose();
-                        break;
+                    if (emp.getUsuario().equals(jTFUsuario.getText())) { // Valida Usuario para Bloqueo
+                        contadorUsuario += 1;
+                        usuario = true;
+                        if (emp.getContraenia().equals(jTContraseña.getText())
+                                && emp.getCargo().equals(jCBCargo.getSelectedItem())) {
+                            cont++;
+                            empleado = new Empleado();
+                            empleado.setIdEmpleado(emp.getIdEmpleado());
+                            empleado.setApellido(emp.getApellido());
+                            empleado.setNombre(emp.getNombre());
+                            empleado.setDni(emp.getDni());
+                            empleado.setCargo(emp.getCargo());
+                            empleado.setUsuario(emp.getUsuario());
+                            empleado.setContraenia(emp.getContraenia());
+                            empleado.setEstado(emp.isEstado());
+                            //Instanciamos Menu 
+                            Menu menu = new Menu();
+                            menu.setVisible(true);
+                            dispose();
+                            break;
+                        }
                     }
-                } 
+                }
             } catch (NullPointerException ex) {
             }
-            if (cont == 0) {
-                JOptionPane.showMessageDialog(null, "El Ususario, Contraseña y/o Cargo, son incorrectos");
+
+            if (usuario == false) {
+                JOptionPane.showMessageDialog(null, "El usuario ingresado es incorrecto");
+            }
+
+            if (cont == 0 && usuario == true) {
+                JOptionPane.showMessageDialog(null, "Contraseña y/o Cargo, son incorrectos");
             }
             // Avisa posible bloqueo de Usuario
-            if (contadorIntentos == 2) {
+            if (contadorIntentos == 2 && usuario == false) {
                 int opcion = JOptionPane.showConfirmDialog(this, "Si vuleve a equivocarse, su cuenta sera bloqueada!", "¿ Desea Volver a intentar?", JOptionPane.YES_NO_OPTION);
                 switch (opcion) {
                     case 0:
@@ -307,15 +318,22 @@ public class Login extends javax.swing.JFrame {
                         dispose();
                 }
             }
+
+            if (contadorIntentos >= 3 && usuario == false) {
+                JOptionPane.showMessageDialog(null, "Supero la cantidad de intentos. solicite ayuda al supervisor");
+                this.dispose();
+            }
             //Bloquea Usuario
-            if (contadorIntentos >= 3) {
+            if (contadorUsuario >= 3 && usuario == true) {
                 JOptionPane.showMessageDialog(null, "Supero la cantidad de intentos, Cuenta Bloqueda. solicite ayuda al supervisor");
                 for (Empleado emplElim : eD.listarEmpleado()) {
                     if (emplElim.getUsuario().equalsIgnoreCase(jTFUsuario.getText())) {
                         eD.eliminarEmpleadoPorId(emplElim.getIdEmpleado());
                     }
                 }
+                dispose();
             }
+//            
         }
     }//GEN-LAST:event_jLBtnIniciarSesionMouseClicked
 
@@ -372,5 +390,4 @@ public class Login extends javax.swing.JFrame {
     private javax.swing.JLabel jlBanner1;
     private javax.swing.JLabel jlFravemax;
     // End of variables declaration//GEN-END:variables
-
 }
