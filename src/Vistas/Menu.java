@@ -1493,6 +1493,11 @@ public class Menu extends javax.swing.JFrame {
 
         jTFNombreProductoAgrProd.setFont(new java.awt.Font("Corbel", 0, 14)); // NOI18N
         jTFNombreProductoAgrProd.setBorder(null);
+        jTFNombreProductoAgrProd.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                jTFNombreProductoAgrProdKeyTyped(evt);
+            }
+        });
         jtpAgregarPro.add(jTFNombreProductoAgrProd, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 200, 210, 30));
 
         jTFDescripcionAgrProd.setFont(new java.awt.Font("Corbel", 0, 14)); // NOI18N
@@ -1501,10 +1506,20 @@ public class Menu extends javax.swing.JFrame {
 
         jTFPrecioActualAgrProd.setFont(new java.awt.Font("Corbel", 0, 14)); // NOI18N
         jTFPrecioActualAgrProd.setBorder(null);
+        jTFPrecioActualAgrProd.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                jTFPrecioActualAgrProdKeyTyped(evt);
+            }
+        });
         jtpAgregarPro.add(jTFPrecioActualAgrProd, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 200, 210, 30));
 
         jTFStockAgrProd.setFont(new java.awt.Font("Corbel", 0, 14)); // NOI18N
         jTFStockAgrProd.setBorder(null);
+        jTFStockAgrProd.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                jTFStockAgrProdKeyTyped(evt);
+            }
+        });
         jtpAgregarPro.add(jTFStockAgrProd, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 260, 210, 30));
 
         jlIconoAgregarPro1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
@@ -2306,6 +2321,11 @@ public class Menu extends javax.swing.JFrame {
         jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Image/busqueda - gris.png"))); // NOI18N
         jLabel1.setOpaque(true);
+        jLabel1.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jLabel1MouseClicked(evt);
+            }
+        });
         jtpListaVentas.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(540, 80, 40, 30));
 
         jtpEscritorio.addTab("tab14", jtpListaVentas);
@@ -3498,7 +3518,17 @@ public class Menu extends javax.swing.JFrame {
     }//GEN-LAST:event_jlRealizarVentaMouseExited
 
     private void jlIconBuscarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jlIconBuscarMouseClicked
-        // TODO add your handling code here:
+        try {
+            borrarFilaDV();
+            for (DetalleVenta dv : dvd.listaDV()) {
+                if (dv.getVenta().getCliente().getTelefono().contains(jtfBuscarCli.getText())) {
+                    Modelo3.addRow(new Object[]{dv.getIdDetalleVenta(), dv.getProducto().getNombreProducto(),
+                        dv.getVenta().getCliente().getTelefono(), dv.getVenta().getFechaVenta(), dv.getCantidad(), dv.getPrecioVenta()});
+                }
+            }
+        } catch (NullPointerException ex) {
+            JOptionPane.showMessageDialog(null, "Debe ingresar un número.");
+        }
     }//GEN-LAST:event_jlIconBuscarMouseClicked
 
     private void jlIconBuscarMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jlIconBuscarMouseEntered
@@ -3601,19 +3631,17 @@ public class Menu extends javax.swing.JFrame {
             try {
                 Producto producto = pd.buscarProductoPorNombre(jTFNombreProductoAgrProd.getText());
                 System.out.println("---" + jTFNombreProductoAgrProd.getText());
-                System.out.println("////" + producto.toString());
-                if (producto == null) {
-                    Producto product = new Producto();
-                    product.setNombreProducto(jTFNombreProductoAgrProd.getText());
-                    product.setDescripcion(jTFDescripcionAgrProd.getText());
-                    product.setPrecioActual(Double.parseDouble(jTFPrecioActualAgrProd.getText()));
-                    product.setStock(Integer.parseInt(jTFStockAgrProd.getText()));
-                    product.setEstado(true);
-                    pd.guardarProducto(product);
-                } else {
+                if (producto != null) {
                     JOptionPane.showMessageDialog(this, "Ya hay un producto con ese nombre, si quiere modificarlo vaya a la pestaña de modificar producto");
                 }
             } catch (NullPointerException ex) {
+                Producto product = new Producto();
+                product.setNombreProducto(jTFNombreProductoAgrProd.getText());
+                product.setDescripcion(jTFDescripcionAgrProd.getText());
+                product.setPrecioActual(Double.parseDouble(jTFPrecioActualAgrProd.getText()));
+                product.setStock(Integer.parseInt(jTFStockAgrProd.getText()));
+                product.setEstado(true);
+                pd.guardarProducto(product);
             }
         }
         borrarCamposAgrProd();
@@ -3648,8 +3676,8 @@ public class Menu extends javax.swing.JFrame {
                             cli.setNombre(jTFNombreClienModClien.getText());
                             cli.setDomicilio(jTFDomicilioModClien.getText());
                             cli.setTelefono(jTFTelefonoModClien.getText());
+                            cli.setEstado(true);
                             cD.modicifarCliente(cli);
-                            borrarCamposModCli();
                         case 1:
                             break;
                     }
@@ -3741,6 +3769,7 @@ public class Menu extends javax.swing.JFrame {
                         pro.setDescripcion(jTFDescripcionModProd.getText());
                         pro.setPrecioActual(Double.parseDouble(jTFPrecioActualModProd.getText()));
                         pro.setStock(Integer.parseInt(jTFStockModProd.getText()));
+                        pro.setEstado(pro.getEstado());
                         pd.modificarProducto(pro);
                         break;
                     case 1:
@@ -3953,7 +3982,7 @@ public class Menu extends javax.swing.JFrame {
     private void jlListarEmpleadoMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jlListarEmpleadoMouseExited
         jlListarEmpleado.setBackground(verdeBase);
     }//GEN-LAST:event_jlListarEmpleadoMouseExited
-
+///////////////////////////////////////////////////
     private void jCBModificarEmpleadoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jCBModificarEmpleadoActionPerformed
         try {
             Empleado emp = (Empleado) jCBModificarEmpleado.getSelectedItem();
@@ -3962,8 +3991,8 @@ public class Menu extends javax.swing.JFrame {
             jTFDniModEmp.setText(emp.getDni() + "");
             jTFUsuarioModEmp.setText(emp.getUsuario());
             jTFContraseñaModEmp.setText(emp.getContraenia());
-            jCBCargoModifEmp.removeAllItems();
-            llenarComboCargo();
+            jCBCargoModifEmp.setSelectedItem(emp.getCargo());
+
         } catch (NullPointerException ex) {
         }
     }//GEN-LAST:event_jCBModificarEmpleadoActionPerformed
@@ -3986,7 +4015,6 @@ public class Menu extends javax.swing.JFrame {
                         emp1.setEstado(true);
                         ed.modificarEmpleadoPorId(emp1);
                         jCBModificarEmpleado.removeAllItems();
-                        jCBCargoModifEmp.removeAllItems();
                         break;
                     case 1:
                         break;
@@ -3994,9 +4022,8 @@ public class Menu extends javax.swing.JFrame {
             } else {
                 JOptionPane.showMessageDialog(null, "No se pudo modificar el empleado");
             }
-            borrarCamposModEmple();
-             llenarComboEmpleado();
-             llenarComboCargo();
+            llenarComboEmpleado();
+
         } catch (NullPointerException ex) {
         }
     }//GEN-LAST:event_jLBtnModificarModEmpMouseClicked
@@ -4049,12 +4076,17 @@ public class Menu extends javax.swing.JFrame {
     }//GEN-LAST:event_jlImgBusquedaEmplMouseExited
 
     private void jlVentaPapeleraMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jlVentaPapeleraMouseClicked
-        for (Venta ven : vd.listaVentaBaja()) {
-            ModeloV.addRow(new Object[]{ven.getIdVenta(), ven.getCliente().getTelefono(),
-                ven.getEmpleado().getApellido() + " " + ven.getEmpleado().getNombre(),
-                ven.getFechaVenta()
-            });
-            jTablePapelera.setModel(ModeloV);
+        try {
+            borrarFilaPV();
+            for (Venta ven : vd.listaVentaBaja()) {
+                ModeloV.addRow(new Object[]{ven.getIdVenta(), ven.getCliente().getTelefono(),
+                    ven.getEmpleado().getApellido() + " " + ven.getEmpleado().getNombre(),
+                    ven.getFechaVenta()
+                });
+                jTablePapelera.setModel(ModeloV);
+            }
+        } catch (ArrayIndexOutOfBoundsException ex) {
+            JOptionPane.showMessageDialog(null, "La papelera esta vacia.");
         }
     }//GEN-LAST:event_jlVentaPapeleraMouseClicked
 
@@ -4067,10 +4099,15 @@ public class Menu extends javax.swing.JFrame {
     }//GEN-LAST:event_jlVentaPapeleraMouseExited
 
     private void jlClienteMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jlClienteMouseClicked
-        for (Cliente cli : cD.listarClientesBaja()) {
-            ModeloC.addRow(new Object[]{cli.getIdCliente(), cli.getApellido(),
-                cli.getNombre(), cli.getDomicilio(), cli.getTelefono()});
-            jTablePapelera.setModel(ModeloC);
+        try {
+            borrarFilaPC();
+            for (Cliente cli : cD.listarClientesBaja()) {
+                ModeloC.addRow(new Object[]{cli.getIdCliente(), cli.getApellido(),
+                    cli.getNombre(), cli.getDomicilio(), cli.getTelefono()});
+                jTablePapelera.setModel(ModeloC);
+            }
+        } catch (ArrayIndexOutOfBoundsException ex) {
+            JOptionPane.showMessageDialog(null, "La papelera esta vacia.");
         }
     }//GEN-LAST:event_jlClienteMouseClicked
 
@@ -4083,10 +4120,15 @@ public class Menu extends javax.swing.JFrame {
     }//GEN-LAST:event_jlClienteMouseExited
 
     private void jlProductoPapeleraMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jlProductoPapeleraMouseClicked
-        for (Producto pro : pd.listarProductoBaja()) {
-            ModeloP.addRow(new Object[]{pro.getIdProducto(), pro.getNombreProducto(),
-                pro.getDescripcion(), pro.getPrecioActual(), pro.getStock()});
-            jTablePapelera.setModel(ModeloP);
+        try {
+            borrarFilaPP();
+            for (Producto pro : pd.listarProductoBaja()) {
+                ModeloP.addRow(new Object[]{pro.getIdProducto(), pro.getNombreProducto(),
+                    pro.getDescripcion(), pro.getPrecioActual(), pro.getStock()});
+                jTablePapelera.setModel(ModeloP);
+            }
+        } catch (ArrayIndexOutOfBoundsException ex) {
+            JOptionPane.showMessageDialog(null, "La papelera esta vacia.");
         }
     }//GEN-LAST:event_jlProductoPapeleraMouseClicked
 
@@ -4099,11 +4141,16 @@ public class Menu extends javax.swing.JFrame {
     }//GEN-LAST:event_jlProductoPapeleraMouseExited
 
     private void jlEmpleadoPapeleraMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jlEmpleadoPapeleraMouseClicked
-        for (Empleado emp : ed.listarEmpleadoBaja()) {
-            ModeloE.addRow(new Object[]{emp.getIdEmpleado(), emp.getApellido(), emp.getNombre(),
-                emp.getDni(), emp.getCargo(), emp.getUsuario(), emp.getContraenia()});
-            jTablePapelera.setModel(ModeloE);
-        }
+        borrarFilaPE();
+        try {
+              for (Empleado emp : ed.listarEmpleadoBaja()) {
+                ModeloE.addRow(new Object[]{emp.getIdEmpleado(), emp.getApellido(), emp.getNombre(),
+                    emp.getDni(), emp.getCargo(), emp.getUsuario(), emp.getContraenia()});
+                jTablePapelera.setModel(ModeloE);
+            }
+        } catch (ArrayIndexOutOfBoundsException ex) {
+            JOptionPane.showMessageDialog(null, "La papelera esta vacia.");
+        }  
     }//GEN-LAST:event_jlEmpleadoPapeleraMouseClicked
 
     private void jlEmpleadoPapeleraMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jlEmpleadoPapeleraMouseEntered
@@ -4164,6 +4211,34 @@ public class Menu extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_jCBEliminarEmpleadoActionPerformed
 
+    private void jTFNombreProductoAgrProdKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTFNombreProductoAgrProdKeyTyped
+        controlLetras(evt);
+    }//GEN-LAST:event_jTFNombreProductoAgrProdKeyTyped
+
+    private void jTFPrecioActualAgrProdKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTFPrecioActualAgrProdKeyTyped
+        controlNumeros(evt);
+    }//GEN-LAST:event_jTFPrecioActualAgrProdKeyTyped
+
+    private void jTFStockAgrProdKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTFStockAgrProdKeyTyped
+        controlNumeros(evt);
+    }//GEN-LAST:event_jTFStockAgrProdKeyTyped
+
+    private void jLabel1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel1MouseClicked
+        try {
+            borrarFilaV();
+            LocalDate fecha = jDateChooser1.getDate().toInstant().atZone(ZoneId.systemDefault()).toLocalDate();
+            for (Venta venta : vd.listarVentasPorFecha(fecha)) {
+                if (fecha.equals(venta.getFechaVenta())) {
+                    Modelo4.addRow(new Object[]{venta.getIdVenta(), venta.getCliente().getTelefono(),
+                        venta.getEmpleado().getApellido() + " " + venta.getEmpleado().getNombre(),
+                        venta.getFechaVenta()});
+                }
+            }
+        } catch (NullPointerException ex) {
+            JOptionPane.showMessageDialog(null, "Debe seleccionar una fecha.");
+        }
+    }//GEN-LAST:event_jLabel1MouseClicked
+
     /**
      * @param args the command line arguments
      */
@@ -4180,16 +4255,24 @@ public class Menu extends javax.swing.JFrame {
 //                    UIManager.put("nimbusBlueGrey", new Color(51, 51, 76));
 //                    UIManager.put("control", new Color(0, 150, 136));
                     break;
+
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(Menu.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(Menu.class
+                    .getName()).log(java.util.logging.Level.SEVERE, null, ex);
+
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(Menu.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(Menu.class
+                    .getName()).log(java.util.logging.Level.SEVERE, null, ex);
+
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(Menu.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(Menu.class
+                    .getName()).log(java.util.logging.Level.SEVERE, null, ex);
+
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(Menu.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(Menu.class
+                    .getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
 
@@ -4552,14 +4635,44 @@ public class Menu extends javax.swing.JFrame {
     }
 
     private void borrarFilaDV() {
+         jtListaDetalles.setModel(Modelo3);
         for (int i = jtListaDetalles.getRowCount() - 1; i >= 0; i--) {
             Modelo3.removeRow(i);
         }
     }
 
     private void borrarFilaV() {
+        jtListaVentas.setModel(Modelo4);
         for (int i = jtListaVentas.getRowCount() - 1; i >= 0; i--) {
             Modelo4.removeRow(i);
+        }
+    }
+
+    private void borrarFilaPV() {
+        jTablePapelera.setModel(ModeloV);
+        for (int i = jTablePapelera.getRowCount() - 1; i >= 0; i--) {
+            ModeloV.removeRow(i);
+        }
+    }
+
+    private void borrarFilaPP() {
+        jTablePapelera.setModel(ModeloP);
+        for (int i = jTablePapelera.getRowCount() - 1; i >= 0; i--) {
+            ModeloP.removeRow(i);
+        }
+    }
+
+    private void borrarFilaPE() {
+        jTablePapelera.setModel(ModeloE);
+        for (int i = jTablePapelera.getRowCount() - 1; i >= 0; i--) {
+            ModeloE.removeRow(i);
+        }
+    }
+
+    private void borrarFilaPC() {
+         jTablePapelera.setModel(ModeloC);
+        for (int i = jTablePapelera.getRowCount() - 1; i >= 0; i--) {
+            ModeloC.removeRow(i);
         }
     }
 
@@ -4618,7 +4731,7 @@ public class Menu extends javax.swing.JFrame {
 
     private void borrarCamposAgCliente() {
         jTFApellidoClienteAgrClien.setText("");
-        jTFApellidoClienteAgrClien.setText("");
+        jTFNombreClienteAgrClien.setText("");
         jTFDomicilioClienteAgrClien.setText("");
         jTFTelefonoClienteAg.setText("");
     }

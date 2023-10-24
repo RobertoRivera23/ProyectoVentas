@@ -68,9 +68,9 @@ public class ClienteData {
         }
         return cliente;
     }
-
+// Modificar para restaurar (al Modificar demas datos mantiene en true)
     public void modicifarCliente(Cliente cliente) {
-        String sql = "UPDATE cliente SET apellido = ? , nombre = ? , domicilio = ? , telefono = ? WHERE idCliente = ?";
+        String sql = "UPDATE cliente SET apellido = ? , nombre = ? , domicilio = ? , telefono = ?, estado = ? WHERE idCliente = ?";
         PreparedStatement ps;
         try {
             ps = con.prepareStatement(sql);
@@ -78,7 +78,8 @@ public class ClienteData {
             ps.setString(2, cliente.getNombre());
             ps.setString(3, cliente.getDomicilio());
             ps.setString(4, cliente.getTelefono());
-            ps.setInt(5, cliente.getIdCliente());
+            ps.setBoolean(5, cliente.isEstado());
+            ps.setInt(6, cliente.getIdCliente());
             int exito = ps.executeUpdate();
             if (exito == 1) {
                 JOptionPane.showMessageDialog(null, "Modificado Exitosamente.");
@@ -90,7 +91,7 @@ public class ClienteData {
             JOptionPane.showMessageDialog(null, "Error al acceder a la tabla Cliente. " + ex.getMessage());
         }
     }
-
+    // Elimina de modo Logico
     public void eliminarCliente(int id) {
         String sql = "UPDATE cliente SET estado = 0 WHERE idCliente = ?";
         try {
@@ -99,6 +100,21 @@ public class ClienteData {
             int rs = ps.executeUpdate();
             if (rs == 1) {
                 JOptionPane.showMessageDialog(null, "Cliente eliminado.");
+            }
+            ps.close();
+        } catch (SQLException ex) {
+            JOptionPane.showMessageDialog(null, " Error al acceder a la tabla Cliente " + ex.getMessage());
+        }
+    }
+    // Elimina de BD
+    public void eliminarClienteDB(int id) {
+        String sql = "DELETE FROM cliente WHERE idCliente = ? AND estado = 0";
+        try {
+            PreparedStatement ps = con.prepareStatement(sql);
+            ps.setInt(1, id);
+            int rs = ps.executeUpdate();
+            if (rs == 1) {
+                JOptionPane.showMessageDialog(null, "Cliente eliminado de la BD.");
             }
             ps.close();
         } catch (SQLException ex) {

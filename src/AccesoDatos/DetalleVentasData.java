@@ -127,7 +127,6 @@ public class DetalleVentasData {
     }
 
     public List<DetalleVenta> listarDetalleVentaPorProducto(Producto producto) {
-        System.out.println("+++++" + producto.getIdProducto());
         List<DetalleVenta> listaDetalleVenta = new ArrayList<>();
         String sql = "SELECT *  FROM detalledeVenta  WHERE idProducto = ? AND estado = 1 ORDER BY idDetalleVenta ASC ";
         try {
@@ -158,6 +157,41 @@ public class DetalleVentasData {
         return listaDetalleVenta;
     }
 
+//    public List<DetalleVenta> listarDetalleVentaPorCliente(String numeroTel) {
+//        List<DetalleVenta> listaDetalleVenta = new ArrayList<>();
+//        String sql = "SELECT idDetalleVenta, nombreProducto, telefono, fechaVenta, cantidad, precioVenta"
+//                + "  FROM detalledeventa, producto, venta  "
+//                + "JOIN cliente ON (venta.idCliente=cliente.idCliente)"
+//                + "WHERE  cliente.telefono= ? AND detalledeventa.estado = 1 AND venta.estado = 1 AND producto.estado = 1 "
+//                + "AND cliente.estado = 1  ORDER BY idDetalleVenta ASC ";
+//        try {
+//            PreparedStatement ps = con.prepareStatement(sql);
+//            ps.setString(1, numeroTel);
+//            ResultSet rs = ps.executeQuery();
+//            boolean cont = false;
+//            while (rs.next()) { //cantidad, idVenta, precioVenta, idProducto, estado
+//                DetalleVenta detalleV = new DetalleVenta();
+//                VentasData ventasD = new VentasData();
+//                ProductoData productoD = new ProductoData();
+//                detalleV.setIdDetalleVenta(rs.getInt("idDetalleVenta"));
+//                detalleV.setCantidad(rs.getInt("cantidad"));
+//                detalleV.setVenta(ventasD.buscarVentaId(rs.getInt("idVenta")));
+//                detalleV.setPrecioVenta(rs.getDouble("precioVenta"));
+//                detalleV.setProducto(productoD.buscarProducto(rs.getInt("idProducto")));
+//                detalleV.setEstado(rs.getBoolean("estado"));
+//                cont = true;
+//                listaDetalleVenta.add(detalleV);
+//                if (!cont) {
+//                    JOptionPane.showMessageDialog(null, "No hay Detalle de Ventas para ese Numero de Telefono");
+//                }
+//            }
+//            ps.close();
+//        } catch (SQLException ex) {
+//            JOptionPane.showMessageDialog(null, "Error al conectar con la tabla detalleVenta" + ex.getMessage());
+//        }
+//        return listaDetalleVenta;
+//    }
+    //Eliminado Logico
     public void eliminarDetalleVentaPorId(int IdDetalleVenta) {
         String sql = "UPDATE detalledeVenta SET estado = 0  WHERE idDetalleVenta = ? ";
         try {
@@ -166,6 +200,23 @@ public class DetalleVentasData {
             int modificado = ps.executeUpdate();
             if (modificado == 1) {
                 JOptionPane.showMessageDialog(null, "Detalle de Venta Eliminado Exitosamente.");
+            } else {
+                JOptionPane.showMessageDialog(null, "El Detalle de Venta no pudo ser Eliminado");
+            }
+            ps.close();
+        } catch (SQLException ex) {
+            JOptionPane.showMessageDialog(null, "Error al conectar con la tabla detalleVenta" + ex.getMessage());
+        }
+    }
+    //ELIMINA DE BD
+    public void eliminarDetalleVentaPorIdBD(int IdDetalleVenta) {
+        String sql = "DELETE FROM detalledeVenta WHERE idDetalleVenta = ? AND estado = 0";
+        try {
+            PreparedStatement ps = con.prepareStatement(sql);
+            ps.setInt(1, IdDetalleVenta);
+            int modificado = ps.executeUpdate();
+            if (modificado == 1) {
+                JOptionPane.showMessageDialog(null, "Detalle de Venta Eliminado Exitosamente de la BD.");
             } else {
                 JOptionPane.showMessageDialog(null, "El Detalle de Venta no pudo ser Eliminado");
             }

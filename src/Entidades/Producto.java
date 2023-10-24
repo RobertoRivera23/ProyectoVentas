@@ -75,7 +75,7 @@ public class Producto {
         this.precioActual = precioActual;
     }
 
-    public boolean isEstado() {
+    public boolean getEstado() {
         return estado;
     }
 

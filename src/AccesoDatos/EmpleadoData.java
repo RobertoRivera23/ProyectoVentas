@@ -152,7 +152,8 @@ public class EmpleadoData {
     }
 
     public void modificarEmpleadoPorId(Empleado empleado1) {
-        String sql = "UPDATE  empleado SET apellido = ?, nombre = ?, dni = ?, cargo = ?, usuario = ?, contraseña = ?, estado = ?  WHERE idempleado = ? ";
+        String sql = "UPDATE  empleado SET apellido = ?, nombre = ?, dni = ?, cargo = ?, usuario = ?, contraseña = ?, estado = ? "
+                + " WHERE idempleado = ? ";
         try {
             PreparedStatement ps = con.prepareStatement(sql);
             ps.setString(1, empleado1.getApellido());
@@ -174,7 +175,7 @@ public class EmpleadoData {
             JOptionPane.showMessageDialog(null, "Error al acceder a la tabla empleado " + ex.getMessage());
         }
     }
-
+    // Eliminado Logico
     public void eliminarEmpleadoPorId(int id) {
         String sql = "UPDATE empleado SET estado = 0 WHERE idempleado = ?";
         try {
@@ -189,7 +190,22 @@ public class EmpleadoData {
             JOptionPane.showMessageDialog(null, " Error al acceder a la tabla Empleado. " + ex.getMessage());
         }
     }
-
+        //Elimina de la BD
+    public void eliminarEmpleadoPorIdDB(int id) {
+        String sql = "DELETE FROM empleado WHERE idempleado = ? AND  estado = 0 ";
+        try {
+            PreparedStatement ps = con.prepareStatement(sql);
+            ps.setInt(1, id);
+            int rs = ps.executeUpdate();
+            if (rs == 1) {
+                JOptionPane.showMessageDialog(null, "Se elimino con exito al empleado de la BD.");
+            }
+            ps.close();
+        } catch (SQLException ex) {
+            JOptionPane.showMessageDialog(null, " Error al acceder a la tabla Empleado. " + ex.getMessage());
+        }
+    }
+    
     public Empleado buscarPorNombre(String nombre) {
         String sql = "SELECT * FROM empleado WHERE nombre = ?";
         Empleado emp = null;

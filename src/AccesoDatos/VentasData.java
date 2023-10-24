@@ -78,14 +78,14 @@ public class VentasData {
     }
 
     //Listar todas las ventas en una fecha.
-    public List<Venta> listarVentasPorFecha(Venta ventas) {
+    public List<Venta> listarVentasPorFecha(LocalDate fecha) {
         List<Venta> listaventas = new ArrayList<>();
         ClienteData clienteData = new ClienteData();
         EmpleadoData empleadoData = new EmpleadoData(); //////////////////////////////////////7
         String sql = "SELECT * FROM venta WHERE fechaVenta = ? "; //ORDER BY idVenta ASC
         try {
             PreparedStatement ps = con.prepareStatement(sql);
-            ps.setDate(1, Date.valueOf(ventas.getFechaVenta()));
+            ps.setDate(1, Date.valueOf(fecha));
             ResultSet rs = ps.executeQuery();
             boolean cont = false;
             while (rs.next()) {
@@ -282,6 +282,7 @@ public class VentasData {
         return listaV;
     }
     
+    // Eliminado Logico
     public void eliminarVentaId(int idVenta){
         String sql = "UPDATE venta SET estado = 0 WHERE idVenta = ?";
         try {
@@ -290,6 +291,23 @@ public class VentasData {
             int op = ps.executeUpdate();
             if (op == 1) {
                 JOptionPane.showMessageDialog(null, "Venta Eliminada Exitosamente.");
+            } else {
+                JOptionPane.showMessageDialog(null, "Venta no pudo ser Eliminada");
+            }
+            ps.close();
+        } catch (SQLException ex) {
+            JOptionPane.showMessageDialog(null, "Error al acceder a la tabla Venta" + ex.getMessage());
+        }
+    }
+    // Eliminado BD
+    public void eliminarVentaIdBD(int idVenta){
+        String sql = "DELETE FROM  venta WHERE idVenta = ? AND estado = 0 ";
+        try {
+            PreparedStatement ps = con.prepareStatement(sql);
+            ps.setInt(1, idVenta);
+            int op = ps.executeUpdate();
+            if (op == 1) {
+                JOptionPane.showMessageDialog(null, "Venta Eliminada Exitosamente de la BD.");
             } else {
                 JOptionPane.showMessageDialog(null, "Venta no pudo ser Eliminada");
             }
