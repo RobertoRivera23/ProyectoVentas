@@ -3396,7 +3396,6 @@ public class Menu extends javax.swing.JFrame {
         jtpEscritorio.setSelectedIndex(7);
         jcbProductos.removeAllItems();
         llenarCombo();
- 
     }//GEN-LAST:event_jlModificarMouseClicked
 
     private void jLBtnModificarModProdMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLBtnModificarModProdMouseEntered
@@ -4120,7 +4119,7 @@ public class Menu extends javax.swing.JFrame {
     }//GEN-LAST:event_jlPapeleraMenuMouseExited
 
     private void jlPapeleraMenuMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jlPapeleraMenuMouseClicked
-        jtpEscritorio.setSelectedIndex(21);
+        jtpEscritorio.setSelectedIndex(20);
     }//GEN-LAST:event_jlPapeleraMenuMouseClicked
 
     /**
