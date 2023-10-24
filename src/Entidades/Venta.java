@@ -97,5 +97,4 @@ public class Venta {
     public String toString() {
         return fechaVenta + "/" + cliente.getTelefono() + "/" + empleado.getNombre() + "/" + empleado.getApellido();
     }
-
 }
