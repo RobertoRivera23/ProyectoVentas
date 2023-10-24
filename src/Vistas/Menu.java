@@ -3396,7 +3396,7 @@ public class Menu extends javax.swing.JFrame {
         jtpEscritorio.setSelectedIndex(7);
         jcbProductos.removeAllItems();
         llenarCombo();
- 
+
     }//GEN-LAST:event_jlModificarMouseClicked
 
     private void jLBtnModificarModProdMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLBtnModificarModProdMouseEntered
@@ -3601,8 +3601,8 @@ public class Menu extends javax.swing.JFrame {
         } else {
             try {
                 Producto producto = pd.buscarProductoPorNombre(jTFNombreProductoAgrProd.getText());
-                System.out.println("---"+ jTFNombreProductoAgrProd.getText() );
-                System.out.println("////"+ producto.toString());
+                System.out.println("---" + jTFNombreProductoAgrProd.getText());
+                System.out.println("////" + producto.toString());
                 if (producto == null) {
                     Producto product = new Producto();
                     product.setNombreProducto(jTFNombreProductoAgrProd.getText());
@@ -3642,12 +3642,18 @@ public class Menu extends javax.swing.JFrame {
                         || !jTFApellidoModClien.getText().equalsIgnoreCase(cli.getApellido())
                         || !jTFDomicilioModClien.getText().equalsIgnoreCase(cli.getDomicilio())
                         || !jTFTelefonoModClien.getText().equalsIgnoreCase(cli.getTelefono())) {
-                    cli.setApellido(jTFApellidoModClien.getText());
-                    cli.setNombre(jTFNombreClienModClien.getText());
-                    cli.setDomicilio(jTFDomicilioModClien.getText());
-                    cli.setTelefono(jTFTelefonoModClien.getText());
-                    cD.modicifarCliente(cli);
-                    borrarCamposModCli();
+                    int opcion = JOptionPane.showConfirmDialog(this, "¿Desea Modificar los Datos?", "Seleccione una opcion", JOptionPane.YES_NO_OPTION);
+                    switch (opcion) {
+                        case 0:
+                            cli.setApellido(jTFApellidoModClien.getText());
+                            cli.setNombre(jTFNombreClienModClien.getText());
+                            cli.setDomicilio(jTFDomicilioModClien.getText());
+                            cli.setTelefono(jTFTelefonoModClien.getText());
+                            cD.modicifarCliente(cli);
+                            borrarCamposModCli();
+                        case 1:
+                            break;
+                    }
                 }
             }
         } catch (Exception e) {
@@ -3672,8 +3678,14 @@ public class Menu extends javax.swing.JFrame {
                     || jTFDomicilioElimClien.getText().trim().isEmpty() || jTFTelefonoElimClien.getText().trim().isEmpty()) {
                 JOptionPane.showMessageDialog(null, "No pude haber campos vacios.");
             } else {
-                cD.eliminarCliente(cli.getIdCliente());
-                jCBBuscarClienElimClien.removeItemAt(jCBBuscarClienElimClien.getSelectedIndex());
+                int opcion = JOptionPane.showConfirmDialog(this, "¿Desea Eliminar los Datos?", "Seleccione una opcion", JOptionPane.YES_NO_OPTION);
+                switch (opcion) {
+                    case 0:
+                        cD.eliminarCliente(cli.getIdCliente());
+                        jCBBuscarClienElimClien.removeItemAt(jCBBuscarClienElimClien.getSelectedIndex());
+                    case 1:
+                        break;
+                }
             }
         } catch (NullPointerException ex) {
         }
@@ -3744,25 +3756,25 @@ public class Menu extends javax.swing.JFrame {
     }//GEN-LAST:event_jLBtnModificarModProdMousePressed
 
     private void jcbProductosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jcbProductosActionPerformed
-       try{
-        Producto pro = (Producto) jcbProductos.getSelectedItem();
-        jTFNombreProdModProd.setText(pro.getNombreProducto());
-        jTFDescripcionModProd.setText(pro.getDescripcion());
-        jTFPrecioActualModProd.setText(pro.getPrecioActual() + "");
-        jTFStockModProd.setText(pro.getStock() + "");
-       } catch(NullPointerException ex) {
-       }
+        try {
+            Producto pro = (Producto) jcbProductos.getSelectedItem();
+            jTFNombreProdModProd.setText(pro.getNombreProducto());
+            jTFDescripcionModProd.setText(pro.getDescripcion());
+            jTFPrecioActualModProd.setText(pro.getPrecioActual() + "");
+            jTFStockModProd.setText(pro.getStock() + "");
+        } catch (NullPointerException ex) {
+        }
     }//GEN-LAST:event_jcbProductosActionPerformed
 
     private void jCBBuscarProdElimProdActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jCBBuscarProdElimProdActionPerformed
-      try{
-        Producto pro = (Producto) jCBBuscarProdElimProd.getSelectedItem();
-        jTFNombreProdElimProd.setText(pro.getNombreProducto());
-        jTFDescripcionElimProd.setText(pro.getDescripcion());
-        jTFPrecioActuaElimProd.setText(pro.getPrecioActual() + "");
-        jTFStockElimProd.setText(pro.getStock() + "");
-      } catch( NullPointerException ex){
-      }
+        try {
+            Producto pro = (Producto) jCBBuscarProdElimProd.getSelectedItem();
+            jTFNombreProdElimProd.setText(pro.getNombreProducto());
+            jTFDescripcionElimProd.setText(pro.getDescripcion());
+            jTFPrecioActuaElimProd.setText(pro.getPrecioActual() + "");
+            jTFStockElimProd.setText(pro.getStock() + "");
+        } catch (NullPointerException ex) {
+        }
     }//GEN-LAST:event_jCBBuscarProdElimProdActionPerformed
 
     private void jLEmpleadosMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLEmpleadosMouseClicked
@@ -3957,35 +3969,36 @@ public class Menu extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_jCBModificarEmpleadoActionPerformed
 
-    private void jCBEliminarEmpleadoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jCBEliminarEmpleadoActionPerformed
-        try {
-            Empleado emp = (Empleado) jCBEliminarEmpleado.getSelectedItem();
-            jCBCargoElimEmp.removeAllItems();
-            jTFApellidoElimEmp.setText(emp.getApellido());
-            jTFNombreEmpleadoElimEmp.setText(emp.getNombre());
-            jTFDniElimEmp.setText(emp.getDni() + "");
-            jCBCargoElimEmp.addItem(emp.getCargo() + "");
-            jTFUsuarioElimEmp.setText(emp.getUsuario());
-            jTFContraseñaElimEmp.setText(emp.getContraenia());
-        } catch (NullPointerException ex) {
-        }
-    }//GEN-LAST:event_jCBEliminarEmpleadoActionPerformed
-
     private void jLBtnModificarModEmpMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLBtnModificarModEmpMouseClicked
-        borrarCamposModEmple();
-        Empleado emp = ed.buscarEmpleadoPorDni(Integer.parseInt(jTFDniModEmp.getText()));
-        if (emp != null) {
-            Empleado emp1 = new Empleado();
-            emp1.setIdEmpleado(emp.getIdEmpleado());
-            emp1.setApellido(jTFApellidoModEmp.getText());
-            emp1.setNombre(jTFNombreEmpleadoModEmp.getText());
-            emp1.setDni(Integer.parseInt(jTFDniModEmp.getText()));
-            emp1.setCargo(jCBCargoModifEmp.getSelectedItem() + "");
-            emp1.setUsuario(jTFUsuarioModEmp.getText());
-            emp1.setContraenia(jTFContraseñaModEmp.getText());
-            ed.modificarEmpleadoPorId(emp1);
-        } else {
-            JOptionPane.showMessageDialog(null, "No se pudo modificar el empleado");
+        try {
+            Empleado emp = ed.buscarEmpleadoPorDni(Integer.parseInt(jTFDniModEmp.getText()));
+            if (emp != null) {
+                int opcion = JOptionPane.showConfirmDialog(this, "¿Seguro, desea Modificar datos del Empleado?", "Seleccione una opcion", JOptionPane.YES_NO_OPTION);
+                switch (opcion) {
+                    case 0:
+                        Empleado emp1 = new Empleado();
+                        emp1.setIdEmpleado(emp.getIdEmpleado());
+                        emp1.setApellido(jTFApellidoModEmp.getText());
+                        emp1.setNombre(jTFNombreEmpleadoModEmp.getText());
+                        emp1.setDni(Integer.parseInt(jTFDniModEmp.getText()));
+                        emp1.setCargo(jCBCargoModifEmp.getSelectedItem() + "");
+                        emp1.setUsuario(jTFUsuarioModEmp.getText());
+                        emp1.setContraenia(jTFContraseñaModEmp.getText());
+                        emp1.setEstado(true);
+                        ed.modificarEmpleadoPorId(emp1);
+                        jCBModificarEmpleado.removeAllItems();
+                        jCBCargoModifEmp.removeAllItems();
+                        break;
+                    case 1:
+                        break;
+                }
+            } else {
+                JOptionPane.showMessageDialog(null, "No se pudo modificar el empleado");
+            }
+            borrarCamposModEmple();
+             llenarComboEmpleado();
+             llenarComboCargo();
+        } catch (NullPointerException ex) {
         }
     }//GEN-LAST:event_jLBtnModificarModEmpMouseClicked
 
@@ -3998,6 +4011,21 @@ public class Menu extends javax.swing.JFrame {
     }//GEN-LAST:event_jLBtnModificarModEmpMouseExited
 
     private void jLBtnEliminarEmpleadoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLBtnEliminarEmpleadoMouseClicked
+        try {
+            Empleado emp = ed.buscarEmpleadoPorDni(Integer.parseInt(jTFDniElimEmp.getText()));
+            if (emp != null) {
+                int opcion = JOptionPane.showConfirmDialog(this, "¿Seguro, desea Eliminar al Empleado?", "Seleccione una opcion", JOptionPane.YES_NO_OPTION);
+                switch (opcion) {
+                    case 0:
+                        ed.eliminarEmpleadoPorId(emp.getIdEmpleado());
+                        jCBEliminarEmpleado.removeItemAt(jCBEliminarEmpleado.getSelectedIndex());
+                        break;
+                    case 1:
+                        break;
+                }
+            }
+        } catch (NullPointerException ex) {
+        }
         borrarCamposElimEmpl();
     }//GEN-LAST:event_jLBtnEliminarEmpleadoMouseClicked
 
@@ -4120,8 +4148,22 @@ public class Menu extends javax.swing.JFrame {
     }//GEN-LAST:event_jlPapeleraMenuMouseExited
 
     private void jlPapeleraMenuMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jlPapeleraMenuMouseClicked
-        jtpEscritorio.setSelectedIndex(21);
+        jtpEscritorio.setSelectedIndex(20);
     }//GEN-LAST:event_jlPapeleraMenuMouseClicked
+
+    private void jCBEliminarEmpleadoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jCBEliminarEmpleadoActionPerformed
+        try {
+            Empleado emp = (Empleado) jCBEliminarEmpleado.getSelectedItem();
+            jTFApellidoElimEmp.setText(emp.getApellido());
+            jTFNombreEmpleadoElimEmp.setText(emp.getNombre());
+            jTFDniElimEmp.setText(emp.getDni() + "");
+            jTFUsuarioElimEmp.setText(emp.getUsuario());
+            jTFContraseñaElimEmp.setText(emp.getContraenia());
+            jCBCargoElimEmp.removeAllItems();
+            jCBCargoElimEmp.addItem(emp.getCargo());
+        } catch (NullPointerException ex) {
+        }
+    }//GEN-LAST:event_jCBEliminarEmpleadoActionPerformed
 
     /**
      * @param args the command line arguments
