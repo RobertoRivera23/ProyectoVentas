@@ -46,7 +46,7 @@ public class Menu extends javax.swing.JFrame {
     public DefaultTableModel Modelo3;
     public DefaultTableModel Modelo4;
 //Modelos tablas de Papelera
-    public DefaultTableModel modeloP = new DefaultTableModel(null, new String[]{
+    public DefaultTableModel ModeloP = new DefaultTableModel(null, new String[]{
         "ID", "Nombre", "Descripcion", "Precio Actual", "Stock"
     }
     ) {
@@ -63,7 +63,7 @@ public class Menu extends javax.swing.JFrame {
         }
     };
 
-    public DefaultTableModel modeloV = new DefaultTableModel(null, new String[]{
+    public DefaultTableModel ModeloV = new DefaultTableModel(null, new String[]{
         "ID", "Telefono Cliente", "Datos Empleado", "Fecha de Venta"
     }
     ) {
@@ -80,7 +80,7 @@ public class Menu extends javax.swing.JFrame {
         }
     };
 
-    public DefaultTableModel modeloC = new DefaultTableModel(null, new String[]{
+    public DefaultTableModel ModeloC = new DefaultTableModel(null, new String[]{
         "ID", "Apellido", "Nombre", "Domicilio", "Telefono"
     }
     ) {
@@ -97,7 +97,7 @@ public class Menu extends javax.swing.JFrame {
         }
     };
 
-    public DefaultTableModel modeloE = new DefaultTableModel(null, new String[]{
+    public DefaultTableModel ModeloE = new DefaultTableModel(null, new String[]{
         "ID", "Apellido", "Nombre", "DNI", "Cargo", "Usuario", "Contraseña"
     }
     ) {
@@ -163,7 +163,7 @@ public class Menu extends javax.swing.JFrame {
         jlCerrarSesion = new javax.swing.JLabel();
         jlInicio = new javax.swing.JLabel();
         jLEmpleados = new javax.swing.JLabel();
-        jLabel2 = new javax.swing.JLabel();
+        jlPapeleraMenu = new javax.swing.JLabel();
         jtpEscritorio = new javax.swing.JTabbedPane();
         jtpInicio = new javax.swing.JPanel();
         jlIconPro = new javax.swing.JLabel();
@@ -718,17 +718,28 @@ public class Menu extends javax.swing.JFrame {
         });
         jPanelOpciones.add(jLEmpleados, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 180, 200, 40));
 
-        jLabel2.setBackground(new java.awt.Color(51, 51, 76));
-        jLabel2.setFont(new java.awt.Font("Corbel", 1, 14)); // NOI18N
-        jLabel2.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Image/reciclar.png"))); // NOI18N
-        jLabel2.setText("Papelera");
-        jLabel2.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 25, 1, 1));
-        jLabel2.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
-        jLabel2.setIconTextGap(15);
-        jLabel2.setOpaque(true);
-        jLabel2.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
-        jPanelOpciones.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 220, 200, 40));
+        jlPapeleraMenu.setBackground(new java.awt.Color(51, 51, 76));
+        jlPapeleraMenu.setFont(new java.awt.Font("Corbel", 1, 14)); // NOI18N
+        jlPapeleraMenu.setForeground(new java.awt.Color(255, 255, 255));
+        jlPapeleraMenu.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Image/reciclar.png"))); // NOI18N
+        jlPapeleraMenu.setText("Papelera");
+        jlPapeleraMenu.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 25, 1, 1));
+        jlPapeleraMenu.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
+        jlPapeleraMenu.setIconTextGap(15);
+        jlPapeleraMenu.setOpaque(true);
+        jlPapeleraMenu.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
+        jlPapeleraMenu.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jlPapeleraMenuMouseClicked(evt);
+            }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                jlPapeleraMenuMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                jlPapeleraMenuMouseExited(evt);
+            }
+        });
+        jPanelOpciones.add(jlPapeleraMenu, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 220, 200, 40));
 
         BackGround.add(jPanelOpciones, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 83, 200, 420));
 
@@ -3996,8 +4007,11 @@ public class Menu extends javax.swing.JFrame {
 
     private void jlVentaPapeleraMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jlVentaPapeleraMouseClicked
         for (Venta ven : vd.listaVentaBaja()) {
-            Modelo.addRow(new Object[]{ven.getIdVenta(), ven.getFechaVenta(), ven.getEmpleado(), ven.getCliente()});
-            jTablePapelera.setModel(Modelo);
+            ModeloV.addRow(new Object[]{ven.getIdVenta(), ven.getCliente().getTelefono(),
+                ven.getEmpleado().getApellido() + " " + ven.getEmpleado().getNombre(),
+                ven.getFechaVenta()
+            });
+            jTablePapelera.setModel(ModeloV);
         }
     }//GEN-LAST:event_jlVentaPapeleraMouseClicked
 
@@ -4011,9 +4025,9 @@ public class Menu extends javax.swing.JFrame {
 
     private void jlClienteMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jlClienteMouseClicked
         for (Cliente cli : cD.listarClientesBaja()) {
-            Modelo.addRow(new Object[]{cli.getIdCliente(), cli.getNombre(), cli.getApellido(),
-                cli.getTelefono(), cli.getDomicilio()});
-            jTablePapelera.setModel(Modelo);
+            ModeloC.addRow(new Object[]{cli.getIdCliente(), cli.getApellido(),
+                cli.getNombre(), cli.getDomicilio(), cli.getTelefono()});
+            jTablePapelera.setModel(ModeloC);
         }
     }//GEN-LAST:event_jlClienteMouseClicked
 
@@ -4027,9 +4041,9 @@ public class Menu extends javax.swing.JFrame {
 
     private void jlProductoPapeleraMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jlProductoPapeleraMouseClicked
         for (Producto pro : pd.listarProductoBaja()) {
-            Modelo.addRow(new Object[]{pro.getIdProducto(), pro.getNombreProducto(),
+            ModeloP.addRow(new Object[]{pro.getIdProducto(), pro.getNombreProducto(),
                 pro.getDescripcion(), pro.getPrecioActual(), pro.getStock()});
-            jTablePapelera.setModel(Modelo);
+            jTablePapelera.setModel(ModeloP);
         }
     }//GEN-LAST:event_jlProductoPapeleraMouseClicked
 
@@ -4043,9 +4057,9 @@ public class Menu extends javax.swing.JFrame {
 
     private void jlEmpleadoPapeleraMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jlEmpleadoPapeleraMouseClicked
         for (Empleado emp : ed.listarEmpleadoBaja()) {
-            Modelo.addRow(new Object[]{emp.getIdEmpleado(), emp.getUsuario(), emp.getNombre(),
-                emp.getApellido(), emp.getCargo()});
-            jTablePapelera.setModel(Modelo);
+            ModeloE.addRow(new Object[]{emp.getIdEmpleado(), emp.getApellido(), emp.getNombre(),
+                emp.getDni(), emp.getCargo(), emp.getUsuario(), emp.getContraenia()});
+            jTablePapelera.setModel(ModeloE);
         }
     }//GEN-LAST:event_jlEmpleadoPapeleraMouseClicked
 
@@ -4080,6 +4094,18 @@ public class Menu extends javax.swing.JFrame {
     private void jlRestaurarPapeleraMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jlRestaurarPapeleraMouseExited
         jlRestaurarPapelera.setBackground(verdeBase);
     }//GEN-LAST:event_jlRestaurarPapeleraMouseExited
+
+    private void jlPapeleraMenuMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jlPapeleraMenuMouseEntered
+        jlPapeleraMenu.setBackground(grisClaro);
+    }//GEN-LAST:event_jlPapeleraMenuMouseEntered
+
+    private void jlPapeleraMenuMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jlPapeleraMenuMouseExited
+        jlPapeleraMenu.setBackground(grisBase);
+    }//GEN-LAST:event_jlPapeleraMenuMouseExited
+
+    private void jlPapeleraMenuMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jlPapeleraMenuMouseClicked
+        jtpEscritorio.setSelectedIndex(21);
+    }//GEN-LAST:event_jlPapeleraMenuMouseClicked
 
     /**
      * @param args the command line arguments
@@ -4198,7 +4224,6 @@ public class Menu extends javax.swing.JFrame {
     private javax.swing.JLabel jLUsuarioElimEmp;
     private javax.swing.JLabel jLUsuarioModEmp;
     private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel2;
     private javax.swing.JPanel jPGestrionEmpleados;
     private javax.swing.JPanel jPanelCabecera;
     private javax.swing.JPanel jPanelOpciones;
@@ -4364,6 +4389,7 @@ public class Menu extends javax.swing.JFrame {
     private javax.swing.JLabel jlNombreProEliminar;
     private javax.swing.JLabel jlNombreUsuario;
     private javax.swing.JLabel jlPapelera;
+    private javax.swing.JLabel jlPapeleraMenu;
     private javax.swing.JLabel jlPrecioVenta;
     private javax.swing.JLabel jlProIn;
     private javax.swing.JLabel jlProductoPapelera;
