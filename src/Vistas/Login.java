@@ -265,7 +265,7 @@ public class Login extends javax.swing.JFrame {
     private void jLBtnIniciarSesionMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLBtnIniciarSesionMouseClicked
         int cont = 0;
         boolean usuario = false;
-        contadorIntentos = contadorIntentos + 1;
+        
         System.out.println("contInt " + contadorIntentos);
         EmpleadoData eD = new EmpleadoData();
 
