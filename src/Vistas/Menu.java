@@ -3394,6 +3394,9 @@ public class Menu extends javax.swing.JFrame {
 
     private void jlModificarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jlModificarMouseClicked
         jtpEscritorio.setSelectedIndex(7);
+        jcbProductos.removeAllItems();
+        llenarCombo();
+ 
     }//GEN-LAST:event_jlModificarMouseClicked
 
     private void jLBtnModificarModProdMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLBtnModificarModProdMouseEntered
@@ -3527,6 +3530,8 @@ public class Menu extends javax.swing.JFrame {
 
     private void jlEliminarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jlEliminarMouseClicked
         jtpEscritorio.setSelectedIndex(6);
+        jCBBuscarProdElimProd.removeAllItems();
+        llenarCombo();
     }//GEN-LAST:event_jlEliminarMouseClicked
 
     private void jlAgregarClienteMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jlAgregarClienteMouseClicked
@@ -3596,6 +3601,8 @@ public class Menu extends javax.swing.JFrame {
         } else {
             try {
                 Producto producto = pd.buscarProductoPorNombre(jTFNombreProductoAgrProd.getText());
+                System.out.println("---"+ jTFNombreProductoAgrProd.getText() );
+                System.out.println("////"+ producto.toString());
                 if (producto == null) {
                     Producto product = new Producto();
                     product.setNombreProducto(jTFNombreProductoAgrProd.getText());
@@ -3605,7 +3612,7 @@ public class Menu extends javax.swing.JFrame {
                     product.setEstado(true);
                     pd.guardarProducto(product);
                 } else {
-                    JOptionPane.showMessageDialog(this, "Ya hay un producto con ese nombre si quiere modificarlo vaya a la pestaña de modificar producto");
+                    JOptionPane.showMessageDialog(this, "Ya hay un producto con ese nombre, si quiere modificarlo vaya a la pestaña de modificar producto");
                 }
             } catch (NullPointerException ex) {
             }
@@ -3694,6 +3701,7 @@ public class Menu extends javax.swing.JFrame {
                 switch (opcion) {
                     case 0:
                         pd.eliminarProducto(pro.getIdProducto());
+                        jCBBuscarProdElimProd.removeItemAt(jCBBuscarClienElimClien.getSelectedIndex());
                         break;
                     case 1:
                         break;
@@ -3731,22 +3739,30 @@ public class Menu extends javax.swing.JFrame {
             }
         }
         borrarCamposModProd();
+        jcbProductos.removeAllItems();
+        llenarCombo();
     }//GEN-LAST:event_jLBtnModificarModProdMousePressed
 
     private void jcbProductosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jcbProductosActionPerformed
+       try{
         Producto pro = (Producto) jcbProductos.getSelectedItem();
         jTFNombreProdModProd.setText(pro.getNombreProducto());
         jTFDescripcionModProd.setText(pro.getDescripcion());
         jTFPrecioActualModProd.setText(pro.getPrecioActual() + "");
         jTFStockModProd.setText(pro.getStock() + "");
+       } catch(NullPointerException ex) {
+       }
     }//GEN-LAST:event_jcbProductosActionPerformed
 
     private void jCBBuscarProdElimProdActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jCBBuscarProdElimProdActionPerformed
+      try{
         Producto pro = (Producto) jCBBuscarProdElimProd.getSelectedItem();
         jTFNombreProdElimProd.setText(pro.getNombreProducto());
         jTFDescripcionElimProd.setText(pro.getDescripcion());
         jTFPrecioActuaElimProd.setText(pro.getPrecioActual() + "");
         jTFStockElimProd.setText(pro.getStock() + "");
+      } catch( NullPointerException ex){
+      }
     }//GEN-LAST:event_jCBBuscarProdElimProdActionPerformed
 
     private void jLEmpleadosMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLEmpleadosMouseClicked
