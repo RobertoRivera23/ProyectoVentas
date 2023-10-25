@@ -136,8 +136,8 @@ public class Menu extends javax.swing.JFrame {
         llenarComboV();
         llenarComboEmpleado();
         llenarComboCargo();
-//        empleadosVisible(); // PARA MOSTRAR JLEMPLEADOS 
-//        jlNombreUsuario.setText(Login.empleado.getNombre() + " " + Login.empleado.getApellido());
+        empleadosVisible(); // PARA MOSTRAR JLEMPLEADOS 
+        jlNombreUsuario.setText(Login.empleado.getNombre() + " " + Login.empleado.getApellido());
     }
 
     /**
@@ -700,7 +700,7 @@ public class Menu extends javax.swing.JFrame {
         jLEmpleados.setBackground(new java.awt.Color(51, 51, 76));
         jLEmpleados.setFont(new java.awt.Font("Corbel", 1, 14)); // NOI18N
         jLEmpleados.setForeground(new java.awt.Color(255, 255, 255));
-        jLEmpleados.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Image/empleado_icon.png"))); // NOI18N
+        jLEmpleados.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Image/empleado_1.png"))); // NOI18N
         jLEmpleados.setText("Empleados");
         jLEmpleados.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 25, 1, 1));
         jLEmpleados.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
@@ -1488,14 +1488,14 @@ public class Menu extends javax.swing.JFrame {
         jLBtnAgregarProd.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         jLBtnAgregarProd.setOpaque(true);
         jLBtnAgregarProd.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jLBtnAgregarProdMouseClicked(evt);
+            }
             public void mouseEntered(java.awt.event.MouseEvent evt) {
                 jLBtnAgregarProdMouseEntered(evt);
             }
             public void mouseExited(java.awt.event.MouseEvent evt) {
                 jLBtnAgregarProdMouseExited(evt);
-            }
-            public void mousePressed(java.awt.event.MouseEvent evt) {
-                jLBtnAgregarProdMousePressed(evt);
             }
         });
         jtpAgregarPro.add(jLBtnAgregarProd, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 350, 80, 30));
@@ -3646,30 +3646,6 @@ public class Menu extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_jLBtnAgregarClienteMouseClicked
 
-    private void jLBtnAgregarProdMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLBtnAgregarProdMousePressed
-        if (jTFNombreProductoAgrProd.getText().trim().isEmpty() || jTFPrecioActualAgrProd.getText().trim().isEmpty()
-                || jTFDescripcionAgrProd.getText().trim().isEmpty() || jTFStockAgrProd.getText().trim().isEmpty()) {
-            JOptionPane.showMessageDialog(this, "No puede haber campos vacios");
-        } else {
-            try {
-                Producto producto = pd.buscarProductoPorNombre(jTFNombreProductoAgrProd.getText());
-                System.out.println("---" + jTFNombreProductoAgrProd.getText());
-                if (producto != null) {
-                    JOptionPane.showMessageDialog(this, "Ya hay un producto con ese nombre, si quiere modificarlo vaya a la pestaña de modificar producto");
-                }
-            } catch (NullPointerException ex) {
-                Producto product = new Producto();
-                product.setNombreProducto(jTFNombreProductoAgrProd.getText());
-                product.setDescripcion(jTFDescripcionAgrProd.getText());
-                product.setPrecioActual(Double.parseDouble(jTFPrecioActualAgrProd.getText()));
-                product.setStock(Integer.parseInt(jTFStockAgrProd.getText()));
-                product.setEstado(true);
-                pd.guardarProducto(product);
-            }
-        }
-        borrarCamposAgrProd();
-    }//GEN-LAST:event_jLBtnAgregarProdMousePressed
-
     private void jcbClienteModifCliActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jcbClienteModifCliActionPerformed
         try {
             Cliente cli = (Cliente) jcbClienteModifCli.getSelectedItem();
@@ -4192,7 +4168,7 @@ public class Menu extends javax.swing.JFrame {
                 DetalleVenta detven = dvd.buscarDetalleProVenta(id);
                 vd.eliminarVentaIdBD(id);
                 dvd.eliminarDetalleVentaPorIdBD(detven.getIdDetalleVenta());
-                ModeloV.removeRow(fila); 
+                ModeloV.removeRow(fila);
             }
         } catch (ArrayIndexOutOfBoundsException ex) {
             JOptionPane.showMessageDialog(this, "Debe seleccionar una fila");
@@ -4353,6 +4329,30 @@ public class Menu extends javax.swing.JFrame {
         jlIconBuscarVenta.setBackground(Color.white);
         jlIconBuscarVenta.setIcon(new ImageIcon(getClass().getResource("/Image/busqueda - gris.png")));
     }//GEN-LAST:event_jlIconBuscarVentaMouseExited
+
+    private void jLBtnAgregarProdMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLBtnAgregarProdMouseClicked
+        if (jTFNombreProductoAgrProd.getText().trim().isEmpty() || jTFPrecioActualAgrProd.getText().trim().isEmpty()
+                || jTFDescripcionAgrProd.getText().trim().isEmpty() || jTFStockAgrProd.getText().trim().isEmpty()) {
+            JOptionPane.showMessageDialog(this, "No puede haber campos vacios");
+        } else {
+            try {
+                Producto producto = pd.buscarProductoPorNombre(jTFNombreProductoAgrProd.getText());
+                if (producto != null) {
+                    JOptionPane.showMessageDialog(this, "Ya hay un producto con ese nombre, si quiere modificarlo vaya a la pestaña de modificar producto");
+                } else {
+                    producto = new Producto();
+                    producto.setNombreProducto(jTFNombreProductoAgrProd.getText());
+                    producto.setDescripcion(jTFDescripcionAgrProd.getText());
+                    producto.setPrecioActual(Double.parseDouble(jTFPrecioActualAgrProd.getText()));
+                    producto.setStock(Integer.parseInt(jTFStockAgrProd.getText()));
+                    producto.setEstado(true);
+                    pd.guardarProducto(producto);
+                    borrarCamposAgrProd();
+                }
+            } catch (NullPointerException ex) {
+            }
+        }
+    }//GEN-LAST:event_jLBtnAgregarProdMouseClicked
 
     /**
      * @param args the command line arguments
@@ -4882,13 +4882,16 @@ public class Menu extends javax.swing.JFrame {
         }
     }
 
-//    private void empleadosVisible() {         // VALIDA CARGO DEL QUE HIZO LOGIN!!!!!!
-//        if (Login.empleado.getCargo().equalsIgnoreCase("supervisor")) {
-//            jLEmpleados.setVisible(true);
-//        } else {
-//            jLEmpleados.setVisible(false);
-//        }
-//    }
+    private void empleadosVisible() {         // VALIDA CARGO DEL QUE HIZO LOGIN!!!!!!
+        if (Login.empleado.getCargo().equalsIgnoreCase("supervisor")) {
+            jLEmpleados.setVisible(true);
+            jlPapeleraMenu.setVisible(true);
+        } else {
+            jLEmpleados.setVisible(false);
+            jlPapeleraMenu.setVisible(false);
+        }
+    }
+
     private void llenarTablaDetVen() {
         borrarFilaDV();
         for (DetalleVenta dv : dvd.listaDV()) {

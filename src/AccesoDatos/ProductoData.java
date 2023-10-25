@@ -71,15 +71,13 @@ public class ProductoData {
     }
 
     public Producto buscarProductoPorNombre(String nombre) {
-        int cont = 0;
         String sql = "SELECT * FROM producto WHERE nombreProducto = ? AND estado = 1";
         PreparedStatement ps;
         try {
             ps = con.prepareStatement(sql);
             ps.setString(1, nombre);
             ResultSet rs = ps.executeQuery();
-            while (rs.next()) {
-                cont++;
+            if (rs.next()) {
                 producto = new Producto();
                 producto.setIdProducto(rs.getInt("idProducto"));
                 producto.setNombreProducto(rs.getString("nombreProducto"));
@@ -87,9 +85,7 @@ public class ProductoData {
                 producto.setPrecioActual(rs.getDouble("precioActual"));
                 producto.setStock(rs.getInt("stock"));
                 producto.setEstado(true);
-                System.out.println("producto de lista: " + producto.toString());
-            }
-            if (cont == 0) {
+            } else {
                 JOptionPane.showMessageDialog(null, "No existe el producto");
                 producto = null;
             }
