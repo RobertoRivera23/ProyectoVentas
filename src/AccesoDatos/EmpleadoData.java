@@ -43,7 +43,7 @@ public class EmpleadoData {
             }
             ps.close();
         } catch (SQLException ex) {
-            JOptionPane.showMessageDialog(null, "Error al conectar a la tabla Empleado" + ex.getMessage());
+            JOptionPane.showMessageDialog(null, "Error al conectar a la tabla Empleado " + ex.getMessage());
         }
     }
 
@@ -69,7 +69,7 @@ public class EmpleadoData {
             }
             ps.close();
         } catch (SQLException ex) {
-            JOptionPane.showMessageDialog(null, "Error al conectar a la tabla Empleado" + ex.getMessage());
+            JOptionPane.showMessageDialog(null, "Error al conectar a la tabla Empleado " + ex.getMessage());
         }
         return empleado;
     }
@@ -94,7 +94,7 @@ public class EmpleadoData {
             }
             ps.close();
         } catch (SQLException ex) {
-            JOptionPane.showMessageDialog(null, "Error al conectar a la tabla Empleado" + ex.getMessage());
+            JOptionPane.showMessageDialog(null, "Error al conectar a la tabla Empleado " + ex.getMessage());
         }
         return empleado;
     }
@@ -120,7 +120,7 @@ public class EmpleadoData {
             }
             ps.close();
         } catch (SQLException ex) {
-            JOptionPane.showMessageDialog(null, "Error al conectar a la tabla Empleado" + ex.getMessage());
+            JOptionPane.showMessageDialog(null, "Error al conectar a la tabla Empleado " + ex.getMessage());
         }
         return empleados;
     }
@@ -146,12 +146,12 @@ public class EmpleadoData {
             }
             ps.close();
         } catch (SQLException ex) {
-            JOptionPane.showMessageDialog(null, "Error al conectar a la tabla Empleado" + ex.getMessage());
+            JOptionPane.showMessageDialog(null, "Error al conectar a la tabla Empleado " + ex.getMessage());
         }
         return empleados;
     }
 
-    public void modificarEmpleadoPorId(Empleado empleado1) {
+    public void modificarEmpleado(Empleado empleado1) {
         String sql = "UPDATE  empleado SET apellido = ?, nombre = ?, dni = ?, cargo = ?, usuario = ?, contraseña = ?, estado = ? "
                 + " WHERE idempleado = ? ";
         try {
@@ -183,11 +183,11 @@ public class EmpleadoData {
             ps.setInt(1, id);
             int rs = ps.executeUpdate();
             if (rs == 1) {
-                JOptionPane.showMessageDialog(null, "Se elimino con exito al empleado.");
+                JOptionPane.showMessageDialog(null, "Se elimino con exito al empleado");
             }
             ps.close();
         } catch (SQLException ex) {
-            JOptionPane.showMessageDialog(null, " Error al acceder a la tabla Empleado. " + ex.getMessage());
+            JOptionPane.showMessageDialog(null, " Error al acceder a la tabla Empleado " + ex.getMessage());
         }
     }
         //Elimina de la BD
@@ -202,7 +202,7 @@ public class EmpleadoData {
             }
             ps.close();
         } catch (SQLException ex) {
-            JOptionPane.showMessageDialog(null, " Error al acceder a la tabla Empleado. " + ex.getMessage());
+            JOptionPane.showMessageDialog(null, " Error al acceder a la tabla Empleado " + ex.getMessage());
         }
     }
     
@@ -228,7 +228,7 @@ public class EmpleadoData {
             }
             ps.close();
         } catch (SQLException ex) {
-            JOptionPane.showMessageDialog(null, " Error al acceder a la tabla Empleado. " + ex.getMessage());
+            JOptionPane.showMessageDialog(null, " Error al acceder a la tabla Empleado " + ex.getMessage());
         }
         return emp;
     }

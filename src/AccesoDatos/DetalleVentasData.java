@@ -14,8 +14,6 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 
 /**
@@ -71,7 +69,7 @@ public class DetalleVentasData {
             }
             ps.close();
         } catch (SQLException ex) {
-            JOptionPane.showMessageDialog(null, "Error al conectar a la tabla Detalle de  Venta" + ex.getMessage());
+            JOptionPane.showMessageDialog(null, "Error al conectar a la tabla Detalle de  Venta " + ex.getMessage());
         }
     }
 
@@ -98,7 +96,7 @@ public class DetalleVentasData {
             }
             ps.close();
         } catch (SQLException ex) {
-            JOptionPane.showMessageDialog(null, "Error al conectar con la tabla detalleVenta" + ex.getMessage());
+            JOptionPane.showMessageDialog(null, "Error al conectar con la tabla detalleVenta " + ex.getMessage());
         }
         return detalleV;
     }
@@ -122,7 +120,7 @@ public class DetalleVentasData {
             }
 
         } catch (SQLException ex) {
-            JOptionPane.showMessageDialog(null, "Error al conectar con la tabla detalleVenta" + ex.getMessage());
+            JOptionPane.showMessageDialog(null, "Error al conectar con la tabla detalleVenta " + ex.getMessage());
         }
     }
 
@@ -152,45 +150,11 @@ public class DetalleVentasData {
             }
             ps.close();
         } catch (SQLException ex) {
-            JOptionPane.showMessageDialog(null, "Error al conectar con la tabla detalleVenta" + ex.getMessage());
+            JOptionPane.showMessageDialog(null, "Error al conectar con la tabla detalleVenta " + ex.getMessage());
         }
         return listaDetalleVenta;
     }
 
-//    public List<DetalleVenta> listarDetalleVentaPorCliente(String numeroTel) {
-//        List<DetalleVenta> listaDetalleVenta = new ArrayList<>();
-//        String sql = "SELECT idDetalleVenta, nombreProducto, telefono, fechaVenta, cantidad, precioVenta"
-//                + "  FROM detalledeventa, producto, venta  "
-//                + "JOIN cliente ON (venta.idCliente=cliente.idCliente)"
-//                + "WHERE  cliente.telefono= ? AND detalledeventa.estado = 1 AND venta.estado = 1 AND producto.estado = 1 "
-//                + "AND cliente.estado = 1  ORDER BY idDetalleVenta ASC ";
-//        try {
-//            PreparedStatement ps = con.prepareStatement(sql);
-//            ps.setString(1, numeroTel);
-//            ResultSet rs = ps.executeQuery();
-//            boolean cont = false;
-//            while (rs.next()) { //cantidad, idVenta, precioVenta, idProducto, estado
-//                DetalleVenta detalleV = new DetalleVenta();
-//                VentasData ventasD = new VentasData();
-//                ProductoData productoD = new ProductoData();
-//                detalleV.setIdDetalleVenta(rs.getInt("idDetalleVenta"));
-//                detalleV.setCantidad(rs.getInt("cantidad"));
-//                detalleV.setVenta(ventasD.buscarVentaId(rs.getInt("idVenta")));
-//                detalleV.setPrecioVenta(rs.getDouble("precioVenta"));
-//                detalleV.setProducto(productoD.buscarProducto(rs.getInt("idProducto")));
-//                detalleV.setEstado(rs.getBoolean("estado"));
-//                cont = true;
-//                listaDetalleVenta.add(detalleV);
-//                if (!cont) {
-//                    JOptionPane.showMessageDialog(null, "No hay Detalle de Ventas para ese Numero de Telefono");
-//                }
-//            }
-//            ps.close();
-//        } catch (SQLException ex) {
-//            JOptionPane.showMessageDialog(null, "Error al conectar con la tabla detalleVenta" + ex.getMessage());
-//        }
-//        return listaDetalleVenta;
-//    }
     //Eliminado Logico
     public void eliminarDetalleVentaPorId(int IdDetalleVenta) {
         String sql = "UPDATE detalledeVenta SET estado = 0  WHERE idDetalleVenta = ? ";
@@ -205,9 +169,10 @@ public class DetalleVentasData {
             }
             ps.close();
         } catch (SQLException ex) {
-            JOptionPane.showMessageDialog(null, "Error al conectar con la tabla detalleVenta" + ex.getMessage());
+            JOptionPane.showMessageDialog(null, "Error al conectar con la tabla detalleVenta " + ex.getMessage());
         }
     }
+
     //ELIMINA DE BD
     public void eliminarDetalleVentaPorIdBD(int IdDetalleVenta) {
         String sql = "DELETE FROM detalledeVenta WHERE idDetalleVenta = ? AND estado = 0";
@@ -222,7 +187,7 @@ public class DetalleVentasData {
             }
             ps.close();
         } catch (SQLException ex) {
-            JOptionPane.showMessageDialog(null, "Error al conectar con la tabla detalleVenta" + ex.getMessage());
+            JOptionPane.showMessageDialog(null, "Error al conectar con la tabla detalleVenta " + ex.getMessage());
         }
     }
 
@@ -256,7 +221,14 @@ public class DetalleVentasData {
         List<DetalleVenta> lista = new ArrayList<>();
         VentasData vd = new VentasData();
         ProductoData pd = new ProductoData();
-        String sql = "SELECT * FROM detalledeventa WHERE estado = 1";
+        String sql = "SELECT detalledeventa.idDetalleVenta, detalledeventa.cantidad, "
+                + "detalledeventa.idVenta, detalledeventa.precioVenta, detalledeventa.idProducto, "
+                + "detalledeventa.estado FROM detalledeventa JOIN venta ON (detalledeventa.idVenta = venta.idVenta) "
+                + "JOIN empleado ON (venta.idempleado = empleado.idempleado) JOIN cliente "
+                + "ON (venta.idCliente = cliente.idCliente) JOIN producto "
+                + "ON (detalledeventa.idProducto = producto.idProducto) "
+                + "WHERE detalledeventa.estado = 1 AND venta.estado = 1 AND empleado.estado = 1 "
+                + "AND producto.estado = 1 AND cliente.estado = 1";
         try {
             PreparedStatement ps = con.prepareStatement(sql);
             ResultSet rs = ps.executeQuery();

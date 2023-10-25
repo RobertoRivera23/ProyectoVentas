@@ -36,11 +36,11 @@ public class ClienteData {
             ResultSet rs = ps.getGeneratedKeys();
             if (rs.next()) {
                 cliente.setIdCliente(rs.getInt(1));
-                JOptionPane.showMessageDialog(null, "Se ha añadido al cliente con exito.");
+                JOptionPane.showMessageDialog(null, "Se ha añadido al cliente con exito");
             }
             ps.close();
         } catch (SQLException ex) {
-            JOptionPane.showMessageDialog(null, "Error al acceder a la tabla Cliente. " + ex.getMessage());
+            JOptionPane.showMessageDialog(null, "Error al acceder a la tabla Cliente " + ex.getMessage());
         }
     }
 
@@ -60,11 +60,11 @@ public class ClienteData {
                 cliente.setTelefono(rs.getString("telefono"));
                 cliente.setEstado(rs.getBoolean("estado")); //  no deberiamos setear el estado al crearlo? aca estamos buscando uno que ya esta
             } else {
-                JOptionPane.showMessageDialog(null, "No existe el Cliente.");
+                JOptionPane.showMessageDialog(null, "No existe el Cliente");
             }
             ps.close();
         } catch (SQLException ex) {
-            JOptionPane.showMessageDialog(null, "Error al acceder a la tabla Cliente. " + ex.getMessage());
+            JOptionPane.showMessageDialog(null, "Error al acceder a la tabla Cliente " + ex.getMessage());
         }
         return cliente;
     }
@@ -88,7 +88,7 @@ public class ClienteData {
             }
             ps.close();
         } catch (SQLException ex) {
-            JOptionPane.showMessageDialog(null, "Error al acceder a la tabla Cliente. " + ex.getMessage());
+            JOptionPane.showMessageDialog(null, "Error al acceder a la tabla Cliente " + ex.getMessage());
         }
     }
     // Elimina de modo Logico
@@ -139,7 +139,7 @@ public class ClienteData {
             }
             ps.close();
         } catch (SQLException ex) {
-            JOptionPane.showMessageDialog(null, "Error al acceder a la table Cliente." + ex.getMessage());
+            JOptionPane.showMessageDialog(null, "Error al acceder a la table Cliente " + ex.getMessage());
         }
         return listaC;
     }
@@ -160,12 +160,12 @@ public class ClienteData {
                 cliente.setTelefono(rs.getString("telefono"));
                 cliente.setEstado(rs.getBoolean("estado"));
             } else {
-                JOptionPane.showMessageDialog(null, "No existe el Cliente.");
+                JOptionPane.showMessageDialog(null, "No existe el Cliente");
                 cliente = null;
             }
             ps.close();
         } catch (SQLException ex) {
-            JOptionPane.showMessageDialog(null, "Error al acceder a la tabla Cliente. " + ex.getMessage());
+            JOptionPane.showMessageDialog(null, "Error al acceder a la tabla Cliente " + ex.getMessage());
         }
         return cliente;
     }
@@ -187,7 +187,7 @@ public class ClienteData {
             }
             ps.close();
         } catch (SQLException ex) {
-            JOptionPane.showMessageDialog(null, "Error al acceder a la table Cliente." + ex.getMessage());
+            JOptionPane.showMessageDialog(null, "Error al acceder a la table Cliente " + ex.getMessage());
         }
         return listaC;
     }

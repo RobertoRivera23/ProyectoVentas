@@ -332,8 +332,7 @@ public class Login extends javax.swing.JFrame {
                     }
                 }
                 dispose();
-            }
-//            
+            }       
         }
     }//GEN-LAST:event_jLBtnIniciarSesionMouseClicked
 

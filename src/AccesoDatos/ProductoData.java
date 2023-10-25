@@ -59,13 +59,13 @@ public class ProductoData {
                 producto.setDescripcion(rs.getString("descripcion"));
                 producto.setPrecioActual(rs.getDouble("precioActual"));
                 producto.setStock(rs.getInt("stock"));
-                producto.setEstado(true);
+                producto.setEstado(rs.getBoolean("estado"));
             } else {
                 JOptionPane.showMessageDialog(null, "No existe el producto");
             }
             ps.close();
         } catch (SQLException ex) {
-            JOptionPane.showMessageDialog(null, "Error al acceder a la tabla Producto" + ex.getMessage());
+            JOptionPane.showMessageDialog(null, "Error al acceder a la tabla Producto " + ex.getMessage());
         }
         return producto;
     }
@@ -80,16 +80,16 @@ public class ProductoData {
             ResultSet rs = ps.executeQuery();
             while (rs.next()) {
                 cont++;
-                producto = new Producto(); 
+                producto = new Producto();
                 producto.setIdProducto(rs.getInt("idProducto"));
                 producto.setNombreProducto(rs.getString("nombreProducto"));
                 producto.setDescripcion(rs.getString("descripcion"));
                 producto.setPrecioActual(rs.getDouble("precioActual"));
                 producto.setStock(rs.getInt("stock"));
                 producto.setEstado(true);
-                System.out.println("producto de lista: "+producto.toString());
+                System.out.println("producto de lista: " + producto.toString());
             }
-            if(cont == 0){
+            if (cont == 0) {
                 JOptionPane.showMessageDialog(null, "No existe el producto");
                 producto = null;
             }
@@ -122,6 +122,7 @@ public class ProductoData {
             JOptionPane.showMessageDialog(null, "Error al acceder a la tabla Producto" + ex.getMessage());
         }
     }
+
     // Eliminado Logico
     public void eliminarProducto(int id) {
         try {
@@ -137,7 +138,7 @@ public class ProductoData {
             JOptionPane.showMessageDialog(null, "Error al acceder a la tabla Producto" + ex.getMessage());
         }
     }
-    
+
 // Eliminado DB
     public void eliminarProductoDB(int id) {
         try {
@@ -153,7 +154,7 @@ public class ProductoData {
             JOptionPane.showMessageDialog(null, "Error al acceder a la tabla Producto" + ex.getMessage());
         }
     }
-    
+
     public List<Producto> listarProducto() {
         List<Producto> productos = new ArrayList<>();
         try {
@@ -176,7 +177,7 @@ public class ProductoData {
         }
         return productos;
     }
-    
+
     public List<Producto> listarProductoBaja() {
         List<Producto> productos = new ArrayList<>();
         try {

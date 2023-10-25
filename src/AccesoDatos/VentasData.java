@@ -8,8 +8,6 @@ import java.sql.*;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 
 public class VentasData {
@@ -73,7 +71,7 @@ public class VentasData {
             }
             ps.close();
         } catch (SQLException ex) {
-            JOptionPane.showMessageDialog(null, "Error al acceder a la tabla Ventas " + ex);
+            JOptionPane.showMessageDialog(null, "Error al acceder a la tabla Ventas " + ex.getMessage());
         }
     }
 
@@ -103,7 +101,7 @@ public class VentasData {
             }
             ps.close();
         } catch (SQLException ex) {
-            JOptionPane.showMessageDialog(null, "Error al acceder a la tabla venta");
+            JOptionPane.showMessageDialog(null, "Error al acceder a la tabla venta " + ex.getMessage());
         }
         return listaventas;
     }
@@ -133,7 +131,7 @@ public class VentasData {
             }
             ps.close();
         } catch (SQLException ex) {
-            JOptionPane.showMessageDialog(null, "Error al acceder a la tabla venta");
+            JOptionPane.showMessageDialog(null, "Error al acceder a la tabla venta " + ex.getMessage());
         }
         return ventas;
     }
@@ -166,7 +164,7 @@ public class VentasData {
             }
             ps.close();
         } catch (SQLException ex) {
-            JOptionPane.showMessageDialog(null, "Error al acceder a la tabla cliente" + ex.getMessage());
+            JOptionPane.showMessageDialog(null, "Error al acceder a la tabla cliente " + ex.getMessage());
         }
         return clientes;
     }
@@ -205,7 +203,7 @@ public class VentasData {
 
     public Venta buscarVentaId(int idVenta) {
         String sql = "SELECT idCliente, idEmpleado, fechaVenta, estado FROM venta "
-                + "WHERE idVenta = ? AND estado = 1";
+                + "WHERE idVenta = ?";
         ClienteData c1 = new ClienteData();
         EmpleadoData e1 = new EmpleadoData();
         try {
@@ -221,6 +219,8 @@ public class VentasData {
                 venta.setEmpleado(empleado);
                 venta.setFechaVenta(rs.getDate("fechaVenta").toLocalDate());
                 venta.setEstado(rs.getBoolean("estado"));
+            } else if(rs.getBoolean("estado")) {
+                JOptionPane.showMessageDialog(null, "Venta dada de baja");
             } else {
                 JOptionPane.showMessageDialog(null, "No existe la Venta");
             }
@@ -259,8 +259,9 @@ public class VentasData {
         EmpleadoData ed = new EmpleadoData();
         String sql = "SELECT venta.idVenta, venta.idCliente, venta.idEmpleado,"
                 + " venta.fechaVenta, venta.estado FROM venta JOIN empleado "
-                + "ON (venta.idEmpleado = empleado.idEmpleado) "
-                + "WHERE venta.estado = 1 AND empleado.estado = 1";
+                + "ON (venta.idEmpleado = empleado.idEmpleado) JOIN cliente "
+                + "ON (venta.idCliente = cliente.idCliente) "
+                + "WHERE venta.estado = 1 AND empleado.estado = 1 AND cliente.estado = 1";
         try {
             PreparedStatement ps = con.prepareStatement(sql);
             ResultSet rs = ps.executeQuery();
@@ -277,7 +278,7 @@ public class VentasData {
             }
             ps.close();
         } catch (SQLException ex) {
-            JOptionPane.showMessageDialog(null, "Error al acceder a la tabla Venta" + ex.getMessage());
+            JOptionPane.showMessageDialog(null, "Error al acceder a la tabla Venta " + ex.getMessage());
         }
         return listaV;
     }
@@ -296,7 +297,7 @@ public class VentasData {
             }
             ps.close();
         } catch (SQLException ex) {
-            JOptionPane.showMessageDialog(null, "Error al acceder a la tabla Venta" + ex.getMessage());
+            JOptionPane.showMessageDialog(null, "Error al acceder a la tabla Venta " + ex.getMessage());
         }
     }
     // Eliminado BD
@@ -313,7 +314,7 @@ public class VentasData {
             }
             ps.close();
         } catch (SQLException ex) {
-            JOptionPane.showMessageDialog(null, "Error al acceder a la tabla Venta" + ex.getMessage());
+            JOptionPane.showMessageDialog(null, "Error al acceder a la tabla Venta " + ex.getMessage());
         }
     }
     
@@ -338,7 +339,7 @@ public class VentasData {
             }
             ps.close();
         } catch (SQLException ex) {
-            JOptionPane.showMessageDialog(null, "Error al acceder a la tabla Venta" + ex.getMessage());
+            JOptionPane.showMessageDialog(null, "Error al acceder a la tabla Venta " + ex.getMessage());
         }
         return listaV;
     }
