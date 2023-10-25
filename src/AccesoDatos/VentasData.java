@@ -219,7 +219,7 @@ public class VentasData {
                 venta.setEmpleado(empleado);
                 venta.setFechaVenta(rs.getDate("fechaVenta").toLocalDate());
                 venta.setEstado(rs.getBoolean("estado"));
-            } else if(rs.getBoolean("estado")) {
+            } else if (rs.getBoolean("estado")) {
                 JOptionPane.showMessageDialog(null, "Venta dada de baja");
             } else {
                 JOptionPane.showMessageDialog(null, "No existe la Venta");
@@ -260,8 +260,10 @@ public class VentasData {
         String sql = "SELECT venta.idVenta, venta.idCliente, venta.idEmpleado,"
                 + " venta.fechaVenta, venta.estado FROM venta JOIN empleado "
                 + "ON (venta.idEmpleado = empleado.idEmpleado) JOIN cliente "
-                + "ON (venta.idCliente = cliente.idCliente) "
-                + "WHERE venta.estado = 1 AND empleado.estado = 1 AND cliente.estado = 1";
+                + "ON (venta.idCliente = cliente.idCliente) JOIN detalledeventa "
+                + "ON (venta.idVenta = detalledeventa.idVenta) "
+                + "WHERE venta.estado = 1 AND empleado.estado = 1 AND cliente.estado = 1 "
+                + "AND detalledeventa.estado = 1";
         try {
             PreparedStatement ps = con.prepareStatement(sql);
             ResultSet rs = ps.executeQuery();
@@ -282,9 +284,9 @@ public class VentasData {
         }
         return listaV;
     }
-    
+
     // Eliminado Logico
-    public void eliminarVentaId(int idVenta){
+    public void eliminarVentaId(int idVenta) {
         String sql = "UPDATE venta SET estado = 0 WHERE idVenta = ?";
         try {
             PreparedStatement ps = con.prepareStatement(sql);
@@ -300,9 +302,10 @@ public class VentasData {
             JOptionPane.showMessageDialog(null, "Error al acceder a la tabla Venta " + ex.getMessage());
         }
     }
+
     // Eliminado BD
-    public void eliminarVentaIdBD(int idVenta){
-        String sql = "DELETE FROM  venta WHERE idVenta = ? AND estado = 0 ";
+    public void eliminarVentaIdBD(int idVenta) {
+        String sql = "DELETE FROM  venta WHERE idVenta = ? ";
         try {
             PreparedStatement ps = con.prepareStatement(sql);
             ps.setInt(1, idVenta);
@@ -317,7 +320,7 @@ public class VentasData {
             JOptionPane.showMessageDialog(null, "Error al acceder a la tabla Venta " + ex.getMessage());
         }
     }
-    
+
     public List<Venta> listaVentaBaja() {
         List<Venta> listaV = new ArrayList<>();
         ClienteData cd = new ClienteData();

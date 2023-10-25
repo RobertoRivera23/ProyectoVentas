@@ -131,11 +131,11 @@ public class Menu extends javax.swing.JFrame {
         jtListClien.setModel(Modelo1);
         jtListEmpleado.setModel(Modelo2);
         llenarText();
-        llenarCombo();
-        llenarComboCliente();
-        llenarComboV();
-        llenarComboEmpleado();
-        llenarComboCargo();
+//        llenarCombo();
+//        llenarComboCliente();
+//        llenarComboV();
+//        llenarComboEmpleado();
+//        llenarComboCargo();
         empleadosVisible(); // PARA MOSTRAR JLEMPLEADOS 
         jlNombreUsuario.setText(Login.empleado.getNombre() + " " + Login.empleado.getApellido());
     }
@@ -3363,6 +3363,8 @@ public class Menu extends javax.swing.JFrame {
 
     private void EliminarVentaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_EliminarVentaMouseClicked
         jtpEscritorio.setSelectedIndex(15);
+        jcbBuscarVenta.removeAllItems();
+        llenarComboV();
     }//GEN-LAST:event_EliminarVentaMouseClicked
 
     private void EliminarVentaMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_EliminarVentaMouseEntered
@@ -3682,7 +3684,7 @@ public class Menu extends javax.swing.JFrame {
                     }
                 }
             }
-        } catch (Exception e) {
+        } catch (NullPointerException ex) {
         }
     }//GEN-LAST:event_jLBtnModificarModClienMousePressed
 
@@ -3693,22 +3695,46 @@ public class Menu extends javax.swing.JFrame {
             jTFNombreClienElimClien.setText(cli.getNombre());
             jTFDomicilioElimClien.setText(cli.getDomicilio());
             jTFTelefonoElimClien.setText(cli.getTelefono());
-        } catch (Exception e) {
+        } catch (NullPointerException ex) {
         }
     }//GEN-LAST:event_jCBBuscarClienElimClienActionPerformed
 
     private void jLBtnEliminarElimClienMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLBtnEliminarElimClienMouseClicked
         try {
+            int cont = 0;
             Cliente cli = (Cliente) jCBBuscarClienElimClien.getSelectedItem();
             if (jTFApellidoClienElimClien.getText().trim().equals(cli.getApellido()) || jTFNombreClienElimClien.getText().trim().equals(cli.getNombre())
                     || jTFDomicilioElimClien.getText().trim().equals(cli.getDomicilio()) || jTFTelefonoElimClien.getText().trim().equals(cli.getTelefono())) {
-                int opcion = JOptionPane.showConfirmDialog(this, "¿Desea Eliminar los Datos?", "Seleccione una opcion", JOptionPane.YES_NO_OPTION);
-                switch (opcion) {
-                    case 0:
-                        cD.eliminarCliente(cli.getIdCliente());
-                        jCBBuscarClienElimClien.removeItemAt(jCBBuscarClienElimClien.getSelectedIndex());
-                    case 1:
-                        break;
+                for (Venta v : vd.listaVenta()) {
+                    if (cli.getIdCliente() == v.getIdCliente()) {
+                        cont++;
+                    }
+                }
+                if (cont > 0) {
+                    int op = JOptionPane.showConfirmDialog(this, "Este Cliente esta registrado en una o varias ventas, ¿Desea dar de baja esas ventas?", "Seleccione una opcion", JOptionPane.YES_NO_OPTION);
+                    switch (op) {
+                        case 0:
+                            for (DetalleVenta det : dvd.listaDV()) {
+                                if (det.getVenta().getIdCliente() == cli.getIdCliente()) {
+                                    vd.eliminarVentaId(det.getIdVenta());
+                                    dvd.eliminarDetalleVentaPorId(det.getIdDetalleVenta());
+                                }
+                            }
+                            cD.eliminarCliente(cli.getIdCliente());
+                            jCBBuscarClienElimClien.removeItemAt(jCBBuscarClienElimClien.getSelectedIndex());
+                            break;
+                        case 1:
+                            break;
+                    }
+                } else {
+                    int opcion = JOptionPane.showConfirmDialog(this, "¿Desea Eliminar los Datos?", "Seleccione una opcion", JOptionPane.YES_NO_OPTION);
+                    switch (opcion) {
+                        case 0:
+                            cD.eliminarCliente(cli.getIdCliente());
+                            jCBBuscarClienElimClien.removeItemAt(jCBBuscarClienElimClien.getSelectedIndex());
+                        case 1:
+                            break;
+                    }
                 }
             } else {
                 JOptionPane.showMessageDialog(null, "Los datos no coinciden");
@@ -3732,17 +3758,41 @@ public class Menu extends javax.swing.JFrame {
 
     private void jLBtnEliminarElimProdMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLBtnEliminarElimProdMousePressed
         try {
+            int cont = 0;
             Producto pro = pd.buscarProductoPorNombre(jTFNombreProdElimProd.getText().trim());
             if (pro.getNombreProducto().trim().equals(jTFNombreProdElimProd.getText()) && pro.getDescripcion().trim().equals(jTFDescripcionElimProd.getText())
                     && pro.getPrecioActual() == Double.parseDouble(jTFPrecioActuaElimProd.getText()) && pro.getStock() == Integer.parseInt(jTFStockElimProd.getText())) {
-                int opcion = JOptionPane.showConfirmDialog(this, "Esta seguro que desea eliminar el alumno?", "Selecione una opcion", JOptionPane.YES_NO_OPTION);
-                switch (opcion) {
-                    case 0:
-                        pd.eliminarProducto(pro.getIdProducto());
-                        jCBBuscarProdElimProd.removeItemAt(jCBBuscarProdElimProd.getSelectedIndex());
-                        break;
-                    case 1:
-                        break;
+                for (DetalleVenta detv : dvd.listaDV()) {
+                    if (pro.getIdProducto() == detv.getIdProducto()) {
+                        cont++;
+                    }
+                }
+                if (cont > 0) {
+                    int op = JOptionPane.showConfirmDialog(this, "Este producto esta registrado en una o varias ventas, ¿Desea dar de baja esas ventas?", "Selecione una opcion", JOptionPane.YES_NO_OPTION);
+                    switch (op) {
+                        case 0:
+                            for (DetalleVenta det : dvd.listaDV()) {
+                                if (pro.getIdProducto() == det.getIdProducto()) {
+                                    vd.eliminarVentaId(det.getIdVenta());
+                                    dvd.eliminarDetalleVentaPorId(det.getIdDetalleVenta());
+                                }
+                            }
+                            pd.eliminarProducto(pro.getIdProducto());
+                            jCBBuscarProdElimProd.removeItemAt(jCBBuscarProdElimProd.getSelectedIndex());
+                            break;
+                        case 1:
+                            break;
+                    }
+                } else {
+                    int opcion = JOptionPane.showConfirmDialog(this, "Esta seguro que desea eliminar el Producto?", "Selecione una opcion", JOptionPane.YES_NO_OPTION);
+                    switch (opcion) {
+                        case 0:
+                            pd.eliminarProducto(pro.getIdProducto());
+                            jCBBuscarProdElimProd.removeItemAt(jCBBuscarProdElimProd.getSelectedIndex());
+                            break;
+                        case 1:
+                            break;
+                    }
                 }
             } else {
                 JOptionPane.showMessageDialog(null, "Los datos de el producto no coinciden con los de la Base de Datos.");
@@ -3827,6 +3877,8 @@ public class Menu extends javax.swing.JFrame {
                 Cliente cli = cD.buscarClientePorTel(jtfTelCliente.getText());
                 if (can > pro.getStock()) {
                     JOptionPane.showMessageDialog(this, "La cantidad ingresada es superior al stock disponible");
+                } else if (pro.getStock() == 0) {
+                    JOptionPane.showMessageDialog(this, "No hay stock disponible de este producto");
                 } else {
                     if (cli != null) {
                         Empleado emp = ed.buscarPorNombre(jtfNombreEmpVenta.getText());
@@ -3839,6 +3891,7 @@ public class Menu extends javax.swing.JFrame {
                             dvd.guardarDetalleVenta(dv);
                             pro.setStock(pro.getStock() - can);
                             pd.modificarProducto(pro);
+                            borrarCamposAgrVen();
                         }
                     } else {
                         int op = JOptionPane.showConfirmDialog(this, "¿Desea agregar un nuevo cliente?", "Selecione una opcion", JOptionPane.YES_NO_OPTION);
@@ -3856,6 +3909,7 @@ public class Menu extends javax.swing.JFrame {
                                     dvd.guardarDetalleVenta(dv);
                                     pro.setStock(pro.getStock() - can);
                                     pd.modificarProducto(pro);
+                                    borrarCamposAgrVen();
                                 }
                             case 1:
                                 break;
@@ -3942,6 +3996,10 @@ public class Menu extends javax.swing.JFrame {
 
     private void jlModificarEmpleadoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jlModificarEmpleadoMouseClicked
         jtpEscritorio.setSelectedIndex(17);
+        jCBModificarEmpleado.removeAllItems();
+        jCBCargoModifEmp.removeAllItems();
+        llenarComboEmpleado();
+        llenarComboCargo();
     }//GEN-LAST:event_jlModificarEmpleadoMouseClicked
 
     private void jlModificarEmpleadoMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jlModificarEmpleadoMouseEntered
@@ -3954,6 +4012,11 @@ public class Menu extends javax.swing.JFrame {
 
     private void jlEliminarEmpleadoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jlEliminarEmpleadoMouseClicked
         jtpEscritorio.setSelectedIndex(18);
+        jCBEliminarEmpleado.removeAllItems();
+        jCBCargoElimEmp.removeAllItems();
+        llenarComboEmpleado();
+        Empleado emp = (Empleado) jCBEliminarEmpleado.getSelectedItem();
+        jCBCargoElimEmp.addItem(emp.getCargo() + "");
     }//GEN-LAST:event_jlEliminarEmpleadoMouseClicked
 
     private void jlEliminarEmpleadoMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jlEliminarEmpleadoMouseEntered
@@ -4030,16 +4093,40 @@ public class Menu extends javax.swing.JFrame {
 
     private void jLBtnEliminarEmpleadoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLBtnEliminarEmpleadoMouseClicked
         try {
+            int cont = 0;
             Empleado emp = ed.buscarEmpleadoPorDni(Integer.parseInt(jTFDniElimEmp.getText()));
             if (emp != null) {
-                int opcion = JOptionPane.showConfirmDialog(this, "¿Seguro, desea Eliminar al Empleado?", "Seleccione una opcion", JOptionPane.YES_NO_OPTION);
-                switch (opcion) {
-                    case 0:
-                        ed.eliminarEmpleadoPorId(emp.getIdEmpleado());
-                        jCBEliminarEmpleado.removeItemAt(jCBEliminarEmpleado.getSelectedIndex());
-                        break;
-                    case 1:
-                        break;
+                for (Venta v : vd.listaVenta()) {
+                    if (emp.getIdEmpleado() == v.getEmpleado().getIdEmpleado()) {
+                        cont++;
+                    }
+                }
+                if (cont > 0) {
+                    int op = JOptionPane.showConfirmDialog(this, "Este empleado esta registrado en una o varias ventas, ¿Desea darlas de baja?", "Seleccione una opcion", JOptionPane.YES_NO_OPTION);
+                    switch (op) {
+                        case 0:
+                            for (DetalleVenta detv : dvd.listaDV()) {
+                                if (emp.getIdEmpleado() == detv.getVenta().getEmpleado().getIdEmpleado()) {
+                                    vd.eliminarVentaId(detv.getIdVenta());
+                                    dvd.eliminarDetalleVentaPorId(detv.getIdDetalleVenta());
+                                }
+                            }
+                            ed.eliminarEmpleadoPorId(emp.getIdEmpleado());
+                            jCBEliminarEmpleado.removeItemAt(jCBEliminarEmpleado.getSelectedIndex());
+                            break;
+                        case 1:
+                            break;
+                    }
+                } else {
+                    int opcion = JOptionPane.showConfirmDialog(this, "¿Seguro, desea Eliminar al Empleado?", "Seleccione una opcion", JOptionPane.YES_NO_OPTION);
+                    switch (opcion) {
+                        case 0:
+                            ed.eliminarEmpleadoPorId(emp.getIdEmpleado());
+                            jCBEliminarEmpleado.removeItemAt(jCBEliminarEmpleado.getSelectedIndex());
+                            break;
+                        case 1:
+                            break;
+                    }
                 }
             }
         } catch (NullPointerException ex) {
@@ -4152,23 +4239,72 @@ public class Menu extends javax.swing.JFrame {
         try {
             int fila = jTablePapelera.getSelectedRow();
             if (jTablePapelera.getModel().equals(ModeloP)) {
-                Integer id = (Integer) jTablePapelera.getValueAt(jTablePapelera.getSelectedRow(), 0);
-                pd.eliminarProductoDB(id);
-                ModeloP.removeRow(fila);
+                int op = JOptionPane.showConfirmDialog(this, "¿Desea Eliminar este Producto y las ventas asociadas de la base de datos?", "Eliga una opcion", JOptionPane.YES_NO_OPTION);
+                switch (op) {
+                    case 0:
+                        Integer id = (Integer) jTablePapelera.getValueAt(jTablePapelera.getSelectedRow(), 0);
+                        for (DetalleVenta det : dvd.listaDVTodo()) {
+                            if (id.equals(det.getIdProducto())) {
+                                vd.eliminarVentaIdBD(det.getIdVenta());
+                                dvd.eliminarDetalleVentaPorIdBD(det.getIdDetalleVenta());
+                            }
+                        }
+                        pd.eliminarProductoDB(id);
+                        ModeloP.removeRow(fila);
+                        break;
+                    case 1:
+                        break;
+                }
+
             } else if (jTablePapelera.getModel().equals(ModeloC)) {
-                Integer id = (Integer) jTablePapelera.getValueAt(jTablePapelera.getSelectedRow(), 0);
-                cD.eliminarClienteDB(id);
-                ModeloC.removeRow(fila);
+                int op = JOptionPane.showConfirmDialog(this, "¿Desea Eliminar este Cliente y las ventas asociadas de la base de datos?", "Eliga una opcion", JOptionPane.YES_NO_OPTION);
+                switch (op) {
+                    case 0:
+                        int id = (Integer) jTablePapelera.getValueAt(jTablePapelera.getSelectedRow(), 0);
+                        System.out.println(id);
+                        for (DetalleVenta det : dvd.listaDVTodo()) {
+                            if (id == det.getVenta().getIdCliente()) {
+                                System.out.println("1");
+                                vd.eliminarVentaIdBD(det.getIdVenta());
+                                dvd.eliminarDetalleVentaPorIdBD(det.getIdDetalleVenta());
+                            }
+                        }
+                        cD.eliminarClienteDB(id);
+                        ModeloC.removeRow(fila);
+                        break;
+                    case 1:
+                        break;
+                }
             } else if (jTablePapelera.getModel().equals(ModeloE)) {
-                Integer id = (Integer) jTablePapelera.getValueAt(jTablePapelera.getSelectedRow(), 0);
-                ed.eliminarEmpleadoPorIdDB(id);
-                ModeloE.removeRow(fila);
+                int op = JOptionPane.showConfirmDialog(this, "¿Desea Eliminar este Empleado y las ventas asociadas de la base de datos?", "Eliga una opcion", JOptionPane.YES_NO_OPTION);
+                switch (op) {
+                    case 0:
+                        Integer id = (Integer) jTablePapelera.getValueAt(jTablePapelera.getSelectedRow(), 0);
+                        for (DetalleVenta det : dvd.listaDVTodo()) {
+                            if (id.equals(det.getVenta().getEmpleado().getIdEmpleado())) {
+                                vd.eliminarVentaIdBD(det.getIdVenta());
+                                dvd.eliminarDetalleVentaPorIdBD(det.getIdDetalleVenta());
+                            }
+                        }
+                        ed.eliminarEmpleadoPorIdDB(id);
+                        ModeloE.removeRow(fila);
+                        break;
+                    case 1:
+                        break;
+                }
             } else if (jTablePapelera.getModel().equals(ModeloV)) {
-                Integer id = (Integer) jTablePapelera.getValueAt(jTablePapelera.getSelectedRow(), 0);
-                DetalleVenta detven = dvd.buscarDetalleProVenta(id);
-                vd.eliminarVentaIdBD(id);
-                dvd.eliminarDetalleVentaPorIdBD(detven.getIdDetalleVenta());
-                ModeloV.removeRow(fila);
+                int op = JOptionPane.showConfirmDialog(this, "¿Desea Eliminar esta venta de la base de datos?", "Eliga una opcion", JOptionPane.YES_NO_OPTION);
+                switch (op) {
+                    case 0:
+                        Integer id = (Integer) jTablePapelera.getValueAt(jTablePapelera.getSelectedRow(), 0);
+                        DetalleVenta detven = dvd.buscarDetalleProVenta(id);
+                        vd.eliminarVentaIdBD(id);
+                        dvd.eliminarDetalleVentaPorIdBD(detven.getIdDetalleVenta());
+                        ModeloV.removeRow(fila);
+                        break;
+                    case 1:
+                        break;
+                }
             }
         } catch (ArrayIndexOutOfBoundsException ex) {
             JOptionPane.showMessageDialog(this, "Debe seleccionar una fila");
@@ -4187,71 +4323,99 @@ public class Menu extends javax.swing.JFrame {
         try {
             int fila = jTablePapelera.getSelectedRow();
             if (jTablePapelera.getModel().equals(ModeloP)) {
-                String nombre = (String) jTablePapelera.getValueAt(jTablePapelera.getSelectedRow(), 1);
-                Producto pro = pd.buscarProductoPorNombre(nombre);
-                pro.setEstado(true);
-                pd.modificarProducto(pro);
-                ModeloP.removeRow(fila);
-            } else if (jTablePapelera.getModel().equals(ModeloC)) {
-                String tel = (String) jTablePapelera.getValueAt(jTablePapelera.getSelectedRow(), 4);
-                Cliente cli = cD.buscarClientePorTel(tel);
-                cli.setEstado(true);
-                cD.modicifarCliente(cli);
-                ModeloC.removeRow(fila);
-            } else if (jTablePapelera.getModel().equals(ModeloE)) {
-                Integer dni = (Integer) jTablePapelera.getValueAt(jTablePapelera.getSelectedRow(), 3);
-                Empleado emp = ed.buscarEmpleadoPorDni(dni);
-                emp.setEstado(true);
-                ed.modificarEmpleado(emp);
-                ModeloE.removeRow(fila);
-            } else if (jTablePapelera.getModel().equals(ModeloV)) {
-                Integer id = (Integer) jTablePapelera.getValueAt(jTablePapelera.getSelectedRow(), 0);
-                Venta ven = vd.buscarVentaId(id);
-                DetalleVenta det = dvd.buscarDetalleProVenta(id);
-                ven.setEstado(true);
-                det.setEstado(true);
-                if (!ven.getCliente().isEstado() && !ven.getEmpleado().isEstado()) {
-                    int opcion = JOptionPane.showConfirmDialog(this, "¿Desea restaurar al Cliente y Empleado registrados en esta venta?", "Seleccione una opcion", JOptionPane.YES_NO_OPTION);
-                    switch (opcion) {
-                        case 0:
-                            ven.getCliente().setEstado(true);
-                            ven.getEmpleado().setEstado(true);
-                            cD.modicifarCliente(ven.getCliente());
-                            ed.modificarEmpleado(ven.getEmpleado());
-                        case 1:
-                            break;
-                    }
-                } else if (!ven.getCliente().isEstado()) {
-                    int opcion = JOptionPane.showConfirmDialog(this, "¿Desea restaurar al Cliente registrado en esta venta?", "Seleccione una opcion", JOptionPane.YES_NO_OPTION);
-                    switch (opcion) {
-                        case 0:
-                            ven.getCliente().setEstado(true);
-                            cD.modicifarCliente(ven.getCliente());
-                        case 1:
-                            break;
-                    }
-                } else if (!ven.getEmpleado().isEstado()) {
-                    int opcion = JOptionPane.showConfirmDialog(this, "¿Desea restaurar al Empleado registrado en esta venta?", "Seleccione una opcion", JOptionPane.YES_NO_OPTION);
-                    switch (opcion) {
-                        case 0:
-                            ven.getEmpleado().setEstado(true);
-                            ed.modificarEmpleado(ven.getEmpleado());
-                        case 1:
-                            break;
-                    }
-                } else if (!det.getProducto().getEstado()) {
-                    int opcion = JOptionPane.showConfirmDialog(this, "¿Desea restaurar el Producto registrado en esta venta?", "Seleccione una opcion", JOptionPane.YES_NO_OPTION);
-                    switch (opcion) {
-                        case 0:
-                            det.getProducto().setEstado(true);
-                            pd.modificarProducto(det.getProducto());
-                        case 1:
-                            break;
-                    }
+                int op = JOptionPane.showConfirmDialog(this, "¿Desea restaurar este Producto?", "Eliga una opcion", JOptionPane.YES_NO_OPTION);
+                switch (op) {
+                    case 0:
+                        String nombre = (String) jTablePapelera.getValueAt(jTablePapelera.getSelectedRow(), 1);
+                        Producto pro = pd.buscarProductoPorNombre(nombre);
+                        pro.setEstado(true);
+                        pd.modificarProducto(pro);
+                        ModeloP.removeRow(fila);
+                        break;
+                    case 1:
+                        break;
                 }
-                vd.modificarVenta(ven);
-                dvd.modificarDetalleVenta(det);
-                ModeloV.removeRow(fila);
+            } else if (jTablePapelera.getModel().equals(ModeloC)) {
+                int op = JOptionPane.showConfirmDialog(this, "¿Desea restaurar este Cliente?", "Eliga una opcion", JOptionPane.YES_NO_OPTION);
+                switch (op) {
+                    case 0:
+                        String tel = (String) jTablePapelera.getValueAt(jTablePapelera.getSelectedRow(), 4);
+                        Cliente cli = cD.buscarClientePorTel(tel);
+                        cli.setEstado(true);
+                        cD.modicifarCliente(cli);
+                        ModeloC.removeRow(fila);
+                        break;
+                    case 1:
+                        break;
+                }
+            } else if (jTablePapelera.getModel().equals(ModeloE)) {
+                int op = JOptionPane.showConfirmDialog(this, "¿Desea restaurar este Empleado?", "Eliga una opcion", JOptionPane.YES_NO_OPTION);
+                switch (op) {
+                    case 0:
+                        Integer dni = (Integer) jTablePapelera.getValueAt(jTablePapelera.getSelectedRow(), 3);
+                        Empleado emp = ed.buscarEmpleadoPorDni(dni);
+                        emp.setEstado(true);
+                        ed.modificarEmpleado(emp);
+                        ModeloE.removeRow(fila);
+                        break;
+                    case 1:
+                        break;
+                }
+            } else if (jTablePapelera.getModel().equals(ModeloV)) {
+                int op = JOptionPane.showConfirmDialog(this, "¿Desea restaurar este Producto?", "Eliga una opcion", JOptionPane.YES_NO_OPTION);
+                switch (op) {
+                    case 0:
+                        Integer id = (Integer) jTablePapelera.getValueAt(jTablePapelera.getSelectedRow(), 0);
+                        Venta ven = vd.buscarVentaId(id);
+                        DetalleVenta det = dvd.buscarDetalleProVenta(id);
+                        ven.setEstado(true);
+                        det.setEstado(true);
+                        if (!ven.getCliente().isEstado() && !ven.getEmpleado().isEstado()) {
+                            int opcion = JOptionPane.showConfirmDialog(this, "¿Desea restaurar al Cliente y Empleado registrados en esta venta?", "Seleccione una opcion", JOptionPane.YES_NO_OPTION);
+                            switch (opcion) {
+                                case 0:
+                                    ven.getCliente().setEstado(true);
+                                    ven.getEmpleado().setEstado(true);
+                                    cD.modicifarCliente(ven.getCliente());
+                                    ed.modificarEmpleado(ven.getEmpleado());
+                                case 1:
+                                    break;
+                            }
+                        } else if (!ven.getCliente().isEstado()) {
+                            int opcion = JOptionPane.showConfirmDialog(this, "¿Desea restaurar al Cliente registrado en esta venta?", "Seleccione una opcion", JOptionPane.YES_NO_OPTION);
+                            switch (opcion) {
+                                case 0:
+                                    ven.getCliente().setEstado(true);
+                                    cD.modicifarCliente(ven.getCliente());
+                                case 1:
+                                    break;
+                            }
+                        } else if (!ven.getEmpleado().isEstado()) {
+                            int opcion = JOptionPane.showConfirmDialog(this, "¿Desea restaurar al Empleado registrado en esta venta?", "Seleccione una opcion", JOptionPane.YES_NO_OPTION);
+                            switch (opcion) {
+                                case 0:
+                                    ven.getEmpleado().setEstado(true);
+                                    ed.modificarEmpleado(ven.getEmpleado());
+                                case 1:
+                                    break;
+                            }
+                        } else if (!det.getProducto().getEstado()) {
+                            int opcion = JOptionPane.showConfirmDialog(this, "¿Desea restaurar el Producto registrado en esta venta?", "Seleccione una opcion", JOptionPane.YES_NO_OPTION);
+                            switch (opcion) {
+                                case 0:
+                                    det.getProducto().setEstado(true);
+                                    pd.modificarProducto(det.getProducto());
+                                case 1:
+                                    break;
+                            }
+                        }
+                        vd.modificarVenta(ven);
+                        dvd.modificarDetalleVenta(det);
+                        ModeloV.removeRow(fila);
+                        break;
+                    case 1:
+                        break;
+                }
             }
         } catch (ArrayIndexOutOfBoundsException ex) {
             JOptionPane.showMessageDialog(this, "Debe seleccionar una fila");
@@ -4865,6 +5029,13 @@ public class Menu extends javax.swing.JFrame {
         jTFPrecioActualAgrProd.setText("");
         jTFDescripcionAgrProd.setText("");
         jTFStockAgrProd.setText("");
+    }
+
+    private void borrarCamposAgrVen() {
+        jtfCantidadVenta.setText("");
+        jdcAgrVenta.setDate(null);
+        jtfTelCliente.setText("");
+        jtfNombreEmpVenta.setText("");
     }
 
     private void controlLetras(java.awt.event.KeyEvent evt) {

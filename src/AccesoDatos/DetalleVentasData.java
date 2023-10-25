@@ -175,7 +175,7 @@ public class DetalleVentasData {
 
     //ELIMINA DE BD
     public void eliminarDetalleVentaPorIdBD(int IdDetalleVenta) {
-        String sql = "DELETE FROM detalledeVenta WHERE idDetalleVenta = ? AND estado = 0";
+        String sql = "DELETE FROM detalledeVenta WHERE idDetalleVenta = ?";
         try {
             PreparedStatement ps = con.prepareStatement(sql);
             ps.setInt(1, IdDetalleVenta);
@@ -229,6 +229,33 @@ public class DetalleVentasData {
                 + "ON (detalledeventa.idProducto = producto.idProducto) "
                 + "WHERE detalledeventa.estado = 1 AND venta.estado = 1 AND empleado.estado = 1 "
                 + "AND producto.estado = 1 AND cliente.estado = 1";
+        try {
+            PreparedStatement ps = con.prepareStatement(sql);
+            ResultSet rs = ps.executeQuery();
+            while (rs.next()) {
+                dv = new DetalleVenta();
+                dv.setIdDetalleVenta(rs.getInt("idDetalleVenta"));
+                dv.setCantidad(rs.getInt("cantidad"));
+                venta = vd.buscarVentaId(rs.getInt("idVenta"));
+                dv.setVenta(venta);
+                dv.setPrecioVenta(rs.getDouble("precioVenta"));
+                producto = pd.buscarProducto(rs.getInt("idProducto"));
+                dv.setProducto(producto);
+                dv.setEstado(rs.getBoolean("estado"));
+                lista.add(dv);
+            }
+            ps.close();
+        } catch (SQLException ex) {
+            JOptionPane.showMessageDialog(null, "Error al acceder a la tabla Detalle de Venta " + ex.getMessage());
+        }
+        return lista;
+    }
+    
+    public List<DetalleVenta> listaDVTodo() {
+        List<DetalleVenta> lista = new ArrayList<>();
+        VentasData vd = new VentasData();
+        ProductoData pd = new ProductoData();
+        String sql = "SELECT * FROM detalledeventa ";
         try {
             PreparedStatement ps = con.prepareStatement(sql);
             ResultSet rs = ps.executeQuery();
