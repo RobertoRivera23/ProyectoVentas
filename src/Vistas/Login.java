@@ -49,12 +49,13 @@ public class Login extends javax.swing.JFrame {
         jLCargo = new javax.swing.JLabel();
         jCBCargo = new javax.swing.JComboBox<>();
         jTFUsuario = new javax.swing.JTextField();
-        jTContraseña = new javax.swing.JTextField();
         jLBtnIniciarSesion = new javax.swing.JLabel();
         jLIconoLogin = new javax.swing.JLabel();
         jPanel1 = new javax.swing.JPanel();
         jLMinimiza = new javax.swing.JLabel();
         jLCierra = new javax.swing.JLabel();
+        jPContraseña = new javax.swing.JPasswordField();
+        jRMostrar = new javax.swing.JRadioButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setLocationByPlatform(true);
@@ -101,9 +102,6 @@ public class Login extends javax.swing.JFrame {
             }
         });
         jPCuerpo.add(jTFUsuario, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 180, 170, -1));
-
-        jTContraseña.setForeground(new java.awt.Color(51, 51, 76));
-        jPCuerpo.add(jTContraseña, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 240, 170, -1));
 
         jLBtnIniciarSesion.setBackground(new java.awt.Color(0, 150, 136));
         jLBtnIniciarSesion.setFont(new java.awt.Font("Corbel", 1, 14)); // NOI18N
@@ -191,6 +189,23 @@ public class Login extends javax.swing.JFrame {
         jPanel1.add(jLCierra, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 0, 40, 30));
 
         jPCuerpo.add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(-170, 0, 520, 30));
+        jPCuerpo.add(jPContraseña, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 240, 120, -1));
+
+        jRMostrar.setBackground(new java.awt.Color(51, 51, 76));
+        jRMostrar.setFont(new java.awt.Font("Corbel", 1, 14)); // NOI18N
+        jRMostrar.setForeground(new java.awt.Color(0, 150, 136));
+        jRMostrar.setText("Mostrar");
+        jRMostrar.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jRMostrar.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
+        jRMostrar.setOpaque(false);
+        jRMostrar.setVerticalAlignment(javax.swing.SwingConstants.TOP);
+        jRMostrar.setVerticalTextPosition(javax.swing.SwingConstants.TOP);
+        jRMostrar.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                jRMostrarMousePressed(evt);
+            }
+        });
+        jPCuerpo.add(jRMostrar, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 240, 80, 20));
 
         jPBackground.add(jPCuerpo, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 0, 350, 450));
 
@@ -277,7 +292,7 @@ public class Login extends javax.swing.JFrame {
                     if (emp.getUsuario().equals(jTFUsuario.getText())) { // Valida Usuario para Bloqueo
                         contadorUsuario += 1;
                         usuario = true;
-                        if (emp.getContraenia().equals(jTContraseña.getText())
+                        if (emp.getContraenia().equals(jPContraseña.getText())
                                 && emp.getCargo().equals(jCBCargo.getSelectedItem())) {
                             cont++;
                             empleado = new Empleado();
@@ -336,6 +351,14 @@ public class Login extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_jLBtnIniciarSesionMouseClicked
 
+    private void jRMostrarMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jRMostrarMousePressed
+        if (jRMostrar.isSelected() == false) {
+            jPContraseña.setEchoChar((char) 0);
+        } else {
+            jPContraseña.setEchoChar('*');
+        }
+    }//GEN-LAST:event_jRMostrarMousePressed
+
     /**
      * @param args the command line arguments
      */
@@ -382,9 +405,10 @@ public class Login extends javax.swing.JFrame {
     private javax.swing.JLabel jLMinimiza;
     private javax.swing.JLabel jLUsuario;
     private javax.swing.JPanel jPBackground;
+    private javax.swing.JPasswordField jPContraseña;
     private javax.swing.JPanel jPCuerpo;
     private javax.swing.JPanel jPanel1;
-    private javax.swing.JTextField jTContraseña;
+    private javax.swing.JRadioButton jRMostrar;
     private javax.swing.JTextField jTFUsuario;
     private javax.swing.JLabel jlBanner1;
     private javax.swing.JLabel jlFravemax;
