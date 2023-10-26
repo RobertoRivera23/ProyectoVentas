@@ -111,23 +111,25 @@ public class VentasData {
         List<Venta> ventas = new ArrayList<>();
         ClienteData clienteD = new ClienteData();
         EmpleadoData empleadoD = new EmpleadoData(); //////////////////////////////////////7
-        String sql = "SELECT * FROM venta WHERE idcliente = ? ORDER BY idVenta ASC";
+        String sql = "SELECT venta.idVenta, venta.idCliente, venta.idempleado, "
+                + "venta.fechaVenta, venta.estado FROM venta JOIN detalledeventa "
+                + "ON (venta.idVenta = detalledeventa.idVenta) JOIN producto "
+                + "ON (detalledeventa.idProducto = producto.idProducto) JOIN cliente "
+                + "ON (venta.idCliente = cliente.idCliente) "
+                + "WHERE venta.idcliente = ? AND venta.estado = 1 AND detalledeventa.estado = 1 "
+                + "AND producto.estado = 1 AND cliente.estado = 1 ORDER BY venta.idVenta ASC";
         try {
             PreparedStatement ps = con.prepareStatement(sql);
             ps.setInt(1, cliente.getIdCliente());
             ResultSet rs = ps.executeQuery();
-            if (!rs.next()) {
-                JOptionPane.showMessageDialog(null, "No hay ventas para ese cliente " + cliente.getApellido() + ", " + cliente.getNombre());
-            } else {
-                while (rs.next()) {
-                    venta = new Venta();
-                    venta.setIdVenta(rs.getInt("idVenta"));
-                    venta.setCliente(clienteD.buscarCliente(rs.getInt("idCliente")));
-                    venta.setEmpleado(empleadoD.buscarEmpleadoPorId(rs.getInt("idempleado"))); //////////////////////////////////////7
-                    venta.setFechaVenta((rs.getDate("fechaVenta").toLocalDate()));
-                    venta.setEstado(rs.getBoolean("estado"));
-                    ventas.add(venta);
-                }
+            while (rs.next()) {
+                venta = new Venta();
+                venta.setIdVenta(rs.getInt("idVenta"));
+                venta.setCliente(clienteD.buscarCliente(rs.getInt("idCliente")));
+                venta.setEmpleado(empleadoD.buscarEmpleadoPorId(rs.getInt("idempleado"))); //////////////////////////////////////7
+                venta.setFechaVenta((rs.getDate("fechaVenta").toLocalDate()));
+                venta.setEstado(rs.getBoolean("estado"));
+                ventas.add(venta);
             }
             ps.close();
         } catch (SQLException ex) {
@@ -139,28 +141,26 @@ public class VentasData {
 //Mostrar que clientes compraron el  producto X.
     public List<Cliente> obtenerClientesPorProducto(Producto producto) {
         List<Cliente> clientes = new ArrayList<>();
-        String sql = "SELECT cliente.idCliente, cliente.apellido, cliente.nombre, cliente.domicilio, cliente.telefono "
-                + "FROM cliente, venta JOIN detalledeventa ON (venta.idVenta = detalledeventa.idVenta) "
+        String sql = "SELECT cliente.idCliente, cliente.apellido, cliente.nombre, cliente.domicilio, cliente.telefono,"
+                + "cliente.estado "
+                + "FROM cliente JOIN venta ON (cliente.idCliente = venta.idCliente) "
+                + "JOIN detalledeventa ON (venta.idVenta = detalledeventa.idVenta) "
                 + "JOIN producto ON (detalledeventa.idProducto = producto.idProducto) "
                 + "WHERE detalledeventa.idProducto = ? AND cliente.estado = 1 AND producto.estado = 1 "
-                + "AND venta.estado = 1 AND detalledeventa.estado = 1 ORDER BY cliente.idCliente ASC";
+                + "AND venta.estado = 1 AND detalledeventa.estado = 1 ORDER BY cliente.idCliente ASC ";
         try {
             PreparedStatement ps = con.prepareStatement(sql);
             ps.setInt(1, producto.getIdProducto());
             ResultSet rs = ps.executeQuery();
-            if (!rs.next()) {
-                JOptionPane.showMessageDialog(null, "Ningun cliente compro el producto " + producto.getNombreProducto());
-            } else {
-                while (rs.next()) {
-                    cliente = new Cliente();
-                    cliente.setIdCliente(rs.getInt("idCliente"));
-                    cliente.setApellido(rs.getString("apellido"));
-                    cliente.setNombre(rs.getString("nombre"));
-                    cliente.setDomicilio(rs.getString("domicilio"));
-                    cliente.setTelefono(rs.getString("telefono"));
-                    cliente.setEstado(rs.getBoolean("estado"));
-                    clientes.add(cliente);
-                }
+            while (rs.next()) {
+                cliente = new Cliente();
+                cliente.setIdCliente(rs.getInt("idCliente"));
+                cliente.setApellido(rs.getString("apellido"));
+                cliente.setNombre(rs.getString("nombre"));
+                cliente.setDomicilio(rs.getString("domicilio"));
+                cliente.setTelefono(rs.getString("telefono"));
+                cliente.setEstado(rs.getBoolean("estado"));
+                clientes.add(cliente);
             }
             ps.close();
         } catch (SQLException ex) {
@@ -169,30 +169,28 @@ public class VentasData {
         return clientes;
     }
 
-//SELECT producto.nombreProducto, detalledeventa.cantidad FROM venta, detalledeventa JOIN producto 
-//        ON (detalledeventa.idProducto = producto.idProducto) WHERE venta.fechaVenta = '2023-10-10' ORDER BY producto.idProducto ASC
+//Mostrar que Producto se vendieron en la Fecha X.
     public List<Producto> obtenerProductosPorFecha(LocalDate fechaVenta) {
         List<Producto> prodPorFecha = new ArrayList<>();
-        String sql = "SELECT producto.nombreProducto, detalledeventa.cantidad FROM producto, detalledeventa "
-                + "JOIN venta ON (detalledeventa.idVenta = venta.idVenta)"
-                + "WHERE  venta.fechaVenta = ?  ORDER BY producto.idProducto ASC";
+        String sql = " SELECT producto.idProducto, producto.nombreProducto, producto.descripcion, "
+                + "producto.precioActual, producto.stock, producto.estado FROM producto JOIN detalledeventa "
+                + "ON (producto.idProducto = detalledeventa.idProducto) "
+                + "JOIN venta ON (detalledeventa.idVenta = venta.idVenta) "
+                + "WHERE venta.fechaVenta = ? AND producto.estado = 1 "
+                + "AND detalledeventa.estado = 1 AND venta.estado = 1 ORDER BY producto.idProducto ASC ";
         try {
             PreparedStatement ps = con.prepareStatement(sql);
             ps.setDate(1, Date.valueOf(fechaVenta));
             ResultSet rs = ps.executeQuery();
-            if (!rs.next()) {
-                JOptionPane.showMessageDialog(null, "No hay productos en esa fecha");
-            } else {
-                while (rs.next()) {
-                    Producto prod = new Producto();
-//                    prod.setIdProducto(rs.getInt("idProducto"));
-                    prod.setNombreProducto(rs.getString("nombreProducto"));
-//                    prod.setDescripcion(rs.getString("descripcion"));
-//                    prod.setPrecioActual(rs.getDouble("precioActual"));
-//                    prod.setStock(rs.getInt("stock"));
-//                    prod.setEstado(rs.getBoolean("estado"));
-                    prodPorFecha.add(prod);
-                }
+            while (rs.next()) {
+                Producto prod = new Producto();
+                prod.setIdProducto(rs.getInt("idProducto"));
+                prod.setNombreProducto(rs.getString("nombreProducto"));
+                prod.setDescripcion(rs.getString("descripcion"));
+                prod.setPrecioActual(rs.getDouble("precioActual"));
+                prod.setStock(rs.getInt("stock"));
+                prod.setEstado(rs.getBoolean("estado"));
+                prodPorFecha.add(prod);
             }
             ps.close();
         } catch (SQLException ex) {

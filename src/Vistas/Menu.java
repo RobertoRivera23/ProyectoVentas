@@ -388,9 +388,20 @@ public class Menu extends javax.swing.JFrame {
         jlDetallesVenta = new javax.swing.JLabel();
         ScrollTablaDetalles = new javax.swing.JScrollPane();
         jtListaDetalles = new TablaFraveMax();
+        jcbVentasXCliente = new javax.swing.JComboBox<>();
+        jlSelecPro = new javax.swing.JLabel();
+        jlSelecFecha = new javax.swing.JLabel();
         jlTelCliDetalles = new javax.swing.JLabel();
-        jtfBuscarCli = new javax.swing.JTextField();
+        jSep2 = new javax.swing.JSeparator();
+        jlIconBuscar2 = new javax.swing.JLabel();
+        jlIconBuscar1 = new javax.swing.JLabel();
         jlIconBuscar = new javax.swing.JLabel();
+        jlClientesxPro = new javax.swing.JLabel();
+        jlVentasCli = new javax.swing.JLabel();
+        jSep1 = new javax.swing.JSeparator();
+        jdcFechaPro = new com.toedter.calendar.JDateChooser();
+        jlProXFecha = new javax.swing.JLabel();
+        jcbProXCliente = new javax.swing.JComboBox<>();
         jtpEliminarVenta = new javax.swing.JPanel();
         jlBorrarVenta = new javax.swing.JLabel();
         jlBuscarVenta = new javax.swing.JLabel();
@@ -2372,7 +2383,7 @@ public class Menu extends javax.swing.JFrame {
                 {null, null, null, null}
             },
             new String [] {
-                "ID", "Producto Vendido", "Telefono Cliente", "Fecha de venta", "Cantidad", "Precio Total"
+                "ID Detalle", "ID venta", "Producto", "Telefono Cliente", "Fecha de Venta", "Cantidad", "Precio Total"
             }
         ){
             public boolean isCellEditable(int fila, int column) {
@@ -2380,809 +2391,939 @@ public class Menu extends javax.swing.JFrame {
             }
 
             Class[] types = new Class[]{
-                java.lang.Integer.class, java.lang.String.class, java.lang.String.class, java.time.LocalDate.class, java.lang.Integer.class, java.lang.Double.class
+                java.lang.Integer.class, java.lang.Integer.class, java.lang.String.class, java.lang.String.class, java.time.LocalDate.class, java.lang.Integer.class, java.lang.Double.class
             };
 
             public Class getColumnClass(int columnIndex) {
                 return types[columnIndex];
             }
-        });
-        jtListaDetalles.setGridColor(new java.awt.Color(0, 102, 102));
-        jtListaDetalles.setMinimumSize(new java.awt.Dimension(60, 60));
-        ScrollTablaDetalles.setViewportView(jtListaDetalles);
-
-        jtpDetallesVenta.add(ScrollTablaDetalles, new org.netbeans.lib.awtextra.AbsoluteConstraints(13, 120, 570, 290));
-
-        jlTelCliDetalles.setFont(new java.awt.Font("Corbel", 1, 14)); // NOI18N
-        jlTelCliDetalles.setForeground(new java.awt.Color(153, 153, 153));
-        jlTelCliDetalles.setText("Ingrese el Telefono de Cliente");
-        jlTelCliDetalles.setVerticalAlignment(javax.swing.SwingConstants.BOTTOM);
-        jtpDetallesVenta.add(jlTelCliDetalles, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 50, 200, 30));
-
-        jtfBuscarCli.setFont(new java.awt.Font("Corbel", 1, 14)); // NOI18N
-        jtpDetallesVenta.add(jtfBuscarCli, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 80, 160, 30));
-
-        jlIconBuscar.setBackground(new java.awt.Color(255, 255, 255));
-        jlIconBuscar.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jlIconBuscar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Image/busqueda - gris.png"))); // NOI18N
-        jlIconBuscar.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
-        jlIconBuscar.setOpaque(true);
-        jlIconBuscar.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jlIconBuscarMouseClicked(evt);
-            }
-            public void mouseEntered(java.awt.event.MouseEvent evt) {
-                jlIconBuscarMouseEntered(evt);
-            }
-            public void mouseExited(java.awt.event.MouseEvent evt) {
-                jlIconBuscarMouseExited(evt);
-            }
-        });
-        jtpDetallesVenta.add(jlIconBuscar, new org.netbeans.lib.awtextra.AbsoluteConstraints(540, 80, 40, 30));
-
-        jtpEscritorio.addTab("tab15", jtpDetallesVenta);
-
-        jtpEliminarVenta.setBackground(new java.awt.Color(255, 255, 255));
-        jtpEliminarVenta.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-
-        jlBorrarVenta.setFont(new java.awt.Font("Corbel", 1, 30)); // NOI18N
-        jlBorrarVenta.setForeground(new java.awt.Color(153, 153, 153));
-        jlBorrarVenta.setText("Eliminar Venta");
-        jtpEliminarVenta.add(jlBorrarVenta, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 40, -1, -1));
-
-        jlBuscarVenta.setFont(new java.awt.Font("Corbel", 1, 14)); // NOI18N
-        jlBuscarVenta.setForeground(new java.awt.Color(153, 153, 153));
-        jlBuscarVenta.setText("Buscar venta");
-        jtpEliminarVenta.add(jlBuscarVenta, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 100, -1, -1));
-
-        jcbBuscarVenta.setFont(new java.awt.Font("Corbel", 1, 14)); // NOI18N
-        jcbBuscarVenta.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jcbBuscarVentaActionPerformed(evt);
-            }
-        });
-        jtpEliminarVenta.add(jcbBuscarVenta, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 120, 200, 30));
-
-        jlNombreProEliminar.setFont(new java.awt.Font("Corbel", 1, 14)); // NOI18N
-        jlNombreProEliminar.setForeground(new java.awt.Color(153, 153, 153));
-        jlNombreProEliminar.setText("Nombre producto");
-        jtpEliminarVenta.add(jlNombreProEliminar, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 190, -1, -1));
-
-        jtfNombreProEliminar.setEditable(false);
-        jtfNombreProEliminar.setFont(new java.awt.Font("Corbel", 0, 14)); // NOI18N
-        jtfNombreProEliminar.setBorder(null);
-        jtpEliminarVenta.add(jtfNombreProEliminar, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 210, 200, 30));
-
-        jtfTelClienteEliminar.setFont(new java.awt.Font("Corbel", 1, 14)); // NOI18N
-        jtfTelClienteEliminar.setForeground(new java.awt.Color(153, 153, 153));
-        jtfTelClienteEliminar.setText("Telefono cliente");
-        jtpEliminarVenta.add(jtfTelClienteEliminar, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 260, -1, -1));
-
-        jSElimProd5.setBackground(new java.awt.Color(0, 150, 136));
-        jSElimProd5.setOpaque(true);
-        jSElimProd5.setPreferredSize(new java.awt.Dimension(50, 2));
-        jtpEliminarVenta.add(jSElimProd5, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 240, 200, -1));
-
-        jtfTelCliEliminar.setEditable(false);
-        jtfTelCliEliminar.setFont(new java.awt.Font("Corbel", 0, 14)); // NOI18N
-        jtfTelCliEliminar.setBorder(null);
-        jtpEliminarVenta.add(jtfTelCliEliminar, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 280, 200, 30));
-
-        jSElimProd6.setBackground(new java.awt.Color(0, 150, 136));
-        jSElimProd6.setOpaque(true);
-        jSElimProd6.setPreferredSize(new java.awt.Dimension(50, 2));
-        jtpEliminarVenta.add(jSElimProd6, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 310, 200, -1));
-
-        jtfNombreEmpleadoEliminar.setEditable(false);
-        jtfNombreEmpleadoEliminar.setFont(new java.awt.Font("Corbel", 0, 14)); // NOI18N
-        jtfNombreEmpleadoEliminar.setBorder(null);
-        jtpEliminarVenta.add(jtfNombreEmpleadoEliminar, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 280, 200, 30));
-
-        jSElimProd7.setBackground(new java.awt.Color(0, 150, 136));
-        jSElimProd7.setOpaque(true);
-        jSElimProd7.setPreferredSize(new java.awt.Dimension(50, 2));
-        jtpEliminarVenta.add(jSElimProd7, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 310, 200, -1));
-
-        jlNombreEmpleadoEliminar.setFont(new java.awt.Font("Corbel", 1, 14)); // NOI18N
-        jlNombreEmpleadoEliminar.setForeground(new java.awt.Color(153, 153, 153));
-        jlNombreEmpleadoEliminar.setText("Nombre de empleado");
-        jtpEliminarVenta.add(jlNombreEmpleadoEliminar, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 260, -1, -1));
-
-        jlFechaVentaEliminar.setFont(new java.awt.Font("Corbel", 1, 14)); // NOI18N
-        jlFechaVentaEliminar.setForeground(new java.awt.Color(153, 153, 153));
-        jlFechaVentaEliminar.setText("Fecha de venta");
-        jtpEliminarVenta.add(jlFechaVentaEliminar, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 190, -1, -1));
-
-        jlEliminarVentaBorrar.setBackground(new java.awt.Color(0, 150, 136));
-        jlEliminarVentaBorrar.setFont(new java.awt.Font("Corbel", 1, 14)); // NOI18N
-        jlEliminarVentaBorrar.setForeground(new java.awt.Color(255, 255, 255));
-        jlEliminarVentaBorrar.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jlEliminarVentaBorrar.setText("Eliminar");
-        jlEliminarVentaBorrar.setVerticalAlignment(javax.swing.SwingConstants.BOTTOM);
-        jlEliminarVentaBorrar.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
-        jlEliminarVentaBorrar.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
-        jlEliminarVentaBorrar.setOpaque(true);
-        jlEliminarVentaBorrar.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jlEliminarVentaBorrarMouseClicked(evt);
-            }
-            public void mouseEntered(java.awt.event.MouseEvent evt) {
-                jlEliminarVentaBorrarMouseEntered(evt);
-            }
-            public void mouseExited(java.awt.event.MouseEvent evt) {
-                jlEliminarVentaBorrarMouseExited(evt);
-            }
-        });
-        jtpEliminarVenta.add(jlEliminarVentaBorrar, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 340, 100, 30));
-
-        jlVentaIconEliminar.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jlVentaIconEliminar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Image/archivo-menos.png"))); // NOI18N
-        jtpEliminarVenta.add(jlVentaIconEliminar, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 30, 200, 150));
-
-        jdcElimVenta.setEnabled(false);
-        jtpEliminarVenta.add(jdcElimVenta, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 210, 200, 30));
-
-        jtpEscritorio.addTab("tab16", jtpEliminarVenta);
-
-        jPGestionEmpleados.setBackground(new java.awt.Color(255, 255, 255));
-        jPGestionEmpleados.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-
-        jlGestionEmpleado1.setFont(new java.awt.Font("Corbel", 1, 30)); // NOI18N
-        jlGestionEmpleado1.setForeground(new java.awt.Color(153, 153, 153));
-        jlGestionEmpleado1.setText("Gestion de Empleados");
-        jPGestionEmpleados.add(jlGestionEmpleado1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 40, 330, 30));
-
-        jlIconAgreEmpl.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jlIconAgreEmpl.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Image/agregar_empleado.png"))); // NOI18N
-        jPGestionEmpleados.add(jlIconAgreEmpl, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 60, 180, 150));
-
-        jlAgregarEmpleado.setBackground(new java.awt.Color(0, 150, 136));
-        jlAgregarEmpleado.setFont(new java.awt.Font("Corbel", 1, 14)); // NOI18N
-        jlAgregarEmpleado.setForeground(new java.awt.Color(255, 255, 255));
-        jlAgregarEmpleado.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jlAgregarEmpleado.setText("Agregar");
-        jlAgregarEmpleado.setVerticalAlignment(javax.swing.SwingConstants.BOTTOM);
-        jlAgregarEmpleado.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED, null, new java.awt.Color(0, 150, 136), null, null));
-        jlAgregarEmpleado.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
-        jlAgregarEmpleado.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
-        jlAgregarEmpleado.setOpaque(true);
-        jlAgregarEmpleado.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
-        jlAgregarEmpleado.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jlAgregarEmpleadoMouseClicked(evt);
-            }
-            public void mouseEntered(java.awt.event.MouseEvent evt) {
-                jlAgregarEmpleadoMouseEntered(evt);
-            }
-            public void mouseExited(java.awt.event.MouseEvent evt) {
-                jlAgregarEmpleadoMouseExited(evt);
-            }
-        });
-        jPGestionEmpleados.add(jlAgregarEmpleado, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 340, 80, 30));
-
-        jlAgregarEmpl.setFont(new java.awt.Font("Corbel", 1, 18)); // NOI18N
-        jlAgregarEmpl.setForeground(new java.awt.Color(102, 102, 102));
-        jlAgregarEmpl.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jlAgregarEmpl.setText("Agregar ");
-        jPGestionEmpleados.add(jlAgregarEmpl, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 200, -1, -1));
-
-        textEmpleadoA.setFont(new java.awt.Font("Corbel", 0, 12)); // NOI18N
-        textEmpleadoA.setForeground(new java.awt.Color(153, 153, 153));
-        textEmpleadoA.setVerticalAlignment(javax.swing.SwingConstants.TOP);
-        jPGestionEmpleados.add(textEmpleadoA, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 240, 150, 90));
-
-        rectanguloAgEmpl.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        rectanguloAgEmpl.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Image/rectangulo.jpg"))); // NOI18N
-        jPGestionEmpleados.add(rectanguloAgEmpl, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 110, -1, -1));
-
-        textEmpleadoM.setFont(new java.awt.Font("Corbel", 0, 12)); // NOI18N
-        textEmpleadoM.setForeground(new java.awt.Color(153, 153, 153));
-        textEmpleadoM.setVerticalAlignment(javax.swing.SwingConstants.TOP);
-        jPGestionEmpleados.add(textEmpleadoM, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 240, 150, 90));
-
-        jlModificarEmpleado.setBackground(new java.awt.Color(0, 150, 136));
-        jlModificarEmpleado.setFont(new java.awt.Font("Corbel", 1, 14)); // NOI18N
-        jlModificarEmpleado.setForeground(new java.awt.Color(255, 255, 255));
-        jlModificarEmpleado.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jlModificarEmpleado.setText("Modificar");
-        jlModificarEmpleado.setVerticalAlignment(javax.swing.SwingConstants.BOTTOM);
-        jlModificarEmpleado.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED, null, new java.awt.Color(0, 150, 136), null, null));
-        jlModificarEmpleado.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
-        jlModificarEmpleado.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
-        jlModificarEmpleado.setOpaque(true);
-        jlModificarEmpleado.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
-        jlModificarEmpleado.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jlModificarEmpleadoMouseClicked(evt);
-            }
-            public void mouseEntered(java.awt.event.MouseEvent evt) {
-                jlModificarEmpleadoMouseEntered(evt);
-            }
-            public void mouseExited(java.awt.event.MouseEvent evt) {
-                jlModificarEmpleadoMouseExited(evt);
-            }
-        });
-        jPGestionEmpleados.add(jlModificarEmpleado, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 340, 80, 30));
-
-        jlModEmpl.setFont(new java.awt.Font("Corbel", 1, 18)); // NOI18N
-        jlModEmpl.setForeground(new java.awt.Color(102, 102, 102));
-        jlModEmpl.setText("Modificar ");
-        jPGestionEmpleados.add(jlModEmpl, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 200, 80, -1));
-
-        jlIconModEmpl.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jlIconModEmpl.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Image/editar_empleado.png"))); // NOI18N
-        jPGestionEmpleados.add(jlIconModEmpl, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 60, 180, 150));
-
-        rectanguloModifEmpl.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        rectanguloModifEmpl.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Image/rectangulo.jpg"))); // NOI18N
-        jPGestionEmpleados.add(rectanguloModifEmpl, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 110, -1, -1));
-
-        jlEliminarEmp.setFont(new java.awt.Font("Corbel", 1, 18)); // NOI18N
-        jlEliminarEmp.setForeground(new java.awt.Color(102, 102, 102));
-        jlEliminarEmp.setText("Eliminar ");
-        jPGestionEmpleados.add(jlEliminarEmp, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 200, -1, -1));
-
-        textEmpleadoElim.setFont(new java.awt.Font("Corbel", 0, 12)); // NOI18N
-        textEmpleadoElim.setForeground(new java.awt.Color(153, 153, 153));
-        textEmpleadoElim.setVerticalAlignment(javax.swing.SwingConstants.TOP);
-        jPGestionEmpleados.add(textEmpleadoElim, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 240, 150, 90));
-
-        jlEliminarEmpleado.setBackground(new java.awt.Color(0, 150, 136));
-        jlEliminarEmpleado.setFont(new java.awt.Font("Corbel", 1, 14)); // NOI18N
-        jlEliminarEmpleado.setForeground(new java.awt.Color(255, 255, 255));
-        jlEliminarEmpleado.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jlEliminarEmpleado.setText("Eliminar");
-        jlEliminarEmpleado.setVerticalAlignment(javax.swing.SwingConstants.BOTTOM);
-        jlEliminarEmpleado.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED, null, new java.awt.Color(0, 150, 136), null, null));
-        jlEliminarEmpleado.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
-        jlEliminarEmpleado.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
-        jlEliminarEmpleado.setOpaque(true);
-        jlEliminarEmpleado.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
-        jlEliminarEmpleado.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jlEliminarEmpleadoMouseClicked(evt);
-            }
-            public void mouseEntered(java.awt.event.MouseEvent evt) {
-                jlEliminarEmpleadoMouseEntered(evt);
-            }
-            public void mouseExited(java.awt.event.MouseEvent evt) {
-                jlEliminarEmpleadoMouseExited(evt);
-            }
-        });
-        jPGestionEmpleados.add(jlEliminarEmpleado, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 340, 80, 30));
-
-        jlIconEliEmpl.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jlIconEliEmpl.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Image/borrar_empleado.png"))); // NOI18N
-        jPGestionEmpleados.add(jlIconEliEmpl, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 60, 180, 150));
-
-        jlListarEmpleado.setBackground(new java.awt.Color(0, 150, 136));
-        jlListarEmpleado.setFont(new java.awt.Font("Corbel", 1, 14)); // NOI18N
-        jlListarEmpleado.setForeground(new java.awt.Color(255, 255, 255));
-        jlListarEmpleado.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jlListarEmpleado.setText("Listar Empleados");
-        jlListarEmpleado.setVerticalAlignment(javax.swing.SwingConstants.BOTTOM);
-        jlListarEmpleado.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED, null, new java.awt.Color(0, 150, 136), null, null));
-        jlListarEmpleado.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
-        jlListarEmpleado.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
-        jlListarEmpleado.setOpaque(true);
-        jlListarEmpleado.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
-        jlListarEmpleado.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jlListarEmpleadoMouseClicked(evt);
-            }
-            public void mouseEntered(java.awt.event.MouseEvent evt) {
-                jlListarEmpleadoMouseEntered(evt);
-            }
-            public void mouseExited(java.awt.event.MouseEvent evt) {
-                jlListarEmpleadoMouseExited(evt);
-            }
-        });
-        jPGestionEmpleados.add(jlListarEmpleado, new org.netbeans.lib.awtextra.AbsoluteConstraints(460, 40, 120, 30));
-
-        rectanguloElimEmpl.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        rectanguloElimEmpl.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Image/rectangulo.jpg"))); // NOI18N
-        jPGestionEmpleados.add(rectanguloElimEmpl, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 110, -1, -1));
-
-        jtpEscritorio.addTab("tab17", jPGestionEmpleados);
-
-        jtpModificarEmpleado.setBackground(new java.awt.Color(255, 255, 255));
-        jtpModificarEmpleado.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-
-        jLTituloModEmpl.setFont(new java.awt.Font("Corbel", 1, 30)); // NOI18N
-        jLTituloModEmpl.setForeground(new java.awt.Color(153, 153, 153));
-        jLTituloModEmpl.setText("Modificar Empleado");
-        jtpModificarEmpleado.add(jLTituloModEmpl, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 30, -1, -1));
-
-        jLBuscarEmpleadoModEmpl.setFont(new java.awt.Font("Corbel", 1, 14)); // NOI18N
-        jLBuscarEmpleadoModEmpl.setForeground(new java.awt.Color(153, 153, 153));
-        jLBuscarEmpleadoModEmpl.setText("Buscar Empleado");
-        jtpModificarEmpleado.add(jLBuscarEmpleadoModEmpl, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 90, -1, -1));
-
-        jCBModificarEmpleado.setFont(new java.awt.Font("Corbel", 1, 14)); // NOI18N
-        jCBModificarEmpleado.setForeground(new java.awt.Color(0, 102, 102));
-        jCBModificarEmpleado.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jCBModificarEmpleadoActionPerformed(evt);
-            }
-        });
-        jtpModificarEmpleado.add(jCBModificarEmpleado, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 110, 290, 30));
-
-        jLNombreEmpModEmp1.setFont(new java.awt.Font("Corbel", 1, 14)); // NOI18N
-        jLNombreEmpModEmp1.setForeground(new java.awt.Color(153, 153, 153));
-        jLNombreEmpModEmp1.setText("Nombre empleado");
-        jtpModificarEmpleado.add(jLNombreEmpModEmp1, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 160, -1, -1));
-
-        jSModEmpl5.setBackground(new java.awt.Color(0, 150, 136));
-        jSModEmpl5.setOpaque(true);
-        jSModEmpl5.setPreferredSize(new java.awt.Dimension(50, 2));
-        jtpModificarEmpleado.add(jSModEmpl5, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 210, 200, -1));
-
-        jTFNombreEmpleadoModEmp.setFont(new java.awt.Font("Corbel", 0, 14)); // NOI18N
-        jTFNombreEmpleadoModEmp.setBorder(null);
-        jtpModificarEmpleado.add(jTFNombreEmpleadoModEmp, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 180, 200, 30));
-
-        jLDniModEmp.setFont(new java.awt.Font("Corbel", 1, 14)); // NOI18N
-        jLDniModEmp.setForeground(new java.awt.Color(153, 153, 153));
-        jLDniModEmp.setText("DNI");
-        jtpModificarEmpleado.add(jLDniModEmp, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 230, -1, -1));
-
-        jTFDniModEmp.setFont(new java.awt.Font("Corbel", 0, 14)); // NOI18N
-        jTFDniModEmp.setBorder(null);
-        jtpModificarEmpleado.add(jTFDniModEmp, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 250, 200, 30));
-
-        jSModEmp7.setBackground(new java.awt.Color(0, 150, 136));
-        jSModEmp7.setOpaque(true);
-        jSModEmp7.setPreferredSize(new java.awt.Dimension(50, 2));
-        jtpModificarEmpleado.add(jSModEmp7, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 280, 200, -1));
-
-        jLUsuarioModEmp.setFont(new java.awt.Font("Corbel", 1, 14)); // NOI18N
-        jLUsuarioModEmp.setForeground(new java.awt.Color(153, 153, 153));
-        jLUsuarioModEmp.setText("Usuario");
-        jtpModificarEmpleado.add(jLUsuarioModEmp, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 300, -1, -1));
-
-        jSModEmp9.setBackground(new java.awt.Color(0, 150, 136));
-        jSModEmp9.setOpaque(true);
-        jSModEmp9.setPreferredSize(new java.awt.Dimension(50, 2));
-        jtpModificarEmpleado.add(jSModEmp9, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 350, 200, -1));
-
-        jTFUsuarioModEmp.setFont(new java.awt.Font("Corbel", 0, 14)); // NOI18N
-        jTFUsuarioModEmp.setBorder(null);
-        jtpModificarEmpleado.add(jTFUsuarioModEmp, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 320, 200, 30));
-
-        jLBtnModificarModEmp.setBackground(new java.awt.Color(0, 150, 136));
-        jLBtnModificarModEmp.setFont(new java.awt.Font("Corbel", 1, 14)); // NOI18N
-        jLBtnModificarModEmp.setForeground(new java.awt.Color(255, 255, 255));
-        jLBtnModificarModEmp.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLBtnModificarModEmp.setText("Modificar");
-        jLBtnModificarModEmp.setVerticalAlignment(javax.swing.SwingConstants.BOTTOM);
-        jLBtnModificarModEmp.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
-        jLBtnModificarModEmp.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
-        jLBtnModificarModEmp.setOpaque(true);
-        jLBtnModificarModEmp.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jLBtnModificarModEmpMouseClicked(evt);
-            }
-            public void mouseEntered(java.awt.event.MouseEvent evt) {
-                jLBtnModificarModEmpMouseEntered(evt);
-            }
-            public void mouseExited(java.awt.event.MouseEvent evt) {
-                jLBtnModificarModEmpMouseExited(evt);
-            }
-        });
-        jtpModificarEmpleado.add(jLBtnModificarModEmp, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 370, 100, 30));
-
-        jSModEmp.setBackground(new java.awt.Color(0, 150, 136));
-        jSModEmp.setOpaque(true);
-        jSModEmp.setPreferredSize(new java.awt.Dimension(50, 2));
-        jtpModificarEmpleado.add(jSModEmp, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 350, 200, -1));
-
-        jTFContraseñaModEmp.setFont(new java.awt.Font("Corbel", 0, 14)); // NOI18N
-        jTFContraseñaModEmp.setBorder(null);
-        jtpModificarEmpleado.add(jTFContraseñaModEmp, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 320, 200, 30));
-
-        jLContraseñaModEmp.setFont(new java.awt.Font("Corbel", 1, 14)); // NOI18N
-        jLContraseñaModEmp.setForeground(new java.awt.Color(153, 153, 153));
-        jLContraseñaModEmp.setText("Contraseña");
-        jtpModificarEmpleado.add(jLContraseñaModEmp, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 300, -1, -1));
-
-        jtpModificarEmpleado.add(jCBCargoModifEmp, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 250, 200, 30));
-
-        jLCargoModEmp.setFont(new java.awt.Font("Corbel", 1, 14)); // NOI18N
-        jLCargoModEmp.setForeground(new java.awt.Color(153, 153, 153));
-        jLCargoModEmp.setText("Cargo");
-        jtpModificarEmpleado.add(jLCargoModEmp, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 230, -1, -1));
-
-        jSModEmp6.setBackground(new java.awt.Color(0, 150, 136));
-        jSModEmp6.setOpaque(true);
-        jSModEmp6.setPreferredSize(new java.awt.Dimension(50, 2));
-        jtpModificarEmpleado.add(jSModEmp6, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 210, 200, -1));
-
-        jTFApellidoModEmp.setFont(new java.awt.Font("Corbel", 0, 14)); // NOI18N
-        jTFApellidoModEmp.setBorder(null);
-        jtpModificarEmpleado.add(jTFApellidoModEmp, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 180, 200, 30));
-
-        jLApellidoModEmp.setFont(new java.awt.Font("Corbel", 1, 14)); // NOI18N
-        jLApellidoModEmp.setForeground(new java.awt.Color(153, 153, 153));
-        jLApellidoModEmp.setText("Apellido empleado");
-        jtpModificarEmpleado.add(jLApellidoModEmp, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 160, -1, -1));
-
-        jtpEscritorio.addTab("tab18", jtpModificarEmpleado);
-
-        jtpEliminarEmpleado.setBackground(new java.awt.Color(255, 255, 255));
-        jtpEliminarEmpleado.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-
-        jLTituloElimEmpleado.setFont(new java.awt.Font("Corbel", 1, 30)); // NOI18N
-        jLTituloElimEmpleado.setForeground(new java.awt.Color(153, 153, 153));
-        jLTituloElimEmpleado.setText("Eliminar Empleado");
-        jtpEliminarEmpleado.add(jLTituloElimEmpleado, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 30, -1, -1));
-
-        jLEliminarEmpleado.setFont(new java.awt.Font("Corbel", 1, 14)); // NOI18N
-        jLEliminarEmpleado.setForeground(new java.awt.Color(153, 153, 153));
-        jLEliminarEmpleado.setText("Buscar Empleado");
-        jtpEliminarEmpleado.add(jLEliminarEmpleado, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 90, -1, -1));
-
-        jCBEliminarEmpleado.setFont(new java.awt.Font("Corbel", 1, 14)); // NOI18N
-        jCBEliminarEmpleado.setForeground(new java.awt.Color(0, 102, 102));
-        jCBEliminarEmpleado.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jCBEliminarEmpleadoActionPerformed(evt);
-            }
-        });
-        jtpEliminarEmpleado.add(jCBEliminarEmpleado, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 110, 290, 30));
-
-        jLNombreEmpElimEmp.setFont(new java.awt.Font("Corbel", 1, 14)); // NOI18N
-        jLNombreEmpElimEmp.setForeground(new java.awt.Color(153, 153, 153));
-        jLNombreEmpElimEmp.setText("Nombre empleado");
-        jtpEliminarEmpleado.add(jLNombreEmpElimEmp, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 160, -1, -1));
-
-        jTFNombreEmpleadoElimEmp.setEditable(false);
-        jTFNombreEmpleadoElimEmp.setFont(new java.awt.Font("Corbel", 0, 14)); // NOI18N
-        jTFNombreEmpleadoElimEmp.setBorder(null);
-        jtpEliminarEmpleado.add(jTFNombreEmpleadoElimEmp, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 180, 200, 30));
-
-        jSModEmpl6.setBackground(new java.awt.Color(0, 150, 136));
-        jSModEmpl6.setOpaque(true);
-        jSModEmpl6.setPreferredSize(new java.awt.Dimension(50, 2));
-        jtpEliminarEmpleado.add(jSModEmpl6, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 210, 200, -1));
-
-        jLDniElimEmp.setFont(new java.awt.Font("Corbel", 1, 14)); // NOI18N
-        jLDniElimEmp.setForeground(new java.awt.Color(153, 153, 153));
-        jLDniElimEmp.setText("DNI");
-        jtpEliminarEmpleado.add(jLDniElimEmp, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 230, -1, -1));
-
-        jTFDniElimEmp.setEditable(false);
-        jTFDniElimEmp.setFont(new java.awt.Font("Corbel", 0, 14)); // NOI18N
-        jTFDniElimEmp.setBorder(null);
-        jtpEliminarEmpleado.add(jTFDniElimEmp, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 250, 200, 30));
-
-        jSModEmp8.setBackground(new java.awt.Color(0, 150, 136));
-        jSModEmp8.setOpaque(true);
-        jSModEmp8.setPreferredSize(new java.awt.Dimension(50, 2));
-        jtpEliminarEmpleado.add(jSModEmp8, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 280, 200, -1));
-
-        jLUsuarioElimEmp.setFont(new java.awt.Font("Corbel", 1, 14)); // NOI18N
-        jLUsuarioElimEmp.setForeground(new java.awt.Color(153, 153, 153));
-        jLUsuarioElimEmp.setText("Usuario");
-        jtpEliminarEmpleado.add(jLUsuarioElimEmp, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 300, -1, -1));
-
-        jTFUsuarioElimEmp.setEditable(false);
-        jTFUsuarioElimEmp.setFont(new java.awt.Font("Corbel", 0, 14)); // NOI18N
-        jTFUsuarioElimEmp.setBorder(null);
-        jtpEliminarEmpleado.add(jTFUsuarioElimEmp, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 320, 200, 30));
-
-        jSModEmp10.setBackground(new java.awt.Color(0, 150, 136));
-        jSModEmp10.setOpaque(true);
-        jSModEmp10.setPreferredSize(new java.awt.Dimension(50, 2));
-        jtpEliminarEmpleado.add(jSModEmp10, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 350, 200, -1));
-
-        jLContraseñaElimEmp.setFont(new java.awt.Font("Corbel", 1, 14)); // NOI18N
-        jLContraseñaElimEmp.setForeground(new java.awt.Color(153, 153, 153));
-        jLContraseñaElimEmp.setText("Contraseña");
-        jtpEliminarEmpleado.add(jLContraseñaElimEmp, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 300, -1, -1));
-
-        jTFContraseñaElimEmp.setEditable(false);
-        jTFContraseñaElimEmp.setFont(new java.awt.Font("Corbel", 0, 14)); // NOI18N
-        jTFContraseñaElimEmp.setBorder(null);
-        jtpEliminarEmpleado.add(jTFContraseñaElimEmp, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 320, 200, 30));
-
-        jSModEmp1.setBackground(new java.awt.Color(0, 150, 136));
-        jSModEmp1.setOpaque(true);
-        jSModEmp1.setPreferredSize(new java.awt.Dimension(50, 2));
-        jtpEliminarEmpleado.add(jSModEmp1, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 350, 200, -1));
-
-        jLCargoElimEmp.setFont(new java.awt.Font("Corbel", 1, 14)); // NOI18N
-        jLCargoElimEmp.setForeground(new java.awt.Color(153, 153, 153));
-        jLCargoElimEmp.setText("Cargo");
-        jtpEliminarEmpleado.add(jLCargoElimEmp, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 230, -1, -1));
-
-        jCBCargoElimEmp.setEnabled(false);
-        jtpEliminarEmpleado.add(jCBCargoElimEmp, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 250, 200, 30));
-
-        jLApellidoElimEmp.setFont(new java.awt.Font("Corbel", 1, 14)); // NOI18N
-        jLApellidoElimEmp.setForeground(new java.awt.Color(153, 153, 153));
-        jLApellidoElimEmp.setText("Apellido empleado");
-        jtpEliminarEmpleado.add(jLApellidoElimEmp, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 160, -1, -1));
-
-        jTFApellidoElimEmp.setEditable(false);
-        jTFApellidoElimEmp.setFont(new java.awt.Font("Corbel", 0, 14)); // NOI18N
-        jTFApellidoElimEmp.setBorder(null);
-        jtpEliminarEmpleado.add(jTFApellidoElimEmp, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 180, 200, 30));
-
-        jSModEmp11.setBackground(new java.awt.Color(0, 150, 136));
-        jSModEmp11.setOpaque(true);
-        jSModEmp11.setPreferredSize(new java.awt.Dimension(50, 2));
-        jtpEliminarEmpleado.add(jSModEmp11, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 210, 200, -1));
-
-        jLBtnEliminarEmpleado.setBackground(new java.awt.Color(0, 150, 136));
-        jLBtnEliminarEmpleado.setFont(new java.awt.Font("Corbel", 1, 14)); // NOI18N
-        jLBtnEliminarEmpleado.setForeground(new java.awt.Color(255, 255, 255));
-        jLBtnEliminarEmpleado.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLBtnEliminarEmpleado.setText("Eliminar");
-        jLBtnEliminarEmpleado.setVerticalAlignment(javax.swing.SwingConstants.BOTTOM);
-        jLBtnEliminarEmpleado.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
-        jLBtnEliminarEmpleado.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
-        jLBtnEliminarEmpleado.setOpaque(true);
-        jLBtnEliminarEmpleado.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jLBtnEliminarEmpleadoMouseClicked(evt);
-            }
-            public void mouseEntered(java.awt.event.MouseEvent evt) {
-                jLBtnEliminarEmpleadoMouseEntered(evt);
-            }
-            public void mouseExited(java.awt.event.MouseEvent evt) {
-                jLBtnEliminarEmpleadoMouseExited(evt);
-            }
-        });
-        jtpEliminarEmpleado.add(jLBtnEliminarEmpleado, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 370, 100, 30));
-
-        jtpEscritorio.addTab("tab19", jtpEliminarEmpleado);
-
-        jtpListaEmp.setBackground(new java.awt.Color(255, 255, 255));
-        jtpListaEmp.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-
-        jLTituloListaEmpleados.setFont(new java.awt.Font("Corbel", 1, 30)); // NOI18N
-        jLTituloListaEmpleados.setForeground(new java.awt.Color(153, 153, 153));
-        jLTituloListaEmpleados.setText("Lista de Empleados  ");
-        jtpListaEmp.add(jLTituloListaEmpleados, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 40, -1, -1));
-
-        jlImgBusquedaEmpl.setBackground(new java.awt.Color(255, 255, 255));
-        jlImgBusquedaEmpl.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jlImgBusquedaEmpl.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Image/busqueda - gris.png"))); // NOI18N
-        jlImgBusquedaEmpl.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
-        jlImgBusquedaEmpl.setOpaque(true);
-        jlImgBusquedaEmpl.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jlImgBusquedaEmplMouseClicked(evt);
-            }
-            public void mouseEntered(java.awt.event.MouseEvent evt) {
-                jlImgBusquedaEmplMouseEntered(evt);
-            }
-            public void mouseExited(java.awt.event.MouseEvent evt) {
-                jlImgBusquedaEmplMouseExited(evt);
-            }
-        });
-        jtpListaEmp.add(jlImgBusquedaEmpl, new org.netbeans.lib.awtextra.AbsoluteConstraints(540, 80, 40, 30));
-
-        jtfBuscadorEmpleadosListEmp.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
-        jtpListaEmp.add(jtfBuscadorEmpleadosListEmp, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 80, 160, 30));
-
-        ScrollListClien1.setBackground(new java.awt.Color(255, 255, 255));
-        ScrollListClien1.setFont(new java.awt.Font("Corbel", 0, 12)); // NOI18N
-
-        jtListEmpleado.setBackground(new java.awt.Color(204, 204, 204));
-        jtListEmpleado.setFont(new java.awt.Font("Corbel", 1, 14)); // NOI18N
-        jtListEmpleado.setModel(Modelo2 = new javax.swing.table.DefaultTableModel(
-            new Object [][] {
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null}
-            },
-            new String[]{
-                "ID", "Apellido", "Nombre", "DNI", "Cargo", "Usuario", "Contraseña"
-            }
-        ) {
-            public boolean isCellEditable(int fila, int column) {
-                return false;
-            }
-
-            Class[] types = new Class[]{
-                java.lang.Integer.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class,
-                java.lang.String.class, java.lang.String.class
-            };
-
-            public Class getColumnClass(int columnIndex) {
-                return types[columnIndex];
-            }
-        });
-        jtListEmpleado.setGridColor(new java.awt.Color(0, 102, 102));
-        jtListEmpleado.setMinimumSize(new java.awt.Dimension(60, 60));
-        ScrollListClien1.setViewportView(jtListEmpleado);
-
-        jtpListaEmp.add(ScrollListClien1, new org.netbeans.lib.awtextra.AbsoluteConstraints(13, 120, 570, 290));
-
-        jlBusquedaEmp.setFont(new java.awt.Font("Corbel", 1, 14)); // NOI18N
-        jlBusquedaEmp.setForeground(new java.awt.Color(153, 153, 153));
-        jlBusquedaEmp.setText("Busqueda por Apellido");
-        jlBusquedaEmp.setVerticalAlignment(javax.swing.SwingConstants.BOTTOM);
-        jtpListaEmp.add(jlBusquedaEmp, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 50, 200, 30));
-
-        jtpEscritorio.addTab("tab20", jtpListaEmp);
-
-        jtpPapelera.setBackground(new java.awt.Color(255, 255, 255));
-        jtpPapelera.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-
-        jlVentaPapelera.setBackground(new java.awt.Color(0, 150, 136));
-        jlVentaPapelera.setFont(new java.awt.Font("Corbel", 1, 14)); // NOI18N
-        jlVentaPapelera.setForeground(new java.awt.Color(255, 255, 255));
-        jlVentaPapelera.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jlVentaPapelera.setText("Venta");
-        jlVentaPapelera.setVerticalAlignment(javax.swing.SwingConstants.BOTTOM);
-        jlVentaPapelera.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED, null, new java.awt.Color(0, 150, 136), null, null));
-        jlVentaPapelera.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
-        jlVentaPapelera.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
-        jlVentaPapelera.setOpaque(true);
-        jlVentaPapelera.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
-        jlVentaPapelera.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jlVentaPapeleraMouseClicked(evt);
-            }
-            public void mouseEntered(java.awt.event.MouseEvent evt) {
-                jlVentaPapeleraMouseEntered(evt);
-            }
-            public void mouseExited(java.awt.event.MouseEvent evt) {
-                jlVentaPapeleraMouseExited(evt);
-            }
-        });
-        jtpPapelera.add(jlVentaPapelera, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 100, 80, 30));
-
-        jlCliente.setBackground(new java.awt.Color(0, 150, 136));
-        jlCliente.setFont(new java.awt.Font("Corbel", 1, 14)); // NOI18N
-        jlCliente.setForeground(new java.awt.Color(255, 255, 255));
-        jlCliente.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jlCliente.setText("Cliente");
-        jlCliente.setVerticalAlignment(javax.swing.SwingConstants.BOTTOM);
-        jlCliente.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED, null, new java.awt.Color(0, 150, 136), null, null));
-        jlCliente.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
-        jlCliente.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
-        jlCliente.setOpaque(true);
-        jlCliente.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
-        jlCliente.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jlClienteMouseClicked(evt);
-            }
-            public void mouseEntered(java.awt.event.MouseEvent evt) {
-                jlClienteMouseEntered(evt);
-            }
-            public void mouseExited(java.awt.event.MouseEvent evt) {
-                jlClienteMouseExited(evt);
-            }
-        });
-        jtpPapelera.add(jlCliente, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 100, 80, 30));
-
-        jlProductoPapelera.setBackground(new java.awt.Color(0, 150, 136));
-        jlProductoPapelera.setFont(new java.awt.Font("Corbel", 1, 14)); // NOI18N
-        jlProductoPapelera.setForeground(new java.awt.Color(255, 255, 255));
-        jlProductoPapelera.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jlProductoPapelera.setText("Producto");
-        jlProductoPapelera.setVerticalAlignment(javax.swing.SwingConstants.BOTTOM);
-        jlProductoPapelera.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED, null, new java.awt.Color(0, 150, 136), null, null));
-        jlProductoPapelera.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
-        jlProductoPapelera.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
-        jlProductoPapelera.setOpaque(true);
-        jlProductoPapelera.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
-        jlProductoPapelera.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jlProductoPapeleraMouseClicked(evt);
-            }
-            public void mouseEntered(java.awt.event.MouseEvent evt) {
-                jlProductoPapeleraMouseEntered(evt);
-            }
-            public void mouseExited(java.awt.event.MouseEvent evt) {
-                jlProductoPapeleraMouseExited(evt);
-            }
-        });
-        jtpPapelera.add(jlProductoPapelera, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 100, 80, 30));
-
-        jlEmpleadoPapelera.setBackground(new java.awt.Color(0, 150, 136));
-        jlEmpleadoPapelera.setFont(new java.awt.Font("Corbel", 1, 14)); // NOI18N
-        jlEmpleadoPapelera.setForeground(new java.awt.Color(255, 255, 255));
-        jlEmpleadoPapelera.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jlEmpleadoPapelera.setText("Empleado");
-        jlEmpleadoPapelera.setVerticalAlignment(javax.swing.SwingConstants.BOTTOM);
-        jlEmpleadoPapelera.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED, null, new java.awt.Color(0, 150, 136), null, null));
-        jlEmpleadoPapelera.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
-        jlEmpleadoPapelera.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
-        jlEmpleadoPapelera.setOpaque(true);
-        jlEmpleadoPapelera.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
-        jlEmpleadoPapelera.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jlEmpleadoPapeleraMouseClicked(evt);
-            }
-            public void mouseEntered(java.awt.event.MouseEvent evt) {
-                jlEmpleadoPapeleraMouseEntered(evt);
-            }
-            public void mouseExited(java.awt.event.MouseEvent evt) {
-                jlEmpleadoPapeleraMouseExited(evt);
-            }
-        });
-        jtpPapelera.add(jlEmpleadoPapelera, new org.netbeans.lib.awtextra.AbsoluteConstraints(480, 100, 80, 30));
-
-        jlEliminarPapelera.setBackground(new java.awt.Color(0, 150, 136));
-        jlEliminarPapelera.setFont(new java.awt.Font("Corbel", 1, 14)); // NOI18N
-        jlEliminarPapelera.setForeground(new java.awt.Color(255, 255, 255));
-        jlEliminarPapelera.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jlEliminarPapelera.setText("Eliminar");
-        jlEliminarPapelera.setVerticalAlignment(javax.swing.SwingConstants.BOTTOM);
-        jlEliminarPapelera.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED, null, new java.awt.Color(0, 150, 136), null, null));
-        jlEliminarPapelera.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
-        jlEliminarPapelera.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
-        jlEliminarPapelera.setOpaque(true);
-        jlEliminarPapelera.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
-        jlEliminarPapelera.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jlEliminarPapeleraMouseClicked(evt);
-            }
-            public void mouseEntered(java.awt.event.MouseEvent evt) {
-                jlEliminarPapeleraMouseEntered(evt);
-            }
-            public void mouseExited(java.awt.event.MouseEvent evt) {
-                jlEliminarPapeleraMouseExited(evt);
-            }
-        });
-        jtpPapelera.add(jlEliminarPapelera, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 370, 80, 30));
-
-        jlRestaurarPapelera.setBackground(new java.awt.Color(0, 150, 136));
-        jlRestaurarPapelera.setFont(new java.awt.Font("Corbel", 1, 14)); // NOI18N
-        jlRestaurarPapelera.setForeground(new java.awt.Color(255, 255, 255));
-        jlRestaurarPapelera.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jlRestaurarPapelera.setText("Restaurar");
-        jlRestaurarPapelera.setVerticalAlignment(javax.swing.SwingConstants.BOTTOM);
-        jlRestaurarPapelera.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED, null, new java.awt.Color(0, 150, 136), null, null));
-        jlRestaurarPapelera.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
-        jlRestaurarPapelera.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
-        jlRestaurarPapelera.setOpaque(true);
-        jlRestaurarPapelera.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
-        jlRestaurarPapelera.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jlRestaurarPapeleraMouseClicked(evt);
-            }
-            public void mouseEntered(java.awt.event.MouseEvent evt) {
-                jlRestaurarPapeleraMouseEntered(evt);
-            }
-            public void mouseExited(java.awt.event.MouseEvent evt) {
-                jlRestaurarPapeleraMouseExited(evt);
-            }
-        });
-        jtpPapelera.add(jlRestaurarPapelera, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 370, 80, 30));
-
-        jTablePapelera.setModel(new javax.swing.table.DefaultTableModel(
-            new Object [][] {
-                {},
-                {},
-                {},
-                {}
-            },
-            new String [] {
-
-            }
-        ));
-        jScrollPanePapelera.setViewportView(jTablePapelera);
-
-        jtpPapelera.add(jScrollPanePapelera, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 150, 560, 200));
-
-        jlPapelera.setFont(new java.awt.Font("Corbel", 1, 30)); // NOI18N
-        jlPapelera.setForeground(new java.awt.Color(153, 153, 153));
-        jlPapelera.setText("Papelera");
-        jtpPapelera.add(jlPapelera, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 40, -1, -1));
-
-        jtpEscritorio.addTab("tab21", jtpPapelera);
-
-        BackGround.add(jtpEscritorio, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 43, 600, 460));
-
-        getContentPane().add(BackGround, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
-
-        pack();
+        }
+    );
+    jtListaDetalles.setGridColor(new java.awt.Color(0, 102, 102));
+    jtListaDetalles.setMinimumSize(new java.awt.Dimension(60, 60));
+    ScrollTablaDetalles.setViewportView(jtListaDetalles);
+
+    jtpDetallesVenta.add(ScrollTablaDetalles, new org.netbeans.lib.awtextra.AbsoluteConstraints(13, 170, 570, 240));
+
+    jcbVentasXCliente.setFont(new java.awt.Font("Corbel", 1, 14)); // NOI18N
+    jcbVentasXCliente.setEnabled(false);
+    jtpDetallesVenta.add(jcbVentasXCliente, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 130, 120, 30));
+
+    jlSelecPro.setFont(new java.awt.Font("Corbel", 1, 14)); // NOI18N
+    jlSelecPro.setForeground(new java.awt.Color(153, 153, 153));
+    jlSelecPro.setText("Seleccione un Producto");
+    jlSelecPro.setVerticalAlignment(javax.swing.SwingConstants.BOTTOM);
+    jtpDetallesVenta.add(jlSelecPro, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 100, 180, 30));
+
+    jlSelecFecha.setFont(new java.awt.Font("Corbel", 1, 14)); // NOI18N
+    jlSelecFecha.setForeground(new java.awt.Color(153, 153, 153));
+    jlSelecFecha.setText("Seleccione una fecha");
+    jlSelecFecha.setVerticalAlignment(javax.swing.SwingConstants.BOTTOM);
+    jtpDetallesVenta.add(jlSelecFecha, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 100, 180, 30));
+
+    jlTelCliDetalles.setFont(new java.awt.Font("Corbel", 1, 14)); // NOI18N
+    jlTelCliDetalles.setForeground(new java.awt.Color(153, 153, 153));
+    jlTelCliDetalles.setText("Seleccione un Cliente");
+    jlTelCliDetalles.setVerticalAlignment(javax.swing.SwingConstants.BOTTOM);
+    jtpDetallesVenta.add(jlTelCliDetalles, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 100, 180, 30));
+
+    jSep2.setOrientation(javax.swing.SwingConstants.VERTICAL);
+    jtpDetallesVenta.add(jSep2, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 70, 10, 100));
+
+    jlIconBuscar2.setBackground(new java.awt.Color(255, 255, 255));
+    jlIconBuscar2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+    jlIconBuscar2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Image/busqueda - gris.png"))); // NOI18N
+    jlIconBuscar2.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+    jlIconBuscar2.setEnabled(false);
+    jlIconBuscar2.setOpaque(true);
+    jlIconBuscar2.addMouseListener(new java.awt.event.MouseAdapter() {
+        public void mouseClicked(java.awt.event.MouseEvent evt) {
+            jlIconBuscar2MouseClicked(evt);
+        }
+        public void mouseEntered(java.awt.event.MouseEvent evt) {
+            jlIconBuscar2MouseEntered(evt);
+        }
+        public void mouseExited(java.awt.event.MouseEvent evt) {
+            jlIconBuscar2MouseExited(evt);
+        }
+    });
+    jtpDetallesVenta.add(jlIconBuscar2, new org.netbeans.lib.awtextra.AbsoluteConstraints(530, 130, 40, 30));
+
+    jlIconBuscar1.setBackground(new java.awt.Color(255, 255, 255));
+    jlIconBuscar1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+    jlIconBuscar1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Image/busqueda - gris.png"))); // NOI18N
+    jlIconBuscar1.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+    jlIconBuscar1.setEnabled(false);
+    jlIconBuscar1.setOpaque(true);
+    jlIconBuscar1.addMouseListener(new java.awt.event.MouseAdapter() {
+        public void mouseClicked(java.awt.event.MouseEvent evt) {
+            jlIconBuscar1MouseClicked(evt);
+        }
+        public void mouseEntered(java.awt.event.MouseEvent evt) {
+            jlIconBuscar1MouseEntered(evt);
+        }
+        public void mouseExited(java.awt.event.MouseEvent evt) {
+            jlIconBuscar1MouseExited(evt);
+        }
+    });
+    jtpDetallesVenta.add(jlIconBuscar1, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 130, 40, 30));
+
+    jlIconBuscar.setBackground(new java.awt.Color(255, 255, 255));
+    jlIconBuscar.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+    jlIconBuscar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Image/busqueda - gris.png"))); // NOI18N
+    jlIconBuscar.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+    jlIconBuscar.setEnabled(false);
+    jlIconBuscar.setOpaque(true);
+    jlIconBuscar.addMouseListener(new java.awt.event.MouseAdapter() {
+        public void mouseClicked(java.awt.event.MouseEvent evt) {
+            jlIconBuscarMouseClicked(evt);
+        }
+        public void mouseEntered(java.awt.event.MouseEvent evt) {
+            jlIconBuscarMouseEntered(evt);
+        }
+        public void mouseExited(java.awt.event.MouseEvent evt) {
+            jlIconBuscarMouseExited(evt);
+        }
+    });
+    jtpDetallesVenta.add(jlIconBuscar, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 130, 40, 30));
+
+    jlClientesxPro.setBackground(new java.awt.Color(0, 150, 136));
+    jlClientesxPro.setFont(new java.awt.Font("Corbel", 1, 14)); // NOI18N
+    jlClientesxPro.setForeground(new java.awt.Color(255, 255, 255));
+    jlClientesxPro.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+    jlClientesxPro.setText("Clientes por Productos");
+    jlClientesxPro.setVerticalAlignment(javax.swing.SwingConstants.BOTTOM);
+    jlClientesxPro.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED, null, new java.awt.Color(0, 102, 102), null, null));
+    jlClientesxPro.setOpaque(true);
+    jlClientesxPro.addMouseListener(new java.awt.event.MouseAdapter() {
+        public void mouseClicked(java.awt.event.MouseEvent evt) {
+            jlClientesxProMouseClicked(evt);
+        }
+        public void mouseEntered(java.awt.event.MouseEvent evt) {
+            jlClientesxProMouseEntered(evt);
+        }
+        public void mouseExited(java.awt.event.MouseEvent evt) {
+            jlClientesxProMouseExited(evt);
+        }
+    });
+    jtpDetallesVenta.add(jlClientesxPro, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 80, 150, 30));
+
+    jlVentasCli.setBackground(new java.awt.Color(0, 150, 136));
+    jlVentasCli.setFont(new java.awt.Font("Corbel", 1, 14)); // NOI18N
+    jlVentasCli.setForeground(new java.awt.Color(255, 255, 255));
+    jlVentasCli.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+    jlVentasCli.setText("Ventas de Clientes");
+    jlVentasCli.setVerticalAlignment(javax.swing.SwingConstants.BOTTOM);
+    jlVentasCli.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED, null, new java.awt.Color(0, 102, 102), null, null));
+    jlVentasCli.setOpaque(true);
+    jlVentasCli.addMouseListener(new java.awt.event.MouseAdapter() {
+        public void mouseClicked(java.awt.event.MouseEvent evt) {
+            jlVentasCliMouseClicked(evt);
+        }
+        public void mouseEntered(java.awt.event.MouseEvent evt) {
+            jlVentasCliMouseEntered(evt);
+        }
+        public void mouseExited(java.awt.event.MouseEvent evt) {
+            jlVentasCliMouseExited(evt);
+        }
+    });
+    jtpDetallesVenta.add(jlVentasCli, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 80, 120, 30));
+
+    jSep1.setOrientation(javax.swing.SwingConstants.VERTICAL);
+    jtpDetallesVenta.add(jSep1, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 70, 10, 100));
+
+    jdcFechaPro.setEnabled(false);
+    jdcFechaPro.setFont(new java.awt.Font("Corbel", 1, 14)); // NOI18N
+    jtpDetallesVenta.add(jdcFechaPro, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 130, 120, 30));
+
+    jlProXFecha.setBackground(new java.awt.Color(0, 150, 136));
+    jlProXFecha.setFont(new java.awt.Font("Corbel", 1, 14)); // NOI18N
+    jlProXFecha.setForeground(new java.awt.Color(255, 255, 255));
+    jlProXFecha.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+    jlProXFecha.setText("Productos por Fecha");
+    jlProXFecha.setVerticalAlignment(javax.swing.SwingConstants.BOTTOM);
+    jlProXFecha.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED, null, new java.awt.Color(0, 102, 102), null, null));
+    jlProXFecha.setOpaque(true);
+    jlProXFecha.addMouseListener(new java.awt.event.MouseAdapter() {
+        public void mouseClicked(java.awt.event.MouseEvent evt) {
+            jlProXFechaMouseClicked(evt);
+        }
+        public void mouseEntered(java.awt.event.MouseEvent evt) {
+            jlProXFechaMouseEntered(evt);
+        }
+        public void mouseExited(java.awt.event.MouseEvent evt) {
+            jlProXFechaMouseExited(evt);
+        }
+    });
+    jtpDetallesVenta.add(jlProXFecha, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 80, 140, 30));
+
+    jcbProXCliente.setFont(new java.awt.Font("Corbel", 1, 14)); // NOI18N
+    jcbProXCliente.setEnabled(false);
+    jtpDetallesVenta.add(jcbProXCliente, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 130, 120, 30));
+
+    jtpEscritorio.addTab("tab15", jtpDetallesVenta);
+
+    jtpEliminarVenta.setBackground(new java.awt.Color(255, 255, 255));
+    jtpEliminarVenta.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+    jlBorrarVenta.setFont(new java.awt.Font("Corbel", 1, 30)); // NOI18N
+    jlBorrarVenta.setForeground(new java.awt.Color(153, 153, 153));
+    jlBorrarVenta.setText("Eliminar Venta");
+    jtpEliminarVenta.add(jlBorrarVenta, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 40, -1, -1));
+
+    jlBuscarVenta.setFont(new java.awt.Font("Corbel", 1, 14)); // NOI18N
+    jlBuscarVenta.setForeground(new java.awt.Color(153, 153, 153));
+    jlBuscarVenta.setText("Buscar venta");
+    jtpEliminarVenta.add(jlBuscarVenta, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 100, -1, -1));
+
+    jcbBuscarVenta.setFont(new java.awt.Font("Corbel", 1, 14)); // NOI18N
+    jcbBuscarVenta.addActionListener(new java.awt.event.ActionListener() {
+        public void actionPerformed(java.awt.event.ActionEvent evt) {
+            jcbBuscarVentaActionPerformed(evt);
+        }
+    });
+    jtpEliminarVenta.add(jcbBuscarVenta, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 120, 200, 30));
+
+    jlNombreProEliminar.setFont(new java.awt.Font("Corbel", 1, 14)); // NOI18N
+    jlNombreProEliminar.setForeground(new java.awt.Color(153, 153, 153));
+    jlNombreProEliminar.setText("Nombre producto");
+    jtpEliminarVenta.add(jlNombreProEliminar, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 190, -1, -1));
+
+    jtfNombreProEliminar.setEditable(false);
+    jtfNombreProEliminar.setFont(new java.awt.Font("Corbel", 0, 14)); // NOI18N
+    jtfNombreProEliminar.setBorder(null);
+    jtpEliminarVenta.add(jtfNombreProEliminar, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 210, 200, 30));
+
+    jtfTelClienteEliminar.setFont(new java.awt.Font("Corbel", 1, 14)); // NOI18N
+    jtfTelClienteEliminar.setForeground(new java.awt.Color(153, 153, 153));
+    jtfTelClienteEliminar.setText("Telefono cliente");
+    jtpEliminarVenta.add(jtfTelClienteEliminar, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 260, -1, -1));
+
+    jSElimProd5.setBackground(new java.awt.Color(0, 150, 136));
+    jSElimProd5.setOpaque(true);
+    jSElimProd5.setPreferredSize(new java.awt.Dimension(50, 2));
+    jtpEliminarVenta.add(jSElimProd5, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 240, 200, -1));
+
+    jtfTelCliEliminar.setEditable(false);
+    jtfTelCliEliminar.setFont(new java.awt.Font("Corbel", 0, 14)); // NOI18N
+    jtfTelCliEliminar.setBorder(null);
+    jtpEliminarVenta.add(jtfTelCliEliminar, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 280, 200, 30));
+
+    jSElimProd6.setBackground(new java.awt.Color(0, 150, 136));
+    jSElimProd6.setOpaque(true);
+    jSElimProd6.setPreferredSize(new java.awt.Dimension(50, 2));
+    jtpEliminarVenta.add(jSElimProd6, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 310, 200, -1));
+
+    jtfNombreEmpleadoEliminar.setEditable(false);
+    jtfNombreEmpleadoEliminar.setFont(new java.awt.Font("Corbel", 0, 14)); // NOI18N
+    jtfNombreEmpleadoEliminar.setBorder(null);
+    jtpEliminarVenta.add(jtfNombreEmpleadoEliminar, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 280, 200, 30));
+
+    jSElimProd7.setBackground(new java.awt.Color(0, 150, 136));
+    jSElimProd7.setOpaque(true);
+    jSElimProd7.setPreferredSize(new java.awt.Dimension(50, 2));
+    jtpEliminarVenta.add(jSElimProd7, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 310, 200, -1));
+
+    jlNombreEmpleadoEliminar.setFont(new java.awt.Font("Corbel", 1, 14)); // NOI18N
+    jlNombreEmpleadoEliminar.setForeground(new java.awt.Color(153, 153, 153));
+    jlNombreEmpleadoEliminar.setText("Nombre de empleado");
+    jtpEliminarVenta.add(jlNombreEmpleadoEliminar, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 260, -1, -1));
+
+    jlFechaVentaEliminar.setFont(new java.awt.Font("Corbel", 1, 14)); // NOI18N
+    jlFechaVentaEliminar.setForeground(new java.awt.Color(153, 153, 153));
+    jlFechaVentaEliminar.setText("Fecha de venta");
+    jtpEliminarVenta.add(jlFechaVentaEliminar, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 190, -1, -1));
+
+    jlEliminarVentaBorrar.setBackground(new java.awt.Color(0, 150, 136));
+    jlEliminarVentaBorrar.setFont(new java.awt.Font("Corbel", 1, 14)); // NOI18N
+    jlEliminarVentaBorrar.setForeground(new java.awt.Color(255, 255, 255));
+    jlEliminarVentaBorrar.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+    jlEliminarVentaBorrar.setText("Eliminar");
+    jlEliminarVentaBorrar.setVerticalAlignment(javax.swing.SwingConstants.BOTTOM);
+    jlEliminarVentaBorrar.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
+    jlEliminarVentaBorrar.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+    jlEliminarVentaBorrar.setOpaque(true);
+    jlEliminarVentaBorrar.addMouseListener(new java.awt.event.MouseAdapter() {
+        public void mouseClicked(java.awt.event.MouseEvent evt) {
+            jlEliminarVentaBorrarMouseClicked(evt);
+        }
+        public void mouseEntered(java.awt.event.MouseEvent evt) {
+            jlEliminarVentaBorrarMouseEntered(evt);
+        }
+        public void mouseExited(java.awt.event.MouseEvent evt) {
+            jlEliminarVentaBorrarMouseExited(evt);
+        }
+    });
+    jtpEliminarVenta.add(jlEliminarVentaBorrar, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 340, 100, 30));
+
+    jlVentaIconEliminar.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+    jlVentaIconEliminar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Image/archivo-menos.png"))); // NOI18N
+    jtpEliminarVenta.add(jlVentaIconEliminar, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 30, 200, 150));
+
+    jdcElimVenta.setEnabled(false);
+    jtpEliminarVenta.add(jdcElimVenta, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 210, 200, 30));
+
+    jtpEscritorio.addTab("tab16", jtpEliminarVenta);
+
+    jPGestionEmpleados.setBackground(new java.awt.Color(255, 255, 255));
+    jPGestionEmpleados.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+    jlGestionEmpleado1.setFont(new java.awt.Font("Corbel", 1, 30)); // NOI18N
+    jlGestionEmpleado1.setForeground(new java.awt.Color(153, 153, 153));
+    jlGestionEmpleado1.setText("Gestion de Empleados");
+    jPGestionEmpleados.add(jlGestionEmpleado1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 40, 330, 30));
+
+    jlIconAgreEmpl.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+    jlIconAgreEmpl.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Image/agregar_empleado.png"))); // NOI18N
+    jPGestionEmpleados.add(jlIconAgreEmpl, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 60, 180, 150));
+
+    jlAgregarEmpleado.setBackground(new java.awt.Color(0, 150, 136));
+    jlAgregarEmpleado.setFont(new java.awt.Font("Corbel", 1, 14)); // NOI18N
+    jlAgregarEmpleado.setForeground(new java.awt.Color(255, 255, 255));
+    jlAgregarEmpleado.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+    jlAgregarEmpleado.setText("Agregar");
+    jlAgregarEmpleado.setVerticalAlignment(javax.swing.SwingConstants.BOTTOM);
+    jlAgregarEmpleado.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED, null, new java.awt.Color(0, 150, 136), null, null));
+    jlAgregarEmpleado.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+    jlAgregarEmpleado.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+    jlAgregarEmpleado.setOpaque(true);
+    jlAgregarEmpleado.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
+    jlAgregarEmpleado.addMouseListener(new java.awt.event.MouseAdapter() {
+        public void mouseClicked(java.awt.event.MouseEvent evt) {
+            jlAgregarEmpleadoMouseClicked(evt);
+        }
+        public void mouseEntered(java.awt.event.MouseEvent evt) {
+            jlAgregarEmpleadoMouseEntered(evt);
+        }
+        public void mouseExited(java.awt.event.MouseEvent evt) {
+            jlAgregarEmpleadoMouseExited(evt);
+        }
+    });
+    jPGestionEmpleados.add(jlAgregarEmpleado, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 340, 80, 30));
+
+    jlAgregarEmpl.setFont(new java.awt.Font("Corbel", 1, 18)); // NOI18N
+    jlAgregarEmpl.setForeground(new java.awt.Color(102, 102, 102));
+    jlAgregarEmpl.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+    jlAgregarEmpl.setText("Agregar ");
+    jPGestionEmpleados.add(jlAgregarEmpl, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 200, -1, -1));
+
+    textEmpleadoA.setFont(new java.awt.Font("Corbel", 0, 12)); // NOI18N
+    textEmpleadoA.setForeground(new java.awt.Color(153, 153, 153));
+    textEmpleadoA.setVerticalAlignment(javax.swing.SwingConstants.TOP);
+    jPGestionEmpleados.add(textEmpleadoA, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 240, 150, 90));
+
+    rectanguloAgEmpl.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+    rectanguloAgEmpl.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Image/rectangulo.jpg"))); // NOI18N
+    jPGestionEmpleados.add(rectanguloAgEmpl, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 110, -1, -1));
+
+    textEmpleadoM.setFont(new java.awt.Font("Corbel", 0, 12)); // NOI18N
+    textEmpleadoM.setForeground(new java.awt.Color(153, 153, 153));
+    textEmpleadoM.setVerticalAlignment(javax.swing.SwingConstants.TOP);
+    jPGestionEmpleados.add(textEmpleadoM, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 240, 150, 90));
+
+    jlModificarEmpleado.setBackground(new java.awt.Color(0, 150, 136));
+    jlModificarEmpleado.setFont(new java.awt.Font("Corbel", 1, 14)); // NOI18N
+    jlModificarEmpleado.setForeground(new java.awt.Color(255, 255, 255));
+    jlModificarEmpleado.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+    jlModificarEmpleado.setText("Modificar");
+    jlModificarEmpleado.setVerticalAlignment(javax.swing.SwingConstants.BOTTOM);
+    jlModificarEmpleado.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED, null, new java.awt.Color(0, 150, 136), null, null));
+    jlModificarEmpleado.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+    jlModificarEmpleado.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+    jlModificarEmpleado.setOpaque(true);
+    jlModificarEmpleado.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
+    jlModificarEmpleado.addMouseListener(new java.awt.event.MouseAdapter() {
+        public void mouseClicked(java.awt.event.MouseEvent evt) {
+            jlModificarEmpleadoMouseClicked(evt);
+        }
+        public void mouseEntered(java.awt.event.MouseEvent evt) {
+            jlModificarEmpleadoMouseEntered(evt);
+        }
+        public void mouseExited(java.awt.event.MouseEvent evt) {
+            jlModificarEmpleadoMouseExited(evt);
+        }
+    });
+    jPGestionEmpleados.add(jlModificarEmpleado, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 340, 80, 30));
+
+    jlModEmpl.setFont(new java.awt.Font("Corbel", 1, 18)); // NOI18N
+    jlModEmpl.setForeground(new java.awt.Color(102, 102, 102));
+    jlModEmpl.setText("Modificar ");
+    jPGestionEmpleados.add(jlModEmpl, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 200, 80, -1));
+
+    jlIconModEmpl.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+    jlIconModEmpl.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Image/editar_empleado.png"))); // NOI18N
+    jPGestionEmpleados.add(jlIconModEmpl, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 60, 180, 150));
+
+    rectanguloModifEmpl.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+    rectanguloModifEmpl.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Image/rectangulo.jpg"))); // NOI18N
+    jPGestionEmpleados.add(rectanguloModifEmpl, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 110, -1, -1));
+
+    jlEliminarEmp.setFont(new java.awt.Font("Corbel", 1, 18)); // NOI18N
+    jlEliminarEmp.setForeground(new java.awt.Color(102, 102, 102));
+    jlEliminarEmp.setText("Eliminar ");
+    jPGestionEmpleados.add(jlEliminarEmp, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 200, -1, -1));
+
+    textEmpleadoElim.setFont(new java.awt.Font("Corbel", 0, 12)); // NOI18N
+    textEmpleadoElim.setForeground(new java.awt.Color(153, 153, 153));
+    textEmpleadoElim.setVerticalAlignment(javax.swing.SwingConstants.TOP);
+    jPGestionEmpleados.add(textEmpleadoElim, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 240, 150, 90));
+
+    jlEliminarEmpleado.setBackground(new java.awt.Color(0, 150, 136));
+    jlEliminarEmpleado.setFont(new java.awt.Font("Corbel", 1, 14)); // NOI18N
+    jlEliminarEmpleado.setForeground(new java.awt.Color(255, 255, 255));
+    jlEliminarEmpleado.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+    jlEliminarEmpleado.setText("Eliminar");
+    jlEliminarEmpleado.setVerticalAlignment(javax.swing.SwingConstants.BOTTOM);
+    jlEliminarEmpleado.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED, null, new java.awt.Color(0, 150, 136), null, null));
+    jlEliminarEmpleado.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+    jlEliminarEmpleado.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+    jlEliminarEmpleado.setOpaque(true);
+    jlEliminarEmpleado.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
+    jlEliminarEmpleado.addMouseListener(new java.awt.event.MouseAdapter() {
+        public void mouseClicked(java.awt.event.MouseEvent evt) {
+            jlEliminarEmpleadoMouseClicked(evt);
+        }
+        public void mouseEntered(java.awt.event.MouseEvent evt) {
+            jlEliminarEmpleadoMouseEntered(evt);
+        }
+        public void mouseExited(java.awt.event.MouseEvent evt) {
+            jlEliminarEmpleadoMouseExited(evt);
+        }
+    });
+    jPGestionEmpleados.add(jlEliminarEmpleado, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 340, 80, 30));
+
+    jlIconEliEmpl.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+    jlIconEliEmpl.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Image/borrar_empleado.png"))); // NOI18N
+    jPGestionEmpleados.add(jlIconEliEmpl, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 60, 180, 150));
+
+    jlListarEmpleado.setBackground(new java.awt.Color(0, 150, 136));
+    jlListarEmpleado.setFont(new java.awt.Font("Corbel", 1, 14)); // NOI18N
+    jlListarEmpleado.setForeground(new java.awt.Color(255, 255, 255));
+    jlListarEmpleado.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+    jlListarEmpleado.setText("Listar Empleados");
+    jlListarEmpleado.setVerticalAlignment(javax.swing.SwingConstants.BOTTOM);
+    jlListarEmpleado.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED, null, new java.awt.Color(0, 150, 136), null, null));
+    jlListarEmpleado.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+    jlListarEmpleado.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+    jlListarEmpleado.setOpaque(true);
+    jlListarEmpleado.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
+    jlListarEmpleado.addMouseListener(new java.awt.event.MouseAdapter() {
+        public void mouseClicked(java.awt.event.MouseEvent evt) {
+            jlListarEmpleadoMouseClicked(evt);
+        }
+        public void mouseEntered(java.awt.event.MouseEvent evt) {
+            jlListarEmpleadoMouseEntered(evt);
+        }
+        public void mouseExited(java.awt.event.MouseEvent evt) {
+            jlListarEmpleadoMouseExited(evt);
+        }
+    });
+    jPGestionEmpleados.add(jlListarEmpleado, new org.netbeans.lib.awtextra.AbsoluteConstraints(460, 40, 120, 30));
+
+    rectanguloElimEmpl.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+    rectanguloElimEmpl.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Image/rectangulo.jpg"))); // NOI18N
+    jPGestionEmpleados.add(rectanguloElimEmpl, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 110, -1, -1));
+
+    jtpEscritorio.addTab("tab17", jPGestionEmpleados);
+
+    jtpModificarEmpleado.setBackground(new java.awt.Color(255, 255, 255));
+    jtpModificarEmpleado.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+    jLTituloModEmpl.setFont(new java.awt.Font("Corbel", 1, 30)); // NOI18N
+    jLTituloModEmpl.setForeground(new java.awt.Color(153, 153, 153));
+    jLTituloModEmpl.setText("Modificar Empleado");
+    jtpModificarEmpleado.add(jLTituloModEmpl, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 30, -1, -1));
+
+    jLBuscarEmpleadoModEmpl.setFont(new java.awt.Font("Corbel", 1, 14)); // NOI18N
+    jLBuscarEmpleadoModEmpl.setForeground(new java.awt.Color(153, 153, 153));
+    jLBuscarEmpleadoModEmpl.setText("Buscar Empleado");
+    jtpModificarEmpleado.add(jLBuscarEmpleadoModEmpl, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 90, -1, -1));
+
+    jCBModificarEmpleado.setFont(new java.awt.Font("Corbel", 1, 14)); // NOI18N
+    jCBModificarEmpleado.setForeground(new java.awt.Color(0, 102, 102));
+    jCBModificarEmpleado.addActionListener(new java.awt.event.ActionListener() {
+        public void actionPerformed(java.awt.event.ActionEvent evt) {
+            jCBModificarEmpleadoActionPerformed(evt);
+        }
+    });
+    jtpModificarEmpleado.add(jCBModificarEmpleado, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 110, 290, 30));
+
+    jLNombreEmpModEmp1.setFont(new java.awt.Font("Corbel", 1, 14)); // NOI18N
+    jLNombreEmpModEmp1.setForeground(new java.awt.Color(153, 153, 153));
+    jLNombreEmpModEmp1.setText("Nombre empleado");
+    jtpModificarEmpleado.add(jLNombreEmpModEmp1, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 160, -1, -1));
+
+    jSModEmpl5.setBackground(new java.awt.Color(0, 150, 136));
+    jSModEmpl5.setOpaque(true);
+    jSModEmpl5.setPreferredSize(new java.awt.Dimension(50, 2));
+    jtpModificarEmpleado.add(jSModEmpl5, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 210, 200, -1));
+
+    jTFNombreEmpleadoModEmp.setFont(new java.awt.Font("Corbel", 0, 14)); // NOI18N
+    jTFNombreEmpleadoModEmp.setBorder(null);
+    jtpModificarEmpleado.add(jTFNombreEmpleadoModEmp, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 180, 200, 30));
+
+    jLDniModEmp.setFont(new java.awt.Font("Corbel", 1, 14)); // NOI18N
+    jLDniModEmp.setForeground(new java.awt.Color(153, 153, 153));
+    jLDniModEmp.setText("DNI");
+    jtpModificarEmpleado.add(jLDniModEmp, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 230, -1, -1));
+
+    jTFDniModEmp.setFont(new java.awt.Font("Corbel", 0, 14)); // NOI18N
+    jTFDniModEmp.setBorder(null);
+    jtpModificarEmpleado.add(jTFDniModEmp, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 250, 200, 30));
+
+    jSModEmp7.setBackground(new java.awt.Color(0, 150, 136));
+    jSModEmp7.setOpaque(true);
+    jSModEmp7.setPreferredSize(new java.awt.Dimension(50, 2));
+    jtpModificarEmpleado.add(jSModEmp7, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 280, 200, -1));
+
+    jLUsuarioModEmp.setFont(new java.awt.Font("Corbel", 1, 14)); // NOI18N
+    jLUsuarioModEmp.setForeground(new java.awt.Color(153, 153, 153));
+    jLUsuarioModEmp.setText("Usuario");
+    jtpModificarEmpleado.add(jLUsuarioModEmp, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 300, -1, -1));
+
+    jSModEmp9.setBackground(new java.awt.Color(0, 150, 136));
+    jSModEmp9.setOpaque(true);
+    jSModEmp9.setPreferredSize(new java.awt.Dimension(50, 2));
+    jtpModificarEmpleado.add(jSModEmp9, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 350, 200, -1));
+
+    jTFUsuarioModEmp.setFont(new java.awt.Font("Corbel", 0, 14)); // NOI18N
+    jTFUsuarioModEmp.setBorder(null);
+    jtpModificarEmpleado.add(jTFUsuarioModEmp, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 320, 200, 30));
+
+    jLBtnModificarModEmp.setBackground(new java.awt.Color(0, 150, 136));
+    jLBtnModificarModEmp.setFont(new java.awt.Font("Corbel", 1, 14)); // NOI18N
+    jLBtnModificarModEmp.setForeground(new java.awt.Color(255, 255, 255));
+    jLBtnModificarModEmp.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+    jLBtnModificarModEmp.setText("Modificar");
+    jLBtnModificarModEmp.setVerticalAlignment(javax.swing.SwingConstants.BOTTOM);
+    jLBtnModificarModEmp.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
+    jLBtnModificarModEmp.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+    jLBtnModificarModEmp.setOpaque(true);
+    jLBtnModificarModEmp.addMouseListener(new java.awt.event.MouseAdapter() {
+        public void mouseClicked(java.awt.event.MouseEvent evt) {
+            jLBtnModificarModEmpMouseClicked(evt);
+        }
+        public void mouseEntered(java.awt.event.MouseEvent evt) {
+            jLBtnModificarModEmpMouseEntered(evt);
+        }
+        public void mouseExited(java.awt.event.MouseEvent evt) {
+            jLBtnModificarModEmpMouseExited(evt);
+        }
+    });
+    jtpModificarEmpleado.add(jLBtnModificarModEmp, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 370, 100, 30));
+
+    jSModEmp.setBackground(new java.awt.Color(0, 150, 136));
+    jSModEmp.setOpaque(true);
+    jSModEmp.setPreferredSize(new java.awt.Dimension(50, 2));
+    jtpModificarEmpleado.add(jSModEmp, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 350, 200, -1));
+
+    jTFContraseñaModEmp.setFont(new java.awt.Font("Corbel", 0, 14)); // NOI18N
+    jTFContraseñaModEmp.setBorder(null);
+    jtpModificarEmpleado.add(jTFContraseñaModEmp, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 320, 200, 30));
+
+    jLContraseñaModEmp.setFont(new java.awt.Font("Corbel", 1, 14)); // NOI18N
+    jLContraseñaModEmp.setForeground(new java.awt.Color(153, 153, 153));
+    jLContraseñaModEmp.setText("Contraseña");
+    jtpModificarEmpleado.add(jLContraseñaModEmp, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 300, -1, -1));
+
+    jtpModificarEmpleado.add(jCBCargoModifEmp, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 250, 200, 30));
+
+    jLCargoModEmp.setFont(new java.awt.Font("Corbel", 1, 14)); // NOI18N
+    jLCargoModEmp.setForeground(new java.awt.Color(153, 153, 153));
+    jLCargoModEmp.setText("Cargo");
+    jtpModificarEmpleado.add(jLCargoModEmp, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 230, -1, -1));
+
+    jSModEmp6.setBackground(new java.awt.Color(0, 150, 136));
+    jSModEmp6.setOpaque(true);
+    jSModEmp6.setPreferredSize(new java.awt.Dimension(50, 2));
+    jtpModificarEmpleado.add(jSModEmp6, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 210, 200, -1));
+
+    jTFApellidoModEmp.setFont(new java.awt.Font("Corbel", 0, 14)); // NOI18N
+    jTFApellidoModEmp.setBorder(null);
+    jtpModificarEmpleado.add(jTFApellidoModEmp, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 180, 200, 30));
+
+    jLApellidoModEmp.setFont(new java.awt.Font("Corbel", 1, 14)); // NOI18N
+    jLApellidoModEmp.setForeground(new java.awt.Color(153, 153, 153));
+    jLApellidoModEmp.setText("Apellido empleado");
+    jtpModificarEmpleado.add(jLApellidoModEmp, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 160, -1, -1));
+
+    jtpEscritorio.addTab("tab18", jtpModificarEmpleado);
+
+    jtpEliminarEmpleado.setBackground(new java.awt.Color(255, 255, 255));
+    jtpEliminarEmpleado.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+    jLTituloElimEmpleado.setFont(new java.awt.Font("Corbel", 1, 30)); // NOI18N
+    jLTituloElimEmpleado.setForeground(new java.awt.Color(153, 153, 153));
+    jLTituloElimEmpleado.setText("Eliminar Empleado");
+    jtpEliminarEmpleado.add(jLTituloElimEmpleado, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 30, -1, -1));
+
+    jLEliminarEmpleado.setFont(new java.awt.Font("Corbel", 1, 14)); // NOI18N
+    jLEliminarEmpleado.setForeground(new java.awt.Color(153, 153, 153));
+    jLEliminarEmpleado.setText("Buscar Empleado");
+    jtpEliminarEmpleado.add(jLEliminarEmpleado, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 90, -1, -1));
+
+    jCBEliminarEmpleado.setFont(new java.awt.Font("Corbel", 1, 14)); // NOI18N
+    jCBEliminarEmpleado.setForeground(new java.awt.Color(0, 102, 102));
+    jCBEliminarEmpleado.addActionListener(new java.awt.event.ActionListener() {
+        public void actionPerformed(java.awt.event.ActionEvent evt) {
+            jCBEliminarEmpleadoActionPerformed(evt);
+        }
+    });
+    jtpEliminarEmpleado.add(jCBEliminarEmpleado, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 110, 290, 30));
+
+    jLNombreEmpElimEmp.setFont(new java.awt.Font("Corbel", 1, 14)); // NOI18N
+    jLNombreEmpElimEmp.setForeground(new java.awt.Color(153, 153, 153));
+    jLNombreEmpElimEmp.setText("Nombre empleado");
+    jtpEliminarEmpleado.add(jLNombreEmpElimEmp, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 160, -1, -1));
+
+    jTFNombreEmpleadoElimEmp.setEditable(false);
+    jTFNombreEmpleadoElimEmp.setFont(new java.awt.Font("Corbel", 0, 14)); // NOI18N
+    jTFNombreEmpleadoElimEmp.setBorder(null);
+    jtpEliminarEmpleado.add(jTFNombreEmpleadoElimEmp, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 180, 200, 30));
+
+    jSModEmpl6.setBackground(new java.awt.Color(0, 150, 136));
+    jSModEmpl6.setOpaque(true);
+    jSModEmpl6.setPreferredSize(new java.awt.Dimension(50, 2));
+    jtpEliminarEmpleado.add(jSModEmpl6, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 210, 200, -1));
+
+    jLDniElimEmp.setFont(new java.awt.Font("Corbel", 1, 14)); // NOI18N
+    jLDniElimEmp.setForeground(new java.awt.Color(153, 153, 153));
+    jLDniElimEmp.setText("DNI");
+    jtpEliminarEmpleado.add(jLDniElimEmp, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 230, -1, -1));
+
+    jTFDniElimEmp.setEditable(false);
+    jTFDniElimEmp.setFont(new java.awt.Font("Corbel", 0, 14)); // NOI18N
+    jTFDniElimEmp.setBorder(null);
+    jtpEliminarEmpleado.add(jTFDniElimEmp, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 250, 200, 30));
+
+    jSModEmp8.setBackground(new java.awt.Color(0, 150, 136));
+    jSModEmp8.setOpaque(true);
+    jSModEmp8.setPreferredSize(new java.awt.Dimension(50, 2));
+    jtpEliminarEmpleado.add(jSModEmp8, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 280, 200, -1));
+
+    jLUsuarioElimEmp.setFont(new java.awt.Font("Corbel", 1, 14)); // NOI18N
+    jLUsuarioElimEmp.setForeground(new java.awt.Color(153, 153, 153));
+    jLUsuarioElimEmp.setText("Usuario");
+    jtpEliminarEmpleado.add(jLUsuarioElimEmp, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 300, -1, -1));
+
+    jTFUsuarioElimEmp.setEditable(false);
+    jTFUsuarioElimEmp.setFont(new java.awt.Font("Corbel", 0, 14)); // NOI18N
+    jTFUsuarioElimEmp.setBorder(null);
+    jtpEliminarEmpleado.add(jTFUsuarioElimEmp, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 320, 200, 30));
+
+    jSModEmp10.setBackground(new java.awt.Color(0, 150, 136));
+    jSModEmp10.setOpaque(true);
+    jSModEmp10.setPreferredSize(new java.awt.Dimension(50, 2));
+    jtpEliminarEmpleado.add(jSModEmp10, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 350, 200, -1));
+
+    jLContraseñaElimEmp.setFont(new java.awt.Font("Corbel", 1, 14)); // NOI18N
+    jLContraseñaElimEmp.setForeground(new java.awt.Color(153, 153, 153));
+    jLContraseñaElimEmp.setText("Contraseña");
+    jtpEliminarEmpleado.add(jLContraseñaElimEmp, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 300, -1, -1));
+
+    jTFContraseñaElimEmp.setEditable(false);
+    jTFContraseñaElimEmp.setFont(new java.awt.Font("Corbel", 0, 14)); // NOI18N
+    jTFContraseñaElimEmp.setBorder(null);
+    jtpEliminarEmpleado.add(jTFContraseñaElimEmp, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 320, 200, 30));
+
+    jSModEmp1.setBackground(new java.awt.Color(0, 150, 136));
+    jSModEmp1.setOpaque(true);
+    jSModEmp1.setPreferredSize(new java.awt.Dimension(50, 2));
+    jtpEliminarEmpleado.add(jSModEmp1, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 350, 200, -1));
+
+    jLCargoElimEmp.setFont(new java.awt.Font("Corbel", 1, 14)); // NOI18N
+    jLCargoElimEmp.setForeground(new java.awt.Color(153, 153, 153));
+    jLCargoElimEmp.setText("Cargo");
+    jtpEliminarEmpleado.add(jLCargoElimEmp, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 230, -1, -1));
+
+    jCBCargoElimEmp.setEnabled(false);
+    jtpEliminarEmpleado.add(jCBCargoElimEmp, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 250, 200, 30));
+
+    jLApellidoElimEmp.setFont(new java.awt.Font("Corbel", 1, 14)); // NOI18N
+    jLApellidoElimEmp.setForeground(new java.awt.Color(153, 153, 153));
+    jLApellidoElimEmp.setText("Apellido empleado");
+    jtpEliminarEmpleado.add(jLApellidoElimEmp, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 160, -1, -1));
+
+    jTFApellidoElimEmp.setEditable(false);
+    jTFApellidoElimEmp.setFont(new java.awt.Font("Corbel", 0, 14)); // NOI18N
+    jTFApellidoElimEmp.setBorder(null);
+    jtpEliminarEmpleado.add(jTFApellidoElimEmp, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 180, 200, 30));
+
+    jSModEmp11.setBackground(new java.awt.Color(0, 150, 136));
+    jSModEmp11.setOpaque(true);
+    jSModEmp11.setPreferredSize(new java.awt.Dimension(50, 2));
+    jtpEliminarEmpleado.add(jSModEmp11, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 210, 200, -1));
+
+    jLBtnEliminarEmpleado.setBackground(new java.awt.Color(0, 150, 136));
+    jLBtnEliminarEmpleado.setFont(new java.awt.Font("Corbel", 1, 14)); // NOI18N
+    jLBtnEliminarEmpleado.setForeground(new java.awt.Color(255, 255, 255));
+    jLBtnEliminarEmpleado.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+    jLBtnEliminarEmpleado.setText("Eliminar");
+    jLBtnEliminarEmpleado.setVerticalAlignment(javax.swing.SwingConstants.BOTTOM);
+    jLBtnEliminarEmpleado.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
+    jLBtnEliminarEmpleado.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+    jLBtnEliminarEmpleado.setOpaque(true);
+    jLBtnEliminarEmpleado.addMouseListener(new java.awt.event.MouseAdapter() {
+        public void mouseClicked(java.awt.event.MouseEvent evt) {
+            jLBtnEliminarEmpleadoMouseClicked(evt);
+        }
+        public void mouseEntered(java.awt.event.MouseEvent evt) {
+            jLBtnEliminarEmpleadoMouseEntered(evt);
+        }
+        public void mouseExited(java.awt.event.MouseEvent evt) {
+            jLBtnEliminarEmpleadoMouseExited(evt);
+        }
+    });
+    jtpEliminarEmpleado.add(jLBtnEliminarEmpleado, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 370, 100, 30));
+
+    jtpEscritorio.addTab("tab19", jtpEliminarEmpleado);
+
+    jtpListaEmp.setBackground(new java.awt.Color(255, 255, 255));
+    jtpListaEmp.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+    jLTituloListaEmpleados.setFont(new java.awt.Font("Corbel", 1, 30)); // NOI18N
+    jLTituloListaEmpleados.setForeground(new java.awt.Color(153, 153, 153));
+    jLTituloListaEmpleados.setText("Lista de Empleados  ");
+    jtpListaEmp.add(jLTituloListaEmpleados, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 40, -1, -1));
+
+    jlImgBusquedaEmpl.setBackground(new java.awt.Color(255, 255, 255));
+    jlImgBusquedaEmpl.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+    jlImgBusquedaEmpl.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Image/busqueda - gris.png"))); // NOI18N
+    jlImgBusquedaEmpl.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+    jlImgBusquedaEmpl.setOpaque(true);
+    jlImgBusquedaEmpl.addMouseListener(new java.awt.event.MouseAdapter() {
+        public void mouseClicked(java.awt.event.MouseEvent evt) {
+            jlImgBusquedaEmplMouseClicked(evt);
+        }
+        public void mouseEntered(java.awt.event.MouseEvent evt) {
+            jlImgBusquedaEmplMouseEntered(evt);
+        }
+        public void mouseExited(java.awt.event.MouseEvent evt) {
+            jlImgBusquedaEmplMouseExited(evt);
+        }
+    });
+    jtpListaEmp.add(jlImgBusquedaEmpl, new org.netbeans.lib.awtextra.AbsoluteConstraints(540, 80, 40, 30));
+
+    jtfBuscadorEmpleadosListEmp.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
+    jtpListaEmp.add(jtfBuscadorEmpleadosListEmp, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 80, 160, 30));
+
+    ScrollListClien1.setBackground(new java.awt.Color(255, 255, 255));
+    ScrollListClien1.setFont(new java.awt.Font("Corbel", 0, 12)); // NOI18N
+
+    jtListEmpleado.setBackground(new java.awt.Color(204, 204, 204));
+    jtListEmpleado.setFont(new java.awt.Font("Corbel", 1, 14)); // NOI18N
+    jtListEmpleado.setModel(Modelo2 = new javax.swing.table.DefaultTableModel(
+        new Object [][] {
+            {null, null, null, null},
+            {null, null, null, null},
+            {null, null, null, null},
+            {null, null, null, null}
+        },
+        new String[]{
+            "ID", "Apellido", "Nombre", "DNI", "Cargo", "Usuario", "Contraseña"
+        }
+    ) {
+        public boolean isCellEditable(int fila, int column) {
+            return false;
+        }
+
+        Class[] types = new Class[]{
+            java.lang.Integer.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class,
+            java.lang.String.class, java.lang.String.class
+        };
+
+        public Class getColumnClass(int columnIndex) {
+            return types[columnIndex];
+        }
+    });
+    jtListEmpleado.setGridColor(new java.awt.Color(0, 102, 102));
+    jtListEmpleado.setMinimumSize(new java.awt.Dimension(60, 60));
+    ScrollListClien1.setViewportView(jtListEmpleado);
+
+    jtpListaEmp.add(ScrollListClien1, new org.netbeans.lib.awtextra.AbsoluteConstraints(13, 120, 570, 290));
+
+    jlBusquedaEmp.setFont(new java.awt.Font("Corbel", 1, 14)); // NOI18N
+    jlBusquedaEmp.setForeground(new java.awt.Color(153, 153, 153));
+    jlBusquedaEmp.setText("Busqueda por Apellido");
+    jlBusquedaEmp.setVerticalAlignment(javax.swing.SwingConstants.BOTTOM);
+    jtpListaEmp.add(jlBusquedaEmp, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 50, 200, 30));
+
+    jtpEscritorio.addTab("tab20", jtpListaEmp);
+
+    jtpPapelera.setBackground(new java.awt.Color(255, 255, 255));
+    jtpPapelera.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+    jlVentaPapelera.setBackground(new java.awt.Color(0, 150, 136));
+    jlVentaPapelera.setFont(new java.awt.Font("Corbel", 1, 14)); // NOI18N
+    jlVentaPapelera.setForeground(new java.awt.Color(255, 255, 255));
+    jlVentaPapelera.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+    jlVentaPapelera.setText("Venta");
+    jlVentaPapelera.setVerticalAlignment(javax.swing.SwingConstants.BOTTOM);
+    jlVentaPapelera.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED, null, new java.awt.Color(0, 150, 136), null, null));
+    jlVentaPapelera.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+    jlVentaPapelera.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+    jlVentaPapelera.setOpaque(true);
+    jlVentaPapelera.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
+    jlVentaPapelera.addMouseListener(new java.awt.event.MouseAdapter() {
+        public void mouseClicked(java.awt.event.MouseEvent evt) {
+            jlVentaPapeleraMouseClicked(evt);
+        }
+        public void mouseEntered(java.awt.event.MouseEvent evt) {
+            jlVentaPapeleraMouseEntered(evt);
+        }
+        public void mouseExited(java.awt.event.MouseEvent evt) {
+            jlVentaPapeleraMouseExited(evt);
+        }
+    });
+    jtpPapelera.add(jlVentaPapelera, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 100, 80, 30));
+
+    jlCliente.setBackground(new java.awt.Color(0, 150, 136));
+    jlCliente.setFont(new java.awt.Font("Corbel", 1, 14)); // NOI18N
+    jlCliente.setForeground(new java.awt.Color(255, 255, 255));
+    jlCliente.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+    jlCliente.setText("Cliente");
+    jlCliente.setVerticalAlignment(javax.swing.SwingConstants.BOTTOM);
+    jlCliente.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED, null, new java.awt.Color(0, 150, 136), null, null));
+    jlCliente.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+    jlCliente.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+    jlCliente.setOpaque(true);
+    jlCliente.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
+    jlCliente.addMouseListener(new java.awt.event.MouseAdapter() {
+        public void mouseClicked(java.awt.event.MouseEvent evt) {
+            jlClienteMouseClicked(evt);
+        }
+        public void mouseEntered(java.awt.event.MouseEvent evt) {
+            jlClienteMouseEntered(evt);
+        }
+        public void mouseExited(java.awt.event.MouseEvent evt) {
+            jlClienteMouseExited(evt);
+        }
+    });
+    jtpPapelera.add(jlCliente, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 100, 80, 30));
+
+    jlProductoPapelera.setBackground(new java.awt.Color(0, 150, 136));
+    jlProductoPapelera.setFont(new java.awt.Font("Corbel", 1, 14)); // NOI18N
+    jlProductoPapelera.setForeground(new java.awt.Color(255, 255, 255));
+    jlProductoPapelera.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+    jlProductoPapelera.setText("Producto");
+    jlProductoPapelera.setVerticalAlignment(javax.swing.SwingConstants.BOTTOM);
+    jlProductoPapelera.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED, null, new java.awt.Color(0, 150, 136), null, null));
+    jlProductoPapelera.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+    jlProductoPapelera.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+    jlProductoPapelera.setOpaque(true);
+    jlProductoPapelera.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
+    jlProductoPapelera.addMouseListener(new java.awt.event.MouseAdapter() {
+        public void mouseClicked(java.awt.event.MouseEvent evt) {
+            jlProductoPapeleraMouseClicked(evt);
+        }
+        public void mouseEntered(java.awt.event.MouseEvent evt) {
+            jlProductoPapeleraMouseEntered(evt);
+        }
+        public void mouseExited(java.awt.event.MouseEvent evt) {
+            jlProductoPapeleraMouseExited(evt);
+        }
+    });
+    jtpPapelera.add(jlProductoPapelera, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 100, 80, 30));
+
+    jlEmpleadoPapelera.setBackground(new java.awt.Color(0, 150, 136));
+    jlEmpleadoPapelera.setFont(new java.awt.Font("Corbel", 1, 14)); // NOI18N
+    jlEmpleadoPapelera.setForeground(new java.awt.Color(255, 255, 255));
+    jlEmpleadoPapelera.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+    jlEmpleadoPapelera.setText("Empleado");
+    jlEmpleadoPapelera.setVerticalAlignment(javax.swing.SwingConstants.BOTTOM);
+    jlEmpleadoPapelera.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED, null, new java.awt.Color(0, 150, 136), null, null));
+    jlEmpleadoPapelera.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+    jlEmpleadoPapelera.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+    jlEmpleadoPapelera.setOpaque(true);
+    jlEmpleadoPapelera.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
+    jlEmpleadoPapelera.addMouseListener(new java.awt.event.MouseAdapter() {
+        public void mouseClicked(java.awt.event.MouseEvent evt) {
+            jlEmpleadoPapeleraMouseClicked(evt);
+        }
+        public void mouseEntered(java.awt.event.MouseEvent evt) {
+            jlEmpleadoPapeleraMouseEntered(evt);
+        }
+        public void mouseExited(java.awt.event.MouseEvent evt) {
+            jlEmpleadoPapeleraMouseExited(evt);
+        }
+    });
+    jtpPapelera.add(jlEmpleadoPapelera, new org.netbeans.lib.awtextra.AbsoluteConstraints(480, 100, 80, 30));
+
+    jlEliminarPapelera.setBackground(new java.awt.Color(0, 150, 136));
+    jlEliminarPapelera.setFont(new java.awt.Font("Corbel", 1, 14)); // NOI18N
+    jlEliminarPapelera.setForeground(new java.awt.Color(255, 255, 255));
+    jlEliminarPapelera.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+    jlEliminarPapelera.setText("Eliminar");
+    jlEliminarPapelera.setVerticalAlignment(javax.swing.SwingConstants.BOTTOM);
+    jlEliminarPapelera.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED, null, new java.awt.Color(0, 150, 136), null, null));
+    jlEliminarPapelera.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+    jlEliminarPapelera.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+    jlEliminarPapelera.setOpaque(true);
+    jlEliminarPapelera.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
+    jlEliminarPapelera.addMouseListener(new java.awt.event.MouseAdapter() {
+        public void mouseClicked(java.awt.event.MouseEvent evt) {
+            jlEliminarPapeleraMouseClicked(evt);
+        }
+        public void mouseEntered(java.awt.event.MouseEvent evt) {
+            jlEliminarPapeleraMouseEntered(evt);
+        }
+        public void mouseExited(java.awt.event.MouseEvent evt) {
+            jlEliminarPapeleraMouseExited(evt);
+        }
+    });
+    jtpPapelera.add(jlEliminarPapelera, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 370, 80, 30));
+
+    jlRestaurarPapelera.setBackground(new java.awt.Color(0, 150, 136));
+    jlRestaurarPapelera.setFont(new java.awt.Font("Corbel", 1, 14)); // NOI18N
+    jlRestaurarPapelera.setForeground(new java.awt.Color(255, 255, 255));
+    jlRestaurarPapelera.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+    jlRestaurarPapelera.setText("Restaurar");
+    jlRestaurarPapelera.setVerticalAlignment(javax.swing.SwingConstants.BOTTOM);
+    jlRestaurarPapelera.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED, null, new java.awt.Color(0, 150, 136), null, null));
+    jlRestaurarPapelera.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+    jlRestaurarPapelera.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+    jlRestaurarPapelera.setOpaque(true);
+    jlRestaurarPapelera.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
+    jlRestaurarPapelera.addMouseListener(new java.awt.event.MouseAdapter() {
+        public void mouseClicked(java.awt.event.MouseEvent evt) {
+            jlRestaurarPapeleraMouseClicked(evt);
+        }
+        public void mouseEntered(java.awt.event.MouseEvent evt) {
+            jlRestaurarPapeleraMouseEntered(evt);
+        }
+        public void mouseExited(java.awt.event.MouseEvent evt) {
+            jlRestaurarPapeleraMouseExited(evt);
+        }
+    });
+    jtpPapelera.add(jlRestaurarPapelera, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 370, 80, 30));
+
+    jTablePapelera.setModel(new javax.swing.table.DefaultTableModel(
+        new Object [][] {
+            {},
+            {},
+            {},
+            {}
+        },
+        new String [] {
+
+        }
+    ));
+    jScrollPanePapelera.setViewportView(jTablePapelera);
+
+    jtpPapelera.add(jScrollPanePapelera, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 150, 560, 200));
+
+    jlPapelera.setFont(new java.awt.Font("Corbel", 1, 30)); // NOI18N
+    jlPapelera.setForeground(new java.awt.Color(153, 153, 153));
+    jlPapelera.setText("Papelera");
+    jtpPapelera.add(jlPapelera, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 40, -1, -1));
+
+    jtpEscritorio.addTab("tab21", jtpPapelera);
+
+    BackGround.add(jtpEscritorio, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 43, 600, 460));
+
+    getContentPane().add(BackGround, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
+
+    pack();
     }// </editor-fold>//GEN-END:initComponents
 
     private void jlVentasMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jlVentasMouseEntered
@@ -3338,6 +3479,8 @@ public class Menu extends javax.swing.JFrame {
 
     private void RegistrarVentaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_RegistrarVentaMouseClicked
         jtpEscritorio.setSelectedIndex(12);
+        jcbProVenta.removeAllItems();
+        llenarCombo();
     }//GEN-LAST:event_RegistrarVentaMouseClicked
 
     private void RegistrarVentaMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_RegistrarVentaMouseEntered
@@ -3350,7 +3493,9 @@ public class Menu extends javax.swing.JFrame {
 
     private void DetVentaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_DetVentaMouseClicked
         jtpEscritorio.setSelectedIndex(14);
-        llenarTablaDetVen();
+        llenarComboCliente();
+        llenarCombo();
+//        llenarTablaDetVen();
     }//GEN-LAST:event_DetVentaMouseClicked
 
     private void DetVentaMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_DetVentaMouseEntered
@@ -3544,15 +3689,18 @@ public class Menu extends javax.swing.JFrame {
 
     private void jlIconBuscarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jlIconBuscarMouseClicked
         try {
+            Cliente c1 = (Cliente) jcbVentasXCliente.getSelectedItem();
             borrarFilaDV();
-            for (DetalleVenta dv : dvd.listaDV()) {
-                if (dv.getVenta().getCliente().getTelefono().contains(jtfBuscarCli.getText())) {
-                    Modelo3.addRow(new Object[]{dv.getIdDetalleVenta(), dv.getProducto().getNombreProducto(),
-                        dv.getVenta().getCliente().getTelefono(), dv.getVenta().getFechaVenta(), dv.getCantidad(), dv.getPrecioVenta()});
-                }
+            for (Venta v : vd.listarVentasDeCliente(c1)) {
+                DetalleVenta det = dvd.buscarDetalleProVenta(v.getIdVenta());
+                Modelo3.addRow(new Object[]{det.getIdDetalleVenta(), det.getIdVenta(),
+                    det.getProducto().getNombreProducto(), c1.getTelefono(), v.getFechaVenta(),
+                    det.getCantidad(), det.getPrecioVenta()
+                });
             }
+            jtListaDetalles.setModel(Modelo3);
         } catch (NullPointerException ex) {
-            JOptionPane.showMessageDialog(null, "Debe ingresar un número.");
+            JOptionPane.showMessageDialog(null, "Debe seleccionar un Cliente");
         }
     }//GEN-LAST:event_jlIconBuscarMouseClicked
 
@@ -4518,6 +4666,110 @@ public class Menu extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_jLBtnAgregarProdMouseClicked
 
+    private void jlIconBuscar1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jlIconBuscar1MouseClicked
+        try {
+            LocalDate fecha = jdcFechaPro.getDate().toInstant().atZone(ZoneId.systemDefault()).toLocalDate();
+            borrarFila();
+            for (Producto p : vd.obtenerProductosPorFecha(fecha)) {
+                Modelo.addRow(new Object[]{p.getIdProducto(), p.getNombreProducto(),
+                    p.getDescripcion(), p.getPrecioActual(), p.getStock()
+                });
+            }
+            jtListaDetalles.setModel(Modelo);
+        } catch (NullPointerException ex) {
+            JOptionPane.showMessageDialog(null, "Debe ingresar una fecha");
+        }
+    }//GEN-LAST:event_jlIconBuscar1MouseClicked
+
+    private void jlIconBuscar1MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jlIconBuscar1MouseEntered
+        jlIconBuscar1.setBackground(verdeClaro);
+        jlIconBuscar1.setIcon(new ImageIcon(getClass().getResource("/Image/busqueda - blanco.png")));
+    }//GEN-LAST:event_jlIconBuscar1MouseEntered
+
+    private void jlIconBuscar1MouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jlIconBuscar1MouseExited
+        jlIconBuscar1.setBackground(Color.white);
+        jlIconBuscar1.setIcon(new ImageIcon(getClass().getResource("/Image/busqueda - gris.png")));
+    }//GEN-LAST:event_jlIconBuscar1MouseExited
+
+    private void jlIconBuscar2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jlIconBuscar2MouseClicked
+        try {
+            Producto p1 = (Producto) jcbProXCliente.getSelectedItem();
+            borrarFilaC();
+            for (Cliente c : vd.obtenerClientesPorProducto(p1)) {
+                Modelo1.addRow(new Object[]{c.getIdCliente(), c.getApellido(), c.getNombre(),
+                    c.getDomicilio(), c.getTelefono()
+                });
+            }
+            jtListaDetalles.setModel(Modelo1);
+        } catch (NullPointerException ex) {
+            JOptionPane.showMessageDialog(null, "Debe seleccionar un Producto");
+        }
+    }//GEN-LAST:event_jlIconBuscar2MouseClicked
+
+    private void jlIconBuscar2MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jlIconBuscar2MouseEntered
+        jlIconBuscar2.setBackground(verdeClaro);
+        jlIconBuscar2.setIcon(new ImageIcon(getClass().getResource("/Image/busqueda - blanco.png")));
+    }//GEN-LAST:event_jlIconBuscar2MouseEntered
+
+    private void jlIconBuscar2MouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jlIconBuscar2MouseExited
+        jlIconBuscar2.setBackground(Color.white);
+        jlIconBuscar2.setIcon(new ImageIcon(getClass().getResource("/Image/busqueda - gris.png")));
+    }//GEN-LAST:event_jlIconBuscar2MouseExited
+
+    private void jlVentasCliMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jlVentasCliMouseClicked
+        jtListaDetalles.setModel(Modelo3);
+        jcbVentasXCliente.setEnabled(true);
+        jlIconBuscar.setEnabled(true);
+        jdcFechaPro.setEnabled(false);
+        jlIconBuscar1.setEnabled(false);
+        jlIconBuscar2.setEnabled(false);
+        jcbProXCliente.setEnabled(false);
+    }//GEN-LAST:event_jlVentasCliMouseClicked
+
+    private void jlVentasCliMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jlVentasCliMouseEntered
+        jlVentasCli.setBackground(verdeClaro);
+    }//GEN-LAST:event_jlVentasCliMouseEntered
+
+    private void jlVentasCliMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jlVentasCliMouseExited
+        jlVentasCli.setBackground(verdeBase);
+    }//GEN-LAST:event_jlVentasCliMouseExited
+
+    private void jlProXFechaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jlProXFechaMouseClicked
+        jtListaDetalles.setModel(Modelo);
+        jlIconBuscar1.setEnabled(true);
+        jdcFechaPro.setEnabled(true);
+        jcbVentasXCliente.setEnabled(false);
+        jlIconBuscar.setEnabled(false);
+        jlIconBuscar2.setEnabled(false);
+        jcbProXCliente.setEnabled(false);
+    }//GEN-LAST:event_jlProXFechaMouseClicked
+
+    private void jlProXFechaMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jlProXFechaMouseEntered
+        jlProXFecha.setBackground(verdeClaro);
+    }//GEN-LAST:event_jlProXFechaMouseEntered
+
+    private void jlProXFechaMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jlProXFechaMouseExited
+        jlProXFecha.setBackground(verdeBase);
+    }//GEN-LAST:event_jlProXFechaMouseExited
+
+    private void jlClientesxProMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jlClientesxProMouseClicked
+        jtListaDetalles.setModel(Modelo1);
+        jcbProXCliente.setEnabled(true);
+        jlIconBuscar2.setEnabled(true);
+        jcbVentasXCliente.setEnabled(false);
+        jlIconBuscar.setEnabled(false);
+        jlIconBuscar1.setEnabled(false);
+        jdcFechaPro.setEnabled(false);
+    }//GEN-LAST:event_jlClientesxProMouseClicked
+
+    private void jlClientesxProMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jlClientesxProMouseEntered
+        jlClientesxPro.setBackground(verdeClaro);
+    }//GEN-LAST:event_jlClientesxProMouseEntered
+
+    private void jlClientesxProMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jlClientesxProMouseExited
+        jlClientesxPro.setBackground(verdeBase);
+    }//GEN-LAST:event_jlClientesxProMouseExited
+
     /**
      * @param args the command line arguments
      */
@@ -4683,6 +4935,8 @@ public class Menu extends javax.swing.JFrame {
     private javax.swing.JSeparator jSModProd3;
     private javax.swing.JSeparator jSModProd4;
     private javax.swing.JScrollPane jScrollPanePapelera;
+    private javax.swing.JSeparator jSep1;
+    private javax.swing.JSeparator jSep2;
     private javax.swing.JTextField jTFApellidoClienElimClien;
     private javax.swing.JTextField jTFApellidoClienteAgrClien;
     private javax.swing.JTextField jTFApellidoElimEmp;
@@ -4721,10 +4975,13 @@ public class Menu extends javax.swing.JFrame {
     private javax.swing.JComboBox<Venta> jcbBuscarVenta;
     private javax.swing.JComboBox<Cliente> jcbClienteModifCli;
     private javax.swing.JComboBox<Producto> jcbProVenta;
+    private javax.swing.JComboBox<Producto> jcbProXCliente;
     private javax.swing.JComboBox<Producto> jcbProductos;
+    private javax.swing.JComboBox<Cliente> jcbVentasXCliente;
     private com.toedter.calendar.JDateChooser jdcAgrVenta;
     private com.toedter.calendar.JDateChooser jdcBusquedaVentas;
     private com.toedter.calendar.JDateChooser jdcElimVenta;
+    private com.toedter.calendar.JDateChooser jdcFechaPro;
     private javax.swing.JLabel jlAgrVentas;
     private javax.swing.JLabel jlAgregar;
     private javax.swing.JLabel jlAgregarCliente;
@@ -4750,6 +5007,7 @@ public class Menu extends javax.swing.JFrame {
     private javax.swing.JLabel jlClentesIn;
     private javax.swing.JLabel jlCliente;
     private javax.swing.JLabel jlClientes;
+    private javax.swing.JLabel jlClientesxPro;
     private javax.swing.JLabel jlDetalles;
     private javax.swing.JLabel jlDetallesVenta;
     private javax.swing.JLabel jlEliminar;
@@ -4773,6 +5031,8 @@ public class Menu extends javax.swing.JFrame {
     private javax.swing.JLabel jlIconAgreCli1;
     private javax.swing.JLabel jlIconAgreEmpl;
     private javax.swing.JLabel jlIconBuscar;
+    private javax.swing.JLabel jlIconBuscar1;
+    private javax.swing.JLabel jlIconBuscar2;
     private javax.swing.JLabel jlIconBuscarVenta;
     private javax.swing.JLabel jlIconCliente;
     private javax.swing.JLabel jlIconEliCli;
@@ -4814,13 +5074,16 @@ public class Menu extends javax.swing.JFrame {
     private javax.swing.JLabel jlPapeleraMenu;
     private javax.swing.JLabel jlPrecioVenta;
     private javax.swing.JLabel jlProIn;
+    private javax.swing.JLabel jlProXFecha;
     private javax.swing.JLabel jlProductoPapelera;
     private javax.swing.JLabel jlProductos;
     private javax.swing.JLabel jlRealizarVenta;
     private javax.swing.JLabel jlRegistrar;
     private javax.swing.JLabel jlRestaurarPapelera;
     private javax.swing.JLabel jlSalir;
+    private javax.swing.JLabel jlSelecFecha;
     private javax.swing.JLabel jlSelecFechaVenta;
+    private javax.swing.JLabel jlSelecPro;
     private javax.swing.JLabel jlSelecProVenta;
     private javax.swing.JLabel jlTelCliDetalles;
     private javax.swing.JLabel jlTelCliente;
@@ -4830,6 +5093,7 @@ public class Menu extends javax.swing.JFrame {
     private javax.swing.JLabel jlVentaIconEliminar;
     private javax.swing.JLabel jlVentaPapelera;
     private javax.swing.JLabel jlVentas;
+    private javax.swing.JLabel jlVentasCli;
     private javax.swing.JLabel jlVentasIn;
     private javax.swing.JTable jtListClien;
     private javax.swing.JTable jtListEmpleado;
@@ -4839,7 +5103,6 @@ public class Menu extends javax.swing.JFrame {
     private javax.swing.JTextField jtfBuscador;
     private javax.swing.JTextField jtfBuscadorClienListClien;
     private javax.swing.JTextField jtfBuscadorEmpleadosListEmp;
-    private javax.swing.JTextField jtfBuscarCli;
     private javax.swing.JTextField jtfCantidadVenta;
     private javax.swing.JTextField jtfNombreEmpVenta;
     private javax.swing.JTextField jtfNombreEmpleadoEliminar;
@@ -4985,6 +5248,7 @@ public class Menu extends javax.swing.JFrame {
             jcbProductos.addItem(pro);
             jCBBuscarProdElimProd.addItem(pro);
             jcbProVenta.addItem(pro);
+            jcbProXCliente.addItem(pro);
         }
     }
 
@@ -4992,6 +5256,7 @@ public class Menu extends javax.swing.JFrame {
         for (Cliente cli : cD.listarClientes()) {
             jcbClienteModifCli.addItem(cli);
             jCBBuscarClienElimClien.addItem(cli);
+            jcbVentasXCliente.addItem(cli);
         }
     }
 
@@ -5063,19 +5328,18 @@ public class Menu extends javax.swing.JFrame {
         }
     }
 
-    private void llenarTablaDetVen() {
-        borrarFilaDV();
-        for (DetalleVenta dv : dvd.listaDV()) {
-            Modelo3.addRow(new Object[]{dv.getIdDetalleVenta(),
-                dv.getProducto().getNombreProducto(),
-                dv.getVenta().getCliente().getTelefono(),
-                dv.getVenta().getFechaVenta(),
-                dv.getCantidad(),
-                dv.getPrecioVenta()
-            });
-        }
-    }
-
+//    private void llenarTablaDetVen() {
+//        borrarFilaDV();
+//        for (DetalleVenta dv : dvd.listaDV()) {
+//            Modelo3.addRow(new Object[]{dv.getIdDetalleVenta(),
+//                dv.getProducto().getNombreProducto(),
+//                dv.getVenta().getCliente().getTelefono(),
+//                dv.getVenta().getFechaVenta(),
+//                dv.getCantidad(),
+//                dv.getPrecioVenta()
+//            });
+//        }
+//    }
     private void llenarTablaVen() {
         borrarFilaV();
         for (Venta v : vd.listaVenta()) {
