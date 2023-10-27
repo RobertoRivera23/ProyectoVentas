@@ -46,7 +46,7 @@ public class Menu extends javax.swing.JFrame {
     public DefaultTableModel Modelo3;
     public DefaultTableModel Modelo4;
     public DefaultTableModel Modelo5;
-    
+
 //Modelos tablas de Papelera
     public DefaultTableModel ModeloP = new DefaultTableModel(null, new String[]{
         "ID", "Nombre", "Descripcion", "Precio Actual", "Stock"
@@ -116,10 +116,10 @@ public class Menu extends javax.swing.JFrame {
             return types[columnIndex];
         }
     };
-    
+
     /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
     public DefaultTableModel ModeloVentaProd = new DefaultTableModel(null, new String[]{
-        "Id Producto","Nombre", "Descripción", "Cantidad", "Precio", "Subtotal"
+        "Id Producto", "Nombre", "Descripción", "Cantidad", "Precio", "Subtotal"
     }
     ) {
         public boolean isCellEditable(int fila, int column) {
@@ -135,7 +135,7 @@ public class Menu extends javax.swing.JFrame {
             return types[columnIndex];
         }
     };
-        ////////////////////////////////////////////////77777777777/////////////////////////////////////////
+    ////////////////////////////////////////////////77777777777/////////////////////////////////////////
 
     private void llenarTabla() {
         borrarFila();
@@ -145,8 +145,6 @@ public class Menu extends javax.swing.JFrame {
             jtListaPro.setModel(Modelo);
         }
     }
-     
-    
 
     public Menu() {
         initComponents();
@@ -379,28 +377,21 @@ public class Menu extends javax.swing.JFrame {
         jlImgBusqueda = new javax.swing.JLabel();
         jlBusquedaCliente = new javax.swing.JLabel();
         jtpAgrVenta = new javax.swing.JPanel();
-        jlAsteriscoEmp = new javax.swing.JLabel();
-        jlAsteriscoFecha = new javax.swing.JLabel();
         jlAgrVentas = new javax.swing.JLabel();
         jlSelecProVenta = new javax.swing.JLabel();
         jcbProVenta = new javax.swing.JComboBox<>();
         jlCantidadVenta = new javax.swing.JLabel();
         jtfCantidadVenta = new javax.swing.JTextField();
-        jlAsteriscoPro = new javax.swing.JLabel();
         jlFechaVenta = new javax.swing.JLabel();
         jlTelCliente = new javax.swing.JLabel();
         jtfTelCliente = new javax.swing.JTextField();
         jlPrecioVenta = new javax.swing.JLabel();
         jtfPrecioVenta = new javax.swing.JTextField();
         jlRealizarVenta = new javax.swing.JLabel();
-        jlAsteriscoCan = new javax.swing.JLabel();
-        jlAsteriscoSup = new javax.swing.JLabel();
-        jlCamposOblig = new javax.swing.JLabel();
         jlNombreEmp = new javax.swing.JLabel();
         jtfNombreEmpVenta = new javax.swing.JTextField();
         jlIconVentaAgr = new javax.swing.JLabel();
         jdcAgrVenta = new com.toedter.calendar.JDateChooser();
-        jlAsteriscoTel1 = new javax.swing.JLabel();
         ScrollTablaVentas1 = new javax.swing.JScrollPane();
         jtListaGuardVentas = new TablaFraveMax();
         jLimpiarTablaAaVen = new javax.swing.JLabel();
@@ -2189,18 +2180,6 @@ public class Menu extends javax.swing.JFrame {
         jtpAgrVenta.setBackground(new java.awt.Color(255, 255, 255));
         jtpAgrVenta.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jlAsteriscoEmp.setFont(new java.awt.Font("Corbel", 1, 14)); // NOI18N
-        jlAsteriscoEmp.setForeground(new java.awt.Color(255, 0, 0));
-        jlAsteriscoEmp.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jlAsteriscoEmp.setText("*");
-        jtpAgrVenta.add(jlAsteriscoEmp, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 120, 10, -1));
-
-        jlAsteriscoFecha.setFont(new java.awt.Font("Corbel", 1, 14)); // NOI18N
-        jlAsteriscoFecha.setForeground(new java.awt.Color(255, 0, 0));
-        jlAsteriscoFecha.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jlAsteriscoFecha.setText("*");
-        jtpAgrVenta.add(jlAsteriscoFecha, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 60, 10, -1));
-
         jlAgrVentas.setFont(new java.awt.Font("Corbel", 1, 30)); // NOI18N
         jlAgrVentas.setForeground(new java.awt.Color(153, 153, 153));
         jlAgrVentas.setText("Agregar Venta");
@@ -2234,12 +2213,6 @@ public class Menu extends javax.swing.JFrame {
             }
         });
         jtpAgrVenta.add(jtfCantidadVenta, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 140, 120, 30));
-
-        jlAsteriscoPro.setFont(new java.awt.Font("Corbel", 1, 14)); // NOI18N
-        jlAsteriscoPro.setForeground(new java.awt.Color(255, 0, 0));
-        jlAsteriscoPro.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jlAsteriscoPro.setText("*");
-        jtpAgrVenta.add(jlAsteriscoPro, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 60, 10, -1));
 
         jlFechaVenta.setFont(new java.awt.Font("Corbel", 1, 14)); // NOI18N
         jlFechaVenta.setForeground(new java.awt.Color(153, 153, 153));
@@ -2285,22 +2258,6 @@ public class Menu extends javax.swing.JFrame {
         });
         jtpAgrVenta.add(jlRealizarVenta, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 350, 110, 30));
 
-        jlAsteriscoCan.setFont(new java.awt.Font("Corbel", 1, 14)); // NOI18N
-        jlAsteriscoCan.setForeground(new java.awt.Color(255, 0, 0));
-        jlAsteriscoCan.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jlAsteriscoCan.setText("*");
-        jtpAgrVenta.add(jlAsteriscoCan, new org.netbeans.lib.awtextra.AbsoluteConstraints(570, 120, 10, -1));
-
-        jlAsteriscoSup.setFont(new java.awt.Font("Corbel", 1, 12)); // NOI18N
-        jlAsteriscoSup.setForeground(new java.awt.Color(255, 0, 0));
-        jlAsteriscoSup.setText("*");
-        jtpAgrVenta.add(jlAsteriscoSup, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 400, 30, -1));
-
-        jlCamposOblig.setFont(new java.awt.Font("Corbel", 0, 12)); // NOI18N
-        jlCamposOblig.setForeground(new java.awt.Color(153, 153, 153));
-        jlCamposOblig.setText("Los campos con ( ) son Obligatorios");
-        jtpAgrVenta.add(jlCamposOblig, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 390, 190, -1));
-
         jlNombreEmp.setFont(new java.awt.Font("Corbel", 1, 14)); // NOI18N
         jlNombreEmp.setForeground(new java.awt.Color(153, 153, 153));
         jlNombreEmp.setText("Ingrese el Nombre del Empleado");
@@ -2313,12 +2270,6 @@ public class Menu extends javax.swing.JFrame {
         jlIconVentaAgr.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Image/flecha-del-carrito-hacia-abajo.png"))); // NOI18N
         jtpAgrVenta.add(jlIconVentaAgr, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, -10, 210, 150));
         jtpAgrVenta.add(jdcAgrVenta, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 80, 200, 30));
-
-        jlAsteriscoTel1.setFont(new java.awt.Font("Corbel", 1, 14)); // NOI18N
-        jlAsteriscoTel1.setForeground(new java.awt.Color(255, 0, 0));
-        jlAsteriscoTel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jlAsteriscoTel1.setText("*");
-        jtpAgrVenta.add(jlAsteriscoTel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 120, 10, -1));
 
         ScrollTablaVentas1.setBackground(new java.awt.Color(255, 255, 255));
         ScrollTablaVentas1.setFont(new java.awt.Font("Corbel", 0, 12)); // NOI18N
@@ -4189,7 +4140,7 @@ public class Menu extends javax.swing.JFrame {
         } catch (NumberFormatException ex) {
             jtfPrecioVenta.setText(precioTotal + "");
         } catch (NullPointerException ex) {
-            
+
         }
     }//GEN-LAST:event_jcbProVentaActionPerformed
 
@@ -4881,8 +4832,8 @@ public class Menu extends javax.swing.JFrame {
     }//GEN-LAST:event_jlClientesxProMouseExited
 
     private void jLimpiarTablaAaVenMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLimpiarTablaAaVenMouseClicked
-       
-                
+        borrarFilaAPV();
+
     }//GEN-LAST:event_jLimpiarTablaAaVenMouseClicked
 
     private void jLimpiarTablaAaVenMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLimpiarTablaAaVenMouseEntered
@@ -4894,23 +4845,46 @@ public class Menu extends javax.swing.JFrame {
     }//GEN-LAST:event_jLimpiarTablaAaVenMouseExited
 
     private void jlAgregarProdTablaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jlAgregarProdTablaMouseClicked
-//         borrarFila(); // Falta hacer
-        Producto prod = (Producto)jcbProVenta.getSelectedItem();
-        System.out.println("" + prod.toString());
-        int cantidadProd =(Integer.parseInt(jtfCantidadVenta.getText()));
-        System.out.println("--" + cantidadProd);
-        double subtotal= (prod.getPrecioActual() * cantidadProd);
-        Modelo5.addRow(new Object[]{prod.getIdProducto(), prod.getNombreProducto(),
+        try {
+            Producto prod = (Producto) jcbProVenta.getSelectedItem();
+            int cantidadProd = (Integer.parseInt(jtfCantidadVenta.getText()));
+            int fila = jtListaGuardVentas.getRowCount();
+            double subtotal = (prod.getPrecioActual() * cantidadProd);
+            Modelo5.addRow(new Object[]{prod.getIdProducto(), prod.getNombreProducto(),
                 prod.getDescripcion(), cantidadProd, prod.getPrecioActual(), subtotal});
-           jtListaGuardVentas.setModel(Modelo5);
+            jtListaGuardVentas.setModel(Modelo5);
+             
+            for (int i = 0; i < fila; i++) {
+                if (prod.getNombreProducto().equalsIgnoreCase(jtListaGuardVentas.getValueAt(i, 1).toString())) {
+                    int agrega = JOptionPane.showConfirmDialog(this, "Desea agregar mas cantidad a este producto?", "Este producto ya esta en la lista", JOptionPane.YES_NO_OPTION);
+                    switch (agrega) {
+                        case 0:
+
+                            cantidadProd += Integer.parseInt(jtListaGuardVentas.getValueAt(i, 3).toString());
+                            //jtListaGuardVentas.setValueAt(cantidadProd, i, 3);
+                            Modelo5.removeRow(i); // remeve fila y vuelve a llenar con nueva cantidad
+                            Modelo5.addRow(new Object[]{prod.getIdProducto(), prod.getNombreProducto(),
+                                prod.getDescripcion(), cantidadProd, prod.getPrecioActual(), subtotal});
+                            jtListaGuardVentas.setModel(Modelo5);
+                            break;
+                        case 1:
+                            break;
+                    }
+                }
+            }
+
+//  totalPago();
+        } catch (NullPointerException ex) {
+
+        }
     }//GEN-LAST:event_jlAgregarProdTablaMouseClicked
 
     private void jlAgregarProdTablaMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jlAgregarProdTablaMouseEntered
-       jlAgregarProdTabla.setBackground(verdeClaro);
+        jlAgregarProdTabla.setBackground(verdeClaro);
     }//GEN-LAST:event_jlAgregarProdTablaMouseEntered
 
     private void jlAgregarProdTablaMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jlAgregarProdTablaMouseExited
-       jlAgregarProdTabla.setBackground(verdeBase);
+        jlAgregarProdTabla.setBackground(verdeBase);
     }//GEN-LAST:event_jlAgregarProdTablaMouseExited
 
     /**
@@ -5135,19 +5109,12 @@ public class Menu extends javax.swing.JFrame {
     private javax.swing.JLabel jlAgregarEmpleado;
     private javax.swing.JLabel jlAgregarPro;
     private javax.swing.JLabel jlAgregarProdTabla;
-    private javax.swing.JLabel jlAsteriscoCan;
-    private javax.swing.JLabel jlAsteriscoEmp;
-    private javax.swing.JLabel jlAsteriscoFecha;
-    private javax.swing.JLabel jlAsteriscoPro;
-    private javax.swing.JLabel jlAsteriscoSup;
-    private javax.swing.JLabel jlAsteriscoTel1;
     private javax.swing.JLabel jlBorrarVenta;
     private javax.swing.JLabel jlBuscarVenta;
     private javax.swing.JLabel jlBusqueda;
     private javax.swing.JLabel jlBusquedaCliente;
     private javax.swing.JLabel jlBusquedaEmp;
     private javax.swing.JLabel jlCabecera;
-    private javax.swing.JLabel jlCamposOblig;
     private javax.swing.JLabel jlCantidadVenta;
     private javax.swing.JLabel jlCerrarSesion;
     private javax.swing.JLabel jlClentesIn;
@@ -5372,6 +5339,13 @@ public class Menu extends javax.swing.JFrame {
         }
     }
 
+    private void borrarFilaAPV() {
+        jtListaGuardVentas.setModel(Modelo5);
+        for (int i = jtListaGuardVentas.getRowCount() - 1; i >= 0; i--) {
+            Modelo5.removeRow(i);
+        }
+    }
+
     private void llenarText() {
         text1.setText("<html>Registrar productos: Los usuarios podrán agregar nuevos productos al inventario proporcionando información como nombre, descripción, precio y cantidad disponible</html>");
         text2.setText("<html>Realizar ventas: Los usuarios podrán registrar las ventas de productos a los clientes. el cliente que realiza la compra y la fecha de venta</html>");
@@ -5507,19 +5481,28 @@ public class Menu extends javax.swing.JFrame {
             });
         }
     }
-    /////////////////////////////////////////////////////////////////////////////////////////////////////////7
-     private void llenarTablaAgProd() {
-        try{
-         //borrarFila(); // Falta hacer
-        Producto prod = (Producto)jcbProVenta.getSelectedItem();
-        int cantidadProd =(Integer.parseInt(jtfCantidadVenta.getText()));
-        double subtotal= (prod.getPrecioActual() * cantidadProd);
-        Modelo5.addRow(new Object[]{prod.getIdProducto(), prod.getNombreProducto(),
-                prod.getDescripcion(), cantidadProd, prod.getPrecioActual() });
-        }catch (NumberFormatException ex) {
-        }
-        }
-    
-     /////////////////////////////////////////////////////////////////////////////////////////////////////////7
 
+    /////////////////////////////////////////////////////////////////////////////////////////////////////////7
+    private void llenarTablaAgProd() {
+        try {
+            //borrarFila(); // Falta hacer
+            Producto prod = (Producto) jcbProVenta.getSelectedItem();
+            int cantidadProd = (Integer.parseInt(jtfCantidadVenta.getText()));
+            double subtotal = (prod.getPrecioActual() * cantidadProd);
+            Modelo5.addRow(new Object[]{prod.getIdProducto(), prod.getNombreProducto(),
+                prod.getDescripcion(), cantidadProd, prod.getPrecioActual()});
+        } catch (NumberFormatException ex) {
+        }
+    }
+
+    /////////////////////////////////////////////////////////////////////////////////////////////////////////7 PAGO TOTAL 
+//private void totalPago(){
+//    precioTotal= 0;
+//    int fila = jtListaGuardVentas.getRowCount();
+//    for (int i = 0; i < fila; i++) {
+//        double resultado = Double.parseDouble(String.valueOf(jtListaGuardVentas.getModel().getValueAt(i, 5)));
+//            precioTotal += resultado;
+//    }
+//    jtfPrecioVenta.setText(precioTotal+"");
+//}
 }
