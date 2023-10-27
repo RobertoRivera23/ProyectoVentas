@@ -45,6 +45,8 @@ public class Menu extends javax.swing.JFrame {
     public DefaultTableModel Modelo2;
     public DefaultTableModel Modelo3;
     public DefaultTableModel Modelo4;
+    public DefaultTableModel Modelo5;
+    
 //Modelos tablas de Papelera
     public DefaultTableModel ModeloP = new DefaultTableModel(null, new String[]{
         "ID", "Nombre", "Descripcion", "Precio Actual", "Stock"
@@ -114,6 +116,26 @@ public class Menu extends javax.swing.JFrame {
             return types[columnIndex];
         }
     };
+    
+    /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+    public DefaultTableModel ModeloVentaProd = new DefaultTableModel(null, new String[]{
+        "Id Producto","Nombre", "Descripción", "Cantidad", "Precio", "Subtotal"
+    }
+    ) {
+        public boolean isCellEditable(int fila, int column) {
+            return false;
+        }
+
+        Class[] types = new Class[]{
+            java.lang.Integer.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.Double.class,
+            java.lang.Double.class
+        };
+
+        public Class getColumnClass(int columnIndex) {
+            return types[columnIndex];
+        }
+    };
+        ////////////////////////////////////////////////77777777777/////////////////////////////////////////
 
     private void llenarTabla() {
         borrarFila();
@@ -123,6 +145,8 @@ public class Menu extends javax.swing.JFrame {
             jtListaPro.setModel(Modelo);
         }
     }
+     
+    
 
     public Menu() {
         initComponents();
@@ -377,6 +401,10 @@ public class Menu extends javax.swing.JFrame {
         jlIconVentaAgr = new javax.swing.JLabel();
         jdcAgrVenta = new com.toedter.calendar.JDateChooser();
         jlAsteriscoTel1 = new javax.swing.JLabel();
+        ScrollTablaVentas1 = new javax.swing.JScrollPane();
+        jtListaGuardVentas = new TablaFraveMax();
+        jLimpiarTablaAaVen = new javax.swing.JLabel();
+        jlAgregarProdTabla = new javax.swing.JLabel();
         jtpListaVentas = new javax.swing.JPanel();
         jlListaVenta = new javax.swing.JLabel();
         ScrollTablaVentas = new javax.swing.JScrollPane();
@@ -2165,23 +2193,23 @@ public class Menu extends javax.swing.JFrame {
         jlAsteriscoEmp.setForeground(new java.awt.Color(255, 0, 0));
         jlAsteriscoEmp.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jlAsteriscoEmp.setText("*");
-        jtpAgrVenta.add(jlAsteriscoEmp, new org.netbeans.lib.awtextra.AbsoluteConstraints(530, 280, 10, -1));
+        jtpAgrVenta.add(jlAsteriscoEmp, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 120, 10, -1));
 
         jlAsteriscoFecha.setFont(new java.awt.Font("Corbel", 1, 14)); // NOI18N
         jlAsteriscoFecha.setForeground(new java.awt.Color(255, 0, 0));
         jlAsteriscoFecha.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jlAsteriscoFecha.setText("*");
-        jtpAgrVenta.add(jlAsteriscoFecha, new org.netbeans.lib.awtextra.AbsoluteConstraints(530, 160, 10, -1));
+        jtpAgrVenta.add(jlAsteriscoFecha, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 60, 10, -1));
 
         jlAgrVentas.setFont(new java.awt.Font("Corbel", 1, 30)); // NOI18N
         jlAgrVentas.setForeground(new java.awt.Color(153, 153, 153));
         jlAgrVentas.setText("Agregar Venta");
-        jtpAgrVenta.add(jlAgrVentas, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 40, -1, -1));
+        jtpAgrVenta.add(jlAgrVentas, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 20, -1, -1));
 
         jlSelecProVenta.setFont(new java.awt.Font("Corbel", 1, 14)); // NOI18N
         jlSelecProVenta.setForeground(new java.awt.Color(153, 153, 153));
         jlSelecProVenta.setText("Seleccione el Producto en Venta");
-        jtpAgrVenta.add(jlSelecProVenta, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 160, 200, -1));
+        jtpAgrVenta.add(jlSelecProVenta, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 60, 200, -1));
 
         jcbProVenta.setFont(new java.awt.Font("Corbel", 1, 14)); // NOI18N
         jcbProVenta.addActionListener(new java.awt.event.ActionListener() {
@@ -2189,12 +2217,12 @@ public class Menu extends javax.swing.JFrame {
                 jcbProVentaActionPerformed(evt);
             }
         });
-        jtpAgrVenta.add(jcbProVenta, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 180, 200, 30));
+        jtpAgrVenta.add(jcbProVenta, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 80, 200, 30));
 
         jlCantidadVenta.setFont(new java.awt.Font("Corbel", 1, 14)); // NOI18N
         jlCantidadVenta.setForeground(new java.awt.Color(153, 153, 153));
         jlCantidadVenta.setText("Ingrese la cantidad");
-        jtpAgrVenta.add(jlCantidadVenta, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 220, 200, -1));
+        jtpAgrVenta.add(jlCantidadVenta, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 120, 140, -1));
 
         jtfCantidadVenta.setFont(new java.awt.Font("Corbel", 1, 14)); // NOI18N
         jtfCantidadVenta.addKeyListener(new java.awt.event.KeyAdapter() {
@@ -2205,41 +2233,41 @@ public class Menu extends javax.swing.JFrame {
                 jtfCantidadVentaKeyTyped(evt);
             }
         });
-        jtpAgrVenta.add(jtfCantidadVenta, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 240, 200, 30));
+        jtpAgrVenta.add(jtfCantidadVenta, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 140, 120, 30));
 
         jlAsteriscoPro.setFont(new java.awt.Font("Corbel", 1, 14)); // NOI18N
         jlAsteriscoPro.setForeground(new java.awt.Color(255, 0, 0));
         jlAsteriscoPro.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jlAsteriscoPro.setText("*");
-        jtpAgrVenta.add(jlAsteriscoPro, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 160, 10, -1));
+        jtpAgrVenta.add(jlAsteriscoPro, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 60, 10, -1));
 
         jlFechaVenta.setFont(new java.awt.Font("Corbel", 1, 14)); // NOI18N
         jlFechaVenta.setForeground(new java.awt.Color(153, 153, 153));
         jlFechaVenta.setText("Selecciones la Fecha de la Venta");
-        jtpAgrVenta.add(jlFechaVenta, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 160, -1, -1));
+        jtpAgrVenta.add(jlFechaVenta, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 60, -1, -1));
 
         jlTelCliente.setFont(new java.awt.Font("Corbel", 1, 14)); // NOI18N
         jlTelCliente.setForeground(new java.awt.Color(153, 153, 153));
         jlTelCliente.setText("Ingrese el Telefono del Cliente");
-        jtpAgrVenta.add(jlTelCliente, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 220, -1, -1));
+        jtpAgrVenta.add(jlTelCliente, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 120, -1, -1));
 
         jtfTelCliente.setFont(new java.awt.Font("Corbel", 1, 14)); // NOI18N
-        jtpAgrVenta.add(jtfTelCliente, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 240, 200, 30));
+        jtpAgrVenta.add(jtfTelCliente, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 140, 200, 30));
 
         jlPrecioVenta.setFont(new java.awt.Font("Corbel", 1, 14)); // NOI18N
         jlPrecioVenta.setForeground(new java.awt.Color(153, 153, 153));
         jlPrecioVenta.setText("Precio Total de Venta");
-        jtpAgrVenta.add(jlPrecioVenta, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 280, -1, -1));
+        jtpAgrVenta.add(jlPrecioVenta, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 350, 130, -1));
 
         jtfPrecioVenta.setEditable(false);
         jtfPrecioVenta.setFont(new java.awt.Font("Corbel", 1, 14)); // NOI18N
-        jtpAgrVenta.add(jtfPrecioVenta, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 300, 200, 30));
+        jtpAgrVenta.add(jtfPrecioVenta, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 370, 170, -1));
 
         jlRealizarVenta.setBackground(new java.awt.Color(0, 150, 136));
         jlRealizarVenta.setFont(new java.awt.Font("Corbel", 1, 14)); // NOI18N
         jlRealizarVenta.setForeground(new java.awt.Color(255, 255, 255));
         jlRealizarVenta.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jlRealizarVenta.setText("Realizar venta");
+        jlRealizarVenta.setText("Realizar Venta");
         jlRealizarVenta.setVerticalAlignment(javax.swing.SwingConstants.BOTTOM);
         jlRealizarVenta.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
         jlRealizarVenta.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
@@ -2255,42 +2283,121 @@ public class Menu extends javax.swing.JFrame {
                 jlRealizarVentaMouseExited(evt);
             }
         });
-        jtpAgrVenta.add(jlRealizarVenta, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 350, 120, 30));
+        jtpAgrVenta.add(jlRealizarVenta, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 350, 110, 30));
 
         jlAsteriscoCan.setFont(new java.awt.Font("Corbel", 1, 14)); // NOI18N
         jlAsteriscoCan.setForeground(new java.awt.Color(255, 0, 0));
         jlAsteriscoCan.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jlAsteriscoCan.setText("*");
-        jtpAgrVenta.add(jlAsteriscoCan, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 220, 10, -1));
+        jtpAgrVenta.add(jlAsteriscoCan, new org.netbeans.lib.awtextra.AbsoluteConstraints(570, 120, 10, -1));
 
         jlAsteriscoSup.setFont(new java.awt.Font("Corbel", 1, 12)); // NOI18N
         jlAsteriscoSup.setForeground(new java.awt.Color(255, 0, 0));
         jlAsteriscoSup.setText("*");
-        jtpAgrVenta.add(jlAsteriscoSup, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 390, 30, -1));
+        jtpAgrVenta.add(jlAsteriscoSup, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 400, 30, -1));
 
         jlCamposOblig.setFont(new java.awt.Font("Corbel", 0, 12)); // NOI18N
         jlCamposOblig.setForeground(new java.awt.Color(153, 153, 153));
         jlCamposOblig.setText("Los campos con ( ) son Obligatorios");
-        jtpAgrVenta.add(jlCamposOblig, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 390, 190, -1));
+        jtpAgrVenta.add(jlCamposOblig, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 390, 190, -1));
 
         jlNombreEmp.setFont(new java.awt.Font("Corbel", 1, 14)); // NOI18N
         jlNombreEmp.setForeground(new java.awt.Color(153, 153, 153));
         jlNombreEmp.setText("Ingrese el Nombre del Empleado");
-        jtpAgrVenta.add(jlNombreEmp, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 280, -1, -1));
+        jtpAgrVenta.add(jlNombreEmp, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 120, -1, -1));
 
         jtfNombreEmpVenta.setFont(new java.awt.Font("Corbel", 1, 14)); // NOI18N
-        jtpAgrVenta.add(jtfNombreEmpVenta, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 300, 200, 30));
+        jtpAgrVenta.add(jtfNombreEmpVenta, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 140, 200, 30));
 
         jlIconVentaAgr.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jlIconVentaAgr.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Image/flecha-del-carrito-hacia-abajo.png"))); // NOI18N
-        jtpAgrVenta.add(jlIconVentaAgr, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 20, 210, 150));
-        jtpAgrVenta.add(jdcAgrVenta, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 180, 200, 30));
+        jtpAgrVenta.add(jlIconVentaAgr, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, -10, 210, 150));
+        jtpAgrVenta.add(jdcAgrVenta, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 80, 200, 30));
 
         jlAsteriscoTel1.setFont(new java.awt.Font("Corbel", 1, 14)); // NOI18N
         jlAsteriscoTel1.setForeground(new java.awt.Color(255, 0, 0));
         jlAsteriscoTel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jlAsteriscoTel1.setText("*");
-        jtpAgrVenta.add(jlAsteriscoTel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(520, 220, 10, -1));
+        jtpAgrVenta.add(jlAsteriscoTel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 120, 10, -1));
+
+        ScrollTablaVentas1.setBackground(new java.awt.Color(255, 255, 255));
+        ScrollTablaVentas1.setFont(new java.awt.Font("Corbel", 0, 12)); // NOI18N
+
+        jtListaGuardVentas.setBackground(new java.awt.Color(204, 204, 204));
+        jtListaGuardVentas.setFont(new java.awt.Font("Corbel", 1, 14)); // NOI18N
+        jtListaGuardVentas.setModel(Modelo5 = new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null}
+            },
+            new String [] {
+                "Id Producto","Nombre", "Descripción", "Cantidad", "Precio", "Subtotal"
+            }
+        ) {
+            public boolean isCellEditable(int fila, int column) {
+                return false;
+            }
+
+            Class[] types = new Class[]{
+                java.lang.Integer.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.Double.class,
+                java.lang.Double.class
+            };
+
+            public Class getColumnClass(int columnIndex) {
+                return types[columnIndex];
+            }
+        });
+        jtListaGuardVentas.setGridColor(new java.awt.Color(0, 102, 102));
+        jtListaGuardVentas.setMinimumSize(new java.awt.Dimension(60, 60));
+        ScrollTablaVentas1.setViewportView(jtListaGuardVentas);
+
+        jtpAgrVenta.add(ScrollTablaVentas1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 190, 580, 150));
+
+        jLimpiarTablaAaVen.setBackground(new java.awt.Color(0, 150, 136));
+        jLimpiarTablaAaVen.setFont(new java.awt.Font("Corbel", 1, 14)); // NOI18N
+        jLimpiarTablaAaVen.setForeground(new java.awt.Color(255, 255, 255));
+        jLimpiarTablaAaVen.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLimpiarTablaAaVen.setText("Limpiar");
+        jLimpiarTablaAaVen.setVerticalAlignment(javax.swing.SwingConstants.BOTTOM);
+        jLimpiarTablaAaVen.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        jLimpiarTablaAaVen.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        jLimpiarTablaAaVen.setOpaque(true);
+        jLimpiarTablaAaVen.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jLimpiarTablaAaVenMouseClicked(evt);
+            }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                jLimpiarTablaAaVenMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                jLimpiarTablaAaVenMouseExited(evt);
+            }
+        });
+        jtpAgrVenta.add(jLimpiarTablaAaVen, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 350, 80, 30));
+
+        jlAgregarProdTabla.setBackground(new java.awt.Color(0, 150, 136));
+        jlAgregarProdTabla.setFont(new java.awt.Font("Corbel", 1, 14)); // NOI18N
+        jlAgregarProdTabla.setForeground(new java.awt.Color(255, 255, 255));
+        jlAgregarProdTabla.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jlAgregarProdTabla.setText("Agregar");
+        jlAgregarProdTabla.setVerticalAlignment(javax.swing.SwingConstants.BOTTOM);
+        jlAgregarProdTabla.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        jlAgregarProdTabla.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        jlAgregarProdTabla.setOpaque(true);
+        jlAgregarProdTabla.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jlAgregarProdTablaMouseClicked(evt);
+            }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                jlAgregarProdTablaMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                jlAgregarProdTablaMouseExited(evt);
+            }
+        });
+        jtpAgrVenta.add(jlAgregarProdTabla, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 350, 80, 30));
 
         jtpEscritorio.addTab("tab13", jtpAgrVenta);
 
@@ -3481,6 +3588,7 @@ public class Menu extends javax.swing.JFrame {
         jtpEscritorio.setSelectedIndex(12);
         jcbProVenta.removeAllItems();
         llenarCombo();
+        llenarTablaAgProd();
     }//GEN-LAST:event_RegistrarVentaMouseClicked
 
     private void RegistrarVentaMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_RegistrarVentaMouseEntered
@@ -4770,6 +4878,37 @@ public class Menu extends javax.swing.JFrame {
         jlClientesxPro.setBackground(verdeBase);
     }//GEN-LAST:event_jlClientesxProMouseExited
 
+    private void jLimpiarTablaAaVenMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLimpiarTablaAaVenMouseClicked
+       
+                
+    }//GEN-LAST:event_jLimpiarTablaAaVenMouseClicked
+
+    private void jLimpiarTablaAaVenMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLimpiarTablaAaVenMouseEntered
+        jLimpiarTablaAaVen.setBackground(verdeClaro);
+    }//GEN-LAST:event_jLimpiarTablaAaVenMouseEntered
+
+    private void jLimpiarTablaAaVenMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLimpiarTablaAaVenMouseExited
+        jLimpiarTablaAaVen.setBackground(verdeBase);
+    }//GEN-LAST:event_jLimpiarTablaAaVenMouseExited
+
+    private void jlAgregarProdTablaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jlAgregarProdTablaMouseClicked
+//         borrarFila(); // Falta hacer
+        Producto prod = (Producto)jcbProVenta.getSelectedItem();
+        int cantidadProd =(Integer.parseInt(jtfCantidadVenta.getText()));
+        double subtotal= (prod.getPrecioActual() * cantidadProd);
+        ModeloVentaProd.addRow(new Object[]{prod.getIdProducto(), prod.getNombreProducto(),
+                prod.getDescripcion(), cantidadProd, prod.getPrecioActual(), });
+           //jtListaGuardVentas.setModel(ModeloVentaProd);
+    }//GEN-LAST:event_jlAgregarProdTablaMouseClicked
+
+    private void jlAgregarProdTablaMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jlAgregarProdTablaMouseEntered
+       jlAgregarProdTabla.setBackground(verdeClaro);
+    }//GEN-LAST:event_jlAgregarProdTablaMouseEntered
+
+    private void jlAgregarProdTablaMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jlAgregarProdTablaMouseExited
+       jlAgregarProdTabla.setBackground(verdeBase);
+    }//GEN-LAST:event_jlAgregarProdTablaMouseExited
+
     /**
      * @param args the command line arguments
      */
@@ -4825,6 +4964,7 @@ public class Menu extends javax.swing.JFrame {
     private javax.swing.JScrollPane ScrollListClien1;
     private javax.swing.JScrollPane ScrollTablaDetalles;
     private javax.swing.JScrollPane ScrollTablaVentas;
+    private javax.swing.JScrollPane ScrollTablaVentas1;
     private javax.swing.JLabel fravemaxLogo;
     private javax.swing.JComboBox<Cliente> jCBBuscarClienElimClien;
     private javax.swing.JComboBox<Producto> jCBBuscarProdElimProd;
@@ -4894,6 +5034,7 @@ public class Menu extends javax.swing.JFrame {
     private javax.swing.JLabel jLUsuarioElimEmp;
     private javax.swing.JLabel jLUsuarioModEmp;
     private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLimpiarTablaAaVen;
     private javax.swing.JPanel jPGestionEmpleados;
     private javax.swing.JPanel jPanelCabecera;
     private javax.swing.JPanel jPanelOpciones;
@@ -4989,6 +5130,7 @@ public class Menu extends javax.swing.JFrame {
     private javax.swing.JLabel jlAgregarEmpl;
     private javax.swing.JLabel jlAgregarEmpleado;
     private javax.swing.JLabel jlAgregarPro;
+    private javax.swing.JLabel jlAgregarProdTabla;
     private javax.swing.JLabel jlAsteriscoCan;
     private javax.swing.JLabel jlAsteriscoEmp;
     private javax.swing.JLabel jlAsteriscoFecha;
@@ -5098,6 +5240,7 @@ public class Menu extends javax.swing.JFrame {
     private javax.swing.JTable jtListClien;
     private javax.swing.JTable jtListEmpleado;
     private javax.swing.JTable jtListaDetalles;
+    private javax.swing.JTable jtListaGuardVentas;
     private javax.swing.JTable jtListaPro;
     private javax.swing.JTable jtListaVentas;
     private javax.swing.JTextField jtfBuscador;
@@ -5360,4 +5503,19 @@ public class Menu extends javax.swing.JFrame {
             });
         }
     }
+    /////////////////////////////////////////////////////////////////////////////////////////////////////////7
+     private void llenarTablaAgProd() {
+        try{
+         //borrarFila(); // Falta hacer
+        Producto prod = (Producto)jcbProVenta.getSelectedItem();
+        int cantidadProd =(Integer.parseInt(jtfCantidadVenta.getText()));
+        double subtotal= (prod.getPrecioActual() * cantidadProd);
+        Modelo5.addRow(new Object[]{prod.getIdProducto(), prod.getNombreProducto(),
+                prod.getDescripcion(), cantidadProd, prod.getPrecioActual() });
+        }catch (NumberFormatException ex) {
+        }
+        }
+    
+     /////////////////////////////////////////////////////////////////////////////////////////////////////////7
+
 }

@@ -241,7 +241,7 @@ public class Login extends javax.swing.JFrame {
     }//GEN-LAST:event_jLCierraMouseEntered
 
     private void jLCierraMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLCierraMouseClicked
-        System.exit(0);
+        System.exit(0); 
     }//GEN-LAST:event_jLCierraMouseClicked
 
     private void jLMinimizaMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLMinimizaMouseExited
@@ -280,8 +280,7 @@ public class Login extends javax.swing.JFrame {
     private void jLBtnIniciarSesionMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLBtnIniciarSesionMouseClicked
         int cont = 0;
         boolean usuario = false;
-        
-        System.out.println("contInt " + contadorIntentos);
+     
         EmpleadoData eD = new EmpleadoData();
 
         if (jTFUsuario.getText().isEmpty() || jTFUsuario.getText().isEmpty() || jCBCargo.getSelectedItem() == null) {
