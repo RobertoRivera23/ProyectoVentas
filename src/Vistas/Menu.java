@@ -394,6 +394,7 @@ public class Menu extends javax.swing.JFrame {
         jdcAgrVenta = new com.toedter.calendar.JDateChooser();
         ScrollTablaVentas1 = new javax.swing.JScrollPane();
         jtListaGuardVentas = new TablaFraveMax();
+        jlEliminarProdTabla1 = new javax.swing.JLabel();
         jLimpiarTablaAaVen = new javax.swing.JLabel();
         jlAgregarProdTabla = new javax.swing.JLabel();
         jtpListaVentas = new javax.swing.JPanel();
@@ -522,7 +523,6 @@ public class Menu extends javax.swing.JFrame {
         setMinimumSize(new java.awt.Dimension(800, 500));
         setUndecorated(true);
         setSize(new java.awt.Dimension(800, 500));
-        getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         BackGround.setBackground(new java.awt.Color(255, 255, 255));
         BackGround.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -2191,11 +2191,6 @@ public class Menu extends javax.swing.JFrame {
         jtpAgrVenta.add(jlSelecProVenta, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 60, 200, -1));
 
         jcbProVenta.setFont(new java.awt.Font("Corbel", 1, 14)); // NOI18N
-        jcbProVenta.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jcbProVentaActionPerformed(evt);
-            }
-        });
         jtpAgrVenta.add(jcbProVenta, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 80, 200, 30));
 
         jlCantidadVenta.setFont(new java.awt.Font("Corbel", 1, 14)); // NOI18N
@@ -2205,14 +2200,11 @@ public class Menu extends javax.swing.JFrame {
 
         jtfCantidadVenta.setFont(new java.awt.Font("Corbel", 1, 14)); // NOI18N
         jtfCantidadVenta.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyReleased(java.awt.event.KeyEvent evt) {
-                jtfCantidadVentaKeyReleased(evt);
-            }
             public void keyTyped(java.awt.event.KeyEvent evt) {
                 jtfCantidadVentaKeyTyped(evt);
             }
         });
-        jtpAgrVenta.add(jtfCantidadVenta, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 140, 120, 30));
+        jtpAgrVenta.add(jtfCantidadVenta, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 140, 130, 30));
 
         jlFechaVenta.setFont(new java.awt.Font("Corbel", 1, 14)); // NOI18N
         jlFechaVenta.setForeground(new java.awt.Color(153, 153, 153));
@@ -2230,11 +2222,11 @@ public class Menu extends javax.swing.JFrame {
         jlPrecioVenta.setFont(new java.awt.Font("Corbel", 1, 14)); // NOI18N
         jlPrecioVenta.setForeground(new java.awt.Color(153, 153, 153));
         jlPrecioVenta.setText("Precio Total de Venta");
-        jtpAgrVenta.add(jlPrecioVenta, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 350, 130, -1));
+        jtpAgrVenta.add(jlPrecioVenta, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 340, 140, 30));
 
         jtfPrecioVenta.setEditable(false);
         jtfPrecioVenta.setFont(new java.awt.Font("Corbel", 1, 14)); // NOI18N
-        jtpAgrVenta.add(jtfPrecioVenta, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 370, 170, -1));
+        jtpAgrVenta.add(jtfPrecioVenta, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 362, 160, 30));
 
         jlRealizarVenta.setBackground(new java.awt.Color(0, 150, 136));
         jlRealizarVenta.setFont(new java.awt.Font("Corbel", 1, 14)); // NOI18N
@@ -2256,7 +2248,7 @@ public class Menu extends javax.swing.JFrame {
                 jlRealizarVentaMouseExited(evt);
             }
         });
-        jtpAgrVenta.add(jlRealizarVenta, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 350, 110, 30));
+        jtpAgrVenta.add(jlRealizarVenta, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 360, 110, 30));
 
         jlNombreEmp.setFont(new java.awt.Font("Corbel", 1, 14)); // NOI18N
         jlNombreEmp.setForeground(new java.awt.Color(153, 153, 153));
@@ -2269,6 +2261,8 @@ public class Menu extends javax.swing.JFrame {
         jlIconVentaAgr.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jlIconVentaAgr.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Image/flecha-del-carrito-hacia-abajo.png"))); // NOI18N
         jtpAgrVenta.add(jlIconVentaAgr, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, -10, 210, 150));
+
+        jdcAgrVenta.setEnabled(false);
         jtpAgrVenta.add(jdcAgrVenta, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 80, 200, 30));
 
         ScrollTablaVentas1.setBackground(new java.awt.Color(255, 255, 255));
@@ -2284,7 +2278,7 @@ public class Menu extends javax.swing.JFrame {
                 {null, null, null, null}
             },
             new String [] {
-                "Id Producto","Nombre", "Descripción", "Cantidad", "Precio", "Subtotal"
+                "Id Producto", "Nombre", "Descripción", "Cantidad", "Precio", "Subtotal"
             }
         ) {
             public boolean isCellEditable(int fila, int column) {
@@ -2304,7 +2298,29 @@ public class Menu extends javax.swing.JFrame {
         jtListaGuardVentas.setMinimumSize(new java.awt.Dimension(60, 60));
         ScrollTablaVentas1.setViewportView(jtListaGuardVentas);
 
-        jtpAgrVenta.add(ScrollTablaVentas1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 190, 580, 150));
+        jtpAgrVenta.add(ScrollTablaVentas1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 190, 570, 150));
+
+        jlEliminarProdTabla1.setBackground(new java.awt.Color(0, 150, 136));
+        jlEliminarProdTabla1.setFont(new java.awt.Font("Corbel", 1, 14)); // NOI18N
+        jlEliminarProdTabla1.setForeground(new java.awt.Color(255, 255, 255));
+        jlEliminarProdTabla1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jlEliminarProdTabla1.setText("Eliminar");
+        jlEliminarProdTabla1.setVerticalAlignment(javax.swing.SwingConstants.BOTTOM);
+        jlEliminarProdTabla1.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        jlEliminarProdTabla1.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        jlEliminarProdTabla1.setOpaque(true);
+        jlEliminarProdTabla1.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jlEliminarProdTabla1MouseClicked(evt);
+            }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                jlEliminarProdTabla1MouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                jlEliminarProdTabla1MouseExited(evt);
+            }
+        });
+        jtpAgrVenta.add(jlEliminarProdTabla1, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 360, 80, 30));
 
         jLimpiarTablaAaVen.setBackground(new java.awt.Color(0, 150, 136));
         jLimpiarTablaAaVen.setFont(new java.awt.Font("Corbel", 1, 14)); // NOI18N
@@ -2326,7 +2342,7 @@ public class Menu extends javax.swing.JFrame {
                 jLimpiarTablaAaVenMouseExited(evt);
             }
         });
-        jtpAgrVenta.add(jLimpiarTablaAaVen, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 350, 80, 30));
+        jtpAgrVenta.add(jLimpiarTablaAaVen, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 360, 80, 30));
 
         jlAgregarProdTabla.setBackground(new java.awt.Color(0, 150, 136));
         jlAgregarProdTabla.setFont(new java.awt.Font("Corbel", 1, 14)); // NOI18N
@@ -2348,7 +2364,7 @@ public class Menu extends javax.swing.JFrame {
                 jlAgregarProdTablaMouseExited(evt);
             }
         });
-        jtpAgrVenta.add(jlAgregarProdTabla, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 350, 80, 30));
+        jtpAgrVenta.add(jlAgregarProdTabla, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 360, 80, 30));
 
         jtpEscritorio.addTab("tab13", jtpAgrVenta);
 
@@ -3379,7 +3395,16 @@ public class Menu extends javax.swing.JFrame {
 
     BackGround.add(jtpEscritorio, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 43, 600, 460));
 
-    getContentPane().add(BackGround, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
+    javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
+    getContentPane().setLayout(layout);
+    layout.setHorizontalGroup(
+        layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+        .addComponent(BackGround, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+    );
+    layout.setVerticalGroup(
+        layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+        .addComponent(BackGround, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+    );
 
     pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -3536,10 +3561,15 @@ public class Menu extends javax.swing.JFrame {
     }//GEN-LAST:event_jlEliminarClienteMouseExited
 
     private void RegistrarVentaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_RegistrarVentaMouseClicked
-        jtpEscritorio.setSelectedIndex(12);
-        jcbProVenta.removeAllItems();
-        llenarCombo();
-        llenarTablaAgProd();
+        try {
+            jtpEscritorio.setSelectedIndex(12);
+            LocalDate hoy = LocalDate.now();
+            jdcAgrVenta.setDate(Date.valueOf(hoy));
+            jcbProVenta.removeAllItems();
+            llenarCombo();
+            borrarFilaAPV();
+        } catch (ArrayIndexOutOfBoundsException ex) {
+        }
     }//GEN-LAST:event_RegistrarVentaMouseClicked
 
     private void RegistrarVentaMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_RegistrarVentaMouseEntered
@@ -3554,7 +3584,6 @@ public class Menu extends javax.swing.JFrame {
         jtpEscritorio.setSelectedIndex(14);
         llenarComboCliente();
         llenarCombo();
-//        llenarTablaDetVen();
     }//GEN-LAST:event_DetVentaMouseClicked
 
     private void DetVentaMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_DetVentaMouseEntered
@@ -4078,14 +4107,11 @@ public class Menu extends javax.swing.JFrame {
         } else {
             try {
                 int can = Integer.parseInt(jtfCantidadVenta.getText());
-                double pre = Double.parseDouble(jtfPrecioVenta.getText());
                 LocalDate fv = jdcAgrVenta.getDate().toInstant().atZone(ZoneId.systemDefault()).toLocalDate();
                 Producto pro = (Producto) jcbProVenta.getSelectedItem();
                 Cliente cli = cD.buscarClientePorTel(jtfTelCliente.getText());
                 if (can > pro.getStock()) {
                     JOptionPane.showMessageDialog(this, "La cantidad ingresada es superior al stock disponible");
-                } else if (pro.getStock() == 0) {
-                    JOptionPane.showMessageDialog(this, "No hay stock disponible de este producto");
                 } else {
                     if (cli != null) {
                         Empleado emp = ed.buscarPorNombre(jtfNombreEmpVenta.getText());
@@ -4094,10 +4120,21 @@ public class Menu extends javax.swing.JFrame {
                         } else {
                             Venta ven = new Venta(cli, emp, fv);
                             vd.guardarVenta(ven);
-                            DetalleVenta dv = new DetalleVenta(can, ven, pre, pro);
-                            dvd.guardarDetalleVenta(dv);
-                            pro.setStock(pro.getStock() - can);
-                            pd.modificarProducto(pro);
+                            int fila = jtListaGuardVentas.getRowCount();
+                            for (int i = 0; i < fila; i++) {
+                                int canti = Integer.parseInt(jtListaGuardVentas.getValueAt(i, 3).toString());
+                                double pre = Double.parseDouble(jtListaGuardVentas.getValueAt(i, 5).toString());
+                                Producto pro1 = pd.buscarProducto(Integer.parseInt(jtListaGuardVentas.getValueAt(i, 0).toString()));
+                                if (pro1.getStock() == 0) {
+                                    JOptionPane.showMessageDialog(this, "No hay stock disponible de este producto");
+                                    break;
+                                } else {
+                                    DetalleVenta dv = new DetalleVenta(canti, ven, pre, pro1);
+                                    dvd.guardarDetalleVenta(dv);
+                                    pro1.setStock(pro1.getStock() - canti);
+                                    pd.modificarProducto(pro1);
+                                }
+                            }
                             borrarCamposAgrVen();
                         }
                     } else {
@@ -4112,10 +4149,21 @@ public class Menu extends javax.swing.JFrame {
                                 } else {
                                     Venta ven = new Venta(cli, emp, fv);
                                     vd.guardarVenta(ven);
-                                    DetalleVenta dv = new DetalleVenta(can, ven, pre, pro);
-                                    dvd.guardarDetalleVenta(dv);
-                                    pro.setStock(pro.getStock() - can);
-                                    pd.modificarProducto(pro);
+                                    int fila = jtListaGuardVentas.getRowCount();
+                                    for (int i = 0; i < fila; i++) {
+                                        int canti = Integer.parseInt(jtListaGuardVentas.getValueAt(i, 3).toString());
+                                        double pre = Double.parseDouble(jtListaGuardVentas.getValueAt(i, 5).toString());
+                                        Producto pro1 = pd.buscarProducto(Integer.parseInt(jtListaGuardVentas.getValueAt(i, 0).toString()));
+                                        if (pro1.getStock() == 0) {
+                                            JOptionPane.showMessageDialog(this, "No hay stock disponible de este producto");
+                                            break;
+                                        } else {
+                                            DetalleVenta dv = new DetalleVenta(canti, ven, pre, pro1);
+                                            dvd.guardarDetalleVenta(dv);
+                                            pro1.setStock(pro1.getStock() - canti);
+                                            pd.modificarProducto(pro1);
+                                        }
+                                    }
                                     borrarCamposAgrVen();
                                 }
                             case 1:
@@ -4130,33 +4178,9 @@ public class Menu extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_jlRealizarVentaMouseClicked
 
-    private void jcbProVentaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jcbProVentaActionPerformed
-        try {
-            Producto pro = (Producto) jcbProVenta.getSelectedItem();
-            precioTotal = pro.getPrecioActual();
-            int can = Integer.parseInt(jtfCantidadVenta.getText());
-            double total = precioTotal * can;
-            jtfPrecioVenta.setText(total + "");
-        } catch (NumberFormatException ex) {
-            jtfPrecioVenta.setText(precioTotal + "");
-        } catch (NullPointerException ex) {
-
-        }
-    }//GEN-LAST:event_jcbProVentaActionPerformed
-
     private void jtfCantidadVentaKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jtfCantidadVentaKeyTyped
         controlNumeros(evt);
     }//GEN-LAST:event_jtfCantidadVentaKeyTyped
-
-    private void jtfCantidadVentaKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jtfCantidadVentaKeyReleased
-        try {
-            int can = Integer.parseInt(jtfCantidadVenta.getText());
-            double total = precioTotal * can;
-            jtfPrecioVenta.setText(total + "");
-        } catch (NumberFormatException ex) {
-            jtfPrecioVenta.setText(precioTotal + "");
-        }
-    }//GEN-LAST:event_jtfCantidadVentaKeyReleased
 
     private void jlEliminarVentaBorrarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jlEliminarVentaBorrarMouseClicked
         Venta v = (Venta) jcbBuscarVenta.getSelectedItem();
@@ -4832,8 +4856,13 @@ public class Menu extends javax.swing.JFrame {
     }//GEN-LAST:event_jlClientesxProMouseExited
 
     private void jLimpiarTablaAaVenMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLimpiarTablaAaVenMouseClicked
-        borrarFilaAPV();
-
+        try {
+            borrarFilaAPV();
+        } catch (ArrayIndexOutOfBoundsException ex) {
+            JOptionPane.showMessageDialog(this, "La tabla esta vacia");
+        } finally {
+            totalPago();
+        }
     }//GEN-LAST:event_jLimpiarTablaAaVenMouseClicked
 
     private void jLimpiarTablaAaVenMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLimpiarTablaAaVenMouseEntered
@@ -4845,37 +4874,49 @@ public class Menu extends javax.swing.JFrame {
     }//GEN-LAST:event_jLimpiarTablaAaVenMouseExited
 
     private void jlAgregarProdTablaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jlAgregarProdTablaMouseClicked
-        try {
+        if (jtfCantidadVenta.getText().trim().isEmpty()) {
+            JOptionPane.showMessageDialog(this, "Debe ingresar una cantidad");
+        } else {
+            int cont = 0;
             Producto prod = (Producto) jcbProVenta.getSelectedItem();
             int cantidadProd = (Integer.parseInt(jtfCantidadVenta.getText()));
             int fila = jtListaGuardVentas.getRowCount();
             double subtotal = (prod.getPrecioActual() * cantidadProd);
-            Modelo5.addRow(new Object[]{prod.getIdProducto(), prod.getNombreProducto(),
-                prod.getDescripcion(), cantidadProd, prod.getPrecioActual(), subtotal});
-            jtListaGuardVentas.setModel(Modelo5);
-             
-            for (int i = 0; i < fila; i++) {
-                if (prod.getNombreProducto().equalsIgnoreCase(jtListaGuardVentas.getValueAt(i, 1).toString())) {
-                    int agrega = JOptionPane.showConfirmDialog(this, "Desea agregar mas cantidad a este producto?", "Este producto ya esta en la lista", JOptionPane.YES_NO_OPTION);
-                    switch (agrega) {
-                        case 0:
-
-                            cantidadProd += Integer.parseInt(jtListaGuardVentas.getValueAt(i, 3).toString());
-                            //jtListaGuardVentas.setValueAt(cantidadProd, i, 3);
-                            Modelo5.removeRow(i); // remeve fila y vuelve a llenar con nueva cantidad
-                            Modelo5.addRow(new Object[]{prod.getIdProducto(), prod.getNombreProducto(),
-                                prod.getDescripcion(), cantidadProd, prod.getPrecioActual(), subtotal});
-                            jtListaGuardVentas.setModel(Modelo5);
-                            break;
-                        case 1:
-                            break;
+            try {
+                for (int i = 0; i < fila; i++) {
+                    if (prod.getNombreProducto().equalsIgnoreCase(jtListaGuardVentas.getValueAt(i, 1).toString())) {
+                        cont++;
                     }
                 }
+                if (cont == 0 || fila == 0) {
+                    Modelo5.addRow(new Object[]{prod.getIdProducto(), prod.getNombreProducto(),
+                        prod.getDescripcion(), cantidadProd, prod.getPrecioActual(), subtotal});
+                    jtListaGuardVentas.setModel(Modelo5);
+                } else {
+                    for (int i = 0; i < fila; i++) {
+                        if (prod.getNombreProducto().equalsIgnoreCase(jtListaGuardVentas.getValueAt(i, 1).toString())) {
+                            int agrega = JOptionPane.showConfirmDialog(this, "¿Desea agregar mas cantidad a este producto?", "Este producto ya esta en la lista", JOptionPane.YES_NO_OPTION);
+                            switch (agrega) {
+                                case 0:
+                                    cantidadProd += Integer.parseInt(jtListaGuardVentas.getValueAt(i, 3).toString());
+                                    subtotal += Double.parseDouble(jtListaGuardVentas.getValueAt(i, 5).toString());
+                                    jtListaGuardVentas.setValueAt(cantidadProd, i, 3);
+                                    jtListaGuardVentas.setValueAt(subtotal, i, 5);
+                                    break;
+                                case 1:
+                                    break;
+                            }
+                        }
+                    }
+                }
+            } catch (NullPointerException ex) {
+                Modelo5.addRow(new Object[]{prod.getIdProducto(), prod.getNombreProducto(),
+                    prod.getDescripcion(), cantidadProd, prod.getPrecioActual(), subtotal});
+                jtListaGuardVentas.setModel(Modelo5);
+            } finally {
+                totalPago();
+                cont = 0;
             }
-
-//  totalPago();
-        } catch (NullPointerException ex) {
-
         }
     }//GEN-LAST:event_jlAgregarProdTablaMouseClicked
 
@@ -4886,6 +4927,26 @@ public class Menu extends javax.swing.JFrame {
     private void jlAgregarProdTablaMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jlAgregarProdTablaMouseExited
         jlAgregarProdTabla.setBackground(verdeBase);
     }//GEN-LAST:event_jlAgregarProdTablaMouseExited
+
+    private void jlEliminarProdTabla1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jlEliminarProdTabla1MouseClicked
+        try {
+            int fila = jtListaGuardVentas.getSelectedRow();
+            Modelo5.removeRow(fila);
+            jtListaGuardVentas.setModel(Modelo5);
+        } catch (ArrayIndexOutOfBoundsException ex) {
+            JOptionPane.showMessageDialog(this, "Debe seleccionar una fila");
+        } finally {
+            totalPago();
+        }
+    }//GEN-LAST:event_jlEliminarProdTabla1MouseClicked
+
+    private void jlEliminarProdTabla1MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jlEliminarProdTabla1MouseEntered
+        jlEliminarProdTabla1.setBackground(verdeClaro);
+    }//GEN-LAST:event_jlEliminarProdTabla1MouseEntered
+
+    private void jlEliminarProdTabla1MouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jlEliminarProdTabla1MouseExited
+        jlEliminarProdTabla1.setBackground(verdeBase);
+    }//GEN-LAST:event_jlEliminarProdTabla1MouseExited
 
     /**
      * @param args the command line arguments
@@ -5130,6 +5191,7 @@ public class Menu extends javax.swing.JFrame {
     private javax.swing.JLabel jlEliminarEmpleado;
     private javax.swing.JLabel jlEliminarPapelera;
     private javax.swing.JLabel jlEliminarPro;
+    private javax.swing.JLabel jlEliminarProdTabla1;
     private javax.swing.JLabel jlEliminarVenta;
     private javax.swing.JLabel jlEliminarVentaBorrar;
     private javax.swing.JLabel jlEmpleadoPapelera;
@@ -5340,7 +5402,6 @@ public class Menu extends javax.swing.JFrame {
     }
 
     private void borrarFilaAPV() {
-        jtListaGuardVentas.setModel(Modelo5);
         for (int i = jtListaGuardVentas.getRowCount() - 1; i >= 0; i--) {
             Modelo5.removeRow(i);
         }
@@ -5449,18 +5510,6 @@ public class Menu extends javax.swing.JFrame {
         }
     }
 
-//    private void llenarTablaDetVen() {
-//        borrarFilaDV();
-//        for (DetalleVenta dv : dvd.listaDV()) {
-//            Modelo3.addRow(new Object[]{dv.getIdDetalleVenta(),
-//                dv.getProducto().getNombreProducto(),
-//                dv.getVenta().getCliente().getTelefono(),
-//                dv.getVenta().getFechaVenta(),
-//                dv.getCantidad(),
-//                dv.getPrecioVenta()
-//            });
-//        }
-//    }
     private void llenarTablaVen() {
         borrarFilaV();
         for (Venta v : vd.listaVenta()) {
@@ -5482,27 +5531,17 @@ public class Menu extends javax.swing.JFrame {
         }
     }
 
-    /////////////////////////////////////////////////////////////////////////////////////////////////////////7
-    private void llenarTablaAgProd() {
+    private void totalPago() {
         try {
-            //borrarFila(); // Falta hacer
-            Producto prod = (Producto) jcbProVenta.getSelectedItem();
-            int cantidadProd = (Integer.parseInt(jtfCantidadVenta.getText()));
-            double subtotal = (prod.getPrecioActual() * cantidadProd);
-            Modelo5.addRow(new Object[]{prod.getIdProducto(), prod.getNombreProducto(),
-                prod.getDescripcion(), cantidadProd, prod.getPrecioActual()});
+            precioTotal = 0;
+            int fila = jtListaGuardVentas.getRowCount();
+            for (int i = 0; i < fila; i++) {
+                double resultado = Double.parseDouble(String.valueOf(jtListaGuardVentas.getModel().getValueAt(i, 5)));
+                precioTotal += resultado;
+            }
+            jtfPrecioVenta.setText(precioTotal + "");
         } catch (NumberFormatException ex) {
+            precioTotal = 0;
         }
     }
-
-    /////////////////////////////////////////////////////////////////////////////////////////////////////////7 PAGO TOTAL 
-//private void totalPago(){
-//    precioTotal= 0;
-//    int fila = jtListaGuardVentas.getRowCount();
-//    for (int i = 0; i < fila; i++) {
-//        double resultado = Double.parseDouble(String.valueOf(jtListaGuardVentas.getModel().getValueAt(i, 5)));
-//            precioTotal += resultado;
-//    }
-//    jtfPrecioVenta.setText(precioTotal+"");
-//}
 }
