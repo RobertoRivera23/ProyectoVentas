@@ -85,7 +85,7 @@ public class Producto {
 
     @Override
     public String toString() {
-        return nombreProducto + " / " + precioActual + " / " + stock;
+        return nombreProducto + " / " + descripcion +" / " + precioActual + " / " + stock;
     }
     
     

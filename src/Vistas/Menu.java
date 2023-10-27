@@ -4188,6 +4188,8 @@ public class Menu extends javax.swing.JFrame {
             jtfPrecioVenta.setText(total + "");
         } catch (NumberFormatException ex) {
             jtfPrecioVenta.setText(precioTotal + "");
+        } catch (NullPointerException ex) {
+            
         }
     }//GEN-LAST:event_jcbProVentaActionPerformed
 
@@ -4894,11 +4896,13 @@ public class Menu extends javax.swing.JFrame {
     private void jlAgregarProdTablaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jlAgregarProdTablaMouseClicked
 //         borrarFila(); // Falta hacer
         Producto prod = (Producto)jcbProVenta.getSelectedItem();
+        System.out.println("" + prod.toString());
         int cantidadProd =(Integer.parseInt(jtfCantidadVenta.getText()));
+        System.out.println("--" + cantidadProd);
         double subtotal= (prod.getPrecioActual() * cantidadProd);
-        ModeloVentaProd.addRow(new Object[]{prod.getIdProducto(), prod.getNombreProducto(),
-                prod.getDescripcion(), cantidadProd, prod.getPrecioActual(), });
-           //jtListaGuardVentas.setModel(ModeloVentaProd);
+        Modelo5.addRow(new Object[]{prod.getIdProducto(), prod.getNombreProducto(),
+                prod.getDescripcion(), cantidadProd, prod.getPrecioActual(), subtotal});
+           jtListaGuardVentas.setModel(Modelo5);
     }//GEN-LAST:event_jlAgregarProdTablaMouseClicked
 
     private void jlAgregarProdTablaMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jlAgregarProdTablaMouseEntered
