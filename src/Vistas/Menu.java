@@ -5480,7 +5480,7 @@ public class Menu extends javax.swing.JFrame {
 
     private void borrarCamposAgrVen() {
         jtfCantidadVenta.setText("");
-        jdcAgrVenta.setDate(null);
+       // jdcAgrVenta.setDate(null); //  QUE NO QUITE LA FECHA YA QUE NO SE PUEDE MODIFICAR
         jtfTelCliente.setText("");
         jtfNombreEmpVenta.setText("");
     }
