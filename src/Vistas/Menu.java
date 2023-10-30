@@ -4044,17 +4044,20 @@ public class Menu extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(this, "No puede haber espacios vacios");
         } else {
             try {
-                Producto pro = pd.buscarProductoPorNombre(jTFNombreProdModProd.getText());
+                Producto pro = (Producto) jcbProductos.getSelectedItem();
+                pro = pd.buscarProductoPorNombre(pro.getNombreProducto());
                 int opcion = JOptionPane.showConfirmDialog(this, "¿Desea Modificar los Datos?", "Seleccione una opcion", JOptionPane.YES_NO_OPTION);
                 switch (opcion) {
                     case 0:
-                        pro.setIdProducto(pro.getIdProducto());
-                        pro.setNombreProducto(jTFNombreProdModProd.getText());
-                        pro.setDescripcion(jTFDescripcionModProd.getText());
-                        pro.setPrecioActual(Double.parseDouble(jTFPrecioActualModProd.getText()));
-                        pro.setStock(Integer.parseInt(jTFStockModProd.getText()));
-                        pro.setEstado(pro.getEstado());
-                        pd.modificarProducto(pro);
+                        Producto prod = new Producto();
+                        prod.setIdProducto(pro.getIdProducto());
+                        prod.setNombreProducto(jTFNombreProdModProd.getText());
+                        System.out.println("Nombre: " + jTFNombreProdModProd.getText());
+                        prod.setDescripcion(jTFDescripcionModProd.getText());
+                        prod.setPrecioActual(Double.parseDouble(jTFPrecioActualModProd.getText()));
+                        prod.setStock(Integer.parseInt(jTFStockModProd.getText()));
+                        prod.setEstado(pro.getEstado());
+                        pd.modificarProducto(prod);
                         break;
                     case 1:
                         break;
@@ -5480,7 +5483,7 @@ public class Menu extends javax.swing.JFrame {
 
     private void borrarCamposAgrVen() {
         jtfCantidadVenta.setText("");
-       // jdcAgrVenta.setDate(null); //  QUE NO QUITE LA FECHA YA QUE NO SE PUEDE MODIFICAR
+        // jdcAgrVenta.setDate(null); //  QUE NO QUITE LA FECHA YA QUE NO SE PUEDE MODIFICAR
         jtfTelCliente.setText("");
         jtfNombreEmpVenta.setText("");
     }
