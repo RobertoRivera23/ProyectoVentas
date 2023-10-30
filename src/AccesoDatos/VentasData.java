@@ -237,7 +237,7 @@ public class VentasData {
             ps.setInt(1, venta1.getCliente().getIdCliente());
             ps.setInt(2, venta1.getEmpleado().getIdEmpleado());
             ps.setDate(3, Date.valueOf(venta1.getFechaVenta()));
-            ps.setBoolean(4, venta1.isEstado());
+            ps.setBoolean(4, venta1.getEstado());
             ps.setInt(5, v1.getIdVenta());
             int modificado = ps.executeUpdate();
             if (modificado == 1) {
