@@ -96,6 +96,34 @@ public class ProductoData {
         return producto;
     }
 
+    ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+     public Producto buscarProductoPorNombreBaja(String nombre) {
+        String sql = "SELECT * FROM producto WHERE nombreProducto = ? AND estado = 0";
+        PreparedStatement ps;
+        try {
+            ps = con.prepareStatement(sql);
+            ps.setString(1, nombre);
+            ResultSet rs = ps.executeQuery();
+            if (rs.next()) {
+                producto = new Producto();
+                producto.setIdProducto(rs.getInt("idProducto"));
+                producto.setNombreProducto(rs.getString("nombreProducto"));
+                producto.setDescripcion(rs.getString("descripcion"));
+                producto.setPrecioActual(rs.getDouble("precioActual"));
+                producto.setStock(rs.getInt("stock"));
+                producto.setEstado(true);
+            } else {
+                JOptionPane.showMessageDialog(null, "No existe el producto");
+                producto = null;
+            }
+            ps.close();
+        } catch (SQLException ex) {
+            JOptionPane.showMessageDialog(null, "Error al acceder a la tabla Producto" + ex.getMessage());
+        }
+        return producto;
+    }
+     ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+    
     public void modificarProducto(Producto producto) {
         String sql = "UPDATE producto SET nombreProducto = ? , descripcion = ? , precioActual = ? , stock = ?, estado = ?  WHERE idProducto = ?";
         PreparedStatement ps;

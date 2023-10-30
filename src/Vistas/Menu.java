@@ -4101,7 +4101,7 @@ public class Menu extends javax.swing.JFrame {
         try {
             int cont = 0;
             Producto pro = pd.buscarProductoPorNombre(jTFNombreProdElimProd.getText().trim());
-            if (pro.getNombreProducto().trim().equals(jTFNombreProdElimProd.getText()) && pro.getDescripcion().trim().equals(jTFDescripcionElimProd.getText())
+                if (pro.getNombreProducto().trim().equals(jTFNombreProdElimProd.getText()) && pro.getDescripcion().trim().equals(jTFDescripcionElimProd.getText())
                     && pro.getPrecioActual() == Double.parseDouble(jTFPrecioActuaElimProd.getText()) && pro.getStock() == Integer.parseInt(jTFStockElimProd.getText())) {
                 for (DetalleVenta detv : dvd.listaDV()) {
                     if (pro.getIdProducto() == detv.getIdProducto()) {
@@ -4157,7 +4157,6 @@ public class Menu extends javax.swing.JFrame {
                         Producto prod = new Producto();
                         prod.setIdProducto(pro.getIdProducto());
                         prod.setNombreProducto(jTFNombreProdModProd.getText());
-                        System.out.println("Nombre: " + jTFNombreProdModProd.getText());
                         prod.setDescripcion(jTFDescripcionModProd.getText());
                         prod.setPrecioActual(Double.parseDouble(jTFPrecioActualModProd.getText()));
                         prod.setStock(Integer.parseInt(jTFStockModProd.getText()));
@@ -4668,7 +4667,7 @@ public class Menu extends javax.swing.JFrame {
                 switch (op) {
                     case 0:
                         String nombre = (String) jTablePapelera.getValueAt(jTablePapelera.getSelectedRow(), 1);
-                        Producto pro = pd.buscarProductoPorNombre(nombre);
+                        Producto pro = pd.buscarProductoPorNombreBaja(nombre);
                         pro.setEstado(true);
                         pd.modificarProducto(pro);
                         ModeloP.removeRow(fila);
@@ -4681,7 +4680,7 @@ public class Menu extends javax.swing.JFrame {
                 switch (op) {
                     case 0:
                         String tel = (String) jTablePapelera.getValueAt(jTablePapelera.getSelectedRow(), 4);
-                        Cliente cli = cD.buscarClientePorTel(tel);
+                        Cliente cli = cD.buscarClientePorTelBaja(tel);
                         cli.setEstado(true);
                         cD.modicifarCliente(cli);
                         ModeloC.removeRow(fila);
@@ -4694,7 +4693,7 @@ public class Menu extends javax.swing.JFrame {
                 switch (op) {
                     case 0:
                         Integer dni = (Integer) jTablePapelera.getValueAt(jTablePapelera.getSelectedRow(), 3);
-                        Empleado emp = ed.buscarEmpleadoPorDni(dni);
+                        Empleado emp = ed.buscarEmpleadoPorDniBaja(dni);
                         emp.setEstado(true);
                         ed.modificarEmpleado(emp);
                         ModeloE.removeRow(fila);

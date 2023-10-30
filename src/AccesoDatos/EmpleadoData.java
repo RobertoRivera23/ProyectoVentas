@@ -74,6 +74,36 @@ public class EmpleadoData {
         return empleado;
     }
 
+    //////////////////////////////////////////////////////////////////////////////////////////////////////////////////7
+    public Empleado buscarEmpleadoPorDniBaja(int dni) {
+        Empleado empleado = null;
+        String sql = "SELECT * FROM empleado WHERE dni = ? AND estado = 0 ";
+        try {
+            PreparedStatement ps = con.prepareStatement(sql);
+            ps.setInt(1, dni);
+            ResultSet rs = ps.executeQuery();
+            if (rs.next()) {
+                empleado = new Empleado();
+                empleado.setIdEmpleado(rs.getInt("idempleado"));
+                empleado.setApellido(rs.getString("apellido"));
+                empleado.setNombre(rs.getString("nombre"));
+                empleado.setDni(rs.getInt("dni"));
+                empleado.setCargo(rs.getString("cargo"));
+                empleado.setUsuario(rs.getString("usuario"));
+                empleado.setContraenia(rs.getString("contraseña"));
+                empleado.setEstado(true);
+            } else {
+                JOptionPane.showMessageDialog(null, "No se econtro al Empleado");
+            }
+            ps.close();
+        } catch (SQLException ex) {
+            JOptionPane.showMessageDialog(null, "Error al conectar a la tabla Empleado " + ex.getMessage());
+        }
+        return empleado;
+    }
+    ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+    
+    
     public Empleado buscarEmpleadoPorId(int idempleado) {
         Empleado empleado = null;
         String sql = "SELECT * FROM empleado WHERE idempleado = ? AND estado = 1 ";
