@@ -364,26 +364,73 @@ public class Registro extends javax.swing.JFrame {
     }//GEN-LAST:event_jLVolverMouseExited
 
     private void jlCargarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jlCargarMouseClicked
+       /////////////////////////////////////////////////////////////////////////////////////////////////////////
         EmpleadoData eD = new EmpleadoData();
+        int cont = 0;
         try {
-            Empleado empleado1 = eD.buscarEmpleadoPorDni(Integer.parseInt(jTFDni.getText()));
-            if (empleado1 == null) {
-                Empleado empleado = new Empleado();
-                empleado.setApellido(jTFApellido.getText());
-                empleado.setNombre(jTFNombre.getText());
-                empleado.setDni(Integer.parseInt(jTFDni.getText()));
-                empleado.setCargo(jCBCargo.getSelectedItem() + "");
-                empleado.setUsuario(jTFUsuario.getText());
-                empleado.setContraenia(jPContraseña.getText());
-                eD.guardarEmpleado(empleado);
-                limpiarCampos();
+
+            // Comprueba que no este bloqueado
+            if (jTFApellido.getText().trim().isEmpty() || jTFNombre.getText().trim().isEmpty() || jTFDni.getText().trim().isEmpty()
+                    || (jCBCargo.getSelectedItem() == null) || jTFUsuario.getText().trim().isEmpty() || jPContraseña.getText().trim().isEmpty()) {
+                JOptionPane.showMessageDialog(this, "No puede haber campos vacios");
             } else {
-                JOptionPane.showMessageDialog(null, "El empleado" + empleado1.getApellido() + "ya existe");
+                int dni = Integer.parseInt(jTFDni.getText());
+                for (Empleado empBloq : eD.listarEmpleadoBaja()) {
+                    if (empBloq.getNombre().equalsIgnoreCase(jTFNombre.getText())
+                            && empBloq.getApellido().equalsIgnoreCase(jTFApellido.getText())
+                            && empBloq.getDni() == dni) {
+                        JOptionPane.showMessageDialog(this, "El empleado ya existe, (de baja), debe dirigirse a la pestaña de restaurar.");
+                    } else if (empBloq.getDni() == dni) {
+                        JOptionPane.showMessageDialog(this, "Ya existe en la BD un empleado, (de baja), con DNI: " + empBloq.getDni()
+                                + ", debe dirigirse a la pestaña de restaurar.");
+                        cont++;
+                    } else {
+                        Empleado empleado1 = eD.buscarEmpleadoPorDni(dni);
+                        //////////////////////////////////////////////////////
+                        if (empleado1 == null && cont == 0) {
+                            if (corroboraUsuario() == true) {
+                                JOptionPane.showMessageDialog(this, "El nombre de usuario: " + jTFUsuario.getText() + ", ya existe.");
+                            } else {
+                                Empleado empleado = new Empleado();
+                                empleado.setApellido(jTFApellido.getText());
+                                empleado.setNombre(jTFNombre.getText());
+                                empleado.setDni(Integer.parseInt(jTFDni.getText()));
+                                empleado.setCargo(jCBCargo.getSelectedItem() + "");
+                                empleado.setUsuario(jTFUsuario.getText());
+                                empleado.setContraenia(jPContraseña.getText());
+                                eD.guardarEmpleado(empleado);
+                                limpiarCampos();
+                            }
+                        } else {
+                            JOptionPane.showMessageDialog(this, "Ya existe un empleado, (de alta), con DNI: " + empleado1.getDni() + ", "
+                                    + empleado1.getApellido() + ", corrobore los datos");
+                        }
+                    }
+                }
             }
         } catch (NullPointerException ex) {
+        } catch (NumberFormatException ex) {
         }
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
     }//GEN-LAST:event_jlCargarMouseClicked
-
+    
+    public boolean corroboraUsuario() {
+        boolean isValido = false;
+        EmpleadoData ed = new EmpleadoData();
+        for (Empleado usu : ed.listarEmpleado()) {
+            if (usu.getUsuario().equals(jTFUsuario.getText())) {
+                isValido = true;
+            }
+        }
+        for (Empleado usu : ed.listarEmpleadoBaja()) {
+            if (usu.getUsuario().equals(jTFUsuario.getText())) {
+                isValido = true;
+            }
+        }
+        return isValido;
+    }
+    
+    /////////////////////////////////////////////////////////////////////////////////////////////////7
     private void jLVolverMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLVolverMouseClicked
         this.dispose();
     }//GEN-LAST:event_jLVolverMouseClicked
