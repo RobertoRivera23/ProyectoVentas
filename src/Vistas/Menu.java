@@ -1596,6 +1596,11 @@ public class Menu extends javax.swing.JFrame {
         jTFNombreProdElimProd.setEditable(false);
         jTFNombreProdElimProd.setFont(new java.awt.Font("Corbel", 0, 14)); // NOI18N
         jTFNombreProdElimProd.setBorder(null);
+        jTFNombreProdElimProd.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                jTFNombreProdElimProdKeyTyped(evt);
+            }
+        });
         jtpEliminarPro.add(jTFNombreProdElimProd, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 210, 200, 30));
 
         jLPrecioActualElimProd.setFont(new java.awt.Font("Corbel", 1, 14)); // NOI18N
@@ -1611,6 +1616,11 @@ public class Menu extends javax.swing.JFrame {
         jTFPrecioActuaElimProd.setEditable(false);
         jTFPrecioActuaElimProd.setFont(new java.awt.Font("Corbel", 0, 14)); // NOI18N
         jTFPrecioActuaElimProd.setBorder(null);
+        jTFPrecioActuaElimProd.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                jTFPrecioActuaElimProdKeyTyped(evt);
+            }
+        });
         jtpEliminarPro.add(jTFPrecioActuaElimProd, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 280, 200, 30));
 
         jSElimProd2.setBackground(new java.awt.Color(0, 150, 136));
@@ -1621,6 +1631,11 @@ public class Menu extends javax.swing.JFrame {
         jTFStockElimProd.setEditable(false);
         jTFStockElimProd.setFont(new java.awt.Font("Corbel", 0, 14)); // NOI18N
         jTFStockElimProd.setBorder(null);
+        jTFStockElimProd.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                jTFStockElimProdKeyTyped(evt);
+            }
+        });
         jtpEliminarPro.add(jTFStockElimProd, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 280, 200, 30));
 
         jSElimProd3.setBackground(new java.awt.Color(0, 150, 136));
@@ -1696,6 +1711,11 @@ public class Menu extends javax.swing.JFrame {
 
         jTFNombreProdModProd.setFont(new java.awt.Font("Corbel", 0, 14)); // NOI18N
         jTFNombreProdModProd.setBorder(null);
+        jTFNombreProdModProd.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                jTFNombreProdModProdKeyTyped(evt);
+            }
+        });
         jtpModPro.add(jTFNombreProdModProd, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 210, 200, 30));
 
         jSModProd2.setBackground(new java.awt.Color(0, 150, 136));
@@ -1714,6 +1734,11 @@ public class Menu extends javax.swing.JFrame {
 
         jTFPrecioActualModProd.setFont(new java.awt.Font("Corbel", 0, 14)); // NOI18N
         jTFPrecioActualModProd.setBorder(null);
+        jTFPrecioActualModProd.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                jTFPrecioActualModProdKeyTyped(evt);
+            }
+        });
         jtpModPro.add(jTFPrecioActualModProd, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 280, 200, 30));
 
         jSModProd4.setBackground(new java.awt.Color(0, 150, 136));
@@ -1723,6 +1748,11 @@ public class Menu extends javax.swing.JFrame {
 
         jTFStockModProd.setFont(new java.awt.Font("Corbel", 0, 14)); // NOI18N
         jTFStockModProd.setBorder(null);
+        jTFStockModProd.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                jTFStockModProdKeyTyped(evt);
+            }
+        });
         jtpModPro.add(jTFStockModProd, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 280, 200, 30));
 
         jLNombreProdModProd.setFont(new java.awt.Font("Corbel", 1, 14)); // NOI18N
@@ -5085,6 +5115,30 @@ public class Menu extends javax.swing.JFrame {
     private void jtfBuscadorEmpleadosListEmpKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jtfBuscadorEmpleadosListEmpKeyTyped
         controlLetras(evt);
     }//GEN-LAST:event_jtfBuscadorEmpleadosListEmpKeyTyped
+
+    private void jTFPrecioActuaElimProdKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTFPrecioActuaElimProdKeyTyped
+        controlNumeros(evt);
+    }//GEN-LAST:event_jTFPrecioActuaElimProdKeyTyped
+
+    private void jTFStockElimProdKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTFStockElimProdKeyTyped
+        controlNumeros(evt);
+    }//GEN-LAST:event_jTFStockElimProdKeyTyped
+
+    private void jTFNombreProdElimProdKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTFNombreProdElimProdKeyTyped
+        controlLetras(evt);
+    }//GEN-LAST:event_jTFNombreProdElimProdKeyTyped
+
+    private void jTFNombreProdModProdKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTFNombreProdModProdKeyTyped
+        controlLetras(evt);
+    }//GEN-LAST:event_jTFNombreProdModProdKeyTyped
+
+    private void jTFPrecioActualModProdKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTFPrecioActualModProdKeyTyped
+        controlNumeros(evt);
+    }//GEN-LAST:event_jTFPrecioActualModProdKeyTyped
+
+    private void jTFStockModProdKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTFStockModProdKeyTyped
+        controlNumeros(evt);
+    }//GEN-LAST:event_jTFStockModProdKeyTyped
 
     /**
      * @param args the command line arguments
