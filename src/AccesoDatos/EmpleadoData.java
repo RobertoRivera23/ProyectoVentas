@@ -102,8 +102,7 @@ public class EmpleadoData {
         return empleado;
     }
     ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-    
-    
+
     public Empleado buscarEmpleadoPorId(int idempleado) {
         Empleado empleado = null;
         String sql = "SELECT * FROM empleado WHERE idempleado = ?";
@@ -154,11 +153,37 @@ public class EmpleadoData {
         }
         return empleados;
     }
-    
-     public List<Empleado> listarEmpleadoBaja() {
+
+    public List<Empleado> listarEmpleadoBaja() {
         List<Empleado> empleados = new ArrayList<>();
         Empleado empleado = null;
         String sql = "SELECT * FROM empleado WHERE estado = 0 ";
+        try {
+            PreparedStatement ps = con.prepareStatement(sql);
+            ResultSet rs = ps.executeQuery();
+            while (rs.next()) {
+                empleado = new Empleado();
+                empleado.setIdEmpleado(rs.getInt("idempleado"));
+                empleado.setApellido(rs.getString("apellido"));
+                empleado.setNombre(rs.getString("nombre"));
+                empleado.setDni(rs.getInt("dni"));
+                empleado.setCargo(rs.getString("cargo"));
+                empleado.setUsuario(rs.getString("usuario"));
+                empleado.setContraenia(rs.getString("contraseña"));
+                empleado.setEstado(rs.getBoolean("estado"));
+                empleados.add(empleado);
+            }
+            ps.close();
+        } catch (SQLException ex) {
+            JOptionPane.showMessageDialog(null, "Error al conectar a la tabla Empleado " + ex.getMessage());
+        }
+        return empleados;
+    }
+
+    public List<Empleado> listarEmpleadoTodos() {
+        List<Empleado> empleados = new ArrayList<>();
+        Empleado empleado = null;
+        String sql = "SELECT * FROM empleado";
         try {
             PreparedStatement ps = con.prepareStatement(sql);
             ResultSet rs = ps.executeQuery();
@@ -205,6 +230,7 @@ public class EmpleadoData {
             JOptionPane.showMessageDialog(null, "Error al acceder a la tabla empleado " + ex.getMessage());
         }
     }
+
     // Eliminado Logico
     public void eliminarEmpleadoPorId(int id) {
         String sql = "UPDATE empleado SET estado = 0 WHERE idempleado = ?";
@@ -220,7 +246,8 @@ public class EmpleadoData {
             JOptionPane.showMessageDialog(null, " Error al acceder a la tabla Empleado " + ex.getMessage());
         }
     }
-        //Elimina de la BD
+    //Elimina de la BD
+
     public void eliminarEmpleadoPorIdDB(int id) {
         String sql = "DELETE FROM empleado WHERE idempleado = ? AND  estado = 0 ";
         try {
@@ -235,7 +262,7 @@ public class EmpleadoData {
             JOptionPane.showMessageDialog(null, " Error al acceder a la tabla Empleado " + ex.getMessage());
         }
     }
-    
+
     public Empleado buscarPorNombre(String nombre) {
         String sql = "SELECT * FROM empleado WHERE nombre = ?";
         Empleado emp = null;
