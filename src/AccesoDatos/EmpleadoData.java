@@ -106,7 +106,7 @@ public class EmpleadoData {
     
     public Empleado buscarEmpleadoPorId(int idempleado) {
         Empleado empleado = null;
-        String sql = "SELECT * FROM empleado WHERE idempleado = ? AND estado = 1 ";
+        String sql = "SELECT * FROM empleado WHERE idempleado = ?";
         try {
             PreparedStatement ps = con.prepareStatement(sql);
             ps.setInt(1, idempleado);

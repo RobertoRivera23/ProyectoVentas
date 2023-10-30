@@ -255,7 +255,7 @@ public class VentasData {
         List<Venta> listaV = new ArrayList<>();
         ClienteData cd = new ClienteData();
         EmpleadoData ed = new EmpleadoData();
-        String sql = "SELECT venta.idVenta, venta.idCliente, venta.idEmpleado,"
+        String sql = "SELECT DISTINCT venta.idVenta, venta.idCliente, venta.idEmpleado,"
                 + " venta.fechaVenta, venta.estado FROM venta JOIN empleado "
                 + "ON (venta.idEmpleado = empleado.idEmpleado) JOIN cliente "
                 + "ON (venta.idCliente = cliente.idCliente) JOIN detalledeventa "

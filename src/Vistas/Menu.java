@@ -17,6 +17,7 @@ import java.awt.event.KeyEvent;
 import java.sql.Date;
 import java.time.LocalDate;
 import java.time.ZoneId;
+import javax.swing.DefaultListModel;
 import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
@@ -38,6 +39,7 @@ public class Menu extends javax.swing.JFrame {
     public static Color grisBase = new Color(51, 51, 76);
     public static Color grisClaro = new Color(66, 66, 76);
     private double precioTotal;
+    private DefaultListModel Mlist = new DefaultListModel();
 
 //Modelos tablas    
     public DefaultTableModel Modelo;
@@ -427,9 +429,7 @@ public class Menu extends javax.swing.JFrame {
         jlBuscarVenta = new javax.swing.JLabel();
         jcbBuscarVenta = new javax.swing.JComboBox<>();
         jlNombreProEliminar = new javax.swing.JLabel();
-        jtfNombreProEliminar = new javax.swing.JTextField();
         jtfTelClienteEliminar = new javax.swing.JLabel();
-        jSElimProd5 = new javax.swing.JSeparator();
         jtfTelCliEliminar = new javax.swing.JTextField();
         jSElimProd6 = new javax.swing.JSeparator();
         jtfNombreEmpleadoEliminar = new javax.swing.JTextField();
@@ -439,6 +439,8 @@ public class Menu extends javax.swing.JFrame {
         jlEliminarVentaBorrar = new javax.swing.JLabel();
         jlVentaIconEliminar = new javax.swing.JLabel();
         jdcElimVenta = new com.toedter.calendar.JDateChooser();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        jListProductosElim = new javax.swing.JList<>();
         jPGestionEmpleados = new javax.swing.JPanel();
         jlGestionEmpleado1 = new javax.swing.JLabel();
         jlIconAgreEmpl = new javax.swing.JLabel();
@@ -2444,7 +2446,7 @@ public class Menu extends javax.swing.JFrame {
                 {null, null, null, null}
             },
             new String [] {
-                "ID", "Telefono Cliente", "Datos Empleado", "Fecha de Venta"
+                "ID Detalle", "ID Venta", "Producto", "Telefono Cliente", "Fecha de Venta", "Cantidad", "Precio Venta"
             }
         ){
             public boolean isCellEditable(int fila, int column) {
@@ -2452,7 +2454,7 @@ public class Menu extends javax.swing.JFrame {
             }
 
             Class[] types = new Class[]{
-                java.lang.Integer.class, java.lang.String.class, java.lang.String.class, java.time.LocalDate.class
+                java.lang.Integer.class, java.lang.Integer.class, java.lang.String.class, java.lang.String.class, java.time.LocalDate.class, java.lang.Integer.class, java.lang.Double.class
             };
 
             public Class getColumnClass(int columnIndex) {
@@ -2706,37 +2708,22 @@ public class Menu extends javax.swing.JFrame {
     jtpEliminarVenta.add(jlBuscarVenta, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 100, -1, -1));
 
     jcbBuscarVenta.setFont(new java.awt.Font("Corbel", 1, 14)); // NOI18N
-    jcbBuscarVenta.addActionListener(new java.awt.event.ActionListener() {
-        public void actionPerformed(java.awt.event.ActionEvent evt) {
-            jcbBuscarVentaActionPerformed(evt);
+    jcbBuscarVenta.addItemListener(new java.awt.event.ItemListener() {
+        public void itemStateChanged(java.awt.event.ItemEvent evt) {
+            jcbBuscarVentaItemStateChanged(evt);
         }
     });
-    jtpEliminarVenta.add(jcbBuscarVenta, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 120, 200, 30));
+    jtpEliminarVenta.add(jcbBuscarVenta, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 120, 280, 30));
 
     jlNombreProEliminar.setFont(new java.awt.Font("Corbel", 1, 14)); // NOI18N
     jlNombreProEliminar.setForeground(new java.awt.Color(153, 153, 153));
-    jlNombreProEliminar.setText("Nombre producto");
-    jtpEliminarVenta.add(jlNombreProEliminar, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 190, -1, -1));
-
-    jtfNombreProEliminar.setEditable(false);
-    jtfNombreProEliminar.setFont(new java.awt.Font("Corbel", 0, 14)); // NOI18N
-    jtfNombreProEliminar.setBorder(null);
-    jtfNombreProEliminar.addKeyListener(new java.awt.event.KeyAdapter() {
-        public void keyTyped(java.awt.event.KeyEvent evt) {
-            jtfNombreProEliminarKeyTyped(evt);
-        }
-    });
-    jtpEliminarVenta.add(jtfNombreProEliminar, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 210, 200, 30));
+    jlNombreProEliminar.setText("Productos Vendidos");
+    jtpEliminarVenta.add(jlNombreProEliminar, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 160, -1, -1));
 
     jtfTelClienteEliminar.setFont(new java.awt.Font("Corbel", 1, 14)); // NOI18N
     jtfTelClienteEliminar.setForeground(new java.awt.Color(153, 153, 153));
     jtfTelClienteEliminar.setText("Telefono cliente");
-    jtpEliminarVenta.add(jtfTelClienteEliminar, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 260, -1, -1));
-
-    jSElimProd5.setBackground(new java.awt.Color(0, 150, 136));
-    jSElimProd5.setOpaque(true);
-    jSElimProd5.setPreferredSize(new java.awt.Dimension(50, 2));
-    jtpEliminarVenta.add(jSElimProd5, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 240, 200, -1));
+    jtpEliminarVenta.add(jtfTelClienteEliminar, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 260, -1, -1));
 
     jtfTelCliEliminar.setEditable(false);
     jtfTelCliEliminar.setFont(new java.awt.Font("Corbel", 0, 14)); // NOI18N
@@ -2746,12 +2733,12 @@ public class Menu extends javax.swing.JFrame {
             jtfTelCliEliminarKeyTyped(evt);
         }
     });
-    jtpEliminarVenta.add(jtfTelCliEliminar, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 280, 200, 30));
+    jtpEliminarVenta.add(jtfTelCliEliminar, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 280, 200, 30));
 
     jSElimProd6.setBackground(new java.awt.Color(0, 150, 136));
     jSElimProd6.setOpaque(true);
     jSElimProd6.setPreferredSize(new java.awt.Dimension(50, 2));
-    jtpEliminarVenta.add(jSElimProd6, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 310, 200, -1));
+    jtpEliminarVenta.add(jSElimProd6, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 310, 200, -1));
 
     jtfNombreEmpleadoEliminar.setEditable(false);
     jtfNombreEmpleadoEliminar.setFont(new java.awt.Font("Corbel", 0, 14)); // NOI18N
@@ -2761,22 +2748,22 @@ public class Menu extends javax.swing.JFrame {
             jtfNombreEmpleadoEliminarKeyTyped(evt);
         }
     });
-    jtpEliminarVenta.add(jtfNombreEmpleadoEliminar, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 280, 200, 30));
+    jtpEliminarVenta.add(jtfNombreEmpleadoEliminar, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 220, 200, 30));
 
     jSElimProd7.setBackground(new java.awt.Color(0, 150, 136));
     jSElimProd7.setOpaque(true);
     jSElimProd7.setPreferredSize(new java.awt.Dimension(50, 2));
-    jtpEliminarVenta.add(jSElimProd7, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 310, 200, -1));
+    jtpEliminarVenta.add(jSElimProd7, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 250, 200, -1));
 
     jlNombreEmpleadoEliminar.setFont(new java.awt.Font("Corbel", 1, 14)); // NOI18N
     jlNombreEmpleadoEliminar.setForeground(new java.awt.Color(153, 153, 153));
     jlNombreEmpleadoEliminar.setText("Nombre de empleado");
-    jtpEliminarVenta.add(jlNombreEmpleadoEliminar, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 260, -1, -1));
+    jtpEliminarVenta.add(jlNombreEmpleadoEliminar, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 200, -1, -1));
 
     jlFechaVentaEliminar.setFont(new java.awt.Font("Corbel", 1, 14)); // NOI18N
     jlFechaVentaEliminar.setForeground(new java.awt.Color(153, 153, 153));
     jlFechaVentaEliminar.setText("Fecha de venta");
-    jtpEliminarVenta.add(jlFechaVentaEliminar, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 190, -1, -1));
+    jtpEliminarVenta.add(jlFechaVentaEliminar, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 140, -1, -1));
 
     jlEliminarVentaBorrar.setBackground(new java.awt.Color(0, 150, 136));
     jlEliminarVentaBorrar.setFont(new java.awt.Font("Corbel", 1, 14)); // NOI18N
@@ -2802,10 +2789,16 @@ public class Menu extends javax.swing.JFrame {
 
     jlVentaIconEliminar.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
     jlVentaIconEliminar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Image/archivo-menos.png"))); // NOI18N
-    jtpEliminarVenta.add(jlVentaIconEliminar, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 30, 200, 150));
+    jtpEliminarVenta.add(jlVentaIconEliminar, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 10, 200, 150));
 
     jdcElimVenta.setEnabled(false);
-    jtpEliminarVenta.add(jdcElimVenta, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 210, 200, 30));
+    jtpEliminarVenta.add(jdcElimVenta, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 160, 200, 30));
+
+    jListProductosElim.setModel(Mlist);
+    jListProductosElim.setEnabled(false);
+    jScrollPane1.setViewportView(jListProductosElim);
+
+    jtpEliminarVenta.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 180, 280, 130));
 
     jtpEscritorio.addTab("tab16", jtpEliminarVenta);
 
@@ -3631,6 +3624,7 @@ public class Menu extends javax.swing.JFrame {
 
     private void jlListarClienteMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jlListarClienteMouseClicked
         jtpEscritorio.setSelectedIndex(11);
+        llenarTablaCli();
     }//GEN-LAST:event_jlListarClienteMouseClicked
 
     private void jlListarClienteMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jlListarClienteMouseEntered
@@ -3670,7 +3664,6 @@ public class Menu extends javax.swing.JFrame {
             jtpEscritorio.setSelectedIndex(12);
             LocalDate hoy = LocalDate.now();
             jdcAgrVenta.setDate(Date.valueOf(hoy));
-            jcbProVenta.removeAllItems();
             llenarCombo();
             borrarFilaAPV();
         } catch (ArrayIndexOutOfBoundsException ex) {
@@ -3701,7 +3694,6 @@ public class Menu extends javax.swing.JFrame {
 
     private void EliminarVentaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_EliminarVentaMouseClicked
         jtpEscritorio.setSelectedIndex(15);
-        jcbBuscarVenta.removeAllItems();
         llenarComboV();
     }//GEN-LAST:event_EliminarVentaMouseClicked
 
@@ -3777,7 +3769,6 @@ public class Menu extends javax.swing.JFrame {
 
     private void jlModificarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jlModificarMouseClicked
         jtpEscritorio.setSelectedIndex(7);
-        jcbProductos.removeAllItems();
         llenarCombo();
     }//GEN-LAST:event_jlModificarMouseClicked
 
@@ -3925,7 +3916,6 @@ public class Menu extends javax.swing.JFrame {
 
     private void jlEliminarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jlEliminarMouseClicked
         jtpEscritorio.setSelectedIndex(6);
-        jCBBuscarProdElimProd.removeAllItems();
         llenarCombo();
     }//GEN-LAST:event_jlEliminarMouseClicked
 
@@ -3935,13 +3925,11 @@ public class Menu extends javax.swing.JFrame {
 
     private void jlModificarClienteMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jlModificarClienteMouseClicked
         jtpEscritorio.setSelectedIndex(9);
-        jcbClienteModifCli.removeAllItems();
         llenarComboCliente();
     }//GEN-LAST:event_jlModificarClienteMouseClicked
 
     private void jlEliminarClienteMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jlEliminarClienteMouseClicked
         jtpEscritorio.setSelectedIndex(10);
-        jCBBuscarClienElimClien.removeAllItems();
         llenarComboCliente();
     }//GEN-LAST:event_jlEliminarClienteMouseClicked
 
@@ -4088,20 +4076,11 @@ public class Menu extends javax.swing.JFrame {
         controlLetras(evt);
     }//GEN-LAST:event_jtfBuscadorClienListClienKeyTyped
 
-    private void jcbBuscarVentaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jcbBuscarVentaActionPerformed
-        Venta venta = (Venta) jcbBuscarVenta.getSelectedItem();
-        DetalleVenta dv = dvd.buscarDetalleProVenta(venta.getIdVenta());
-        jtfNombreProEliminar.setText(dv.getProducto().getNombreProducto());
-        jtfTelCliEliminar.setText(venta.getCliente().getTelefono());
-        jtfNombreEmpleadoEliminar.setText(venta.getEmpleado().getNombre() + " " + venta.getEmpleado().getApellido());
-        jdcElimVenta.setDate(Date.valueOf(venta.getFechaVenta()));
-    }//GEN-LAST:event_jcbBuscarVentaActionPerformed
-
     private void jLBtnEliminarElimProdMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLBtnEliminarElimProdMousePressed
         try {
             int cont = 0;
             Producto pro = pd.buscarProductoPorNombre(jTFNombreProdElimProd.getText().trim());
-                if (pro.getNombreProducto().trim().equals(jTFNombreProdElimProd.getText()) && pro.getDescripcion().trim().equals(jTFDescripcionElimProd.getText())
+            if (pro.getNombreProducto().trim().equals(jTFNombreProdElimProd.getText()) && pro.getDescripcion().trim().equals(jTFDescripcionElimProd.getText())
                     && pro.getPrecioActual() == Double.parseDouble(jTFPrecioActuaElimProd.getText()) && pro.getStock() == Integer.parseInt(jTFStockElimProd.getText())) {
                 for (DetalleVenta detv : dvd.listaDV()) {
                     if (pro.getIdProducto() == detv.getIdProducto()) {
@@ -4169,7 +4148,6 @@ public class Menu extends javax.swing.JFrame {
             } catch (NumberFormatException ex) {
             }
         }
-        jcbProductos.removeAllItems();
         llenarCombo();
     }//GEN-LAST:event_jLBtnModificarModProdMousePressed
 
@@ -4292,15 +4270,18 @@ public class Menu extends javax.swing.JFrame {
     private void jlEliminarVentaBorrarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jlEliminarVentaBorrarMouseClicked
         Venta v = (Venta) jcbBuscarVenta.getSelectedItem();
         DetalleVenta dv = dvd.buscarDetalleProVenta(v.getIdVenta());
-        if (jtfNombreProEliminar.getText().equals(dv.getProducto().getNombreProducto())
-                || jtfTelCliEliminar.getText().equals(v.getCliente().getTelefono())
+        if (jtfTelCliEliminar.getText().equals(v.getCliente().getTelefono())
                 || jdcElimVenta.getDate().equals(Date.valueOf(v.getFechaVenta()))
                 || jtfNombreEmpleadoEliminar.getText().equals(Login.empleado.getNombre())) {
             int opcion = JOptionPane.showConfirmDialog(this, "¿Esta seguro que desea eliminar la Venta?", "Selecione una opcion", JOptionPane.YES_NO_OPTION);
             switch (opcion) {
                 case 0:
                     vd.eliminarVentaId(v.getIdVenta());
-                    dvd.eliminarDetalleVentaPorId(dv.getIdDetalleVenta());
+                    for (DetalleVenta det : dvd.listaDV()) {
+                        if (v.getIdVenta() == det.getIdVenta()) {
+                            dvd.eliminarDetalleVentaPorId(dv.getIdDetalleVenta());
+                        }
+                    }
                     jcbBuscarVenta.removeItemAt(jcbBuscarVenta.getSelectedIndex());
                 case 1:
                     break;
@@ -4336,8 +4317,6 @@ public class Menu extends javax.swing.JFrame {
 
     private void jlModificarEmpleadoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jlModificarEmpleadoMouseClicked
         jtpEscritorio.setSelectedIndex(17);
-        jCBModificarEmpleado.removeAllItems();
-        jCBCargoModifEmp.removeAllItems();
         llenarComboEmpleado();
         llenarComboCargo();
     }//GEN-LAST:event_jlModificarEmpleadoMouseClicked
@@ -4352,11 +4331,7 @@ public class Menu extends javax.swing.JFrame {
 
     private void jlEliminarEmpleadoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jlEliminarEmpleadoMouseClicked
         jtpEscritorio.setSelectedIndex(18);
-        jCBEliminarEmpleado.removeAllItems();
-        jCBCargoElimEmp.removeAllItems();
         llenarComboEmpleado();
-        Empleado emp = (Empleado) jCBEliminarEmpleado.getSelectedItem();
-        jCBCargoElimEmp.addItem(emp.getCargo() + "");
     }//GEN-LAST:event_jlEliminarEmpleadoMouseClicked
 
     private void jlEliminarEmpleadoMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jlEliminarEmpleadoMouseEntered
@@ -4410,7 +4385,6 @@ public class Menu extends javax.swing.JFrame {
                         emp1.setContraenia(jTFContraseñaModEmp.getText());
                         emp1.setEstado(true);
                         ed.modificarEmpleado(emp1);
-                        jCBModificarEmpleado.removeAllItems();
                         break;
                     case 1:
                         break;
@@ -4582,11 +4556,15 @@ public class Menu extends javax.swing.JFrame {
                 int op = JOptionPane.showConfirmDialog(this, "¿Desea Eliminar este Producto y las ventas asociadas de la base de datos?", "Eliga una opcion", JOptionPane.YES_NO_OPTION);
                 switch (op) {
                     case 0:
-                        Integer id = (Integer) jTablePapelera.getValueAt(jTablePapelera.getSelectedRow(), 0);
-                        for (DetalleVenta det : dvd.listaDVTodo()) {
-                            if (id.equals(det.getIdProducto())) {
-                                vd.eliminarVentaIdBD(det.getIdVenta());
-                                dvd.eliminarDetalleVentaPorIdBD(det.getIdDetalleVenta());
+                        Integer id = (Integer) jTablePapelera.getValueAt(fila, 0);
+                        for (DetalleVenta dt : dvd.listaDVTodo()) {
+                            if (id.equals(dt.getIdProducto())) {
+                                for (DetalleVenta det : dvd.listaDVTodo()) {
+                                    if (id.equals(dt.getIdProducto())) {
+                                        dvd.eliminarDetalleVentaPorIdBD(det.getIdDetalleVenta());
+                                    }
+                                }
+                                vd.eliminarVentaIdBD(dt.getIdVenta());
                             }
                         }
                         pd.eliminarProductoDB(id);
@@ -4595,18 +4573,19 @@ public class Menu extends javax.swing.JFrame {
                     case 1:
                         break;
                 }
-
             } else if (jTablePapelera.getModel().equals(ModeloC)) {
                 int op = JOptionPane.showConfirmDialog(this, "¿Desea Eliminar este Cliente y las ventas asociadas de la base de datos?", "Eliga una opcion", JOptionPane.YES_NO_OPTION);
                 switch (op) {
                     case 0:
-                        int id = (Integer) jTablePapelera.getValueAt(jTablePapelera.getSelectedRow(), 0);
-                        System.out.println(id);
-                        for (DetalleVenta det : dvd.listaDVTodo()) {
-                            if (id == det.getVenta().getIdCliente()) {
-                                System.out.println("1");
-                                vd.eliminarVentaIdBD(det.getIdVenta());
-                                dvd.eliminarDetalleVentaPorIdBD(det.getIdDetalleVenta());
+                        Integer id = (Integer) jTablePapelera.getValueAt(fila, 0);
+                        for (DetalleVenta dt : dvd.listaDVTodo()) {
+                            if (id.equals(dt.getIdProducto())) {
+                                for (DetalleVenta det : dvd.listaDVTodo()) {
+                                    if (id.equals(dt.getIdProducto())) {
+                                        dvd.eliminarDetalleVentaPorIdBD(det.getIdDetalleVenta());
+                                    }
+                                }
+                                vd.eliminarVentaIdBD(dt.getIdVenta());
                             }
                         }
                         cD.eliminarClienteDB(id);
@@ -4619,11 +4598,15 @@ public class Menu extends javax.swing.JFrame {
                 int op = JOptionPane.showConfirmDialog(this, "¿Desea Eliminar este Empleado y las ventas asociadas de la base de datos?", "Eliga una opcion", JOptionPane.YES_NO_OPTION);
                 switch (op) {
                     case 0:
-                        Integer id = (Integer) jTablePapelera.getValueAt(jTablePapelera.getSelectedRow(), 0);
-                        for (DetalleVenta det : dvd.listaDVTodo()) {
-                            if (id.equals(det.getVenta().getEmpleado().getIdEmpleado())) {
-                                vd.eliminarVentaIdBD(det.getIdVenta());
-                                dvd.eliminarDetalleVentaPorIdBD(det.getIdDetalleVenta());
+                        Integer id = (Integer) jTablePapelera.getValueAt(fila, 0);
+                        for (DetalleVenta dt : dvd.listaDVTodo()) {
+                            if (id.equals(dt.getIdProducto())) {
+                                for (DetalleVenta det : dvd.listaDVTodo()) {
+                                    if (id.equals(dt.getIdProducto())) {
+                                        dvd.eliminarDetalleVentaPorIdBD(det.getIdDetalleVenta());
+                                    }
+                                }
+                                vd.eliminarVentaIdBD(dt.getIdVenta());
                             }
                         }
                         ed.eliminarEmpleadoPorIdDB(id);
@@ -4636,10 +4619,13 @@ public class Menu extends javax.swing.JFrame {
                 int op = JOptionPane.showConfirmDialog(this, "¿Desea Eliminar esta venta de la base de datos?", "Eliga una opcion", JOptionPane.YES_NO_OPTION);
                 switch (op) {
                     case 0:
-                        Integer id = (Integer) jTablePapelera.getValueAt(jTablePapelera.getSelectedRow(), 0);
-                        DetalleVenta detven = dvd.buscarDetalleProVenta(id);
+                        Integer id = (Integer) jTablePapelera.getValueAt(fila, 0);
+                        for (DetalleVenta det : dvd.listaDVTodo()) {
+                            if (id.equals(det.getIdVenta())) {
+                                dvd.eliminarDetalleVentaPorIdBD(det.getIdDetalleVenta());
+                            }
+                        }
                         vd.eliminarVentaIdBD(id);
-                        dvd.eliminarDetalleVentaPorIdBD(detven.getIdDetalleVenta());
                         ModeloV.removeRow(fila);
                         break;
                     case 1:
@@ -4702,14 +4688,13 @@ public class Menu extends javax.swing.JFrame {
                         break;
                 }
             } else if (jTablePapelera.getModel().equals(ModeloV)) {
-                int op = JOptionPane.showConfirmDialog(this, "¿Desea restaurar este Producto?", "Eliga una opcion", JOptionPane.YES_NO_OPTION);
+                int op = JOptionPane.showConfirmDialog(this, "¿Desea restaurar esta Venta?", "Eliga una opcion", JOptionPane.YES_NO_OPTION);
                 switch (op) {
                     case 0:
                         Integer id = (Integer) jTablePapelera.getValueAt(jTablePapelera.getSelectedRow(), 0);
                         Venta ven = vd.buscarVentaId(id);
                         DetalleVenta det = dvd.buscarDetalleProVentaBaja(id);
                         ven.setEstado(true);
-                        det.setEstado(true);
                         if (!ven.getCliente().isEstado() && !ven.getEmpleado().isEstado()) {
                             int opcion = JOptionPane.showConfirmDialog(this, "¿Desea restaurar al Cliente y Empleado registrados en esta venta?", "Seleccione una opcion", JOptionPane.YES_NO_OPTION);
                             switch (opcion) {
@@ -4750,7 +4735,12 @@ public class Menu extends javax.swing.JFrame {
                             }
                         }
                         vd.modificarVenta(ven);
-                        dvd.modificarDetalleVenta(det);
+                        for (DetalleVenta dt : dvd.listaDVTodo()) {
+                            if (id.equals(det.getIdVenta())) {
+                                dt.setEstado(true);
+                                dvd.modificarDetalleVenta(dt);
+                            }
+                        }
                         ModeloV.removeRow(fila);
                         break;
                     case 1:
@@ -4814,9 +4804,11 @@ public class Menu extends javax.swing.JFrame {
             LocalDate fecha = jdcBusquedaVentas.getDate().toInstant().atZone(ZoneId.systemDefault()).toLocalDate();
             for (Venta venta : vd.listarVentasPorFecha(fecha)) {
                 if (fecha.equals(venta.getFechaVenta())) {
-                    Modelo4.addRow(new Object[]{venta.getIdVenta(), venta.getCliente().getTelefono(),
-                        venta.getEmpleado().getApellido() + " " + venta.getEmpleado().getNombre(),
-                        venta.getFechaVenta()});
+                    DetalleVenta det = dvd.buscarDetalleProVenta(venta.getIdVenta());
+                    Modelo4.addRow(new Object[]{det.getIdDetalleVenta(), venta.getIdVenta(), det.getProducto().getNombreProducto(),
+                        venta.getCliente().getTelefono(), venta.getFechaVenta(), det.getCantidad(),
+                        det.getPrecioVenta()
+                    });
                 }
             }
         } catch (NullPointerException ex) {
@@ -5075,10 +5067,6 @@ public class Menu extends javax.swing.JFrame {
         controlNumeros(evt);
     }//GEN-LAST:event_jtfTelClienteKeyTyped
 
-    private void jtfNombreProEliminarKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jtfNombreProEliminarKeyTyped
-        controlLetras(evt);
-    }//GEN-LAST:event_jtfNombreProEliminarKeyTyped
-
     private void jtfTelCliEliminarKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jtfTelCliEliminarKeyTyped
         controlNumeros(evt);
     }//GEN-LAST:event_jtfTelCliEliminarKeyTyped
@@ -5138,6 +5126,22 @@ public class Menu extends javax.swing.JFrame {
     private void jTFStockModProdKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTFStockModProdKeyTyped
         controlNumeros(evt);
     }//GEN-LAST:event_jTFStockModProdKeyTyped
+
+    private void jcbBuscarVentaItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_jcbBuscarVentaItemStateChanged
+        try {
+            Venta venta = (Venta) jcbBuscarVenta.getSelectedItem();
+            Mlist.removeAllElements();
+            for (DetalleVenta det : dvd.listaDV()) {
+                if (det.getIdVenta() == venta.getIdVenta()) {
+                    Mlist.addElement(det.getProducto());
+                }
+            }
+            jtfTelCliEliminar.setText(venta.getCliente().getTelefono());
+            jtfNombreEmpleadoEliminar.setText(venta.getEmpleado().getNombre() + " " + venta.getEmpleado().getApellido());
+            jdcElimVenta.setDate(Date.valueOf(venta.getFechaVenta()));
+        } catch (NullPointerException ex) {
+        }
+    }//GEN-LAST:event_jcbBuscarVentaItemStateChanged
 
     /**
      * @param args the command line arguments
@@ -5265,6 +5269,7 @@ public class Menu extends javax.swing.JFrame {
     private javax.swing.JLabel jLUsuarioModEmp;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLimpiarTablaAaVen;
+    private javax.swing.JList<Producto> jListProductosElim;
     private javax.swing.JPanel jPGestionEmpleados;
     private javax.swing.JPanel jPanelCabecera;
     private javax.swing.JPanel jPanelOpciones;
@@ -5284,7 +5289,6 @@ public class Menu extends javax.swing.JFrame {
     private javax.swing.JSeparator jSElimProd2;
     private javax.swing.JSeparator jSElimProd3;
     private javax.swing.JSeparator jSElimProd4;
-    private javax.swing.JSeparator jSElimProd5;
     private javax.swing.JSeparator jSElimProd6;
     private javax.swing.JSeparator jSElimProd7;
     private javax.swing.JSeparator jSModClien1;
@@ -5305,6 +5309,7 @@ public class Menu extends javax.swing.JFrame {
     private javax.swing.JSeparator jSModProd2;
     private javax.swing.JSeparator jSModProd3;
     private javax.swing.JSeparator jSModProd4;
+    private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPanePapelera;
     private javax.swing.JSeparator jSep1;
     private javax.swing.JSeparator jSep2;
@@ -5473,7 +5478,6 @@ public class Menu extends javax.swing.JFrame {
     private javax.swing.JTextField jtfCantidadVenta;
     private javax.swing.JTextField jtfNombreEmpVenta;
     private javax.swing.JTextField jtfNombreEmpleadoEliminar;
-    private javax.swing.JTextField jtfNombreProEliminar;
     private javax.swing.JTextField jtfPrecioVenta;
     private javax.swing.JTextField jtfTelCliEliminar;
     private javax.swing.JTextField jtfTelCliente;
@@ -5617,6 +5621,10 @@ public class Menu extends javax.swing.JFrame {
     }
 
     private void llenarCombo() {
+        jcbProductos.removeAllItems();
+        jCBBuscarProdElimProd.removeAllItems();
+        jcbProVenta.removeAllItems();
+        jcbProXCliente.removeAllItems();
         for (Producto pro : pd.listarProducto()) {
             jcbProductos.addItem(pro);
             jCBBuscarProdElimProd.addItem(pro);
@@ -5626,6 +5634,9 @@ public class Menu extends javax.swing.JFrame {
     }
 
     private void llenarComboCliente() {
+        jcbClienteModifCli.removeAllItems();
+        jCBBuscarClienElimClien.removeAllItems();
+        jcbVentasXCliente.removeAllItems();
         for (Cliente cli : cD.listarClientes()) {
             jcbClienteModifCli.addItem(cli);
             jCBBuscarClienElimClien.addItem(cli);
@@ -5634,6 +5645,7 @@ public class Menu extends javax.swing.JFrame {
     }
 
     private void llenarComboV() {
+        jcbBuscarVenta.removeAllItems();
         for (Venta ven : vd.listaVenta()) {
             jcbBuscarVenta.addItem(ven);
         }
@@ -5641,6 +5653,8 @@ public class Menu extends javax.swing.JFrame {
 
     private void llenarComboEmpleado() {
         try {
+            jCBModificarEmpleado.removeAllItems();
+            jCBEliminarEmpleado.removeAllItems();
             for (Empleado empl : ed.listarEmpleado()) {
                 jCBModificarEmpleado.addItem(empl);
                 jCBEliminarEmpleado.addItem(empl);
@@ -5671,7 +5685,6 @@ public class Menu extends javax.swing.JFrame {
 
     private void borrarCamposAgrVen() {
         jtfCantidadVenta.setText("");
-        // jdcAgrVenta.setDate(null); //  QUE NO QUITE LA FECHA YA QUE NO SE PUEDE MODIFICAR
         jtfTelCliente.setText("");
         jtfNombreEmpVenta.setText("");
     }
@@ -5703,11 +5716,10 @@ public class Menu extends javax.swing.JFrame {
 
     private void llenarTablaVen() {
         borrarFilaV();
-        for (Venta v : vd.listaVenta()) {
-            Modelo4.addRow(new Object[]{v.getIdVenta(),
-                v.getCliente().getTelefono(),
-                v.getEmpleado().getApellido() + " " + v.getEmpleado().getNombre(),
-                v.getFechaVenta()
+        for (DetalleVenta v : dvd.listaDV()) {
+            Modelo4.addRow(new Object[]{v.getIdDetalleVenta(), v.getIdVenta(),
+                v.getProducto().getNombreProducto(), v.getVenta().getCliente().getTelefono(),
+                v.getVenta().getFechaVenta(), v.getCantidad(), v.getPrecioVenta()
             });
         }
     }
@@ -5718,6 +5730,15 @@ public class Menu extends javax.swing.JFrame {
             Modelo2.addRow(new Object[]{emp.getIdEmpleado(), emp.getApellido(),
                 emp.getNombre(), emp.getDni(), emp.getCargo(),
                 emp.getUsuario(), emp.getContraenia()
+            });
+        }
+    }
+
+    private void llenarTablaCli() {
+        borrarFilaC();
+        for (Cliente c : cD.listarClientes()) {
+            Modelo1.addRow(new Object[]{c.getIdCliente(), c.getApellido(), c.getNombre(), 
+                c.getDomicilio(), c.getTelefono()
             });
         }
     }

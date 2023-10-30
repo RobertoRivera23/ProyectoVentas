@@ -294,7 +294,7 @@ public class DetalleVentasData {
                 venta = vd.buscarVentaId(rs.getInt("idVenta"));
                 dv.setVenta(venta);
                 dv.setPrecioVenta(rs.getDouble("precioVenta"));
-                producto = pd.buscarProducto(rs.getInt("idProducto"));
+                producto = pd.buscarProductoIdBaja(rs.getInt("idProducto"));
                 dv.setProducto(producto);
                 dv.setEstado(rs.getBoolean("estado"));
                 lista.add(dv);
