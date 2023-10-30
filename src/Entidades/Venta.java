@@ -77,7 +77,7 @@ public class Venta {
         return cliente.getIdCliente();
     }
 
-    public boolean isEstado() {
+    public boolean getEstado() {
         return estado;
     }
 

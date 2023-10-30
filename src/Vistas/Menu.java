@@ -4803,7 +4803,7 @@ public class Menu extends javax.swing.JFrame {
             borrarFilaV();
             LocalDate fecha = jdcBusquedaVentas.getDate().toInstant().atZone(ZoneId.systemDefault()).toLocalDate();
             for (Venta venta : vd.listarVentasPorFecha(fecha)) {
-                if (fecha.equals(venta.getFechaVenta())) {
+                if (fecha.equals(venta.getFechaVenta()) && venta.getEstado() == true) {
                     DetalleVenta det = dvd.buscarDetalleProVenta(venta.getIdVenta());
                     Modelo4.addRow(new Object[]{det.getIdDetalleVenta(), venta.getIdVenta(), det.getProducto().getNombreProducto(),
                         venta.getCliente().getTelefono(), venta.getFechaVenta(), det.getCantidad(),
