@@ -4707,7 +4707,7 @@ public class Menu extends javax.swing.JFrame {
                     case 0:
                         Integer id = (Integer) jTablePapelera.getValueAt(jTablePapelera.getSelectedRow(), 0);
                         Venta ven = vd.buscarVentaId(id);
-                        DetalleVenta det = dvd.buscarDetalleProVenta(id);
+                        DetalleVenta det = dvd.buscarDetalleProVentaBaja(id);
                         ven.setEstado(true);
                         det.setEstado(true);
                         if (!ven.getCliente().isEstado() && !ven.getEmpleado().isEstado()) {

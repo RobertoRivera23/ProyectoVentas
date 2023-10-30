@@ -14,7 +14,7 @@ import javax.swing.JOptionPane;
 
 /**
  *
- * @author ROMI
+ * @author rober
  */
 public class Login extends javax.swing.JFrame {
 
@@ -241,7 +241,7 @@ public class Login extends javax.swing.JFrame {
     }//GEN-LAST:event_jLCierraMouseEntered
 
     private void jLCierraMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLCierraMouseClicked
-        System.exit(0); 
+        System.exit(0);
     }//GEN-LAST:event_jLCierraMouseClicked
 
     private void jLMinimizaMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLMinimizaMouseExited
@@ -280,7 +280,8 @@ public class Login extends javax.swing.JFrame {
     private void jLBtnIniciarSesionMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLBtnIniciarSesionMouseClicked
         int cont = 0;
         boolean usuario = false;
-     
+        contadorIntentos++;
+
         EmpleadoData eD = new EmpleadoData();
 
         if (jTFUsuario.getText().isEmpty() || jTFUsuario.getText().isEmpty() || jCBCargo.getSelectedItem() == null) {
@@ -288,8 +289,8 @@ public class Login extends javax.swing.JFrame {
         } else {
             try {
                 for (Empleado emp : eD.listarEmpleado()) {
-                    if (emp.getUsuario().equals(jTFUsuario.getText())) { // Valida Usuario para Bloqueo
-                        contadorUsuario += 1;
+                    if (emp.getUsuario().equals(jTFUsuario.getText())) { 
+                        contadorUsuario += 1;       // Para Bloqueo
                         usuario = true;
                         if (emp.getContraenia().equals(jPContraseña.getText())
                                 && emp.getCargo().equals(jCBCargo.getSelectedItem())) {
@@ -309,6 +310,14 @@ public class Login extends javax.swing.JFrame {
                             dispose();
                             break;
                         }
+                    } else {
+                        // Valida si el usuario  esta Bloqueado
+                        for (Empleado UsuBaja : eD.listarEmpleadoBaja()) {
+                            if (UsuBaja.getUsuario().equals(jTFUsuario.getText())) {
+                                JOptionPane.showMessageDialog(this, "El Usuario: "+ UsuBaja.getUsuario()+", se encuentra Bloqueado. Comuniquese con su supervisor");
+                                System.exit(0);
+                            }
+                        }
                     }
                 }
             } catch (NullPointerException ex) {
@@ -321,8 +330,9 @@ public class Login extends javax.swing.JFrame {
             if (cont == 0 && usuario == true) {
                 JOptionPane.showMessageDialog(null, "Contraseña y/o Cargo, son incorrectos");
             }
-            // Avisa posible bloqueo de Usuario
-            if (contadorIntentos == 2 && usuario == false) {
+
+            // Advertencia posible bloqueo de Usuario
+            if ((contadorIntentos == 2) || (contadorUsuario == 2 && usuario == true && contadorIntentos <= 2)) {
                 int opcion = JOptionPane.showConfirmDialog(this, "Si vuleve a equivocarse, su cuenta sera bloqueada!", "¿ Desea Volver a intentar?", JOptionPane.YES_NO_OPTION);
                 switch (opcion) {
                     case 0:
@@ -332,8 +342,8 @@ public class Login extends javax.swing.JFrame {
                         dispose();
                 }
             }
-
-            if (contadorIntentos >= 3 && usuario == false) {
+            // Advertencia Cierra AP  
+            if (contadorIntentos >= 3) {
                 JOptionPane.showMessageDialog(null, "Supero la cantidad de intentos. solicite ayuda al supervisor");
                 this.dispose();
             }
@@ -346,7 +356,7 @@ public class Login extends javax.swing.JFrame {
                     }
                 }
                 dispose();
-            }       
+            }
         }
     }//GEN-LAST:event_jLBtnIniciarSesionMouseClicked
 

@@ -217,6 +217,34 @@ public class DetalleVentasData {
         return dv;
     }
 
+    ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////777
+    public DetalleVenta buscarDetalleProVentaBaja(int idVenta) {
+        VentasData vd = new VentasData();
+        ProductoData pd = new ProductoData();
+        String sql = "SELECT * FROM detalledeventa WHERE idVenta = ? AND estado = 1";
+        try {
+            PreparedStatement ps = con.prepareStatement(sql);
+            ps.setInt(1, idVenta);
+            ResultSet rs = ps.executeQuery();
+            if (rs.next()) {
+                dv = new DetalleVenta();
+                dv.setIdDetalleVenta(rs.getInt("idDetalleVenta"));
+                dv.setCantidad(rs.getInt("cantidad"));
+                venta = vd.buscarVentaId(idVenta);
+                dv.setVenta(venta);
+                dv.setPrecioVenta(rs.getDouble("precioVenta"));
+                producto = pd.buscarProducto(rs.getInt("idProducto"));
+                dv.setProducto(producto);
+                dv.setEstado(rs.getBoolean("estado"));
+            }
+            ps.close();
+        } catch (SQLException ex) {
+            JOptionPane.showMessageDialog(null, "Error al acceder a la tabla Detalle de Venta " + ex.getMessage());
+        }
+        return dv;
+    }
+    /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////7
+    
     public List<DetalleVenta> listaDV() {
         List<DetalleVenta> lista = new ArrayList<>();
         VentasData vd = new VentasData();
