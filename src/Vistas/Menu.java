@@ -1906,6 +1906,11 @@ public class Menu extends javax.swing.JFrame {
 
         jTFNombreClienModClien.setFont(new java.awt.Font("Corbel", 0, 14)); // NOI18N
         jTFNombreClienModClien.setBorder(null);
+        jTFNombreClienModClien.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                jTFNombreClienModClienKeyTyped(evt);
+            }
+        });
         jtpModClien.add(jTFNombreClienModClien, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 210, 200, 30));
 
         jSModClien2.setBackground(new java.awt.Color(0, 150, 136));
@@ -1915,6 +1920,11 @@ public class Menu extends javax.swing.JFrame {
 
         jTFApellidoModClien.setFont(new java.awt.Font("Corbel", 0, 14)); // NOI18N
         jTFApellidoModClien.setBorder(null);
+        jTFApellidoModClien.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                jTFApellidoModClienKeyTyped(evt);
+            }
+        });
         jtpModClien.add(jTFApellidoModClien, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 210, 200, 30));
 
         jSModClien3.setBackground(new java.awt.Color(0, 150, 136));
@@ -1933,6 +1943,11 @@ public class Menu extends javax.swing.JFrame {
 
         jTFTelefonoModClien.setFont(new java.awt.Font("Corbel", 0, 14)); // NOI18N
         jTFTelefonoModClien.setBorder(null);
+        jTFTelefonoModClien.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                jTFTelefonoModClienKeyTyped(evt);
+            }
+        });
         jtpModClien.add(jTFTelefonoModClien, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 280, 200, 30));
 
         jLNombreClienModClien.setFont(new java.awt.Font("Corbel", 1, 14)); // NOI18N
@@ -2217,6 +2232,11 @@ public class Menu extends javax.swing.JFrame {
         jtpAgrVenta.add(jlTelCliente, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 120, -1, -1));
 
         jtfTelCliente.setFont(new java.awt.Font("Corbel", 1, 14)); // NOI18N
+        jtfTelCliente.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                jtfTelClienteKeyTyped(evt);
+            }
+        });
         jtpAgrVenta.add(jtfTelCliente, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 140, 200, 30));
 
         jlPrecioVenta.setFont(new java.awt.Font("Corbel", 1, 14)); // NOI18N
@@ -2256,6 +2276,11 @@ public class Menu extends javax.swing.JFrame {
         jtpAgrVenta.add(jlNombreEmp, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 120, -1, -1));
 
         jtfNombreEmpVenta.setFont(new java.awt.Font("Corbel", 1, 14)); // NOI18N
+        jtfNombreEmpVenta.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                jtfNombreEmpVentaKeyTyped(evt);
+            }
+        });
         jtpAgrVenta.add(jtfNombreEmpVenta, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 140, 200, 30));
 
         jlIconVentaAgr.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
@@ -2666,6 +2691,11 @@ public class Menu extends javax.swing.JFrame {
     jtfNombreProEliminar.setEditable(false);
     jtfNombreProEliminar.setFont(new java.awt.Font("Corbel", 0, 14)); // NOI18N
     jtfNombreProEliminar.setBorder(null);
+    jtfNombreProEliminar.addKeyListener(new java.awt.event.KeyAdapter() {
+        public void keyTyped(java.awt.event.KeyEvent evt) {
+            jtfNombreProEliminarKeyTyped(evt);
+        }
+    });
     jtpEliminarVenta.add(jtfNombreProEliminar, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 210, 200, 30));
 
     jtfTelClienteEliminar.setFont(new java.awt.Font("Corbel", 1, 14)); // NOI18N
@@ -2681,6 +2711,11 @@ public class Menu extends javax.swing.JFrame {
     jtfTelCliEliminar.setEditable(false);
     jtfTelCliEliminar.setFont(new java.awt.Font("Corbel", 0, 14)); // NOI18N
     jtfTelCliEliminar.setBorder(null);
+    jtfTelCliEliminar.addKeyListener(new java.awt.event.KeyAdapter() {
+        public void keyTyped(java.awt.event.KeyEvent evt) {
+            jtfTelCliEliminarKeyTyped(evt);
+        }
+    });
     jtpEliminarVenta.add(jtfTelCliEliminar, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 280, 200, 30));
 
     jSElimProd6.setBackground(new java.awt.Color(0, 150, 136));
@@ -2691,6 +2726,11 @@ public class Menu extends javax.swing.JFrame {
     jtfNombreEmpleadoEliminar.setEditable(false);
     jtfNombreEmpleadoEliminar.setFont(new java.awt.Font("Corbel", 0, 14)); // NOI18N
     jtfNombreEmpleadoEliminar.setBorder(null);
+    jtfNombreEmpleadoEliminar.addKeyListener(new java.awt.event.KeyAdapter() {
+        public void keyTyped(java.awt.event.KeyEvent evt) {
+            jtfNombreEmpleadoEliminarKeyTyped(evt);
+        }
+    });
     jtpEliminarVenta.add(jtfNombreEmpleadoEliminar, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 280, 200, 30));
 
     jSElimProd7.setBackground(new java.awt.Color(0, 150, 136));
@@ -2934,6 +2974,11 @@ public class Menu extends javax.swing.JFrame {
 
     jTFNombreEmpleadoModEmp.setFont(new java.awt.Font("Corbel", 0, 14)); // NOI18N
     jTFNombreEmpleadoModEmp.setBorder(null);
+    jTFNombreEmpleadoModEmp.addKeyListener(new java.awt.event.KeyAdapter() {
+        public void keyTyped(java.awt.event.KeyEvent evt) {
+            jTFNombreEmpleadoModEmpKeyTyped(evt);
+        }
+    });
     jtpModificarEmpleado.add(jTFNombreEmpleadoModEmp, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 180, 200, 30));
 
     jLDniModEmp.setFont(new java.awt.Font("Corbel", 1, 14)); // NOI18N
@@ -2943,6 +2988,11 @@ public class Menu extends javax.swing.JFrame {
 
     jTFDniModEmp.setFont(new java.awt.Font("Corbel", 0, 14)); // NOI18N
     jTFDniModEmp.setBorder(null);
+    jTFDniModEmp.addKeyListener(new java.awt.event.KeyAdapter() {
+        public void keyTyped(java.awt.event.KeyEvent evt) {
+            jTFDniModEmpKeyTyped(evt);
+        }
+    });
     jtpModificarEmpleado.add(jTFDniModEmp, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 250, 200, 30));
 
     jSModEmp7.setBackground(new java.awt.Color(0, 150, 136));
@@ -3014,6 +3064,11 @@ public class Menu extends javax.swing.JFrame {
 
     jTFApellidoModEmp.setFont(new java.awt.Font("Corbel", 0, 14)); // NOI18N
     jTFApellidoModEmp.setBorder(null);
+    jTFApellidoModEmp.addKeyListener(new java.awt.event.KeyAdapter() {
+        public void keyTyped(java.awt.event.KeyEvent evt) {
+            jTFApellidoModEmpKeyTyped(evt);
+        }
+    });
     jtpModificarEmpleado.add(jTFApellidoModEmp, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 180, 200, 30));
 
     jLApellidoModEmp.setFont(new java.awt.Font("Corbel", 1, 14)); // NOI18N
@@ -3053,6 +3108,11 @@ public class Menu extends javax.swing.JFrame {
     jTFNombreEmpleadoElimEmp.setEditable(false);
     jTFNombreEmpleadoElimEmp.setFont(new java.awt.Font("Corbel", 0, 14)); // NOI18N
     jTFNombreEmpleadoElimEmp.setBorder(null);
+    jTFNombreEmpleadoElimEmp.addKeyListener(new java.awt.event.KeyAdapter() {
+        public void keyTyped(java.awt.event.KeyEvent evt) {
+            jTFNombreEmpleadoElimEmpKeyTyped(evt);
+        }
+    });
     jtpEliminarEmpleado.add(jTFNombreEmpleadoElimEmp, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 180, 200, 30));
 
     jSModEmpl6.setBackground(new java.awt.Color(0, 150, 136));
@@ -3068,6 +3128,11 @@ public class Menu extends javax.swing.JFrame {
     jTFDniElimEmp.setEditable(false);
     jTFDniElimEmp.setFont(new java.awt.Font("Corbel", 0, 14)); // NOI18N
     jTFDniElimEmp.setBorder(null);
+    jTFDniElimEmp.addKeyListener(new java.awt.event.KeyAdapter() {
+        public void keyTyped(java.awt.event.KeyEvent evt) {
+            jTFDniElimEmpKeyTyped(evt);
+        }
+    });
     jtpEliminarEmpleado.add(jTFDniElimEmp, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 250, 200, 30));
 
     jSModEmp8.setBackground(new java.awt.Color(0, 150, 136));
@@ -3121,6 +3186,11 @@ public class Menu extends javax.swing.JFrame {
     jTFApellidoElimEmp.setEditable(false);
     jTFApellidoElimEmp.setFont(new java.awt.Font("Corbel", 0, 14)); // NOI18N
     jTFApellidoElimEmp.setBorder(null);
+    jTFApellidoElimEmp.addKeyListener(new java.awt.event.KeyAdapter() {
+        public void keyTyped(java.awt.event.KeyEvent evt) {
+            jTFApellidoElimEmpKeyTyped(evt);
+        }
+    });
     jtpEliminarEmpleado.add(jTFApellidoElimEmp, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 180, 200, 30));
 
     jSModEmp11.setBackground(new java.awt.Color(0, 150, 136));
@@ -3179,6 +3249,11 @@ public class Menu extends javax.swing.JFrame {
     jtpListaEmp.add(jlImgBusquedaEmpl, new org.netbeans.lib.awtextra.AbsoluteConstraints(540, 80, 40, 30));
 
     jtfBuscadorEmpleadosListEmp.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
+    jtfBuscadorEmpleadosListEmp.addKeyListener(new java.awt.event.KeyAdapter() {
+        public void keyTyped(java.awt.event.KeyEvent evt) {
+            jtfBuscadorEmpleadosListEmpKeyTyped(evt);
+        }
+    });
     jtpListaEmp.add(jtfBuscadorEmpleadosListEmp, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 80, 160, 30));
 
     ScrollListClien1.setBackground(new java.awt.Color(255, 255, 255));
@@ -4950,6 +5025,66 @@ public class Menu extends javax.swing.JFrame {
     private void jlEliminarProdTabla1MouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jlEliminarProdTabla1MouseExited
         jlEliminarProdTabla1.setBackground(verdeBase);
     }//GEN-LAST:event_jlEliminarProdTabla1MouseExited
+
+    private void jTFNombreClienModClienKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTFNombreClienModClienKeyTyped
+        controlLetras(evt);
+    }//GEN-LAST:event_jTFNombreClienModClienKeyTyped
+
+    private void jTFApellidoModClienKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTFApellidoModClienKeyTyped
+        controlLetras(evt);
+    }//GEN-LAST:event_jTFApellidoModClienKeyTyped
+
+    private void jTFTelefonoModClienKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTFTelefonoModClienKeyTyped
+        controlNumeros(evt);
+    }//GEN-LAST:event_jTFTelefonoModClienKeyTyped
+
+    private void jtfNombreEmpVentaKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jtfNombreEmpVentaKeyTyped
+        controlLetras(evt);
+    }//GEN-LAST:event_jtfNombreEmpVentaKeyTyped
+
+    private void jtfTelClienteKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jtfTelClienteKeyTyped
+        controlNumeros(evt);
+    }//GEN-LAST:event_jtfTelClienteKeyTyped
+
+    private void jtfNombreProEliminarKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jtfNombreProEliminarKeyTyped
+        controlLetras(evt);
+    }//GEN-LAST:event_jtfNombreProEliminarKeyTyped
+
+    private void jtfTelCliEliminarKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jtfTelCliEliminarKeyTyped
+        controlNumeros(evt);
+    }//GEN-LAST:event_jtfTelCliEliminarKeyTyped
+
+    private void jtfNombreEmpleadoEliminarKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jtfNombreEmpleadoEliminarKeyTyped
+        controlLetras(evt);
+    }//GEN-LAST:event_jtfNombreEmpleadoEliminarKeyTyped
+
+    private void jTFNombreEmpleadoModEmpKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTFNombreEmpleadoModEmpKeyTyped
+        controlLetras(evt);
+    }//GEN-LAST:event_jTFNombreEmpleadoModEmpKeyTyped
+
+    private void jTFApellidoModEmpKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTFApellidoModEmpKeyTyped
+        controlLetras(evt);
+    }//GEN-LAST:event_jTFApellidoModEmpKeyTyped
+
+    private void jTFDniModEmpKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTFDniModEmpKeyTyped
+        controlNumeros(evt);
+    }//GEN-LAST:event_jTFDniModEmpKeyTyped
+
+    private void jTFNombreEmpleadoElimEmpKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTFNombreEmpleadoElimEmpKeyTyped
+        controlLetras(evt);
+    }//GEN-LAST:event_jTFNombreEmpleadoElimEmpKeyTyped
+
+    private void jTFApellidoElimEmpKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTFApellidoElimEmpKeyTyped
+        controlLetras(evt);
+    }//GEN-LAST:event_jTFApellidoElimEmpKeyTyped
+
+    private void jTFDniElimEmpKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTFDniElimEmpKeyTyped
+        controlNumeros(evt);
+    }//GEN-LAST:event_jTFDniElimEmpKeyTyped
+
+    private void jtfBuscadorEmpleadosListEmpKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jtfBuscadorEmpleadosListEmpKeyTyped
+        controlLetras(evt);
+    }//GEN-LAST:event_jtfBuscadorEmpleadosListEmpKeyTyped
 
     /**
      * @param args the command line arguments
